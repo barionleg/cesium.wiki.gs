@@ -8,3 +8,5 @@
    * Culling for all objects
    * Post-processing framework
 * Streaming terrain
+* Better mobile support
+* Improve precision - remove potential jittering
