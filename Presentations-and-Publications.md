@@ -6,5 +6,5 @@
 
 ## 2011
 
-* [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com/).  CRC Press.  06/2012.
+* [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com/).  CRC Press.  06/2011.
  * Not strictly about Geoscope, but about virtual globes in general.  Written by two Geoscope contributors.  Some code from this book's engine, [OpenGlobe](https://github.com/virtualglobebook/OpenGlobe), was ported to Geoscope.
