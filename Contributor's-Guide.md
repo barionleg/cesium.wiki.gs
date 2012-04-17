@@ -44,7 +44,3 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 * Import Cesium into your workspace:  File - Import, General - Existing Projects into Workspace, Next.  Fill in the path to the Cesium\Cesium directory, Finish.
 
 * Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent folder of project.  Finish.
-
-## Coding Standards
-
-TBA
