@@ -9,13 +9,30 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 
 ## Building the Code
 
-TBA
+* Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that the [Java](http://www.java.com/en/download/index.jsp) JDK be installed.
+* For a default debug build, run:
+
+<pre>
+./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml
+</pre>
+
+* The following targets can be built:
+   * Debug -
+   * DebugWithCoverage -
+   * Release -
+   * ReleaseWithoutDocumentation -
+   * Clean -
+* For example, to build the release target:
+
+<pre>
+./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml Release
+</pre>
 
 ## Setting up Eclipse
 
 Although we encourage contributors to use their IDE of choice, many of us use Eclipse.  Here is how we set it up:
 
-* Install [Java](http://www.java.com/en/download/index.jsp) if it isn't already.
+* Install the [Java](http://www.java.com/en/download/index.jsp) JRE if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for JavaScript Web Developers.  Extract to a directory of your choice.  Run it.
 * Install the [JSHint](http://www.jshint.com/) plugin: Help - Install New Software, Work with: http://github.eclipsesource.com/jshint-eclipse/updates/.  Check JSHint.  Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
 
@@ -44,3 +61,7 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 * Import Cesium into your workspace:  File - Import, General - Existing Projects into Workspace, Next.  Fill in the path to the Cesium\Cesium directory, Finish.
 
 * Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent folder of project.  Finish.
+
+## Building with Eclipse
+
+TBA
