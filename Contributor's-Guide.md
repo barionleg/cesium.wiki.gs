@@ -9,10 +9,10 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 ## Building the Code
 
 * Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that the [Java](http://www.java.com/en/download/index.jsp) JDK be installed.
-* For a default debug build, run:
+* For a default debug build, run Ant from the root Cesium directory:
 
 <pre>
-./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml
+./Tools/apache-ant-1.8.2/bin/ant
 </pre>
 
 * The following targets can be built:
@@ -26,8 +26,8 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 * For example, to build the release target and then start an HTTP server for testing, run:
 
 <pre>
-./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml release
-./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml runServer
+./Tools/apache-ant-1.8.2/bin/ant release
+./Tools/apache-ant-1.8.2/bin/ant runServer
 </pre>
 
 ## Setting up Eclipse
