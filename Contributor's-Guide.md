@@ -5,7 +5,6 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 * Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
 * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
 * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
-* If you make changes you would like to contribute back, send us a [pull request](http://help.github.com/send-pull-requests/).
 
 ## Building the Code
 
@@ -22,12 +21,13 @@ We are a community that encourages contributions.  Join us.  Check out our [road
    * minify - Runs combine, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
    * release - Runs minify, plus generates documentation in Build\Documentation using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
    * instrumentForCoverage - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
-   * runServer - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  Also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
+   * runServer - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
    * clean - Removes all generated build artifacts.
-* For example, to build the release target:
+* For example, to build the release target and then start an HTTP server for testing, run:
 
 <pre>
 ./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml release
+./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml runServer
 </pre>
 
 ## Setting up Eclipse
@@ -60,6 +60,9 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent folder of project.  Finish.
 
-## Building with Eclipse
+## Contributing Code
 
-TBA
+* Make sure your code follows our [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
+* Send us a [pull request](http://help.github.com/send-pull-requests/).
+
+<!-- CLA, tests, peer review -->
