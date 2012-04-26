@@ -17,15 +17,17 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 </pre>
 
 * The following targets can be built:
-   * Debug -
-   * DebugWithCoverage -
-   * Release -
-   * ReleaseWithoutDocumentation -
-   * Clean -
+   * build - A fast, developer-oriented build that prepares the source tree for use as [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (at the moment the Sandbox requires running "combine").  This runs automatically when saving files in Eclipse.
+   * combine - Runs build, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce an all-in-one file, Build\Cesium.js, that exposes the entire Cesium API attached to a single global Cesium object, if you don't want to use the modules directly with an AMD loader.
+   * minify - Runs combine, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
+   * release - Runs minify, plus generates documentation in Build\Documentation using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
+   * instrumentForCoverage - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
+   * runServer - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  Also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
+   * clean - Removes all generated build artifacts.
 * For example, to build the release target:
 
 <pre>
-./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml Release
+./Tools/apache-ant-1.8.2/bin/ant -buildfile ./Cesium/build.xml release
 </pre>
 
 ## Setting up Eclipse
@@ -38,13 +40,9 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 ![](jshint.png)
 
-* Install the Java Development Tools (for Ant): Help - Install New Software, Work with: select Indigo from the list.  Expand Programming Languages, Check Eclipse Java Development Tools.  Next, Next, Accept, Finish, _wait_, Not Now.
+* Install the Java Development Tools (for Ant): Help - Install New Software, Work with: select Indigo from the list.  Expand Programming Languages, check Eclipse Java Development Tools.  Expand Collaboration, check EGit.  Next, Next, Accept, Finish, _wait_, Not Now.
 
 ![](indigo.png)
-
-* Install [EGit](http://www.eclipse.org/egit/) for git integration: Help - Eclipse Marketplace, Find: egit.  Install, Next, Accept, Finish, _wait_, Not Now.
-
-![](egit.png)
 
 * Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into eclipse's dropins directory.
 
