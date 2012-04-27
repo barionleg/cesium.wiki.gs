@@ -82,7 +82,7 @@ Then, to step into the test, step into `stepIntoThis()`.
 
 ![](stepIntoThis.png)
 
-* Use [www.webglreport.com](http://www.webglreport.com) to see if WebGL is supported, and if so, what is exactly supported.
+* Use [www.webglreport.com](http://www.webglreport.com) to see if WebGL is supported, and if so, what is exactly supported.  For more goodness, including the ANGLE revision, browse to chrome://gpu-internals/ in Chrome.
 
 * Keep your video card drivers up to date.  [NVIDIA](http://www.nvidia.com/Download/index.aspx) | [AMD](http://support.amd.com/us/gpudownload/Pages/index.aspx).
 
@@ -94,14 +94,16 @@ Then, to step into the test, step into `stepIntoThis()`.
 
 * For performance testing, turn off [vsync](http://hardforum.com/showthread.php?t=928593)
    * In the driver, e.g., the NVIDIA Control Panel or the Catalyst Control Center.
-   * Turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
+   * Also turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
 
 * For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.
 
 ## Contributing Code
 
 * Make sure your code follows our [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
-* Send us a [pull request](http://help.github.com/send-pull-requests/).
+* Include tests with excellent code coverage for new features.
+* Verify all the new and existing tests pass, or at least, nothing broke.  To run the tests, browse to http://localhost:8080/Specs/SpecRunner.html.
+* Send us a [pull request](http://help.github.com/send-pull-requests/).  We'll promptly review it, provide feedback, and merge it.
 * For larger changes, also post on the [development mailing list](https://groups.google.com/forum/#!topic/cesium-dev) for additional feedback.
 
-<!-- CLA, tests, peer review -->
+<!-- CLA -->
