@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Near term
-* Flush out material system
+* Flesh out material system
 * COLLADA models
 * Data-driven renderer
    * Improved depth-buffer precision
