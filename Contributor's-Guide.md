@@ -68,6 +68,36 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent folder of project.  Finish.
 
+## Development Tips
+
+* In Eclipse, use Ctrl-Shift-R to search and open files in the workspace.
+
+![](openresource.png)
+
+* To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
+
+![](debugJasmine.png)
+
+Then, to step into the test, step into `stepIntoThis()`.
+
+![](stepIntoThis.png)
+
+* Use [www.webglreport.com](http://www.webglreport.com) to see if WebGL is supported, and if so, what is exactly supported.
+
+* Keep your video card drivers up to date.  [NVIDIA](http://www.nvidia.com/Download/index.aspx) | [AMD](http://support.amd.com/us/gpudownload/Pages/index.aspx).
+
+* For WebGL debugging such as stepping through draw calls, viewing textures and vertex buffers, etc., use the [WebGL Inspector](http://benvanik.github.com/WebGL-Inspector/).
+
+* To run without [ANGLE](http://code.google.com/p/angleproject/) (Windows-only)
+   * Chrome:  Run with the --use-gl=desktop argument.  Make sure you close all Chrome windows before starting.
+   * Firefox:  Browse to about:config and set webgl.prefer-native-gl to true.
+
+* For performance testing, turn off [vsync](http://hardforum.com/showthread.php?t=928593)
+   * In the driver, e.g., the NVIDIA Control Panel or the Catalyst Control Center.
+   * Turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
+
+* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.
+
 ## Contributing Code
 
 * Make sure your code follows our [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
