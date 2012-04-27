@@ -8,6 +8,14 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 
 ## Building the Code
 
+Short version: from the root Cesium directory, run
+<pre>
+./Tools/apache-ant-1.8.2/bin/ant combine
+./Tools/apache-ant-1.8.2/bin/ant runServer
+</pre>
+Then browse to http://localhost:8080.
+
+Details
 * Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that the [Java](http://www.java.com/en/download/index.jsp) JDK be installed.
 * For a default debug build, run Ant from the root Cesium directory:
 
@@ -16,7 +24,7 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 </pre>
 
 * The following targets can be built:
-   * build - A fast, developer-oriented build that prepares the source tree for use as [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (at the moment the Sandbox requires running "combine").  This runs automatically when saving files in Eclipse.
+   * build - A fast, developer-oriented build that prepares the source tree for use as [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (at the moment the Sandbox example requires running "combine").  This runs automatically when saving files in Eclipse.
    * combine - Runs build, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce an all-in-one file, Build\Cesium.js, that exposes the entire Cesium API attached to a single global Cesium object, if you don't want to use the modules directly with an AMD loader.
    * minify - Runs combine, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
    * release - Runs minify, plus generates documentation in Build\Documentation using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
@@ -64,5 +72,6 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Make sure your code follows our [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
 * Send us a [pull request](http://help.github.com/send-pull-requests/).
+* For larger changes, also post on the [development mailing list](https://groups.google.com/forum/#!topic/cesium-dev) for additional feedback.
 
 <!-- CLA, tests, peer review -->
