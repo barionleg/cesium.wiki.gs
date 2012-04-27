@@ -104,7 +104,7 @@ Then, to step into the test, step into `stepIntoThis()`.
 * For larger changes, also post on the [development mailing list](https://groups.google.com/forum/#!topic/cesium-dev) for additional feedback.
 * Please make sure your code
    * Follows our [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
-   * Include tests with excellent code coverage for new features.  We use [Jasmine](http://pivotal.github.com/jasmine/) for writing tests.  Run them by browsing to http://localhost:8080/Specs/SpecRunner.html.  Verify all  new and existing tests pass, or at least, nothing broke.  For bonus points, test all supported browsers.
-   * When adding new public functions and properties, include reference documentation with code examples.  We use [JsDoc Toolkit](http://code.google.com/p/jsdoc-toolkit/).  Check out the [tag reference](http://code.google.com/p/jsdoc-toolkit/wiki/TagReference).
+   * Includes tests with excellent code coverage for new features.  We use [Jasmine](http://pivotal.github.com/jasmine/) for writing tests.  Run them by browsing to http://localhost:8080/Specs/SpecRunner.html.  Verify all  new and existing tests pass.  For bonus points, test Chrome, Firefox, and other browsers supporting WebGL.
+   * Includes reference documentation with code examples when adding new public functions and properties.  We use [JsDoc Toolkit](http://code.google.com/p/jsdoc-toolkit/).  Check out the [tag reference](http://code.google.com/p/jsdoc-toolkit/wiki/TagReference).
 
 <!-- CLA -->
