@@ -5,6 +5,22 @@ In progress...
 * Use meters for distances.
 * Use radians, not degrees, for angles.
 
+## Constructors
+* Constructor functions should take the objects's basic components as parameters, while static helper methods should be provided for constructing an object via other means.  Helper methods should be prefixed with "from":
+
+<pre>
+var julianDate = new JulianDate(dayNumber, secondsOfDay, TimeStandard.UTC);
+var julianDateFromIso8601 = JulianDate.fromIso8601("2012-04-24T18:08Z");
+var julianDateFromDate = JulianDate.fromDate(new Date(1980, 7, 1));
+</pre>
+
+* Object methods which create a new instance of a different object should be prefixed with "to":
+
+<pre>
+var julianDate = new JulianDate(dayNumber, secondsOfDay, TimeStandard.UTC);
+var javaScriptDate = julianDate.toDate();
+</pre>
+
 ## Functions
 
 * If a sensible default exists for a function argument or object property, don't require the user to provide it.  Examples:
