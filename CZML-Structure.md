@@ -151,7 +151,7 @@ The `interpolationAlgorithm` specifies the algorithm to use to interpolate a val
 
 ## EventSource and Streaming
 
-Putting an entire CZML document in one big JSON array makes it difficult to load the document incrementally.  Today's web browsers allow some access to a stream before it is complete, but parsing and interpreting the incomplete data requires slow and cumbersome string manipulations.  To faciliate high-performance streaming, CZML may also be streamed using modern browsers' [server-sent events](http://dev.w3.org/html5/eventsource/) (`EventSource`) API.  When using this API, each CZML packet is a separate event:
+Putting an entire CZML document in one big JSON array makes it difficult to load the document incrementally.  Today's web browsers allow some access to a stream before it is complete, but parsing and interpreting the incomplete data requires slow and cumbersome string manipulations.  To faciliate high-performance streaming, CZML may also be streamed using modern browsers' [server-sent events](http://dev.w3.org/html5/eventsource/) (`EventSource`) API.  When using this API, each CZML packet is streamed to the client as a separate event:
 
 ```javascript
 event: czml
@@ -165,4 +165,4 @@ data: {
 } 
 ```
 
-The browser raises a separate event when each packet is received, allowing high-performance, incremental handling of an overall CZML document.
+As a result, the browser raises an event when each packet is received, containing the data for just that one packet.  This allows us to incrementally process CZML data with excellent performance.
