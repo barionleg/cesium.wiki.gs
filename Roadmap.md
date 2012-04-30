@@ -11,6 +11,7 @@
 * Streaming terrain
 * Better mobile support
 * Improve precision - remove potential jittering
+* [[CZML|Cesium Language (CZML) Guide]] Visualization
 
 ## Longer term
 * Render buildings
