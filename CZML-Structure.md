@@ -66,9 +66,21 @@ In the common case that the property has a value over just one interval, the int
 }
 ```
 
+Just as before, the `interval` property can be omitted if the property has that value for all time.  For properties with simple values, like the number property shown above, and with a single value for all time, the value can be given even more compactly:
+
+```javascript
+{
+    "id": "myObject",
+    "someProperty": 5
+}
+```
+
+This abbreviated notation is valid for any property whose value can be represented with one of the simple JSON data types: string, number, or boolean.
+
 ## Composite Values
+
+More complicated composite values, such as a Cartesian position or a color, are represented using JSON arrays.
 
 ## Sampled Property Values
 
 ## EventSource and Streaming
-
