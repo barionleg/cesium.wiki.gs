@@ -8,7 +8,7 @@ CZML is a language for describing a time-dynamic graphical scene for display in 
 1. CZML is optimized for client consumption; it aims to be compact and easy to parse.  It is also reasonably readable and writable by humans.
 1. CZML is extensible.  While the primary goal of CZML is to communicate a scene to a virtual-globe-like client, the format can easily be extended to communicate additional static or time-dynamic data to a more sophisticated client.  For example, time-dynamic data could be displayed on a 2D chart.
 
-We describe CZML in several parts:
+We describe CZML in three parts:
 
 * [[CZML Structure]] - Describes the overall structure of a CZML document / stream.
 * [[CZML Content]] - Describes the standard content, or graphical primitives, present in a CZML document / stream.
