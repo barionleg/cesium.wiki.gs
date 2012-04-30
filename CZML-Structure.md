@@ -40,14 +40,17 @@ In the most general case, the value of a CZML property is a JSON array, where ea
     "someProperty": [
         {
             "interval": "2012-04-30T12:00:00Z/13:00:00Z",
-            "value": 5
+            "number": 5
         },
         {
             "interval": "2012-04-30T13:00:00Z/14:00:00Z",
-            "value": 6
+            "number": 6
         },
     ]
 }
 ```
 
-Here we define the "someProperty" property over two intervals, the first from noon to 1:00 PM UTC where the value of the property is 5, and the other from 1:00 PM to 2:00 PM UTC where the value of the property is 6.
+Here we define the "someProperty" property over two intervals, the first from noon to 1:00 PM UTC where the value of the property is 5, and the other from 1:00 PM to 2:00 PM UTC where the value of the property is 6.  We use `number` to indicate the value because this is a number-type property.  Some properties, notably properties that indicate position, allow the value to be specified in multiple formats, such as a Cartesian X,Y,Z position or a Cartographic longitude, latitude, height position.  The [[CZML Content]] page lists the types of data supported for each property, and the value names to use with each.
+
+The `interval` property is optional.  If it is not specified, the interval is assumed to span all time.  It doesn't make much sense to specify multiple infinite intervals, or intervals that overlap in general, but if you do, the one later in the CZML file or stream takes precedence.
+
