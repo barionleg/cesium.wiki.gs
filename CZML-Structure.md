@@ -54,3 +54,21 @@ Here we define the "someProperty" property over two intervals, the first from no
 
 The `interval` property is optional.  If it is not specified, the interval is assumed to span all time.  It doesn't make much sense to specify multiple infinite intervals, or intervals that overlap in general, but if you do, the one later in the CZML file or stream takes precedence.
 
+In the common case that the property has a value over just one interval, the interval list array can be omitted entirely.
+
+```javascript
+{
+    "id": "myObject",
+    "someProperty": {
+        "interval": "2012-04-30T12:00:00Z/14:00:00Z",
+        "number": 5
+    }
+}
+```
+
+## Composite Values
+
+## Sampled Property Values
+
+## EventSource and Streaming
+
