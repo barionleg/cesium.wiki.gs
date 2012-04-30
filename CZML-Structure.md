@@ -50,7 +50,7 @@ In the most general case, the value of a CZML property is a JSON array, where ea
 }
 ```
 
-Here we define the `someProperty` property over two intervals, the first from noon to 1:00 PM UTC where the value of the property is 5, and the other from 1:00 PM to 2:00 PM UTC where the value of the property is 6.  We use `number` to indicate the value because this is a number-type property.  Some properties, notably properties that indicate position, allow the value to be specified in multiple formats, such as a Cartesian X,Y,Z position or a Cartographic longitude, latitude, height position.  The [[CZML Content]] page lists the types of data supported for each property, and the value names to use with each.
+Here we define the `someProperty` property over two intervals, the first from noon to 1:00 PM UTC where the value of the property is 5, and the other from 1:00 PM to 2:00 PM UTC where the value of the property is 6.  The value will change instantly when crossing the boundary between two intervals.  We use `number` to indicate the value because this is a number-type property.  Some properties, notably properties that indicate position, allow the value to be specified in multiple formats, such as a Cartesian X,Y,Z position or a Cartographic longitude, latitude, height position.  The [[CZML Content]] page lists the types of data supported for each property, and the value names to use with each.
 
 The `interval` property is optional.  If it is not specified, the interval is assumed to span all time.  It doesn't make much sense to specify multiple infinite intervals, or intervals that overlap in general, but if you do, the one later in the CZML file or stream takes precedence.
 
@@ -84,14 +84,32 @@ More complicated composite values, such as a Cartesian position or a color, are 
 ```javascript
 {
     "id": "myObject",
-    "complexProperty": {
+    "someComplexProperty": {
         "cartesian": [1.0, 2.0, 3.0]
     }
 }
 ```
 
-Composite values must always be specified within an interval, even if that interval is infinite.  If the value, `[1.0, 2.0, 3.0]` were allowed as the value of the `complexProperty` directly, it would be necessary for a client interpreting the CZML to look at the contents of the array to determine whether the array was a list of intervals or a single value.  So, for simplicity, we do not allow this.
+Composite values must always be specified within an interval, even if that interval is infinite as shown here.  If the value, `[1.0, 2.0, 3.0]`, were allowed as the value of the `complexProperty` directly, it would be necessary for a client interpreting the CZML to look at the contents of the array to determine whether the array was a list of intervals or a single value.  So, for simplicity, we do not allow this.
+
+The [[CZML Content]] page describes how various types of data are encoded in arrays.
 
 ## Sampled Property Values
+
+So far, we've discussed how to specify a single value for a property for all time, and how to specify different values for a property over different discrete intervals.  Some properties (and the [[CZML Content]] page will tell you which) also allow you to specify time-tagged samples which the client will interpolate over to compute the value of the property at any given time.
+
+```javascript
+{  
+    // ...  
+    "someInterpolataleProperty": {  
+        "cartesian": [  
+            "2012-04-30T12:00Z", 1.0, 2.0, 3.0,  
+            "2012-04-30T12:01Z", 4.0, 5.0, 6.0,  
+            "2012-04-30T12:02Z", 7.0, 8.0, 9.0  
+        ]  
+    }  
+}  ```
+
+Here we're specifying that the value is `[1.0, 2.0, 3.0]` at noon, `[4.0, 5.0, 6.0]` one minute later, and `[7.0, 8.0, 9.0]` a minute after that.  If the client's current clock is 30 seconds past noon, the position will be a linear interpolation between `[1.0, 2.0, 3.0]` and `[4.0, 5.0, 6.0]`, or `[2.5, 3.5, 4.5]`.  
 
 ## EventSource and Streaming
