@@ -101,7 +101,7 @@ So far, we've discussed how to specify a single value for a property for all tim
 ```javascript
 {  
     // ...  
-    "someInterpolataleProperty": {  
+    "someInterpolatableProperty": {  
         "cartesian": [  
             "2012-04-30T12:00Z", 1.0, 2.0, 3.0,  
             "2012-04-30T12:01Z", 4.0, 5.0, 6.0,  
@@ -118,7 +118,7 @@ For succinctness, times can also be specified in seconds since an epoch.  While 
 ```javascript
 {  
     // ...  
-    "someInterpolataleProperty": {  
+    "someInterpolatableProperty": {  
         "epoch": "2012-04-30T12:00Z",  
         "cartesian": [  
             0.0, 1.0, 2.0, 3.0,  
@@ -128,5 +128,25 @@ For succinctness, times can also be specified in seconds since an epoch.  While 
     }  
 }
 ```
+
+Finally, properties specified using time-tagged samples have some additional, optional sub-properties controlling interpolation.
+
+```javascript
+{  
+    // ...  
+    "someInterpolatableProperty": {  
+        "epoch": "2012-04-30T12:00Z",  
+        "cartesian": [  
+            0.0, 1.0, 2.0, 3.0,  
+            60.0, 4.0, 5.0, 6.0,  
+            120.0, 7.0, 8.0, 9.0  
+        ],  
+        "interpolationAlgorithm": "LAGRANGE",  
+        "interpolationDegree": 5
+    },  
+} 
+````
+
+The `interpolationAlgorithm` specifies the algorithm to use to interpolate a value at a different time from the provided data.  The available algorithms are described on the [[CZML Content]] page.  The `interpolationDegree` property specifies the degree of the polynomial to use for interpolation.  For example, `1` specifies linear interpolation and `2` specifies quadratic interpolation.
 
 ## EventSource and Streaming
