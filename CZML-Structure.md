@@ -12,7 +12,7 @@ _Note: we use javascript comments in these examples even though comments are not
         // ...
     },
     {
-        // packet one
+        // packet two
         "id": "GroundControlStation"
         // ...
     }
