@@ -32,7 +32,7 @@ Packets describe graphical properties of their object.  The following packet pla
     "id": "GroundControlStation",
     "point": {
         "color": { "rgba": [0, 0, 255, 255] },
-        "position": { "cartographicDegrees": [-75.0, 40.0, 0.0] }
+        "position": { "cartographicDegrees": [-75.5, 40.0, 0.0] }
     }
 }
 ```
