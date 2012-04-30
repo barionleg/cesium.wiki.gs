@@ -96,7 +96,7 @@ The [[CZML Content]] page describes how various types of data are encoded in arr
 
 ## Sampled Property Values
 
-So far, we've discussed how to specify a single value for a property for all time, and how to specify different values for a property over different discrete intervals.  Some properties (and the [[CZML Content]] page will tell you which) also allow you to specify time-tagged samples which the client will interpolate over to compute the value of the property at any given time.
+So far, we've discussed how to specify a single value for a property for all time, and how to specify different values for a property over different discrete intervals.  Some properties (and the [[CZML Content]] page will tell you which) also allow you to specify time-tagged samples which the client will interpolate over to compute the value of the property at any given time.  Times are specified using [ISO8601](http://en.wikipedia.org/wiki/ISO_8601) strings.
 
 ```javascript
 {  
@@ -111,6 +111,22 @@ So far, we've discussed how to specify a single value for a property for all tim
 } 
 ```
 
-Here we're specifying that the value is `[1.0, 2.0, 3.0]` at noon, `[4.0, 5.0, 6.0]` one minute later, and `[7.0, 8.0, 9.0]` a minute after that.  If the client's current clock is 30 seconds past noon, the position will be a linear interpolation between `[1.0, 2.0, 3.0]` and `[4.0, 5.0, 6.0]`, or `[2.5, 3.5, 4.5]`.  
+Here we're specifying that the value is `[1.0, 2.0, 3.0]` at noon, `[4.0, 5.0, 6.0]` one minute later, and `[7.0, 8.0, 9.0]` a minute after that.  If the client's current clock is 30 seconds past noon, the value will be a linear interpolation between `[1.0, 2.0, 3.0]` and `[4.0, 5.0, 6.0]`, or `[2.5, 3.5, 4.5]`.
+
+For succinctness, times can also be specified in seconds since an epoch.  While this is potentially less precise than specifying each time using an ISO8601 string, it is usually more than sufficient when the samples span less than a day or when the offsets are whole numbers of seconds.
+
+```javascript
+{  
+    // ...  
+    "someInterpolataleProperty": {  
+        "epoch": "2012-04-30T12:00Z",  
+        "cartesian": [  
+            0.0, 1.0, 2.0, 3.0,  
+            60.0, 4.0, 5.0, 6.0,  
+            120.0, 7.0, 8.0, 9.0  
+        ]  
+    }  
+}
+```
 
 ## EventSource and Streaming
