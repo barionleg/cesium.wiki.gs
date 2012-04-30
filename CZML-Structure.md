@@ -28,4 +28,26 @@ If an `id` is not specified, the client will automatically generate a unique one
 
 In addition to the `id`, packets contain zero or more (but usually one or more) properties defining the graphical characteristics of the object.  In the example above, we've specified that the "GroundControlStation" object has a fixed position in Pennsylvania and that a blue dot is drawn at its location.
 
-There are many standard properties defined for CZML, specifying how points, billboards, models, lines, and other graphics are added to the scene.  The available properties are described in detail on the [[CZML Content]] page.  On this page, we are primarily concerned with how the data is structured.  For example, we describe how a property can be specified such that it has two different values over two different intervals of time.
+There are many standard properties defined for CZML, including properties for adding points, billboards, models, lines, and other graphics to the scene.  The available properties are described in detail on the [[CZML Content]] page.  On this page, we are primarily concerned with how the data is structured.  For example, we describe how a property can be specified such that it has two different values over two different intervals of time.
+
+## Intervals
+
+In the most general case, the value of a CZML property is a JSON array, where each element in the array is an object literal defining the value of the property for a different interval of time.  The interval described by any given object literal in the array is specified using an [ISO8601 interval](http://en.wikipedia.org/wiki/ISO_8601#Time_intervals) string in the `interval` property.
+
+```javascript
+{
+    "id": "myObject",
+    "someProperty": [
+        {
+            "interval": "2012-04-30T12:00:00Z/13:00:00Z",
+            "value": 5
+        },
+        {
+            "interval": "2012-04-30T13:00:00Z/14:00:00Z",
+            "value": 6
+        },
+    ]
+}
+```
+
+Here we define the "someProperty" property over two intervals, the first from noon to 1:00 PM UTC where the value of the property is 5, and the other from 1:00 PM to 2:00 PM UTC where the value of the property is 6.
