@@ -17,7 +17,22 @@ _Note: we use javascript comments in these examples even though comments are not
 ]
 ```
 
-Each packet has an `id` property identifying the object is is describing.  IDs do not need to be GUIDs - URIs make good IDs - but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope. We'll talk more about scopes later in this document.
+Each packet has an `id` property identifying the object it is describing.  IDs do not need to be GUIDs - URIs make good IDs - but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope. We'll talk more about scopes later in this document.
 
 If an `id` is not specified, the client will automatically generate a unique one. This prevents later packets from adding additional properties to the object. Also, other packets will not be able to reference the data in this one.
 
+## Properties
+
+Packets describe graphical properties of their object.  The following packet places a blue dot in Pennsylvania:
+
+```javascript
+{
+    "id": "GroundControlStation",
+    "point": {
+        "color": { "rgba": [0, 0, 255, 255] },
+        "position": { "cartographicDegrees": [-75.0, 40.0, 0.0] }
+    }
+}
+```
+
+There are many standard properties, described on the [[CZML Content]] page.
