@@ -1,3 +1,5 @@
+_NOTE: This is a work in progress and reflects our plans NOT our current capabilities._
+
 CZML is a subset of [JSON](http://www.json.org), meaning that a valid CZML document is also a valid JSON document.  Specifically, a CZML document contains a single JSON array where each object-literal element in the array is a CZML packet.  A CZML packet describes the graphical properties for a single object in the scene, such as a single aircraft.
 
 _Note: we use javascript comments in these examples even though comments are not technically allowed in JSON._
