@@ -145,7 +145,7 @@ Finally, properties specified using time-tagged samples have some additional, op
         "interpolationDegree": 5
     },  
 } 
-````
+```
 
 The `interpolationAlgorithm` specifies the algorithm to use to interpolate a value at a different time from the provided data.  The available algorithms are described on the [[CZML Content]] page.  The `interpolationDegree` property specifies the degree of the polynomial to use for interpolation.  For example, `1` specifies linear interpolation and `2` specifies quadratic interpolation.
 
