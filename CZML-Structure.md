@@ -1,0 +1,1 @@
+CZML is a subset of [JSON](http://www.json.org), meaning that a valid CZML document is also a valid JSON document.
