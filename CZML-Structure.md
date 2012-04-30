@@ -150,3 +150,19 @@ Finally, properties specified using time-tagged samples have some additional, op
 The `interpolationAlgorithm` specifies the algorithm to use to interpolate a value at a different time from the provided data.  The available algorithms are described on the [[CZML Content]] page.  The `interpolationDegree` property specifies the degree of the polynomial to use for interpolation.  For example, `1` specifies linear interpolation and `2` specifies quadratic interpolation.
 
 ## EventSource and Streaming
+
+Putting an entire CZML document in one big JSON array makes it difficult to load the document incrementally.  Today's web browsers allow some access to a stream before it is complete, but parsing and interpreting the incomplete data requires slow and cumbersome string manipulations.  To faciliate high-performance streaming, CZML may also be streamed using modern browsers' [server-sent events](http://dev.w3.org/html5/eventsource/) (`EventSource`) API.  When using this API, each CZML packet is a separate event:
+
+```javascript
+event: czml
+data: {  
+    // packet one  
+}  
+  
+event: czml
+data: {  
+    // packet two  
+} 
+```
+
+The browser raises a separate event when each packet is received, allowing high-performance, incremental handling of an overall CZML document.
