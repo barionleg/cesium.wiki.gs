@@ -108,7 +108,8 @@ So far, we've discussed how to specify a single value for a property for all tim
             "2012-04-30T12:02Z", 7.0, 8.0, 9.0  
         ]  
     }  
-}  ```
+} 
+```
 
 Here we're specifying that the value is `[1.0, 2.0, 3.0]` at noon, `[4.0, 5.0, 6.0]` one minute later, and `[7.0, 8.0, 9.0]` a minute after that.  If the client's current clock is 30 seconds past noon, the position will be a linear interpolation between `[1.0, 2.0, 3.0]` and `[4.0, 5.0, 6.0]`, or `[2.5, 3.5, 4.5]`.  
 
