@@ -185,3 +185,23 @@ Consider a property that has sampled values at times 0.0 through 10.0, inclusive
 
 One approach is to interpolate across the two packets.  This is probably a bad idea, though, because interpolating across this gap can result in a very wrong-looking scene, especially with higher-degree interpolation.  So really, we'd like to pause animation, display some sort of "Buffering..." message to the user, and wait for the gap to be filled.  But how do we even know there's a gap?  We might infer that there's a gap because we have 1.0 second steps, and then a 5.0 second gap, and then 1.0 second gaps again.  But that's not reliable; maybe the object as just moving more slowly over that interval so we needed fewer samples.
 
+CZML offers a solution in the form of two additional sub-properties for use with time-tagged samples: `previousTime` and `nextTime`.
+
+```javascript
+{  
+    // ...  
+    "someInterpolatableProperty": {  
+        "epoch": "2012-04-30T12:00:00Z",  
+        "cartesian": [  
+            0.0, 1.0, 2.0, 3.0,  
+            1.0, 4.0, 5.0, 6.0,  
+            2.0, 7.0, 8.0, 9.0,
+            3.0, 10.0, 11.0, 12.0
+        ],  
+        "previousTime": -1.0,  
+        "nextTime": 4.0  
+    }  
+}
+```
+
+These properties tell the CZML client that the next sample time after 3.0 is 4.0.  If the next sample it has after 3.0 is 8.0, as in our example above, the client knows that there's a gap, and it will wait for more data before interpolating at a time within that gap.  
