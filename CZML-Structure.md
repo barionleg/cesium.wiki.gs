@@ -205,3 +205,9 @@ CZML offers a solution in the form of two additional sub-properties for use with
 ```
 
 These properties tell the CZML client that the next sample time after 3.0 is 4.0.  If the next sample it has after 3.0 is 8.0, as in our example above, the client knows that there's a gap, and it will wait for more data before interpolating at a time within that gap.  
+
+It is not necessary to specify both `previousTime` and `nextTime`, though one or the other might be more convenient in different situations.  If either is specified, adjacent intervals are checked before interpolation.
+
+## Availability
+
+## Extending CZML
