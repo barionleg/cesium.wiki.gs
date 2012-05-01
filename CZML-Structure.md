@@ -178,3 +178,10 @@ When a client receives a CZML packet, it walks through each property contained i
 When updating an existing interval, any provided sub-property value replaces the existing value, if any.  The only exception is when both the previous property value and the new property value contain time-tagged samples.  In that case, the samples are added to the list of samples for that interval.
 
 When a new interval overlaps existing intervals, the new interval takes precedence and the existing intervals are truncated or removed entirely.  This is important to keep in mind because later intervals will be tested against the truncated intervals when determining whether the interval is new or an update to an existing one.
+
+The samples in an interval must be ordered by increasing time within a single packet.  Across packets, however, it is not necessary for the samples to be provided in any particular order.  However, care must be taken to ensure reasonable interpolation when streaming non-contiguous samples.
+
+Consider a property that has sampled values at times 0.0 through 10.0, inclusive, at 1.0 second intervals.  The first packet contains times 0.0 through 3.0 and the second contains times 8.0 through 10.0.  The client has not yet received the third packet containing times 4.0 through 7.0.  Can we render the scene at time 5.0?
+
+One approach is to interpolate across the two packets.  This is probably a bad idea, though, because interpolating across this gap can result in a very wrong-looking scene, especially with higher-degree interpolation.  So really, we'd like to pause animation, display some sort of "Buffering..." message to the user, and wait for the gap to be filled.  But how do we even know there's a gap?  We might infer that there's a gap because we have 1.0 second steps, and then a 5.0 second gap, and then 1.0 second gaps again.  But that's not reliable; maybe the object as just moving more slowly over that interval so we needed fewer samples.
+
