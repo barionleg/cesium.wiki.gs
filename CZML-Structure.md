@@ -149,6 +149,8 @@ Finally, properties specified using time-tagged samples have some additional, op
 
 The `interpolationAlgorithm` specifies the algorithm to use to interpolate a value at a different time from the provided data.  The available algorithms are described on the [[CZML Content]] page.  The `interpolationDegree` property specifies the degree of the polynomial to use for interpolation.  For example, `1` means linear interpolation and `2` means quadratic interpolation.  If these properties are not specified, linear interpolation is used.
 
+It is not necessary for the time of every sample to fall within the interval that contains it, but the samples will not be used outside their interval.  This is useful to provide better accuracy with higher-degree interpolation.
+
 ## EventSource and Streaming
 
 Putting an entire CZML document in one big JSON array makes it difficult to load the document incrementally.  Today's web browsers allow some access to a stream before it is complete, but parsing and interpreting the incomplete data requires slow and cumbersome string manipulations.  To faciliate high-performance streaming, CZML may also be streamed using modern browsers' [server-sent events](http://dev.w3.org/html5/eventsource/) (`EventSource`) API.  When using this API, each CZML packet is streamed to the client as a separate event:
@@ -166,3 +168,13 @@ data: {
 ```
 
 As a result, the browser raises an event when each packet is received, containing the data for just that one packet.  This allows us to incrementally process CZML data with excellent performance.
+
+So far, we've perhaps implied that a single object is represented using a single packet that describes all of the graphics associated with that object.  But this is not necessarily the case.  A single CZML stream or document can contain multiple packets with the same `id`, describing different aspects of the same object.
+
+In fact, in some cases, two packets can even describe the same property of an object.  This is useful when the property is defined over many intervals or when an interval contains many time-tagged samples.  By breaking the complete definition of a property into multiple packets, we can get relevant data into Cesium sooner to minimize the time that the user must wait before Cesium starts rendering the scene.
+
+When a client receives a CZML packet, it walks through each property contained in the packet.  For each property, it walks through each interval over which the property is defined.  For each interval, it determines if the specified interval has already been defined for the property.  If the interval has already been defined, the existing interval is updated; otherwise, a new one is created.
+
+When updating an existing interval, any provided sub-property value replaces the existing value, if any.  The only exception is when both the previous property value and the new property value contain time-tagged samples.  In that case, the samples are added to the list of samples for that interval.
+
+When a new interval overlaps existing intervals, the new interval takes precedence and the existing intervals are truncated or removed entirely.  This is important to keep in mind because later intervals will be tested against the truncated intervals when determining whether the interval is new or an update to an existing one.
