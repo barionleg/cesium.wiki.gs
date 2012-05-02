@@ -17,3 +17,7 @@
 ## Cone
 
 ## Pyramid
+
+## Imagery
+
+## Layers
