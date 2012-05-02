@@ -19,8 +19,8 @@ Specifies the position of the object in the world.  The position has no direct v
 | `cartesian` | Interval | array | The position specified as a Cartesian `[X, Y, Z]` position in the meters relative to the `referenceFrame`.  If the array has three elements, the position is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
 | `cartographicRadians` | Interval | array | The position specified as a [WGS 84](http://en.wikipedia.org/wiki/World_Geodetic_System) Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters.  If the array has three elements, the position is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
 | `cartographicDegrees` | Interval | array | The position specified as a [WGS 84](http://en.wikipedia.org/wiki/World_Geodetic_System) Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters.  If the array has three elements, the position is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
-| `interpolationAlgorithm` | Interval | string | |
-| `interpolationDegree` | Interval | number | |
+| `interpolationAlgorithm` | Interval | string | The algorithm to use for interpolation.  Possible values are `LAGRANGE`, `HERMITE`, or `GEODESIC`.  The default is `LAGRANGE`.  If the position is not sampled over this interval, this property is ignored. |
+| `interpolationDegree` | Interval | number | The degree of the polynomial to use for interpolation.  The default value is 1 meaning linear interpolation.  The value of this property is ignored for `GEODESIC` interpolation. |
 
 Examples:
 
@@ -44,7 +44,10 @@ Examples:
       150.0, -6717826.447064, 488820.628328182, -752924.980158179,
       180.0, -6704450.41462847, 343851.784836767, -931084.800346031,
       240.0, -6654518.44949696, 52891.726433174, -1283967.69137678,
-    ]
+    ],
+    "nextTime", 300.0,
+    "interpolationAlgorithm", "LAGRANGE",
+    "interpolationDegree", 5
   }
 }
 ```
