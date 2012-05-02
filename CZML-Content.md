@@ -51,7 +51,7 @@ Examples:
 
 ## Vertex Positions
 
-Specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons and polylines attached to the object.
+Specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
 
 ## Orientation
 
@@ -59,7 +59,40 @@ Specifies the orientation of the object in the world.  The orientation has no di
 
 ## Billboard
 
-Defines a billboard, or viewport-aligned image.  The billboard is positioned in the scene by the `position` property.  A billboard is sometimes called a marker.
+Defines a billboard, or viewport-aligned image.  The billboard is positioned in the scene by the `position` property.  A billboard is sometimes called a marker.  The `billboard` property is primarily a container for other properties.
+
+**Property Name**: `billboard`
+
+**Interpolatable**: no
+
+### Billboard.Color
+
+The color of the billboard.  This color value is multiplied with the values of the billboard's `image` to produce the final color.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | JSON | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The position specified as a color `[Red, Green, Blue, Alpha]` where each component is in the range from 0-255.  If the array has four elements, the color is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `rgbaf` | Interval | array | The position specified as a color `[Red, Green, Blue, Alpha]` where each component is in the range from 0.0-1.0.  If the array has four elements, the color is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+
+### Billboard.EyeOffset
+
+The eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
+
+**Property Name**: `eyeOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | JSON | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian` | Interval | array | The eye offset specified as a Cartesian `[X, Y, Z]` position in eye coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
 
 ## Point
 
