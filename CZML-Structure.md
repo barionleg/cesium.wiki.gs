@@ -147,9 +147,19 @@ Finally, properties specified using time-tagged samples have some additional, op
 } 
 ```
 
-The `interpolationAlgorithm` specifies the algorithm to use to interpolate a value at a different time from the provided data.  The available algorithms are described on the [[CZML Content]] page.  The `interpolationDegree` property specifies the degree of the polynomial to use for interpolation.  For example, `1` means linear interpolation and `2` means quadratic interpolation.  If these properties are not specified, linear interpolation is used.
+The `interpolationAlgorithm` specifies the algorithm to use to interpolate a value at a different time from the provided data.  See the table below for the possible values.  The `interpolationDegree` property specifies the degree of the polynomial to use for interpolation.  For example, `1` means linear interpolation and `2` means quadratic interpolation.  If these properties are not specified, linear interpolation is used.
 
 It is not necessary for the time of every sample to fall within the interval that contains it, but the samples will not be used outside their interval.  This is useful to provide better accuracy with higher-degree interpolation.
+
+The following table summarizes the sub-properties available for interpolatable properties.
+
+| Name | Scope | JSON | Description |
+|:-----|:------|:-----|:------------|
+| `epoch` | Packet | string | The epoch (time 0.0), specified as an [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) date and time string, for times specified in epoch seconds.  This property is required if a sample time or other property is specified in epoch seconds.  It is ignored if this property is not defined by samples for this interval. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since `epoch`.  This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since `epoch`.  This property is used to determine if there is a gap between samples specified in different packets. |
+| `interpolationAlgorithm` | Interval | string | The algorithm to use for interpolation.  Possible values are `LAGRANGE`, `HERMITE`, or `GEODESIC`.  The default is `LAGRANGE`.  If the position is not sampled over this interval, this property is ignored. |
+| `interpolationDegree` | Interval | number | The degree of the polynomial to use for interpolation.  The default value is 1 meaning linear interpolation.  The value of this property is ignored for `GEODESIC` interpolation. |
 
 ## EventSource and Streaming
 
