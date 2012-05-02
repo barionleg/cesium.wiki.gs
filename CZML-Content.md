@@ -1,5 +1,7 @@
 This page describes the possible content of a CZML document or stream.  Please read [[CZML Structure]] for an explanation of how a CZML document is put together.
 
+_NOTE: This is a work in progress and reflects our plans NOT our current capabilities._
+
 ## Position
 
 Specifies the position of the object in the world.  The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
