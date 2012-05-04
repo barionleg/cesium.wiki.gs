@@ -3,7 +3,7 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 ## Getting the Code
 
 * Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
-   * If on Windows, set core.autocrlf to true (following the instructions above do this for you).  On Linux/Mac, set to input.  See the [GitHub help on this topic](http://help.github.com/line-endings/).
+   * On Windows, set core.autocrlf to true (following the instructions above does this for you).  On Linux/Mac, set core.autocrlf to input.  See the [GitHub help on this topic](http://help.github.com/line-endings/).
 * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
 * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
 
