@@ -2,10 +2,20 @@ We are a community that encourages contributions.  Join us.  Check out our [road
 
 ## Getting the Code
 
+Short version:
+* No commit access? Fork and clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
+* Commit access? Clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium) and make all non-trivial changes in a branch.
+
+Details
 * Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
    * On Windows, set core.autocrlf to true (following the instructions above does this for you).  On Linux/Mac, set core.autocrlf to input.  See the [GitHub help on this topic](http://help.github.com/line-endings/).
-* Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
-* Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
+* Have commit access to [cesium](https://github.com/AnalyticalGraphicsInc/cesium)?
+   * No
+      * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
+      * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
+   * Yes
+      * Create a local cesium repo, e.g., `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`.
+      * Make non-trivial changes in a branch, e.g., `git branch myfeature`, and then `git checkout myfeature`.
 
 ## Building the Code
 
