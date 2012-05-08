@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="630"
+   height="290.14777"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="scene.png">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="258.69138"
+     inkscape:cy="12.324428"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-12.25,-12.102222)">
+    <g
+       id="g4695">
+      <rect
+         style="fill:#e6e6e6;stroke:#000000;stroke-width:1.4062537;stroke-opacity:1"
+         y="255.46021"
+         x="12.953693"
+         height="46.072704"
+         width="628.59375"
+         id="rect3028-4" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text2985"
+         y="289.86374"
+         x="21.947815"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="289.86374"
+           x="21.947815"
+           id="tspan2987"
+           sodipodi:role="line">Core</tspan></text>
+    </g>
+    <g
+       id="g4700"
+       transform="translate(0,-4.5693302)">
+      <rect
+         style="fill:#ffff00;stroke:#000000;stroke-width:1.29130256000000010;stroke-opacity:1"
+         y="198.66458"
+         x="12.896214"
+         height="46.187656"
+         width="528.70868"
+         id="rect3028-2" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text2985-1"
+         y="233.69202"
+         x="22.709534"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="233.69202"
+           x="22.709534"
+           id="tspan2987-7"
+           sodipodi:role="line">Renderer</tspan></text>
+    </g>
+    <g
+       id="g4705"
+       transform="translate(0,-1.2883816)">
+      <rect
+         style="fill:#e6e6e6;stroke:#000000;stroke-width:1.16455543;stroke-opacity:1"
+         y="134.01279"
+         x="12.83284"
+         height="46.314404"
+         width="428.83545"
+         id="rect3028-8" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text2985-4"
+         y="168.53717"
+         x="20.815006"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="168.53717"
+           x="20.815006"
+           id="tspan2987-0"
+           sodipodi:role="line">Scene</tspan></text>
+    </g>
+    <g
+       id="g4710"
+       transform="translate(0,-1.9073486e-6)">
+      <rect
+         style="fill:#e6e6e6;stroke:#000000;stroke-width:1.02156949;stroke-opacity:1"
+         y="71.345436"
+         x="12.761341"
+         height="46.45739"
+         width="328.97842"
+         id="rect3028" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text2985-9"
+         y="103.47062"
+         x="21.34235"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="103.47062"
+           x="21.34235"
+           id="tspan2987-4"
+           sodipodi:role="line">Dynamic Scene</tspan></text>
+    </g>
+    <rect
+       id="rect3028-4-5"
+       width="628.59375"
+       height="46.072704"
+       x="12.953682"
+       y="12.102222"
+       style="fill:#ffb380;stroke:none" />
+    <rect
+       id="rect3028-4-5-1"
+       width="284.13174"
+       height="101.6311"
+       x="357.41568"
+       y="16.682505"
+       style="fill:#ffb380;stroke:none" />
+    <rect
+       id="rect3028-4-5-1-7"
+       width="181.09619"
+       height="101.6311"
+       x="460.45123"
+       y="77.989983"
+       style="fill:#ffb380;stroke:none" />
+    <rect
+       id="rect3028-4-5-1-7-1"
+       width="80.08094"
+       height="101.6311"
+       x="561.46649"
+       y="139.29745"
+       style="fill:#ffb380;stroke:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
+       x="219.46248"
+       y="39.586811"
+       id="text2985-9-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2987-4-5"
+         x="219.46248"
+         y="39.586811"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#333333;font-family:Courier New;-inkscape-font-specification:Courier New">Example Cesium App</tspan></text>
+  </g>
+</svg>
