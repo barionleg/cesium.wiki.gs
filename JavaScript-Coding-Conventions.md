@@ -62,4 +62,4 @@ Otherwise, an unexpected exception can go unnoticed.
 
 ## Formatting
 
-* Use four spaces for tabs
+* Use four spaces for tabs.
