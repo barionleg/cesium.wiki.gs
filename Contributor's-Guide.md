@@ -1,4 +1,4 @@
-We are a community that encourages contributions.  Join us.  Check out our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap); join the [development mailing list](https://groups.google.com/d/forum/cesium-dev); and start hacking.
+We are a community that encourages contributions.  Join us.  Read about the engine's [architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture); check out our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap); join the [development mailing list](https://groups.google.com/d/forum/cesium-dev); and start hacking.
 
 ## Getting the Code
 
@@ -9,7 +9,7 @@ Short version:
 Details
 * Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
    * On Windows, set core.autocrlf to true (following the instructions above does this for you).  On Linux/Mac, set core.autocrlf to input.  See the [GitHub help on this topic](http://help.github.com/line-endings/).
-* Have commit access to [cesium](https://github.com/AnalyticalGraphicsInc/cesium)?
+* Have commit access to cesium?
    * No
       * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
       * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
@@ -48,6 +48,8 @@ Details
 ./Tools/apache-ant-1.8.2/bin/ant release
 ./Tools/apache-ant-1.8.2/bin/ant runServer
 </pre>
+
+Want something interesting to code?  See the [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) and start a discussion on the [development mailing list](https://groups.google.com/forum/#!topic/cesium-dev).
 
 ## Setting up Eclipse
 
@@ -112,7 +114,6 @@ Then, to step into the test, step into `stepIntoThis()`.
 ## Contributing Code
 
 * Send us a [pull request](http://help.github.com/send-pull-requests/).  We'll promptly review it, provide feedback, and merge it.
-* For larger changes, also post on the [development mailing list](https://groups.google.com/forum/#!topic/cesium-dev) for additional feedback.
 * Please make sure your code
    * Follows our [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
    * Passes [JSHint](http://www.jshint.com/).  We use the JSHint Eclipse plugin so it runs automatically when we save.
