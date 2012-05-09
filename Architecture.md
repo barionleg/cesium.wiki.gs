@@ -8,9 +8,11 @@ Generally, each layer adds functionality, raises the level of abstraction, and d
 * _Scene_ - globe and map constructs like imagery layers, polylines, labels, and cameras.
 * _Dynamic Scene_ - Time-dynamic constructs including [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) rendering.
 
-Each layer corresponds to one directory in the [source tree](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Source).  All layers are available to applications built using Cesium.  All apps use Core.  As shown below, a small subset of apps use Renderer, many apps use Scene, and perhaps the most apps, such the Cesium Viewer, use Dynamic Scene.
+Each layer corresponds to one directory in the [source tree](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Source).  All layers are available to applications built using Cesium.  All apps use Core.  As shown below, a small subset of apps use Renderer directly, many apps use Scene directly, and perhaps the most apps, such the Cesium Viewer, use Dynamic Scene.
 
 <img src="architectureFigures/invertedPyramid.png" width="50%" />
+
+The following sections provide a bird's-eye view of each layer.  For details on specific types, see the [reference documentation](http://cesium.agi.com/Documentation/).  For editable example code, see the [Sandbox](http://cesium.agi.com/Sandbox/Examples/Sandbox/).
 
 ## Core
 
@@ -25,7 +27,7 @@ Core is the lowest layer in Cesium, and contains low-level, widely-used function
 * Splines for interpolating position and orientation.
 * Geometric routines like triangulation, subdivision surfaces, vertex cache optimization, and computing ellipse boundaries.
 
-For example, the following code converts the cartographic point at (0, 0) in radians on the WGS84 ellipsoid to Cartesian, that is, it converts from longitude/latitude to xyz:
+For example, the following code converts a cartographic point on the WGS84 ellipsoid at (0.0, 0.0), in radians, to Cartesian, that is, it converts from longitude/latitude to xyz:
 ```javascript
 var ellipsoid = Ellipsoid.getWgs84();
 var p = ellipsoid.toCartesian(new Cartographic2(0.0, 0.0));
@@ -34,23 +36,18 @@ The example below computes boundary points for an ellipse defined by a center po
 ```javascript
 var ellipsoid = Ellipsoid.getWgs84();
 var center = ellipsoid.toCartesian(new Cartographic2(0.0, 0.0));
-var bearing = Cesium.Math.toRadians(60.0); // Cesium uses radians everywhere.
-var positions = Cesium.Shapes.computeEllipseBoundary(ellipsoid, center, 500000.0, 300000.0, bearing);
+var bearing = CesiumMath.toRadians(60.0); // Cesium uses radians everywhere.
+var positions = Shapes.computeEllipseBoundary(ellipsoid, center, 500000.0, 300000.0, bearing);
 ```
-For details on specific types, see the [reference documentation](http://cesium.agi.com/Documentation/).
 
 ## Renderer
 
 <img src="architectureFigures/renderer.png" width="30%" align="right" />
 
-Renderer is a thin abstraction over WebGL that provides most of the flexibility of directly using WebGL but requires much less code.  Renderer includes abstractions for shader programs; built-in GLSL uniforms and functions; textures and cube maps; buffers and vertex arrays; render states; and framebuffers.
+Renderer is a thin abstraction over WebGL that provides most of the flexibility of directly using WebGL but requires much less code.  Renderer includes built-in GLSL uniforms and functions, and abstractions for shader programs; textures and cube maps; buffers and vertex arrays; render states; and framebuffers.
 
-Most apps will not use Renderer directly; instead, they will use Scene or Dynamic Scene.  However, Renderer is fully exposed to apps, allowing them to include custom rendering code.
+Most apps will not use Renderer directly; instead, they will use higher-level constructs in Scene or Dynamic Scene that are closer to their problem domain.  However, Renderer is fully exposed to apps, allowing them to include custom rendering code.
 
-Given strings for a vertex and fragment shader source, shader programs can be created in a single line of code:
-```javascript
-var sp = context.getShaderCache().getShaderProgram(vs, fs);
-````
 GLSL code has access to a ton of Cesium built-in uniforms and functions, for example:
 ```javascript
 gl_Position = agi_modelViewProjection * position;
@@ -63,6 +60,10 @@ agi_raySegment interval = agi_rayEllipsoidIntersectionInterval(ray, ellipsoid);
 ````
 See the GLSL section in the [reference documentation](http://cesium.agi.com/Documentation/).
 
+Given vertex and fragment shader source strings, shader programs can be created in a single line of code:
+```javascript
+var sp = context.getShaderCache().getShaderProgram(vs, fs);
+````
 Textures and cube maps have abstractions so we never have to worry about binding a texture.  Uniforms are also abstracted; mistakes like calling `getUniformLocation` on uniforms that were optimized out are not possible.
 ```javascript
 this.bumpTexture = context.createTexture2D({ 
@@ -88,6 +89,9 @@ var va = context.createVertexArrayFromMesh({
 });
 ````
 Render states define the fixed-function state of the graphics pipeline for a draw call.  We never worry about global state.
+
+<img src="architectureFigures/drawCall.png" width="50%" align="right" />
+
 ```javascript
 var rs = context.createRenderState({
   depthTest : {
@@ -108,6 +112,7 @@ context.draw({
   renderState : rs
 });
 ````
+
 
 ## Scene
 
