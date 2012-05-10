@@ -137,7 +137,7 @@ var scene = new Scene(document.getElementById("canvas"));
 ```
 A scene can be 3D, 2D, or columbus view.  A scene can morph between these views with one line of code.
 
-Primitives are objects in the scene that are drawn.  Their implementation uses Renderer to make WebGL calls.  `Scene.render` has three major steps:
+Primitives are objects added to the scene that are drawn.  Their implementation uses Renderer to make WebGL calls.  `Scene.render` has three major steps:
 * Animate: An app-specific animation function moves primitives and changes their properties.
 * Update: Primitives sync their state with Renderer resources such as vertex buffer and textures.
 * Render: Issue draw calls for each primitive.
