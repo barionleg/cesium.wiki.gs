@@ -1,3 +1,5 @@
+<!-- More links to specific parts of the reference documentation and Sandbox -->
+
 Cesium is a client-side library written in JavaScript.  The Cesium stack is coarsely organized and composed of four layers:
 
 <img src="architectureFigures/clientStack.png" width="50%" />
@@ -6,13 +8,13 @@ Generally, each layer adds functionality, raises the level of abstraction, and d
 * _Core_ - number crunching like linear algebra, intersection tests, and interpolation.
 * _Renderer_ - a thin abstraction over [WebGL](http://www.khronos.org/webgl/).
 * _Scene_ - globe and map constructs like imagery layers, polylines, labels, and cameras.
-* _Dynamic Scene_ - Time-dynamic constructs including [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) rendering.
+* _Dynamic Scene_ - Time-dynamic visualization constructs including [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) rendering.
 
 Each layer corresponds to one directory in the [source tree](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Source).  All layers are available to applications built using Cesium.  All apps use Core.  As shown below, a small subset of apps use Renderer directly, many apps use Scene directly, and perhaps the most apps, such the Cesium Viewer, use Dynamic Scene.
 
 <img src="architectureFigures/invertedPyramid.png" width="50%" />
 
-The following sections provide a bird's-eye view of each layer.  For details on specific types, see the [reference documentation](http://cesium.agi.com/Documentation/).  For editable example code, see the [Sandbox](http://cesium.agi.com/Sandbox/Examples/Sandbox/).
+The following sections provide an overview of each layer.  For details on specific types, see the [reference documentation](http://cesium.agi.com/Documentation/).  For editable example code, see the [Sandbox](http://cesium.agi.com/Sandbox/Examples/Sandbox/).
 
 ## Core
 
@@ -23,7 +25,7 @@ Core is the lowest layer in Cesium, and contains low-level, widely-used function
 * Transformations, such as cartographic to Cartesian.
 * Map projections, such as Mercator and Equidistant Cylindrical.
 * Sun position.
-* Julian dates and leap seconds.
+* Julian dates.
 * Splines for interpolating position and orientation.
 * Geometric routines like triangulation, subdivision surfaces, vertex cache optimization, and computing ellipse boundaries.
 
@@ -57,13 +59,13 @@ v_normalEC = agi_normal * normal;
 // ...
 agi_ray ray = agi_ray(vec3(0.0), normalize(v_positionEC));
 agi_raySegment interval = agi_rayEllipsoidIntersectionInterval(ray, ellipsoid);
-````
+```
 See the GLSL section in the [reference documentation](http://cesium.agi.com/Documentation/).
 
 Given vertex and fragment shader source strings, shader programs can be created in a single line of code:
 ```javascript
 var sp = context.getShaderCache().getShaderProgram(vs, fs);
-````
+```
 Textures and cube maps have abstractions so we never have to worry about binding a texture.  Uniforms are also abstracted; mistakes like calling `getUniformLocation` on uniforms that were optimized out are not possible.
 ```javascript
 this.bumpTexture = context.createTexture2D({ 
@@ -76,7 +78,7 @@ var uniforms = {
   u_bumpMap :  function() { return  that.bumpTexture; },
   u_nightIntensity :  function() { return 0.8; }
 };
-````
+```
 Vertex arrays simplify organizing vertex attributes.
 ```javascript
 var mesh = BoxTessellator.compute({             // BoxTessellator is in Core
@@ -87,7 +89,7 @@ var va = context.createVertexArrayFromMesh({
   bufferUsage : BufferUsage.STATIC_DRAW,
   vertexLayout : VertexLayout.INTERLEAVED
 });
-````
+```
 Render states define the fixed-function state of the graphics pipeline for a draw call.  We never worry about global state.
 
 <img src="architectureFigures/drawCall.png" width="50%" align="right" />
@@ -111,8 +113,7 @@ context.draw({
   vertexArray : va,
   renderState : rs
 });
-````
-
+```
 
 ## Scene
 
@@ -123,30 +124,23 @@ Scene builds on Core and Renderer to provide relativity high-level map and globe
 * Streaming high-resolution imagery, including Bing Maps, Esri, OpenStreetMap, and WMS.
 * Polylines, polygons, billboards, labels, and sensors.
 * Materials that describe appearance.
-* Animations that change properties over time.
 * Cameras that control the view and respond to input.
+* Animations that change properties over time.
 
-<!--
+<p align="center">
+<img src="architectureFigures/sceneOverview.png" />
+</p>
 
+Scene represents all the graphical objects and state for canvas; there is a one-to-one relationship between a scene and a canvas:
 ```javascript
 var scene = new Scene(document.getElementById("canvas"));
-````
+```
+A scene can be 3D, 2D, or columbus view.  A scene can morph between these views with one line of code.
 
-```javascript
-var primitives = scene.getPrimitives();
-var ellipsoid = Ellipsoid.getWgs84();
-````
-
-[CORS](http://enable-cors.org/)
-
-```javascript
-var cb = new CentralBody(scene.getCamera(), ellipsoid);
-
-cb.dayTileProvider = new Cesium.OpenStreetMapTileProvider({
-    proxy: new Cesium.DefaultProxy('/proxy/')
-});
-primitives.setCentralBody(cb);
-````
+Primitives are objects in the scene that are drawn.  Their implementation uses Renderer to make WebGL calls.  `Scene.render` has three major steps:
+* Animate: An app-specific animation function moves primitives and changes their properties.
+* Update: Primitives sync their state with Renderer resources such as vertex buffer and textures.
+* Render: Issue draw calls for each primitive.
 
 ```javascript
 scene.setAnimation(function() {
@@ -157,11 +151,27 @@ scene.setAnimation(function() {
   scene.render();
   requestAnimationFrame(tick);
 }());
-````
-
--->
-
-<!-- TBA: Other parts of scene -->
+```
+The `CentralBody` primitive represents the globe (in a future Cesium version, any central body such as the Moon and Mars will be supported).  High-resolution imagery from various servers is added using tile providers.
+```javascript
+cb.dayTileProvider = new Cesium.OpenStreetMapTileProvider({
+    url : 'http://otile1.mqcdn.com/tiles/1.0.0/osm/',
+    proxy : new Cesium.DefaultProxy('/proxy/')
+});
+```
+Materials represent the appearance of an object.  Currently, they can be applied to polygons and sensors.  Loosely speaking, materials are implemented as a GLSL shader function and a set of uniforms.
+```javascript
+polygon.material = new Cesium.VerticalStripeMaterial({
+    repeat: 5.0
+});
+```
+Camera represents the view into the virtual world.  Ultimately, it creates a view matrix that transforms from world to eye coordinates.  Camera can be manipulated directly, but is most often updated automatically via controllers for specific tasks such as handling mouse input for spinning the globe, or smoothly flying to another location.
+```javascript
+scene.getCamera().getControllers().addFlight({
+    destination: ellipsoid.cartographicDegreesToCartesian(new Cesium.Cartographic3(-118.26, 34.19, 100000.0)),
+    duration: 4.0
+});
+```
 
 ## Dynamic Scene
 
