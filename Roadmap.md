@@ -11,6 +11,7 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics.
 
 ## Near term
+* [[CZML|Cesium Language (CZML) Guide]] Visualization
 * COLLADA models
 * Flesh out material system
 * Stars
@@ -20,9 +21,9 @@ We're always looking to:
    * Post-processing framework
 * Imagery layers
 * Streaming terrain
-* Better mobile support
+* Improve 3D/2D/Columbus view transitions
+* Improve mobile support
 * Improve precision - remove potential jittering
-* [[CZML|Cesium Language (CZML) Guide]] Visualization
 
 ## Longer term
 * Build and test server
