@@ -1,7 +1,6 @@
-<div style="background: #aaa;">
 Right click and save an image, or download the <a href="Cesium_Logo_Color.SVG">svg</a> version.
 
-Color with white background:
+<pre>Color with white background:
 <img src="logos/Cesium_Logo_Color.jpg" />
 
 Color with alpha background:
@@ -17,10 +16,9 @@ Color with white text on black:
 <img src="logos/Cesium_Logo_Color_onBlack.jpg" />
 
 White on black:
-<img src="logos/Cesium_Logo_White.jpg" />
+<img src="logos/Cesium_Logo_White.jpg" /></pre>
 
 Style guide ([pdf](logos/Cesium_Logo_StyleGuide.pdf)):
 <img src="logos/Cesium_Logo_StyleGuide.png" />
 
 Logo design by Fran Kelly and Jason Martin, [Analytical Graphics, Inc](http://www.agi.com/).
-</div>
