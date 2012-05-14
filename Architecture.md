@@ -1,6 +1,6 @@
 <!-- More links to specific parts of the reference documentation and Sandbox -->
 
-Cesium is a client-side library written in JavaScript.  The Cesium stack is coarsely organized and composed of four layers:
+Cesium is a client-side virtual globe and map library written in JavaScript using WebGL.  The Cesium stack is coarsely organized and composed of four layers:
 
 <img src="architectureFigures/clientStack.png" width="50%" />
 
