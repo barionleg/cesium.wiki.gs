@@ -2,6 +2,7 @@
 <img src="https://github.com/AnalyticalGraphicsInc/cesium/wiki/logos/Cesium_Logo_Color.jpg" width="50%" />
 </p>
 
+* [[Quick Start]] - brief instructions to get up and running.
 * [[Contributor's Guide]] - how to get the code, build, etc. It's easy.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
 * [[Roadmap]] - where we are heading.
