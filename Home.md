@@ -13,6 +13,7 @@
 
 * [[Contributor's Guide]] - setting up a development environment and contributing code.
 * [[JavaScript Coding Conventions]] - keeps our code consistent.
+* [[Code Review Tips]] - worthwhile code reviews share knowledge and improve code quality.
 
 ## For Fun
 
