@@ -13,3 +13,7 @@ We describe CZML in three parts:
 * [[CZML Structure]] - Describes the overall structure of a CZML document / stream.
 * [[CZML Content]] - Describes the standard content, or graphical primitives, present in a CZML document / stream.
 * [[CZML visualizers in Cesium]] - Describes the architecture for handling CZML within Cesium.
+
+More info is available on the [CZML landing page](http://cesium.agi.com/czml.html) and on the [Cesium main page](http://cesium.agi.com/).
+
+There is also a [czml-writer library](https://github.com/AnalyticalGraphicsInc/czml-writer) on GitHub.
