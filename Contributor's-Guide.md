@@ -41,6 +41,7 @@ Details
    * release - Runs minify, plus generates documentation in Build\Documentation using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
    * instrumentForCoverage - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
    * runServer - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
+   * makeZipFile - Builds a zip file containing all release files.  This includes the Source directory (suitable for use from an AMD-aware application), plus the combined Cesium.js, and the Documentation files.
    * clean - Removes all generated build artifacts.
 * For example, to build the release target and then start an HTTP server for testing, run:
 
