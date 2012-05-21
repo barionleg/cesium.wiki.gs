@@ -112,11 +112,11 @@ The eye offset of the billboard, which is the offset in eye coordinates at which
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-## Vertex Positions
+## VertexPositions
 
 Specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
 
-**Property Name**: `Vertex Positions`
+**Property Name**: `vertexPositions`
 
 **Interpolatable**: no
 
