@@ -6,7 +6,8 @@ Tips
 * GitHub's [code review tools](https://github.com/features/projects/codereview) are awesome.
 * Anyone is encouraged to review anything that interests them.  However, someone familiar with the changed code should ultimately merge the pull request.
 * Some changes can be reviewed by reading the code alone; others require running the code, examples, and tests.
-* Comments are not personal.  Don't be offended by a reviewer's comments and don't aim to offend when commenting.  We all have the same vision and want the same thing - to be awesome.
+* Most pull requests require additional commits, often minor but sometimes major, before being merged.
+* Comments are about code, not the person who wrote the code.  Don't be offended by a reviewer's comments and don't aim to offend when commenting.  We all have the same vision and want the same thing - to be awesome.
 * Be concise.  Make every word tell.  Less reading means more coding.
 * Provide motivation.  Unless it is obvious, don't just suggest a change.  Suggest _why_ the change should be made.
 * See the forest through the trees.  Don't just review code one line at a time.  Consider the big picture and its implications.
