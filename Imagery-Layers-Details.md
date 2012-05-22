@@ -58,3 +58,4 @@ Design and implementation ideas for imagery layers.
    * Glob3 - [Layers example](http://ami.dis.ulpgc.es/glob3m/index.php?id=4&example=layers).
    * OpenLayers - [doc](http://docs.openlayers.org/library/layers.html); [reference doc](http://dev.openlayers.org/releases/OpenLayers-2.11/doc/apidocs/files/OpenLayers/Layer-js.html); and lots of [examples](http://openlayers.org/dev/examples/) such as [layer opacity](http://openlayers.org/dev/examples/layer-opacity.html).
    * Leaflet - [doc](http://leaflet.cloudmade.com/reference.html) and [examples](http://leaflet.cloudmade.com/examples.html).
+   * ArcGIS - See _Layer_ in the [doc](http://help.arcgis.com/en/webapi/javascript/arcgis/help/jsapi_start.htm) and [samples](http://help.arcgis.com/en/webapi/javascript/arcgis/help/jssamples_start.htm).
