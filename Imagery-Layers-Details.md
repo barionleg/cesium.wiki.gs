@@ -15,40 +15,42 @@ Design and implementation ideas for imagery layers.
 
 ## Full Features
 
-* Ensure reasonable API consistency between imagery layers and terrain providers.
+* Ensure reasonable API consistency between imagery layers and terrain provider(s).
 * Layer primitives on the ground - at least polylines and polygons - seamlessly with imagery.  Many people think in terms of vector layers, KML layers, etc.  Everything is a layer.  We should support this, but shouldn't lose sight of our focus on air and space where this paradigm breaks down.
 * Do we need layers for night lights?  Why not layer a day image over night?  In general, we need to revisit the architecture for night, bump, specular, clouds, etc.  Clouds may happen sooner rather than later.
 * Speculative ideas
    * Show/hide layers based on altitude (careful in 2D and columbus view) or time?  This may be done in Dynamic Scene, not Scene, but we need to think about it.  More general _display conditions_ could also be useful.
-   * Blend maps for layers, e.g., specular or dirt maps.  How often is this used or desired?  GIS?
+   * Blend maps for layers, e.g., specular, dirt, or destruction maps.  How often is this used or desired?  GIS?  These are certainty popular in games; however, the shading for each layer is different, i.e., they are not just diffuse components.
 
 ## Initial Implementation
 
 * `CentralBody.dayTileProvider` can be replaced with something like `CentralBody.dayLayers` or even `CentralBody.imageLayers` since this is the common case, which would have an interface similar to `CompositePrimitive`.
-* In `render()`, layers can be drawn in z-order from bottom to top, then lay down the depth plane.  Currently, tiles in each layer need to be sorted back-to-front from the viewer's perspective since they are not depth tested.  (Actually, we should look more carefully at the motivation for this sorting).  This will change as we implement multi-frustums and terrain.
+* In `render()`, layers can be drawn in z-order from bottom to top, then lay down the depth plane.  Currently, tiles in each layer need to be sorted back-to-front from the viewer's perspective since they are not depth tested.  (Actually, we should look more carefully at the motivation for this sorting).  This will change as we implement multi-frustum and terrain.
    * Use blending in the render state to support layer alpha.
-   * The tessellation among layers will be different when the layer extents do not match.  This will create artifacts for horizon views.  To fix this, see comment on decoupling below.
+   * The tessellation among layers will be different when the layer extents or (currently) image maximum resolution do not match.  This will create artifacts for horizon views.  To fix this, see comment on decoupling below.
    * This approach also has performance implications:
-      * Lots of draw calls.
+      * Lots of draw calls creates CPU overhead.
       * Lots of overdraw.  For an ellipsoid with backface culling, the depth complexity should be one.  Here, it will be the number of layers that overlap a pixel.
-      * Potential solution below.
+      * Potential tile requests for tiles completely occluded by opaque layers higher in the z-order.
+      * Solution idea below.
 * The credit, e.g., logo, for multiple layers will need to be shown.  We should avoid duplicates, e.g., don't show the same credit twice if two layers from the same provider are shown.  Down the road, we need the ability for view-dependent credits when a layer comes from several sources.
 * The request and replacement code will need (hopefully minor) changes.
 * Is `CompositeTileProvider` still needed?
 
 ## Full Implementation
 
-* For better performance, we can minimize the complexity of the fragment shading so only the most complex shading is done once.  Ignoring alpha, a layer can be seen as a diffuse map (which may need to go through a brightness filter given how dark some tiles are).  Instead of doing full lighting and atmosphere when rendering each tile, we can simply render the diffuse component, and then in a final pass, we can perform lighting with specular map, bump map, etc.
-   * This is missing a lot of detail, but that is the bird's eye view.
+* For better performance, we can minimize the complexity of fragment shading so only the most complex shading is done once.  Ignoring alpha, a layer can be seen as a diffuse map (which may need to go through a brightness filter given how dark some tiles are).  Instead of doing full lighting and atmosphere when rendering each tile, we can simply render the diffuse component, and then in a final pass, we can perform lighting with specular map, bump map, etc.
+   * This is missing a lot of detail.
+   * Of course, we could also lay down z first, but we might need the multi-frustum for that, and the CPU overhead could be too high.
 
-* For even better performance (reduced draw calls) and to fix artifacts between layers, we should decouple geometry (ellipsoid or terrain) and textures.  First, tiles are chosen based solely on geometric level of detail given the view parameters.  Then, textures are chosen based on their level of detail.  Finally, each tile is rendered with multi-texturing and multiple texture matrices to position each texture on the geometry.  More thoughts:
+* For even better performance (reduced number of draw calls) and to fix artifacts between layers, we should decouple geometry (ellipsoid or terrain) and textures.  First, tiles are chosen based solely on geometric level of detail given the view parameters.  Then, textures are chosen based on their level of detail.  Finally, each tile is rendered with multi-texturing and multiple texture matrices to position each texture on the geometry.
    * We may need multiple sets of texture coordinates; not just texture matrices.
-   * Before multi-texturing, this would be done with multiple passes.  Multi-texturing imposes a limit on the number of layers we can support, but 99% of WebGL users support 16 texture units in the fragment shader.  See the [stats](http://webglstats.com/).
+   * Before multi-texturing, this would be done with multiple passes.  Multi-texturing imposes a limit on the number of layers we can support, but 99% of WebGL users have 16 texture units in the fragment shader.  See the [stats](http://webglstats.com/).
    * Determining what textures overlap what tiles can burn a lot of CPU.  An r-tree can be used to make this query fast (at the expense of creating and maintaining the tree, of course).  Perhaps there are already JavaScript r-tree implementations, or a simpler spatial data structure will suffice.  We also need to look at related r-tree patents to make sure we can use it.  Papers:
       * [R-Trees.  A Dynamic Index Structure for Spatial Searching](http://postgis.refractions.net/support/rtree.pdf).  1984.
       * [The R*-tree: An Efficient and Robust Access Method for  Points and Rectangles](http://infolab.usc.edu/csci587/Fall2011/papers/p322-beckmann.pdf).  1990.
       * [Priority r-tree](http://www.cse.ust.hk/~yike/prtree/).  2004.
-   * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered.  Actually, these tiles don't even need to be requested from the server.  Hmm - could a proxy server do some compositing for us?
+   * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered.  Actually, it doesn't need to be requested from the server.  Hmm - could a proxy server do some compositing for us?
 
 ## Other APIs with Layers
    * Insight3D - [Imagery Overlay](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/Imagery.html) and [Web Imagery Overlays](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/WebImagery.html).
