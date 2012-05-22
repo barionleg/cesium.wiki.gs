@@ -12,15 +12,15 @@ We're always looking to:
 
 ## Near term
 * [[CZML|Cesium Language (CZML) Guide]] Visualization
-* COLLADA models
+* Imagery layers - [details](ImageryLayersDetails)
 * Flesh out material system
+* COLLADA models
+* Streaming terrain
 * Stars
 * Data-driven renderer
    * Improved depth-buffer precision
    * Culling for all objects
    * Post-processing framework
-* Imagery layers
-* Streaming terrain
 * Improve 3D/2D/Columbus view transitions
 * Improve mobile support
 * Improve precision - remove potential jittering
