@@ -19,7 +19,7 @@ Design and implementation ideas for imagery layers.
 * Layer primitives on the ground - at least polylines and polygons - seamlessly with imagery.  Many people think in terms of vector layers, KML layers, etc.  Everything is a layer.  We should support this, but shouldn't lose sight of our focus on air and space where this paradigm breaks down.
 * Do we need layers for night lights?  Why not layer a day image over night?  In general, we need to revisit the architecture for night, bump, specular, clouds, etc.  Clouds may happen sooner rather than later.
 * Speculative ideas
-   * Show/hide layers based on time?  This may be done in Dynamic Scene, not Scene, but we need to think about it.  More general _display conditions_ could also be useful.
+   * Show/hide layers based on altitude (careful in 2D and columbus view) or time?  This may be done in Dynamic Scene, not Scene, but we need to think about it.  More general _display conditions_ could also be useful.
    * Blend maps for layers, e.g., specular or dirt maps.  How often is this used or desired?  GIS?
 
 ## Initial Implementation
@@ -34,6 +34,7 @@ Design and implementation ideas for imagery layers.
       * Potential solution below.
 * The credit, e.g., logo, for multiple layers will need to be shown.  We should avoid duplicates, e.g., don't show the same credit twice if two layers from the same provider are shown.  Down the road, we need the ability for view-dependent credits when a layer comes from several sources.
 * The request and replacement code will need (hopefully minor) changes.
+* Is `CompositeTileProvider` still needed?
 
 ## Full Implementation
 
@@ -47,7 +48,7 @@ Design and implementation ideas for imagery layers.
       * [R-Trees.  A Dynamic Index Structure for Spatial Searching](http://postgis.refractions.net/support/rtree.pdf).  1984.
       * [The R*-tree: An Efficient and Robust Access Method for  Points and Rectangles](http://infolab.usc.edu/csci587/Fall2011/papers/p322-beckmann.pdf).  1990.
       * [Priority r-tree](http://www.cse.ust.hk/~yike/prtree/).  2004.
-   * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered.
+   * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered.  Actually, these tiles don't even need to be requested from the server.  Hmm - could a proxy server do some compositing for us?
 
 ## Other APIs with Layers
    * Insight3D - [Imagery Overlay](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/Imagery.html) and [Web Imagery Overlays](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/WebImagery.html).
