@@ -12,7 +12,7 @@ We're always looking to:
 
 ## Near term
 * [[CZML|Cesium Language (CZML) Guide]] Visualization
-* Imagery layers - [details](ImageryLayersDetails)
+* Imagery layers - [details](Imagery-Layers-Details)
 * Flesh out material system
 * COLLADA models
 * Streaming terrain
