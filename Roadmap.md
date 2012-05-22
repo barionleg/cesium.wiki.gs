@@ -29,6 +29,7 @@ We're always looking to:
 * Build and test server
 * Shadows
 * Video on terrain
+* Vectors
 * Render buildings
 * Label declutter
 * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
