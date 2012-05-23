@@ -126,14 +126,15 @@ Then, to step into the test, step into `stepIntoThis()`.
    * In the driver, e.g., the NVIDIA Control Panel or the Catalyst Control Center.
    * Also turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
 
-* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.
+* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.  Create a FPS counter in Cesium with `PerformanceDisplay`.
 
 ## Contributing Code
 
-* Send us a [pull request](http://help.github.com/send-pull-requests/).  We'll promptly review it, provide feedback, and merge it.
+* Send us a [pull request](http://help.github.com/send-pull-requests/).  We'll promptly [review](Code-Review-Tips) it, provide feedback, and merge it.
 * Before we can merge, we require a [Contributor License Agreement](http://producingoss.com/en/copyright-assignment.html#copyright-assignment-cla) (CLA).  This can be emailed to cla@agi.com, and only needs to be completed once.  The CLA ensures that you retain copyright to your contributions, and that we have the right to use them.  There is a CLA for [individuals](http://www.agi.com/licenses/individual-cla-agi-v1.0.txt) and [corporations](http://www.agi.com/licenses/corporate-cla-agi-v1.0.txt).  Please email completed CLAs and related questions to cla@agi.com.
-* Please make sure your code
-   * Follows our [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
-   * Passes [JSHint](http://www.jshint.com/).  We use the JSHint Eclipse plugin so it runs automatically when we save.
-   * Includes tests with excellent code coverage for new features.  We use [Jasmine](http://pivotal.github.com/jasmine/) for writing tests.  Run them by browsing to http://localhost:8080/Specs/SpecRunner.html.  Verify all  new and existing tests pass.  For bonus points, test Chrome, Firefox, and other browsers supporting WebGL.
-   * Includes reference documentation with code examples when adding new public functions and properties.  We use [JsDoc Toolkit](http://code.google.com/p/jsdoc-toolkit/).  Check out the [tag reference](http://code.google.com/p/jsdoc-toolkit/wiki/TagReference).
+* Please make sure
+   * Your code follows the [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
+   * Your code passes [JSHint](http://www.jshint.com/).  We use the JSHint Eclipse plugin so it runs automatically when we save.
+   * To include tests with excellent code coverage for new features.  We use [Jasmine](http://pivotal.github.com/jasmine/) for writing tests.  Run them by browsing to http://localhost:8080/Specs/SpecRunner.html.  Verify all  new and existing tests pass.  For bonus points, test Chrome, Firefox, and other browsers supporting WebGL.
+   * To include reference documentation with code examples when adding new public functions and properties.  We use [JsDoc Toolkit](http://code.google.com/p/jsdoc-toolkit/).  Check out the [tag reference](http://code.google.com/p/jsdoc-toolkit/wiki/TagReference).
+   * To update [README.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md) if the change is something users should know about, and to update [LICENSE.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/LICENSE.md) if third-party libraries were added or removed.
