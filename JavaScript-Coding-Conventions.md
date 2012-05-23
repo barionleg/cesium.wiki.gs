@@ -28,7 +28,7 @@ var javaScriptDate = julianDate.toDate();
    * granularity - `CesiumMath.toRadians(1.0)`
    * height - `0.0`
 * Likewise if a function argument is required, throw a `DeveloperError` if it is not provided, not in range, etc.
-* Public functions should treat Cartesian and Quaternion type arguments as if they are immutable, and also accept the equivalent object literal.  For example these two lines of code have the same affect:
+* Public functions should treat Cartesian and Quaternion type arguments as if they are immutable, and also accept the equivalent object literal.  For example these two lines of code have the same effect:
 
 ```javascript
 foo(new Cartesian3(1.0, 2.0, 3.0));
