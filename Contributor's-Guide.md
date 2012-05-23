@@ -24,7 +24,7 @@ Short version: from the root Cesium directory, run
 ./Tools/apache-ant-1.8.2/bin/ant combine
 ./Tools/apache-ant-1.8.2/bin/ant runServer
 </pre>
-Then browse to http://localhost:8080.
+Then browse to [http://localhost:8080](http://localhost:8080).
 
 Details
 * Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that the [Java](http://www.java.com/en/download/index.jsp) JDK be installed.
