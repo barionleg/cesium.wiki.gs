@@ -4,6 +4,7 @@ Design and implementation ideas for our material system.
 
 * Add simple tests that verify the material by rendering a polygon.  Currently, we don't have tests for most materials.
 * Explore materials implemented using procedural textures, i.e., brick, marble, granite, wood, asphalt, etc.  Later, we'll procedurally shade a city with these building blocks.
+* Add an opacity/alpha map material.
 * Decouple diffuse and specular components.
    * Split `agi_getMaterialColor` into two separate GLSL functions: `agi_getMaterialDiffuseComponent` and `agi_getMaterialSpecularComponent`.
    * Add gloss/specular map material.
