@@ -58,17 +58,23 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Install the [Java](http://www.java.com/en/download/index.jsp) JRE if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for JavaScript Web Developers.  Extract to a directory of your choice.  Run it.
-* Install the [JSHint](http://www.jshint.com/) plugin: Help - Install New Software, Work with: http://github.eclipsesource.com/jshint-eclipse/updates/.  Check JSHint.  Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
+* Install the [JSHint](http://www.jshint.com/) plugin: 
+   * Help - Install New Software.  Work with: http://github.eclipsesource.com/jshint-eclipse/updates/.
+   * Check JSHint.  Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
 
-![](jshint.png)
+![The JSHint installation dialog](jshint.png)
 
-* Install the Java Development Tools (for Ant): Help - Install New Software, Work with: select Indigo from the list.  Expand Programming Languages, check Eclipse Java Development Tools.  Expand Collaboration, check EGit.  Next, Next, Accept, Finish, _wait_, Not Now.
+* Install the Java Development Tools (for Ant support) and EGit.
+   * Help - Install New Software.  Work with: select Indigo from the list.  
+   * Expand Programming Languages, check Eclipse Java Development Tools.  
+   * Expand Collaboration, check EGit.  
+   * Next, Next, Accept, Finish, _wait_, Not Now.
 
-![](indigo.png)
+![The Java Development Tools installation dialog](indigo.png)
 
-* Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into eclipse's dropins directory.
+* Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
 
-![](glshaders.png)
+![The Eclipse dropins folder](glshaders.png)
 
 * Run Eclipse. Close the Welcome page.
 
@@ -76,17 +82,23 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Window - Preferences.  General - Editors - Text Editors.  Check Insert spaces for tabs.  OK.
 
-![](tabs.png)
+![Configuring "Insert spaces for tabs"](tabs.png)
 
 * Import Cesium into your workspace:  File - Import, General - Existing Projects into Workspace, Next.  Fill in the path to the root Cesium directory, Finish.
 
 * Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent folder of project.  Finish.
 
+* Configure the problems tab.  The Eclipse JavaScript validator has some bugs that report incorrect warnings.  Click the down arrow on the right-hand side of the Problems tab, click Configure Contents.  Uncheck Show all items, Click New, then Rename the new item to Cesium.  Change the Text filter to "doesn't contain" "Type mismatch: ".  OK.
+
+![Opening the Configure Contents dialog](configureContents.png)
+
+![Creating a new filter](configureContents2.png)
+
 ## Development Tips
 
 * In Eclipse, use Ctrl-Shift-R to search and open files in the workspace.
 
-![](openresource.png)
+![The Open Resource dialog](openresource.png)
 
 * To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
 
