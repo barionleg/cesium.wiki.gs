@@ -51,12 +51,18 @@ v = v.normalize(); // Works because it is a Cartesian3, not an object with just 
 ```javascript
 var va = Context.createVertexArray();
 va.destroy();
-expect(function () { va.destroy(); }).toThrow();
+expect(function() { 
+    va.destroy(); 
+}).toThrow();
 ```
 over:
 
 ```javascript
-expect(function () { var va = Context.createVertexArray(); va.destroy(); va.destroy(); }).toThrow();
+expect(function() { 
+    var va = Context.createVertexArray(); 
+    va.destroy(); 
+    va.destroy(); 
+}).toThrow();
 ```
 Otherwise, an unexpected exception can go unnoticed.
 
