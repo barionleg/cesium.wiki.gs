@@ -26,6 +26,7 @@ We're always looking to:
 * Improve precision - remove potential jittering
 
 ## Longer term
+* Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Build and test server
 * Shadows
 * Video on terrain
