@@ -8,7 +8,10 @@ Short version:
 
 Details
 * Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
-   * On Windows, set core.autocrlf to true (following the instructions above does this for you).  On Linux/Mac, set core.autocrlf to input.  See the [GitHub help on this topic](http://help.github.com/line-endings/).
+   * On Windows, `git config --global core.autocrlf true` (following the instructions above does this for you).  On Linux/Mac, `git config --global core.autocrlf input`.  See the [GitHub help on this topic](http://help.github.com/line-endings/).
+   * Other recommended Git settings:
+      * `git config --global push.default upstream` - When running `git push`, only push the current branch.
+      * `git config --global branch.autosetuprebase always` - When pulling remote changes, rebase your local changes on top of the remote changes, to avoid unnecessary merge commits.
 * Have commit access to cesium?
    * No
       * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
