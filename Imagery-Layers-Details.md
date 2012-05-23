@@ -18,16 +18,25 @@ Design and implementation ideas for imagery layers.
 * Ensure reasonable API consistency between imagery layers and terrain provider(s).
 * Layer primitives on the ground - at least polylines and polygons - seamlessly with imagery.  Many people think in terms of vector layers, KML layers, etc.  Everything is a layer.  We should support this, but shouldn't lose sight of our focus on air and space where this paradigm breaks down.
 * Do we need layers for night lights?  Why not layer a day image over night?  In general, we need to revisit the architecture for night, bump, specular, clouds, etc.  Clouds may happen sooner rather than later.
-* Speculative ideas
+* Long-term and speculative ideas (in order)
+   * Image processing to _fix_ images, e.g.,
+      * Bing Maps imagery is really dark, so brighten it.
+      * Landsat imagery is usually 11 or 12 bits, and looses its dynamic range when dropped to 8-bits.
+      * For Landsat multispectral imagery, we might want to color one band.
+      * Histogram, gamma corrections, etc.
+      * We should do this in a fragment shader so the user can adjust with sliders.  There can also be a fast path for final adjustment where the processed textures are saved; however, to start adjusting again, we will need the source data.
+   * UTM Projections.  I assume server-side.
    * Show/hide layers based on altitude (careful in 2D and columbus view) or time?  This may be done in Dynamic Scene, not Scene, but we need to think about it.  More general _display conditions_ could also be useful.
-   * Blend maps for layers, e.g., specular, dirt, or destruction maps.  How often is this used or desired?  GIS?  These are certainty popular in games; however, the shading for each layer is different, i.e., they are not just diffuse components.
+   * Ability to move - and possibility rotate - a texture on the globe so it better lines up with where the user expects it, e.g., with building models.  To start, we need to decouple the extent the texture thinks it has with the extent that it is rendered in.
+   * Blend maps for layers, e.g., specular, dirt, or destruction maps.  I don't have any use cases, but these are certainty popular in games; however, the shading for each layer is different, i.e., they are not just diffuse components.
 
 ## Initial Implementation
 
 * `CentralBody.dayTileProvider` can be replaced with something like `CentralBody.dayLayers` or even `CentralBody.imageLayers` since this is the common case, which would have an interface similar to `CompositePrimitive`.
+   * We may need a specific _base layer_.
 * In `render()`, layers can be drawn in z-order from bottom to top, then lay down the depth plane.  Currently, tiles in each layer need to be sorted back-to-front from the viewer's perspective since they are not depth tested.  (Actually, we should look more carefully at the motivation for this sorting).  This will change as we implement multi-frustum and terrain.
    * Use blending in the render state to support layer alpha.
-   * The tessellation among layers will be different when the layer extents or (currently) image maximum resolution do not match.  This will create artifacts for horizon views.  To fix this, see comment on decoupling below.
+   * The tessellation among layers will be different when the layer extents or (currently) image maximum resolution do not match.  This will create artifacts for horizon views.  To fix this, see comment on decoupling below.  If the geometric LOD is high enough, we may not notice the artifacts.
    * This approach also has performance implications:
       * Lots of draw calls creates CPU overhead.
       * Lots of overdraw.  For an ellipsoid with backface culling, the depth complexity should be one.  Here, it will be the number of layers that overlap a pixel.
@@ -44,13 +53,14 @@ Design and implementation ideas for imagery layers.
    * Of course, we could also lay down z first, but we might need the multi-frustum for that, and the CPU overhead could be too high.
 
 * For even better performance (reduced number of draw calls) and to fix artifacts between layers, we should decouple geometry (ellipsoid or terrain) and textures.  First, tiles are chosen based solely on geometric level of detail given the view parameters.  Then, textures are chosen based on their level of detail.  Finally, each tile is rendered with multi-texturing and multiple texture matrices to position each texture on the geometry.
-   * We may need multiple sets of texture coordinates; not just texture matrices.
    * Before multi-texturing, this would be done with multiple passes.  Multi-texturing imposes a limit on the number of layers we can support, but 99% of WebGL users have 16 texture units in the fragment shader.  See the [stats](http://webglstats.com/).
    * Determining what textures overlap what tiles can burn a lot of CPU.  An r-tree can be used to make this query fast (at the expense of creating and maintaining the tree, of course).  Perhaps there are already JavaScript r-tree implementations, or a simpler spatial data structure will suffice.  We also need to look at related r-tree patents to make sure we can use it.  Papers:
       * [R-Trees.  A Dynamic Index Structure for Spatial Searching](http://postgis.refractions.net/support/rtree.pdf).  1984.
       * [The R*-tree: An Efficient and Robust Access Method for  Points and Rectangles](http://infolab.usc.edu/csci587/Fall2011/papers/p322-beckmann.pdf).  1990.
       * [Priority r-tree](http://www.cse.ust.hk/~yike/prtree/).  2004.
    * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered.  Actually, it doesn't need to be requested from the server.  Hmm - could a proxy server do some compositing for us?
+   * Searching for what textures overlap a tile will burn a lot of CPU - and probably miss L2 everywhere - even with a spatial data structure.  However, we should be able to exploit temporal coherence; if a tile is rendered in one frame, it is likely to be rendered in the next frame with the same overlapping textures.
+      * We could also have a fast path when tiles and textures providers line up, i.e., each tile has one corresponding texture.  This is, for example, how Google Earth and most virtual globes work AFAIK.
 
 ## Other APIs with Layers
    * Insight3D - [Imagery Overlay](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/Imagery.html) and [Web Imagery Overlays](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/WebImagery.html).
