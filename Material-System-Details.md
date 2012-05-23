@@ -11,7 +11,7 @@ Design and implementation ideas for our material system.
    * This will slightly impact the lighting code.
 * Allow the material to modify the surface normal.
    * Add a third GLSL function that materials can optionally implement called `agi_getMaterialNormal` that takes and returns a normal.
-   * Implement a bump map material using this.
+   * Implement a bump map material using this.  Implement a normal map material too.
 * Add the world-space eye direction, i.e. the vector from the camera to the fragment in world coordinates, to `agi_getMaterial*` (or do we only need it for `agi_getMaterialDiffuseComponent` initially?).  Use this to implement:
    * A diffuse reflective material that uses an environment map for reflection, and a 2D texture for the diffuse component.  Blend these with a `reflectivity` parameter.
    * A diffuse refractive material that also uses an environment map.  Expose the two indices of refraction.
@@ -39,3 +39,4 @@ TBA: deferred shading?
    * [Three.js](https://github.com/mrdoob/three.js/)
    * [Unity](http://unity3d.com/support/documentation/Manual/Materials)
    * [C4 Engine](http://www.terathon.com/wiki/index.php/Shaders)
+   * [Id tech 4](http://www.modwiki.net/wiki/Texturing)
