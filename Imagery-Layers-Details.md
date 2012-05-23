@@ -21,12 +21,12 @@ Design and implementation ideas for imagery layers.
 * Long-term and speculative ideas (in order)
    * Image processing to _fix_ images, e.g.,
       * Bing Maps imagery is really dark, so brighten it.
-      * Landsat imagery is usually 11 or 12 bits, and looses its dynamic range when dropped to 8-bits.
+      * Landsat imagery is usually 11 or 12 bits, and loses its dynamic range when dropped to 8-bits.
       * For Landsat multispectral imagery, we might want to color one band.
       * Histogram, gamma corrections, etc.
-      * We should do this in a fragment shader so the user can adjust with sliders.  There can also be a fast path for final adjustment where the processed textures are saved; however, to start adjusting again, we will need the source data.
-   * UTM Projections.  I assume server-side.
-   * Show/hide layers based on altitude (careful in 2D and columbus view) or time?  This may be done in Dynamic Scene, not Scene, but we need to think about it.  More general _display conditions_ could also be useful.
+      * We should do this in a fragment shader so the user can adjust it with sliders.  There can also be a fast path for final adjustment where the processed textures are saved; however, to start adjusting again, we will need the source data.
+   * UTM projections.  I assume server-side.  What other projections?
+   * Show/hide layers based on viewer height(careful in 2D and Columbus view) or time?  This may be done in Dynamic Scene, not Scene, but we need to think about it.  More general _display conditions_ could also be useful.
    * Ability to move - and possibility rotate - a texture on the globe so it better lines up with where the user expects it, e.g., with building models.  To start, we need to decouple the extent the texture thinks it has with the extent that it is rendered in.
    * Blend maps for layers, e.g., specular, dirt, or destruction maps.  I don't have any use cases, but these are certainty popular in games; however, the shading for each layer is different, i.e., they are not just diffuse components.
 
@@ -41,6 +41,7 @@ Design and implementation ideas for imagery layers.
       * Lots of draw calls creates CPU overhead.
       * Lots of overdraw.  For an ellipsoid with backface culling, the depth complexity should be one.  Here, it will be the number of layers that overlap a pixel.
       * Potential tile requests for tiles completely occluded by opaque layers higher in the z-order.
+      * Lots of extra memory used for duplicate or similar geometry tiles.
       * Solution idea below.
 * The credit, e.g., logo, for multiple layers will need to be shown.  We should avoid duplicates, e.g., don't show the same credit twice if two layers from the same provider are shown.  Down the road, we need the ability for view-dependent credits when a layer comes from several sources.
 * The request and replacement code will need (hopefully minor) changes.
@@ -60,7 +61,7 @@ Design and implementation ideas for imagery layers.
       * [Priority r-tree](http://www.cse.ust.hk/~yike/prtree/).  2004.
    * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered.  Actually, it doesn't need to be requested from the server.  Hmm - could a proxy server do some compositing for us?
    * Searching for what textures overlap a tile will burn a lot of CPU - and probably miss L2 everywhere - even with a spatial data structure.  However, we should be able to exploit temporal coherence; if a tile is rendered in one frame, it is likely to be rendered in the next frame with the same overlapping textures.
-      * We could also have a fast path when tiles and textures providers line up, i.e., each tile has one corresponding texture.  This is, for example, how Google Earth and most virtual globes work AFAIK.
+      * We could also have a fast path when tiles and texture providers line up, i.e., each tile has one corresponding texture.  This is, for example, how Google Earth and most virtual globes work AFAIK.
 
 ## Other APIs with Layers
    * Insight3D - [Imagery Overlay](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/Imagery.html) and [Web Imagery Overlays](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/WebImagery.html).
