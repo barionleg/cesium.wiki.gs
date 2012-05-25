@@ -12,7 +12,7 @@ The ID of the object described by this packet.  IDs do not need to be GUIDs, but
 
 ## Availability
 
-Indicates when data for an object is available. If data for an object is known to be available at the current animation time, but the client does not yet have that data (presumably because it will arrive in a later packet), the client will pause with a message like "Buffering..." while it waits to receive the data. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may report availability for all time, but then later the propagator throws an exception and the availability needs to be adjusted. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is available at a time, the client expects the object to have at least one property, and it expects all properties that it needs to be defined at that time. If the object doesn't have any properties, or a needed property is defined but not at the animation time, the client will pause animation and wait for more data.
+When data for an object is available. If data for an object is known to be available at the current animation time, but the client does not yet have that data (presumably because it will arrive in a later packet), the client will pause with a message like "Buffering..." while it waits to receive the data. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may report availability for all time, but then later the propagator throws an exception and the availability needs to be adjusted. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is available at a time, the client expects the object to have at least one property, and it expects all properties that it needs to be defined at that time. If the object doesn't have any properties, or a needed property is defined but not at the animation time, the client will pause animation and wait for more data.
 
 **Property Name**: `availability`
 
@@ -20,7 +20,7 @@ Indicates when data for an object is available. If data for an object is known t
 
 ## Position
 
-Specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+The position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
 
 **Property Name**: `position`
 
@@ -31,9 +31,9 @@ Specifies the position of the object in the world. The position has no direct vi
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `referenceFrame` | Interval | string | The reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose "position" and "orientation" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is "FIXED". |
-| `cartesian` | Interval | array | The position specified as a Cartesian `[X, Y, Z]` position in the meters relative to the referenceFrame. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `cartographicRadians` | Interval | array | The position specified as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `cartographicDegrees` | Interval | array | The position specified as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `cartesian` | Interval | array | The position represented as a Cartesian `[X, Y, Z]` in the meters relative to the `referenceFrame`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
+| `cartographicRadians` | Interval | array | The position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
+| `cartographicDegrees` | Interval | array | The position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
@@ -70,7 +70,7 @@ Examples:
 
 ## Billboard
 
-Specifies a billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker.
+A billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker.
 
 **Property Name**: `billboard`
 
@@ -111,10 +111,117 @@ The eye offset of the billboard, which is the offset in eye coordinates at which
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
+### Billboard.HorizontalOrigin
+
+The horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+
+**Property Name**: `horizontalOrigin`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `horizontalOrigin` | Interval | string | The horizontal origin.  Valid values are "LEFT", "CENTER", and "RIGHT". |
+
+### Billboard.Image
+
+The image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI<a/>.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `image` | Interval | string | The URL of the image. |
+
+### Billboard.PixelOffset
+
+The offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
+
+**Property Name**: `pixelOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Billboard.Rotation
+
+The rotation of the billboard expressed as a clockwise rotation in radians.
+
+**Property Name**: `rotation`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Billboard.Scale
+
+The scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+
+**Property Name**: `scale`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Billboard.Show
+
+Whether or not the billboard is shown.
+
+**Property Name**: `show`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### Billboard.VerticalOrigin
+
+The vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+
+**Property Name**: `verticalOrigin`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `horizontalOrigin` | Interval | string | The vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP". |
+
 
 ## VertexPositions
 
-Specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
+The world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
 
 **Property Name**: `vertexPositions`
 
@@ -122,7 +229,7 @@ Specifies the world-space positions of vertices.  The vertex positions have no d
 
 ## Orientation
 
-Specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+The orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
 
 **Property Name**: `orientation`
 
@@ -130,7 +237,7 @@ Specifies the orientation of the object in the world.  The orientation has no di
 
 ## Point
 
-Defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+A point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
 
 **Property Name**: `point`
 
@@ -138,7 +245,7 @@ Defines a point, or viewport-aligned circle.  The point is positioned in the sce
 
 ## Label
 
-Defines a string of text.  The label is positioned in the scene by the `position` property.
+A string of text.  The label is positioned in the scene by the `position` property.
 
 **Property Name**: `label`
 
@@ -146,7 +253,7 @@ Defines a string of text.  The label is positioned in the scene by the `position
 
 ## Polyline
 
-Defines a polyline, which is a line in the scene composed of multiple segments.  The vertices of the polyline are specified by the `vertexPositions` property.
+A polyline, which is a line in the scene composed of multiple segments.  The vertices of the polyline are specified by the `vertexPositions` property.
 
 **Property Name**: `polyline`
 
@@ -154,7 +261,7 @@ Defines a polyline, which is a line in the scene composed of multiple segments. 
 
 ## Path
 
-Defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
 
 **Property Name**: `path`
 
@@ -162,7 +269,7 @@ Defines a path, which is a polyline defined by the motion of an object over time
 
 ## Polygon
 
-Defines a polygon, which is a closed figure on the surface of the Earth.  The vertices of the polygon are specified by the `vertexPositions` property.
+A polygon, which is a closed figure on the surface of the Earth.  The vertices of the polygon are specified by the `vertexPositions` property.
 
 **Property Name**: `polygon`
 
@@ -170,7 +277,7 @@ Defines a polygon, which is a closed figure on the surface of the Earth.  The ve
 
 ## Cone
 
-Defines a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
+A cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
 
 **Property Name**: `cone`
 
@@ -178,7 +285,7 @@ Defines a cone.  A cone starts at a point or apex and extends in a circle of dir
 
 ## Pyramid
 
-Defines a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
+A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
 
 **Property Name**: `pyramid`
 
