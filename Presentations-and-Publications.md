@@ -10,3 +10,9 @@ We enjoy giving talks and writing publications on Cesium and the technology we u
 
 * [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com/).  Patrick Cozzi and Kevin Ring.  CRC Press, 06/2011.
  * Not strictly about Cesium, but about virtual globes in general.  Written by two Cesium contributors.  Some code from this book's engine, [OpenGlobe](https://github.com/virtualglobebook/OpenGlobe), was ported to Cesium.
+
+<!--
+<img src="presentationsFigures/openglinsights.jpg" />
+<img src="presentationsFigures/cesiumLogo.png" />
+<img src="presentationsFigures/virtualglobebook.jpg" />
+-->
