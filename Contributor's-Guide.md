@@ -71,7 +71,7 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 * Install the Java Development Tools (for Ant support) and EGit.
    * Help - Install New Software.  Work with: select Indigo from the list.  
    * Expand Programming Languages, check Eclipse Java Development Tools.  
-   * Expand Collaboration, check EGit.  
+   * Expand Collaboration, check Eclipse EGit.  
    * Next, Next, Accept, Finish, _wait_, Not Now.
 
 ![The Java Development Tools installation dialog](indigo.png)
@@ -81,6 +81,10 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 ![The Eclipse dropins folder](glshaders.png)
 
 * Run Eclipse. Close the Welcome page.
+
+* Window - Preferences - Team - Git - Configuration
+    * Verify Location in User Settings tab is set to .gitconfig in the default repository folder.
+    * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
 
 * Window - Show View - Console.
 
