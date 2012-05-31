@@ -3,12 +3,12 @@
 ## Always
 
 We're always looking to:
-* Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs.
-* Support more content by writing converters from other formats to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library.
-* Write tutorials and improve reference documentation and examples.
-* Improve visual quality and performance.
-* Improve platform support by fixing issues on various browsers, devices, or video cards.
-* Improve tests and test coverage; however, we don't blindly chase coverage statistics.
+* Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs
+* Support more content by writing converters from other formats to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
+* Write tutorials and improve reference documentation and examples
+* Improve visual quality and performance - [details](Visual-Quality-and-Performance-Details)
+* Improve platform support by fixing issues on various browsers, devices, or video cards
+* Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## Near term
 * [[CZML|Cesium Language (CZML) Guide]] Visualization
