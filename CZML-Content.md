@@ -399,6 +399,12 @@ The font to use for the label.
 
 **Interpolatable**: no
 
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `font` | Interval | string | The font. |
+
 ### Label.HorizontalOrigin
 
 The horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.
@@ -486,6 +492,12 @@ The style of the label.
 **Property Name**: `style`
 
 **Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `labelStyle` | Interval | string | The label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE". |
 
 ### Label.Text
 
@@ -893,9 +905,26 @@ The radial limit of the cone.
 
 ### Cone.MinimumClockAngle
 
-The maximum clock angle limit of the cone.
+The minimum clock angle limit of the cone.
 
 **Property Name**: `minimumClockAngle`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Cone.MaximumClockAngle
+
+The maximum clock angle limit of the cone.
+
+**Property Name**: `maximumClockAngle`
 
 **Interpolatable**: yes
 
@@ -1201,4 +1230,182 @@ A pyramid.  A pyramid starts at a point or apex and extends in a specified list 
 **Property Name**: `pyramid`
 
 **Interpolatable**: no
+
+### Pyramid.Show
+
+Whether or not the pyramid is shown.
+
+**Property Name**: `show`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### Pyramid.Directions
+
+The list of directions defining the pyramid.
+
+**Property Name**: `directions`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `unitSpherical` | Interval | array | The list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis. |
+| `unitCartesian` | Interval | array | The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`. |
+
+### Pyramid.Radius
+
+The radial limit of the pyramid.
+
+**Property Name**: `radius`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Pyramid.ShowIntersection
+
+Whether or not the intersection of the pyramid with the Earth is shown.
+
+**Property Name**: `showIntersection`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### Pyramid.IntersectionColor
+
+The color of the intersection of the pyramid with the Earth.
+
+**Property Name**: `intersectionColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Pyramid.Erosion
+
+The erosion of the pyramid.
+
+**Property Name**: `erosion`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Pyramid.Material
+
+The material to display on the surface of the pyramid.
+
+**Property Name**: `material`
+
+**Interpolatable**: no
+
+#### Pyramid..Material.SolidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### Pyramid..Material..SolidColor.Color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### Pyramid..Material.Image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### Pyramid..Material..Image.Image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `image` | Interval | string | The URL of the image. |
+
+
+
+
+## Camera
+
+A camera.
+
+**Property Name**: `camera`
+
+**Interpolatable**: no
+
+### Camera.Enable
+
+Whether or not the camera is enabled.
+
+**Property Name**: `enable`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
 
