@@ -7,7 +7,8 @@ Getting started with a local copy of Cesium on Windows, Linux, and Mac is quick.
 ## Build
 
 * Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that the [Java](http://www.java.com/en/download/index.jsp) JDK be installed.
-* From the root Cesium directory, run `./Tools/apache-ant-1.8.2/bin/ant combine`.
+* From the root Cesium directory, run `./Tools/apache-ant-1.8.2/bin/ant combine`
+   * On Windows: `.\Tools\apache-ant-1.8.2\bin\ant combine`
 
 ## Building with Eclipse
 
@@ -20,6 +21,7 @@ See the [[Contributor's Guide]] for more information.
 ## Run
 
 * Run `./Tools/apache-ant-1.8.2/bin/ant runServer` to start a web server, and browse to http://localhost:8080.
+   * On Windows, `.\Tools\apache-ant-1.8.2\bin\ant runServer`
 
 ## What Next?
 
