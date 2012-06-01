@@ -10,18 +10,18 @@ Getting started with a local copy of Cesium on Windows, Linux, and Mac is quick.
 * From the root Cesium directory, run `./Tools/apache-ant-1.8.2/bin/ant combine`
    * On Windows: `.\Tools\apache-ant-1.8.2\bin\ant combine`
 
-## Building with Eclipse
+## Run
+
+* Run `./Tools/apache-ant-1.8.2/bin/ant runServer` to start a web server, and browse to [[http://localhost:8080/]].
+   * On Windows, `.\Tools\apache-ant-1.8.2\bin\ant runServer`
+
+## Building and Running with Eclipse
 
 If you have [Eclipse](http://www.eclipse.org/downloads/) you can run the above build from the GUI, and see output in the Eclipse console window.  The run menu looks like this:
 
 <img src="screenshots/EclipseBuildMenu.jpg" />
 
 See the [[Contributor's Guide]] for more information.
-
-## Run
-
-* Run `./Tools/apache-ant-1.8.2/bin/ant runServer` to start a web server, and browse to [[http://localhost:8080/]].
-   * On Windows, `.\Tools\apache-ant-1.8.2\bin\ant runServer`
 
 ## What Next?
 
