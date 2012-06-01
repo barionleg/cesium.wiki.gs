@@ -18,6 +18,9 @@ Design and implementation ideas for our material system.
    * A diffuse refractive material that also uses an environment map.  Expose the two indices of refraction.
    * A Fresnel material - approximate, of course.
    * Include optional reflection and refractive maps for the above reflective and refractive materials, maybe Fresnel.
+* All materials should return the specular exponent.
+* All materials should return the emission color.
+   * Add a material for an emission map.
 
 ## Phase 2
 
@@ -35,7 +38,8 @@ Design and implementation ideas for our material system.
    * Crumbling bricks that combine brick and bump map materials.
    * A bumpy diffuse reflective surface that combines the bump map and diffuse reflection materials.
    * A diffuse map, diffuse reflective, specular map, and bump map.  A bumpy, diffuse lit and reflective surface with shiny areas.
-   * Blend two diffuse maps based on a parameter or third map.
+   * Blend two diffuse maps based on a parameter, e.g., terrain height, or third map.
+* Implement the `CentralBody` fragment shader using materials, instead of hard-coding bump, specular, etc.
 
 ## Phase 4
 
@@ -46,6 +50,12 @@ Details to follow...
 ## Phase 5
 
 * How does this fit with the effects framework for models?  Can they work well together?
+
+## Questions
+
+* How important is it to support multiple texture coordinates, i.e., different coordinates for different materials on the same object?
+* Do we have a need for relief mapping, etc?
+* How do screen-space techniques like fog, glow, and bloom fit in?
 
 ## Other Material Systems
 
