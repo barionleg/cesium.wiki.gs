@@ -1,9 +1,10 @@
 Design and implementation ideas for our material system.
 
-## Initial Features
+## Phase 1
 
-* Add simple tests that verify the material by rendering a polygon.  Currently, we don't have tests for most materials.
-* Explore materials implemented using procedural textures, i.e., brick, marble, granite, wood, asphalt, etc.  Later, we'll procedurally shade a city with these building blocks.
+* _Done: Add simple tests that verify the material by rendering a polygon.  Currently, we don't have tests for most materials._
+* _Done: Explore materials implemented using procedural textures, i.e., brick, marble, granite, wood, asphalt, etc.  Later, we'll procedurally shade a city with these building blocks._
+* _Done: Add better reference documentation._
 * Add an opacity/alpha map material.
 * Decouple diffuse and specular components.
    * Split `agi_getMaterialColor` into two separate GLSL functions: `agi_getMaterialDiffuseComponent` and `agi_getMaterialSpecularComponent`.
@@ -18,20 +19,32 @@ Design and implementation ideas for our material system.
    * A Fresnel material - approximate, of course.
    * Include optional reflection and refractive maps for the above reflective and refractive materials, maybe Fresnel.
 
+## Phase 2
+
+* Polylines
+   * Polylines currently use very simple shaders, and are rendered in three passes using the stencil buffer to achieve an outline effect (turn ANGLE off; start Chrome with `--use-gl=desktop`).
+   * Replace the three-pass algorithm with a single pass algorithm that, in a fragment shader, uses the distance from the fragment to the line to determine if the fragment is part of the outline.  Read [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
+   * First hard-code the above in the Polyline, then factor it out into a new `PolylineOutlineMaterial`.
+   * Create a `PolylineGlowMaterial` based on [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
+   * Make Polylines work with the rest of the materials as reasonable.  Polylines will need to be able to compute at least 1D texture coordinates.  I could see some potential for 2D and 3D coordinates as well.  All materials will not work with all primitives.  We'll need to document a feature matrix.
+
+## Phase 3
+
 <!--
 TBA: working with other lighting models?
 TBA: deferred shading?
 -->
 
-## Full Features
-
-* How does this fit with the effects framework for models?  They should work well together.
 * How do we combine multiple materials, e.g.,
-   * Blend two diffuse maps based on a parameter or third map.
-   * A bump and specular map.
-   * A bumpy diffuse reflective surface that combines the bump map and diffuse reflection materials.
+   * A diffuse map and a specular map.
    * Crumbling bricks that combine brick and bump map materials.
-* Add materials to polylines.  Polylines will need to be able to compute at least 1D texture coordinates.  I could see some potential for 2D and 3D coordinates as well.
+   * A bumpy diffuse reflective surface that combines the bump map and diffuse reflection materials.
+   * A diffuse map, diffuse reflective, specular map, and bump map.  A bumpy, diffuse lit and reflective surface with shiny areas.
+   * Blend two diffuse maps based on a parameter or third map.
+
+## Phase 4
+
+* How does this fit with the effects framework for models?  Can they work well together?
 
 ## Other Material Systems
 
