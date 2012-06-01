@@ -20,7 +20,7 @@ See the [[Contributor's Guide]] for more information.
 
 ## Run
 
-* Run `./Tools/apache-ant-1.8.2/bin/ant runServer` to start a web server, and browse to http://localhost:8080/.
+* Run `./Tools/apache-ant-1.8.2/bin/ant runServer` to start a web server, and browse to [[http://localhost:8080/]].
    * On Windows, `.\Tools\apache-ant-1.8.2\bin\ant runServer`
 
 ## What Next?
