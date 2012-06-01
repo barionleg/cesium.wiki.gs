@@ -30,11 +30,6 @@ Design and implementation ideas for our material system.
 
 ## Phase 3
 
-<!--
-TBA: working with other lighting models?
-TBA: deferred shading?
--->
-
 * How do we combine multiple materials, e.g.,
    * A diffuse map and a specular map.
    * Crumbling bricks that combine brick and bump map materials.
@@ -43,6 +38,12 @@ TBA: deferred shading?
    * Blend two diffuse maps based on a parameter or third map.
 
 ## Phase 4
+
+Details to follow...
+
+* Multiple lights and different light models.
+
+## Phase 5
 
 * How does this fit with the effects framework for models?  Can they work well together?
 
