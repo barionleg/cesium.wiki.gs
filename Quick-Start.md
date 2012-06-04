@@ -2,7 +2,7 @@ Getting started with a local copy of Cesium on Windows, Linux, and Mac is quick.
 
 ## Get the Code
 
-* `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`.
+* `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`
 
 ## Build
 
@@ -20,8 +20,6 @@ Getting started with a local copy of Cesium on Windows, Linux, and Mac is quick.
 If you have [Eclipse](http://www.eclipse.org/downloads/) you can run the above build from the GUI, and see output in the Eclipse console window.  The run menu looks like this:
 
 <img src="screenshots/EclipseBuildMenu.jpg" />
-
-See the [[Contributor's Guide]] for more information.
 
 ## What Next?
 
