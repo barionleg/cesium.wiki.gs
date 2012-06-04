@@ -9,17 +9,17 @@ Short version:
 Details
 * Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
    * On Windows, `git config --global core.autocrlf true` (following the instructions above does this for you).  
-   * On Linux/Mac, `git config --global core.autocrlf input`.  See the [GitHub help on this topic](http://help.github.com/line-endings/).
+   * On Linux/Mac, `git config --global core.autocrlf input` - see the [GitHub help on this topic](http://help.github.com/line-endings/).
    * Other recommended Git settings:
-      * `git config --global push.default upstream` - When running `git push`, only push the current branch.
-      * `git config --global branch.autosetuprebase always` - When pulling remote changes, rebase your local changes on top of the remote changes, to avoid unnecessary merge commits.
+      * `git config --global push.default upstream` - when running `git push`, only push the current branch.
+      * `git config --global branch.autosetuprebase always` - when pulling remote changes, rebase your local changes on top of the remote changes, to avoid unnecessary merge commits.
 * Have commit access to cesium?
    * No
       * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
-      * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
+      * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`
    * Yes
-      * Create a local cesium repo, e.g., `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`.
-      * Make non-trivial changes in a branch, e.g., `git branch myfeature`, and then `git checkout myfeature`.
+      * Create a local cesium repo, e.g., `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`
+      * Make non-trivial changes in a branch, e.g., `git branch myfeature`, and then `git checkout myfeature`
 
 ## Building the Code
 
@@ -112,7 +112,7 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 ![](debugJasmine.png)
 
-Then, to step into the test, step into `stepIntoThis()`.
+Then, to step into the test, step into `stepIntoThis()`
 
 ![](stepIntoThis.png)
 
@@ -130,7 +130,7 @@ Then, to step into the test, step into `stepIntoThis()`.
    * In the driver, e.g., the NVIDIA Control Panel or the Catalyst Control Center.
    * Also turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
 
-* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.  Create a FPS counter in Cesium with `PerformanceDisplay`.
+* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.  Create a FPS counter in Cesium with `PerformanceDisplay`
 
 ## Contributing Code
 
