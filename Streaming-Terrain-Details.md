@@ -7,9 +7,9 @@ Design and implementation ideas for streaming imagery.
 * Show terrain in Columbus view.
 * Interesting ways to morph terrain during transitions?
 * 2D - what happens to terrain?  Bump mapping?
-
-* Fill cracks between tiles.  How can our screen-space work for ellipsoid tiles be adapted?  Plan B - skirts.
-* Popping artifacts.  Morph between LODs?  Do nothing?
+* Rendering
+   * Fill cracks between tiles.  How can our screen-space work for ellipsoid tiles be adapted?  Plan B - skirts.
+   * Popping artifacts.  Morph between LODs?  Do nothing?
 
 ## Medium term
 
