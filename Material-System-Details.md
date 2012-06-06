@@ -45,7 +45,8 @@ Design and implementation ideas for our material system.
 
 Details to follow...
 
-* Multiple lights and different light models.
+* Multiple lights
+* Different lighting models.  Consider Phong, Blinn-Phong, Gaussian, Cook-Torrance, Oren-Nayar, Strauss, Ward, and Ashikhmin-Shirley.  Which are most useful?  Which fit best into our engine?  See [Learning Modern 3D Graphics Programming](http://www.arcsynthesis.org/gltut/Illumination/Tutorial%2011.html) and [Programming Vertex, Geometry, and Pixel Shaders](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf).
 
 ## Phase 5
 
