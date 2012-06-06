@@ -60,7 +60,7 @@ Details to follow...
 
 ## Other Material Systems
 
-* Effects frameworks like [CgFX](http://developer.nvidia.com/node/80), [Direct3D 10 FX Files](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf), and COLLADA FX have materials as does every graphics engine under the sun, such as:
+* Effects frameworks like [CgFX](http://developer.nvidia.com/node/80), [Direct3D 10 FX Files](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf), and [COLLADA FX](http://www.khronos.org/files/collada_spec_1_5.pdf) have materials as does every graphics engine under the sun, such as:
    * [Three.js](https://github.com/mrdoob/three.js/)
    * [Unity](http://unity3d.com/support/documentation/Manual/Materials)
    * [C4 Engine](http://www.terathon.com/wiki/index.php/Shaders)
