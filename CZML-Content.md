@@ -778,7 +778,7 @@ The material to use to fill the polygon.
 
 **Interpolatable**: no
 
-#### Polygon..Material.SolidColor
+#### Polygon.Material.SolidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -786,7 +786,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Polygon..Material..SolidColor.Color
+##### Polygon.Material.SolidColor.Color
 
 The color of the surface.
 
@@ -805,7 +805,7 @@ The color of the surface.
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Polygon..Material.Image
+#### Polygon.Material.Image
 
 Fills the surface with an image.
 
@@ -813,7 +813,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Polygon..Material..Image.Image
+##### Polygon.Material.Image.Image
 
 The image to display on the surface.
 
@@ -994,7 +994,7 @@ The material to use to cap the cone at its radial limit.
 
 **Interpolatable**: no
 
-#### Cone..CapMaterial.SolidColor
+#### Cone.CapMaterial.SolidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -1002,7 +1002,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Cone..CapMaterial..SolidColor.Color
+##### Cone.CapMaterial.SolidColor.Color
 
 The color of the surface.
 
@@ -1021,7 +1021,7 @@ The color of the surface.
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Cone..CapMaterial.Image
+#### Cone.CapMaterial.Image
 
 Fills the surface with an image.
 
@@ -1029,7 +1029,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Cone..CapMaterial..Image.Image
+##### Cone.CapMaterial.Image.Image
 
 The image to display on the surface.
 
@@ -1053,7 +1053,7 @@ The material to use for the inner cone.
 
 **Interpolatable**: no
 
-#### Cone..InnerMaterial.SolidColor
+#### Cone.InnerMaterial.SolidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -1061,7 +1061,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Cone..InnerMaterial..SolidColor.Color
+##### Cone.InnerMaterial.SolidColor.Color
 
 The color of the surface.
 
@@ -1080,7 +1080,7 @@ The color of the surface.
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Cone..InnerMaterial.Image
+#### Cone.InnerMaterial.Image
 
 Fills the surface with an image.
 
@@ -1088,7 +1088,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Cone..InnerMaterial..Image.Image
+##### Cone.InnerMaterial.Image.Image
 
 The image to display on the surface.
 
@@ -1112,7 +1112,7 @@ The material to use for the outer cone.
 
 **Interpolatable**: no
 
-#### Cone..OuterMaterial.SolidColor
+#### Cone.OuterMaterial.SolidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -1120,7 +1120,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Cone..OuterMaterial..SolidColor.Color
+##### Cone.OuterMaterial.SolidColor.Color
 
 The color of the surface.
 
@@ -1139,7 +1139,7 @@ The color of the surface.
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Cone..OuterMaterial.Image
+#### Cone.OuterMaterial.Image
 
 Fills the surface with an image.
 
@@ -1147,7 +1147,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Cone..OuterMaterial..Image.Image
+##### Cone.OuterMaterial.Image.Image
 
 The image to display on the surface.
 
@@ -1171,7 +1171,7 @@ The material to use for the cone's silhouette.
 
 **Interpolatable**: no
 
-#### Cone..SilhouetteMaterial.SolidColor
+#### Cone.SilhouetteMaterial.SolidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -1179,7 +1179,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Cone..SilhouetteMaterial..SolidColor.Color
+##### Cone.SilhouetteMaterial.SolidColor.Color
 
 The color of the surface.
 
@@ -1198,7 +1198,7 @@ The color of the surface.
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Cone..SilhouetteMaterial.Image
+#### Cone.SilhouetteMaterial.Image
 
 Fills the surface with an image.
 
@@ -1206,7 +1206,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Cone..SilhouetteMaterial..Image.Image
+##### Cone.SilhouetteMaterial.Image.Image
 
 The image to display on the surface.
 
@@ -1334,7 +1334,7 @@ The material to display on the surface of the pyramid.
 
 **Interpolatable**: no
 
-#### Pyramid..Material.SolidColor
+#### Pyramid.Material.SolidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -1342,7 +1342,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Pyramid..Material..SolidColor.Color
+##### Pyramid.Material.SolidColor.Color
 
 The color of the surface.
 
@@ -1361,7 +1361,7 @@ The color of the surface.
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Pyramid..Material.Image
+#### Pyramid.Material.Image
 
 Fills the surface with an image.
 
@@ -1369,7 +1369,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Pyramid..Material..Image.Image
+##### Pyramid.Material.Image.Image
 
 The image to display on the surface.
 
