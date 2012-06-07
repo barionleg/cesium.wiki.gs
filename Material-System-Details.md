@@ -47,7 +47,7 @@ Details to follow...
 
 * Different lighting models.  Consider Phong, Blinn-Phong, Gaussian, Cook-Torrance, Oren-Nayar, Strauss, Ward, and Ashikhmin-Shirley.  Which are most useful?  Which fit best into our engine?  See [Learning Modern 3D Graphics Programming](http://www.arcsynthesis.org/gltut/Illumination/Tutorial%2011.html) and [Programming Vertex, Geometry, and Pixel Shaders](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf).
 * Light types: point, direction, spot.  Area?
-* Multiple lights: turn lights on/off per primitive.
+* Multiple lights: turn lights on/off per primitive.  This will replace `affectedByLighting` on [Polygon](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/Polygon.js) and [CentralBody](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/CentralBody.js).
 
 ## Phase 5
 
