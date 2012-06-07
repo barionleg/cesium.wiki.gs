@@ -13,9 +13,9 @@ We're always looking to:
 ## Near term
 * [[CZML|Cesium Language (CZML) Guide]] Visualization
 * Imagery layers - [details](Imagery-Layers-Details)
-* Material system - [details](Material-System-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
-* COLLADA models
+* Material system - [details](Material-System-Details)
+* COLLADA models - [details](Models-Details)
 * Stars
 * Data-driven renderer
    * Improved depth-buffer precision
