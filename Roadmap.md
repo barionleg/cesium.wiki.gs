@@ -10,22 +10,23 @@ We're always looking to:
 * Improve platform support by fixing issues on various browsers, devices, or video cards
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
-## Near term
+## In progress
 * [[CZML|Cesium Language (CZML) Guide]] Visualization
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * Material system - [details](Material-System-Details)
 * COLLADA models - [details](Models-Details)
-* Stars
+
+## To come
+* Draw shapes - ellipsoids, cylinders, boxes, extruded volumes
 * Data-driven renderer
    * Improved depth-buffer precision
    * Culling for all objects
    * Post-processing framework
+* Stars
 * Improve 3D/2D/Columbus view transitions
 * Improve mobile support
 * Improve precision - remove potential jittering
-
-## Longer term
 * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Build and test server
 * Shadows
