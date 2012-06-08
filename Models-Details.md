@@ -13,6 +13,10 @@ Design and implementation ideas for models.
    * COLLADA Animation - for articulating things like satellite solar panels and aircraft landing gear.
 * Work in Columbus view.  The model scale will need to be adjusted - and will be relative to the projection
 * Work in 2D.  Render model to texture from top-down view; lay over top the 2D map as a billboard.  The model will appear lit and changes in orientation, e.g., banked aircraft turns, will be seen.  Awesome.
+* Interaction with czml
+   * czml references external models
+   * Time-varying czml can manipulate model like animation (articulations), materiel properties, etc.
+   * czml includes a subset of model JSON, e.g., geometry (or all of it)?
 
 ## Rendering Optimizations
 
