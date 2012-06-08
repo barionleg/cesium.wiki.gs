@@ -1,7 +1,5 @@
 # Roadmap
 
-## Always
-
 We're always looking to:
 * Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs
 * Support more content by writing converters from other formats to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
