@@ -69,3 +69,7 @@ Otherwise, an unexpected exception can go unnoticed.
 ## Formatting
 
 * Use four spaces for tabs.
+
+## Strings, error messages, and documentation
+* Use single quotes, ', instead of double quotes, ".  "use strict" is an exception and should use double quotes.
+* When writing reference documentation and exception messages, be concise and use simple language.  For some general advice, please see [Simplified Technical English](http://www.shufra-consultancy.com/simplified-technical-english.php) and [The Elements of Style](http://www.cs.vu.nl/~jms/doc/elos.pdf).
