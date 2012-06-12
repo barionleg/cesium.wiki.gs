@@ -40,7 +40,7 @@ Disadvantages:
 * License terms for our use-case are unclear.
 * Only serves data in TIFF format?
 
-### Build our own terrain server
+### Build our own public terrain server
 
 Perhaps we could build and host our own terrain data set.  There is an abundance of freely-available terrain data available.  Here are some of the larger ones:
 * [National Elevation Dataset](http://ned.usgs.gov/) - High quality terrain data for the conterminous United States, Alaska, Hawaii, and territorial islands.  Resolution as high as 3 meters for parts of the U.S.
