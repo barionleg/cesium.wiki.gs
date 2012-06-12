@@ -56,11 +56,11 @@ Disadvantages:
 * Hosting fees might get expensive.  Who pays?
 * Significant work to process the terrain data to a common projection/datum, fill voids, etc.
 
+### Private terrain servers
 
-## Design and implementation ideas for streaming imagery.
+One option is to implement support for standard protocols like WMS and TMS (for example, with terrain servers like [Geoserver](http://geoserver.org)) and leave acquiring the actual terrain data as an "exercise for the reader."  For example, individual Cesium integrators could populate a private terrain server with DTED data or other data specific to their use-cases, and render that in Cesium.
 
-* Stream world terrain from servers like [Esri](http://resources.arcgis.com/content/imagery/10.0/world_elevation).
-* Stream (converted) DTED files using [Geoserver](http://geoserver.org) via WMS.
+## Rendering ideas
 
 * Client-side (approximate) level-of-detail control.
 * Show terrain in Columbus view.
@@ -70,11 +70,7 @@ Disadvantages:
    * Fill cracks between tiles.  How can our screen-space work for ellipsoid tiles be adapted?  Plan B - skirts.
    * Popping artifacts.  Morph between LODs?  Do nothing?
 
-## Medium term
-
-* Host terrain on the amazon cloud?  Or [Storm](http://www.stormondemand.com/) for its SSDs?
-
-## Longer term
+### Longer term
 
 * Pick on terrain and get exact position - not dependent on terrain LOD.
 * Does laying down z first improve performance?  Horizon views only?  Is walking the tree in front-to-back order enough?
