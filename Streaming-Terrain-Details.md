@@ -1,4 +1,12 @@
-Design and implementation ideas for streaming imagery.
+When you fire up Cesium for the first time, the first thing you probably notice is the high-resolution imagery data.  As you zoom closer, however, you notice that the Earth is just a smooth spheroid.  Where's the terrain?
+
+High quality terrain visualization dramatically increases the realism of a virtual globe.  For that reason, it is one of our highest priorities to bring high-resolution, streaming, world-wide terrain to Cesium.
+
+Fortunately, large-scale terrain rendering is a well-researched problem.  It still, however, presents a number of significant engineering challenges, some of which are described on this page.  
+
+This is an area that has plenty of opportunities for interested folks to get involved and contribute.  If that's you, please introduce yourself on the [development mailing list](https://groups.google.com/d/forum/cesium-dev).
+
+## Design and implementation ideas for streaming imagery.
 
 * Stream world terrain from servers like [Esri](http://resources.arcgis.com/content/imagery/10.0/world_elevation).
 * Stream (converted) DTED files using [Geoserver](http://geoserver.org) via WMS.
