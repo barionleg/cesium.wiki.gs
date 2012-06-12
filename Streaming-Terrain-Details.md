@@ -38,6 +38,7 @@ Advantages:
 Disadvantages:
 * VERY tiny terrain tiles - 32x32 pixels.  Our client will need to request hundreds of tiles to render a scene.
 * License terms for our use-case are unclear.
+* Only serves data in TIFF format?
 
 ### Build our own terrain server
 
