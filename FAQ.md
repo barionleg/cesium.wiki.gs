@@ -26,6 +26,10 @@ Cesium requires a video card that supports WebGL.  Almost all video cards from N
 
 To see if your video card supports WebGL, visit our [WebGL Report](http://www.webglreport.com).
 
+### Cesium runs in a browser, but can it also be used to develop a standalone app?
+
+We haven't tried it, but you may be able to use [WebKit](http://www.webkit.org/), [Qt](http://arstechnica.com/business/2012/04/an-in-depth-look-at-qt-5-making-javascript-a-first-class-citizen-for-native-cross-platform-developme/), or [node-webgl](https://github.com/mikeseven/node-webgl) to develop a desktop app using Cesium.  Let us know if you do.
+
 ## Formats
 
 ### What maps are supported?
