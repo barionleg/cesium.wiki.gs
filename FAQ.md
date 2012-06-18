@@ -1,30 +1,55 @@
-
 ## Platforms
 
-**Q**: Does Cesium require an install or a plugin?
+### Does Cesium require an install or a plugin?
 
-**A**: No.  Cesium runs without an install.  It uses HTML5 standards, namely WebGL, that are natively supported by web browsers.  The only exception is using Internet Explorer requires the [Chrome Frame plugin](http://www.google.com/chromeframe).
+No.  Cesium runs without an install.  It uses HTML5 standards, namely [WebGL](http://www.khronos.org/webgl/), that are natively supported by browsers.  The only exception is that Internet Explorer requires the [Chrome Frame plugin](http://www.google.com/chromeframe).
 
-**Q**: What browsers are supported?
+### What browsers are supported?
 
-**A**: Recent versions of Chrome, Firefox, and Safari are supported.  Internet Explorer is supported by using the [Chrome Frame plugin](http://www.google.com/chromeframe), which is a one-time install that does not require admin rights.  We have not tested on Opera recently, but expect Cesium to work with some tweaks.  Cesium uses [WebGL](http://www.khronos.org/webgl/), and therefore requires a browser that supports WebGL.  There is more support information on the [WebGL wiki](http://www.khronos.org/webgl/wiki/Getting_a_WebGL_Implementation).
+Recent versions of Chrome, Firefox, and Safari are supported.  Internet Explorer is supported by using the [Chrome Frame plugin](http://www.google.com/chromeframe), which is a one-time install that does not require admin rights.  We have not tested on Opera, but expect Cesium to work with some tweaks.
+
+Cesium uses WebGL, and therefore requires a browser that supports WebGL.  There is more support information on the [WebGL wiki](http://www.khronos.org/webgl/wiki/Getting_a_WebGL_Implementation).
 
 The best thing to do is try our [demos](http://cesium.agi.com/) on your target browser.
 
-**Q**: What operating systems and devices are supported?
+### What operating systems and devices are supported?
 
-**A**: On desktops, Cesium supports Windows, Linux, and Mac.
+On desktops, Cesium supports Windows, Linux, and Mac.
 
-On mobile, some Android browsers, including Firefox and Opera, have WebGL implementations, but we not ready for prime-time as of June, 2012.  We hope for better WebGL and Cesium support on Android in late 2012 or early 2013.
+On mobile, some Android browsers, including Firefox and Opera, support WebGL, but are not ready for prime-time as of June, 2012.  We hope for better WebGL and Cesium support on Android in late 2012 or early 2013.
 
 Although [hacks](http://atnan.com/blog/2011/11/03/enabling-and-using-webgl-on-ios/) exist, iOS only officially supports WebGL for iAds developers so we have not tested Cesium on iOS.  However, we believe that Apple will see the importance of WebGL and the momentum it has, and make it available to all developers.
 
-## Standards
+### What video cards are supported?
 
-**Q**:  What maps are supported?
+Cesium requires a video card that supports WebGL.  Almost all video cards from NVIDIA and AMD since 2004 support WebGL.
 
-**A**:  WMS, OpenStreetMap Bing, and Esri.
+To see if your video card supports WebGL, visit our [WebGL Report](http://www.webglreport.com).
 
-**Q**:  What OGC standards does Cesium support?
+## Formats
 
-**A**:  WMS and a good bit of KML.  We expect WFS later in 2012.  We intend to propose [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) as a standard to the OGC when it is battle-tested.
+### What maps are supported?
+
+WMS, OpenStreetMap, Bing, and Esri.
+
+### What OGC standards are supported?
+
+WMS and a good bit of KML.  We expect WFS later in 2012.  We intend to propose [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) as a standard to the OGC when it is battle-tested.
+
+### What vector formats are supported?
+
+CZML, ESRI Shapefiles, WebGL Globe JSON, and a good bit of KML.
+
+## CZML
+
+### Is CZML proprietary?
+
+Absolutely not.  We intend to propose [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) as a standard to the OGC when it is battle-tested.
+
+We provide an open source Java and C# [library](https://github.com/AnalyticalGraphicsInc/czml-writer) for writing CZML files, and open source converters to convert from formats like KML and Shapefiles to CZML.  We encourage everyone to write converters to CZML, add CZML rendering support to their engines, and to discuss CZML on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).
+
+### How is CZML different than KML?
+
+CZML is able to accurately describe values that change over time, such as the position of a vehicle, using a variety of numerical interpolations.
+
+CZML can be a flat file or can be streamed, such as from real-time telemetry from a vehicle in flight. Clients may join and leave the stream while it is in progress.
