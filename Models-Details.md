@@ -33,8 +33,9 @@ These optimizations could be on the fly or as a preprocess in the content pipeli
 * If a mesh has the same vertex layout as another mesh, they should be combined into a single vertex buffer, and, possibly even a single draw call if the materials are the same.
 * If transforms are static, the tree can be flattened and positions adjusted so there are less batch-breaking model transform uniforms set, and, therefore, less draw calls.
 * Reorder for the vertex cache.
-* Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Can we also use this code for polyline simplification?
+* Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.  Can we also use this code for polyline simplification?
 * Reduce the size of large textures that are not likely to take up a lot of screen space.
+* Use the [COLLADA Refinery](https://collada.org/mediawiki/index.php/COLLADA_Refinery)?
 
 These optimizations will be done at run-time:
 
