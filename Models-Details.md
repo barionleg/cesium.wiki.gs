@@ -16,9 +16,11 @@ Design and implementation ideas for models.
 
 ## Format
 
-* Read COLLADA client-side or convert COLLADA (and other model formats) to JSON server-side for rendering?
-* Use and contribute back to an open-source converter?
-   * Use the most standard JSON format.  Help define the standard if need be.
+* Read COLLADA client-side?
+* Or convert COLLADA (and other model formats) to JSON server-side?
+   * Use and contribute back to an open-source converter?
+   * Use the most standard JSON format.  Will Khronos propose a COLLADA JSON standard?
+   * Go beyond JSON?  Use typed arrays for vertex data.  Take a close look at [webgl-loader](http://code.google.com/p/webgl-loader/) for mesh compression.
    * The converter should be a library for developers; a command-line tool for scripting; and a hosted web service for the rest of the world.
    * From the end-user's perspective, conversion to JSON should be transparent, e.g., if they drag and drop a COLLADA model, it is sent to the service, and JSON is sent back.
 
