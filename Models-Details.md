@@ -56,7 +56,7 @@ We recognize the need to support the widest possible content, therefore, we need
 
 ## Tools
 
-* COLLADA to JSON converter.  Use [JSON.Net](http://james.newtonking.com/projects/json/help/?topic=ConvertingJSONandXML.html) or [BadgerFish-JSON](http://www.sklar.com/badgerfish/).
+* COLLADA to JSON converter.  Use [JSON.NET](http://james.newtonking.com/projects/json/help/?topic=ConvertingJSONandXML.html) or [BadgerFish-JSON](http://www.sklar.com/badgerfish/).
 * Model editor - load models into a Cesium scene, tweak their animations, etc.
    * Perhaps part of Sandcastle.
 * Useful to integrate with existing WebGL modeling tools?  Do any of these have APIs for accessing models?
