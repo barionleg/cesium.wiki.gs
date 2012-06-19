@@ -2,11 +2,6 @@ Design and implementation ideas for models.
 
 ## Features
 
-* Read COLLADA client-side or convert COLLADA (and other model formats) to JSON server-side for rendering?
-* Use and contribute back to an open-source converter?
-   * Use the most standard JSON format.  Help define the standard if need be.
-   * The converter should be a library for developers; a command-line tool for scripting; and a hosted web service for the rest of the world.
-   * From the end-user's perspective, conversion to JSON should be transparent, e.g., if they drag and drop a COLLADA model, it is sent to the service, and JSON is sent back.
 * COLLADA features
    * Common Profile - most models today use the common profile AFAIK.  We need to generate shaders based on their materials.
    * GLES2 - Recommended for use with WebGL.  Do any models use it yet?
@@ -18,6 +13,14 @@ Design and implementation ideas for models.
    * CZML references external models.
    * Time-varying CZML can manipulate model animation (articulations), materiel properties, etc.
    * CZML includes a subset of model JSON, e.g., geometry (or all of it)?
+
+## Format
+
+* Read COLLADA client-side or convert COLLADA (and other model formats) to JSON server-side for rendering?
+* Use and contribute back to an open-source converter?
+   * Use the most standard JSON format.  Help define the standard if need be.
+   * The converter should be a library for developers; a command-line tool for scripting; and a hosted web service for the rest of the world.
+   * From the end-user's perspective, conversion to JSON should be transparent, e.g., if they drag and drop a COLLADA model, it is sent to the service, and JSON is sent back.
 
 ## Rendering Optimizations
 
@@ -67,6 +70,7 @@ Need to contact developers and look more carefully at each of these JSON formats
    * No activity in six months, but the features are clearly described in README.md on the [github](https://github.com/xeolabs/scenejs-pycollada) page.
 * [OpenWebGlobe](https://github.com/OpenWebGlobe/ColladaToJSON) - A python script to convert from COLLADA to OpenWebGlobe's JSON format.  Uses [pycollada](https://github.com/pycollada/pycollada).  MIT license.
    * Not much actively recently.  Need to find out how far along it is.
+* O3D's [COLLADA to JSON converter](http://code.google.com/p/o3d/wiki/ColladaConverter).  A [blog post](http://o3d.blogspot.com/2009/04/why-json-rulez.html) on their rational - more flexibility.  Doesn't look like it's been touched in a while.
 
 ## Client-side COLLADA
 
@@ -81,4 +85,3 @@ Some libraries read COLLADA directly without converting it.
 ## Resources
 
 * [COLLADA & WebGL](http://www.slideshare.net/remi_arnaud/collada-webgl) - Skip to Slide 43.
-* [http://o3d.blogspot.com/2009/04/why-json-rulez.html](http://o3d.blogspot.com/2009/04/why-json-rulez.html) - Why O3D converts COLLADA to JSON.
