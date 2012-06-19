@@ -34,6 +34,7 @@ These optimizations could be on the fly or as a preprocess in the content pipeli
 * If transforms are static, the tree can be flattened and positions adjusted so there are less batch-breaking model transform uniforms set, and, therefore, less draw calls.
 * Reorder for the vertex cache.
 * Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Can we also use this code for polyline simplification?
+* Reduce the size of large textures that are not likely to take up a lot of screen space.
 
 These optimizations will be done at run-time:
 
@@ -54,7 +55,7 @@ We recognize the need to support the widest possible content, therefore, we need
 
 ## Tools
 
-* COLLADA to JSON converter
+* COLLADA to JSON converter.  Most likely use [BadgerFish-JSON](http://www.sklar.com/badgerfish/).
 * Model editor - load models into a Cesium scene, tweak their animations, etc.
    * Perhaps part of Sandcastle.
 * Useful to integrate with existing WebGL modeling tools?  Do any of these have APIs for accessing models?
@@ -67,6 +68,7 @@ We recognize the need to support the widest possible content, therefore, we need
 
 Need to contact developers and look more carefully at each of these JSON formats.
 
+* CubicVR.js [XML -> BF-JSON](https://github.com/cjcliffe/CubicVR.js/blob/master/source/CubicVR.Utility.js).
 * [scenejs-pycollada](http://scenejs.wikispaces.com/scenejs-pycollada) - A python script to convert from COLLADA to SceneJS.
    * Example [JSON](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/seymour-plane.js) from the [Seymour Plane Demo](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/index.html).
    * No activity in six months, but the features are clearly described in README.md on the [github](https://github.com/xeolabs/scenejs-pycollada) page.
