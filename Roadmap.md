@@ -17,6 +17,7 @@ We're always looking to:
 
 ## To come
 * Draw shapes - ellipsoids, cylinders, boxes, extruded volumes
+* Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Data-driven renderer
    * Improved depth-buffer precision
    * Culling for all objects
