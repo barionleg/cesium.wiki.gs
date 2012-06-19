@@ -34,6 +34,7 @@ Design and implementation ideas for our material system.
 ## Phase 3
 
 * How do we combine multiple materials, e.g.,
+   * A diffuse map and an alpha map to render .png files, for example.  See  [#43](https://github.com/AnalyticalGraphicsInc/cesium/issues/43).
    * A diffuse map and a specular map.
    * Crumbling bricks that combine brick and bump map materials.
    * A bumpy diffuse reflective surface that combines the bump map and diffuse reflection materials.
