@@ -1,0 +1,3 @@
+**NOTE: This page is still a work in process**
+
+_This page describes how CZML is processed and visualized using Cesium.  While not strictly required, it may help to check out the [CZML Language Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) and [Cesium Architecture overview](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) before proceeding._
