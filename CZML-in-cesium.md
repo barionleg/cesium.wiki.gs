@@ -61,6 +61,13 @@ dynamicObjectCollection.processCzml(czml);
 var clock = new Clock(startTime, stopTime);
 ```
 
+After the initial set-up, simply call update in your requestAnimationFrame callback.
+
+```javascript
+var currentTime = clock.tick();
+visualizers.update(currentTime);
+```
+
 Let's break this code up line by line and explain what's going on in each step.
 
 First, we simply create the scene and parse the CZML document.  For simplicity, and the sake of this example, assume getJson is a magic function that synchronously retrieves the desired file from the server.
