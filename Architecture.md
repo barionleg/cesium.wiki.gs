@@ -194,8 +194,10 @@ var dynamicObjectCollection = new DynamicObjectCollection();
 dynamicObjectCollection.processCzml(czml);
 //Create the standard CZML visualizer collection
 var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
+//Figure out the time span of the data
+var availability = dynamicObjectCollection.computeAvailability();
 //Create a Clock object to drive time.
-var clock = new Clock(startTime, stopTime);
+var clock = new Clock(availability.start, availability.stop);
 
 ```
 After the initial set-up, simply call update in your requestAnimationFrame callback.
@@ -205,7 +207,7 @@ var currentTime = clock.tick();
 visualizers.update(currentTime);
 ```
 
-While the above example is only 8 lines of code (ignoring comments), there's obviously a lot of work being done under-the-hood to parse and visualize the data.  There's also plenty of room for extending and customizing behavior for each use case.  The primary concept not seen in the above code is DynamicObject, which are created by the call to processCzml and populate the dynamicObjectCollection.  These object in turn, contain instances of DynamicProperty, which map to a CZML standard object and in most cases of a direct analogue to a Cesium primitive.  For example, Billboard.  For example, the below code gets all of the objects in the collection, see if they have a DynamicBillboard instance with a DynamicProperty indicating scale and retrieve the scale value for the current time.
+While the above example is only 9 lines of code (ignoring comments), there's obviously a lot of work being done under-the-hood to parse and visualize the data.  There's also plenty of room for extending and customizing behavior for each use case.  The primary concept not seen in the above code is DynamicObject, which are created by the call to processCzml and populate the dynamicObjectCollection.  These object in turn, contain instances of DynamicProperty, which map to a CZML standard object and in most cases of a direct analogue to a Cesium primitive.  For example, Billboard.  For example, the below code gets all of the objects in the collection, see if they have a DynamicBillboard instance with a DynamicProperty indicating scale and retrieve the scale value for the current time.
 
 ```javascript
 var dynamicObjects = dynamicObjectCollection.getObjects();
