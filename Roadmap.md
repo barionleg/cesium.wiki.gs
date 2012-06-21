@@ -16,6 +16,7 @@ We're always looking to:
 * COLLADA models - [details](Models-Details)
 
 ## To come
+If you are interested in helping develop any of the below features, just let us know!
 * Draw shapes - ellipsoids, cylinders, boxes, extruded volumes
 * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Data-driven renderer
@@ -38,3 +39,22 @@ We're always looking to:
 * Particle system
 * Ocean
 * Volumetric clouds
+* CZML
+   * Layers
+   * Path visualiztion
+   * Improved materials support
+   * Custom axes & reference frames
+   * Buffer availability and "buffering" behavior
+   * Imagery and terrain sources
+   * Network links
+   * Camera/Tours
+   * Arbitrary link support (# and $ in CZML spec)
+   * CZML defined user interfaces, possibly with markdown
+   * Model support, once Cesium support exists.
+   * Z order support, once Cesium exists.
+   * Human readable messages/events raised in CZML
+* Widgets & Apps
+   * Embeddable Cesium Viewer.
+   * Improved TimeLine widget
+   * Standard Cesium toolbar
+   * CZML Table of contents/Document Manager widget
