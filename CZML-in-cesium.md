@@ -57,8 +57,10 @@ var dynamicObjectCollection = new DynamicObjectCollection();
 var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
 //Process the CMZL, which populates the collection with DynamicObjects
 dynamicObjectCollection.processCzml(czml);
+//Figure out the time span of the data
+var availability = dynamicObjectCollection.computeAvailability();
 //Create a Clock object to drive time.
-var clock = new Clock(startTime, stopTime);
+var clock = new Clock(availability.start, availability.stop);
 ```
 
 After the initial set-up, simply call update in your requestAnimationFrame callback.
@@ -100,7 +102,27 @@ The processCzml call simply iterates over all of the CZML packets in our JSON ob
 
 2. Once it has the correct DynamicObject, it calls each update function, passing in the individual CZML packet and the DynamicObject it applies.  This function will see if the packet has any relevant data, and if so merge that data into the existing DynamicObject.  In our example, two separate processor functions actually do something, DynamicObject.processCzmlPacketPosition and DynamicBillboard.processCzmlPacket, both of which are fairly self explanatory and create a position property and billboard property respectively.  It's important to note that while position is a single DynamicProperty, billboard is an aggregate object that contains several DynamicProperty instances, each relating to one aspect of the billboard.
 
-TODO
+When the function returns, dynamicObjectCollection will include all of the dynamic objects present in the CZML.  DynamicObjectCollection will also fire events for interested parties whenever new object properties are available, but we'll discuss more on that later.
+
+
+```javascript
+//Figure out the time span of the data
+var availability = dynamicObjectCollection.computeAvailability();
+//Create a Clock object to drive time.
+var clock = new Clock(availability.start, availability.stop);
+```
+
+Finally, we create a Clock object to help manage time for us.  In order to find out what time span our CZML file actually covered, we call dynamicObjectCollection.computeAvailability() which will return a TimeInterval of available data.  Clock takes a few other optional parameters, so check the reference documentation for details.
+
+Now that we have loaded our CZML and configure our Visualizers, it's just a matter of telling the clock to advance and our visualizers to update each frame.
+
+```javascript
+var currentTime = clock.tick();
+visualizers.update(currentTime);
+```
+clock.tick() returns the new current time, but clock.curretTime will also have the new value.  The VisualizerCollection simply iterates over all of the underlying visualizer instances and calls update on each one.  Each visualizer is then responsible for updating primitives for each of the dynamic objects in the dynamicObjectCollection.
+
+Hopefully by now you have a pretty good understanding of the basics of loading and visualizing CZML with Cesium.  In the next sections, we'll go even further under the hood to discuss exactly what's going as well as explore advanced use cases such as streaming and compositing of CZML documents.
 
 ## Processing
 
