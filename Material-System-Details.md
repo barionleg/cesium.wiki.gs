@@ -2,36 +2,27 @@ Design and implementation ideas for our material system.
 
 ## Phase 1
 
-* Done: Add simple tests that verify the material by rendering a polygon.  Currently, we don't have tests for most materials._
-* Done: Explore materials implemented using procedural textures, i.e., brick, marble, granite, wood, asphalt, etc.  Later, we'll procedurally shade a city with these building blocks._
-* Done: Add better reference documentation._
-* Done: Add an opacity/alpha map material.
-* Done: Decouple diffuse and specular components.
+* _Done_: Add simple tests that verify the material by rendering a polygon.  Currently, we don't have tests for most materials.
+* _Done_: Explore materials implemented using procedural textures, i.e., brick, marble, granite, wood, asphalt, etc.  Later, we'll procedurally shade a city with these building blocks.
+* _Done_: Add better reference documentation.
+* _Done_: Add an opacity/alpha map material.
+* _Done_: Decouple diffuse and specular components.
    * Split `agi_getMaterialColor` into two separate GLSL functions: `agi_getMaterialDiffuseComponent` and `agi_getMaterialSpecularComponent`.
    * Add gloss/specular map material.
    * This will slightly impact the lighting code.
-* Done: Allow the material to modify the surface normal.
+* _Done_: Allow the material to modify the surface normal.
    * Add a third GLSL function that materials can optionally implement called `agi_getMaterialNormal` that takes and returns a normal.
    * Implement a bump map material using this.  Implement a normal map material too.
-* Done: Add the world-space eye direction, i.e. the vector from the camera to the fragment in world coordinates, to `agi_getMaterial*` (or do we only need it for `agi_getMaterialDiffuseComponent` initially?).  Use this to implement:
+* _Done_: Add the world-space eye direction, i.e. the vector from the camera to the fragment in world coordinates, to `agi_getMaterial*` (or do we only need it for `agi_getMaterialDiffuseComponent` initially?).  Use this to implement:
    * A diffuse reflective material that uses an environment map for reflection, and a 2D texture for the diffuse component.  Blend these with a `reflectivity` parameter.
    * A diffuse refractive material that also uses an environment map.  Expose the two indices of refraction.
    * A Fresnel material - approximate, of course.
    * Include optional reflection and refractive maps for the above reflective and refractive materials, maybe Fresnel.
-* Done: All materials should return the specular exponent.
-* Done: All materials should return the emission color.
+* _Done_: All materials should return the specular exponent.
+* _Done_: All materials should return the emission color.
    * Add a material for an emission map.
 
 ## Phase 2
-
-* Polylines
-   * Polylines currently use very simple shaders, and are rendered in three passes using the stencil buffer to achieve an outline effect (turn ANGLE off; start Chrome with `--use-gl=desktop`).
-   * Replace the three-pass algorithm with a single pass algorithm that, in a fragment shader, uses the distance from the fragment to the line to determine if the fragment is part of the outline.  Read [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
-   * First hard-code the above in the Polyline, then factor it out into a new `PolylineOutlineMaterial`.
-   * Create a `PolylineGlowMaterial` based on [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
-   * Make Polylines work with the rest of the materials as reasonable.  Polylines will need to be able to compute at least 1D texture coordinates.  I could see some potential for 2D and 3D coordinates as well.  All materials will not work with all primitives.  We'll need to document a feature matrix.
-
-## Phase 3
 
 * How do we combine multiple materials, e.g.,
    * A diffuse map and an alpha map to render .png files, for example.  See  [#43](https://github.com/AnalyticalGraphicsInc/cesium/issues/43).
@@ -40,9 +31,21 @@ Design and implementation ideas for our material system.
    * A bumpy diffuse reflective surface that combines the bump map and diffuse reflection materials.
    * A diffuse map, diffuse reflective, specular map, and bump map.  A bumpy, diffuse lit and reflective surface with shiny areas.
    * Blend two diffuse maps based on a parameter, e.g., terrain height, or third map.
-* Implement the `CentralBody` fragment shader using materials, instead of hard-coding bump, specular, etc.
+
+## Phase 3
+
+* Polylines
+   * Polylines currently use very simple shaders, and are rendered in three passes using the stencil buffer to achieve an outline effect (turn ANGLE off; start Chrome with `--use-gl=desktop`).
+   * Replace the three-pass algorithm with a single pass algorithm that, in a fragment shader, uses the distance from the fragment to the line to determine if the fragment is part of the outline.  Read [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
+   * First hard-code the above in the Polyline, then factor it out into a new `PolylineOutlineMaterial`.
+   * Create a `PolylineGlowMaterial` based on [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
+   * Make Polylines work with the rest of the materials as reasonable.  Polylines will need to be able to compute at least 1D texture coordinates.  I could see some potential for 2D and 3D coordinates as well.  All materials will not work with all primitives.  We'll need to document a feature matrix.
 
 ## Phase 4
+
+* Implement the `CentralBody` fragment shader using materials, instead of hard-coding bump, specular, etc.
+
+## Phase 5
 
 Details to follow...
 
@@ -50,7 +53,7 @@ Details to follow...
 * Light types: point, direction, spot.  Area?
 * Multiple lights: turn lights on/off per primitive.  This will replace `affectedByLighting` on [Polygon](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/Polygon.js) and [CentralBody](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/CentralBody.js).
 
-## Phase 5
+## Phase 6
 
 * How does this fit with the effects framework for models?  Can they work well together?
 
