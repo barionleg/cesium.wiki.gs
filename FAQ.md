@@ -13,8 +13,9 @@
 	* [What OGC standards are supported?](#OGC)
 	* [What vector formats are supported?](#vectorFormats)
 * [**CZML**](#czml)
-	* [Is CZML proprietary?](#proprietary)
-	* [How is CZML different than KML?](#kml)
+	* [Is CZML a file format?](#czml_format)
+	* [How is CZML different than KML?](#czml_kml)
+	* [Is CZML proprietary?](#czml_proprietary)
 
 <a id="general"></a>
 ## General
@@ -87,16 +88,21 @@ CZML, ESRI Shapefiles, WebGL Globe JSON, and a good bit of KML.
 <a id="czml"></a>
 ## CZML 
 
-<a id="proprietary"></a>
-### Is CZML proprietary?
+<a id="czml_format"></a>
+### Is CZML a file format?
 
-Absolutely not.  We intend to propose [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) as a standard to the OGC when it is battle-tested.
+CZML is more general; it is a JSON-based language.  It can be stored in a file or dynamically created in memory, and incrementally streamed to a client.  See the [CZML Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide).
 
-We provide an open source Java and C# [library](https://github.com/AnalyticalGraphicsInc/czml-writer) for writing CZML files, and open source converters to convert from formats like KML and Shapefiles to CZML.  We encourage everyone to write converters to CZML, add CZML rendering support to their engines, and to discuss CZML on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).
-
-<a id="kml"></a>
+<a id="czml_kml"></a>
 ### How is CZML different than KML?
 
 CZML is able to accurately describe values that change over time, such as the position of a vehicle, using a variety of numerical interpolations.
 
 CZML can be a flat file or can be streamed, such as from real-time telemetry from a vehicle in flight. Clients may join and leave the stream while it is in progress.
+
+<a id="czml_proprietary"></a>
+### Is CZML proprietary?
+
+Absolutely not.  We intend to propose [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) as a standard to the OGC when it is battle-tested.
+
+We provide an open source Java and C# [library](https://github.com/AnalyticalGraphicsInc/czml-writer) for writing CZML files, and open source converters to convert from formats like KML and Shapefiles to CZML.  We encourage everyone to write converters to CZML, add CZML rendering support to their engines, and to discuss CZML on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).
