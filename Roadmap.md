@@ -23,6 +23,7 @@ If you are interested in helping develop any of the below features, just let us 
    * Improved depth-buffer precision
    * Culling for all objects
    * Post-processing framework
+* GLSL #include system - [details](GLSL-Details)
 * Stars
 * Improve 3D/2D/Columbus view transitions
 * Improve mobile support
