@@ -40,7 +40,7 @@ No.  Cesium runs without an install.  It uses HTML5 standards, namely [WebGL](ht
 <a id="browsers"></a>
 ### What browsers are supported?
 
-Recent versions of Chrome, Firefox, and Safari are supported.  Internet Explorer is supported by using the [Chrome Frame plugin](http://www.google.com/chromeframe), which is a one-time install that does not require admin rights.  We have not tested on Opera, but expect Cesium to work with some tweaks.
+Recent versions of Chrome, Firefox, and Safari are supported.  Internet Explorer is supported by using the [Chrome Frame plugin](http://www.google.com/chromeframe), which is a one-time install that does not require admin rights.  Cesium does not currently run on Opera (if you can help with that, please get in touch with us!)
 
 Cesium uses WebGL, and therefore requires a browser that supports WebGL.  There is more support information on the [WebGL wiki](http://www.khronos.org/webgl/wiki/Getting_a_WebGL_Implementation).
 
