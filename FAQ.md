@@ -25,7 +25,7 @@
 
 <!-- TODO: Mention precision -->
 
-Cesium is tailored for virtual globe and map applications, so it provides a higher level of abstraction than general graphics engines for things like streaming imagery from map servers, drawing KML, and accurately referencing a WGS84 ellipsoid.  Usually these features need to be built on top of a general graphics engine.  Cesium also exposes it's low-level graphics engine, making it quite flexible.
+Cesium is tailored for virtual globe and map applications, so it provides a higher level of abstraction than general graphics engines for things like streaming imagery from map servers, drawing KML, and accurately referencing a WGS84 ellipsoid.  Usually these features need to be built on top of a general graphics engine.  Cesium also exposes its low-level graphics engine, making it quite flexible.
 
 In addition, Cesium is particularly well-suited for visualizing dynamic data on globes and maps, either by using the API directly or generating [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide).
 
