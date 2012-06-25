@@ -177,11 +177,11 @@ scene.getCamera().getControllers().addFlight({
 
 <img src="architectureFigures/dynamicScene.png" width="30%" align="right" />
 
-Dynamic Scene builds on top of the previous three layers to enable data driven visualization, primarily via the processing of CZML; a new JSON based schema for describing a time-dynamic graphical scene.
+Dynamic Scene builds on top of the previous three layers to enable data-driven visualization, primarily via the processing of CZML, a new JSON based schema for describing a time-dynamic graphical scene.
 
-Rather than manually updating primitives every frame, Dynamic Scene allows you to load or stream your data into a collection of high-level DynamicObjects, which are then rendered using Visualizers.  A single update call is all that's required to update the entire scene to a new time.
+Rather than manually update primitives every frame, Dynamic Scene allows us to load or stream our data into a collection of high-level `DynamicObject`s, which are then rendered using Visualizers.  A single update call is all that's required to update the entire scene to a new time.
 
-The below code is all that's needed to load and visualize any non-streaming CZML document into any Cesium based application.  
+The code below is all that's needed to load and visualize any non-streaming CZML document into any Cesium based application.  
 
 ```javascript
 //Create a scene
@@ -190,7 +190,7 @@ var scene = new Scene(document.getElementById("canvas"));
 var czml = JSON.parse(getJson('http://cesium.agi.com/someFile.czml'));
 //Create a DynamicObjectCollection for handling the CZML
 var dynamicObjectCollection = new DynamicObjectCollection();
-//Process the CMZL, which populates the collection with DynamicObjects
+//Process the CZML, which populates the collection with DynamicObjects
 dynamicObjectCollection.processCzml(czml);
 //Create the standard CZML visualizer collection
 var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
@@ -207,7 +207,7 @@ var currentTime = clock.tick();
 visualizers.update(currentTime);
 ```
 
-While the above example is only 9 lines of code (ignoring comments), there's obviously a lot of work being done under-the-hood to parse and visualize the data.  There's also plenty of room for extending and customizing behavior for each use case.  The primary concept not seen in the above code is DynamicObject, which are created by the call to processCzml and populate the dynamicObjectCollection.  These object in turn, contain instances of DynamicProperty, which map to a CZML standard object and in most cases of a direct analogue to a Cesium primitive.  For example, Billboard.  For example, the below code gets all of the objects in the collection, see if they have a DynamicBillboard instance with a DynamicProperty indicating scale and retrieve the scale value for the current time.
+While the above example is only nine lines of code ignoring comments, there's obviously a lot of work being done under-the-hood to parse and visualize the data.  There's also plenty of room for extending and customizing behavior for each use case.  The primary concept not seen in the above code is `DynamicObject`, which are created by the call to `processCzml` and populate the `dynamicObjectCollection`.  These object in turn, contain instances of `DynamicProperty`, which map to a CZML standard object and in most cases of a direct analogue to a Cesium primitive, e.g., `Billboard`.  For example, the code below gets all of the objects in the collection, sees if they have a `DynamicBillboard` instance with a `DynamicProperty` indicating scale, and retrieves the scale value for the current time.
 
 ```javascript
 var dynamicObjects = dynamicObjectCollection.getObjects();
@@ -221,6 +221,6 @@ for(var i = 0, len = dynamicObjects.length; i < len; i++) {
     }
 }
 ```
-Even though the above code isn't very useful on it's own, it's easy to see how an object could be written which maintains a BillboardCollection primitive that mirrors the data in the dynamicObjectCollection at a given time; in fact this is exactly what DynamicBillboardVisualizer does and it is a member of the standard VisualizerCollection created by the method of a similar name in the first example.
+Even though the above code isn't very useful on it's own, it's easy to see how an object could be written which maintains a `BillboardCollection` primitive that mirrors the data in the `dynamicObjectCollection` at a given time; in fact this is exactly what `DynamicBillboardVisualizer` does and it is a member of the standard `VisualizerCollection` created by the method of a similar name in the first example.
 
 A full overview of CZML, including its structure and schema, as well as an in-depth overview of the Cesium client-side implementation, can be found in the [Cesium Language Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide).
