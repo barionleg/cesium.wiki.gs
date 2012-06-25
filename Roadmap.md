@@ -16,18 +16,20 @@ We're always looking to:
 * COLLADA models - [details](Models-Details)
 
 ## To come
-If you are interested in helping develop any of the below features, just let us know!
-* Draw shapes - ellipsoids, cylinders, boxes, extruded volumes
-* Military symbol sets such as MS2525 and NTDS.  SVG files?
+
+If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
+
+* Improve precision - remove jittering
 * Data-driven renderer
    * Improved depth-buffer precision
    * Culling for all objects
    * Post-processing framework
 * GLSL #include system - [details](GLSL-Details)
 * Stars
+* Draw shapes - ellipsoids, cylinders, boxes, extruded volumes
+* Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Improve 3D/2D/Columbus view transitions
 * Improve mobile support
-* Improve precision - remove potential jittering
 * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Build and test server
 * Shadows
