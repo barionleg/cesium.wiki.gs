@@ -3,11 +3,11 @@ Right click and save an image, or download the <a href="Cesium_Logo_Color.SVG">s
 <pre>Color with white background:
 <img src="logos/Cesium_Logo_Color.jpg" />
 
-Color with alpha background:
-<img src="logos/Cesium_Logo_Color_1.jpg" />
+Color with alpha, for light backgrounds:
+<img src="logos/Cesium_Logo_forLightBackground.png" />
 
-Color with white text and alpha background: 
-<img src="logos/Cesium_Logo_Color_2.jpg" />
+Color with alpha, for dark backgrounds:
+<img src="logos/Cesium_Logo_forDarkBackground.png" />
 
 Black on white:
 <img src="logos/Cesium_Logo_Black.jpg" />
