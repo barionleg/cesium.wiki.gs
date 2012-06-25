@@ -200,7 +200,7 @@ var availability = dynamicObjectCollection.computeAvailability();
 var clock = new Clock(availability.start, availability.stop);
 
 ```
-After the initial set-up, simply call update in your requestAnimationFrame callback.
+After the initial set-up, we call `update` in our `requestAnimationFrame` callback.
 
 ```javascript
 var currentTime = clock.tick();
