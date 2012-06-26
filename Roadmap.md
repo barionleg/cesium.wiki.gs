@@ -53,11 +53,12 @@ If you are interested in implementing any of these features, start a discussion 
    * Camera/Tours
    * Arbitrary link support (# and $ in CZML spec)
    * CZML defined user interfaces, possibly with markdown
-   * Model support, once Cesium support exists.
+   * Model support, once Cesium support exists
    * Z order support, once Cesium exists.
    * Human readable messages/events raised in CZML
 * Widgets & Apps
-   * Embeddable Cesium Viewer.
+   * OWF widget
+   * Embeddable Cesium Viewer
    * Improved TimeLine widget
    * Standard Cesium toolbar
    * CZML Table of contents/Document Manager widget
