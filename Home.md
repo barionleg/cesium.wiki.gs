@@ -19,7 +19,7 @@
 * [[JavaScript Coding Conventions]] - keeps our code consistent.
 * [[Code Review Tips]] - worthwhile code reviews share knowledge and improve code quality.
 
-## For Fun
+## Logos, Presentations, Publications
 
 * [[Cesium Logos]] - for use in Cesium apps and related material.
 * [[Presentations and Publications]] - on Cesium and the underlying technology.
