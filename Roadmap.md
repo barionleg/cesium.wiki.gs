@@ -29,7 +29,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Draw shapes - ellipsoids, cylinders, boxes, extruded volumes
 * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Improve 3D/2D/Columbus view transitions
-* Improve mobile support
+* Improve mobile support - consider [pointer.js](https://github.com/borismus/pointer.js)
 * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Build and test server
 * Shadows
