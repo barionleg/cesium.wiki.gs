@@ -11,6 +11,7 @@ Tips
 * Be concise.  Make every word tell.  Less reading means more coding.
 * Provide motivation.  Unless it is obvious, don't just suggest a change.  Suggest _why_ the change should be made.
 * See the forest through the trees.  Don't just review code one line at a time.  Consider the big picture and its implications.
+* Bring other people into the conversation.  If someone has expertise with a particular language feature or problem domain under review, invite them to help.
 
 Resources
 * [Practice Conspicuous Code Review](http://producingoss.com/en/producingoss.html#code-review) in [Producing Open Source Software](http://producingoss.com/).
