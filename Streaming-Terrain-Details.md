@@ -123,6 +123,12 @@ This section is a work in progress, even more so than the rest of this page!
 * Knows its load pipeline state, load fail count, etc.
 * Represents exactly one texture, one texture matrix.
 
+### Process of creating new tiles - manged by CentralBody?
+
+1. TilingScheme creates new tile(s).
+2. GeometryProvider fills tiles with geometry.
+3. ...
+
 ## Resources
 
 * Lots of terrain LOD papers at [vterrain.org](http://vterrain.org/LOD/Papers/).  Also see their [Global Elevation Datasets](http://vterrain.org/Elevation/global.html).
