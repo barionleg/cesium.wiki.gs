@@ -82,6 +82,47 @@ One option is to implement support for standard protocols like WMS and TMS (for 
 * Polylines on terrain - perhaps see if we can use our [SIGGRAPH work](http://blogs.agi.com/agi/2011/04/25/a-screen-space-approach-to-rendering-polylines-on-terrain/) without a geometry shader.
 * Billboards that do not partially sink under terrain.
 
+## Architecture
+
+This section is a work in progress, even more so than the rest of this page!
+
+#### CentralBody
+
+* Primarily responsible for the rendering of terrain and imagery.  Delegates various parts of the process to other types listed here.
+
+#### TilingScheme
+
+* Defines the shape of the quadtree.  For example, tiles may be web-mercator-aligned or geographic/WGS84 aligned.
+* Creates quadtree tiles on demand.
+* Transforms tile coordinates (x, y, level) to world extent.
+
+#### GeometryProvider
+
+* Async-oriented, loading is throttled.
+* Creates geometry for a given tile by tessellating an ellipsoid or height map, or by downloading a mesh.  Fills in the Tile provided to it.  Texture coordinates are included in the mesh.
+* Has a TilingScheme.
+
+#### Tile
+
+* A node in the quadtree.
+* Has tile coordinates, x, y, and level.
+* Defines the geometric shape of the terrain surface using a mesh or vertex array, plus a "center" for RTC rendering.
+* Knows its bounding volume (sphere?), occludee point for horizon culling, and geometric error.
+* Doesn't _do_ anything, really.  Just holds data.
+
+#### ImageryProvider
+
+* Async-oriented, loading is throttled.
+* Fills in the texture and texture matrix on the Tile provided to it.
+
+#### ImageryLayer
+
+#### TileImagery
+
+* The imagery associated with a single tile.
+* Knows its load pipeline state, load fail count, etc.
+* Represents exactly one texture, one texture matrix.
+
 ## Resources
 
 * Lots of terrain LOD papers at [vterrain.org](http://vterrain.org/LOD/Papers/).  Also see their [Global Elevation Datasets](http://vterrain.org/Elevation/global.html).
