@@ -136,7 +136,7 @@ The code that does this probably lives in `CentralBody`.
 2. Ask `GeometryProvider` to fill each tile with the tile mesh, bounding volume, geometric error, etc.  This happens asynchronously.
 3. Ask each `ImageryProvider` to fill each tile with a texture representing this tile's imagery from the imagery provider.  This happens asynchronously.
 
-To be decided: When terrain and imagery tiles are not aligned, is each imagery tile that applies to a terrain tile a separate texture with a separate texture matrix?  Or do we render tiles to a FBO attached to a texture that _is_ aligned with the terrain tile?
+To be decided: When terrain and imagery tiles are not aligned, is each imagery tile that applies to a terrain tile a separate texture with a separate texture matrix?  Or do we render imagery tiles to a FBO attached to a texture that _is_ aligned with the terrain tile?
 
 ## Resources
 
