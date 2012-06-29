@@ -101,10 +101,10 @@ This section is a work in progress, even more so than the rest of this page!
 * Creates quadtree tiles on demand.
 * Transforms tile coordinates (x, y, level) to world extent.
 
-#### GeometryProvider
+#### TerrainProvider
 
 * Async-oriented, loading is throttled.
-* Creates geometry for a given tile by tessellating an ellipsoid or height map, or by downloading a mesh.  Fills in the Tile provided to it.  Texture coordinates are included in the mesh.
+* Creates surface geometry (terrain) for a given tile by tessellating an ellipsoid or height map, or by downloading a mesh.  Fills in the Tile provided to it.  Texture coordinates are included in the mesh.
 * Has a TilingScheme.
 
 #### Tile
@@ -133,10 +133,12 @@ This section is a work in progress, even more so than the rest of this page!
 The code that does this probably lives in `CentralBody`.
 
 1. Ask `TilingScheme` to create new tile(s).  They are initially empty.
-2. Ask `GeometryProvider` to fill each tile with the tile mesh, bounding volume, geometric error, etc.  This happens asynchronously.
+2. Ask `TerrainProvider` to fill each tile with the tile mesh, bounding volume, geometric error, etc.  This happens asynchronously.
 3. Ask each `ImageryProvider` to fill each tile with a texture representing this tile's imagery from the imagery provider.  This happens asynchronously.
 
 To be decided: When terrain and imagery tiles are not aligned, is each imagery tile that applies to a terrain tile a separate texture with a separate texture matrix?  Or do we render imagery tiles to a FBO attached to a texture that _is_ aligned with the terrain tile?
+
+### Process of rendering terrain and imagery
 
 ## Resources
 
