@@ -2,7 +2,7 @@
 
 We're always looking to:
 * Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs
-* Support more content by writing converters from other formats to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
+* Support more content by writing converters from other formats (GML, GeoJSON, ...) to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
 * Write tutorials and improve reference documentation and examples
 * Improve visual quality and performance - [details](Visual-Quality-and-Performance-Details)
 * Improve platform support by fixing issues on various browsers, devices, or video cards
@@ -30,6 +30,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Improve 3D/2D/Columbus view transitions
 * Improve mobile support - consider [pointer.js](https://github.com/borismus/pointer.js)
+* Support standard web servers: WMTS, WFS, WCS, ...
 * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Build and test server
 * Shadows
