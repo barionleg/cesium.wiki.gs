@@ -9,7 +9,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 ## Examples
 
 * Provide an `@example` for all non-trivial functions and properties.  Users will look for an example before reading the actual doc.
-* Limit code in 1@example1 tags to 80 lines so it does not overflow.
+* Limit code in `@example` tags to 80 lines so it does not overflow.
 
 ## Classes
 
