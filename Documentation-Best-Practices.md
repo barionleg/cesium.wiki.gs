@@ -69,7 +69,7 @@ define(function() {
     /**
      * A 2D Cartesian point.
      *
-     * If either <code>x</code> or <code>y</code> is undefined, then the corresponding
+     * If either &lt;code>x&lt;/code> or &lt;code>y&lt;/code> is undefined, then the corresponding
      * component will be initialized to 0.0.
      *
      * @alias Cartesian2
@@ -84,7 +84,7 @@ define(function() {
     var Cartesian2 = function(x, y) {
 
         /**
-         * DOC_TBA
+         * The Cartesian's x-coordinate.
          *
          * @type Number
          *
@@ -93,7 +93,7 @@ define(function() {
         this.x = (typeof x !== 'undefined') ? x : 0.0;
 
         /**
-         * DOC_TBA
+         * The Cartesian's y-coordinate.
          *
          * @type Number
          *
@@ -103,11 +103,16 @@ define(function() {
     };
 
     /**
-     * Returns true if this Cartesian equals <code>other</code> componentwise.
+     * Returns true if this Cartesian equals &lt;code>other&lt;/code> componentwise.
      *
      * @memberof Cartesian2
      * @param {Cartesian2} other The Cartesian to compare for equality.
-     * @return {Boolean} <code>true</code> if the Cartesians are equal componentwise; otherwise, <code>false</code>.
+     * @return {Boolean} &lt;code>true&lt;/code> if the Cartesians are equal componentwise; otherwise, &lt;code>false&lt;/code>.
+     * 
+     * @example
+     * var v = new Cartesian2(1, 2);
+     * var w = new Cartesian2(1, 2);
+     * var result = v.equals(w);    // true
      */
     Cartesian2.prototype.equals = function(other) {
         return (this.x === other.x) && (this.y === other.y);
