@@ -24,7 +24,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 </pre>
 
 
-* Use `@exports moduleName` to document modules that are not classes, including standalone functions.
+* Use `@exports moduleName` to document modules, including static classes and standalone functions.
 
 ## Parameters
 * Use square brackets to indicate an optional parameter.
@@ -57,4 +57,64 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 var Tile = function(description) {
    ...
 };
+</pre>
+
+## Detailed Example
+The following is an example of how to fully document a class, including properties and methods. For the complete code, see [Cartesian2](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Cartesian2.js).
+
+<pre>
+define(function() {
+    "use strict";
+
+    /**
+     * A 2D Cartesian point.
+     *
+     * If either <code>x</code> or <code>y</code> is undefined, then the corresponding
+     * component will be initialized to 0.0.
+     *
+     * @alias Cartesian2
+     * @constructor
+     *
+     * @param {Number} x The x-coordinate for the Cartesian type.
+     * @param {Number} y The y-coordinate for the Cartesian type.
+     *
+     * @see Cartesian3
+     * @see Cartesian4
+     */
+    var Cartesian2 = function(x, y) {
+
+        /**
+         * DOC_TBA
+         *
+         * @type Number
+         *
+         * @see Cartesian2.y
+         */
+        this.x = (typeof x !== 'undefined') ? x : 0.0;
+
+        /**
+         * DOC_TBA
+         *
+         * @type Number
+         *
+         * @see Cartesian2.x
+         */
+        this.y = (typeof y !== 'undefined') ? y : 0.0;
+    };
+
+    /**
+     * Returns true if this Cartesian equals <code>other</code> componentwise.
+     *
+     * @memberof Cartesian2
+     * @param {Cartesian2} other The Cartesian to compare for equality.
+     * @return {Boolean} <code>true</code> if the Cartesians are equal componentwise; otherwise, <code>false</code>.
+     */
+    Cartesian2.prototype.equals = function(other) {
+        return (this.x === other.x) && (this.y === other.y);
+    };
+
+    return Cartesian2;
+});
+
+
 </pre>
