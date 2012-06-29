@@ -2,10 +2,14 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 
 ## Reference
 
-* Provide an `@example` for all non-trivial functions and properties.  Users will look for an example before reading the actual doc.
 * Use `@see` to link to related classes, functions, and online resources.
 * Use `<code> </code>` tags when referring to parameters or other variable names and values within a description.
 * Use `{@link className}` to link to another documented type.  This is not required for `@param` tags when the type is provided.
+
+## Examples
+
+* Provide an `@example` for all non-trivial functions and properties.  Users will look for an example before reading the actual doc.
+* Limit code in 1@example1 tags to 80 lines so it does not overflow.
 
 ## Classes
 
