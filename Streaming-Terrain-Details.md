@@ -118,7 +118,7 @@ This section is a work in progress, even more so than the rest of this page!
 #### ImageryProvider
 
 * Async-oriented, loading is throttled.
-* Fills in the texture and texture matrix on the Tile provided to it.
+* Adds one or more `TileImagery` instances to the Tile provided to it.
 
 #### ImageryLayer
 
