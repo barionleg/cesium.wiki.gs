@@ -75,6 +75,11 @@ One option is to implement support for standard protocols like WMS and TMS (for 
 * Pick on terrain and get exact position - not dependent on terrain LOD.
 * Does laying down z first improve performance?  Horizon views only?  Is walking the tree in front-to-back order enough?
 * Procedural shading by height, slope, etc.
+* Efficiently encode terrain data for transmission:
+   * Use the Google Body techniques, encoding the mesh as a UTF-8 string: http://code.google.com/p/webgl-loader/wiki/BenCompressionStats
+   * Encode each tile as a delta from its parent:
+      * Parent tile indicates which of its vertices are in which quadrant with index ranges.
+      * Child has new vertices, index list linking parent and child vertices into triangles, and new index ranges describing the division of its vertices among its child quadrants.
 
 ### Vector Data
 
