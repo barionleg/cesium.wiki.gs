@@ -6,7 +6,7 @@ Design and implementation ideas for models.
    * Common Profile - most models today use the common profile AFAIK.  We need to generate shaders based on their materials.
    * GLES2 - Recommended for use with WebGL.  Do any models use it yet?
    * COLLADA FX - for writing shaders for things like metal, foil, etc.
-   * COLLADA Animation - for articulating things like satellite solar panels and aircraft landing gear.
+   * COLLADA Animation - for articulating things like satellite solar panels and aircraft landing gear; rigs for robot arms; rigid body dynamics driving explosions; and skinning deformations.
 * Work in Columbus view.  The model scale will need to be adjusted - and will be relative to the projection
 * Work in 2D.  Render model to texture from top-down view; lay over top the 2D map as a billboard.  The model will appear lit and changes in orientation, e.g., banked aircraft turns, will be seen.  Awesome.
 * Interaction with CZML
