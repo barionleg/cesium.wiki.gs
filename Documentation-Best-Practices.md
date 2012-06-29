@@ -1,16 +1,16 @@
-Cesium uses [JSDoc3](http://usejsdoc.org/index.html) to generate its documentation. Here are some of our conventions and best practices:
+Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation, which is generated as part of a release build.  Here are the best practices we use.
 
 ## Reference
 
-* Provide an `@example` whenever possible.
-* Use `@see` to link to related classes, methods, and online resources.
+* Provide an `@example` for all non-trivial functions and properties.  Users will look for an example before reading the actual doc.
+* Use `@see` to link to related classes, functions, and online resources.
 * Use `<code> </code>` tags when referring to parameters or other variable names and values within a description.
-* Use `{@link className}` to link to another documented type in the  middle of a description. (Not required for `@param` tags when the type is provided.)
+* Use `{@link className}` to link to another documented type.  This is not required for `@param` tags when the type is provided.
 
 ## Classes
 
 * Prefer `@alias` over `@name` for documenting classes and modules. `@name` will treat the documentation comment in isolation, ignoring surrounding comments, such as those for public properties. 
-* Use the `@memberof` tag to document class methods.
+* Use the `@memberof` tag to document class functions.
 * Constructors defined within an anonymous function that returns a module should have the following structure:
 
 <pre>
