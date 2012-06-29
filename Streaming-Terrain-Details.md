@@ -126,13 +126,17 @@ This section is a work in progress, even more so than the rest of this page!
 
 * The imagery associated with a single tile.
 * Knows its load pipeline state, load fail count, etc.
-* Represents exactly one texture, one texture matrix.
+* Represents exactly one texture and one texture matrix.
 
-### Process of creating new tiles - manged by CentralBody?
+### Process of creating new tiles
 
-1. TilingScheme creates new tile(s).
-2. GeometryProvider fills tiles with geometry.
-3. ...
+The code that does this probably lives in `CentralBody`.
+
+1. Ask `TilingScheme` to create new tile(s).  They are initially empty.
+2. Ask `GeometryProvider` to fill each tile with the tile mesh, bounding volume, geometric error, etc.  This happens asynchronously.
+3. Ask each `ImageryProvider` to fill each tile with a texture representing this tile's imagery from the imagery provider.  This happens asynchronously.
+
+> To be decided: When terrain and imagery tiles are not aligned, is each imagery tile that applies to a terrain tile a separate texture with a separate texture matrix?  Or do we render tiles to a FBO attached to a texture that _is_ aligned with the terrain tile?
 
 ## Resources
 
