@@ -55,6 +55,7 @@ Details to follow...
    * [Spherical Gaussian approximation for Blinn-Phong, Phong and Fresnel](http://seblagarde.wordpress.com/2012/06/03/spherical-gaussien-approximation-for-blinn-phong-phong-and-fresnel/) - is this useful for mobile?
 * Light types: point, direction, spot.  Area?
 * Multiple lights: turn lights on/off per primitive.  This will replace `affectedByLighting` on [Polygon](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/Polygon.js) and [CentralBody](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/CentralBody.js).
+* Light maps
 
 ## Phase 6
 
