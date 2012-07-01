@@ -24,6 +24,18 @@ Design and implementation ideas for models.
    * The converter should be a library for developers; a command-line tool for scripting; and a hosted web service for the rest of the world.
    * From the end-user's perspective, conversion to JSON should be transparent, e.g., if they drag and drop a COLLADA model, it is sent to the service, and JSON is sent back.
 
+## COLLADA to JSON Pipeline
+
+Transform to the subset of the COLLADA spec that the Cesium client knows how to render:
+   * Triangulate - Convert polygons into triangle lists.  Since this only adds indices, it does not dramatically increase the payload.
+   * Unify indices - In COLLADA, each attribute may be indexed separately.  Unify these so one index refers to all vertex attributes.  In general, how does this affect the payload?
+   * Generate shaders - Create GLSL shaders for models using the Common Profile (fixed function), which is most models.
+
+Tansforms for Performance
+   * See below.
+
+Finally, convert to JSON.
+
 ## Rendering Optimizations
 
 I believe we can have a very fast implementation; perhaps even faster than many C++ ones.  Bold words, I know.
