@@ -7,7 +7,7 @@
 ### Features
 * [[FAQ]].
 * [[Roadmap]] - where we are heading.
-* [[Cesium Language (CZML) Guide]] - bring content into Cesium without writing code.
+* [[CZML Guide]] - bring content into Cesium without writing code.
 
 ### Code
 * [[Quick Start]] - how to get the code, build, and run. It's easy.
