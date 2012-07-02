@@ -46,6 +46,7 @@ These optimizations could be on the fly or as a preprocess in the content pipeli
 * If transforms are static, the tree can be flattened and positions adjusted so there are less batch-breaking model transform uniforms set, and, therefore, less draw calls.
 * Reorder for the vertex cache.
 * Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.  Can we also use this code for polyline simplification?
+* In addition to sending the lowest LOD, the client can also start rendering the model before the textures are loaded by using a 1x1 white texture in the meantime.
 * Reduce the size of large textures that are not likely to take up a lot of screen space.
 * Use the [COLLADA Refinery](https://collada.org/mediawiki/index.php/COLLADA_Refinery)?
 
@@ -61,7 +62,7 @@ We recognize the need to support the widest possible content, therefore, we need
 * [rest3d](http://rest3d.wordpress.com/about-2/) aims to define a standard web API for accessing 3D assets.  It sounds like a great effort, but I haven't seen any activity since 2011.
 * [OurBricks](http://www.ourbricks.com/) "connects people who need great 3D content with those who can create it."  Great effort; worth a close look at their [API](https://github.com/ourbricks/ourbricks-api-examples/wiki/API-Documentation).  Perhaps they would integrate with our JSON converter and serve the format directly, or we could use a proxy if the TOS allow.
 * [p3d.in](http://p3d.in/) is also for sharing 3D models.  Artists can upload .obj files and embed the viewer in a webpage, but I'm not sure if there is any API for accessing their models.
-* [Sketchfab](http://sketchfab.com/) is similar to p3d.in in that it is for sharing 3D models and embedding them in webpages.  However, they have an [API](http://sketchfab.com/api), but it looks like it is only for sending content.  Perhaps they are open to an API for reading models like OurBricks.  They support a lot of [formats](http://sketchfab.com/faq).
+* [Sketchfab](http://sketchfab.com/) is similar to OurBricks and p3d.in in that it is for sharing 3D models and embedding them in webpages.  They have an [API](http://sketchfab.com/api), but it is only for sending content; retrieving content is on their roadmap.  Perhaps they are open to an API for reading models like OurBricks.  They support a lot of [formats](http://sketchfab.com/faq).
 * [US Government ADL 3D Repository](http://3dr.adlnet.gov/) - Very relevant content for Cesium; lots of satellite, aircraft, and ground vehicle models.  Requires login to download.  Models are available under public domain or CC license.  Only 354 total models.  No REST API.
 * [Google 3D Warehouse](http://sketchup.google.com/3dwarehouse/) - lots of models.  Need to look at the [terms of service](http://sketchup.google.com/intl/en/3dwh/preview_tos.html).  Not sure about an API.  It would be cool to have a WebGL browser for this though.
 * [3DVia](http://www.3dvia.com/search/?search[file_types]=1) - Looks good.  Worth a closer look.  Need to look at what is free and what is paid.
