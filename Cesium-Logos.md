@@ -1,4 +1,4 @@
-Right click and save an image.
+Right click and save an image, or download the <a href="logos/Cesium_Logo_Color.SVG">svg</a> version.
 
 <pre>Color with white background:
 <img src="logos/Cesium_Logo_Color.jpg" />
@@ -8,9 +8,6 @@ Color with alpha, for light backgrounds:
 
 Color with alpha, for dark backgrounds:
 <img src="logos/Cesium_Logo_forDarkBackground.png" />
-
-Scalable Vector Graphics (SVG)
-<img src="logos/Cesium_Logo_Color.SVG" />
 
 Black on white:
 <img src="logos/Cesium_Logo_Black.jpg" />
