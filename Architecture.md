@@ -223,4 +223,4 @@ for(var i = 0, len = dynamicObjects.length; i < len; i++) {
 ```
 Even though the above code isn't very useful on it's own, it's easy to see how an object could be written which maintains a `BillboardCollection` primitive that mirrors the data in the `dynamicObjectCollection` at a given time; in fact this is exactly what `DynamicBillboardVisualizer` does and it is a member of the standard `VisualizerCollection` created by the method of a similar name in the first example.
 
-A full overview of CZML, including its structure and schema, as well as an in-depth overview of the Cesium client-side implementation, can be found in the [Cesium Language Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide).
+A full overview of CZML, including its structure and schema, as well as an in-depth overview of the Cesium client-side implementation, can be found in the [[CZML-Guide]].
