@@ -4,7 +4,7 @@ We are a community that encourages contributions.  Join us.  Read about the engi
 
 Short version:
 * No commit access? Fork and clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
-* Commit access? Clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium) and make all non-trivial changes in a branch.
+* Commit access? Clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium) and make all changes in a branch.
 
 Details
 * Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
@@ -60,17 +60,17 @@ Want something interesting to code?  See the [roadmap](https://github.com/Analyt
 
 Although we encourage contributors to use their IDE of choice, many of us use Eclipse.  Here is how we set it up:
 
-* Install the [Java](http://www.java.com/en/download/index.jsp) JRE if it isn't already.
-* Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for JavaScript Web Developers.  Extract to a directory of your choice.  Run it.
+* Install the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it isn't already.
+* Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
 * Install the [JSHint](http://www.jshint.com/) plugin: 
    * Help - Install New Software.  Work with: http://github.eclipsesource.com/jshint-eclipse/updates/.
    * Check JSHint.  Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
 
 ![The JSHint installation dialog](jshint.png)
 
-* Install the Java Development Tools (for Ant support) and EGit.
-   * Help - Install New Software.  Work with: select Indigo from the list.  
-   * Expand Programming Languages, check Eclipse Java Development Tools.  
+* Install the JavaScript Development Tools and EGit.
+   * Help - Install New Software.  Work with: select Juno from the list.  
+   * Expand Programming Languages, check Eclipse JavaScript Development Tools.  
    * Expand Collaboration, check Eclipse EGit.  
    * Next, Next, Accept, Finish, _wait_, Not Now.
 
