@@ -27,8 +27,9 @@ Design and implementation ideas for models.
 ## COLLADA to JSON Pipeline
 
 Transform to the subset of the COLLADA spec that the Cesium client knows how to render:
-   * Triangulate - Convert polygons into triangle lists.  Since this only adds indices, it does not dramatically increase the payload.
+   * Triangulate - Convert polygons (`<polygons>` and `<polylist>`) into triangle lists.  Since this only adds indices, it does not dramatically increase the payload.
    * Unify indices - In COLLADA, each attribute may be indexed separately.  Unify these so one index refers to all vertex attributes.  In general, how does this affect the payload?
+   * Split meshes to fit in unsigned short indices - This may need to be done in the optimizations instead if we are combining meshes.
    * Generate shaders - Create GLSL shaders for models using the Common Profile (fixed function), which is most models.
 
 Tansforms for Performance
