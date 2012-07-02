@@ -94,6 +94,8 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Import Cesium into your workspace:  File - Import, General - Existing Projects into Workspace, Next.  Fill in the path to the root Cesium directory, Finish.
 
+* Click the "Open Perspective" button in the upper right and select JavaScript.  You can then right-click on the Java perspective and close it.
+
 * Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent folder of project.  Finish.
 
 * Configure the problems tab.  The Eclipse JavaScript validator has some bugs that report incorrect warnings.  Click the down arrow on the right-hand side of the Problems tab, click Configure Contents.  Uncheck Show all items, Click New, then Rename the new item to Cesium.  Change the Text filter to "doesn't contain" "Type mismatch: ".  OK.
