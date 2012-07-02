@@ -1,6 +1,6 @@
 **NOTE: This page is still a work in progress**
 
-_This page describes implementation of the CZML standard in Cesium.  While not strictly required, it may help to check out the [CZML Language Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) and [Cesium Architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) overview before proceeding._
+_This page describes implementation of the CZML standard in Cesium.  While not strictly required, it may help to check out the [[CZML-Guide]] and [Cesium Architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) overview before proceeding._
 
 CZML support in Cesium can be broken down into two distinct pieces; processing and visualization.
 
