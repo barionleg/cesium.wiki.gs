@@ -9,7 +9,7 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* [[CZML|Cesium Language (CZML) Guide]] Visualization
+* [[CZML Guide]] Visualization
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * Material system - [details](Material-System-Details)
