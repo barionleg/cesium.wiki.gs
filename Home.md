@@ -24,4 +24,4 @@
 
 * [[Cesium Logos]] - for use in Cesium apps and related material.
 * [[Presentations and Publications]] - on Cesium and the underlying technology.
- 
+* [[Shortened URLs]] - A list of shortened URLs to make linking to Cesium easier.
