@@ -42,6 +42,13 @@ Cameras control the view and respond to input.
 
 ## Materials
 
+<img src="features/CheckerboardMaterial.png" width="200" height="92" alt="Checkerboard" />
+<img src="features/VerticalStripeMaterial.png" width="200" height="92" alt="Vertical stripe" />
+<img src="features/DotMaterial.png" width="200" height="92" alt="Dot" /><br />
+<img src="features/BrickMaterial.png" width="200" height="92" alt="Brick" />
+<img src="features/WoodMaterial.png" width="200" height="92" alt="Wood" />
+<img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" />
+
 Materials describe the surface appearance of objects in the scene.
 
 * Procedural textures - checkerboard, stripes, dots, brick, cement, asphalt, wood, grass, distance intervals, tie dye, ...
