@@ -27,7 +27,7 @@ Core is the lowest layer in Cesium, and contains low-level, widely-used function
 * Sun position.
 * Julian dates.
 * Splines for interpolating position and orientation.
-* Geometric routines like triangulation, subdivision surfaces, vertex cache optimization, and computing ellipse boundaries.
+* Geometric routines like triangulation, subdivision surfaces, vertex cache optimization, and computing ellipse boundary points.
 
 For example, the following code converts a cartographic point on the WGS84 ellipsoid at (0.0, 0.0), in radians, to Cartesian, that is, it converts from longitude/latitude to xyz:
 ```javascript
