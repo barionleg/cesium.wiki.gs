@@ -2,15 +2,12 @@
 <img src="https://github.com/AnalyticalGraphicsInc/cesium/wiki/logos/Cesium_Logo_Color.jpg" width="50%" />
 </p>
 
-## For Everyone
-
-### General
 * [[Features]].
 * [[FAQ]].
 * [[Roadmap]] - where we are heading.
 * [[CZML Guide]] - bring content into Cesium without writing code.
 
-### Code
+## Get Started
 * [[Quick Start]] - how to get the code, build, and run. It's easy.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
 
