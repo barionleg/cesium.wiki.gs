@@ -98,4 +98,4 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 
 ## Next Steps
 
-Use the [Quick Start](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Quick-Start) to get up and running with Cesium, or read the [Architecture Overview](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) to learn about the architecture and code.
+Use the [Quick Start](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Quick-Start) to get up and running with Cesium, or read the [Architecture Overview](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) to learn about the code.
