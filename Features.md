@@ -34,9 +34,9 @@ Checkout all the [demos](http://cesium.agi.com/).
 
 ## Cameras
 
-Cameras control the view and respond to input.
+Cameras respond to input and control the view.
 
-* Spindle - spin, zoom, and pan the globe.
+* Spindle - spin, zoom, and pan the globe with inertia.
 * Flight - flies to a destination.
 * Free look - look in any direction.
 
