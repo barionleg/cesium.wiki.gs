@@ -4,7 +4,8 @@
 
 ## For Everyone
 
-### Features
+### General
+* [[Features]].
 * [[FAQ]].
 * [[Roadmap]] - where we are heading.
 * [[CZML Guide]] - bring content into Cesium without writing code.
@@ -20,8 +21,8 @@
 * [[Documentation Best Practices]] - solid reference documentation lowers the barrier to entry.
 * [[Code Review Tips]] - worthwhile code reviews share knowledge and improve code quality.
 
-## Logos, Presentations, Publications
+## Logos, Presentations, and Publications
 
 * [[Cesium Logos]] - for use in Cesium apps and related material.
 * [[Presentations and Publications]] - on Cesium and the underlying technology.
-* [[Shortened URLs]] - A list of shortened URLs to make linking to Cesium easier.
+* [[Shortened URLs]] - make linking to Cesium easier.
