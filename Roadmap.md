@@ -63,3 +63,11 @@ If you are interested in implementing any of these features, start a discussion 
    * Improved TimeLine widget
    * Standard Cesium toolbar
    * CZML Table of contents/Document Manager widget
+
+## Google Summer of Code Ideas
+
+[Program details](http://code.google.com/soc/).  Most likely due March, 2013.
+
+* Add CZML rendering to Google Maps and/or other popular web mapping APIs
+* Particle system
+* GML to CZML converter

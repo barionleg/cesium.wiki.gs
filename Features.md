@@ -34,13 +34,20 @@ Checkout all the [demos](http://cesium.agi.com/).
 
 ## Cameras
 
-Cameras control the view and respond to input.
+Cameras respond to input and control the view.
 
-* Spindle - spin, zoom, and pan the globe.
+* Spindle - spin, zoom, and pan the globe with inertia.
 * Flight - flies to a destination.
 * Free look - look in any direction.
 
 ## Materials
+
+<img src="features/CheckerboardMaterial.png" width="200" height="92" alt="Checkerboard" />
+<img src="features/VerticalStripeMaterial.png" width="200" height="92" alt="Vertical stripe" />
+<img src="features/DotMaterial.png" width="200" height="92" alt="Dot" /><br />
+<img src="features/BrickMaterial.png" width="200" height="92" alt="Brick" />
+<img src="features/WoodMaterial.png" width="200" height="92" alt="Wood" />
+<img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" />
 
 Materials describe the surface appearance of objects in the scene.
 
@@ -91,4 +98,4 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 
 ## Next Steps
 
-Use the [Quick Start](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Quick-Start) to get up and running with Cesium, or read the [Architecture Overview](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) to learn about the architecture and code.
+Use the [Quick Start](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Quick-Start) to get up and running with Cesium, or read the [Architecture Overview](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) to learn about the code.
