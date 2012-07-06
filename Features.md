@@ -5,7 +5,6 @@
 _Screen shots to follow soon..._
 
 <!--
-TODO: Images
 TODO: Links
 TODO: Animation changes values over time.
 -->
@@ -33,6 +32,9 @@ Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API. 
 Checkout all the [demos](http://cesium.agi.com/).
 
 ## Cameras
+
+<img src="features/CameraFlight.png" width="200" height="92" alt="Flight camera" />
+<img src="features/CameraPan.png" width="200" height="92" alt="Panning with the spindle camera" />
 
 Cameras respond to input and control the view.
 
