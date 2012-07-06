@@ -3,8 +3,9 @@
 </p>
 
 <!--
-TODO: Links
 TODO: Animation changes values over time.
+TODO: Links to full-size images.
+TODO: Reference links?
 -->
 
 Cesium is a JavaScript virtual globe and map library written in JavaScript using [WebGL](http://www.khronos.org/webgl/).  It provides hardware-accelerated graphics in a browser without a plugin.
@@ -12,6 +13,10 @@ Cesium is a JavaScript virtual globe and map library written in JavaScript using
 Cesium is built with care; code is peer-reviewed, unit tested, [statically analysed](http://www.jshint.com/), and [documented](http://cesium.agi.com/Documentation/).
 
 ## One API - Three Views
+
+<img src="features/3D.png" width="200" height="100" alt="3D" />
+<img src="features/2D.png" width="200" height="100" alt="2D" />
+<img src="features/ColumbusView.png" width="200" height="100" alt="Columbus view" />
 
 Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API.  Transition between views with one line of code.
 
