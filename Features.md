@@ -17,10 +17,17 @@ Cesium is built with care; code is peer-reviewed, unit tested, [statically analy
 <img src="features/3D.png" width="200" height="100" alt="3D" />
 <img src="features/2D.png" width="200" height="100" alt="2D" />
 <img src="features/ColumbusView.png" width="200" height="100" alt="Columbus view" />
+<br />
+<img src="features/Population.png" width="249" height="150" alt="Population in Columbus view" />
+<img src="features/PopulationColumbusView.png" width="350" height="150" alt="Population in Columbus view" />
 
 Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API.  Transition between views with one line of code.
 
 ## Dynamic Geospatial Data Visualization
+
+<img src="features/Nashville.png" width="268" height="100" alt="Nashville" />
+<img src="features/Cities.png" width="145" height="100" alt="World Cities" />
+<img src="features/sensors.png" width="176" height="99" alt="" />
 
 * Draw dynamic scenes from [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/czml-guide).
 * Draw imagery from Bing, Esri, OpenStreetMap, and WMS.
