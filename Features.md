@@ -7,15 +7,13 @@ TODO: Links
 TODO: Animation changes values over time.
 -->
 
-Cesium is a JavaScript virtual globe and map library written in JavaScript using [WebGL](http://www.khronos.org/webgl/).
+Cesium is a JavaScript virtual globe and map library written in JavaScript using [WebGL](http://www.khronos.org/webgl/).  It provides hardware-accelerated graphics in a browser without a plugin.
+
+Cesium is built with care; code is peer-reviewed, unit tested, [statically analysed](http://www.jshint.com/), and [documented](http://cesium.agi.com/Documentation/).
 
 ## One API - Three Views
 
-Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API.  The scene can transition between views with one line of code.
-
-### Built with Care
-
-* Cesium code is peer-reviewed, unit tested, [statically analysed](http://www.jshint.com/), and [documented](http://cesium.agi.com/Documentation/).
+Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API.  Transition between views with one line of code.
 
 ## Dynamic Geospatial Data Visualization
 
@@ -76,6 +74,8 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 
 ## Geometric Routines
 
+<img src="features/EllipsoidTessellator.png" width="108" height="92" alt="Ellipsoid tessellation" />
+
 * View frustum and occlusion culling (horizon culling).
 * Vertex cache optimization.
 * Polygon triangulation and subdivision.
@@ -83,6 +83,8 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 * Bounding spheres and axis-aligned bounding boxes.
 
 ## Math
+
+<img src="features/EllipsoidTangentPlane.png" width="178" height="92" alt="Ellipsoid tangent plane" />
 
 * Types for Cartesian, spherical, and cartographic positions.
 * Types for matrices and quaternions.
@@ -108,3 +110,5 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 ## Next Steps
 
 Use the [Quick Start](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Quick-Start) to get up and running with Cesium, or read the [Architecture Overview](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) to learn about the code.
+
+More questions?  See the [FAQ](https://github.com/AnalyticalGraphicsInc/cesium/wiki/FAQ).
