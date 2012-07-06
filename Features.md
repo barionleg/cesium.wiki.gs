@@ -2,25 +2,29 @@
 <img src="https://github.com/AnalyticalGraphicsInc/cesium/wiki/logos/Cesium_Logo_Color.jpg" width="50%" />
 </p>
 
-_Screen shots to follow soon..._
-
 <!--
 TODO: Links
 TODO: Animation changes values over time.
 -->
 
+Cesium is a JavaScript virtual globe and map library written in JavaScript using [WebGL](http://www.khronos.org/webgl/).
+
 ## One API - Three Views
 
 Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API.  The scene can transition between views with one line of code.
 
-## Geospatial Data Visualization
+### Built with Care
 
-* Drawing dynamic scenes from [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/czml-guide).
-* Drawing imagery from Bing, Esri, OpenStreetMap, and WMS.
-* Drawing vector data from KML (partial support), ESRI Shapefiles, and WebGL Globe JSON.
-* Drawing polylines, polygons, circles, ellipses, extents, billboards, labels, and sensors.
-* Picking individual objects.
+* Cesium code is peer-reviewed, unit tested, [statically analysed](http://www.jshint.com/), and [documented](http://cesium.agi.com/Documentation/).
+
+## Dynamic Geospatial Data Visualization
+
+* Draw dynamic scenes from [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/czml-guide).
+* Draw imagery from Bing, Esri, OpenStreetMap, and WMS.
+* Draw vector data from KML (partial support), ESRI Shapefiles, and WebGL Globe JSON.
+* Draw polylines, polygons, circles, ellipses, extents, billboards, labels, and sensors.
 * Batching and GPU optimizations for performance.
+* Individual object picking.
 
 ## Apps and Widgets
 
@@ -97,6 +101,9 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 
 * JSONP.
 * Generic event handling.
+
+## Deployment
+* Use a Cesium as a single js file or with Asynchronous Module Definition (AMD) to include only what you use.
 
 ## Next Steps
 
