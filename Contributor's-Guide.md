@@ -142,8 +142,9 @@ Then, to step into the test, step into `stepIntoThis()`
    * Your code follows the [coding conventions](https://github.com/AnalyticalGraphicsInc/cesium/wiki/JavaScript-Coding-Conventions).
    * Your code passes [JSHint](http://www.jshint.com/).  We use the JSHint Eclipse plugin so it runs automatically when we save.
    * To include tests with excellent code coverage for new features.  We use [Jasmine](http://pivotal.github.com/jasmine/) for writing tests.  Run them by browsing to http://localhost:8080/Specs/SpecRunner.html.  Verify all  new and existing tests pass.  For bonus points, test Chrome, Firefox, and other browsers supporting WebGL.
-   * Were new public functions and properties added?
-      * Include reference documentation with code examples.  Check out the [best practices](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Documentation-Best-Practices).
-      * Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md), and the [Features wiki](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Features) if the change is significant.
    * To update [LICENSE.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/LICENSE.md) if third-party libraries were added or removed.
+   * Were new public classes, functions, or properties added?
+      * Include reference documentation with code examples.  Check out the [best practices](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Documentation-Best-Practices).
+      * Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md).  Also update [Features wiki](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Features) if the change is significant.
+
 * If you have commit access, delete the branch if you are no longer using it.
