@@ -13,5 +13,7 @@ Tips
 * See the forest through the trees.  Don't just review code one line at a time.  Consider the big picture and its implications.
 * Bring other people into the conversation.  If someone has expertise with a particular language feature or problem domain under review, invite them to help.
 
+A pull request is a sincere request for feedback, and those reviewing the request work with the developer to get the code merged.
+
 Resources
 * [Practice Conspicuous Code Review](http://producingoss.com/en/producingoss.html#code-review) in [Producing Open Source Software](http://producingoss.com/).
