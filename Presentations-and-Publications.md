@@ -1,6 +1,6 @@
 # Presentations and Publications
 
-We enjoy giving talks and writing publications on Cesium and the technology we use to build it.  Doing so keeps us sharp, and we value giving back to the larger developer community.
+We enjoy giving talks and writing publications on Cesium and the technology we use to build it.  Doing so keeps us sharp, and we value giving back to the larger developer community.  Some of us use PowerPoint, so we put together a [Cesium themed template](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CesiumPowerPointTemplate.ppt) that we encourage everyone to use.
 
 ## 2012
 
