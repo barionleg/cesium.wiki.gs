@@ -61,6 +61,7 @@ These optimizations will be done at run-time:
 We recognize the need to support the widest possible content, therefore, we need to transparently support loading models from all major web-based model repositories whose terms of service allow.
 
 * [rest3d](http://rest3d.wordpress.com/about-2/) aims to define a standard web API for accessing 3D assets.
+* [3dpie](http://www.opengeospatial.org/projects/initiatives/3dpie)
 * [Sketchfab](http://sketchfab.com/) is similar in that it is for sharing 3D models and embedding them in webpages.  They have an [API](http://sketchfab.com/api), but it is only for sending content; retrieving content is on their roadmap.  Perhaps they are open to an API for reading models like OurBricks.  They support a lot of [formats](http://sketchfab.com/faq).
 * [OurBricks](http://www.ourbricks.com/) "connects people who need great 3D content with those who can create it."  Great effort; worth a close look at their [API](https://github.com/ourbricks/ourbricks-api-examples/wiki/API-Documentation).  
 * [p3d.in](http://p3d.in/) is also for sharing 3D models.  Artists can upload .obj files and embed the viewer in a webpage, but I'm not sure if there is any API for accessing their models.
