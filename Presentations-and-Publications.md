@@ -4,7 +4,7 @@ We enjoy giving talks and writing publications on Cesium and the technology we u
 
 ## 2012
 
-* Cesium Language (CZML): A JSON schema for describing dynamic scenes in virtual globes & maps.  Matt Amato.  [WebGL Camp Europe](http://www.shader.org/webglcamp/), 07/2012. [slides](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CZML_WebGL_Camp_07-03-2012.pdf) &bull; [demos](http://cesium.agi.com/)
+* Cesium Language (CZML): A JSON schema for describing dynamic scenes in virtual globes & maps.  Matt Amato.  [WebGL Camp Europe](http://www.shader.org/webglcamp/), 07/2012. [slides](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CZML_WebGL_Camp_07-03-2012.pdf) &bull; [video](http://youtu.be/LsUOrLozbXw) &bull; [demos](http://cesium.agi.com/)
 
 * WebGL for OpenGL Developers.  Patrick Cozzi and Scott Hunter.  In [OpenGL Insights](http://www.openglinsights.com/).  CRC Press, 07/2012.
 
