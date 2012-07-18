@@ -6,6 +6,19 @@ Fortunately, large-scale terrain rendering is a well-researched problem.  It sti
 
 This is an area that has plenty of opportunities for interested folks to get involved and contribute.  If that's you, please introduce yourself on the [development mailing list](https://groups.google.com/d/forum/cesium-dev).
 
+## To Do List
+
+* Include normals in terrain vertex arrays.
+* Fix georeferencing of terrain streamed from ArcGisImageServerTerrainProvider.  The heightmaps are currently in a web mercator projection but geographic is assumed.
+* Add support for different tiling schemes for terrain and imagery, and for different imagery sources.
+* Check tile selection algorithm - is it rendering too much detail?
+* Improve tile culling.
+* Evaluate cracking between tiles.  Do we need to add skirts?
+* Add support for switching terrain providers.
+* Implement support for 2D and Columbus View.
+* Add support for adding/removing/reordering imagery layers.
+
+
 ## Data sources
 
 High-resolution, world-wide terrain datasets are enormous, from tens of gigabytes to tens of terabytes.  They need to be organized into a form suitable for visualization, and ideally be hosted on fast, geographically-distributed servers.  For Cesium to use a terrain data source out-of-the-box, that terrain data source should ideally be freely-accessible, at least for non-commercial use.  What are our options?
