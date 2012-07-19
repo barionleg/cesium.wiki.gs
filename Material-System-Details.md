@@ -67,6 +67,7 @@ Details to follow...
 
 ## Questions
 
+* How do we render to cube map for reflections and refractions?
 * How important is it to support multiple texture coordinates, i.e., different coordinates for different materials on the same object?
 * Do we have a need for relief mapping, etc?
 * How do screen-space techniques like fog, glow, and bloom fit in?
