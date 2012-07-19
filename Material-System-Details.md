@@ -61,7 +61,9 @@ Details to follow...
 ## Phase 6
 
 * How does this fit with the effects framework for models?  Can they work well together?
-* Support uniform arrays in our JSON schema.
+* JSON schema features.
+   * Support uniform arrays.
+   * Support `sourceURI` for external GLSL source files.
 
 ## Questions
 
