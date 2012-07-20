@@ -9,15 +9,17 @@ This is an area that has plenty of opportunities for interested folks to get inv
 ## To Do List
 
 * Include normals in terrain vertex arrays.
-* Fix georeferencing of terrain streamed from ArcGisImageServerTerrainProvider.  The heightmaps are currently in a web mercator projection but geographic is assumed.
-* Add support for different tiling schemes for terrain and imagery, and for different imagery sources.
+* *DONE* Fix georeferencing of terrain streamed from ArcGisImageServerTerrainProvider.  The heightmaps are currently in a web mercator projection but geographic is assumed.
+* *DONE* Add support for different tiling schemes for terrain and imagery, and for different imagery sources.
 * Check tile selection algorithm - is it rendering too much detail?
 * Improve tile culling.
 * Evaluate cracking between tiles.  Do we need to add skirts?
 * Add support for switching terrain providers.
 * Implement support for 2D and Columbus View.
 * Add support for adding/removing/reordering imagery layers.
-
+* Support imagery with a geographic projection.
+* Support simultaneous imagery providers with different projections.
+* Add an imagery texture cache to ensure an image overlapping multiple terrain tiles is loaded only once.
 
 ## Data sources
 
