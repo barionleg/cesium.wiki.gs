@@ -14,12 +14,13 @@ This is an area that has plenty of opportunities for interested folks to get inv
 * Check tile selection algorithm - is it rendering too much detail?
 * Improve tile culling.
 * Evaluate cracking between tiles.  Do we need to add skirts?
-* Add support for switching terrain providers.
+* Add support for switching terrain providers after rendering has started.
 * Implement support for 2D and Columbus View.
-* Add support for adding/removing/reordering imagery layers.
+* Add support for adding/removing/reordering imagery layers after rendering has started.
 * Support imagery with a geographic projection.
 * Support simultaneous imagery providers with different projections.
 * Add an imagery texture cache to ensure an image overlapping multiple terrain tiles is loaded only once.
+* Look more closely at the API - what happens when "public" properties are changed after construction?
 
 ## Data sources
 
