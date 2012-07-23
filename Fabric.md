@@ -75,15 +75,20 @@ polygon.material = new Cesium.Material({
   }
 });
 ```
-By default, the specular component is taken from the `r` component.  However, `SpecularMapMaterial` like most materials, contains a `channel` (`channels` for materials requiring more than one channel) that defines what channel to pull from.
+By default, the specular component is taken from the `r` component.  However, `SpecularMapMaterial` like most materials, contains a `channel` uniform (`channels` for materials requiring more than one channel) that defines what channel to pull from.
 ```javascript
-polygon.material.uniforms.channel = 'a';
+"uniforms" : {
+  "texture" : "specular.png",
+  "channel" : "a"
+}
 ```
 This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.
 
 _TODO: sRepeat and tRepeat_
 
 ## Combing Materials
+
+_TODO: start with creating materials from starch.
 
 Let's create a material that combines a diffuse map and specular map.  First the JSON material:
 ```javascript
@@ -120,4 +125,16 @@ m.materials.specularMaterial.texture = 'specularMap.png';
 
 ### Components
 
-_TODO_
+The `components` property contains the following optional sub-properties.  All are strings with a GLSL code snippet.
+
+| Name | Default | Description |
+|:-----|:--------|:------------|
+| `diffuse` | `"vec3(0.0)"` | The diffuse component of this material.  The diffuse component is a vec3 defining incoming light that scatters evenly in all directions. |
+| `specular` | `"0.0"` | The specular component of this material.  The specular component is a float defining the intensity of incoming light reflecting in a single direction. |
+| `normal` |  | The normal component of this material.  The normal component is a vec3 defining the surface's normal in tangent coordinates.  It is used for effects such as normal mapping.  The default is the surface's unmodified normal. |
+| `emission` | `"vec3(0.0)"` | The emission component of this material.  The emission component is a vec3 defining light emitted by the material equally in all directions.  The default is vec3(0.0), which emits no light. |
+| `alpha` | `1.0` | The alpha component of this material.  The alpha component is a float defining the opacity of this material.  0.0 is completely transparent; 1.0 is completely opaque. |
+
+Together, these sub-properties, or _components_ define the characteristics of the material.  They are the output of the material, and the input to the lighting system.
+
+A material can simply pass through the components of other materials, e.g., `"diffuse" : "anotherMaterial.diffuse"`, or they can include GLSL code, e.g., "diffuse" : "mix(cold.diffuse, hot.diffuse, texture2D(temperature, materialInput.st).r)".
