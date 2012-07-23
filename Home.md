@@ -4,12 +4,13 @@
 
 * [[Features]].
 * [[FAQ]].
-* [[Roadmap]] - where we are heading.
-* [[CZML Guide]] - bring content into Cesium without writing code.
+* [[Roadmap]].
 
 ## Get Started
 * [[Quick Start]] - how to get the code, build, and run. It's easy.
+* [[CZML Guide]] - bring content into Cesium without writing code.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
+* [[In-Depth Guides]] - details on major features.
 
 ## For Contributors
 
