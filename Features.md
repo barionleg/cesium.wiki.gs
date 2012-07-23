@@ -69,7 +69,7 @@ Materials describe the surface appearance of objects in the scene.
 
 * Procedural textures - checkerboard, stripes, dots, brick, cement, asphalt, wood, grass, distance intervals, tie dye, ...
 * Classic: diffuse map, specular map, alpha map, normal map, bump map, emission map, reflection, refraction, and Fresnel.
-* A JSON schema for combing materials.
+* [[Fabric]] - a JSON schema for describing and combing materials.
 
 ## Low-Level Rendering
 
