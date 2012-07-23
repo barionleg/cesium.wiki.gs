@@ -3,4 +3,4 @@
 </p>
 
 * [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/CZML-in-Cesium) - processing and visualizing CZML.
-* [[Fabric]]- creating materials that make the scene look good.
+* [[Fabric]] - creating materials that make the scene look good.
