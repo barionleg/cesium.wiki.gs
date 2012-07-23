@@ -10,28 +10,28 @@ Materials can be as simple as draping an image over an object, or applying a pat
 <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" />
 
 Materials are applied to objects by assigning to the object's `material` property.
-````
+```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    'id' : 'ColorMaterial'
+    "id" : "ColorMaterial"
   }
 });
-````
+```
 Above, the `id` in the Fabric JSON refers to a built-in material, `ColorMaterial`, which represents a single color, including alpha.
 
 Each material has zero or more uniforms, which are input parameters that can be specified when creating the material and modified after.  For example, `ColorMaterial` has a `color` uniform with `red`, `green`, `blue`, and `alpha` components.
-````
+```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    'id' : 'ColorMaterial',
-    'uniforms' : {
-      'color' : {
-        'red' : 1.0,
-        'green' : 0.0,
-        'blue' : 0.0,
-        'alpha' : 0.5
+    "id" : "ColorMaterial",
+    "uniforms" : {
+      "color" : {
+        "red" : 1.0,
+        "green" : 0.0,
+        "blue" : 0.0,
+        "alpha" : 0.5
       }
     }
   }
@@ -39,7 +39,7 @@ polygon.material = new Cesium.Material({
 
 // Change from translucent red to opaque white
 polygon.material.uniforms.color = Cesium.Color.WHITE;
-````
+```
 
 ## Built-In Materials
 
@@ -64,21 +64,21 @@ Cesium has several built-in materials like `ColorMaterial`.
 * Fresnel - a view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material is refracts light; as the viewer looks more edge on, the material refracts less and reflects more.
 
 All built-in materials can be used similar to how we used `ColorMaterial` above.  For example, the following code uses a specular map.
-````
+```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    'id' : 'SpecularMapMaterial',
-    'uniforms' : {
-      'texture': 'specular.png'
+    "id" : "SpecularMapMaterial",
+    "uniforms" : {
+      "texture" : "specular.png"
     }
   }
 });
-````
+```
 By default, the specular component is taken from the `r` component.  However, `SpecularMapMaterial` like most materials, contains a `channel` (`channels` for materials requiring more than one channel) that defines what channel to pull from.
-````
+```javascript
 polygon.material.uniforms.channel = 'a';
-````
+```
 This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.
 
 _TODO: sRepeat and tRepeat_
@@ -86,38 +86,37 @@ _TODO: sRepeat and tRepeat_
 ## Combing Materials
 
 Let's create a material that combines a diffuse map and specular map.  First the JSON material:
-<pre>
+```javascript
 var fabric = {
-  'id' : 'DiffuseSpecularMap',
-  'materials': {
-    'diffuseMaterial' : {
-      'id' : 'DiffuseMapMaterial'
+  "id" : "DiffuseSpecularMap",
+  "materials": {
+    "diffuseMaterial" : {
+      "id" : "DiffuseMapMaterial"
     },
-    'specularMaterial' : {
-      'id' : 'SpecularMapMaterial'
+    "specularMaterial" : {
+      "id" : "SpecularMapMaterial"
     }
   },
-  'components' : {
-      'diffuse': 'diffuseMaterial.diffuse',
-      'specular': 'specularMaterial.specular',
+  "components" : {
+      "diffuse" : "diffuseMaterial.diffuse",
+      "specular" : "specularMaterial.specular",
   }
 };
-</pre>
+```
+
 A new `id` is used to name the material, `DiffuseSpecularMap`.  Since this material does not exist, a `components` section describes the output of the material.  This material has `diffuse` and `specular` components that pull values from materials reference in the `material` property.  The built-in `DiffuseMapMaterial` and `SpecularMapMaterial` materials are used.
 
 Given this `fabric` object, the material can be used like other materials.
-````
+```javascript
 var m = new Cesium.Material({
   context : scene.getContext(),
   fabric : fabric
 });
 polygon.material = m;
 
-m.materials.diffuseMaterial.texture = 'map.png';
-m.materials.diffuseMaterial.channels = 'rgb';
-m.materials.specularMaterial.texture = 'map.png';
-m.materials.diffuseMaterial.channels = 'a';
-````
+m.materials.diffuseMaterial.texture = 'diffuseMap.png';
+m.materials.specularMaterial.texture = 'specularMap.png';
+```
 
 ### Components
 
