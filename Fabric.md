@@ -97,9 +97,28 @@ var fabric = {
       'id' : 'SpecularMapMaterial'
     }
   },
-  'components': {
+  'components' : {
       'diffuse': 'diffuseMaterial.diffuse',
       'specular': 'specularMaterial.specular',
   }
 };
 </pre>
+A new `id` is used to name the material, `DiffuseSpecularMap`.  Since this material does not exist, a `components` section describes the output of the material.  This material has `diffuse` and `specular` components that pull values from materials reference in the `material` property.  The built-in `DiffuseMapMaterial` and `SpecularMapMaterial` materials are used.
+
+Given this `fabric` object, the material can be used like other materials.
+````
+var m = new Cesium.Material({
+  context : scene.getContext(),
+  fabric : fabric
+});
+polygon.material = m;
+
+m.materials.diffuseMaterial.texture = 'map.png';
+m.materials.diffuseMaterial.channels = 'rgb';
+m.materials.specularMaterial.texture = 'map.png';
+m.materials.diffuseMaterial.channels = 'a';
+````
+
+### Components
+
+_TODO_
