@@ -1,6 +1,6 @@
 Design and implementation ideas for our material system.
 
-## Phase 1
+## _Done:_ Phase 1
 
 * _Done_: Add simple tests that verify the material by rendering a polygon.  Currently, we don't have tests for most materials.
 * _Done_: Explore materials implemented using procedural textures, i.e., brick, marble, granite, wood, asphalt, etc.  Later, we'll procedurally shade a city with these building blocks.
@@ -22,9 +22,9 @@ Design and implementation ideas for our material system.
 * _Done_: All materials should return the emission color.
    * Add a material for an emission map.
 
-## Phase 2
+## _Done:_ Phase 2
 
-* How do we combine multiple materials, e.g.,
+* _Done:_ How do we combine multiple materials, e.g.,
    * A diffuse map and an alpha map to render .png files, for example.  See  [#43](https://github.com/AnalyticalGraphicsInc/cesium/issues/43).
    * A diffuse map and a specular map.
    * Crumbling bricks that combine brick and bump map materials.
@@ -64,6 +64,7 @@ Details to follow...
 * JSON schema features.
    * Support uniform arrays.
    * Support `sourceURI` for external GLSL source files.
+* Do we need the ability to modify and remove material objects (not instances)?
 
 ## Questions
 
