@@ -8,7 +8,7 @@ We enjoy giving talks and writing publications on Cesium and the technology we u
 
 * WebGL for OpenGL Developers.  Patrick Cozzi and Scott Hunter.  In [OpenGL Insights](http://www.openglinsights.com/).  CRC Press, 07/2012.
 
-   * Our thoughts on learning WebGL for those that already know OpenGL based on our experience with Cesium.
+   * Our thoughts on learning WebGL for those that already know OpenGL, based on our experience with Cesium.
 
 * WebGL for Dynamic Virtual Globes.  Patrick Cozzi.  [WebGL Camp Orlando](http://www.webglcamp.com/wiki/index.php?title=AgendaOrlando1), 03/2012. [slides](http://www.seas.upenn.edu/~pcozzi/downloads/WebGLForDynamicVirtualGlobes.pdf) &bull; [video](http://www.youtube.com/watch?v=Bxk-bkiLbEo) &bull; [demos](http://cesium.agi.com/)
 
