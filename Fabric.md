@@ -86,7 +86,7 @@ _TODO: sRepeat and tRepeat_
 ## Combing Materials
 
 Let's create a material that combines a diffuse map and specular map.  First the JSON material:
-```
+<pre>
 var fabric = {
   'id' : 'DiffuseSpecularMap',
   'materials': {
@@ -102,4 +102,4 @@ var fabric = {
       'specular': 'specularMaterial.specular',
   }
 };
-```
+</pre>
