@@ -65,6 +65,7 @@ Details to follow...
    * Support uniform arrays.
    * Support `sourceURI` for external GLSL source files.
 * Do we need the ability to modify and remove material objects (not instances)?
+* Do we need the ability to pull different components from different textures?  For example, for a diffuse map, pull the red and green components from one texture, and the blue from another.
 
 ## Questions
 
