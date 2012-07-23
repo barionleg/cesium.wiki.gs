@@ -21,6 +21,7 @@ This is an area that has plenty of opportunities for interested folks to get inv
 * Support simultaneous imagery providers with different projections.
 * Add an imagery texture cache to ensure an image overlapping multiple terrain tiles is loaded only once.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
+* Add wireframe mode to make it easier to evaluate triangle densities.
 
 ## Data sources
 
