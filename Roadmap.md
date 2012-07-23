@@ -9,7 +9,8 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* [[CZML Guide]] Visualization
+* Sandcastle
+* Web services for converting to CZML
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * Material system - [details](Material-System-Details)
