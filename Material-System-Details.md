@@ -1,5 +1,7 @@
 Design and implementation ideas for our material system.
 
+Much of this is implemented.  See [[Fabric]].
+
 ## _Done:_ Phase 1
 
 * _Done_: Add simple tests that verify the material by rendering a polygon.  Currently, we don't have tests for most materials.
