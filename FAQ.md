@@ -1,4 +1,4 @@
-## Table of Contents
+## Contents
 
 * [**General**](#general)
 	* [How is Cesium different than a general WebGL or graphics engine?](#generalDifference)
