@@ -98,6 +98,7 @@ Need to contact developers and look more carefully at each of these JSON formats
 
 Some libraries read COLLADA directly without converting it.
 
+* OVoiD.JS [reads COLLADA](http://www.ovoid.org/js/doc/#composing) client-side include animations and skinning.  It also has a scene JSON format, and client-side exporting to this format, including from COLLADA.
 * Three.js reads COLLADA [client-side](https://github.com/mrdoob/three.js/blob/master/examples/js/loaders/ColladaLoader.js).  Looks like they've been working on it recently.  Three.js also has a [JSON format](https://github.com/mrdoob/three.js/wiki/JSON-Model-format-3.0), including some Python [exporters](https://github.com/mrdoob/three.js/tree/master/utils/exporters), that is worth a close look.
 * [Odin](https://github.com/operasoftware/Odin) reads COLLADA client-side or a derived run-time format.
 * SpiderGL - [example](http://spidergl.org/example.php?id=10).
