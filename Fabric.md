@@ -148,7 +148,7 @@ polygon.material = new Cesium.Material({
 ```
 This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.  Under the hood, the texture will also be loaded once.
 
-_TODO: sRepeat and tRepeat_
+_TODO: `repeat`_
 
 <a id="CreatingNewMaterials"></a>
 ## Creating New Materials
