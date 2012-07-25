@@ -161,10 +161,10 @@ cb.dayTileProvider = new Cesium.OpenStreetMapTileProvider({
 ```
 Materials represent the appearance of an object.  Currently, they can be applied to polygons and sensors.  Loosely speaking, materials are implemented as a GLSL shader function and a set of uniforms.
 ```javascript
-polygon.material = new Cesium.VerticalStripeMaterial({
-    repeat: 5.0
-});
+polygon.material = Material.fromID(scene.getContext(), 'Stripe');
 ```
+There are many built-in materials, and new ones can be scripted using [[Fabric]], a JSON schema, and GLSL.
+
 Camera represents the view into the virtual world.  Ultimately, it creates a view matrix that transforms from world to eye coordinates.  Camera can be manipulated directly, but is most often updated automatically via controllers for specific tasks such as handling mouse input for spinning the globe, or smoothly flying to another location.
 ```javascript
 scene.getCamera().getControllers().addFlight({
