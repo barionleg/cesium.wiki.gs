@@ -63,16 +63,23 @@ Details to follow...
 ## Phase 6
 
 * How does this fit with the effects framework for models?  Can they work well together?
-* JSON schema features.
-   * Support uniform arrays.
-   * Support `sourceURI` for external GLSL source files.
-   * Easy way to feed output of one material to input of another material.  For example, when combining normal mapping and cube-map reflection, make the output from normal mapping input to the reflection to get reflections from the bumpy surface.
 * Do we need the ability to modify and remove material objects (not instances)?
 * Do we need the ability to pull different components from different textures?  For example, for a diffuse map, pull the red and green components from one texture, and the blue from another.
 
 ## Phase ?
-* Author materials with Sandcastle.
+* Lines like `this._drawUniforms = combine(this._uniforms, this._material.uniforms);` should account for uniform name conflicts.
 * Render to cube map for reflections and refractions.
+* Existing Materials
+   * Add (Texture coordinates) `offset` in addition to the `repeat` uniform.
+* New Materials
+   * Grid, e.g., for ellipsoids.
+   * Erosion.  Perhaps screen-space too?
+* JSON schema features.
+   * Fold top-level uniforms into lower uniforms, e.g., to implement `Image`.
+   * Support uniform arrays.
+   * Add `externalSource` for external GLSL source files.
+   * Easy way to feed output of one material to input of another material.  For example, when combining normal mapping and cube-map reflection, make the output from normal mapping input to the reflection to get reflections from the bumpy surface.
+* Author materials with Sandcastle.
 
 ## Questions
 
