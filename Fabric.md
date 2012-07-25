@@ -3,13 +3,18 @@
 * [**Built-In Materials**](#BuiltInMaterials)
    * [Procedural Textures](#ProceduralTextures)
    * [Base Materials](#BaseMaterials)
+   * [Common Uniforms](#CommonUniforms)
+* [**Creating New Materials**](#CreatingNewMaterials)
+   * [Components](#Components)
+   * [Source](#Source)
+   * [Combing Materials](#CombingMaterials)
 
 <a id="Introduction"></a>
 ## Introduction
 
 _Fabric_ is a JSON schema for describing _materials_ in Cesium.  Materials represent the appearance of an object such as polygons and sensors.
 
-Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch, or created by combing existing materials in a hierarchy to create new materials; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
+Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch or created by combing existing materials in a hierarchy; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
 
 <img src="features/CheckerboardMaterial.png" width="200" height="92" alt="Checkerboard" />
 <img src="features/VerticalStripeMaterial.png" width="200" height="92" alt="Vertical stripe" />
@@ -57,15 +62,16 @@ polygon.material.uniforms.color = Cesium.Color.WHITE;
 
 _TODO: links to Sandcastle_
 _TODO: links to reference doc_
+_TODO: more inspiring examples throughout_
 
 Cesium has several built-in materials.  Two widely used ones are:
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
 | `Color` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A single color, including alpha for translucency. |
-| `Image` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Represents images with or without an alpha channel such as .png or .jpg.  A combination of diffuse, `rgb`, and alpha, `a`, components. |
+| `Image` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with or without an alpha channel such as .png or .jpg; a combination of diffuse, `rgb`, and alpha, `a`, components. |
 
-All built-in materials can be used similar to how we used `Color`.  For example, the following code uses `Image`.
+All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
 polygon.material = Material.fromID(scene.getContext(), 'Image');
 polygon.material.uniforms.texture = "image.png";
@@ -86,7 +92,7 @@ polygon.material = new Cesium.Material({
 <a id="ProceduralTextures"></a>
 ### Procedural Textures
 
-Procedural texture materials procedurally compute patterns on the GPU and do not rely on external image files.  They represent both diffuse and alpha components.
+Procedural texture materials procedurally compute patterns on the GPU so they do not rely on external image files.  They represent both diffuse and alpha components.
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
@@ -99,13 +105,15 @@ Procedural texture materials procedurally compute patterns on the GPU and do not
 | `Wood` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Wood generated with simplex noise. |
 | `Grass` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Grass generated with simplex noise. |
 | `DistanceInterval` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Distances with colors. |
-| `TieDye` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Procedural tie-dye generated with simplex noise. |
-| `Facet` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Cacet generated with cellular noise. |
+| `TieDye` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Tie-dye generated with simplex noise. |
+| `Facet` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Facet generated with cellular noise. |
 | `Blob` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
 
 <a id="BaseMaterials"></a>
 ### Base Materials
- 
+
+Base materials represent fine-grain fundamental material characteristics, such as how much incoming light is reflected in a single direction, i.e., the _specular intensity_, or how much light is emitted, i.e., the _emission_.  These materials can be used as is, but are more commonly [combined](#CombingMaterials) using Fabric to create a more complex material.
+
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
 | `DiffuseMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining incoming light that scatters evenly in all directions. |
@@ -118,9 +126,15 @@ Procedural texture materials procedurally compute patterns on the GPU and do not
 | `Refraction` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Cube map refraction for translucent surfaces that refract light, e.g., glass. |
 | `Fresnel` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material is refracts light; as the viewer looks more edge on, the material refracts less and reflects more. |
 
-_TODO: more general below_
+<a id="CommonUniforms"></a>
+### Common Uniforms
 
-By default, the specular component is taken from the `r` component.  However, `SpecularMap` like most materials, contains a `channel` uniform (`channels` for materials requiring more than one channel) that defines what channel to pull from.
+Many materials have a `texture` uniform, which is an image URL or data URI.
+```javascript
+polygon.material.uniforms.texture = "image.png";
+polygon.material.uniforms.texture = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVDhPrZPRDYQgEEQpjVKuFEvhw0IoxU6QgQwMK+vdx5FsooT3GHdjCM4qZnnnHvvkYoxFi/uvIhwiRCClXFC6v5UQ1uQAsbrkHCLsbaPjFgIzQQc1yUOwu33ePGE3BQUaee2BpjhbP5YUmkAlbNzsAURfBDqJnMIyyv4JjsCCgCnIR32uZUfcJuGBOwEk6bOKhoAADh31EIq3MgFg1mgkE1BA2AoUZoo2iZ3gyqGgmMDC/xWwkfb3/eUd7A1v3kxjNW9taQAAAABJRU5ErkJggg=="
+```
+Some materials, such as `Diffuse` and `NormalMap` require textures with three components per pixel; other materials, such as `Specular` and `Alpha`, require one component.  We can specify what channels (and in what order) these components are pulled from when creating a material using the `channels` or `channel` string uniform.  For example, by default in the `Specular` material, the specular component is taken from the `r` channel.  However, we can change that:
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
@@ -133,11 +147,143 @@ polygon.material = new Cesium.Material({
   }
 });
 ```
-This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.
+This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.  Under the hood, the texture will also be loaded once.
 
 _TODO: sRepeat and tRepeat_
 
-## Combing Materials
+<a id="CreatingNewMaterials"></a>
+## Creating New Materials
+
+New materials are created using Fabric, a bit of GLSL, and potentially other materials.
+
+If a material is not going to be reused, it can be created without an `id`.
+```javascript
+var fabric = {
+   // no id
+   // ...rest of fabric JSON
+};
+polygon.material = new Cesium.Material({
+  context : scene.getContext(),
+  fabric : fabric
+});
+```
+When a non-existing `id` is used, the material is cached during the first call to `new Cesium.Material`, and later calls to `new Cesium.Material` or `Material.fromID` can reference the material as if it were a built-in material, i.e., they don't need to provide the full Fabric, just the `id` and any `uniforms` they want to set.
+```javascript
+var fabric = {
+   "id" : "MyNewMaterial",
+   // ...rest of fabric JSON
+};
+polygon.material = new Cesium.Material({
+  context : scene.getContext(),
+  fabric : fabric
+});
+// ... later calls just use the id.
+anotherPolygon.material = Material.fromID(scene.getContext(), 'MyNewMaterial');
+```
+
+<a id="Components"></a>
+### Components
+
+Perhaps the simplest interesting material is one that reflects white in all directions:
+```javascript
+var fabric = {
+  "components": {
+    "diffuse": "vec3(1.0)"
+  }
+}
+```
+A slightly more complicated example adds a specular component so that the material is most intense when viewed straight down, and becomes less intense as viewed edge-on.
+```javascript
+{
+  "components": {
+    "diffuse": "vec3(0.5)",
+    "specular": "0.5"
+  }
+}
+```
+The `components` property contains sub-properties that define the appearance of the material.  The value of each sub-property is a GLSL code snippet, hence the `vec3(0.5)` above that creates a 3D vector with each component set to `0.5`.  These have access to all GLSL functions like `mix`, `cos`, `texture2D`, etc.  There are five sub-properties.
+
+| Name | Default | Description |
+|:-----|:--------|:------------|
+| `diffuse` | `"vec3(0.0)"` | The diffuse component of this material.  The diffuse component is a vec3 defining incoming light that scatters evenly in all directions. |
+| `specular` | `"0.0"` | The specular component of this material.  The specular component is a float defining the intensity of incoming light reflecting in a single direction. |
+| `normal` |  | The normal component of this material.  The normal component is a vec3 defining the surface's normal in tangent coordinates.  It is used for effects such as normal mapping.  The default is the surface's unmodified normal. |
+| `emission` | `"vec3(0.0)"` | The emission component of this material.  The emission component is a vec3 defining light emitted by the material equally in all directions.  The default is vec3(0.0), which emits no light. |
+| `alpha` | `1.0` | The alpha component of this material.  The alpha component is a float defining the opacity of this material.  0.0 is completely transparent; 1.0 is completely opaque. |
+
+Together, these sub-properties, or _components_ define the characteristics of the material.  They are the output of the material, and the input to the lighting system.
+
+<a id="Source"></a>
+### Source
+
+An alternative to the `components` property that provides more flexibility is to provide complete GLSL source for a function, `agi_getMaterial`, that returns the material's components.  The signature is:
+```glsl
+struct agi_materialInput
+{
+  float s;
+  vec2 st;
+  vec3 str;
+  mat3 tangentToEyeMatrix;
+  vec3 positionToEyeWC;
+  vec3 normalEC;
+  vec3 positionMC;
+};
+
+struct agi_material
+{
+  vec3 diffuse;
+  float specular;
+  vec3 normal;
+  vec3 emission;
+  float alpha;
+};
+
+agi_material agi_getMaterial(agi_materialInput materialInput);
+```
+The simplest possible implementation is to return the default for each component.
+```glsl
+agi_material agi_getMaterial(agi_materialInput materialInput)
+{
+    return agi_getDefaultMaterial(materialInput);
+}
+```
+The Fabric looks like:
+```JavaScript
+{
+  "source" : "agi_material agi_getMaterial(agi_materialInput materialInput) { return agi_getDefaultMaterial(materialInput); }"
+}
+```
+
+Our example material above that sets `diffuse` and `specular` components can be implemented as:
+```glsl
+agi_material agi_getMaterial(agi_materialInput materialInput)
+{
+    agi_materialInput m = agi_getDefaultMaterial(materialInput);
+    m.diffuse = vec3(0.5);
+    m.specular = 0.5;
+    return m;
+}
+```
+Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `agi_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `agi_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesium.agi.com/Documentation/?classFilter=agi_).
+
+TOOD: talk about material input
+TODO: writing rendering code that uses fabric.
+TODO: default texture, cube map
+
+<a id="CombingMaterials"></a>
+### Combing Materials
+
+
+
+
+
+
+
+
+
+
+
+
 
 _TODO: start with creating materials from starch.
 
@@ -176,16 +322,6 @@ m.materials.specularMaterial.texture = 'specularMap.png';
 
 ### Components
 
-The `components` property contains the following optional sub-properties.  All are strings with a GLSL code snippet.
 
-| Name | Default | Description |
-|:-----|:--------|:------------|
-| `diffuse` | `"vec3(0.0)"` | The diffuse component of this material.  The diffuse component is a vec3 defining incoming light that scatters evenly in all directions. |
-| `specular` | `"0.0"` | The specular component of this material.  The specular component is a float defining the intensity of incoming light reflecting in a single direction. |
-| `normal` |  | The normal component of this material.  The normal component is a vec3 defining the surface's normal in tangent coordinates.  It is used for effects such as normal mapping.  The default is the surface's unmodified normal. |
-| `emission` | `"vec3(0.0)"` | The emission component of this material.  The emission component is a vec3 defining light emitted by the material equally in all directions.  The default is vec3(0.0), which emits no light. |
-| `alpha` | `1.0` | The alpha component of this material.  The alpha component is a float defining the opacity of this material.  0.0 is completely transparent; 1.0 is completely opaque. |
-
-Together, these sub-properties, or _components_ define the characteristics of the material.  They are the output of the material, and the input to the lighting system.
 
 A material can simply pass through the components of other materials, e.g., `"diffuse" : "anotherMaterial.diffuse"`, or they can include GLSL code, e.g., "diffuse" : "mix(cold.diffuse, hot.diffuse, texture2D(temperature, materialInput.st).r)".
