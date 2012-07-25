@@ -277,7 +277,7 @@ The `materialInput` variable is available in both `source` and `components`.  It
 |:-----|:-----|:------------|
 | `s` | `float`  | A 1D texture coordinate. |
 | `st` | `vec2` | 2D texture coordinates. |
-| `str` | `vec3` | 3D texture coordinates.  The 1D, 2D, and 3D texture coordinates are not necessarily proper subsets of each other, e.g., `str.st == st` and `st.s == s` are not guaranteed to be true.  For example, for an ellipsoid, `s` might go from bottom to top; `st` might be longitude and latitude; and `str` might be along the axes of the bounding box. |
+| `str` | `vec3` | 3D texture coordinates.  The 1D, 2D, and 3D texture coordinates are not necessarily proper subsets of each other, e.g., `str.st == st` and `st.s == s` are not guaranteed.  For example, for an ellipsoid, `s` might go from bottom to top; `st` might be longitude and latitude; and `str` might be along the axes of the bounding box. |
 | `tangentToEyeMatrix` | `mat3`  | A transformation matrix from the fragment's tangent space to eye coordinates, for normal mapping, bump mapping, etc. |
 | `positionToEyeWC` | `vec3` | A vector from the fragment to the eye in world coordinates, for reflection, refraction, etc. |
 | `normalEC` | `vec3` | The fragment's normal (normalized) in eye coordinates, for bump mapping, reflection, refraction, etc. |
@@ -293,8 +293,47 @@ A simple material that visualizes the `st` texture coordinates is:
 ```
 Similarly, we can visualize the normal in eye coordinates by setting `diffuse` to `materialInput.normalEC`.
 
+In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesium.agi.com/Documentation/?classFilter=agi_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
+```javascript
+{
+  "id" : "OurColor",
+  "uniforms" : {
+    "color" : {
+      "red" : 1.0,
+      "green" : 0.0,
+      "blue" : 0.0,
+      "alpha" : 1.0
+    }
+  },
+  "components" : {
+    "diffuse" : "color.rgb",
+    "alpha" : "color.a"
+  }
+}
+```
+In Fabric, the `uniform` property's sub-properties are the names of the uniforms in GLSL and the JavaScript object returned from `new Material` and `Material.fromID`.  The sub-properties's values (for scalars) or sub-properties (for vectors) are the value of the uniform.
+
+We can implement our own `DiffuseMap` material by using a texture uniform:
+```javascript
+{
+  "id" : "OurDiffuseMap",
+  "uniforms" : {
+    "texture" : "agi_defaultTexture"
+  },
+  "components" : {
+    "diffuse" : "texture2D(texture, materialInput.st).rgb"
+  }
+}
+```
+Above, `"agi_defaultTexture"` is a placeholder 1x1 texture.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
+```javascript
+polygon.material = Material.fromID(scene.getContext(), 'OurDiffuseMap');
+polygon.material.uniforms.texture = "diffuse.png";
+```
+There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
+
 _TODO: writing rendering code that uses fabric._
-_TODO: default texture, cube map._
+_TODO: link to schema somewhere._
 
 <a id="CombiningMaterials"></a>
 ### Combining Materials
