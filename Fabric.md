@@ -266,7 +266,18 @@ agi_material agi_getMaterial(agi_materialInput materialInput)
 ```
 Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `agi_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `agi_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesium.agi.com/Documentation/?classFilter=agi_).
 
-TOOD: talk about material input
+The `materialInput` variable is also available in both `source` and `components`.  It has the following fields that can be used to compute material components.
+
+| Name | Type | Description |
+|:-----|:-----|:------------|
+| `s` | `float`  | A 1D texture coordinate. |
+| `st` | `vec2` | 2D texture coordinates. |
+| `str` | `vec3` | 3D texture coordinates.  The 1D, 2D, and 3D texture coordinates are not necessarily proper subsets of each other, e.g., `str.st == st` and `st.s == s` are not guaranteed to be true.  For example, for an ellipsoid, `s` might go from bottom to top; `st` might be longitude and latitude; and `str` might be along the axes of the bounding box. |
+| `tangentToEyeMatrix` | `mat3`  | A transformation matrix from the fragment's tangent space to eye coordinates, for normal mapping, bump mapping, etc. |
+| `positionToEyeWC` | `vec3` | A vector from the fragment to the eye in world coordinates, for reflection, refraction, etc. |
+| `normalEC` | `vec3` | The fragment's normal (normalized) in eye coordinates, for bump mapping, reflection, refraction, etc. |
+| `positionMC` | `vec3` | The fragment's position in model coordinates. |
+
 TODO: writing rendering code that uses fabric.
 TODO: default texture, cube map
 
