@@ -9,6 +9,7 @@
    * [Source](#Source)
    * [Input](#Input)
    * [Combining Materials](#CombiningMaterials)
+* [**Roadmap**](#Roadmap)
 
 <a id="Introduction"></a>
 ## Introduction
@@ -188,21 +189,21 @@ anotherPolygon.material = Material.fromID(scene.getContext(), 'MyNewMaterial');
 Perhaps the simplest interesting material is one that reflects white in all directions:
 ```javascript
 var fabric = {
-  "components": {
-    "diffuse": "vec3(1.0)"
+  "components" : {
+    "diffuse" : "vec3(1.0)"
   }
 }
 ```
-A slightly more complicated example adds a specular component so that the material is most intense when viewed straight down, and becomes less intense as viewed edge-on.
+A slightly more complicated example adds a specular component so that the material's reflected light is most intense when viewed straight down, and becomes less intense as viewed edge-on.
 ```javascript
 {
-  "components": {
-    "diffuse": "vec3(0.5)",
-    "specular": "0.5"
+  "components" : {
+    "diffuse" : "vec3(0.5)",
+    "specular" : "0.5"
   }
 }
 ```
-The `components` property contains sub-properties that define the appearance of the material.  The value of each sub-property is a GLSL code snippet, hence the `vec3(0.5)` above that creates a 3D vector with each component set to `0.5`.  These have access to all GLSL functions like `mix`, `cos`, `texture2D`, etc.  There are five sub-properties.
+The `components` property contains sub-properties that define the appearance of the material.  The value of each sub-property is a GLSL code snippet, hence the `vec3(0.5)` above, which creates a 3D vector with each component set to `0.5`.  These have access to all GLSL functions like `mix`, `cos`, `texture2D`, etc.  There are five sub-properties.
 
 | Name | Default | Description |
 |:-----|:--------|:------------|
@@ -338,3 +339,9 @@ m.materials.specularMaterial.texture = 'specularMap.png';
 
 
 A material can simply pass through the components of other materials, e.g., `"diffuse" : "anotherMaterial.diffuse"`, or they can include GLSL code, e.g., `"diffuse" : "mix(cold.diffuse, hot.diffuse, texture2D(temperature, materialInput.st).r)"`.
+
+
+<a id="Roadmap"></a>
+## Roadmap
+
+We have even more planned, see the [Roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details).
