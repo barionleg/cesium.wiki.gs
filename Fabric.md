@@ -298,19 +298,7 @@ _TODO: default texture, cube map._
 <a id="CombiningMaterials"></a>
 ### Combining Materials
 
-
-
-
-
-
-
-
-
-
-
-
-
-_TODO: start with creating materials from starch.
+_TODO: below here needs work._
 
 Let's create a material that combines a diffuse map and specular map.  First the JSON material:
 ```javascript
@@ -349,4 +337,4 @@ m.materials.specularMaterial.texture = 'specularMap.png';
 
 
 
-A material can simply pass through the components of other materials, e.g., `"diffuse" : "anotherMaterial.diffuse"`, or they can include GLSL code, e.g., "diffuse" : "mix(cold.diffuse, hot.diffuse, texture2D(temperature, materialInput.st).r)".
+A material can simply pass through the components of other materials, e.g., `"diffuse" : "anotherMaterial.diffuse"`, or they can include GLSL code, e.g., `"diffuse" : "mix(cold.diffuse, hot.diffuse, texture2D(temperature, materialInput.st).r)"`.
