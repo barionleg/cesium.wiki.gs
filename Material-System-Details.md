@@ -70,9 +70,12 @@ Details to follow...
 * Do we need the ability to modify and remove material objects (not instances)?
 * Do we need the ability to pull different components from different textures?  For example, for a diffuse map, pull the red and green components from one texture, and the blue from another.
 
+## Phase ?
+* Author materials with Sandcastle.
+* Render to cube map for reflections and refractions.
+
 ## Questions
 
-* How do we render to cube map for reflections and refractions?
 * How important is it to support multiple texture coordinates, i.e., different coordinates for different materials on the same object?
 * Do we have a need for relief mapping, etc?
 * How do screen-space techniques like fog, glow, and bloom fit in?
