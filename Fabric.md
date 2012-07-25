@@ -9,6 +9,7 @@
    * [Source](#Source)
    * [Input](#Input)
    * [Combining Materials](#CombiningMaterials)
+* [**Integration in the Rendering Pipeline**](#IntegrationintheRenderingPipeline)
 * [**Roadmap**](#Roadmap)
 
 <a id="Introduction"></a>
@@ -61,10 +62,6 @@ polygon.material.uniforms.color = Cesium.Color.WHITE;
 
 <a id="BuiltInMaterials"></a>
 ## Built-In Materials
-
-_TODO: links to Sandcastle_
-_TODO: links to reference doc_
-_TODO: more inspiring examples throughout_
 
 Cesium has several built-in materials.  Two widely used ones are:
 
@@ -332,18 +329,15 @@ polygon.material.uniforms.texture = "diffuse.png";
 ```
 There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
 
-_TODO: writing rendering code that uses fabric._
-_TODO: link to schema somewhere._
-
 <a id="CombiningMaterials"></a>
 ### Combining Materials
 
-_TODO: below here needs work._
+So far, we can use the [built-in](#BuiltInMaterials) materials, or create our own by using Fabric to specify the material's [components](#Components) or full GLSL [source](#Source).  We can also build materials from existing materials (recursively) forming a hierarchy of materials.
 
-Let's create a material that combines a diffuse map and specular map.  First the JSON material:
+Fabric has a `materials` property where the value of each sub-property is Fabric, i.e., a material.  These materials can be referenced in the `components` and `source` properties so they can be built upon.  For example, a material representing plastic can be implemented with a `DiffuseMap` and `SpecularMap`.
 ```javascript
-var fabric = {
-  "id" : "DiffuseSpecularMap",
+{
+  "id" : "OurMappedPlastic",
   "materials": {
     "diffuseMaterial" : {
       "id" : "DiffuseMap"
@@ -354,30 +348,48 @@ var fabric = {
   },
   "components" : {
       "diffuse" : "diffuseMaterial.diffuse",
-      "specular" : "specularMaterial.specular",
+      "specular" : "specularMaterial.specular"
   }
 };
 ```
 
-A new `id` is used to name the material, `DiffuseSpecularMap`.  Since this material does not exist, a `components` section describes the output of the material.  This material has `diffuse` and `specular` components that pull values from materials reference in the `material` property.  The built-in `DiffuseMap` and `SpecularMap` materials are used.
+This material has `diffuse` and `specular` components that pull values from materials in the `material` property.  The sub-materials are named `diffuseMaterial` and `specularMaterial` (created from ids `diffuseMaterial` and `SpecularMap`; do not confuse the name - the instance - and the id - the class so to speak).  In the `components` and `source` properties, sub-materials are accessed by name as if they were an `agi_material` structure, hence the `.diffuse` and `.specular` field accesses above.
 
-Given this `fabric` object, the material can be used like other materials.
+Given this Fabric, our material can be used like other materials.
 ```javascript
-var m = new Cesium.Material({
-  context : scene.getContext(),
-  fabric : fabric
-});
+var m = Material.fromID(context, 'OurMappedPlastic');
 polygon.material = m;
 
-m.materials.diffuseMaterial.texture = 'diffuseMap.png';
-m.materials.specularMaterial.texture = 'specularMap.png';
+m.materials.diffuseMaterial.uniforms.texture = 'diffuseMap.png';
+m.materials.specularMaterial.uniforms.texture = 'specularMap.png';
 ```
 
-### Components
+_TODO: link to schema somewhere._
+
+_TODO: Screenshots throughout._
+
+_TODO: links to reference doc._
+
+_TODO: links to Sandcastle._
+
+_TODO: need simple but inspiring examples of writing custom materials with Fabric._
 
 
+<a id="IntegrationintheRenderingPipeline"></a>
+## Integration in the Rendering Pipeline
 
-A material can simply pass through the components of other materials, e.g., `"diffuse" : "anotherMaterial.diffuse"`, or they can include GLSL code, e.g., `"diffuse" : "mix(cold.diffuse, hot.diffuse, texture2D(temperature, materialInput.st).r)"`.
+Objects like _Polygon_, _CustomSensorVolume_, etc. integrate with the material system to support materials.  Most users will simply assign to their `material` property and be done.  However, users writing custom rendering code may also want to integrate with materials.  Doing so is straightforward.
+
+From the rendering perspective, a material is a GLSL function, `agi_getMaterial`, and uniforms.  The fragment shader needs to construct an `agi_MaterialInput`, call `agi_getMaterial`, and then pass the resulting `agi_material` to the lighting function to compute the fragment's color.
+
+In JavaScript, the object should have a public `material` property.  When this property changes, the `update` function should prepend the material's GLSL source to the object's fragment shader's source, and combine the uniforms of the object and the material.
+```javascript
+var fsSource =
+  this.material.shaderSource +
+  ourFragmentShaderSource;
+
+this._drawUniforms = combine(this.uniforms, this.material.uniforms);
+```
 
 
 <a id="Roadmap"></a>
