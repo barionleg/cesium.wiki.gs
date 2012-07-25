@@ -9,7 +9,7 @@
 
 _Fabric_ is a JSON schema for describing _materials_ in Cesium.  Materials represent the appearance of an object such as polygons and sensors.
 
-Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  New materials can be scripted using Fabric and GLSL, or created by combing existing materials in a hierarchy to create new materials; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
+Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch, or created by combing existing materials in a hierarchy to create new materials; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
 
 <img src="features/CheckerboardMaterial.png" width="200" height="92" alt="Checkerboard" />
 <img src="features/VerticalStripeMaterial.png" width="200" height="92" alt="Vertical stripe" />
