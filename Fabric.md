@@ -9,7 +9,7 @@
    * [Source](#Source)
    * [Input](#Input)
    * [Combining Materials](#CombiningMaterials)
-* [**Integration in the Rendering Pipeline**](#IntegrationintheRenderingPipeline)
+* [**Materials in the Rendering Pipeline**](#MaterialsintheRenderingPipeline)
 * [**Roadmap**](#Roadmap)
 
 <a id="Introduction"></a>
@@ -375,8 +375,8 @@ _TODO: links to Sandcastle._
 _TODO: need simple but inspiring examples of writing custom materials with Fabric._
 
 
-<a id="IntegrationintheRenderingPipeline"></a>
-## Integration in the Rendering Pipeline
+<a id="MaterialsintheRenderingPipeline"></a>
+## Materials in the Rendering Pipeline
 
 Objects like _Polygon_, _CustomSensorVolume_, etc. integrate with the material system to support materials.  Most users will simply assign to their `material` property and be done.  However, users writing custom rendering code may also want to integrate with materials.  Doing so is straightforward.
 
