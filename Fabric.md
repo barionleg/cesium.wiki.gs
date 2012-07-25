@@ -7,14 +7,15 @@
 * [**Creating New Materials**](#CreatingNewMaterials)
    * [Components](#Components)
    * [Source](#Source)
-   * [Combing Materials](#CombingMaterials)
+   * [Input](#Input)
+   * [Combining Materials](#CombiningMaterials)
 
 <a id="Introduction"></a>
 ## Introduction
 
 _Fabric_ is a JSON schema for describing _materials_ in Cesium.  Materials represent the appearance of an object such as polygons and sensors.
 
-Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch or created by combing existing materials in a hierarchy; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
+Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch or created by combining existing materials in a hierarchy; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
 
 <img src="features/CheckerboardMaterial.png" width="200" height="92" alt="Checkerboard" />
 <img src="features/VerticalStripeMaterial.png" width="200" height="92" alt="Vertical stripe" />
@@ -112,7 +113,7 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 <a id="BaseMaterials"></a>
 ### Base Materials
 
-Base materials represent fine-grain fundamental material characteristics, such as how much incoming light is reflected in a single direction, i.e., the _specular intensity_, or how much light is emitted, i.e., the _emission_.  These materials can be used as is, but are more commonly [combined](#CombingMaterials) using Fabric to create a more complex material.
+Base materials represent fine-grain fundamental material characteristics, such as how much incoming light is reflected in a single direction, i.e., the _specular intensity_, or how much light is emitted, i.e., the _emission_.  These materials can be used as is, but are more commonly [combined](#CombiningMaterials) using Fabric to create a more complex material.
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
@@ -266,7 +267,10 @@ agi_material agi_getMaterial(agi_materialInput materialInput)
 ```
 Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `agi_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `agi_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesium.agi.com/Documentation/?classFilter=agi_).
 
-The `materialInput` variable is also available in both `source` and `components`.  It has the following fields that can be used to compute material components.
+<a id="Input"></a>
+### Input
+
+The `materialInput` variable is available in both `source` and `components`.  It has the following fields that can be used to compute material components.
 
 | Name | Type | Description |
 |:-----|:-----|:------------|
@@ -278,11 +282,21 @@ The `materialInput` variable is also available in both `source` and `components`
 | `normalEC` | `vec3` | The fragment's normal (normalized) in eye coordinates, for bump mapping, reflection, refraction, etc. |
 | `positionMC` | `vec3` | The fragment's position in model coordinates. |
 
-TODO: writing rendering code that uses fabric.
-TODO: default texture, cube map
+A simple material that visualizes the `st` texture coordinates is:
+```javascript
+{
+  "components": {
+    "diffuse": "vec3(materialInput.st, 0.0)"
+  }
+}
+```
+Similarly, we can visualize the normal in eye coordinates by setting `diffuse` to `materialInput.normalEC`.
 
-<a id="CombingMaterials"></a>
-### Combing Materials
+_TODO: writing rendering code that uses fabric._
+_TODO: default texture, cube map._
+
+<a id="CombiningMaterials"></a>
+### Combining Materials
 
 
 
