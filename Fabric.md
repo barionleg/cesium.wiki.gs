@@ -150,7 +150,7 @@ polygon.material = new Cesium.Material({
 This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.  Under the hood, the texture will also be loaded once.
 
 Materials that use textures often have a `repeat` uniform that controls the number of times the texture repeats horizontally and vertically. This can useful for tiling images across a surface.
-```
+```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
@@ -212,7 +212,7 @@ A slightly more complicated example adds a specular component so that the materi
 {
   "components" : {
     "diffuse" : "vec3(0.5)",
-    "specular" : "0.5"
+    "specular" : "0.1"
   }
 }
 ```
@@ -369,7 +369,7 @@ Fabric has a `materials` property where the value of each sub-property is Fabric
 };
 ```
 
-This material has `diffuse` and `specular` components that pull values from materials in the `material` property.  The sub-materials are named `diffuseMaterial` and `specularMaterial` (created from ids `diffuseMaterial` and `SpecularMap`; do not confuse the name - the instance - and the id - the class so to speak).  In the `components` and `source` properties, sub-materials are accessed by name as if they were an `agi_material` structure, hence the `.diffuse` and `.specular` field accesses above.
+This material has `diffuse` and `specular` components that pull values from materials in the `materials` property.  The sub-materials are named `diffuseMaterial` and `specularMaterial` (created from ids `DiffuseMap` and `SpecularMap`; do not confuse the name - the instance - and the id - the class so to speak).  In the `components` and `source` properties, sub-materials are accessed by name as if they were an `agi_material` structure, hence the `.diffuse` and `.specular` field accesses above.
 
 Given this Fabric, our material can be used like other materials.
 ```javascript
@@ -410,7 +410,7 @@ var fsSource =
   this.material.shaderSource +
   ourFragmentShaderSource;
 
-this._drawUniforms = combine(this._uniforms, this.material.uniforms);
+this._drawUniforms = combine({}, [this._uniforms, this.material._uniforms]);
 ```
 
 <a id="Roadmap"></a>
