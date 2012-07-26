@@ -410,7 +410,7 @@ var fsSource =
   this.material.shaderSource +
   ourFragmentShaderSource;
 
-this._drawUniforms = combine({}, [this._uniforms, this.material._uniforms]);
+this._drawUniforms = combine([this._uniforms, this.material._uniforms]);
 ```
 
 <a id="Roadmap"></a>
