@@ -9,6 +9,7 @@
    * [Source](#Source)
    * [Input](#Input)
    * [Combining Materials](#CombiningMaterials)
+* [**Fabric Schema**](#FabricSchema)
 * [**Materials in the Rendering Pipeline**](#MaterialsintheRenderingPipeline)
 * [**Roadmap**](#Roadmap)
 
@@ -283,8 +284,8 @@ The `materialInput` variable is available in both `source` and `components`.  It
 A simple material that visualizes the `st` texture coordinates is:
 ```javascript
 {
-  "components": {
-    "diffuse": "vec3(materialInput.st, 0.0)"
+  "components" : {
+    "diffuse" : "vec3(materialInput.st, 0.0)"
   }
 }
 ```
@@ -338,7 +339,7 @@ Fabric has a `materials` property where the value of each sub-property is Fabric
 ```javascript
 {
   "id" : "OurMappedPlastic",
-  "materials": {
+  "materials" : {
     "diffuseMaterial" : {
       "id" : "DiffuseMap"
     },
@@ -364,8 +365,6 @@ m.materials.diffuseMaterial.uniforms.texture = 'diffuseMap.png';
 m.materials.specularMaterial.uniforms.texture = 'specularMap.png';
 ```
 
-_TODO: link to schema somewhere._
-
 _TODO: Screenshots throughout._
 
 _TODO: links to reference doc._
@@ -374,6 +373,14 @@ _TODO: links to Sandcastle._
 
 _TODO: need simple but inspiring examples of writing custom materials with Fabric._
 
+<a id="FabricSchema"></a>
+## Fabric Schema
+
+_TODO: link to schema when it's in master._
+
+A [JSON Schema](http://json-schema.org/) for Fabric is in the Cesium repo.  This details all Fabric properties and sub-properties, including `id`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
+
+In addition to more rigorous Fabric documentation, the schema can be used to validate Fabric using a tool like [JSV](https://github.com/garycourt/JSV).
 
 <a id="MaterialsintheRenderingPipeline"></a>
 ## Materials in the Rendering Pipeline
@@ -390,7 +397,6 @@ var fsSource =
 
 this._drawUniforms = combine(this.uniforms, this.material.uniforms);
 ```
-
 
 <a id="Roadmap"></a>
 ## Roadmap
