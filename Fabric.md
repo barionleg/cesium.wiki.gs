@@ -27,7 +27,7 @@ Materials can be as simple as draping an image over an object, or applying a pat
 <img src="features/WoodMaterial.png" width="200" height="92" alt="Wood" />
 <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" />
 
-Objects that support materials have `material` property.  Currently, these objects are polygons and sensors.  Materials are applied by assigning to the object's `material` property.
+Objects that support materials have a `material` property.  Currently, these objects are polygons and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
 polygon.material = Material.fromID(scene.getContext(), 'Color');
 ```
@@ -124,7 +124,7 @@ Base materials represent fine-grain fundamental material characteristics, such a
 | `EmissionMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining light emitted by the material equally in all directions, e.g., lights in a long hallway. |
 | `Reflection` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Cube map reflection for mirror-like surfaces that reflect light, e.g., paint on a car. |
 | `Refraction` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Cube map refraction for translucent surfaces that refract light, e.g., glass. |
-| `Fresnel` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material is refracts light; as the viewer looks more edge on, the material refracts less and reflects more. |
+| `Fresnel` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material refracts light; as the viewer looks more edge on, the material refracts less and reflects more. |
 
 <a id="CommonUniforms"></a>
 ### Common Uniforms
@@ -149,7 +149,22 @@ polygon.material = new Cesium.Material({
 ```
 This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.  Under the hood, the texture will also be loaded once.
 
-_TODO: `repeat`_
+Materials that use textures often have a `repeat` uniform that controls the number of times the texture repeats horizontally and vertically. This can useful for tiling images across a surface.
+```
+polygon.material = new Cesium.Material({
+  context : scene.getContext(),
+  fabric : {
+    "id" : "DiffuseMap",
+    "uniforms" : {
+      "texture" : "diffuse.png",
+      "repeat" : {
+        "x" : 10,
+        "y" : 2
+      }
+    }
+  }
+});
+```
 
 <a id="CreatingNewMaterials"></a>
 ## Creating New Materials
