@@ -74,7 +74,7 @@ Cesium has several built-in materials.  Two widely used ones are:
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
 polygon.material = Material.fromID(scene.getContext(), 'Image');
-polygon.material.uniforms.texture = "image.png";
+polygon.material.uniforms.image = "image.png";
 ```
 or
 ```javascript
@@ -83,7 +83,7 @@ polygon.material = new Cesium.Material({
   fabric : {
     "id" : "Image",
     "uniforms" : {
-      "texture" : "image.png"
+      "image" : "image.png"
     }
   }
 });
@@ -129,34 +129,34 @@ Base materials represent fine-grain fundamental material characteristics, such a
 <a id="CommonUniforms"></a>
 ### Common Uniforms
 
-Many materials have a `texture` uniform, which is an image URL or data URI.
+Many materials have a `image` uniform, which is an image URL or data URI.
 ```javascript
-polygon.material.uniforms.texture = "image.png";
-polygon.material.uniforms.texture = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVDhPrZPRDYQgEEQpjVKuFEvhw0IoxU6QgQwMK+vdx5FsooT3GHdjCM4qZnnnHvvkYoxFi/uvIhwiRCClXFC6v5UQ1uQAsbrkHCLsbaPjFgIzQQc1yUOwu33ePGE3BQUaee2BpjhbP5YUmkAlbNzsAURfBDqJnMIyyv4JjsCCgCnIR32uZUfcJuGBOwEk6bOKhoAADh31EIq3MgFg1mgkE1BA2AoUZoo2iZ3gyqGgmMDC/xWwkfb3/eUd7A1v3kxjNW9taQAAAABJRU5ErkJggg=="
+polygon.material.uniforms.image = "image.png";
+polygon.material.uniforms.image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVDhPrZPRDYQgEEQpjVKuFEvhw0IoxU6QgQwMK+vdx5FsooT3GHdjCM4qZnnnHvvkYoxFi/uvIhwiRCClXFC6v5UQ1uQAsbrkHCLsbaPjFgIzQQc1yUOwu33ePGE3BQUaee2BpjhbP5YUmkAlbNzsAURfBDqJnMIyyv4JjsCCgCnIR32uZUfcJuGBOwEk6bOKhoAADh31EIq3MgFg1mgkE1BA2AoUZoo2iZ3gyqGgmMDC/xWwkfb3/eUd7A1v3kxjNW9taQAAAABJRU5ErkJggg=="
 ```
-Some materials, such as `Diffuse` and `NormalMap` require textures with three components per pixel; other materials, such as `Specular` and `Alpha`, require one component.  We can specify what channels (and in what order) these components are pulled from when creating a material using the `channels` or `channel` string uniform.  For example, by default in the `Specular` material, the specular component is taken from the `r` channel.  However, we can change that:
+Some materials, such as `Diffuse` and `NormalMap` require images with three components per pixel; other materials, such as `Specular` and `Alpha`, require one component.  We can specify what channels (and in what order) these components are pulled from when creating a material using the `channels` or `channel` string uniform.  For example, by default in the `Specular` material, the specular component is taken from the `r` channel.  However, we can change that:
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
     "id" : "SpecularMap",
     "uniforms" : {
-      "texture" : "specular.png",
+      "image" : "specular.png",
       "channel" : "a"
     }
   }
 });
 ```
-This allows packing data for multiple materials into the same texture, e.g., storing diffuse components as rgb and specular components as a in the same texture.  Under the hood, the texture will also be loaded once.
+This allows packing data for multiple materials into the same image, e.g., storing diffuse components as rgb and specular components as a in the same image.  Under the hood, the image will also be loaded once.
 
-Materials that use textures often have a `repeat` uniform that controls the number of times the texture repeats horizontally and vertically. This can be useful for tiling images across a surface.
+Materials that use images often have a `repeat` uniform that controls the number of times the image repeats horizontally and vertically. This can be useful for tiling images across a surface.
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
     "id" : "DiffuseMap",
     "uniforms" : {
-      "texture" : "diffuse.png",
+      "image" : "diffuse.png",
       "repeat" : {
         "x" : 10,
         "y" : 2
@@ -326,22 +326,22 @@ In addition to `materialInput`, materials have access to uniforms, both Cesium p
 ```
 In Fabric, the `uniform` property's sub-properties are the names of the uniforms in GLSL and the JavaScript object returned from `new Material` and `Material.fromID`.  The sub-properties's values (for scalars) or sub-properties (for vectors) are the value of the uniform.
 
-We can implement our own `DiffuseMap` material by using a texture uniform:
+We can implement our own `DiffuseMap` material by using an image uniform:
 ```javascript
 {
   "id" : "OurDiffuseMap",
   "uniforms" : {
-    "texture" : "agi_defaultTexture"
+    "image" : "agi_defaultImage"
   },
   "components" : {
-    "diffuse" : "texture2D(texture, materialInput.st).rgb"
+    "diffuse" : "texture2D(image, materialInput.st).rgb"
   }
 }
 ```
-Above, `"agi_defaultTexture"` is a placeholder 1x1 texture.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
+Above, `"agi_defaultImage"` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
 ```javascript
 polygon.material = Material.fromID(scene.getContext(), 'OurDiffuseMap');
-polygon.material.uniforms.texture = "diffuse.png";
+polygon.material.uniforms.image = "diffuse.png";
 ```
 There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
 
@@ -376,8 +376,8 @@ Given this Fabric, our material can be used like other materials.
 var m = Material.fromID(context, 'OurMappedPlastic');
 polygon.material = m;
 
-m.materials.diffuseMaterial.uniforms.texture = 'diffuseMap.png';
-m.materials.specularMaterial.uniforms.texture = 'specularMap.png';
+m.materials.diffuseMaterial.uniforms.image = 'diffuseMap.png';
+m.materials.specularMaterial.uniforms.image = 'specularMap.png';
 ```
 
 _TODO: Screenshots throughout._
