@@ -29,7 +29,7 @@ Materials can be as simple as draping an image over an object, or applying a pat
 
 Objects that support materials have a `material` property.  Currently, these objects are polygons and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
-polygon.material = Material.fromID(scene.getContext(), 'Color');
+polygon.material = Material.fromID('Color', scene.getContext());
 ```
 Above, `Color` is a built-in material which represents a single color, including alpha.  `Material.fromID` is shorthand; the entire Fabric JSON can also be provided.
 ```javascript
@@ -73,7 +73,7 @@ Cesium has several built-in materials.  Two widely used ones are:
 
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
-polygon.material = Material.fromID(scene.getContext(), 'Image');
+polygon.material = Material.fromID('Image', scene.getContext());
 polygon.material.uniforms.image = "image.png";
 ```
 or
@@ -193,7 +193,7 @@ polygon.material = new Cesium.Material({
   fabric : fabric
 });
 // ... later calls just use the id.
-anotherPolygon.material = Material.fromID(scene.getContext(), 'MyNewMaterial');
+anotherPolygon.material = Material.fromID('MyNewMaterial', scene.getContext());
 ```
 
 <a id="Components"></a>
@@ -340,7 +340,7 @@ We can implement our own `DiffuseMap` material by using an image uniform:
 ```
 Above, `"agi_defaultImage"` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
 ```javascript
-polygon.material = Material.fromID(scene.getContext(), 'OurDiffuseMap');
+polygon.material = Material.fromID('OurDiffuseMap', scene.getContext());
 polygon.material.uniforms.image = "diffuse.png";
 ```
 There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
@@ -373,7 +373,7 @@ This material has `diffuse` and `specular` components that pull values from mate
 
 Given this Fabric, our material can be used like other materials.
 ```javascript
-var m = Material.fromID(context, 'OurMappedPlastic');
+var m = Material.fromID('OurMappedPlastic', scene.getContext());
 polygon.material = m;
 
 m.materials.diffuseMaterial.uniforms.image = 'diffuseMap.png';
