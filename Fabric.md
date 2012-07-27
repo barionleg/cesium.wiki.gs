@@ -96,7 +96,7 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
-| `Checkerboard` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Checkerboard with alternating light and dark colors. |
+| `Checkerboard` | <img src="Materials/Facet.png" width="200" height="92" alt="Facet" /> | Checkerboard with alternating light and dark colors. |
 | `Stripe` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Alternating light and dark horizontal or vertical stripes |
 | `Dots` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A pattern of dots organized by row and column. |
 | `Brick` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
