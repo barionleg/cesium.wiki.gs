@@ -80,6 +80,7 @@ Details to follow...
    * Add `externalSource` for external GLSL source files.
    * Easy way to feed output of one material to input of another material.  For example, when combining normal mapping and cube-map reflection, make the output from normal mapping input to the reflection to get reflections from the bumpy surface.
 * Author materials with Sandcastle.
+* More general (cached) built-in textures, e.g., `{ components : "a", values : [1.0] }` instead of `agi_defaultTexture`.
 
 ## Questions
 
