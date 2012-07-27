@@ -96,18 +96,18 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
-| `Checkerboard` | <img src="Materials/Facet.png" width="200" height="92" alt="Facet" /> | Checkerboard with alternating light and dark colors. |
-| `Stripe` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Alternating light and dark horizontal or vertical stripes |
-| `Dots` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A pattern of dots organized by row and column. |
-| `Brick` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
-| `Cement` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Cement generated with simplex noise. |
-| `Asphalt` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Asphalt generated with a combination of simplex and cellular noise. |
-| `Wood` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Wood generated with simplex noise. |
-| `Grass` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Grass generated with simplex noise. |
+| `Checkerboard` | <img src="Materials/Checkerboard.png" width="200" height="92" alt="Facet" /> | Checkerboard with alternating light and dark colors. |
+| `Stripe` | <img src="features/Stripe.png" width="200" height="92" alt="Facet" /> | Alternating light and dark horizontal or vertical stripes |
+| `Dots` | <img src="features/Dot.png" width="200" height="92" alt="Facet" /> | A pattern of dots organized by row and column. |
+| `Brick` | <img src="features/Brick.png" width="200" height="92" alt="Facet" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
+| `Cement` | <img src="features/Cement.png" width="200" height="92" alt="Facet" /> | Cement generated with simplex noise. |
+| `Asphalt` | <img src="features/Asphalt.png" width="200" height="92" alt="Facet" /> | Asphalt generated with a combination of simplex and cellular noise. |
+| `Wood` | <img src="features/Wood.png" width="200" height="92" alt="Facet" /> | Wood generated with simplex noise. |
+| `Grass` | <img src="features/Grass.png" width="200" height="92" alt="Facet" /> | Grass generated with simplex noise. |
 | `DistanceInterval` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Distances with colors. |
-| `TieDye` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Tie-dye generated with simplex noise. |
-| `Facet` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Facet generated with cellular noise. |
-| `Blob` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
+| `TieDye` | <img src="features/TieDye.png" width="200" height="92" alt="Facet" /> | Tie-dye generated with simplex noise. |
+| `Facet` | <img src="features/Facet.png" width="200" height="92" alt="Facet" /> | Facet generated with cellular noise. |
+| `Blob` | <img src="features/Blob.png" width="200" height="92" alt="Facet" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
 
 <a id="BaseMaterials"></a>
 ### Base Materials
