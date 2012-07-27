@@ -97,17 +97,17 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
 | `Checkerboard` | <img src="Materials/Checkerboard.png" width="200" height="92" alt="Facet" /> | Checkerboard with alternating light and dark colors. |
-| `Stripe` | <img src="features/Stripe.png" width="200" height="92" alt="Facet" /> | Alternating light and dark horizontal or vertical stripes |
-| `Dots` | <img src="features/Dot.png" width="200" height="92" alt="Facet" /> | A pattern of dots organized by row and column. |
-| `Brick` | <img src="features/Brick.png" width="200" height="92" alt="Facet" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
-| `Cement` | <img src="features/Cement.png" width="200" height="92" alt="Facet" /> | Cement generated with simplex noise. |
-| `Asphalt` | <img src="features/Asphalt.png" width="200" height="92" alt="Facet" /> | Asphalt generated with a combination of simplex and cellular noise. |
-| `Wood` | <img src="features/Wood.png" width="200" height="92" alt="Facet" /> | Wood generated with simplex noise. |
-| `Grass` | <img src="features/Grass.png" width="200" height="92" alt="Facet" /> | Grass generated with simplex noise. |
+| `Stripe` | <img src="Materials/Stripe.png" width="200" height="92" alt="Facet" /> | Alternating light and dark horizontal or vertical stripes |
+| `Dots` | <img src="Materials/Dot.png" width="200" height="92" alt="Facet" /> | A pattern of dots organized by row and column. |
+| `Brick` | <img src="Materials//Brick.png" width="200" height="92" alt="Facet" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
+| `Cement` | <img src="Materials/Cement.png" width="200" height="92" alt="Facet" /> | Cement generated with simplex noise. |
+| `Asphalt` | <img src="Materials/Asphalt.png" width="200" height="92" alt="Facet" /> | Asphalt generated with a combination of simplex and cellular noise. |
+| `Wood` | <img src="Materials/Wood.png" width="200" height="92" alt="Facet" /> | Wood generated with simplex noise. |
+| `Grass` | <img src="Materials/Grass.png" width="200" height="92" alt="Facet" /> | Grass generated with simplex noise. |
 | `DistanceInterval` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Distances with colors. |
-| `TieDye` | <img src="features/TieDye.png" width="200" height="92" alt="Facet" /> | Tie-dye generated with simplex noise. |
-| `Facet` | <img src="features/Facet.png" width="200" height="92" alt="Facet" /> | Facet generated with cellular noise. |
-| `Blob` | <img src="features/Blob.png" width="200" height="92" alt="Facet" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
+| `TieDye` | <img src="Materials/TieDye.png" width="200" height="92" alt="Facet" /> | Tie-dye generated with simplex noise. |
+| `Facet` | <img src="Materials/Facet.png" width="200" height="92" alt="Facet" /> | Facet generated with cellular noise. |
+| `Blob` | <img src="Materials/Blob.png" width="200" height="92" alt="Facet" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
 
 <a id="BaseMaterials"></a>
 ### Base Materials
@@ -116,15 +116,15 @@ Base materials represent fine-grain fundamental material characteristics, such a
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
-| `DiffuseMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining incoming light that scatters evenly in all directions. |
-| `SpecularMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with a scalar component defining the intensity of incoming light reflecting in a single direction.  This is used to make parts of the surface shiny, e.g., water vs. land. |
-| `AlphaMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with a scalar component defining the opacity of the material.  This is used to make parts of the surface translucent or transparent, e.g., a fence. |
-| `NormalMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining the surface's normal in tangent coordinates.  Normal mapping is used to add surface detail without adding geometry. |
-| `BumpMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with a scalar component defining heights.  Like normal mapping, bump mapping is used to add surface detail without adding geometry by perturbing the normal based on differences in adjacent image pixels. |
-| `EmissionMap` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining light emitted by the material equally in all directions, e.g., lights in a long hallway. |
-| `Reflection` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Cube map reflection for mirror-like surfaces that reflect light, e.g., paint on a car. |
-| `Refraction` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Cube map refraction for translucent surfaces that refract light, e.g., glass. |
-| `Fresnel` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material refracts light; as the viewer looks more edge on, the material refracts less and reflects more. |
+| `DiffuseMap` | <img src="Materials/DiffuseMap.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining incoming light that scatters evenly in all directions. |
+| `SpecularMap` | <img src="Materials/SpecularMap.png" width="200" height="92" alt="Facet" /> | An image with a scalar component defining the intensity of incoming light reflecting in a single direction.  This is used to make parts of the surface shiny, e.g., water vs. land. |
+| `AlphaMap` | <img src="Materials/AlphaMap.png" width="200" height="92" alt="Facet" /> | An image with a scalar component defining the opacity of the material.  This is used to make parts of the surface translucent or transparent, e.g., a fence. |
+| `NormalMap` | <img src="Materials/NormalMap.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining the surface's normal in tangent coordinates.  Normal mapping is used to add surface detail without adding geometry. |
+| `BumpMap` | <img src="Materials/BumpMap.png" width="200" height="92" alt="Facet" /> | An image with a scalar component defining heights.  Like normal mapping, bump mapping is used to add surface detail without adding geometry by perturbing the normal based on differences in adjacent image pixels. |
+| `EmissionMap` | <img src="Materials/EmissionMap.png" width="200" height="92" alt="Facet" /> | An image with `vec3` components defining light emitted by the material equally in all directions, e.g., lights in a long hallway. |
+| `Reflection` | <img src="Materials/Reflection.png" width="200" height="92" alt="Facet" /> | Cube map reflection for mirror-like surfaces that reflect light, e.g., paint on a car. |
+| `Refraction` | <img src="Materials/Refraction.png" width="200" height="92" alt="Facet" /> | Cube map refraction for translucent surfaces that refract light, e.g., glass. |
+| `Fresnel` | <img src="Materials/Fresnel.png" width="200" height="92" alt="Facet" /> | A view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material refracts light; as the viewer looks more edge on, the material refracts less and reflects more. |
 
 <a id="CommonUniforms"></a>
 ### Common Uniforms
