@@ -29,9 +29,9 @@ Materials can be as simple as draping an image over an object, or applying a pat
 
 Objects that support materials have a `material` property.  Currently, these objects are polygons and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
-polygon.material = Material.fromID('Color', scene.getContext());
+polygon.material = Material.fromId('Color', scene.getContext());
 ```
-Above, `Color` is a built-in material which represents a single color, including alpha.  `Material.fromID` is shorthand; the entire Fabric JSON can also be provided.
+Above, `Color` is a built-in material which represents a single color, including alpha.  `Material.fromId` is shorthand; the entire Fabric JSON can also be provided.
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
@@ -73,7 +73,7 @@ Cesium has several built-in materials.  Two widely used ones are:
 
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
-polygon.material = Material.fromID('Image', scene.getContext());
+polygon.material = Material.fromId('Image', scene.getContext());
 polygon.material.uniforms.image = "image.png";
 ```
 or
@@ -182,7 +182,7 @@ polygon.material = new Cesium.Material({
   fabric : fabric
 });
 ```
-When a non-existing `id` is used, the material is cached during the first call to `new Cesium.Material`, and later calls to `new Cesium.Material` or `Material.fromID` can reference the material as if it were a built-in material, i.e., they don't need to provide the full Fabric, just the `id` and any `uniforms` they want to set.
+When a non-existing `id` is used, the material is cached during the first call to `new Cesium.Material`, and later calls to `new Cesium.Material` or `Material.fromId` can reference the material as if it were a built-in material, i.e., they don't need to provide the full Fabric, just the `id` and any `uniforms` they want to set.
 ```javascript
 var fabric = {
    "id" : "MyNewMaterial",
@@ -193,7 +193,7 @@ polygon.material = new Cesium.Material({
   fabric : fabric
 });
 // ... later calls just use the id.
-anotherPolygon.material = Material.fromID('MyNewMaterial', scene.getContext());
+anotherPolygon.material = Material.fromId('MyNewMaterial', scene.getContext());
 ```
 
 <a id="Components"></a>
@@ -324,7 +324,7 @@ In addition to `materialInput`, materials have access to uniforms, both Cesium p
   }
 }
 ```
-In Fabric, the `uniform` property's sub-properties are the names of the uniforms in GLSL and the JavaScript object returned from `new Material` and `Material.fromID`.  The sub-properties's values (for scalars) or sub-properties (for vectors) are the value of the uniform.
+In Fabric, the `uniform` property's sub-properties are the names of the uniforms in GLSL and the JavaScript object returned from `new Material` and `Material.fromId`.  The sub-properties's values (for scalars) or sub-properties (for vectors) are the value of the uniform.
 
 We can implement our own `DiffuseMap` material by using an image uniform:
 ```javascript
@@ -340,7 +340,7 @@ We can implement our own `DiffuseMap` material by using an image uniform:
 ```
 Above, `"agi_defaultImage"` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
 ```javascript
-polygon.material = Material.fromID('OurDiffuseMap', scene.getContext());
+polygon.material = Material.fromId('OurDiffuseMap', scene.getContext());
 polygon.material.uniforms.image = "diffuse.png";
 ```
 There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
@@ -373,7 +373,7 @@ This material has `diffuse` and `specular` components that pull values from mate
 
 Given this Fabric, our material can be used like other materials.
 ```javascript
-var m = Material.fromID('OurMappedPlastic', scene.getContext());
+var m = Material.fromId('OurMappedPlastic', scene.getContext());
 polygon.material = m;
 
 m.materials.diffuseMaterial.uniforms.image = 'diffuseMap.png';
