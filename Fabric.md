@@ -68,8 +68,8 @@ Cesium has several built-in materials.  Two widely used ones are:
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
-| `Color` | <img src="features/Color.png" width="200" height="92" alt="Facet" /> | A single color, including alpha for translucency. |
-| `Image` | <img src="features/Image.png" width="200" height="92" alt="Facet" /> | An image with or without an alpha channel such as .png or .jpg; a combination of diffuse, `rgb`, and alpha, `a`, components. |
+| `Color` | <img src="materials/Color.png" width="200" height="92" alt="Facet" /> | A single color, including alpha for translucency. |
+| `Image` | <img src="materials/Image.png" width="200" height="92" alt="Facet" /> | An image with or without an alpha channel such as .png or .jpg; a combination of diffuse, `rgb`, and alpha, `a`, components. |
 
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
@@ -104,7 +104,6 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 | `Asphalt` | <img src="Materials/Asphalt.png" width="200" height="92" alt="Facet" /> | Asphalt generated with a combination of simplex and cellular noise. |
 | `Wood` | <img src="Materials/Wood.png" width="200" height="92" alt="Facet" /> | Wood generated with simplex noise. |
 | `Grass` | <img src="Materials/Grass.png" width="200" height="92" alt="Facet" /> | Grass generated with simplex noise. |
-| `DistanceInterval` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | Distances with colors. |
 | `TieDye` | <img src="Materials/TieDye.png" width="200" height="92" alt="Facet" /> | Tie-dye generated with simplex noise. |
 | `Facet` | <img src="Materials/Facet.png" width="200" height="92" alt="Facet" /> | Facet generated with cellular noise. |
 | `Blob` | <img src="Materials/Blob.png" width="200" height="92" alt="Facet" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
