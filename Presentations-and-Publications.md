@@ -2,7 +2,7 @@
 
 We enjoy giving talks and writing publications on Cesium and the technology we use to build it.  Doing so keeps us sharp, and we value giving back to the larger developer community.  
 
-Feel free to use our Cesium [PowerPoint template](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CesiumPowerPointTemplate.ppt) in your talks.
+Feel free to use our Cesium PowerPoint template in your talks: [any affiliation](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CesiumPowerPointTemplate.ppt)  &bull; [AGI affiliation](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CesiumPowerPointTemplateAGI.ppt)
 
 ## 2012
 
