@@ -20,12 +20,12 @@ _Fabric_ is a JSON schema for describing _materials_ in Cesium.  Materials repre
 
 Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch or created by combining existing materials in a hierarchy; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
 
-<img src="features/CheckerboardMaterial.png" width="200" height="92" alt="Checkerboard" />
-<img src="features/VerticalStripeMaterial.png" width="200" height="92" alt="Vertical stripe" />
-<img src="features/DotMaterial.png" width="200" height="92" alt="Dot" /><br />
-<img src="features/BrickMaterial.png" width="200" height="92" alt="Brick" />
-<img src="features/WoodMaterial.png" width="200" height="92" alt="Wood" />
-<img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" />
+<img src="materials/CheckerboardCircle.png" width="200" height="92" alt="Checkerboard" />
+<img src="materials/VerticalStripeCircle.png" width="200" height="92" alt="Vertical stripe" />
+<img src="materials/DotCircle.png" width="200" height="92" alt="Dot" /><br />
+<img src="materials/BrickCircle.png" width="200" height="92" alt="Brick" />
+<img src="materials/WoodCircle.png" width="200" height="92" alt="Wood" />
+<img src="materials/FacetCircle.png" width="200" height="92" alt="Facet" />
 
 Objects that support materials have a `material` property.  Currently, these objects are polygons and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
@@ -68,8 +68,8 @@ Cesium has several built-in materials.  Two widely used ones are:
 
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
-| `Color` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | A single color, including alpha for translucency. |
-| `Image` | <img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" /> | An image with or without an alpha channel such as .png or .jpg; a combination of diffuse, `rgb`, and alpha, `a`, components. |
+| `Color` | <img src="features/Color.png" width="200" height="92" alt="Facet" /> | A single color, including alpha for translucency. |
+| `Image` | <img src="features/Image.png" width="200" height="92" alt="Facet" /> | An image with or without an alpha channel such as .png or .jpg; a combination of diffuse, `rgb`, and alpha, `a`, components. |
 
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
@@ -99,7 +99,7 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 | `Checkerboard` | <img src="Materials/Checkerboard.png" width="200" height="92" alt="Facet" /> | Checkerboard with alternating light and dark colors. |
 | `Stripe` | <img src="Materials/Stripe.png" width="200" height="92" alt="Facet" /> | Alternating light and dark horizontal or vertical stripes |
 | `Dots` | <img src="Materials/Dot.png" width="200" height="92" alt="Facet" /> | A pattern of dots organized by row and column. |
-| `Brick` | <img src="Materials//Brick.png" width="200" height="92" alt="Facet" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
+| `Brick` | <img src="Materials/Brick.png" width="200" height="92" alt="Facet" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
 | `Cement` | <img src="Materials/Cement.png" width="200" height="92" alt="Facet" /> | Cement generated with simplex noise. |
 | `Asphalt` | <img src="Materials/Asphalt.png" width="200" height="92" alt="Facet" /> | Asphalt generated with a combination of simplex and cellular noise. |
 | `Wood` | <img src="Materials/Wood.png" width="200" height="92" alt="Facet" /> | Wood generated with simplex noise. |
