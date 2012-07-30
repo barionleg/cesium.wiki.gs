@@ -29,14 +29,14 @@ Materials can be as simple as draping an image over an object, or applying a pat
 
 Objects that support materials have a `material` property.  Currently, these objects are polygons and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
-polygon.material = Material.fromId('Color', scene.getContext());
+polygon.material = Material.fromId(scene.getContext(), 'Color');
 ```
 Above, `Color` is a built-in material which represents a single color, including alpha.  `Material.fromId` is shorthand; the entire Fabric JSON can also be provided.
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    "id" : "Color"
+    id : 'Color'
   }
 });
 ```
@@ -45,13 +45,13 @@ Each material has zero or more uniforms, which are input parameters that can be 
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    "id" : "Color",
-    "uniforms" : {
-      "color" : {
-        "red" : 1.0,
-        "green" : 0.0,
-        "blue" : 0.0,
-        "alpha" : 0.5
+    id : 'Color',
+    uniforms : {
+      color : {
+        red : 1.0,
+        green : 0.0,
+        blue : 0.0,
+        alpha : 0.5
       }
     }
   }
@@ -73,17 +73,17 @@ Cesium has several built-in materials.  Two widely used ones are:
 
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
-polygon.material = Material.fromId('Image', scene.getContext());
-polygon.material.uniforms.image = "image.png";
+polygon.material = Material.fromId(scene.getContext(), 'Image');
+polygon.material.uniforms.image = 'image.png';
 ```
 or
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    "id" : "Image",
-    "uniforms" : {
-      "image" : "image.png"
+    id : 'Image',
+    uniforms : {
+      image : 'image.png'
     }
   }
 });
@@ -130,35 +130,35 @@ Base materials represent fine-grain fundamental material characteristics, such a
 
 Many materials have a `image` uniform, which is an image URL or data URI.
 ```javascript
-polygon.material.uniforms.image = "image.png";
-polygon.material.uniforms.image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVDhPrZPRDYQgEEQpjVKuFEvhw0IoxU6QgQwMK+vdx5FsooT3GHdjCM4qZnnnHvvkYoxFi/uvIhwiRCClXFC6v5UQ1uQAsbrkHCLsbaPjFgIzQQc1yUOwu33ePGE3BQUaee2BpjhbP5YUmkAlbNzsAURfBDqJnMIyyv4JjsCCgCnIR32uZUfcJuGBOwEk6bOKhoAADh31EIq3MgFg1mgkE1BA2AoUZoo2iZ3gyqGgmMDC/xWwkfb3/eUd7A1v3kxjNW9taQAAAABJRU5ErkJggg=="
+polygon.material.uniforms.image = 'image.png';
+polygon.material.uniforms.image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVDhPrZPRDYQgEEQpjVKuFEvhw0IoxU6QgQwMK+vdx5FsooT3GHdjCM4qZnnnHvvkYoxFi/uvIhwiRCClXFC6v5UQ1uQAsbrkHCLsbaPjFgIzQQc1yUOwu33ePGE3BQUaee2BpjhbP5YUmkAlbNzsAURfBDqJnMIyyv4JjsCCgCnIR32uZUfcJuGBOwEk6bOKhoAADh31EIq3MgFg1mgkE1BA2AoUZoo2iZ3gyqGgmMDC/xWwkfb3/eUd7A1v3kxjNW9taQAAAABJRU5ErkJggg=='
 ```
 Some materials, such as `Diffuse` and `NormalMap` require images with three components per pixel; other materials, such as `Specular` and `Alpha`, require one component.  We can specify what channels (and in what order) these components are pulled from when creating a material using the `channels` or `channel` string uniform.  For example, by default in the `Specular` material, the specular component is taken from the `r` channel.  However, we can change that:
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    "id" : "SpecularMap",
-    "uniforms" : {
-      "image" : "specular.png",
-      "channel" : "a"
+    id : 'SpecularMap',
+    uniforms : {
+      image : 'specular.png',
+      channel : 'a'
     }
   }
 });
 ```
-This allows packing data for multiple materials into the same image, e.g., storing diffuse components as rgb and specular components as a in the same image.  Under the hood, the image will also be loaded once.
+This allows packing data for multiple materials into the same image, e.g., storing diffuse components as `rgb` and specular components as `a` in the same image.  Under the hood, the image will also be loaded once.
 
 Materials that use images often have a `repeat` uniform that controls the number of times the image repeats horizontally and vertically. This can be useful for tiling images across a surface.
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    "id" : "DiffuseMap",
-    "uniforms" : {
-      "image" : "diffuse.png",
-      "repeat" : {
-        "x" : 10,
-        "y" : 2
+    id : 'DiffuseMap',
+    uniforms : {
+      image : 'diffuse.png',
+      repeat : {
+        x : 10,
+        y : 2
       }
     }
   }
@@ -184,7 +184,7 @@ polygon.material = new Cesium.Material({
 When a non-existing `id` is used, the material is cached during the first call to `new Cesium.Material`, and later calls to `new Cesium.Material` or `Material.fromId` can reference the material as if it were a built-in material, i.e., they don't need to provide the full Fabric, just the `id` and any `uniforms` they want to set.
 ```javascript
 var fabric = {
-   "id" : "MyNewMaterial",
+   id : 'MyNewMaterial',
    // ...rest of fabric JSON
 };
 polygon.material = new Cesium.Material({
@@ -192,7 +192,7 @@ polygon.material = new Cesium.Material({
   fabric : fabric
 });
 // ... later calls just use the id.
-anotherPolygon.material = Material.fromId('MyNewMaterial', scene.getContext());
+anotherPolygon.material = Material.fromId(scene.getContext(), 'MyNewMaterial');
 ```
 
 <a id="Components"></a>
@@ -201,17 +201,17 @@ anotherPolygon.material = Material.fromId('MyNewMaterial', scene.getContext());
 Perhaps the simplest interesting material is one that reflects white in all directions:
 ```javascript
 var fabric = {
-  "components" : {
-    "diffuse" : "vec3(1.0)"
+  components : {
+    diffuse : "vec3(1.0)"
   }
 }
 ```
 A slightly more complicated example adds a specular component so that the material's reflected light is most intense when viewed straight down, and becomes less intense as viewed edge-on.
 ```javascript
 {
-  "components" : {
-    "diffuse" : "vec3(0.5)",
-    "specular" : "0.1"
+  components : {
+    diffuse : "vec3(0.5)",
+    specular : "0.1"
   }
 }
 ```
@@ -219,11 +219,11 @@ The `components` property contains sub-properties that define the appearance of 
 
 | Name | Default | Description |
 |:-----|:--------|:------------|
-| `diffuse` | `"vec3(0.0)"` | The diffuse component of this material.  The diffuse component is a vec3 defining incoming light that scatters evenly in all directions. |
-| `specular` | `"0.0"` | The specular component of this material.  The specular component is a float defining the intensity of incoming light reflecting in a single direction. |
-| `normal` |  | The normal component of this material.  The normal component is a vec3 defining the surface's normal in tangent coordinates.  It is used for effects such as normal mapping.  The default is the surface's unmodified normal. |
-| `emission` | `"vec3(0.0)"` | The emission component of this material.  The emission component is a vec3 defining light emitted by the material equally in all directions.  The default is vec3(0.0), which emits no light. |
-| `alpha` | `1.0` | The alpha component of this material.  The alpha component is a float defining the opacity of this material.  0.0 is completely transparent; 1.0 is completely opaque. |
+| `diffuse` | `'vec3(0.0)'` | The diffuse component of this material.  The diffuse component is a `vec3` defining incoming light that scatters evenly in all directions. |
+| `specular` | `0.0` | The specular component of this material.  The specular component is a float defining the intensity of incoming light reflecting in a single direction. |
+| `normal` |  | The normal component of this material.  The normal component is a `vec3` defining the surface's normal in tangent coordinates.  It is used for effects such as normal mapping.  The default is the surface's unmodified normal. |
+| `emission` | `'vec3(0.0)'` | The emission component of this material.  The emission component is a `vec3` defining light emitted by the material equally in all directions.  The default is `vec3(0.0)`, which emits no light. |
+| `alpha` | `1.0` | The alpha component of this material.  The alpha component is a float defining the opacity of this material.  `0.0` is completely transparent; `1.0` is completely opaque. |
 
 Together, these sub-properties, or _components_ define the characteristics of the material.  They are the output of the material, and the input to the lighting system.
 
@@ -264,7 +264,7 @@ agi_material agi_getMaterial(agi_materialInput materialInput)
 The Fabric looks like:
 ```JavaScript
 {
-  "source" : "agi_material agi_getMaterial(agi_materialInput materialInput) { return agi_getDefaultMaterial(materialInput); }"
+  source : 'agi_material agi_getMaterial(agi_materialInput materialInput) { return agi_getDefaultMaterial(materialInput); }'
 }
 ```
 
@@ -298,8 +298,8 @@ The `materialInput` variable is available in both `source` and `components`.  It
 A simple material that visualizes the `st` texture coordinates is:
 ```javascript
 {
-  "components" : {
-    "diffuse" : "vec3(materialInput.st, 0.0)"
+  components : {
+    diffuse : 'vec3(materialInput.st, 0.0)'
   }
 }
 ```
@@ -308,18 +308,18 @@ Similarly, we can visualize the normal in eye coordinates by setting `diffuse` t
 In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesium.agi.com/Documentation/?classFilter=agi_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
 ```javascript
 {
-  "id" : "OurColor",
-  "uniforms" : {
-    "color" : {
-      "red" : 1.0,
-      "green" : 0.0,
-      "blue" : 0.0,
-      "alpha" : 1.0
+  id : 'OurColor',
+  uniforms : {
+    color : {
+      red : 1.0,
+      green : 0.0,
+      blue : 0.0,
+      alpha : 1.0
     }
   },
-  "components" : {
-    "diffuse" : "color.rgb",
-    "alpha" : "color.a"
+  components : {
+    diffuse : 'color.rgb',
+    alpha : 'color.a'
   }
 }
 ```
@@ -328,19 +328,19 @@ In Fabric, the `uniform` property's sub-properties are the names of the uniforms
 We can implement our own `DiffuseMap` material by using an image uniform:
 ```javascript
 {
-  "id" : "OurDiffuseMap",
-  "uniforms" : {
-    "image" : "agi_defaultImage"
+  id : 'OurDiffuseMap',
+  uniforms : {
+    image : 'agi_defaultImage'
   },
-  "components" : {
-    "diffuse" : "texture2D(image, materialInput.st).rgb"
+  components : {
+    diffuse : 'texture2D(image, materialInput.st).rgb'
   }
 }
 ```
-Above, `"agi_defaultImage"` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
+Above, `'agi_defaultImage'` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
 ```javascript
-polygon.material = Material.fromId('OurDiffuseMap', scene.getContext());
-polygon.material.uniforms.image = "diffuse.png";
+polygon.material = Material.fromId(scene.getContext(), 'OurDiffuseMap');
+polygon.material.uniforms.image = 'diffuse.png';
 ```
 There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
 
@@ -352,18 +352,18 @@ So far, we can use the [built-in](#BuiltInMaterials) materials, or create our ow
 Fabric has a `materials` property where the value of each sub-property is Fabric, i.e., a material.  These materials can be referenced in the `components` and `source` properties so they can be built upon.  For example, a material representing plastic can be implemented with a `DiffuseMap` and `SpecularMap`.
 ```javascript
 {
-  "id" : "OurMappedPlastic",
-  "materials" : {
-    "diffuseMaterial" : {
-      "id" : "DiffuseMap"
+  id : 'OurMappedPlastic',
+  materials : {
+    diffuseMaterial : {
+      id : 'DiffuseMap'
     },
-    "specularMaterial" : {
-      "id" : "SpecularMap"
+    specularMaterial : {
+      id : 'SpecularMap'
     }
   },
-  "components" : {
-      "diffuse" : "diffuseMaterial.diffuse",
-      "specular" : "specularMaterial.specular"
+  components : {
+      diffuse : 'diffuseMaterial.diffuse',
+      specular : 'specularMaterial.specular'
   }
 };
 ```
@@ -372,14 +372,12 @@ This material has `diffuse` and `specular` components that pull values from mate
 
 Given this Fabric, our material can be used like other materials.
 ```javascript
-var m = Material.fromId('OurMappedPlastic', scene.getContext());
+var m = Material.fromId(scene.getContext(), 'OurMappedPlastic');
 polygon.material = m;
 
 m.materials.diffuseMaterial.uniforms.image = 'diffuseMap.png';
 m.materials.specularMaterial.uniforms.image = 'specularMap.png';
 ```
-
-_TODO: Screenshots throughout._
 
 _TODO: links to reference doc._
 
