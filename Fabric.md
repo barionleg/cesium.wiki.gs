@@ -202,7 +202,7 @@ Perhaps the simplest interesting material is one that reflects white in all dire
 ```javascript
 var fabric = {
   components : {
-    diffuse : "vec3(1.0)"
+    diffuse : 'vec3(1.0)'
   }
 }
 ```
@@ -210,8 +210,8 @@ A slightly more complicated example adds a specular component so that the materi
 ```javascript
 {
   components : {
-    diffuse : "vec3(0.5)",
-    specular : "0.1"
+    diffuse : 'vec3(0.5)',
+    specular : '0.1'
   }
 }
 ```
