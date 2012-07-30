@@ -1,24 +1,51 @@
 # Presentations and Publications
 
-We enjoy giving talks and writing publications on Cesium and the technology we use to build it.  Doing so keeps us sharp, and we value giving back to the larger developer community.  Some of us use PowerPoint, so we put together a [Cesium themed template](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CesiumPowerPointTemplate.ppt) that we encourage everyone to use.
+We enjoy giving talks and writing publications on Cesium and the technology we use to build it.  Doing so keeps us sharp, and we value giving back to the larger developer community.  
+
+Feel free to use our Cesium [PowerPoint template](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CesiumPowerPointTemplate.ppt) in your talks.
 
 ## 2012
 
-* Cesium Language (CZML): A JSON schema for describing dynamic scenes in virtual globes & maps.  Matt Amato.  [WebGL Camp Europe](http://www.shader.org/webglcamp/), 07/2012. [slides](https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CZML_WebGL_Camp_07-03-2012.pdf) &bull; [video](http://youtu.be/LsUOrLozbXw) &bull; [demos](http://cesium.agi.com/)
+<table border="0">
+<tbody>
+<tr>
+  <td><img src="presentationsFigures/cesiumLogo.png" alt="Cesium Language (CZML): A JSON schema for describing dynamic scenes in virtual globes & map" /></td>
+  <td>
 
-* WebGL for OpenGL Developers.  Patrick Cozzi and Scott Hunter.  In [OpenGL Insights](http://www.openglinsights.com/).  CRC Press, 07/2012.
+Cesium Language (CZML): A JSON schema for describing dynamic scenes in virtual globes & maps.  Matt Amato.  <a href="http://www.shader.org/webglcamp/">WebGL Camp Europe</a>, 07/2012. <a href="https://github.com/AnalyticalGraphicsInc/cesium/wiki/presentations/CZML_WebGL_Camp_07-03-2012.pdf">slides</a> &bull; <a href="http://youtu.be/LsUOrLozbXw">video</a> &bull; <a href="http://cesium.agi.com/">demos</a>
 
-   * Our thoughts on learning WebGL for those that already know OpenGL, based on our experience with Cesium.
-
-* WebGL for Dynamic Virtual Globes.  Patrick Cozzi.  [WebGL Camp Orlando](http://www.webglcamp.com/wiki/index.php?title=AgendaOrlando1), 03/2012. [slides](http://www.seas.upenn.edu/~pcozzi/downloads/WebGLForDynamicVirtualGlobes.pdf) &bull; [video](http://www.youtube.com/watch?v=Bxk-bkiLbEo) &bull; [demos](http://cesium.agi.com/)
+  </td>
+</tr>
+<tr>
+  <td><img src="presentationsFigures/openglinsights.jpg" alt="WebGL for OpenGL Developers" /></td>
+  <td>
+   WebGL for OpenGL Developers.  Patrick Cozzi and Scott Hunter.  In <a href="http://www.openglinsights.com/">OpenGL Insights</a>.  CRC Press, 07/2012.
+   <ul>
+      <li>Our thoughts on learning WebGL for those that already know OpenGL, based on our experience with Cesium.</li>
+   </ul>
+  </td>
+</tr>
+<tr>
+  <td><img src="presentationsFigures/cesiumLogo.png" alt="WebGL for Dynamic Virtual Globes" /></td>
+  <td>
+WebGL for Dynamic Virtual Globes.  Patrick Cozzi.  <a href="http://www.webglcamp.com/wiki/index.php?title=AgendaOrlando1">WebGL Camp Orlando</a>, 03/2012. <a href="http://www.seas.upenn.edu/~pcozzi/downloads/WebGLForDynamicVirtualGlobes.pdf">slides</a> &bull; <a href="http://www.youtube.com/watch?v=Bxk-bkiLbEo">video</a> &bull; <a href="http://cesium.agi.com/">demos</a>
+  </td>
+</tr>
+</tbody>
+</table>
 
 ## 2011
 
-* [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com/).  Patrick Cozzi and Kevin Ring.  CRC Press, 06/2011.
-  * Not strictly about Cesium, but about virtual globes in general.  Written by two Cesium contributors.  Some code from this book's engine, [OpenGlobe](https://github.com/virtualglobebook/OpenGlobe), was ported to Cesium.
-
-<!--
-<img src="presentationsFigures/openglinsights.jpg" />
-<img src="presentationsFigures/cesiumLogo.png" />
-<img src="presentationsFigures/virtualglobebook.jpg" />
--->
+<table border="0">
+<tbody>
+<tr>
+  <td><img src="presentationsFigures/virtualglobebook.jpg" alt="3D Engine Design for Virtual Globes" /></td>
+  <td>
+   <a href="http://www.virtualglobebook.com/">3D Engine Design for Virtual Globes</a>.  Patrick Cozzi and Kevin Ring.  CRC Press, 06/2011.
+   <ul>
+      <li>Not strictly about Cesium, but about virtual globes in general.  Written by two Cesium contributors.  Some code from this book's engine, <a href="https://github.com/virtualglobebook/OpenGlobe">OpenGlobe</a>, was ported to Cesium.</li>
+   </ul>
+  </td>
+</tr>
+</tbody>
+</table>
