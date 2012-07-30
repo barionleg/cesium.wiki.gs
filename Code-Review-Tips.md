@@ -12,6 +12,8 @@ Tips
 * Provide motivation.  Unless it is obvious, don't just suggest a change.  Suggest _why_ the change should be made.
 * See the forest through the trees.  Don't just review code one line at a time.  Consider the big picture and its implications.
 * Bring other people into the conversation.  If someone has expertise with a particular language feature or problem domain under review, invite them to help.
+* Limit the scope.  As a reviewer, it is easy to want to increase the scope of a pull request - _why don't we do this everywhere?_.  These are often fair questions but can be better served by submitting a separate issue to allow more incremental pull requests.
+* Keep pace.  The developer should expect prompt feedback from reviewers, and reviewers should expect the same.  If not, politely ask for it.  We all want pull requests to get into master.
 
 A pull request is a sincere request for feedback, and those reviewing the request work with the developer to get the code merged.
 
