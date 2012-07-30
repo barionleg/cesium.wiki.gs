@@ -41,7 +41,7 @@ polygon.material = new Cesium.Material({
 });
 ```
 Each material has zero or more uniforms, which are input parameters that can be specified when creating the material and modified after.  For example, `Color` has a `color` uniform with `red`, `green`, `blue`, and `alpha` components.
-```javascript
+```Javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
