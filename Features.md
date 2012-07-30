@@ -58,12 +58,12 @@ Cameras respond to input and control the view.
 
 ## Materials
 
-<img src="features/CheckerboardMaterial.png" width="200" height="92" alt="Checkerboard" />
-<img src="features/VerticalStripeMaterial.png" width="200" height="92" alt="Vertical stripe" />
-<img src="features/DotMaterial.png" width="200" height="92" alt="Dot" /><br />
-<img src="features/BrickMaterial.png" width="200" height="92" alt="Brick" />
-<img src="features/WoodMaterial.png" width="200" height="92" alt="Wood" />
-<img src="features/FacetMaterial.png" width="200" height="92" alt="Facet" />
+<img src="materials/CheckerboardCircle.png" width="200" height="92" alt="Checkerboard" />
+<img src="materials/VerticalStripeCircle.png" width="200" height="92" alt="Vertical stripe" />
+<img src="materials/DotCircle.png" width="200" height="92" alt="Dot" /><br />
+<img src="materials/BrickCircle.png" width="200" height="92" alt="Brick" />
+<img src="materials/WoodCircle.png" width="200" height="92" alt="Wood" />
+<img src="materials/FacetCircle.png" width="200" height="92" alt="Facet" />
 
 Materials describe the surface appearance of objects in the scene.
 
