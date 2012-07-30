@@ -105,7 +105,7 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 * Sun position.
 * Equidistant Cylindrical and Mercator 2D map projections.
 * Computations on ellipsoids such as computing computing surface normals, circles, ellipses, and tangent planes.
-* Transformations such as cartographic to Cartesian, and east-north-up to fixed frame.
+* Transformations such as cartographic to Cartesian, east-north-up to fixed frame, and TEME to pseudo-fixed frame.
 
 ## Time 
 
