@@ -72,3 +72,9 @@ If you are interested in implementing any of these features, start a discussion 
 * Add CZML rendering to Google Maps and/or other popular web mapping APIs
 * Particle system
 * GML to CZML converter
+
+## ESA Summer of Code in Space Ideas
+
+[Program details](http://sophia.estec.esa.int/socis2012/).  Most likely due June, 2013.
+
+* TODO
