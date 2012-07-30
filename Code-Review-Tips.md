@@ -1,5 +1,3 @@
-In progress...
-
 All of our code is peer reviewed before merging a pull request into master.  We review code to share knowledge; foster shared ownership; and improve code quality and consistency.
 
 Tips
