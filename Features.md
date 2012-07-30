@@ -87,6 +87,7 @@ For those needing custom drawing, Cesium contains a thin abstraction over WebGL 
 ## Geometric Routines
 
 <img src="features/EllipsoidTessellator.png" width="108" height="92" alt="Ellipsoid tessellation" />
+<img src="features/ExtentTessellator.png" width="108" height="92" alt="Extent tessellation" />
 
 * View frustum and occlusion culling (horizon culling).
 * Vertex cache optimization.
