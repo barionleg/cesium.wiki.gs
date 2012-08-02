@@ -2,9 +2,10 @@ Getting started with a local copy of Cesium on Windows, Linux, and Mac is quick.
 
 ## Get the Code
 
-* `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`
-   * Or download the [zip of master](https://github.com/AnalyticalGraphicsInc/cesium/zipball/master).
-   * Or visit the [downloads page](https://github.com/AnalyticalGraphicsInc/cesium/downloads) for released packages.
+Choose from any of the following:
+* Use Git, with `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`
+* Or download the [zip of master](https://github.com/AnalyticalGraphicsInc/cesium/zipball/master).
+* Or visit the [downloads page](https://github.com/AnalyticalGraphicsInc/cesium/downloads) for released packages.
 
 ## Build
 
