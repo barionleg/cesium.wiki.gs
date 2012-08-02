@@ -2,9 +2,9 @@
 <img src="https://github.com/AnalyticalGraphicsInc/cesium/wiki/logos/Cesium_Logo_Color.jpg" width="50%" alt="Cesium" />
 </p>
 
-* [[Features]].
-* [[FAQ]].
-* [[Roadmap]].
+* [[Features]]
+* [[FAQ]]
+* [[Roadmap]]
 
 ## Get Started
 * [[Quick Start]] - how to get the code, build, and run. It's easy.
@@ -12,7 +12,7 @@
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
 * [[In-Depth Guides]] - details on major features.
 
-## For Contributors
+## Contributors
 
 * [[Contributor's Guide]] - setting up a development environment and contributing code.
 * [[JavaScript Coding Conventions]] - keeps our code consistent.
