@@ -148,16 +148,3 @@ Then, to step into the test, step into `stepIntoThis()`
       * Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md).  Also update [Features wiki](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Features) if the change is significant.
 
 * If you have commit access, delete the branch if you are no longer using it.
-
-## Release Cesium
-
-* Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md) with the date of the release.
-* Update [build.xml](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/build.xml) with the version being released.
-* Create a tag for the version being released on branch master.
-   * `git tag -a version -m 'Short description'`
-   * `git push --tags`
-   * For more information on tagging with git see [Git Tagging](http://learn.github.com/p/tagging.html).
-* Create a zip file of the build.
-   * `./Tools/apache-ant-1.8.2/bin/ant clean`
-   * `./Tools/apache-ant-1.8.2/bin/ant makeZipFile`
-* Upload the zip file to the [Downloads page](https://github.com/AnalyticalGraphicsInc/cesium/downloads).
