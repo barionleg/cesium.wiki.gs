@@ -10,10 +10,13 @@ We're always looking to:
 
 ## In progress
 * Sandcastle
-* Web services for converting to CZML
+* GeoServer CZML writer
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
-* Material system - [details](Material-System-Details)
+* Data-Driven renderer - [details](Data-Driver-Renderer-Details)
+   * Improved depth-buffer precision
+   * Culling for all objects
+   * Post-processing framework
 * COLLADA models - [details](Models-Details)
 
 ## To come
@@ -21,10 +24,6 @@ We're always looking to:
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
 * Improve precision - remove jittering
-* Data-driven renderer
-   * Improved depth-buffer precision
-   * Culling for all objects
-   * Post-processing framework
 * GLSL #include system - [details](GLSL-Details)
 * Stars
 * Draw shapes - ellipsoids, cylinders, boxes, extruded volumes
@@ -44,6 +43,8 @@ If you are interested in implementing any of these features, start a discussion 
 * Particle system
 * Ocean
 * Volumetric clouds
+* More material system improvements - [details](Material-System-Details)
+* Compass - know where north is
 * CZML
    * Layers
    * Path visualiztion
