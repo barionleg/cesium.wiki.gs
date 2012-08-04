@@ -14,9 +14,6 @@ We're always looking to:
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * Data-Driven renderer - [details](Data-Driver-Renderer-Details)
-   * Improved depth-buffer precision
-   * Culling for all objects
-   * Post-processing framework
 * COLLADA models - [details](Models-Details)
 
 ## To come
