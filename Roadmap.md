@@ -13,7 +13,7 @@ We're always looking to:
 * GeoServer CZML writer
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
-* Data-Driven renderer - [details](Data-Driver-Renderer-Details)
+* Data-Driven renderer - [details](Data-Driven-Renderer-Details)
 * COLLADA models - [details](Models-Details)
 
 ## To come
