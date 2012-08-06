@@ -8,6 +8,15 @@ Feel free to use our Cesium PowerPoint template in your talks: [any affiliation]
 
 <table border="0">
 <tbody>
+
+<tr>
+  <td><img src="presentationsFigures/cesiumLogo.png" alt="Cesium: WebGL for Globes and Maps" /></td>
+  <td>
+Cesium: WebGL for Globes and Maps.  Patrick Cozzi.  <a href="CesiumWebGLForGlobesAndMaps.ppt">SIGGRAPH WebGL BOF</a>, 08/2012. <a href="http://www.seas.upenn.edu/~pcozzi/downloads/WebGLForDynamicVirtualGlobes.pdf">slides</a> &bull; <a href="http://youtu.be/lCqeCVV4xLw">terrain video</a> &bull; <a href="http://cesium.agi.com/">demos</a>
+  </td>
+</tr>
+
+
 <tr>
   <td><img src="presentationsFigures/cesiumLogo.png" alt="Cesium Language (CZML): A JSON schema for describing dynamic scenes in virtual globes & map" /></td>
   <td>
