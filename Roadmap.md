@@ -15,6 +15,8 @@ We're always looking to:
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * Data-Driven renderer - [details](Data-Driven-Renderer-Details)
 * COLLADA models - [details](Models-Details)
+* CZML Network links - [details](Network-Link-Details)
+* CZML Path/History visualization - [details](Path-Visualization-Details)
 
 ## To come
 
@@ -43,18 +45,16 @@ If you are interested in implementing any of these features, start a discussion 
 * More material system improvements - [details](Material-System-Details)
 * Compass - know where north is
 * CZML
+   * Z-ordering - [details](CZML-Z-Order-Details)
+   * Buffer availability and "buffering" behavior
    * Layers
-   * Path visualiztion
    * Improved materials support
    * Custom axes & reference frames
-   * Buffer availability and "buffering" behavior
    * Imagery and terrain sources
-   * Network links
    * Camera/Tours
    * Arbitrary link support (# and $ in CZML spec)
    * CZML defined user interfaces, possibly with markdown
    * Model support, once Cesium support exists
-   * Z order support, once Cesium exists.
    * Human readable messages/events raised in CZML
 * Widgets & Apps
    * OWF widget
