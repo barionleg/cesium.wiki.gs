@@ -45,7 +45,7 @@ If you are interested in implementing any of these features, start a discussion 
 * More material system improvements - [details](Material-System-Details)
 * Compass - know where north is
 * CZML
-   * Z-ordering - [details](CZML-Z-Order-Details)
+   * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
    * Buffer availability and "buffering" behavior
    * Layers
    * Improved materials support
