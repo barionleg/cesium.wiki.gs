@@ -96,7 +96,7 @@ Now that we've defined the Path object in CZML, we need to add support for it in
 * **DynamicPath** - a data-only object which will handle processing the CZML path properties into DynamicProperty instances.  This will map to a DynamicObject.path property.
 * **DynamicPathVisualizer** - a Visualizer which will turn the DynamicObject.path instances on each object into Polyline primitives.
 
-Additionally, since the DynamicPolylineVisualizer and DynamicPathVisualizer will both be working with Polyline instances, it would be beneficial to extra out common updating code into a **PolylineUpdater** helper object in DynamicScene, which each visualizer can use to maintain all non-vertex aspects of the polyline.
+Additionally, since the DynamicPolylineVisualizer and DynamicPathVisualizer will both be working with Polyline instances, it would be beneficial to extract out common updating code into a **PolylineUpdater** helper object in DynamicScene, which each visualizer can use to maintain all non-vertex aspects of the polyline.
 
 So far everything has been relatively straightforward, we're just turning CZML into properties and then mapping those properties into primitives via the visualizers.  The trickiest part of this entire process lies in sampling the DynamicObject.position property so that we can accurately represent the line.  This process has several pit-falls.
 
