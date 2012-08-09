@@ -93,17 +93,21 @@ Finally, it's important to recognize that the path graphics are actually identic
 ### DynamicScene
 Now that we've defined the Path object in CZML, we need to add support for it in the Cesium DynamicScene layer.  Much like other visualizers, this can be encapsulated into two objects.
 
-* DynamicPath - a data-only object which will handle processing the CZML path properties into DynamicProperty instances.  This will map to a DynamicObject.path property.
-* DynamicPathVisualizer - a Visualizer which will turn the DynamicObject.path instances on each object into Polyline primitives.
+* **DynamicPath** - a data-only object which will handle processing the CZML path properties into DynamicProperty instances.  This will map to a DynamicObject.path property.
+* **DynamicPathVisualizer** - a Visualizer which will turn the DynamicObject.path instances on each object into Polyline primitives.
 
-Additionally, since the DynamicPolylineVisualizer and DynamicPathVisualizer will both be working with Polyline instances, it would be beneficial to extra out common updating code into a "PolylineUpdater" helper object in DynamicScene, which each visualizer can use.
+Additionally, since the DynamicPolylineVisualizer and DynamicPathVisualizer will both be working with Polyline instances, it would be beneficial to extra out common updating code into a **PolylineUpdater** helper object in DynamicScene, which each visualizer can use to maintain all non-vertex aspects of the polyline.
 
 So far everything has been relatively straightforward, we're just turning CZML into properties and then mapping those properties into primitives via the visualizers.  The trickiest part of this entire process lies in sampling the DynamicObject.position property so that we can accurately represent the line.  This process has several pit-falls.
 
 1. If we under-sample the line, smooth curves will start to appear jagged and paths that go around the earth or terrain may end up actually going through them.  For example, if we sample a satellite at 60 second steps, it will probably look pretty good and perform well; however if I'm rendering my morning drive to work, a 60 second step will miss segments of the route completely, such as my turn off the exit and through the toll booth.
 2. If we end up over-sampling the line, performance may suffer to the point of being unusable.  For example, if we lower our step size to 5 seconds in order to make my previously mentioned drive look good, the satellite we were rendering will now create way too many unnecessary data points for the polyline.
-3. Finally, there are certain points that should always 
+3. There are certain points along the path that you always want to step onto exactly, for example if we have a billboard drawn for my current location I need to make sure I always sample that location, or else the billboard will not actually be on my path.  Not only will this look weird, its also just wrong.  Additionally, we might want to step on the actual waypoints provided by the CZML, this way we don't miss significant positions that might be easily missed by sampling.
 
+Unless the path is simply a straight line, all three of these problems will occur at one time or another and makes implementation tricky.  So far, we've come up with three ideas for 
+
+1. **Fixed step sampling** - While this is not the ideal final solution, it can go a long way for a majority of uses cases.  It's also easiest to implement.  The most naive way to do it is determine the total amount of time you need to sample; divide by a constant value (say 100) to get your step size; and then sample the line in a for loop.  Congratulations, we've just crashed head first into all 3 of the pitfalls listed above.  Thankfully, these can be partially mitigated.  We start by getting a list of all of the actual waypoints stored in the DynamicPositionProperty.  We then perform fixed step sampling between each waypoint.  We also sample at the current animation time, this way any primitives that are only showing the current time, like in our billboard example above, will actually be on the line.  This eliminates pitfall number 3, but it only lessens 1 and 2.  It's still possible to under and over sample because we're taking fixed steps regardless of the length of the line.  So a 2 pixel long line and a 1500 pixel long line get the same number of data vertices.
+2. **View based sampling** - 
 
 ## Waypoint Visualization (TBD)
 For other visualizer types, such as billboard, show the past (and future) billboards which represent where we had actual (non-interpolated) data for.
