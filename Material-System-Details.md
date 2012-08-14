@@ -92,6 +92,6 @@ Details to follow...
 
 * Effects frameworks like [CgFX](http://developer.nvidia.com/node/80), [Direct3D 10 FX Files](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf), and [COLLADA FX](http://www.khronos.org/files/collada_spec_1_5.pdf) have materials as does every graphics engine under the sun, such as:
    * [Three.js](https://github.com/mrdoob/three.js/)
-   * [Unity](http://unity3d.com/support/documentation/Manual/Materials).  See their [surface shaders](http://docs.unity3d.com/Documentation/Components/SL-SurfaceShaders.html).
+   * [Unity](http://unity3d.com/support/documentation/Manual/Materials).  See their [surface shaders](http://docs.unity3d.com/Documentation/Components/SL-SurfaceShaders.html).  [blog](http://aras-p.info/blog/2010/07/16/surface-shaders-one-year-later/).
    * [C4 Engine](http://www.terathon.com/wiki/index.php/Shaders)
    * [Id tech 4](http://www.modwiki.net/wiki/Texturing)
