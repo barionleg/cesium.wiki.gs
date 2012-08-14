@@ -10,13 +10,14 @@ We're always looking to:
 
 ## In progress
 * Sandcastle
-* GeoServer CZML writer
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
-* Data-Driven renderer - [details](Data-Driven-Renderer-Details)
-* COLLADA models - [details](Models-Details)
+* GeoServer CZML writer
 * CZML Network links - [details](Network-Link-Details)
 * CZML Path/History visualization - [details](Path-Visualization-Details)
+* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
+* Data-Driven renderer - [details](Data-Driven-Renderer-Details)
+* COLLADA models - [details](Models-Details)
 
 ## To come
 
