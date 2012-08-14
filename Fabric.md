@@ -29,14 +29,14 @@ Materials can be as simple as draping an image over an object, or applying a pat
 
 Objects that support materials have a `material` property.  Currently, these objects are polygons and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
-polygon.material = Material.fromId(scene.getContext(), 'Color');
+polygon.material = Material.fromType(scene.getContext(), 'Color');
 ```
-Above, `Color` is a built-in material which represents a single color, including alpha.  `Material.fromId` is shorthand; the entire Fabric JSON can also be provided.
+Above, `Color` is a built-in material which represents a single color, including alpha.  `Material.fromType` is shorthand; the entire Fabric JSON can also be provided.
 ```javascript
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    id : 'Color'
+    type : 'Color'
   }
 });
 ```
@@ -45,7 +45,7 @@ Each material has zero or more uniforms, which are input parameters that can be 
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    id : 'Color',
+    type : 'Color',
     uniforms : {
       color : {
         red : 1.0,
@@ -73,7 +73,7 @@ Cesium has several built-in materials.  Two widely used ones are:
 
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
-polygon.material = Material.fromId(scene.getContext(), 'Image');
+polygon.material = Material.fromType(scene.getContext(), 'Image');
 polygon.material.uniforms.image = 'image.png';
 ```
 or
@@ -81,7 +81,7 @@ or
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    id : 'Image',
+    type : 'Image',
     uniforms : {
       image : 'image.png'
     }
@@ -138,7 +138,7 @@ Some materials, such as `Diffuse` and `NormalMap` require images with three comp
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    id : 'SpecularMap',
+    type : 'SpecularMap',
     uniforms : {
       image : 'specular.png',
       channel : 'a'
@@ -153,7 +153,7 @@ Materials that use images often have a `repeat` uniform that controls the number
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : {
-    id : 'DiffuseMap',
+    type : 'DiffuseMap',
     uniforms : {
       image : 'diffuse.png',
       repeat : {
@@ -170,10 +170,10 @@ polygon.material = new Cesium.Material({
 
 New materials are created using Fabric, a bit of GLSL, and potentially other materials.
 
-If a material is not going to be reused, it can be created without an `id`.
+If a material is not going to be reused, it can be created without a `type`.
 ```javascript
 var fabric = {
-   // no id
+   // no type
    // ...rest of fabric JSON
 };
 polygon.material = new Cesium.Material({
@@ -181,18 +181,18 @@ polygon.material = new Cesium.Material({
   fabric : fabric
 });
 ```
-When a non-existing `id` is used, the material is cached during the first call to `new Cesium.Material`, and later calls to `new Cesium.Material` or `Material.fromId` can reference the material as if it were a built-in material, i.e., they don't need to provide the full Fabric, just the `id` and any `uniforms` they want to set.
+When a non-existing `type` is used, the material is cached during the first call to `new Cesium.Material`, and later calls to `new Cesium.Material` or `Material.fromType` can reference the material as if it were a built-in material, i.e., they don't need to provide the full Fabric, just the `type` and any `uniforms` they want to set.
 ```javascript
 var fabric = {
-   id : 'MyNewMaterial',
+   type : 'MyNewMaterial',
    // ...rest of fabric JSON
 };
 polygon.material = new Cesium.Material({
   context : scene.getContext(),
   fabric : fabric
 });
-// ... later calls just use the id.
-anotherPolygon.material = Material.fromId(scene.getContext(), 'MyNewMaterial');
+// ... later calls just use the type.
+anotherPolygon.material = Material.fromType(scene.getContext(), 'MyNewMaterial');
 ```
 
 <a id="Components"></a>
@@ -308,7 +308,7 @@ Similarly, we can visualize the normal in eye coordinates by setting `diffuse` t
 In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesium.agi.com/Documentation/?classFilter=agi_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
 ```javascript
 {
-  id : 'OurColor',
+  type : 'OurColor',
   uniforms : {
     color : {
       red : 1.0,
@@ -323,12 +323,12 @@ In addition to `materialInput`, materials have access to uniforms, both Cesium p
   }
 }
 ```
-In Fabric, the `uniform` property's sub-properties are the names of the uniforms in GLSL and the JavaScript object returned from `new Material` and `Material.fromId`.  The sub-properties's values (for scalars) or sub-properties (for vectors) are the value of the uniform.
+In Fabric, the `uniform` property's sub-properties are the names of the uniforms in GLSL and the JavaScript object returned from `new Material` and `Material.fromType`.  The sub-properties's values (for scalars) or sub-properties (for vectors) are the value of the uniform.
 
 We can implement our own `DiffuseMap` material by using an image uniform:
 ```javascript
 {
-  id : 'OurDiffuseMap',
+  type : 'OurDiffuseMap',
   uniforms : {
     image : 'agi_defaultImage'
   },
@@ -339,7 +339,7 @@ We can implement our own `DiffuseMap` material by using an image uniform:
 ```
 Above, `'agi_defaultImage'` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
 ```javascript
-polygon.material = Material.fromId(scene.getContext(), 'OurDiffuseMap');
+polygon.material = Material.fromType(scene.getContext(), 'OurDiffuseMap');
 polygon.material.uniforms.image = 'diffuse.png';
 ```
 There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
@@ -352,13 +352,13 @@ So far, we can use the [built-in](#BuiltInMaterials) materials, or create our ow
 Fabric has a `materials` property where the value of each sub-property is Fabric, i.e., a material.  These materials can be referenced in the `components` and `source` properties so they can be built upon.  For example, a material representing plastic can be implemented with a `DiffuseMap` and `SpecularMap`.
 ```javascript
 {
-  id : 'OurMappedPlastic',
+  type : 'OurMappedPlastic',
   materials : {
     diffuseMaterial : {
-      id : 'DiffuseMap'
+      type : 'DiffuseMap'
     },
     specularMaterial : {
-      id : 'SpecularMap'
+      type : 'SpecularMap'
     }
   },
   components : {
@@ -368,11 +368,11 @@ Fabric has a `materials` property where the value of each sub-property is Fabric
 };
 ```
 
-This material has `diffuse` and `specular` components that pull values from materials in the `materials` property.  The sub-materials are named `diffuseMaterial` and `specularMaterial` (created from ids `DiffuseMap` and `SpecularMap`; do not confuse the name - the instance - and the id - the class so to speak).  In the `components` and `source` properties, sub-materials are accessed by name as if they were an `agi_material` structure, hence the `.diffuse` and `.specular` field accesses above.
+This material has `diffuse` and `specular` components that pull values from materials in the `materials` property.  The sub-materials are named `diffuseMaterial` and `specularMaterial` (created from types `DiffuseMap` and `SpecularMap`; do not confuse the name - the instance - and the type - the class so to speak).  In the `components` and `source` properties, sub-materials are accessed by name as if they were an `agi_material` structure, hence the `.diffuse` and `.specular` field accesses above.
 
 Given this Fabric, our material can be used like other materials.
 ```javascript
-var m = Material.fromId(scene.getContext(), 'OurMappedPlastic');
+var m = Material.fromType(scene.getContext(), 'OurMappedPlastic');
 polygon.material = m;
 
 m.materials.diffuseMaterial.uniforms.image = 'diffuseMap.png';
@@ -390,7 +390,7 @@ _TODO: need simple but inspiring examples of writing custom materials with Fabri
 
 _TODO: link to schema when it's in master._
 
-A [JSON Schema](http://json-schema.org/) for Fabric is in the Cesium repo.  This details all Fabric properties and sub-properties, including `id`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
+A [JSON Schema](http://json-schema.org/) for Fabric is in the Cesium repo.  This details all Fabric properties and sub-properties, including `type`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
 
 In addition to more rigorous Fabric documentation, the schema can be used to validate Fabric using a tool like [JSV](https://github.com/garycourt/JSV).
 
