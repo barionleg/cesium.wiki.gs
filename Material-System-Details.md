@@ -95,3 +95,4 @@ Details to follow...
    * [Unity](http://unity3d.com/support/documentation/Manual/Materials).  See their [surface shaders](http://docs.unity3d.com/Documentation/Components/SL-SurfaceShaders.html).  [blog](http://aras-p.info/blog/2010/07/16/surface-shaders-one-year-later/).
    * [C4 Engine](http://www.terathon.com/wiki/index.php/Shaders)
    * [Id tech 4](http://www.modwiki.net/wiki/Texturing)
+   * [How to design a Material System](http://diaryofagraphicsprogrammer.blogspot.com/2007/12/how-to-design-material-system.html)
