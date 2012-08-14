@@ -30,3 +30,4 @@ Water
 * GPU Pro 2, Page 307
 * ShaderX 2, [Page 207](http://tog.acm.org/resources/shaderx/Tips_and_Tricks_with_DirectX_9.pdf)
 * A few demos from [Humus](http://www.humus.name/index.php?page=3D)
+* [LEAN Mapping](http://www.csee.umbc.edu/~olano/papers/lean/)
