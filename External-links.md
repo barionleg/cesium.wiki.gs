@@ -77,13 +77,13 @@ MasterDocument
       },
       {
         "id":"DocB",
-        "external":{"polling":"http://...", "scope","shared"}
+        "external":{"polling":"http://...", "scope":"shared"}
       }]
     }
   },
   {
     "id":"DocC",
-    "external":{"polling":"http://...", "scope","shared"}
+    "external":{"polling":"http://...", "scope":"shared"}
   },
   {
     "id":"firstElement",
