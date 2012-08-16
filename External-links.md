@@ -1,4 +1,3 @@
-
 ## Main goals
 * Dynamic distribution of data.
 * Share your czml file with multiple end users.
@@ -40,6 +39,8 @@ A Cesium layer/object can reference an external Cesium source, either as a JSON 
 ]
 ```
 
+As shown above, external document URIs can have client-supplied parameters that make it easy to do things like compute access to the selected object or load data specific to the current view parameters. This parameter system could get very complicated, but we'll probably just support some important and simple use-cases in the first versions.
+
 ```javascript
 [
   {  
@@ -52,16 +53,13 @@ A Cesium layer/object can reference an external Cesium source, either as a JSON 
   }  
 ]
 ```
-As shown above, external document URIs can have client-supplied parameters that make it easy to do things like compute access to the selected object or load data specific to the current view parameters. This parameter system could get very complicated, but we'll probably just support some important and simple use-cases in the first versions.
 
-
-
-
+## Scopes
 A Cesium client can have multiple Cesium scopes, each of which can have multiple Cesium sources. Cesium scopes are completely isolated from each other. A property on an object in one scope cannot reference a property on an object in another scope using "#id" or {$ref} syntax.
 By default, the scope of an external document is "private", meaning that objects loaded from the external document are placed underneath the external document object in the hierarchy. In addition, they're placed in their own scope so that two objects with the same ID, one in the main document and one in the external document, will be treated as distinct objects. By setting it to "shared", the external document is allowed to modify properties of objects in the main document and new objects are not placed underneath the external document object in the hierarchy unless their parent property explicitly says so.
 
 
-## Example
+### Example
 The figure below illustrates Cesium scopes.
 
 <img src="externalLinks.png" />
