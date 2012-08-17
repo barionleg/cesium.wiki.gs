@@ -264,7 +264,7 @@ agi_material agi_getMaterial(agi_materialInput materialInput)
 The Fabric looks like:
 ```javascript
 {
-  source : 'agi_material agi_getMaterial(agi_materialInput materialInput) { return agi_getDefaultMaterial(materialInput); }'
+  "source" : "agi_material agi_getMaterial(agi_materialInput materialInput) { return agi_getDefaultMaterial(materialInput); }"
 }
 ```
 
