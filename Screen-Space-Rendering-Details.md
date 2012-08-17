@@ -14,6 +14,91 @@ Design and implementation ideas for our screen-space rendering algorithms.
 * Render anywhere in the pipeline, not just at the end.
 * A built-in set of common filters.
 
+## Example Filter Scripts
+
+Using a single built-in filter:
+```json
+{
+  "type" : "brightness",
+  "uniforms" : {
+    "amount" : 1.2
+  }
+}
+```
+
+Creating a new filter:
+```json
+{
+  "type" : "red",
+  "source" : "czm_Filter czm_getFilter(czm_FilterInput filterInput) { czm_Filter f = agi_getDefaultFilter(filterInput); f.color = vec4(texture2D(filterInput.color, filterInput.st).r, 0.0, 0.0, 1.0); return f; }"
+}
+```
+
+In GLSL, `czm_FilterInput` and `czm_Filter` are structs with the following definition:
+```glsl
+struct czm_FilterInput
+{
+  sampler2D color;
+  sampler2D depth;
+  vec2 st;
+};
+
+struct czm_Filter
+{
+  vec4 color;
+}
+```
+All filters must implement the GLSL function, `czm_getFilter`.  The most trivial implementation, which just passes the input through, is:
+```glsl
+czm_Filter czm_getFilter(czm_FilterInput filterInput)
+{
+  return agi_getDefaultFilter(filterInput);
+}
+```
+Here is another new filter, this time with uniforms:
+```json
+{
+  "type" : "channels",
+  "uniforms" : {
+    "mask" : {
+      r : 1.0,
+      g : 1.0,
+      b : 0.0,
+      a : 1.0
+    }
+  }
+  "source" : "czm_Filter czm_getFilter(czm_FilterInput filterInput) { czm_Filter f = agi_getDefaultFilter(filterInput); f.color = texture2D(filterInput.color, filterInput.st) * mask; return f; }"
+}
+```
+
+## Example Filter Chain Scripts
+
+Chaining together a Sobel edge detection filter and quantization to create a toon filter:
+```json
+{
+  type : "toon",
+  filters : {
+    sobelPass : {
+      "type" : "SobelEdgeDetect"
+    },
+    quantizePass : {
+      "type" : "Quantize"
+    }
+  },
+  chain : [
+    "sobelPass",
+    "quantizePass"
+  ]
+}
+```
+
+TODO: connect input and output?
+TODO: Need to explicitly name filters in a chain to access from several passes ago?
+
+## Adding Filters to the Pipeline
+
+TODO
+
 ## Built-in Filters
 
 Color Buffer only
