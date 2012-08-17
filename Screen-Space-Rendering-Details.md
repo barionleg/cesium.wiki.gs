@@ -39,7 +39,9 @@ In GLSL, `czm_FilterInput` and `czm_Filter` are structs with the following defin
 struct czm_FilterInput
 {
   sampler2D color;
+  vec2 colorStep; // 1.0 / (width, height)
   sampler2D depth;
+  vec2 depthStep; // 1.0 / (width, height)
   vec2 st;
 };
 
@@ -92,7 +94,7 @@ Chaining together a Sobel edge detection filter and quantization to create a too
 }
 ```
 
-TODO: connect input and output?
+TODO: connect input and output?  Perhaps explicitly name them.
 TODO: Need to explicitly name filters in a chain to access from several passes ago?
 
 ## Adding Filters to the Pipeline
