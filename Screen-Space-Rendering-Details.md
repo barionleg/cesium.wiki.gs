@@ -1,5 +1,21 @@
 Design and implementation ideas for our screen-space rendering algorithms.
 
+## Overview
+
+* Scriptable like [Fabric](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).
+* Chain together multiple filters to create an effect, e.g., bloom.
+   * Create chains using other chains as building blocks (also like Fabric).
+   * Pool or minimize intermediate textures.
+* Full-screen or custom size.
+* Tweak uniforms, e.g., brightness.
+* Read from color and depth.
+   * Name textures earlier in the pipeline and access them as input by name, e.g., a glow map or velocity buffer.
+   * Read different resolutions?
+* Render anywhere in the pipeline, not just at the end.
+* A built-in set of common filters.
+
+## Built-in Filters
+
 Color Buffer only
 * Night vision.  ([simple algorithm](http://wtomandev.blogspot.com/2009/09/night-vision-effect.html).  Game Engine Gems 2, Chapter 3).
 * Luminance (Graphics Shaders, Page 203.  Orange Book, Page 534)
@@ -11,7 +27,7 @@ Color Buffer only
 * Gaussian Blur (RTR, Page 468.  Graphics Shaders, Page 210.  Orange Book, Page 549)
 * Bloom (GPU Pro, Page 551.  GPU Pro 2, Page 296.  RTR Page 482.  [Tutorial](http://prideout.net/archive/bloom/index.php))
 * Glare (Programming Vertex Geometry and Pixel Shaders, [Page 399](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf))
-* Watercolor (GPU Pro, Page 557)
+* Watercolor (GPU Pro, Page 557) - edge detect following by smoothing
 * 8-Bit (GPU Pro, Page 557)
 * Kuwahara filter (GPU Pro, Page 247)
 * Gamma Correction (RTR, Page 141)
@@ -23,6 +39,10 @@ Depth Buffer
 
 Later
 * Motion blur using a velocity buffer (RTR, Page 490.  Programming Vertex Geometry and Pixel Shaders, [Page 410](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf)).
+
+Resources
+* [Stylized Rendering in Spore](http://gpupro.blogspot.com/2010/05/stylized-rendering-in-spore.html)
+* [Post Process Framework Sample](http://graphicsrunner.blogspot.com/2008/06/post-process-framework-sample.html)
 
 -------
 
