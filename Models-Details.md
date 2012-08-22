@@ -65,6 +65,7 @@ We recognize the need to support the widest possible content, therefore, we need
 * [Sketchfab](http://sketchfab.com/) is similar in that it is for sharing 3D models and embedding them in webpages.  They have an [API](http://sketchfab.com/api), but it is only for sending content; retrieving content is on their roadmap.  Perhaps they are open to an API for reading models like OurBricks.  They support a lot of [formats](http://sketchfab.com/faq).
 * [OurBricks](http://www.ourbricks.com/) "connects people who need great 3D content with those who can create it."  Great effort; worth a close look at their [API](https://github.com/ourbricks/ourbricks-api-examples/wiki/API-Documentation).  
 * [p3d.in](http://p3d.in/) is also for sharing 3D models.  Artists can upload .obj files and embed the viewer in a webpage, but I'm not sure if there is any API for accessing their models.
+* [OpenBuildingModels](http://wiki.openstreetmap.org/wiki/OpenBuildingModels)
 * [US Government ADL 3D Repository](http://3dr.adlnet.gov/) - Very relevant content for Cesium; lots of satellite, aircraft, and ground vehicle models.  Requires login to download.  Models are available under public domain or CC license.  Only 354 total models.  No REST API.
 * [verold](http://studio.verold.com/)
 * [Google 3D Warehouse](http://sketchup.google.com/3dwarehouse/) - lots of models.  Need to look at the [terms of service](http://sketchup.google.com/intl/en/3dwh/preview_tos.html).  Not sure about an API.  It would be cool to have a WebGL browser for this though.
