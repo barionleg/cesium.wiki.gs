@@ -52,13 +52,13 @@ Most apps will not use Renderer directly; instead, they will use higher-level co
 
 GLSL code has access to a ton of Cesium built-in uniforms and functions, for example:
 ```javascript
-gl_Position = agi_modelViewProjection * position;
-v_positionWC = (agi_model * position).xyz;
-v_positionEC = (agi_modelView * position).xyz;
-v_normalEC = agi_normal * normal;
+gl_Position = czm_modelViewProjection * position;
+v_positionWC = (czm_model * position).xyz;
+v_positionEC = (czm_modelView * position).xyz;
+v_normalEC = czm_normal * normal;
 // ...
-agi_ray ray = agi_ray(vec3(0.0), normalize(v_positionEC));
-agi_raySegment interval = agi_rayEllipsoidIntersectionInterval(ray, ellipsoid);
+czm_ray ray = czm_ray(vec3(0.0), normalize(v_positionEC));
+czm_raySegment interval = czm_rayEllipsoidIntersectionInterval(ray, ellipsoid);
 ```
 See the GLSL section in the [reference documentation](http://cesium.agi.com/Documentation/).
 
