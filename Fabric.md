@@ -230,9 +230,9 @@ Together, these sub-properties, or _components_ define the characteristics of th
 <a id="Source"></a>
 ### Source
 
-An alternative to the `components` property that provides more flexibility is to provide complete GLSL source for a function, `agi_getMaterial`, that returns the material's components.  The signature is:
+An alternative to the `components` property that provides more flexibility is to provide complete GLSL source for a function, `czm_getMaterial`, that returns the material's components.  The signature is:
 ```glsl
-struct agi_materialInput
+struct czm_materialInput
 {
   float s;
   vec2 st;
@@ -243,7 +243,7 @@ struct agi_materialInput
   vec3 positionMC;
 };
 
-struct agi_material
+struct czm_material
 {
   vec3 diffuse;
   float specular;
@@ -252,33 +252,33 @@ struct agi_material
   float alpha;
 };
 
-agi_material agi_getMaterial(agi_materialInput materialInput);
+czm_material czm_getMaterial(czm_materialInput materialInput);
 ```
 The simplest possible implementation is to return the default for each component.
 ```glsl
-agi_material agi_getMaterial(agi_materialInput materialInput)
+czm_material czm_getMaterial(czm_materialInput materialInput)
 {
-    return agi_getDefaultMaterial(materialInput);
+    return czm_getDefaultMaterial(materialInput);
 }
 ```
 The Fabric looks like:
 ```javascript
 {
-  source : 'agi_material agi_getMaterial(agi_materialInput materialInput) { return agi_getDefaultMaterial(materialInput); }'
+  source : 'czm_material czm_getMaterial(czm_materialInput materialInput) { return czm_getDefaultMaterial(materialInput); }'
 }
 ```
 
 Our example material above that sets `diffuse` and `specular` components can be implemented as:
 ```glsl
-agi_material agi_getMaterial(agi_materialInput materialInput)
+czm_material czm_getMaterial(czm_materialInput materialInput)
 {
-    agi_materialInput m = agi_getDefaultMaterial(materialInput);
+    czm_materialInput m = czm_getDefaultMaterial(materialInput);
     m.diffuse = vec3(0.5);
     m.specular = 0.5;
     return m;
 }
 ```
-Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `agi_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `agi_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesium.agi.com/Documentation/?classFilter=agi_).
+Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `czm_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `czm_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesium.agi.com/Documentation/?classFilter=czm_).
 
 <a id="Input"></a>
 ### Input
@@ -305,7 +305,7 @@ A simple material that visualizes the `st` texture coordinates is:
 ```
 Similarly, we can visualize the normal in eye coordinates by setting `diffuse` to `materialInput.normalEC`.
 
-In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesium.agi.com/Documentation/?classFilter=agi_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
+In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesium.agi.com/Documentation/?classFilter=czm_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
 ```javascript
 {
   type : 'OurColor',
@@ -330,19 +330,19 @@ We can implement our own `DiffuseMap` material by using an image uniform:
 {
   type : 'OurDiffuseMap',
   uniforms : {
-    image : 'agi_defaultImage'
+    image : 'czm_defaultImage'
   },
   components : {
     diffuse : 'texture2D(image, materialInput.st).rgb'
   }
 }
 ```
-Above, `'agi_defaultImage'` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
+Above, `'czm_defaultImage'` is a placeholder 1x1 image.  As discussed earlier, this can also be an image URL or data URI.  For example, a user would create an `OurDiffuseMap` like:
 ```javascript
 polygon.material = Material.fromType(scene.getContext(), 'OurDiffuseMap');
 polygon.material.uniforms.image = 'diffuse.png';
 ```
-There is also a cube-map placeholder, `agi_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
+There is also a cube-map placeholder, `czm_defaultCubeMap`.  The standard GLSL uniform types, `float`, `vec3`, `mat4`, etc. are supported.  Uniform arrays are not supported yet, but are on the [roadmap](#Roadmap).
 
 <a id="CombiningMaterials"></a>
 ### Combining Materials
@@ -368,7 +368,7 @@ Fabric has a `materials` property where the value of each sub-property is Fabric
 };
 ```
 
-This material has `diffuse` and `specular` components that pull values from materials in the `materials` property.  The sub-materials are named `diffuseMaterial` and `specularMaterial` (created from types `DiffuseMap` and `SpecularMap`; do not confuse the name - the instance - and the type - the class so to speak).  In the `components` and `source` properties, sub-materials are accessed by name as if they were an `agi_material` structure, hence the `.diffuse` and `.specular` field accesses above.
+This material has `diffuse` and `specular` components that pull values from materials in the `materials` property.  The sub-materials are named `diffuseMaterial` and `specularMaterial` (created from types `DiffuseMap` and `SpecularMap`; do not confuse the name - the instance - and the type - the class so to speak).  In the `components` and `source` properties, sub-materials are accessed by name as if they were an `czm_material` structure, hence the `.diffuse` and `.specular` field accesses above.
 
 Given this Fabric, our material can be used like other materials.
 ```javascript
@@ -399,7 +399,7 @@ In addition to more rigorous Fabric documentation, the schema can be used to val
 
 Objects like _Polygon_, _CustomSensorVolume_, etc. integrate with the material system to support materials.  Most users will simply assign to their `material` property and be done.  However, users writing custom rendering code may also want to integrate with materials.  Doing so is straightforward.
 
-From the rendering perspective, a material is a GLSL function, `agi_getMaterial`, and uniforms.  The fragment shader needs to construct an `agi_MaterialInput`, call `agi_getMaterial`, and then pass the resulting `agi_material` to the lighting function to compute the fragment's color.
+From the rendering perspective, a material is a GLSL function, `czm_getMaterial`, and uniforms.  The fragment shader needs to construct an `czm_MaterialInput`, call `czm_getMaterial`, and then pass the resulting `czm_material` to the lighting function to compute the fragment's color.
 
 In JavaScript, the object should have a public `material` property.  When this property changes, the `update` function should prepend the material's GLSL source to the object's fragment shader's source, and combine the uniforms of the object and the material.
 ```javascript
