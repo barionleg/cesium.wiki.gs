@@ -14,7 +14,7 @@ We're always looking to:
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * GeoServer CZML writer
 * CZML External links - [details](External-links)
-* CZML Path/History visualization - [details](Path-Visualization-Details)
+* CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * Data-Driven Renderer - [details](Data-Driven-Renderer-Details)
 * COLLADA models - [details](Models-Details)
