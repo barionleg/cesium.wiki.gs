@@ -29,10 +29,6 @@ We'd like to add several features without burdening those implementing primitive
    * The motion blur postFX requires the velocity buffer output by models.
 * Minimize allocations to minimize GC pressure (not a feature, but still important)
 
-* Improved depth-buffer precision
-* Culling for all objects
-* Post-processing framework
-
 ## _Done:_ Phase One: Add Culling
 
 * _Done:_ Add view frustum and occlusion culling to existing primitives.  If a primitive returns a bounding volume in `update`, the scene automatically handles culling.
