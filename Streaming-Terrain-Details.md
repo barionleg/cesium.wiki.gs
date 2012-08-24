@@ -13,7 +13,7 @@ This is an area that has plenty of opportunities for interested folks to get inv
 * **DONE** Add support for different tiling schemes for terrain and imagery, and for different imagery sources.
 * Check tile selection algorithm - is it rendering too much detail?
 * Improve tile culling.
-* Evaluate cracking between tiles.  Do we need to add skirts?
+* **DONE** Evaluate cracking between tiles.  Do we need to add skirts?
 * Add support for switching terrain providers after rendering has started.
 * Implement support for 2D and Columbus View.
 * **DONE** Add support for adding/removing/reordering imagery layers after rendering has started.
@@ -22,6 +22,8 @@ This is an area that has plenty of opportunities for interested folks to get inv
 * **DONE** Add an imagery texture cache to ensure an image overlapping multiple terrain tiles is loaded only once.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
 * **DONE** Add wireframe mode to make it easier to evaluate triangle densities.
+* Why are black tiles rendered at extreme zoom levels?
+* Allow imagery detail to increase in dependent of increasing terrain detail.
 
 ## Data sources
 
