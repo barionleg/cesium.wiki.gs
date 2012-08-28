@@ -118,6 +118,7 @@ Color Buffer only
 * 8-Bit (GPU Pro, Page 557)
 * Kuwahara filter (GPU Pro, Page 247)
 * Gamma Correction (RTR, Page 141)
+* Erosion
 
 Depth Buffer
 * Depth of Field (Programming Vertex Geometry and Pixel Shaders, [Page 406](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf).  GPU Gems, [Chapter 23](http://http.developer.nvidia.com/GPUGems/gpugems_ch23.html).  RTR, Page 486.  GPU Pro, Page 315.  )
