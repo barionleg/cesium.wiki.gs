@@ -16,12 +16,12 @@ We'd like to add several features without burdening those implementing primitive
    * Shadow pass per shadow-casting light
       * Depth-only
       * Culling based on volume created by the view frustum and light direction
-      * Probably needs multi-frustum
+      * Probably needs multi-frustum, but needs performance too.  How far can we push out the near plane?
    * Cube map passes for reflections and refractions in the final pass, one per cube map face
       * Low resolution?
       * Low geometric LODs?  Low shader LODs?
       * Only include select primitives, e.g., only the environment, only nearby models, etc.
-      * Probably needs multi-frustum
+      * Probably needs multi-frustum, but needs performance too.  
 * Script-driven [post-processing effects](Screen-Space-Rendering-Details) such as motion blur and AO
 * Handle dependencies, for example:
    * Motion blur requires the velocity buffer output by models.
@@ -30,9 +30,11 @@ We'd like to add several features without burdening those implementing primitive
 
 What is a data-driven renderer and how does it help us achieve these goals?
 
-In a nutshell, we remove `render` and have `update` return an object representing the draw calls `render` would have issues.  This allows the rendering engine to sort those calls, cull them, etc.  The process is data-driven.  For example, currently, if a primitive such as a model has several draw calls, the primitive would need code to cull each one, but with the data-driven approach, it can just return its draw calls, and let the rendering engine deal with them.
+In a nutshell, we remove `render` and have `update` return an object representing the draw calls `render` would have issues.  This allows the rendering engine to sort those calls, cull them, etc.  The process is data-driven.  For example, currently, if a primitive such as a model has several draw calls, the primitive would need code to cull each one, but with the data-driven approach, it can just return its draw calls, and let the renderer deal with them.
 
-We should be able to merge into master after each phase.
+When designing our renderer, beware of the [architect astronaut](http://www.joelonsoftware.com/articles/fog0000000018.html).  They love over-engineering things.
+
+We'll merge into master after each phase.
 
 ## _Done:_ Phase One: Add Culling
 
@@ -42,8 +44,8 @@ We should be able to merge into master after each phase.
 ## Phase Two: Cleanup Picking
 
 * Rename `SceneState` to `FrameState`.  It is more precise.
-* Remove `updateForPick`.  Instead `FrameState` can contain a `Passes` object with a boolean per pass (or an array of booleans or whatever.  In C++, I would use a bitmask.)  The only pass will be `Pick` for now.  When it's true, it will be as if `updateForPick` was called.
-   * Later, we will expand `Passes` to include z-only passes for early-z and shadow maps, and cube-map passes for building cube-maps.  We could make each of these a separate `update` function, but I think keeping them together limits to amount of state a primitive has to keep around, e.g., a primitive doesn't have to compute something temporary in `update`, save it in a member, and then use it in `updateForCubeMapPass`.
+* Remove `updateForPick`.  Instead `FrameState` can contain a `Passes` object with a boolean per pass (or an array of booleans or whatever.  In C++, I would use a bitmask.)  The only pass will be `pick` for now.  When it's true, it will be as if `updateForPick` was called.
+   * Later, we will expand `Passes` to include z-only passes for early-z and shadow maps, and cube-map passes for building cube-maps.  We could make each of these a separate `update` function, but I think keeping them together limits the amount of state a primitive has to keep around, e.g., a primitive doesn't have to compute something temporary in `update`, save it in a member, and then use it in `updateForCubeMapPass`.
 * Create an off-center view frustum containing the picked pixel(s) so culling is much more effective.  Use this frustum for culling, but still render with the original frustum, i.e., the perspective matrix is still derived from the original frustum.  See my [Picking using the Depth Buffer](http://blogs.agi.com/insight3d/index.php/2008/03/05/picking-using-the-depth-buffer/).
 * Later, we will scissor out the picked pixel to reduce the fragment load.  We'll need to modify everyone's render state, so we need their draw calls for that.
 
@@ -71,7 +73,7 @@ foo.prototype.render = function(context) {
 becomes
 ```javascript
 foo.prototype.update = function(context, frameState) {
-  // Ignoring frameState.Passes.Pick...
+  // Ignoring frameState.Passes.pick...
   return [{
     boundingVolume : this._boundingVolume,    // optional
     modelMatrix : this.modelMatrix,           // optional
@@ -88,9 +90,22 @@ foo.prototype.update = function(context, frameState) {
   // }];
 };
 ```
-Yes, there are a ton of allocate, don't worry; we'll fix that soon.  This also kinda sucks for terrain, who will need to duplicate its uniforms per draw call to implement RTC for now.
+`FrameState.Passes` will need a separate `color` or `final` pass so we don't overload `!pick` to mean `color`.
 
-TODO: Callback functions as commands?
+There are a ton of allocations, don't worry; we'll fix that soon.  This also kinda sucks for terrain, who will need to duplicate its uniforms per draw call to implement RTC for now.
+
+This returns one list of draw calls.  Later the list will be a tree, and we'll have different trees for each requested pass.
+
+## Phase Four: TODO
+
+## Phase n: Reduce allocations
+
+TODO
+
+## Later Phases
+
+* Callback functions as commands?
+* Scissor out pick rectangle
 
 ## Resources
 
