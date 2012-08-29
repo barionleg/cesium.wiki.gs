@@ -138,7 +138,7 @@ for each f in frustums back-to-front {
     // The fields on c are computed based on the boundingVolume, which could be undefined.
     
     // Culled by current frustum's far plane
-    if (c.closestDistanceToViewer > f.far) {
+    if (c.nearestDistanceToViewer > f.far) {
       // discard c.  If commands is a linked list, we can remove it.  Could be awesome.  Could not be.
     }
 
@@ -150,7 +150,7 @@ for each f in frustums back-to-front {
     
     // execute c
 
-    if (c.farthestDistanceToViewer > f.near)) {
+    if (c.nearestDistanceToViewer > f.near)) {
       // discard c since it isn't need in any future frustums.
     }
     // else intersects near plane of this frustum, needed in one or more future frustums.
@@ -160,11 +160,20 @@ for each f in frustums back-to-front {
 // render screen-space passes
 ```
 
+We'll also need some stats so we know how many times each primitive is drawn per frame.
+
+`ViewportQuad` has an `undefined` bounding volume so we'll want to treat it separately.  Details TBA.
+
 Other ideas:
 * Can we partition the frustums to minimize translucent/expensive primitives that intersect multiple frustums?  What do we do with large primitives like sensors?
 * Can we use temporal coherence?  For example, use the partitioning from the previous frame?
 * Can we quickly bin primitives into frustums?
 * When zoomed-in ground level with terrain, lots of tiles will overlap the first and second frustum.  How can we improve performance?
+* Down the road, can we exploit the parallelism of each each frustum and build each command queue separately.
+
+## Phase Five: Command Tree
+
+TODO
 
 ## Phase n: Reduce allocations
 
@@ -174,7 +183,7 @@ TODO
 
 * Callback functions as commands?
 * Scissor out pick rectangle
-
+* Post-processing - color per frame, depth per frustum?
 ## Resources
 
 * [Order your graphics draw calls around!](http://realtimecollisiondetection.net/blog/?p=86/)
