@@ -27,7 +27,7 @@ A very simple terrain provider that matches the WGS84 ellipsoid.  In other words
 
 ### ArcGisImageServerTerrainProvider
 
-Provides elevation data downloaded as heightmaps from an ArcGIS ImageServer.
+Provides elevation data downloaded as heightmaps from an [Esri ArcGIS ImageServer](http://www.esri.com/software/arcgis/serverimage).
 
 This terrain provider can connect to any ArcGIS ImageServer.  However, the connection to the ImageServer must be proxied through the `/terrain/` service included with the Cesium Jetty-based web server, or an equivalent service.  This is because the full-resolution heights are only offered in TIF format, and because most browsers can't read TIF files.
 
@@ -53,6 +53,8 @@ Currently, this terrain provider assumes that the tiles use a geographic project
 Provides elevation data downloaded as an array of heights from a Web Map Service (WMS) server via `XMLHttpRequest`.
 
 Currently, this terrain provider assumes that the tiles use a geographic projection, it has 18 levels of detail, and that the heights are represented as a simple array of 16-bit integer heights, in meters.  If serving WMS via [GeoServer](http://geoserver.org), you will need to use the [DDS/BIL extension](http://docs.geoserver.org/stable/en/user/community/dds/index.html).  We also recommend that you use the [CORS Filter](http://software.dzhuvinov.com/cors-filter-installation.html) (or something similar) to allow your WMS server to be accessed from other domains.
+
+This terrain provider needs a lot more work to be made applicable to a wider variety of WMS situations.
 
 ### Future terrain providers
 
