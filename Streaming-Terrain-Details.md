@@ -21,11 +21,11 @@ This is an area that has plenty of opportunities for interested folks to get inv
 
 Cesium supports the following source of terrain data:
 
-### `EllipsoidTerrainProvider`
+### EllipsoidTerrainProvider
 
 A very simple terrain provider that matches the WGS84 ellipsoid.  In other words, the terrain height is 0.0 for the entire world.
 
-### `ArcGisImageServerTerrainProvider`
+### ArcGisImageServerTerrainProvider
 
 Provides elevation data downloaded as heightmaps from an ArcGIS ImageServer.
 
@@ -42,13 +42,13 @@ It is tempting to ship Cesium with this terrain source pointed at Esri's elevati
 * The elevation heightmaps are not cached on the server, so the response time from the server is not as high as we'd like.
 * The proxy requirement, as described above, adds latency and complexity to the system.
 
-### `TileMapServiceTerrainProvider`
+### TileMapServiceTerrainProvider
 
 Provides elevation data downloaded as heightmaps from a TileMapService (TMS) server.
 
 Currently, this terrain provider assumes that the tiles use a geographic projection, it has 12 levels of detail, and that the heights are encoded in PNG files as described for the `/terrain/` service above.  There's lots of opportunity for generalization.
 
-### `WebMapServiceTerrainProvider`
+### WebMapServiceTerrainProvider
 
 Provides elevation data downloaded as an array of heights from a Web Map Service (WMS) server via `XMLHttpRequest`.
 
