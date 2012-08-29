@@ -8,6 +8,8 @@ This is an area that has plenty of opportunities for interested folks to get inv
 
 ## To Do List
 
+Streaming terrain implementation is currently taking place in the [imagery_layers](https://github.com/AnalyticalGraphicsInc/cesium/tree/imagery_layers) branch.  Here's our wildly-incomplete to-do list:
+
 * Include normals in terrain vertex arrays.
 * Check tile selection algorithm - is it rendering too much detail?
 * Improve tile culling.
@@ -94,59 +96,6 @@ We want Cesium to have great terrain out of the box, and that means we need to h
 * Polygons on terrain - probably shadow volumes
 * Polylines on terrain - perhaps see if we can use our [SIGGRAPH work](http://blogs.agi.com/agi/2011/04/25/a-screen-space-approach-to-rendering-polylines-on-terrain/) without a geometry shader.
 * Billboards that do not partially sink under terrain.
-
-## Architecture
-
-This section is a work in progress, even more so than the rest of this page!
-
-#### CentralBody
-
-* Primarily responsible for the rendering of terrain and imagery.  Delegates various parts of the process to other types listed here.
-
-#### TilingScheme
-
-* Defines the shape of the quadtree.  For example, tiles may be web-mercator-aligned or geographic/WGS84 aligned.
-* Creates quadtree tiles on demand.
-* Transforms tile coordinates (x, y, level) to world extent.
-
-#### TerrainProvider
-
-* Async-oriented, loading is throttled.
-* Creates surface geometry (terrain) for a given tile by tessellating an ellipsoid or height map, or by downloading a mesh.  Fills in the Tile provided to it.  Texture coordinates are included in the mesh.
-* Has a TilingScheme.
-
-#### Tile
-
-* A node in the quadtree.
-* Has tile coordinates, x, y, and level.
-* Defines the geometric shape of the terrain surface using a mesh or vertex array, plus a "center" for RTC rendering.
-* Knows its bounding volume (sphere?), occludee point for horizon culling, and geometric error.
-* Doesn't _do_ anything, really.  Just holds data.
-
-#### ImageryProvider
-
-* Async-oriented, loading is throttled.
-* Adds one or more `TileImagery` instances to the Tile provided to it.
-
-#### ImageryLayer
-
-#### TileImagery
-
-* The imagery associated with a single tile.
-* Knows its load pipeline state, load fail count, etc.
-* Represents exactly one texture and one texture matrix.
-
-### Process of creating new tiles
-
-The code that does this probably lives in `CentralBody`.
-
-1. Ask `TilingScheme` to create new tile(s).  They are initially empty.
-2. Ask `TerrainProvider` to fill each tile with the tile mesh, bounding volume, geometric error, etc.  This happens asynchronously.
-3. Ask each `ImageryProvider` to fill each tile with a texture representing this tile's imagery from the imagery provider.  This happens asynchronously.
-
-To be decided: When terrain and imagery tiles are not aligned, is each imagery tile that applies to a terrain tile a separate texture with a separate texture matrix?  Or do we render imagery tiles to a FBO attached to a texture that _is_ aligned with the terrain tile?
-
-### Process of rendering terrain and imagery
 
 ## Resources
 
