@@ -9,23 +9,21 @@ This is an area that has plenty of opportunities for interested folks to get inv
 ## To Do List
 
 * Include normals in terrain vertex arrays.
-* **DONE** Fix georeferencing of terrain streamed from ArcGisImageServerTerrainProvider.  The heightmaps are currently in a web mercator projection but geographic is assumed.
-* **DONE** Add support for different tiling schemes for terrain and imagery, and for different imagery sources.
 * Check tile selection algorithm - is it rendering too much detail?
 * Improve tile culling.
-* **DONE** Evaluate cracking between tiles.  Do we need to add skirts?
 * Add support for switching terrain providers after rendering has started.
 * Implement support for 2D and Columbus View.
-* **DONE** Add support for adding/removing/reordering imagery layers after rendering has started.
-* **DONE** Support imagery with a geographic projection.
-* **DONE** Support simultaneous imagery providers with different projections.
-* **DONE** Add an imagery texture cache to ensure an image overlapping multiple terrain tiles is loaded only once.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
-* **DONE** Add wireframe mode to make it easier to evaluate triangle densities.
 * Why are black tiles rendered at extreme zoom levels?
 * Allow imagery detail to increase in dependent of increasing terrain detail.
 
 ## Data sources
+
+Cesium supports the following source of terrain data:
+
+### `ArcGisImageServerTerrainProvider`
+
+
 
 High-resolution, world-wide terrain datasets are enormous, from tens of gigabytes to tens of terabytes.  They need to be organized into a form suitable for visualization, and ideally be hosted on fast, geographically-distributed servers.  For Cesium to use a terrain data source out-of-the-box, that terrain data source should ideally be freely-accessible, at least for non-commercial use.  What are our options?
 
