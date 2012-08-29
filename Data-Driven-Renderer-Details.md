@@ -30,7 +30,7 @@ We'd like to add several features without burdening those implementing primitive
 
 What is a data-driven renderer and how does it help us achieve these goals?
 
-In a nutshell, we remove `render` and have `update` return an object representing the draw calls `render` would have issues.  This allows the rendering engine to sort those calls, cull them, etc.  The process is data-driven.  For example, currently, if a primitive such as a model has several draw calls, the primitive would need code to cull each one, but with the data-driven approach, it can just return its draw calls, and let the renderer deal with them.
+In a nutshell, we remove `render` and have `update` return an object representing the draw calls `render` would have issued.  This allows the rendering engine to sort those calls, cull them, etc.  The process is data-driven.  For example, currently, if a primitive such as a model has several draw calls, the primitive would need code to cull each one, but with the data-driven approach, it can just return its draw calls, and let the renderer deal with them.
 
 When designing our renderer, beware of the [architect astronaut](http://www.joelonsoftware.com/articles/fog0000000018.html).  They love over-engineering things.
 
