@@ -43,8 +43,8 @@ We'll merge into master after each phase.
 
 ## Phase Two: Cleanup Picking
 
-* Rename `SceneState` to `FrameState`.  It is more precise.
-* Remove `updateForPick`.  Instead `FrameState` can contain a `Passes` object with a boolean per pass (or an array of booleans or whatever.  In C++, I would use a bitmask.)  The only pass will be `pick` for now.  When it's true, it will be as if `updateForPick` was called.
+* _Done:_ Rename `SceneState` to `FrameState`.  It is more precise.
+* _Done:_ Remove `updateForPick`.  Instead `FrameState` can contain a `Passes` object with a boolean per pass (or an array of booleans or whatever.  In C++, I would use a bitmask.)  The only pass will be `pick` for now.  When it's true, it will be as if `updateForPick` was called.
    * Later, we will expand `Passes` to include z-only passes for early-z and shadow maps, and cube-map passes for building cube-maps.  We could make each of these a separate `update` function, but I think keeping them together limits the amount of state a primitive has to keep around, e.g., a primitive doesn't have to compute something temporary in `update`, save it in a member, and then use it in `updateForCubeMapPass`.
 * Create an off-center view frustum containing the picked pixel(s) so culling is much more effective.  Use this frustum for culling, but still render with the original frustum, i.e., the perspective matrix is still derived from the original frustum.  See my [Picking using the Depth Buffer](http://blogs.agi.com/insight3d/index.php/2008/03/05/picking-using-the-depth-buffer/).
 * Later, we will scissor out the picked pixel to reduce the fragment load.  We'll need to modify everyone's render state, so we need their draw calls for that.
@@ -90,13 +90,81 @@ foo.prototype.update = function(context, frameState) {
   // }];
 };
 ```
+
 `FrameState.Passes` will need a separate `color` or `final` pass so we don't overload `!pick` to mean `color`.
 
 There are a ton of allocations, don't worry; we'll fix that soon.  This also kinda sucks for terrain, who will need to duplicate its uniforms per draw call to implement RTC for now.
 
-This returns one list of draw calls.  Later the list will be a tree, and we'll have different trees for each requested pass.
+This returns one list of commands.  Later the list will be a tree, and we'll have different trees for each requested pass.
 
-## Phase Four: TODO
+## Phase Four: Multi-Frustum
+
+Now that we have the command list, we can start doing useful things without requiring any additional code in the primitives.  First, let's add multiple frustums so we can virtually have an infinitely close near plane and an infinitely distant far plane without z-fighting.
+
+Notes:
+* For a 24-bit fixed-point depth buffer, a far-to-near ratio of 1,000 is good.  The guaranteed minimum bits in WebGL is 16.  I suspect most desktop (and mobile?) implementations have 24 bits.
+* Pushing out the near plane minimizes the total number of frustums needed.
+* Fog allows users to really pull in the far plane to minimize the total number of frustums needed.
+* Instead of overlapping the frustums, perhaps we can fill the cracks by blurring them (not my idea, but I dig it).
+
+We'll keep `near` and `far` exposed.  These will be worse-case values.  We'll dynamically compute near and far based on the bounding volumes when calling `update` for each primitive.  If a bounding volume intersects the near plane, we'll use the user-defined `near` value; if a bounding volume is `undefined`, we'll use the user-defined `near` and `far` (sucks I know, other ideas?); and so on.
+
+Instead of culling like "for each frustum, for each primitive, cull against current view frustum", Deron had an idea a while back that is like "for each primitive, cull against left/bottom/right/top. for each remaining primitive, cull against near/far."  This allows us to cull a bunch of primitives before fully computing the dynamic near and far distances.  I extend this to cull against the user-defined near plane, so later we can discard based on the far distance only.
+
+The algorithm looks something like this (careful, I didn't actually run this code):
+```
+var commands = [];  // Too many allocations, I know.
+var near = /* ... */;
+var far = /* ... */;
+
+for each p in primitives {
+  var cmds = p.update(/* ... */);
+  if (typeof cmds !== 'undefined') {
+    for each c in cmds {
+      if (c.boundingVolume not culled by left/bottom/right/top/user-defined near) {
+        commands.push(c);
+        // Update near/far based on c.boundingVolume
+      }
+    }
+  }
+}
+
+// Compute number of frustums
+// Clear color
+for each f in frustums back-to-front {
+  // Clear depth
+  // Compute projection matrix based on f
+  for each c in commands {
+    // The fields on c are computed based on the boundingVolume, which could be undefined.
+    
+    // Culled by current frustum's far plane
+    if (c.closestDistanceToViewer > f.far) {
+      // discard c.  If commands is a linked list, we can remove it.  Could be awesome.  Could not be.
+    }
+
+    if (c.farthestDistanceToViewer < f.near) {
+      // Culled by current frustum's near plane.  Skip it for now, 
+      // but do not discard it since it will be rendered in a later frustum.
+      continue;
+    }
+    
+    // execute c
+
+    if (c.farthestDistanceToViewer > f.near)) {
+      // discard c since it isn't need in any future frustums.
+    }
+    // else intersects near plane of this frustum, needed in one or more future frustums.
+  }
+}
+
+// render screen-space passes
+```
+
+Other ideas:
+* Can we partition the frustums to minimize translucent/expensive primitives that intersect multiple frustums?  What do we do with large primitives like sensors?
+* Can we use temporal coherence?  For example, use the partitioning from the previous frame?
+* Can we quickly bin primitives into frustums?
+* When zoomed-in ground level with terrain, lots of tiles will overlap the first and second frustum.  How can we improve performance?
 
 ## Phase n: Reduce allocations
 
@@ -113,3 +181,4 @@ TODO
 * [Renderer Design](http://diaryofagraphicsprogrammer.blogspot.com/2007/12/renderer-design.html)
 * Designing a Data-Driven Renderer in [GPU Pro 3](http://gpupro3.blogspot.com/)
 * [Renderstate change costs](http://home.comcast.net/~tom_forsyth/blog.wiki.html#%5B%5BRenderstate%20change%20costs%5D%5D)
+* Chapter 6 in [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com/)
