@@ -23,6 +23,7 @@ We're always looking to:
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
+* Website Improvements - [details](Website-Improvement-Details)
 * Improve precision - remove jittering
 * GLSL #include system - [details](GLSL-Details)
 * Stars
