@@ -23,6 +23,20 @@ Cesium supports the following source of terrain data:
 
 ### `ArcGisImageServerTerrainProvider`
 
+Elevation data downloaded as heightmaps from an ArcGIS ImageServer.
+
+This terrain provider can connect to any ArcGIS ImageServer.  However, the connection to the ImageServer must be proxied through the `/terrain/` service included with the Cesium Jetty-based web server, or an equivalent service.  This is because the full-resolution heights are only offered in TIF format, and because most browsers can't read TIF files.
+
+The `/terrain/` proxy retrieves the TIF file from the ImageServer and then converts it to a specially-encoded, 24-bit PNG for transfer to the browser.  To produce the PNG, the proxy first adds 1000.0 meters to the height and then multiplies it by one thousand.  You can think of this as a height, in millimeters, above -1000.0 meters from the ellipsoid surface.  Then, the transformed height is encoded as a 24-bit integer where the red channel has the highest-order byte, the green channel has the middle-order byte, and the blue channel has the lowest-order byte.
+
+Esri hosts such an ImageServer loaded with high-quality terrain data, and details can be found here:
+http://www.arcgis.com/home/item.html?id=d3742572150f4fb5b22739fe94dea260
+
+It is tempting to ship Cesium with this terrain source pointed at Esri's elevation service out-of-the-box, but we should avoid doing so for the following reasons:
+* The service is in beta.
+* We would have to pass on Esri's licensing requirements, which mandate that the service be used for non-commercial purposes or by Esri's existing customers.
+* The elevation heightmaps are not cached on the server, so the response time from the server is not as high as we'd like.
+* The proxy requirement, as described above, adds latency and complexity to the system.
 
 
 High-resolution, world-wide terrain datasets are enormous, from tens of gigabytes to tens of terabytes.  They need to be organized into a form suitable for visualization, and ideally be hosted on fast, geographically-distributed servers.  For Cesium to use a terrain data source out-of-the-box, that terrain data source should ideally be freely-accessible, at least for non-commercial use.  What are our options?
