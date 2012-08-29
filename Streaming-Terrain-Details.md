@@ -21,9 +21,13 @@ This is an area that has plenty of opportunities for interested folks to get inv
 
 Cesium supports the following source of terrain data:
 
+### `EllipsoidTerrainProvider`
+
+A very simple terrain provider that matches the WGS84 ellipsoid.  In other words, the terrain height is 0.0 for the entire world.
+
 ### `ArcGisImageServerTerrainProvider`
 
-Elevation data downloaded as heightmaps from an ArcGIS ImageServer.
+Provides elevation data downloaded as heightmaps from an ArcGIS ImageServer.
 
 This terrain provider can connect to any ArcGIS ImageServer.  However, the connection to the ImageServer must be proxied through the `/terrain/` service included with the Cesium Jetty-based web server, or an equivalent service.  This is because the full-resolution heights are only offered in TIF format, and because most browsers can't read TIF files.
 
@@ -38,58 +42,29 @@ It is tempting to ship Cesium with this terrain source pointed at Esri's elevati
 * The elevation heightmaps are not cached on the server, so the response time from the server is not as high as we'd like.
 * The proxy requirement, as described above, adds latency and complexity to the system.
 
+### `TileMapServiceTerrainProvider`
 
-High-resolution, world-wide terrain datasets are enormous, from tens of gigabytes to tens of terabytes.  They need to be organized into a form suitable for visualization, and ideally be hosted on fast, geographically-distributed servers.  For Cesium to use a terrain data source out-of-the-box, that terrain data source should ideally be freely-accessible, at least for non-commercial use.  What are our options?
+Provides elevation data downloaded as heightmaps from a TileMapService (TMS) server.
 
-### ESRI World Elevation Services
+Currently, this terrain provider assumes that the tiles use a geographic projection, it has 12 levels of detail, and that the heights are encoded in PNG files as described for the `/terrain/` service above.  There's lots of opportunity for generalization.
 
-http://www.arcgis.com/home/item.html?id=d3742572150f4fb5b22739fe94dea260
+### `WebMapServiceTerrainProvider`
 
-Advantages:
-* Free for non-commercial use.  No additional charge for many organizations that already have ESRI licenses.
-* Covers most of the world.
-* Very high-resolution data for many parts of the world.
-* Server can reproject to WGS84 geographic projection with ellipsoid-referenced heights, so little processing on the client will be required.
-* Should be accessible via CORS once they upgrade to ArcGIS Server 10.1.
+Provides elevation data downloaded as an array of heights from a Web Map Service (WMS) server via `XMLHttpRequest`.
 
-Disadvantages:
-* Currently in Beta.
-* Limited to downloading 1 billion pixels of terrain data per day.
-* Accurate heights seem to be available only in TIFF format.  So we need a proxy to convert the data to a format readable by web browsers.
+Currently, this terrain provider assumes that the tiles use a geographic projection, it has 18 levels of detail, and that the heights are represented as a simple array of 16-bit integer heights, in meters.  If serving WMS via [GeoServer](http://geoserver.org), you will need to use the [DDS/BIL extension](http://docs.geoserver.org/stable/en/user/community/dds/index.html).  We also recommend that you use the [CORS Filter](http://software.dzhuvinov.com/cors-filter-installation.html) (or something similar) to allow your WMS server to be accessed from other domains.
 
-### VR-TheWorld
+### Future terrain providers
 
-http://www.vr-theworld.com/
+* A terrain provider that downloads cached meshes, rather than heightmaps like the terrain providers above, using `XMLHttpRequest`.  In the future, we may provide a server that can be loaded with terrain data which is then converted to simplified meshes for efficient streaming to the client.
 
-Advantages:
-* A rack-mounted server with all data is available for sale, making it easy to host terrain data on a private network or incorporate your own terrain data.
-* Terrain data uses a WGS84 geographic projection.
-* Built on open standards like Web Mapping Service - Cached (WMS-C) and Tile Map Service (TMS).
+### Hosting our own terrain data
 
-Disadvantages:
-* VERY tiny terrain tiles - 32x32 pixels.  Our client will need to request hundreds of tiles to render a scene.
-* License terms for our use-case are unclear.
-* Only serves data in TIFF format?
+We want Cesium to have great terrain out of the box, and that means we need to host the terrain data ourselves.  Here are some potential sources of terrain data that we can use to populate our own terrain server:
 
-### Build our own public terrain server
-
-Perhaps we could build and host our own terrain data set.  There is an abundance of freely-available terrain data available.  Here are some of the larger ones:
 * [National Elevation Dataset](http://ned.usgs.gov/) - High quality terrain data for the conterminous United States, Alaska, Hawaii, and territorial islands.  Resolution as high as 3 meters for parts of the U.S.
 * [ASTER Global Digital Elevation Map](http://asterweb.jpl.nasa.gov/gdem.asp) - 30m resolution data for most of the world.
 * [Shuttle Radar Topography Mission (SRTM)](http://www2.jpl.nasa.gov/srtm/) - 90m resolution data for most of the world.  There's also a nicely-processed version of available from [CGIAR-CSI](http://srtm.csi.cgiar.org/), but special permission is required to use this processed version commercially.
-
-Advantages:
-* Full control over the organization of the data, so it can be optimized for our client.
-* Ability to precompute metadata about terrain tiles, such as their geometric error, that can be used to ensure we're rendering very accurate scenes.
-
-Disadvantages:
-* Even though some data sets are public domain, it's difficult to obtain them in their entirety due to their size.  Probably need to make the right connections at the organizations that maintain these data sets.
-* Hosting fees might get expensive.  Who pays?
-* Significant work to process the terrain data to a common projection/datum, fill voids, etc.
-
-### Private terrain servers
-
-One option is to implement support for standard protocols like WMS and TMS (for example, with terrain servers like [Geoserver](http://geoserver.org)) and leave acquiring the actual terrain data as an "exercise for the reader."  For example, individual Cesium integrators could populate a private terrain server with DTED data or other data specific to their use-cases, and render that in Cesium.
 
 ## Rendering ideas
 
