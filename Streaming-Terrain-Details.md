@@ -22,6 +22,7 @@ Streaming terrain implementation is currently taking place in the [imagery_layer
 * Support more textures per tile than are directly supported by the GPU.
 * Set up a simple terrain server to host the default Cesium terrain.
 * Set up a more sophisticated terrain server with better data, meshes instead of heightmaps, geometric error information, etc.
+* Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
 
 ## Data sources
 
