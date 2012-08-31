@@ -9,7 +9,7 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* Sandcastle
+* Sandcastle - [details](Sandcastle-Details)
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * GeoServer CZML writer
