@@ -28,7 +28,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Improve precision - remove jittering
 * GLSL #include system - [details](GLSL-Details)
 * Stars
-* Draw more shapes - cylinders, boxes, extruded volumes
+* Draw more shapes - walls, cylinders, boxes, extruded volumes
 * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Improve 3D/2D/Columbus view transitions
 * Improve mobile support - consider [pointer.js](https://github.com/borismus/pointer.js)
