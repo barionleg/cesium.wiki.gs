@@ -22,6 +22,7 @@ We'd like to add several features without burdening those implementing primitive
       * Low geometric LODs?  Low shader LODs?
       * Only include select primitives, e.g., only the environment, only nearby models, etc.
       * Probably needs multi-frustum, but needs performance too.  
+   * Terrain loading should only use the color frustum, not frustums from shadow and cube-map passes.
 * Script-driven [post-processing effects](Screen-Space-Rendering-Details) such as motion blur and AO
 * Handle dependencies, for example:
    * Motion blur requires the velocity buffer output by models.
