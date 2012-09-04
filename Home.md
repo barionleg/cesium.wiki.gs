@@ -11,7 +11,7 @@
 * [[CZML Guide]] - bring content into Cesium without writing code.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
 * [[In-Depth Guides]] - details on major features.
-* [http://cesium.agi.com/Documentation/][Reference Documentation]] - details on each class.
+* [Reference Documentation](http://cesium.agi.com/Documentation/) - details on each class.
 
 ## Contributors
 
