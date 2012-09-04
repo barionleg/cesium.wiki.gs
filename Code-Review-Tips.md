@@ -2,6 +2,7 @@ All of our code is peer reviewed before merging a pull request into master.  We 
 
 Tips
 * GitHub's [code review tools](https://github.com/features/projects/codereview) are awesome.
+* Just knowing that our code is going to be reviewed helps improve its quality and our rigger, e.g., we don't skimp on tests and doc.
 * Anyone is encouraged to review anything that interests them.  However, someone familiar with the changed code should ultimately merge the pull request.
 * Some changes can be reviewed by reading the code alone; others require running the code, examples, and tests.
 * Most pull requests require additional commits, often minor but sometimes major, before being merged.
