@@ -33,9 +33,10 @@ Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API. 
 * Draw imagery from Bing, Esri, OpenStreetMap, and WMS.
 * Draw vector data from KML (partial support), ESRI Shapefiles, and WebGL Globe JSON.
 * Draw polylines, polygons, polygons with holes, circles, ellipses, extents, billboards, labels, and sensors.
-<!-- For example, minimize GC pressure -->
 * Batching, culling, and JavaScript and GPU optimizations for performance.
 * Individual object picking.
+
+<!-- For example, minimize GC pressure -->
 
 ## Apps and Widgets
 
