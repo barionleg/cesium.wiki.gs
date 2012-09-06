@@ -42,12 +42,12 @@ We'll merge into master after each phase.
 * _Done:_ Add view frustum and occlusion culling to existing primitives.  If a primitive returns a bounding volume in `update`, the scene automatically handles culling.
 * _Done:_ Compute bounding spheres for 3D, 2D, and Columbus view.  Work correctly when morphing.  Balance sphere computation speed vs. tightness, e.g., do we recompute the entire sphere when one billboard is added to a `BillboardCollection`?
 
-## Phase Two: Cleanup Picking
+## _Done:_ Phase Two: Cleanup Picking
 
 * _Done:_ Rename `SceneState` to `FrameState`.  It is more precise.
 * _Done:_ Remove `updateForPick`.  Instead `FrameState` can contain a `Passes` object with a boolean per pass (or an array of booleans or whatever.  In C++, I would use a bitmask.)  The only pass will be `pick` for now.  When it's true, it will be as if `updateForPick` was called.
    * Later, we will expand `Passes` to include z-only passes for early-z and shadow maps, and cube-map passes for building cube-maps.  We could make each of these a separate `update` function, but I think keeping them together limits the amount of state a primitive has to keep around, e.g., a primitive doesn't have to compute something temporary in `update`, save it in a member, and then use it in `updateForCubeMapPass`.
-* Create an off-center view frustum containing the picked pixel(s) so culling is much more effective.  Use this frustum for culling, but still render with the original frustum, i.e., the perspective matrix is still derived from the original frustum.  See my [Picking using the Depth Buffer](http://blogs.agi.com/insight3d/index.php/2008/03/05/picking-using-the-depth-buffer/).
+* _Done:_ Create an off-center view frustum containing the picked pixel(s) so culling is much more effective.  Use this frustum for culling, but still render with the original frustum, i.e., the perspective matrix is still derived from the original frustum.  See my [Picking using the Depth Buffer](http://blogs.agi.com/insight3d/index.php/2008/03/05/picking-using-the-depth-buffer/).
 * Later, we will scissor out the picked pixel to reduce the fragment load.  We'll need to modify everyone's render state, so we need their draw calls for that.
 
 ## Phase Three: Remove `render` and `renderForPick`
