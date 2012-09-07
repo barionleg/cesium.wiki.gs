@@ -2,7 +2,6 @@ New feature ideas for Sandcastle
 
 * Autosave with `localStorage`.
 * Warn if closing the tab with unsaved changes.
-* Add a dual-canvas example.
 * Move the highlight code out of `CesiumViewerWidget` into its own thing.  @mramato might tackle this.
 * Ability to categorize examples, e.g., like gmail labels.
 * Ability for anyone to submit examples to a public gallery like the [GLSL Sandbox](http://glsl.heroku.com/).
