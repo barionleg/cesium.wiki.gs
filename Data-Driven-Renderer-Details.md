@@ -103,7 +103,7 @@ This returns one list of commands.  Later the list will be a tree, and we'll hav
 Now that we have the command list, we can start doing useful things without requiring any additional code in the primitives.  First, let's add multiple frustums so we can virtually have an infinitely close near plane and an infinitely distant far plane without z-fighting.
 
 Notes:
-* For a 24-bit fixed-point depth buffer, a far-to-near ratio of 1,000 is good.  The guaranteed minimum bits in WebGL is 16.  I suspect most desktop (and mobile?) implementations have 24 bits.
+* For a 24-bit fixed-point depth buffer, a far-to-near ratio of 1,000 is good.  The guaranteed minimum bits in WebGL is 16.  I suspect most desktop implementations have 24 bits.  Tegra 3 has 16 bits, perhaps 16 is standard on most mobile devices.
 * Pushing out the near plane minimizes the total number of frustums needed.
 * Fog allows users to really pull in the far plane to minimize the total number of frustums needed.
 * Instead of overlapping the frustums, perhaps we can fill the cracks by blurring them (not my idea, but I dig it).
