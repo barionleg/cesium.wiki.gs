@@ -63,6 +63,23 @@ var Tile = function(description) {
 };
 </pre>
 
+## General Layout
+There's a general flow to each documentation block that makes it easy to read. Tags are always in the same order with the same spacing.
+
+<pre>
+Description
+@ memberOf or alias or exports Name
+blank line
+@ params
+@ returns
+blank line
+@ exceptions
+blank line
+@ examples (formatted just like the rest of the code. and useful comments if it's only boilerplate)
+blank line
+@ see
+</pre>
+
 ## Detailed Example
 The following is an example of how to fully document a class, including properties and methods. For the complete code, see [Cartesian2](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Cartesian2.js).
 
