@@ -23,6 +23,7 @@ Streaming terrain implementation is currently taking place in the [imagery_layer
 * Set up a simple terrain server to host the default Cesium terrain.
 * Set up a more sophisticated terrain server with better data, meshes instead of heightmaps, geometric error information, etc.
 * Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
+* Make sure everything still works when there are multiple Cesium instances on a page.
 
 ## Data sources
 
