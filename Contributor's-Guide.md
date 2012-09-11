@@ -62,19 +62,21 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Install the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
-* Install the [JSHint](http://www.jshint.com/) plugin: 
-   * Help - Install New Software.  Work with: http://github.eclipsesource.com/jshint-eclipse/updates/.
-   * Check JSHint.  Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
 
-![The JSHint installation dialog](jshint.png)
-
-* Install the JavaScript Development Tools and EGit.
-   * Help - Install New Software.  Work with: select Juno from the list.  
-   * Expand Programming Languages, check Eclipse JavaScript Development Tools.  
-   * Expand Collaboration, check Eclipse EGit.  
-   * Next, Next, Accept, Finish, _wait_, Not Now.
+* Install additional Eclipse components: JavaScript Development Tools, Eclipse Web Developer Tools, and EGit.
+   * Help - Install New Software.  Work with: select *Juno* from the list.  
+   * Expand *Collaboration*, check *Eclipse EGit*.
+   * Expand *Programming Languages*, check *Eclipse JavaScript Development Tools*.
+   * Expand *Web, XML, Java EE and OSGi Enterprise Development*, check *Eclipse Web Developer Tools*.
+   * Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
 
 ![The Java Development Tools installation dialog](indigo.png)
+
+* Install the [JSHint](http://www.jshint.com/) plugin: 
+   * Help - Install New Software.  Work with: `http://github.eclipsesource.com/jshint-eclipse/updates/`.
+   * Check *JSHint*.  Next, Next, Accept, Finish, _wait_, Restart.
+
+![The JSHint installation dialog](jshint.png)
 
 * Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
 
