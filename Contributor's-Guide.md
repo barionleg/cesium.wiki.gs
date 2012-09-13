@@ -130,6 +130,8 @@ Then, to step into the test, step into `stepIntoThis()`
    * Chrome:  Run with the --use-gl=desktop argument.  Make sure you close all Chrome windows before starting.
    * Firefox:  Browse to about:config and set webgl.prefer-native-gl to true.
 
+* To debug shader problems when running with ANGLE enabled, it's sometimes useful to look at the generated HLSL code.  To do that, run Chrome with the `--enable-privileged-webgl-extensions` command-line option.  Then, obtain the HLSL code by executing: `var hlsl = gl.getExtension("WEBGL_debug_shaders").getTranslatedShaderSource(fragmentShader)`  
+
 * For performance testing, turn off [vsync](http://hardforum.com/showthread.php?t=928593)
    * In the driver, e.g., the NVIDIA Control Panel or the Catalyst Control Center.
    * Also turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
