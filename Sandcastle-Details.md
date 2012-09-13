@@ -7,14 +7,16 @@
 * Ability for anyone to submit examples to a public gallery like the [GLSL Sandbox](http://glsl.heroku.com/).
 * Add textbox to edit gallery metadata.
 * Control sort order of gallery?
+* If the Run button is yellow, maybe the primitive hover code highlight thing should stop.
+* Hook up Sandcastle declare/highlight functions to auto-complete.
 * Replace deprecated `BlobBuilder` with actual `Blob` constructor (once that constructor is in stable FF & Chrome, see comments in Sandcastle source).
 * If Cesium throws errors that it can't load imagery, show those errors in Sandcastle console.
 * Certain kinds of errors (such as calling `foo();`) don't provide line numbers, can this be fixed?
    * Dojo is intercepting these errors with code like the following, maybe it can be overridden.
 <pre>
-if (!error || error.log !== false) {
-    (dojo.config.deferredOnError || function(x){ console.error(x); })(error);
-}
+    if (!error || error.log !== false) {
+        (dojo.config.deferredOnError || function(x){ console.error(x); })(error);
+    }
 </pre>
 
 ## Supporting non-Dojo, GLSL, CZML editing
@@ -30,3 +32,13 @@ sections.  The various templates would include:
    * A Cesium material editor including GLSL editor windows
    * A CZML file editor, possibly with a customizable Viewer
    * A 3D model editor when that's available
+
+#### "Technical reasons" (the difference between require.js and Dojo's AMD)
+
+The plain version of `require.js` doesn't include Dojo modules (like `dojo/text!` and `domReady!`)
+that are needed to load `CesiumWidget`.  So, `require.js` by itself can't be used in a bucket template
+for loading Dojo widgets.
+
+#### Mostly abandoned ideas
+
+* Make hovering a line of code in Sandcastle highlight the corresponding primitive.
