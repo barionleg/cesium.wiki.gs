@@ -10,7 +10,8 @@ This is an area that has plenty of opportunities for interested folks to get inv
 
 Streaming terrain implementation is currently taking place in the [imagery_layers](https://github.com/AnalyticalGraphicsInc/cesium/tree/imagery_layers) branch.  Here's our wildly-incomplete to-do list:
 
-* Implement 2D and Columbus View.  They're currently completely broken.
+* *DONE* Implement 2D and Columbus View.  They're currently completely broken.
+* Fix Mercator projection 2D and Columbus View.
 * Do we need to light the terrain/imagery?  We can do that by including normals in terrain vertex arrays or maybe by using a fancy technique like screen-space ambient occlusion.
 * Check tile selection algorithm - is it rendering too much detail?
 * Improve tile culling.
