@@ -50,9 +50,9 @@ We'll merge into master after each phase.
 * _Done:_ Create an off-center view frustum containing the picked pixel(s) so culling is much more effective.  Use this frustum for culling, but still render with the original frustum, i.e., the perspective matrix is still derived from the original frustum.  See my [Picking using the Depth Buffer](http://blogs.agi.com/insight3d/index.php/2008/03/05/picking-using-the-depth-buffer/).
 * Later, we will scissor out the picked pixel to reduce the fragment load.  We'll need to modify everyone's render state, so we need their draw calls for that.
 
-## Phase Three: Remove `render` and `renderForPick`
+## _Done:_ Phase Three: Remove `render` and `renderForPick`
 
-* Since current `render` functions don't have logic or their logic can easily be moved to `update`, remove `render` and `renderForPick`, and make `update` return an array of data for each draw call to make on the primitive's behalf, i.e., a `commandList`.  For example:
+* _Done:_ Since current `render` functions don't have logic or their logic can easily be moved to `update`, remove `render` and `renderForPick`, and make `update` return an array of data for each draw call to make on the primitive's behalf, i.e., a `commandList`.  For example:
 ```javascript
 foo.prototype.update = function(context, frameState) {
   return {
