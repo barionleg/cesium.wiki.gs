@@ -11,13 +11,6 @@
 * Hook up Sandcastle declare/highlight functions to auto-complete.
 * Replace deprecated `BlobBuilder` with actual `Blob` constructor (once that constructor is in stable FF & Chrome, see comments in Sandcastle source).
 * If Cesium throws errors that it can't load imagery, show those errors in Sandcastle console.
-* Certain kinds of errors (such as calling `foo();`) don't provide line numbers, can this be fixed?
-   * Dojo is intercepting these errors with code like the following, maybe it can be overridden.
-<pre>
-    if (!error || error.log !== false) {
-        (dojo.config.deferredOnError || function(x){ console.error(x); })(error);
-    }
-</pre>
 
 ## Supporting non-Dojo, GLSL, CZML editing
 
