@@ -71,11 +71,15 @@ This terrain provider needs a lot more work to be made applicable to a wider var
 
 ### Hosting our own terrain data
 
-We want Cesium to have great terrain out of the box, and that means we need to host the terrain data ourselves.  Here are some potential sources of terrain data that we can use to populate our own terrain server:
+We want Cesium to have great terrain out of the box, and that means we need to host the terrain data ourselves.
+
+Some potential sources of terrain data that we can use to populate our own terrain server:
 
 * [National Elevation Dataset](http://ned.usgs.gov/) - High quality terrain data for the conterminous United States, Alaska, Hawaii, and territorial islands.  Resolution as high as 3 meters for parts of the U.S.
 * [ASTER Global Digital Elevation Map](http://asterweb.jpl.nasa.gov/gdem.asp) - 30m resolution data for most of the world.
 * [Shuttle Radar Topography Mission (SRTM)](http://www2.jpl.nasa.gov/srtm/) - 90m resolution data for most of the world.  There's also a nicely-processed version of available from [CGIAR-CSI](http://srtm.csi.cgiar.org/), but special permission is required to use this processed version commercially.
+
+Our server will likely serve terrain geometry as simplified meshes, rather than heightmaps, because these enable us to put the detail where it is needed.  However, there are advantages to heightmaps as well.  [This paper](http://www.informatik.uni-rostock.de/~schumann/papers/2010+/VMV2010.pdf) describes a technique for minimizing error when generating simplified heightmaps.
 
 ## Rendering ideas
 
