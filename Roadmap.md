@@ -9,7 +9,6 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* Sandcastle - [details](Sandcastle-Details)
 * Imagery layers - [details](Imagery-Layers-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * GeoServer CZML writer
@@ -45,7 +44,8 @@ If you are interested in implementing any of these features, start a discussion 
 * Particle system
 * Ocean
 * Volumetric clouds
-* More material system improvements - [details](Material-System-Details)
+* Sandcastle improvements - [details](Sandcastle-Details)
+* Material system improvements - [details](Material-System-Details)
 * Compass - know where north is
 * CZML
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
