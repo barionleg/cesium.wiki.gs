@@ -162,9 +162,9 @@ for each f in frustums back-to-front {
 // render screen-space passes
 ```
 
-We'll also need some stats so we know how many times each primitive is drawn per frame.
+`ViewportQuad` has an `undefined` bounding volume so we'll want to treat it separately to avoid using the extreme near and far distances.  We can introduce `overlay` and `overlayPick` passes.
 
-`ViewportQuad` has an `undefined` bounding volume so we'll want to treat it separately.  Details TBA.
+We'll also need some stats so we know how many times each primitive is drawn per frame.
 
 Other ideas:
 * Use temporal coherence: speculatively use the frustum partitioning from the previous frame, while computing near/far for the current frame.  If the near/far for the current frame is way different, recompute.
