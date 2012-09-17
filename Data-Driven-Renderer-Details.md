@@ -103,9 +103,10 @@ This returns one list of commands.  Later the list will be a tree, and we'll hav
 Now that we have the command list, we can start doing useful things without requiring any additional code in the primitives.  First, let's add multiple frustums so we can virtually have an infinitely close near plane and an infinitely distant far plane without z-fighting.
 
 Notes:
-* For a 24-bit fixed-point depth buffer, a far-to-near ratio of 1,000 is good.  The guaranteed minimum bits in WebGL is 16.  I suspect most desktop implementations have 24 bits.  Tegra 3 has 16 bits, perhaps 16 is standard on most mobile devices.
+* Traditionally, for a 24-bit fixed-point depth buffer, a far-to-near ratio of 1,000 is good.  The guaranteed minimum bits in WebGL is 16.  I suspect most desktop implementations have 24 bits.  Tegra 3 has 16 bits, perhaps 16 is standard on most mobile devices.
+   * Depending on the minimum triangle separation, 1,000 is probably very conservative.  For terrain tiles, it could be much higher.  However, objects need to interact with each other, e.g., terrain is not just depth tested against terrain; it is also depth tested against models, etc.
 * Pushing out the near plane minimizes the total number of frustums needed.
-* Fog allows users to really pull in the far plane to minimize the total number of frustums needed.
+* Fog allows users to pull in the far plane to minimize the total number of frustums needed.
 * Instead of overlapping the frustums, perhaps we can fill the cracks by blurring them (not my idea, but I dig it).
 
 We'll keep `near` and `far` exposed.  These will be worse-case values.  We'll dynamically compute near and far based on the bounding volumes when calling `update` for each primitive.  If a bounding volume intersects the near plane, we'll use the user-defined `near` value; if a bounding volume is `undefined`, we'll use the user-defined `near` and `far` (sucks I know, other ideas?); and so on.
@@ -140,7 +141,7 @@ for each f in frustums back-to-front {
     
     // Culled by current frustum's far plane
     if (c.nearestDistanceToViewer > f.far) {
-      // discard c.  If commands is a linked list, we can remove it.  Could be awesome.  Could not be.
+      // discard c.  If commands is a linked list, we can remove it.  Don't bother until the command tree.
     }
 
     if (c.farthestDistanceToViewer < f.near) {
@@ -166,9 +167,9 @@ We'll also need some stats so we know how many times each primitive is drawn per
 `ViewportQuad` has an `undefined` bounding volume so we'll want to treat it separately.  Details TBA.
 
 Other ideas:
-* Can we partition the frustums to minimize translucent/expensive primitives that intersect multiple frustums?  What do we do with large primitives like sensors?
-* Can we use temporal coherence?  For example, use the partitioning from the previous frame?
+* Use temporal coherence: speculatively use the frustum partitioning from the previous frame, while computing near/far for the current frame.  If the near/far for the current frame is way different, recompute.
 * Can we quickly bin primitives into frustums?
+* Can we partition the frustums to minimize translucent/expensive primitives that intersect multiple frustums?  What do we do with large primitives like sensors?
 * When zoomed-in ground level with terrain, lots of tiles will overlap the first and second frustum.  How can we improve performance?
 * Down the road, can we exploit the parallelism of each each frustum and build each command queue separately.
 
