@@ -14,10 +14,9 @@ We're always looking to:
 * GeoServer CZML writer
 * CZML External links - [details](External-links)
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
-* Ellipsoids
-* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
-* Data-Driven Renderer - [details](Data-Driven-Renderer-Details)
 * COLLADA models - [details](Models-Details)
+* Data-Driven Renderer - [details](Data-Driven-Renderer-Details)
+* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 
 ## To come
 
