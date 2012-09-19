@@ -13,7 +13,7 @@ Streaming terrain implementation is currently taking place in the [imagery_layer
 Before merging `imagery_layers` into master:
 * **DONE** Fix Mercator projection in Columbus View.
 * **DONE** Fix Mercator projection during morphing.
-* Switch EllipsoidTerrainProvider to Geographic by default.
+* **DONE** Switch EllipsoidTerrainProvider to Geographic by default.
 * check the list of requires in our changed files to see if we can eliminate some.
 * make the geometry render correctly with zero textures instead of just not showing it.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
