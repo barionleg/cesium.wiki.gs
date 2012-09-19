@@ -10,21 +10,21 @@ This is an area that has plenty of opportunities for interested folks to get inv
 
 Streaming terrain implementation is currently taking place in the [imagery_layers](https://github.com/AnalyticalGraphicsInc/cesium/tree/imagery_layers) branch.  Here's our wildly-incomplete to-do list:
 
-* **DONE** Implement 2D and Columbus View.  They're currently completely broken.
-* Fix Mercator projection 2D and Columbus View.
-* Do we need to light the terrain/imagery?  We can do that by including normals in terrain vertex arrays or maybe by using a fancy technique like screen-space ambient occlusion.
-* Check tile selection algorithm - is it rendering too much detail?
-* Improve tile culling.
-* Add support for switching terrain providers after rendering has started.
+Before merging imagery_layers into master:
+* Fix Mercator projection in Columbus View.
+* Fix Mercator projection during morphing.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
-* **DONE** Fix black tiles at extreme zoom levels.  Handle failed imagery loads by using the parent tile's imagery.
+* Improve tests and documentation.
+* Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
+
+Later:
+* Do we need to light the terrain/imagery?  We can do that by including normals in terrain vertex arrays, using a normal map, or maybe by using a fancy technique like screen-space ambient occlusion.
+* Improve tile culling.  Bounding spheres don't fit terrain tiles very tightly.
+* Add support for switching terrain providers after rendering has started.
 * Allow imagery detail to increase independent of increasing terrain detail.
-* **DONE** Allow terrain detail to increase independent of increasing imagery detail.
 * Support more textures per tile than are directly supported by the GPU.
 * Set up a simple terrain server to host the default Cesium terrain.
 * Set up a more sophisticated terrain server with better data, meshes instead of heightmaps, geometric error information, etc.
-* Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
-* **DONE** Make sure everything still works when there are multiple Cesium instances on a page.
 
 ## Data sources
 
