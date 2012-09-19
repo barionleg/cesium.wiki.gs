@@ -11,8 +11,8 @@ This is an area that has plenty of opportunities for interested folks to get inv
 Streaming terrain implementation is currently taking place in the [imagery_layers](https://github.com/AnalyticalGraphicsInc/cesium/tree/imagery_layers) branch.  Here's our wildly-incomplete to-do list:
 
 Before merging `imagery_layers` into master:
-* Fix Mercator projection in Columbus View.
-* Fix Mercator projection during morphing.
+* **DONE** Fix Mercator projection in Columbus View.
+* **DONE** Fix Mercator projection during morphing.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
 * Improve tests and documentation.
 * Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
