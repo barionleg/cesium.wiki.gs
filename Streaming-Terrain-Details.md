@@ -14,6 +14,7 @@ Before merging `imagery_layers` into master:
 * **DONE** Fix Mercator projection in Columbus View.
 * **DONE** Fix Mercator projection during morphing.
 * **DONE** Switch EllipsoidTerrainProvider to Geographic by default.
+* Fix Mercator projection in 2D and Columbus View when using Geographic-projection terrain.
 * check the list of requires in our changed files to see if we can eliminate some.
 * make the geometry render correctly with zero textures instead of just not showing it.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
