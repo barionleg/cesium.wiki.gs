@@ -25,6 +25,7 @@ Later:
 * Support more textures per tile than are directly supported by the GPU.
 * Set up a simple terrain server to host the default Cesium terrain.
 * Set up a more sophisticated terrain server with better data, meshes instead of heightmaps, geometric error information, etc.
+* Don't round-trip Mercator imagery to Geographic and back when using a Mercator projection in 2D or Columbus View.
 
 ## Data sources
 
