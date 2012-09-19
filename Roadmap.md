@@ -14,16 +14,16 @@ We're always looking to:
 * GeoServer CZML writer
 * CZML External links - [details](External-links)
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
-* COLLADA models - [details](Models-Details)
 * Data-Driven Renderer - [details](Data-Driven-Renderer-Details)
-* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
+* Improve precision - remove jittering
+* Website Improvements - [details](Website-Improvement-Details)
 
 ## To come
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
-* Website Improvements - [details](Website-Improvement-Details)
-* Improve precision - remove jittering
+* COLLADA models - [details](Models-Details)
+* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * GLSL #include system - [details](GLSL-Details)
 * Stars
 * Draw more shapes - walls, cylinders, boxes, extruded volumes
