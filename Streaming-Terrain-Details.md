@@ -21,6 +21,7 @@ Before merging `imagery_layers` into master:
 * Improve tests and documentation.
 * Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
 * Make sure Web Workers work in all environments: separate js files, combined Cesium.js, Dojo build, etc.
+* Clean up map projections and tiling schemes.  There's too much overlap.
 
 Later:
 * Do we need to light the terrain/imagery?  We can do that by including normals in terrain vertex arrays, using a normal map, or maybe by using a fancy technique like screen-space ambient occlusion.
