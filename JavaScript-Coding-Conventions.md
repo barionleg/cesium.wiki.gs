@@ -6,6 +6,7 @@ In progress...
 * Use radians, not degrees, for angles.
 
 ## Constructors
+
 * Constructor functions should take the objects's basic components as parameters, while static helper methods should be provided for constructing an object via other means.  Helper methods should be prefixed with "from":
 
 ```javascript
@@ -19,6 +20,34 @@ var julianDateFromDate = JulianDate.fromDate(new Date(1980, 7, 1));
 ```javascript
 var julianDate = new JulianDate(dayNumber, secondsOfDay, TimeStandard.UTC);
 var javaScriptDate = julianDate.toDate();
+```
+
+## Making a copy of `this`
+
+If a closure needs a copy of `this`, our convention is to name it `that`.
+
+```javascript
+var that = this;
+```
+
+Some projects use the name `self` instead of `that` here.  However, `self` is already defined by the browser as a reference to the current window, and we wish to avoid redefining built-in variables.
+
+## `null` vs. `undefined`
+
+Where possible, avoid use of `null` and prefer `undefined`.  To test for this condition, use:
+
+```javascript
+if (typeof myVariable === 'undefined') {
+    // take action
+}
+```
+
+or
+
+```javascript
+if (typeof myVariable !== 'undefined') {
+    // take action
+}
 ```
 
 ## Functions
@@ -68,8 +97,10 @@ Otherwise, an unexpected exception can go unnoticed.
 
 ## Formatting
 
-* Use four spaces for tabs.
+* Use four (4) spaces for indentation.  Do not use [tab characters](http://www.jwz.org/doc/tabs-vs-spaces.html).
+* Use single quotes, `'`, instead of double quotes, `"`.  `"use strict"` is an exception and should use double quotes.
+* Where possible, eliminate all `jsHint` warnings.  The [[Contributor's Guide]] explains how to set up Eclipse to display these warnings.
 
-## Strings, error messages, and documentation
-* Use single quotes, ', instead of double quotes, ".  "use strict" is an exception and should use double quotes.
+## Documentation
+
 * When writing reference documentation and exception messages, be concise and use simple language.  For some general advice, please see [Simplified Technical English](http://www.shufra-consultancy.com/simplified-technical-english.php) and [The Elements of Style](http://www.cs.vu.nl/~jms/doc/elos.pdf).
