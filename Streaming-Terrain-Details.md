@@ -16,7 +16,7 @@ Before merging `imagery_layers` into master:
 * **DONE** Switch EllipsoidTerrainProvider to Geographic by default.
 * **DONE** Fix Mercator projection in 2D and Columbus View when using Geographic-projection terrain.
 * Check the list of requires in our changed files to see if we can eliminate some.
-* Make the geometry render correctly with zero textures instead of just not showing it.
+* **DONE** Make the geometry render correctly with zero textures instead of just not showing it.
 * Look more closely at the API - what happens when "public" properties are changed after construction?
 * Improve tests and documentation.
 * Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
