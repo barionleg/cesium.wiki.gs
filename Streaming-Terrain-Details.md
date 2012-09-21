@@ -20,7 +20,7 @@ Before merging `imagery_layers` into master:
 * Look more closely at the API - what happens when "public" properties are changed after construction?
 * Improve tests and documentation.
 * Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
-* Make sure Web Workers work in all environments: separate js files, combined Cesium.js, Dojo build, etc.
+* **DONE** Make sure Web Workers work in all environments: separate js files, combined Cesium.js, Dojo build, etc.
 * Clean up map projections and tiling schemes.  There's too much overlap.
 
 Later:
