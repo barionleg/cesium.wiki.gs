@@ -103,4 +103,4 @@ Otherwise, an unexpected exception can go unnoticed.
 
 ## Documentation
 
-* When writing reference documentation and exception messages, be concise and use simple language.  For some general advice, please see [Simplified Technical English](http://www.shufra-consultancy.com/simplified-technical-english.php) and [The Elements of Style](http://www.cs.vu.nl/~jms/doc/elos.pdf).
+* See [Documentation-Best-Practices](Documentation Best Practices)
