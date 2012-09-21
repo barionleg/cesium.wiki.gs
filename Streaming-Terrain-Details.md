@@ -11,15 +11,15 @@ This is an area that has plenty of opportunities for interested folks to get inv
 Streaming terrain implementation is currently taking place in the [imagery_layers](https://github.com/AnalyticalGraphicsInc/cesium/tree/imagery_layers) branch.  Here's our wildly-incomplete to-do list:
 
 Before merging `imagery_layers` into master:
+* Check the list of requires in our changed files to see if we can eliminate some.
+* Look more closely at the API - what happens when "public" properties are changed after construction?
+* Improve tests and documentation.
+* Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
 * **DONE** Fix Mercator projection in Columbus View.
 * **DONE** Fix Mercator projection during morphing.
 * **DONE** Switch EllipsoidTerrainProvider to Geographic by default.
 * **DONE** Fix Mercator projection in 2D and Columbus View when using Geographic-projection terrain.
-* Check the list of requires in our changed files to see if we can eliminate some.
 * **DONE** Make the geometry render correctly with zero textures instead of just not showing it.
-* Look more closely at the API - what happens when "public" properties are changed after construction?
-* Improve tests and documentation.
-* Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
 * **DONE** Make sure Web Workers work in all environments: separate js files, combined Cesium.js, Dojo build, etc.
 * **DONE** Clean up map projections and tiling schemes.  There's too much overlap.
 
