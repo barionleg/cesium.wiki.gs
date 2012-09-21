@@ -9,7 +9,6 @@
 * Control sort order of gallery?
 * If the Run button is yellow, maybe the primitive hover code highlight thing should stop.
 * Hook up Sandcastle declare/highlight functions to auto-complete.
-* Replace deprecated `BlobBuilder` with actual `Blob` constructor (once that constructor is in stable FF & Chrome, see comments in Sandcastle source).
 * If Cesium throws errors that it can't load imagery, show those errors in Sandcastle console.
 
 ## Supporting non-Dojo, GLSL, CZML editing
