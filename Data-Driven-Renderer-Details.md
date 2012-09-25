@@ -98,7 +98,7 @@ There are a ton of allocations, don't worry; we'll fix that soon.  This also kin
 
 This returns one list of commands.  Later the list will be a tree, and we'll have different trees for each requested pass.
 
-## Phase Four: Multi-Frustum
+## _Done:_ Phase Four: Multi-Frustum
 
 Now that we have the command list, we can start doing useful things without requiring any additional code in the primitives.  First, let's add multiple frustums so we can virtually have an infinitely close near plane and an infinitely distant far plane without z-fighting.
 
@@ -167,9 +167,9 @@ for each f in frustums back-to-front {
 We'll also need some stats so we know how many times each primitive is drawn per frame.
 
 Other ideas:
-* Use temporal coherence: speculatively use the frustum partitioning from the previous frame, while computing near/far for the current frame.  If the near/far for the current frame is way different, recompute.
+* _Done:_ Use temporal coherence: speculatively use the frustum partitioning from the previous frame, while computing near/far for the current frame.  If the near/far for the current frame is way different, recompute.
 * Can we quickly bin primitives into frustums?
-* Can we partition the frustums to minimize translucent/expensive primitives that intersect multiple frustums?  What do we do with large primitives like sensors?
+* Can we partition the frustums to minimize translucent/expensive primitives that intersect multiple frustums?  What do we do with large primitives like sensors?  Use surface area heuristics (SAH) to select splitting planes?
 * When zoomed-in ground level with terrain, lots of tiles will overlap the first and second frustum.  How can we improve performance?
 * Down the road, can we exploit the parallelism of each each frustum and build each command queue separately.
 
