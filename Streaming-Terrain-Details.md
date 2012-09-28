@@ -15,6 +15,7 @@ Before merging `imagery_layers` into master:
 * Look more closely at the API - what happens when "public" properties are changed after construction?
 * Improve tests and documentation.
 * Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
+* Fix or remove `CompositeTileProvider`.
 * **DONE** Fix Mercator projection in Columbus View.
 * **DONE** Fix Mercator projection during morphing.
 * **DONE** Switch EllipsoidTerrainProvider to Geographic by default.
