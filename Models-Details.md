@@ -81,6 +81,7 @@ Will we be able to render models directly from the provider's APIs or do we need
 * Useful to integrate with existing WebGL modeling tools?  Do any of these have APIs for accessing models?
    * [3DTin](http://www.3dtin.com/)
    * [Bevelity](http://www.bevelity.com/)
+* Check out [Open Asset Import Library](http://assimp.sourceforge.net/) for possible server-side conversions.
 
 ## Conversion to JSON
 
