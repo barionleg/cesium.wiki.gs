@@ -16,7 +16,9 @@ We're always looking to:
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Data-Driven Renderer - [details](Data-Driven-Renderer-Details)
 * Improve precision - remove jittering
+* Sandcastle improvements - [details](Sandcastle-Details)
 * Website Improvements - [details](Website-Improvement-Details)
+* Mobile Improvements - [details](Mobile-Details)
 
 ## To come
 
@@ -43,7 +45,6 @@ If you are interested in implementing any of these features, start a discussion 
 * Particle system
 * Ocean
 * Volumetric clouds
-* Sandcastle improvements - [details](Sandcastle-Details)
 * Material system improvements - [details](Material-System-Details)
 * Compass - know where north is
 * CZML
