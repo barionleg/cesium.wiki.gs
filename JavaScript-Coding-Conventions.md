@@ -50,6 +50,14 @@ if (typeof myVariable !== 'undefined') {
 }
 ```
 
+The problem with comparing `myVariable === undefined` directly is that the variable `undefined` itself
+is capable of being re-defined in JavaScript, so the JIT compiler can't make assumptions about what the
+meaning of `undefined` will actually be at runtime.  In the recommended comparison, `typeof` is a language keyword, and
+`'undefined'` in single quotes is a string literal that can't change at runtime, so the only variable is
+`myVariable` itself.  Armed with this, the JIT can avoid string comparisons and optimize the entire statement
+into a single machine-language null pointer check (or similar).  Thus, although it looks like asking for a string
+comparison, this statement executes faster than a direct comparison with the variable `undefined`.
+
 ## Functions
 
 * If a sensible default exists for a function argument or object property, don't require the user to provide it.  Examples:
