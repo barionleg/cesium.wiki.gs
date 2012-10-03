@@ -8,7 +8,14 @@ the only viable choice.  Not all Android hardware is currently able to run Cesiu
 on Firefox for Android, some devices show only a black screen, even while other WebGL
 demos are able to run.  More debugging is needed.
 
-_TODO: List of known working and non-working hardware platforms_
+* ASUS Transformer Prime TF201, Android 4.0.3, tested 03-Oct-2012
+   * Firefox Beta works!  So does Aurora and Nightly.
+   * Firefox Stable shows a black screen, counts time, correct image only appears in tab thumbnail.
+* Motorola Xoom 4G, Android 4.0.4, tested 03-Oct-2012
+   * Firefox Beta, Aurora, Nightly show a featureless blue globe with no imagery, doesn't count time.
+   * Firefox Stable hangs on black, doesn't count time, likely errors on console (didn't check).
+* HTC Evo 4G LTE Sprint, Android 4.0.3, tested 03-Oct-2012
+   * Firefox Beta shows a black screen, counts time, nothing appears in tab thumbnail.
 
 ## Future potential platforms
 
