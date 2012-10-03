@@ -27,7 +27,7 @@
 
 Cesium is tailored for virtual globe and map applications, so it provides a higher level of abstraction than general graphics engines for things like streaming terrain and imagery from map servers, drawing KML, accurately referencing a WGS84 ellipsoid, and camera control.  Usually these features need to be built on top of a general graphics engine.  Cesium also exposes its low-level graphics engine, e.g., WebGL abstractions, a [material system](Fabric), etc., making it quite flexible.
 
-In addition, Cesium is particularly well-suited for visualizing dynamic data on globes and maps, either by using the API directly or generating [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/CZML-Guide).
+In addition, Cesium is particularly well-suited for visualizing dynamic data on globes and maps, either by using the API directly or generating [CZML](CZML-Guide).
 
 <a id="platforms"></a>
 ## Platforms
@@ -76,7 +76,7 @@ WMS, OpenStreetMap, Bing, and Esri.
 <a id="OGC"></a>
 ### What OGC standards are supported?
 
-WMS and a good bit of KML.  We expect WFS later in 2012.  We intend to propose [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/CZML-Guide) as a standard to the OGC when it is battle-tested.
+WMS and a good bit of KML.  We expect WFS later in 2012.  We intend to propose [CZML](CZML-Guide) as a standard to the OGC when it is battle-tested.
 
 <a id="vectorFormats"></a>
 ### What vector formats are supported?
@@ -89,7 +89,7 @@ CZML, ESRI Shapefiles, WebGL Globe JSON, and a good bit of KML.
 <a id="czml_format"></a>
 ### Is CZML a file format?
 
-CZML is more general; it is a JSON-based language.  It can be stored in a file or dynamically created in memory, and incrementally streamed to a client.  See the [CZML Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/CZML-Guide).
+CZML is more general; it is a JSON-based language.  It can be stored in a file or dynamically created in memory, and incrementally streamed to a client.  See the [CZML Guide](CZML-Guide).
 
 <a id="czml_kml"></a>
 ### How is CZML different than KML?
@@ -101,6 +101,6 @@ CZML can be a flat file or can be streamed, such as from real-time telemetry fro
 <a id="czml_proprietary"></a>
 ### Is CZML proprietary?
 
-Absolutely not.  We intend to propose [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/CZML-Guide) as a standard to the OGC when it is battle-tested.
+Absolutely not.  We intend to propose [CZML](CZML-Guide) as a standard to the OGC when it is battle-tested.
 
 We provide an open source Java and C# [library for writing CZML](https://github.com/AnalyticalGraphicsInc/czml-writer) files, and open source converters to convert from formats like KML and Shapefiles to CZML.  We encourage everyone to write converters to CZML, add CZML rendering support to their engines, and to discuss CZML on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).
