@@ -49,9 +49,9 @@ The best thing to do is try our [demos](http://cesium.agi.com/) on your target b
 <a id="OS"></a>
 ### What operating systems and devices are supported?
 
-On desktops, Cesium supports Windows, Linux, and Mac.
+On desktop, Cesium runs on any platform with a WebGL capable browser, including Windows, Linux, and Mac.
 
-On mobile, certain browsers support WebGL.  See our [mobile compatibility page](Mobile-Details) for details.
+On mobile, a small but growing number of browsers support WebGL.  See our [mobile compatibility page](Mobile-Details) for details.
 
 <a id="videoCards"></a>
 ### What video cards are supported?
