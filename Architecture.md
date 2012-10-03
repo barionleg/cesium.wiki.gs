@@ -8,7 +8,7 @@ Generally, each layer adds functionality, raises the level of abstraction, and d
 * _Core_ - number crunching like linear algebra, intersection tests, and interpolation.
 * _Renderer_ - a thin abstraction over [WebGL](http://www.khronos.org/webgl/).
 * _Scene_ - globe and map constructs like imagery layers, polylines, labels, and cameras.
-* _Dynamic Scene_ - Time-dynamic visualization constructs including [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Language-%28CZML%29-Guide) rendering.
+* _Dynamic Scene_ - Time-dynamic visualization constructs including [CZML](CZML-Guide) rendering.
 
 Each layer corresponds to one directory in the [source tree](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Source).  All layers are available to applications built using Cesium.  All apps use Core.  As shown below, a small subset of apps use Renderer directly, many apps use Scene directly, and perhaps the most apps, such the Cesium Viewer, use Dynamic Scene.
 
