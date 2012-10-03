@@ -21,8 +21,9 @@ demos are able to run.  More debugging is needed.
 
 We are hoping and expecting both Apple and Google to enable WebGL on their mobile browsers
 by default, but there is no known time frame for this.  Apple iOS apparently has hidden
-options to enable WebGL via undocumented calls to the WebView interface, that has been
-discovered and published by bloggers.  [WebGL Browser](http://benvanik.github.com/WebGLBrowser/) takes
+options to [enable WebGL via undocumented calls](http://atnan.com/blog/2011/11/03/enabling-and-using-webgl-on-ios/)
+to the WebView interface, that has been discovered and published by
+bloggers.  [WebGL Browser](http://benvanik.github.com/WebGLBrowser/) takes
 advantage of this to provide a WebGL implementation.
 
 ## Supported features
