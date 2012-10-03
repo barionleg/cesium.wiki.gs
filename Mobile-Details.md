@@ -9,7 +9,7 @@ on Firefox for Android, some devices show only a black screen, even while other 
 demos are able to run.  More debugging is needed.
 
 * ASUS Transformer Prime TF201, Android 4.0.3, tested 03-Oct-2012
-   * Firefox Beta works!  So does Aurora and Nightly.
+   * [Firefox Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta) works!  So does Aurora and Nightly.
    * Firefox Stable shows a black screen, counts time, correct image only appears in tab thumbnail.
 * Motorola Xoom 4G, Android 4.0.4, tested 03-Oct-2012
    * Firefox Beta, Aurora, Nightly show a featureless blue globe with no imagery, doesn't count time.
