@@ -45,3 +45,5 @@ The primary tool used so far is the Android USB debugging bridge, which displays
 * Google Chrome for Android [allows remote debugging](https://developers.google.com/chrome/mobile/docs/debugging)
 * [JS Console](http://jsconsole.com/) allows remote execution of JavaScript in almost any browser.
 
+Keep an eye on the [JSD2 branch of Firebug](https://github.com/firebug/firebug/commits/jsd2) which
+will enable remote debugging via [Firebug](https://getfirebug.com/).
