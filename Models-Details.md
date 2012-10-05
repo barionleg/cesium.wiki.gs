@@ -70,6 +70,7 @@ We recognize the need to support the widest possible content, therefore, we need
 * [verold](http://studio.verold.com/)
 * [Google 3D Warehouse](http://sketchup.google.com/3dwarehouse/) - lots of models.  Need to look at the [terms of service](http://sketchup.google.com/intl/en/3dwh/preview_tos.html).  Not sure about an API.  It would be cool to have a WebGL browser for this though.
 * [3DVia](http://www.3dvia.com/search/?search[file_types]=1) - Looks good.  Worth a closer look.  Need to look at what is free and what is paid.
+* [TFT Labs' JSON3D Gallery](http://json3d.tftlabs.com/)
 
 Will we be able to render models directly from the provider's APIs or do we need to proxy them for conversion?  If we proxy, do the TOS allow us to cache?
 
@@ -82,6 +83,7 @@ Will we be able to render models directly from the provider's APIs or do we need
    * [3DTin](http://www.3dtin.com/)
    * [Bevelity](http://www.bevelity.com/)
 * Check out [Open Asset Import Library](http://assimp.sourceforge.net/) for possible server-side conversions.
+* [JSModeler](https://github.com/kovacsv/JSModeler) is a JavaScript framework to create and visualize 3D models.
 
 ## Conversion to JSON
 
