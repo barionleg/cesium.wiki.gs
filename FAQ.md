@@ -5,9 +5,11 @@
 * [**Platforms**](#platforms)
 	* [Does Cesium require an install or a plugin?](#plugin)
 	* [What browsers are supported?](#browsers)
-	* [What operating systems and devices are supported?](#OS)
+	* [What operating systems are supported?](#OS)
 	* [What video cards are supported?](#videoCards)
 	* [Cesium runs in a browser, but can it also be used to develop a standalone app?](#standalone)
+* [**Mobile**](#mobile)
+	* [What mobile devices are supported?](#devices)
 * [**Formats**](#formats)
 	* [What maps are supported?](#maps)
 	* [What OGC standards are supported?](#OGC)
@@ -49,9 +51,7 @@ The best thing to do is try our [demos](http://cesium.agi.com/) on your target b
 <a id="OS"></a>
 ### What operating systems and devices are supported?
 
-On desktop, Cesium runs on any platform with a WebGL capable browser, including Windows, Linux, and Mac.
-
-On mobile, a small but growing number of browsers support WebGL.  See our [mobile compatibility page](Mobile-Details) for details.
+On desktops, Cesium runs on any platform with a WebGL capable browser, including Windows, Linux, and Mac.
 
 <a id="videoCards"></a>
 ### What video cards are supported?
@@ -64,6 +64,14 @@ To see if your video card supports WebGL, visit our [WebGL Report](http://www.we
 ### Cesium runs in a browser, but can it also be used to develop a standalone app?
 
 We haven't tried it, but you may be able to use [WebKit](http://www.webkit.org/), [Qt](http://arstechnica.com/business/2012/04/an-in-depth-look-at-qt-5-making-javascript-a-first-class-citizen-for-native-cross-platform-developme/), or [node-webgl](https://github.com/mikeseven/node-webgl) to develop a desktop app using Cesium.  Let us know if you do.
+
+<a id="mobile"></a>
+## Mobile
+
+<a id="devices"></a>
+### What operating systems and devices are supported?
+
+A small but growing number of browsers support WebGL.  See our [mobile compatibility page](Mobile-Details) for details.
 
 <a id="formats"></a>
 ## Formats
