@@ -29,6 +29,7 @@ Design and implementation ideas for imagery layers.
    * Show/hide layers based on viewer height(careful in 2D and Columbus view) or time?  This may be done in Dynamic Scene, not Scene, but we need to think about it.  More general _display conditions_ could also be useful.
    * Ability to move - and possibility rotate - a texture on the globe so it better lines up with where the user expects it, e.g., with building models.  To start, we need to decouple the extent the texture thinks it has with the extent that it is rendered in.
    * Blend maps for layers, e.g., specular, dirt, or destruction maps.  I don't have any use cases, but these are certainty popular in games; however, the shading for each layer is different, i.e., they are not just diffuse components.
+   * Fix blurriness in 2D and Columbus View when using Mercator imagery and a Mercator projection.  We'll probably do this by keeping the original Mercator images around for the first couple of levels.
 
 ## Initial Implementation
 
