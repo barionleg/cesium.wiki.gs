@@ -10,12 +10,18 @@ Feel free to use our Cesium PowerPoint template in your talks: [any affiliation]
 <tbody>
 
 <tr>
+  <td><img src="presentationsFigures/cesiumLogo.png" alt="Cesium:  Geo-Scale Data Visualization in a Web Browser" /></td>
+  <td>
+Cesium:  Geo-Scale Data Visualization in a Web Browser.  Patrick Cozzi.  <a href="http://cs.gmu.edu/~robotics/pmwiki.php/Main/20121023">George Mason University GRAND Seminar</a>, 10/2012. <a href="presentations/CesiumGeoScaleDataVisualization.pdf">slides</a> &bull; <a href="http://cesium.agi.com/">demos</a>
+  </td>
+</tr>
+
+<tr>
   <td><img src="presentationsFigures/cesiumLogo.png" alt="Cesium: WebGL for Globes and Maps" /></td>
   <td>
 Cesium: WebGL for Globes and Maps.  Patrick Cozzi.  <a href="http://www.khronos.org/news/events/siggraph-los-angeles-2012#webgl_bof">SIGGRAPH WebGL BOF</a>, 08/2012. <a href="presentations/CesiumWebGLForGlobesAndMaps.pdf">slides</a> &bull; <a href="http://www.youtube.com/watch?v=l40d2yEG-VU">video</a> &bull; <a href="http://youtu.be/lCqeCVV4xLw">terrain video</a> &bull; <a href="http://cesium.agi.com/">demos</a>
   </td>
 </tr>
-
 
 <tr>
   <td><img src="presentationsFigures/cesiumLogo.png" alt="Cesium Language (CZML): A JSON schema for describing dynamic scenes in virtual globes & map" /></td>
