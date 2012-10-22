@@ -47,7 +47,7 @@ Design and implementation ideas for imagery layers.
 * `ArcGisMapServerImageryProvider`:
    * Read the extent and maybe tiling scheme from non-tiled services, instead of assuming global extent and geographic projection.
    * Support non-default, non-worldwide tiling schemes for tiled services.  http://webhelp.esri.com/arcgisserver/9.3/java/index.htm#what_is_map_caching.htm
-
+* Use the natural ordering of a quadtree to sort front-to-back without an explicit sort.
 
 ## Other APIs with Layers
    * Insight3D - [Imagery Overlay](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/Imagery.html) and [Web Imagery Overlays](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/WebImagery.html).
