@@ -19,7 +19,7 @@ Cesium:  Geo-Scale Data Visualization in a Web Browser.  Patrick Cozzi.  <a href
 <tr>
   <td><img src="presentationsFigures/cesiumLogo.png" alt="Cesium: WebGL for Globes and Maps" /></td>
   <td>
-Cesium: WebGL for Globes and Maps.  Patrick Cozzi.  <a href="http://www.khronos.org/news/events/siggraph-los-angeles-2012#webgl_bof">SIGGRAPH WebGL BOF</a>, 08/2012. <a href="presentations/CesiumWebGLForGlobesAndMaps.pdf">slides</a> &bull; <a href="http://www.youtube.com/watch?v=l40d2yEG-VU">video</a> &bull; <a href="http://youtu.be/lCqeCVV4xLw">terrain video</a> &bull; <a href="http://cesium.agi.com/">demos</a>
+Cesium: WebGL for Globes and Maps.  Patrick Cozzi.  <a href="http://www.khronos.org/webgl/wiki/Presentations#SIGGRAPH_2012_WebGL_BOF">SIGGRAPH WebGL BOF</a>, 08/2012. <a href="presentations/CesiumWebGLForGlobesAndMaps.pdf">slides</a> &bull; <a href="http://www.youtube.com/watch?v=l40d2yEG-VU">video</a> &bull; <a href="http://youtu.be/lCqeCVV4xLw">terrain video</a> &bull; <a href="http://cesium.agi.com/">demos</a>
   </td>
 </tr>
 
