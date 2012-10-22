@@ -1,5 +1,6 @@
 Ideas for improving the main Cesium website, [cesium.agi.com](http://cesium.agi.com/).
 
+* Fix links in our README.md when new site goes live.
 * Our the website should be easy to deploy to.  Right now only a few of us know how to do it.  Why can't the whole thing (minus custom servers) be one repo?
 * Many screenshots need improvements, for example, some images on the [features](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Features) page are too dark.
 * Issue [#201](https://github.com/AnalyticalGraphicsInc/cesium/issues/201) - add Sandcastle links to the features page.  More generally, how can the website and Sandcastle work well together?
