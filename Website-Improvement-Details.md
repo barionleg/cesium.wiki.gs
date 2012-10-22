@@ -3,11 +3,10 @@ Ideas for improving the main Cesium website, [cesium.agi.com](http://cesium.agi.
 * Our the website should be easy to deploy to.  Right now only a few of us know how to do it.  Why can't the whole thing (minus custom servers) be one repo?
 * Many screenshots need improvements, for example, some images on the [features](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Features) page are too dark.
 * Issue [#201](https://github.com/AnalyticalGraphicsInc/cesium/issues/201) - add Sandcastle links to the features page.  More generally, how can the website and Sandcastle work well together?
-* Polish demos (really a separate, orthogonal effort).  Details TBA.  Ideas welcome.
-
 * Make demos more prominent: feature two or three on the main page.
 * Add "Case studies", "User success stories", "Showcase", etc. to show off our user's work.
 * Add color scheme to [reference doc](http://cesium.agi.com/Documentation/)?
+* Polish demos (really a separate, orthogonal effort).  Details TBA.  Ideas welcome.
 
 ## Main Page Demo
 
