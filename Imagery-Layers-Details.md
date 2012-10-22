@@ -46,7 +46,7 @@ Design and implementation ideas for imagery layers.
 * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered.  Actually, it doesn't need to be requested from the server.  Hmm - could a proxy server do some compositing for us?
 * `ArcGisMapServerImageryProvider`:
    * Read the extent and maybe tiling scheme from non-tiled services, instead of assuming global extent and geographic projection.
-   * Support non-default. non-worldwide tiling schemes for tiled services.  http://webhelp.esri.com/arcgisserver/9.3/java/index.htm#what_is_map_caching.htm
+   * Support non-default, non-worldwide tiling schemes for tiled services.  http://webhelp.esri.com/arcgisserver/9.3/java/index.htm#what_is_map_caching.htm
 
 
 ## Other APIs with Layers
