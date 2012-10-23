@@ -48,6 +48,7 @@ Design and implementation ideas for imagery layers.
    * Read the extent and maybe tiling scheme from non-tiled services, instead of assuming global extent and geographic projection.
    * Support non-default, non-worldwide tiling schemes for tiled services.  http://webhelp.esri.com/arcgisserver/9.3/java/index.htm#what_is_map_caching.htm
 * Use the natural ordering of a quadtree to sort front-to-back without an explicit sort.
+* Render in multiple passes when necessary, such as when the number of textures attached to a tile exceeds the number of texture units, or the number of uniforms exceeds the maximum.
 
 ## Other APIs with Layers
    * Insight3D - [Imagery Overlay](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/Imagery.html) and [Web Imagery Overlays](http://www.agi.com/resources/help/online/AGIComponents/Programmer's%20Guide/Overview/Graphics/GlobeOverlays/WebImagery.html).
