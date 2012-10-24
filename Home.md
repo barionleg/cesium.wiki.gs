@@ -2,13 +2,13 @@
 <img src="https://github.com/AnalyticalGraphicsInc/cesium/wiki/logos/Cesium_Logo_Color.jpg" width="50%" alt="Cesium" />
 </p>
 
+* [[System Requirements]]
 * [[Features]]
 * [[FAQ]]
 * [[Roadmap]]
 
 ## Get Started
 
-* [[Running Cesium]] - system requirements for running Cesium.
 * [[Quick Start]] - how to get the code, build, and run. It's easy.
 * [[CZML Guide]] - bring content into Cesium without writing code.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
