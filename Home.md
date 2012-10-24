@@ -8,7 +8,7 @@
 
 ## Get Started
 
-* [[Running Cesium]] - making sure your system can run Cesium.
+* [[Running Cesium]] - system requirements for running Cesium.
 * [[Quick Start]] - how to get the code, build, and run. It's easy.
 * [[CZML Guide]] - bring content into Cesium without writing code.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
