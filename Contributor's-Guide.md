@@ -39,14 +39,14 @@ Details
 </pre>
 
 * The following targets can be built:
-   * build - A fast, developer-oriented build that prepares the source tree for use as [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (at the moment the Sandbox example requires running "combine").  This runs automatically when saving files in Eclipse.
-   * combine - Runs build, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce an all-in-one file, Build\Cesium.js, that exposes the entire Cesium API attached to a single global Cesium object, if you don't want to use the modules directly with an AMD loader.
-   * minify - Runs combine, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
-   * release - Runs minify, plus generates documentation in Build\Documentation using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
-   * instrumentForCoverage - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
-   * runServer - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
-   * makeZipFile - Builds a zip file containing all release files.  This includes the Source directory (suitable for use from an AMD-aware application), plus the combined Cesium.js, and the Documentation files.
-   * clean - Removes all generated build artifacts.
+   * `build` - A fast, developer-oriented build that prepares the source tree for use as [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (at the moment the Sandbox example requires running "combine").  This runs automatically when saving files in Eclipse.
+   * `combine` - Runs build, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce an all-in-one file, Build\Cesium.js, that exposes the entire Cesium API attached to a single global Cesium object, if you don't want to use the modules directly with an AMD loader.
+   * `minify` - Runs combine, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
+   * `release` - Runs minify, plus generates documentation in Build\Documentation using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
+   * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
+   * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
+   * `makeZipFile` - Builds a zip file containing all release files.  This includes the Source directory (suitable for use from an AMD-aware application), plus the combined Cesium.js, and the Documentation files.
+   * `clean` - Removes all generated build artifacts.
 * For example, to build the release target and then start an HTTP server for testing, run:
 
 <pre>
