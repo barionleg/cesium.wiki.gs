@@ -9,21 +9,19 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* Imagery layers - [details](Imagery-Layers-Details)
-* Streaming terrain - [details](Streaming-Terrain-Details)
-* GeoServer CZML writer
-* CZML External links - [details](External-links)
-* CZML Path/History visualization - [details](CZML-History-visualization-details)
-* Improve precision - remove jittering
-* Sandcastle improvements - [details](Sandcastle-Details)
 * Website Improvements - [details](Website-Improvement-Details)
-* Mobile Improvements - [details](Mobile-Details)
+* Streaming terrain - [details](Streaming-Terrain-Details)
+* Improve precision - remove jittering
+* CZML External links - [details](External-links)
+* GeoServer CZML writer
 
 ## To come
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
 * COLLADA models - [details](Models-Details)
+* Mobile improvements - [details](Mobile-Details)
+* CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * GLSL #include system - [details](GLSL-Details)
 * Stars
@@ -44,6 +42,8 @@ If you are interested in implementing any of these features, start a discussion 
 * Particle system
 * Ocean
 * Volumetric clouds
+* Imagery layers improvements - [details](Imagery-Layers-Details)
+* Sandcastle improvements - [details](Sandcastle-Details)
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
 * Material system improvements - [details](Material-System-Details)
 * Compass - know where north is
