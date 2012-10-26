@@ -155,7 +155,7 @@ scene.setAnimation(function() {
 The `CentralBody` primitive represents the globe (in a future Cesium version, any central body such as the Moon and Mars will be supported).  High-resolution imagery from various servers is added using tile imagery providers.
 ```javascript
 var layers = cb.getImageryLayers();
-var newLayer = layers.addImageryProvider(new Cesium.OpenStreetMapTileProvider({
+var newLayer = layers.addImageryProvider(new Cesium.OpenStreetMapImageryProvider({
     url : 'http://otile1.mqcdn.com/tiles/1.0.0/osm/',
     proxy : new Cesium.DefaultProxy('/proxy/')
 });
