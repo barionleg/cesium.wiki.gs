@@ -13,8 +13,11 @@
    height="274.1163"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.2 r9819"
-   sodipodi:docname="sceneOverview.svg">
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="sceneOverview.svg"
+   inkscape:export-filename="C:\GitHub\cesium.wiki\architectureFigures\sceneOverview.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,11 +31,11 @@
      inkscape:cx="499.35879"
      inkscape:cy="111.69848"
      inkscape:document-units="px"
-     inkscape:current-layer="g4695"
+     inkscape:current-layer="g3526"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1058"
-     inkscape:window-x="1912"
+     inkscape:window-width="1280"
+     inkscape:window-height="1002"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      fit-margin-top="0"
@@ -47,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -166,13 +169,10 @@
            id="text2985-4-4-4-1-2"
            y="438.05469"
            x="290.81488"
-           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
+           style="font-size:40.00000073px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New;text-anchor:start;text-align:start;writing-mode:lr"
            xml:space="preserve"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
-             y="438.05469"
-             x="290.81488"
-             id="tspan2987-0-0-5-5-7"
-             sodipodi:role="line">Tile Providers</tspan></text>
+             sodipodi:role="line"
+             id="tspan3024">Imagery Layers</tspan></text>
         <text
            sodipodi:linespacing="125%"
            id="text2985-4-4-8-5-2-6"
