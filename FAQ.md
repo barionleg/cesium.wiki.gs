@@ -79,7 +79,7 @@ A small but growing number of browsers support WebGL.  See our [mobile compatibi
 <a id="maps"></a>
 ### What map or imagery formats are supported?
 
-Web Map Service (WMS), OpenStreetMaps, Bing Maps, Esri ArcGIS MapServer, and standard images in any format supported by web browsers.
+Web Map Service (WMS), OpenStreetMap, Bing Maps, Esri ArcGIS MapServer, and standard images in any format supported by web browsers.
 
 <a id="OGC"></a>
 ### What OGC standards are supported?
