@@ -121,7 +121,7 @@ context.draw({
 
 Scene builds on Core and Renderer to provide relativity high-level map and globe constructs, including:
 * 3D globe, 2D map, and 2.5D columbus view all with one API.
-* Streaming high-resolution imagery, including Bing Maps, Esri ArcGIS MapServers, OpenStreetMaps, and Web Map Service (WMS).
+* Streaming high-resolution imagery from multiple sources, including Bing Maps, Esri ArcGIS MapServer, OpenStreetMap, and Web Map Service (WMS).
 * Polylines, polygons, billboards, labels, ellipsoids, and sensors.
 * Materials that describe appearance.
 * Cameras that control the view and respond to input.
