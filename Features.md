@@ -24,8 +24,8 @@ Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API. 
 
 <a href="features/Nashville-Full.png"><img src="features/Nashville.png" width="268" height="100" alt="Nashville" /></a>
 <img src="features/Cities.png" width="145" height="100" alt="World Cities" /><br />
-<img src="features/sensors.png" width="176" height="99" alt="Sensors" />
 <a href="features/ImageryLayers.jpg"><img src="features/ImageryLayersSmall.png" width="150" height="100" alt="Imagery Layers" /></a>
+<img src="features/sensors.png" width="176" height="99" alt="Sensors" />
 
 * Draw dynamic scenes from [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/czml-guide).
 * Layer imagery from multiple sources, including WMS, OpenStreetMaps, Bing Maps, ArcGIS MapServer, and standard image files.  Each layer can be alpha blended with the layers below it.
