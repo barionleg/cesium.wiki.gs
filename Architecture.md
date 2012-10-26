@@ -121,7 +121,7 @@ context.draw({
 
 Scene builds on Core and Renderer to provide relativity high-level map and globe constructs, including:
 * 3D globe, 2D map, and 2.5D columbus view all with one API.
-* Streaming high-resolution imagery, including Bing Maps, Esri, OpenStreetMap, and WMS.
+* Streaming high-resolution imagery, including Bing Maps, Esri ArcGIS MapServers, OpenStreetMaps, and Web Map Service (WMS).
 * Polylines, polygons, billboards, labels, ellipsoids, and sensors.
 * Materials that describe appearance.
 * Cameras that control the view and respond to input.
@@ -152,12 +152,14 @@ scene.setAnimation(function() {
   requestAnimationFrame(tick);
 }());
 ```
-The `CentralBody` primitive represents the globe (in a future Cesium version, any central body such as the Moon and Mars will be supported).  High-resolution imagery from various servers is added using tile providers.
+The `CentralBody` primitive represents the globe (in a future Cesium version, any central body such as the Moon and Mars will be supported).  High-resolution imagery from various servers is added using tile imagery providers.
 ```javascript
-cb.dayTileProvider = new Cesium.OpenStreetMapTileProvider({
+var layers = cb.getImageryLayers();
+var newLayer = layers.addImageryProvider(new Cesium.OpenStreetMapTileProvider({
     url : 'http://otile1.mqcdn.com/tiles/1.0.0/osm/',
     proxy : new Cesium.DefaultProxy('/proxy/')
 });
+newLayer.alpha = 0.5;
 ```
 Materials represent the appearance of an object.  Currently, they can be applied to polygons and sensors.  Loosely speaking, materials are implemented as a GLSL shader function and a set of uniforms.
 ```javascript
