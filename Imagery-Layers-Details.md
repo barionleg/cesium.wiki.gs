@@ -16,7 +16,7 @@ Design and implementation ideas for imagery layers.
 * Add support for additional imagery sources:
    * [Tile Map Service (TMS)](http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification)
    * [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
-   * [ArcGIS ImagerServer](http://resources.arcgis.com/en/help/rest/apiref/index.html?imageserver.html)
+   * [ArcGIS ImageServer](http://resources.arcgis.com/en/help/rest/apiref/index.html?imageserver.html)
 * Use multiple passes to successfully render tiles even if the number of textures exceeds the number of texture units supported by the WebGL stack (minimum: 8).  May also need to render in multiple passes if we use too many uniforms.
    * Use blending in the render state to support layer alpha.
 * Sort tiles using the natural ordering of a quadtree rather than explicitly sorting tiles by distance.
