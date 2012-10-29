@@ -13,6 +13,7 @@ Design and implementation ideas for imagery layers.
 
 ## Future Phases
 
+* Improve computation of the "occludee point" (use for horizon culling).  It currently uses a sphere based on the ellipsoid's minimum radius, which is conservative, but using the actual ellipsoid will allow more tiles to be culled.
 * Add support for additional imagery sources:
    * [Tile Map Service (TMS)](http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification)
    * [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
