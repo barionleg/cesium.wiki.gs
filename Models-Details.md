@@ -113,7 +113,7 @@ Some libraries read COLLADA directly without converting it.
 ## Unorganized Hackathon Notes
 
 * [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
-* [collad2json](https://github.com/fabrobinet/collada2json) and our [fork](https://github.com/AnalyticalGraphicsInc/collada2json)
+* [collad2json](https://github.com/fabrobinet/collada2json) and our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).  Clone with `git clone --recursive git@github.com:AnalyticalGraphicsInc/collada2json.git`.
 * Models should probably be a CZML extension since if they were core, WebGL TF would require that CZML clients support WebGL, or at least support GLSL for the shaders.
 
 ## Resources
