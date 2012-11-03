@@ -110,6 +110,11 @@ Some libraries read COLLADA directly without converting it.
 * C3DL - [doc](http://www.c3dl.org/wp-content/documentation/2.0_user_docs/symbols/c3dl.Collada.html), [tutorial](http://www.c3dl.org/index.php/tutorials/tutorial-4-models/), [code](https://github.com/cathyatseneca/c3dl/tree/master/c3dl/collada).
 * I believe [GLGE](http://statico.github.com/webgl-glge-game-part-1.html) also reads COLLADA client-side.
 
+## Unorganized Hackathon Notes
+
+* [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
+* [collad2json](https://github.com/fabrobinet/collada2json) and our [fork](https://github.com/AnalyticalGraphicsInc/collada2json)
+
 ## Resources
 
 * [COLLADA & WebGL](http://www.slideshare.net/remi_arnaud/collada-webgl) - Skip to Slide 43.
