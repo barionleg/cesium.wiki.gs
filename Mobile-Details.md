@@ -5,17 +5,24 @@ As of this writing (October 2012) only two mobile browsers officially support We
 [Opera Mobile](https://play.google.com/store/apps/details?id=com.opera.browser), both
 for Android.  Of those, Cesium is not currently able to run on Opera, so Firefox is
 the only viable choice.  Not all Android hardware is currently able to run Cesium
-on Firefox for Android, some devices show only a black screen, even while other WebGL
-demos are able to run.  More debugging is needed.
+on Firefox for Android.
 
-* ASUS Transformer Prime TF201, Android 4.0.3, tested 03-Oct-2012
-   * [Firefox Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta) works!  So does Aurora and Nightly.
-   * Firefox Stable shows a black screen, counts time, correct image only appears in tab thumbnail.
-* Motorola Xoom 4G, Android 4.0.4, tested 03-Oct-2012
-   * Firefox Beta, Aurora, Nightly show a featureless blue globe with no imagery, doesn't count time.
-   * Firefox Stable hangs on black, doesn't count time, likely errors on console (didn't check).
-* HTC Evo 4G LTE Sprint, Android 4.0.3, tested 03-Oct-2012
-   * Firefox Beta shows a black screen, counts time, nothing appears in tab thumbnail.
+UPDATE(1) 04-Nov-2012: In early October 2012, testing showed WebGL problems in Firefox Stable
+that didn't exist in Firefox Beta.  By November 2012, Beta had been promoted to Stable,
+correcting this particular type of problem (tested Firefox 16.0.2 for Android).
+
+UPDATE(2) 04-Nov-2012: [Issue #309](https://github.com/AnalyticalGraphicsInc/cesium/pull/309)
+corrected a problem with Dojo widget startup order that fixed some serious issues on the
+Motorola Xoom and other platforms.
+
+* ASUS Transformer Prime TF201, Android 4.0.3
+   * Needs re-testing (believed fixed per updates above).
+* Motorola Xoom 4G, Android 4.0.4, tested 04-Nov-2012
+   * Firefox Stable & Beta both work with CesiumViewer and the Simple CZML Demo.
+   * Unit tests show some failures, such as `Renderer/BuiltinFunctions has czm_eyeToWindowCoordinates` (Expected { 0 : 0, 1 : 0, 2 : 0, 3 : 0} to equal [255, 255, 255, 255].
+   * Dojo drop-downs appear broken, with `Illegal operation on WrappedNative prototype object`.
+* HTC Evo 4G LTE Sprint, Android 4.0.3, tested 04-Nov-2012
+   * Firefox Stable & Beta show a black screen, don't count time, nothing appears in tab thumbnail.
 
 ## Future potential platforms
 
