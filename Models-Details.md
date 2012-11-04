@@ -127,7 +127,6 @@ Some libraries read COLLADA directly without converting it.
 
 ### Cesium TODO
 
-* Can AMD work with filenames with dashes like `webgl_tf_loader.js`?  Or suggest collada2json to rename it?
 * Move `Images` directory to a sub-directory under `Assets`.
 
 ## Resources
