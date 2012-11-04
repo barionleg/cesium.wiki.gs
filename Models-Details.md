@@ -123,7 +123,7 @@ Some libraries read COLLADA directly without converting it.
 
 ### Cesium TODO
 
-* Can AMD work with filenames with dashes like `webgl_tf_loader.js`?
+* Can AMD work with filenames with dashes like `webgl_tf_loader.js`?  Or suggest collada2json to rename it?
 
 ## Resources
 
