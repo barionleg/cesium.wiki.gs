@@ -112,9 +112,18 @@ Some libraries read COLLADA directly without converting it.
 
 ## Unorganized Hackathon Notes
 
+### General
+
 * [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
 * [collad2json](https://github.com/KhronosGroup/collada2json) and our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).  Clone with `git clone --recursive git@github.com:AnalyticalGraphicsInc/collada2json.git`.
+
+### Server
+
 * Models should probably be a CZML extension since if they were core, [WebGL TF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) would require that CZML clients support WebGL, or at least support GLSL for the shaders.
+
+### Cesium TODO
+
+* Can AMD work with filenames with dashes like `webgl_tf_loader.js`?
 
 ## Resources
 
