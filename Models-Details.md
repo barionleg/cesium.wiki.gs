@@ -124,6 +124,7 @@ Some libraries read COLLADA directly without converting it.
 
 ### Client
 
+* Buffer and image paths don't always resolve right.  Is this a bug in their `resolvePathIfNeeded`?
 * Progressive model loading.  Based on streaming nodes or LODs?
 * Add support for our material system.
 
