@@ -120,6 +120,7 @@ Some libraries read COLLADA directly without converting it.
 ### WebGL TF Ideas
 
 * Add a handler like `handleBuffer` to load images instead of pulling them out in `handleMaterial`.  This could prevent loading the same idea multiple times.  Add an `images` top-level property to WebGL TF?
+* Buffers and shaders are provided full URLs, but images, e.g., `parameters.diffuseTexture.image` just have the filename without an extension or full URL.
 
 ### Client
 
