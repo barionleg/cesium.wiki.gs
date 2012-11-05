@@ -120,6 +120,7 @@ Some libraries read COLLADA directly without converting it.
 ### Client
 
 * Progressive model loading.  Based on streaming nodes or LODs?
+* Add support for our material system.
 
 ### Server
 
