@@ -40,7 +40,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
 * John Madden-style collaboration among multiple clients
 * Particle system
-* Ocean
+* Ocean - [details](Ocean-Details)
 * Volumetric clouds
 * Imagery layers improvements - [details](Imagery-Layers-Details)
 * Sandcastle improvements - [details](Sandcastle-Details)
