@@ -117,6 +117,10 @@ Some libraries read COLLADA directly without converting it.
 * [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
 * [collad2json](https://github.com/KhronosGroup/collada2json) and our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).  Clone with `git clone --recursive git@github.com:AnalyticalGraphicsInc/collada2json.git`.
 
+### WebGL TF Ideas
+
+* Add a handler like `handleBuffer` to load images instead of pulling them out in `handleMaterial`.  This could prevent loading the same idea multiple times.  Add an `images` top-level property to WebGL TF?
+
 ### Client
 
 * Progressive model loading.  Based on streaming nodes or LODs?
