@@ -119,7 +119,6 @@ Some libraries read COLLADA directly without converting it.
 * [[Building collada2json]] on Windows.
 ### WebGL TF Ideas
 
-* Add a handler like `handleBuffer` to load images instead of pulling them out in `handleMaterial`.  This could prevent loading the same idea multiple times.  Add an `images` top-level property to WebGL TF?
 * Buffers and shaders are provided full URLs, but images, e.g., `parameters.diffuseTexture.image` just have the filename without an extension or full URL.
 * Pack all indices followed by all vertices (or vice versa) in the same bin?  What is the best practice for creating index and vertex buffers from TF buffers without duplication?
 
