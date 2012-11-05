@@ -117,10 +117,11 @@ Some libraries read COLLADA directly without converting it.
 * [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
 * [collada2json](https://github.com/KhronosGroup/collada2json) and our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).  Clone with `git clone --recursive git@github.com:AnalyticalGraphicsInc/collada2json.git`.
 * [[Building collada2json]] on Windows.
+
 ### WebGL TF Ideas
 
-* Buffers and shaders are provided full URLs, but images, e.g., `parameters.diffuseTexture.image` just have the filename without an extension or full URL.
 * Pack all indices followed by all vertices (or vice versa) in the same bin?  What is the best practice for creating index and vertex buffers from TF buffers without duplication?
+* `UNPACK_FLIP_Y_WEBGL` vs. `1. - texcoord.y` in shader.
 
 ### Client
 
