@@ -9,6 +9,9 @@ Design and implementation ideas for models.
    * COLLADA Animation - for articulating things like satellite solar panels and aircraft landing gear; rigs for robot arms; rigid body dynamics driving explosions; and skinning deformations.
 * Work in Columbus view.  The model scale will need to be adjusted - and will be relative to the projection
 * Work in 2D.  Render model to texture from top-down view; lay over top the 2D map as a billboard.  The model will appear lit and changes in orientation, e.g., banked aircraft turns, will be seen.  Awesome.
+* COLLADA to WebGLTF conversion (see below)
+   * The converter should be a library for developers; a command-line tool for scripting; and a hosted web service for the rest of the world.
+   * From the end-user's perspective, conversion to WebGLTF should be transparent, e.g., if they drag and drop a COLLADA model, it is sent to the service, and WebGLTF is sent back.
 * Interaction with CZML
    * CZML references external models.
    * Time-varying CZML can manipulate model animation (articulations), materiel properties, etc.
@@ -20,7 +23,7 @@ _Server-side_: convert COLLADA to [WebGLTF](https://github.com/KhronosGroup/coll
 
 _Client-side_: use collada2json's WebGL library to read WebGLTF.
 
-Contribute back to collada2json using our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).  Clone with `git clone --recursive git@github.com:AnalyticalGraphicsInc/collada2json.git`.
+Contribute back to collada2json using our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).  Clone with `git clone --recursive git@github.com:AnalyticalGraphicsInc/collada2json.git`
 
 There are already converters to convert many different formats to COLLADA.
 
@@ -38,24 +41,25 @@ Required:
 
 Optional for performance (these can also be done client-side):
 * Flatten tree:  if transforms are static, the tree can be flattened and positions adjusted so there are less batch-breaking model transform uniforms set, and, therefore, less draw calls. [#30](https://github.com/KhronosGroup/collada2json/issues/30)
-
-The last step in the pipeline is to convert from COLLADA to WebGLTF.
-
-## Rendering Optimizations
-
-I believe we can have a very fast implementation; perhaps even faster than many C++ ones.  Bold words, I know.
-
-These optimizations could be on the fly or as a preprocess in the content pipeline (using node.js).  Doing it on the fly ensures that no mater how the model is authored, we still get the rendering performance benefit.
-
-* If a mesh has the same vertex layout as another mesh, they should be combined into a single vertex buffer, and, possibly even a single draw call if the materials are the same.
-* Reorder for the vertex cache.
-* Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.  Can we also use this code for polyline simplification?
-* In addition to sending the lowest LOD, the client can also start rendering the model before the textures are loaded by using a 1x1 white texture in the meantime.
+* Reorder for the vertex cache (we already have JavaScript [code](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Tipsify.js) to do this client-side).
+* Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.
 * Reduce the size of large textures that are not likely to take up a lot of screen space.
 * Use the [COLLADA Refinery](https://collada.org/mediawiki/index.php/COLLADA_Refinery)?
 
-These optimizations will be done at run-time:
+The last step in the pipeline is to convert from COLLADA to WebGLTF.
 
+## Client-Side Optimizations
+
+I believe we can have a very fast implementation; perhaps even faster than many C++ ones.
+
+In addition to the server-side optimization pipeline, on the client we can optimize.
+
+During loading:
+* Interleave vertex attributes for static buffers.
+* If a mesh has the same vertex layout as another mesh, they should be combined into a single vertex buffer, and, possibly even a single draw call if the materials are the same.
+* In addition to sending the lowest LOD, the client can also start rendering the model before the textures are loaded by using a 1x1 white texture in the meantime.
+
+During rendering:
 * Sort by material, perhaps create buckets on model load.
 * Coarse front-to-back sort.
 
@@ -79,7 +83,6 @@ Will we be able to render models directly from the provider's APIs or do we need
 
 ## Tools
 
-* COLLADA to JSON converter.  Use [JSON.NET](http://james.newtonking.com/projects/json/help/?topic=ConvertingJSONandXML.html), [XSLTJSON](https://github.com/bramstein/xsltjson), [Jettison](http://jettison.codehaus.org/User%27s+Guide) (Java), [BadgerFish-JSON](http://www.sklar.com/badgerfish/), or write our own.
 * Model editor - load models into a Cesium scene, tweak their animations, etc.
    * Perhaps part of Sandcastle.
 * Useful to integrate with existing WebGL modeling tools?  Do any of these have APIs for accessing models?
@@ -87,29 +90,6 @@ Will we be able to render models directly from the provider's APIs or do we need
    * [Bevelity](http://www.bevelity.com/)
 * Check out [Open Asset Import Library](http://assimp.sourceforge.net/) for possible server-side conversions.
 * [JSModeler](https://github.com/kovacsv/JSModeler) is a JavaScript framework to create and visualize 3D models.
-
-## COLLADA Support in Other WebGL Projects
-
-### COLLADA to JSON converters
-
-* CubicVR.js [XML -> BF-JSON](https://github.com/cjcliffe/CubicVR.js/blob/master/source/CubicVR.Utility.js).
-* [scenejs-pycollada](http://scenejs.wikispaces.com/scenejs-pycollada) - A python script to convert from COLLADA to SceneJS.
-   * Example [JSON](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/seymour-plane.js) from the [Seymour Plane Demo](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/index.html).
-   * Features are described in the [README.md](https://github.com/xeolabs/scenejs-pycollada/blob/master/README.markdown).
-* [OpenWebGlobe](https://github.com/OpenWebGlobe/ColladaToJSON) - A python script to convert from COLLADA to OpenWebGlobe's JSON format.  Uses [pycollada](https://github.com/pycollada/pycollada).  MIT license.
-   * Not much actively recently.
-* O3D's [COLLADA to JSON converter](http://code.google.com/p/o3d/wiki/ColladaConverter).  A [blog post](http://o3d.blogspot.com/2009/04/why-json-rulez.html) on their rational - more flexibility.
-
-### Client-Side COLLADA
-
-Some libraries read COLLADA directly without converting it.
-
-* OVoiD.JS [reads COLLADA](http://www.ovoid.org/js/doc/#composing) client-side include animations and skinning.  It also has a scene JSON format, and client-side exporting to this format, including from COLLADA.
-* Three.js reads COLLADA [client-side](https://github.com/mrdoob/three.js/blob/master/examples/js/loaders/ColladaLoader.js).  Three.js also has a [JSON format](https://github.com/mrdoob/three.js/wiki/JSON-Model-format-3.0), including some Python [exporters](https://github.com/mrdoob/three.js/tree/master/utils/exporters).
-* [Odin](https://github.com/operasoftware/Odin) reads COLLADA client-side or a derived run-time format.
-* SpiderGL - [example](http://spidergl.org/example.php?id=10).
-* C3DL - [doc](http://www.c3dl.org/wp-content/documentation/2.0_user_docs/symbols/c3dl.Collada.html), [tutorial](http://www.c3dl.org/index.php/tutorials/tutorial-4-models/), [code](https://github.com/cathyatseneca/c3dl/tree/master/c3dl/collada).
-* I believe [GLGE](http://statico.github.com/webgl-glge-game-part-1.html) also reads COLLADA client-side.
 
 ## Unorganized Hackathon Notes
 
@@ -131,6 +111,10 @@ Some libraries read COLLADA directly without converting it.
 
 * Move `Images` directory to a sub-directory under `Assets`.
 
+## Later
+
+* Take a close look at [webgl-loader](http://code.google.com/p/webgl-loader/) for mesh compression.
+
 ## Resources
 
 Reading
@@ -139,3 +123,32 @@ Reading
 
 Models
 * [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
+
+## Older Research
+
+### COLLADA Support in Other WebGL Projects
+
+#### COLLADA to JSON converters
+
+* CubicVR.js [XML -> BF-JSON](https://github.com/cjcliffe/CubicVR.js/blob/master/source/CubicVR.Utility.js).
+* [scenejs-pycollada](http://scenejs.wikispaces.com/scenejs-pycollada) - A python script to convert from COLLADA to SceneJS.
+   * Example [JSON](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/seymour-plane.js) from the [Seymour Plane Demo](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/index.html).
+   * Features are described in the [README.md](https://github.com/xeolabs/scenejs-pycollada/blob/master/README.markdown).
+* [OpenWebGlobe](https://github.com/OpenWebGlobe/ColladaToJSON) - A python script to convert from COLLADA to OpenWebGlobe's JSON format.  Uses [pycollada](https://github.com/pycollada/pycollada).  MIT license.
+   * Not much actively recently.
+* O3D's [COLLADA to JSON converter](http://code.google.com/p/o3d/wiki/ColladaConverter).  A [blog post](http://o3d.blogspot.com/2009/04/why-json-rulez.html) on their rational - more flexibility.
+
+#### Client-Side COLLADA
+
+Some libraries read COLLADA directly without converting it.
+
+* OVoiD.JS [reads COLLADA](http://www.ovoid.org/js/doc/#composing) client-side include animations and skinning.  It also has a scene JSON format, and client-side exporting to this format, including from COLLADA.
+* Three.js reads COLLADA [client-side](https://github.com/mrdoob/three.js/blob/master/examples/js/loaders/ColladaLoader.js).  Three.js also has a [JSON format](https://github.com/mrdoob/three.js/wiki/JSON-Model-format-3.0), including some Python [exporters](https://github.com/mrdoob/three.js/tree/master/utils/exporters).
+* [Odin](https://github.com/operasoftware/Odin) reads COLLADA client-side or a derived run-time format.
+* SpiderGL - [example](http://spidergl.org/example.php?id=10).
+* C3DL - [doc](http://www.c3dl.org/wp-content/documentation/2.0_user_docs/symbols/c3dl.Collada.html), [tutorial](http://www.c3dl.org/index.php/tutorials/tutorial-4-models/), [code](https://github.com/cathyatseneca/c3dl/tree/master/c3dl/collada).
+* I believe [GLGE](http://statico.github.com/webgl-glge-game-part-1.html) also reads COLLADA client-side.
+
+#### XML to JSON Tools
+
+[JSON.NET](http://james.newtonking.com/projects/json/help/?topic=ConvertingJSONandXML.html), [XSLTJSON](https://github.com/bramstein/xsltjson), [Jettison](http://jettison.codehaus.org/User%27s+Guide) (Java), [BadgerFish-JSON](http://www.sklar.com/badgerfish/).
