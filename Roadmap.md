@@ -12,6 +12,9 @@ We're always looking to:
 * Website Improvements - [details](Website-Improvement-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * Improve precision - remove jittering
+* COLLADA models - [details](Models-Details)
+* Ocean - [details](Ocean-Details)
+* Stars
 * CZML External links - [details](External-links)
 * GeoServer CZML writer
 
@@ -19,12 +22,10 @@ We're always looking to:
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
-* COLLADA models - [details](Models-Details)
 * Mobile improvements - [details](Mobile-Details)
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * GLSL #include system - [details](GLSL-Details)
-* Stars
 * Draw more shapes - walls, cylinders, boxes, extruded volumes
 * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Improve 3D/2D/Columbus view transitions
@@ -40,7 +41,6 @@ If you are interested in implementing any of these features, start a discussion 
 * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
 * John Madden-style collaboration among multiple clients
 * Particle system
-* Ocean - [details](Ocean-Details)
 * Volumetric clouds
 * Imagery layers improvements - [details](Imagery-Layers-Details)
 * Sandcastle improvements - [details](Sandcastle-Details)
