@@ -7,8 +7,8 @@ Implementation ideas for rendering the ocean.
 * We have noise functions to animate the water.  Check the reference help for our GLSL built-ins.
 * Fresnel - reflection and refraction depend on the view angle.
 * WebGL Demos
-   * WebGL Terrain, Ocean, Fog: [demo](http://29a.ch/sandbox/2012/terrain/) &bullet; [blog post](http://29a.ch/2012/7/19/webgl-terrain-rendering-water-fog)
-   * WebGL GPU Landscaping and Erosion: [demo](http://codeflow.org/webgl/craftscape/) &bullet; [blog post](http://codeflow.org/entries/2011/nov/10/webgl-gpu-landscaping-and-erosion/)
+   * WebGL Terrain, Ocean, Fog: [demo](http://29a.ch/sandbox/2012/terrain/), [blog post](http://29a.ch/2012/7/19/webgl-terrain-rendering-water-fog)
+   * WebGL GPU Landscaping and Erosion: [demo](http://codeflow.org/webgl/craftscape/), [blog post](http://codeflow.org/entries/2011/nov/10/webgl-gpu-landscaping-and-erosion/)
 
 ## Resources
 
