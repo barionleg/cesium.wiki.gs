@@ -135,7 +135,6 @@ Models
    * Example [JSON](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/seymour-plane.js) from the [Seymour Plane Demo](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/index.html).
    * Features are described in the [README.md](https://github.com/xeolabs/scenejs-pycollada/blob/master/README.markdown).
 * [OpenWebGlobe](https://github.com/OpenWebGlobe/ColladaToJSON) - A python script to convert from COLLADA to OpenWebGlobe's JSON format.  Uses [pycollada](https://github.com/pycollada/pycollada).  MIT license.
-   * Not much actively recently.
 * O3D's [COLLADA to JSON converter](http://code.google.com/p/o3d/wiki/ColladaConverter).  A [blog post](http://o3d.blogspot.com/2009/04/why-json-rulez.html) on their rational - more flexibility.
 
 #### Client-Side COLLADA
