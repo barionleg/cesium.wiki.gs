@@ -19,7 +19,7 @@ Design and implementation ideas for models.
 
 ## WebGL Transmission Format
 
-_Server-side_: convert COLLADA to [WebGLTF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) using [collada2json](https://github.com/KhronosGroup/collada2json).  [[Building collada2json]] on Windows. [#43](https://github.com/KhronosGroup/collada2json/issues/43)
+_Server-side_: convert COLLADA to [WebGLTF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) using [collada2json](https://github.com/KhronosGroup/collada2json).
 
 _Client-side_: use collada2json's WebGL library to read WebGLTF.
 
