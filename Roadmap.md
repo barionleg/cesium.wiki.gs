@@ -11,9 +11,7 @@ We're always looking to:
 ## In progress
 * Website Improvements - [details](Website-Improvement-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
-* Improve precision - remove jittering
 * COLLADA models - [details](Models-Details)
-* Ocean - [details](Ocean-Details)
 * Stars
 * CZML External links - [details](External-links)
 * GeoServer CZML writer
@@ -46,6 +44,8 @@ If you are interested in implementing any of these features, start a discussion 
 * Sandcastle improvements - [details](Sandcastle-Details)
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
 * Material system improvements - [details](Material-System-Details)
+* Ocean improvements - [details](Ocean-Details)
+* Precision improvements - remove jittering from objects that still do
 * Compass - know where north is
 * CZML
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
