@@ -291,7 +291,7 @@ The `materialInput` variable is available in both `source` and `components`.  It
 | `st` | `vec2` | 2D texture coordinates. |
 | `str` | `vec3` | 3D texture coordinates.  The 1D, 2D, and 3D texture coordinates are not necessarily proper subsets of each other, e.g., `str.st == st` and `st.s == s` are not guaranteed.  For example, for an ellipsoid, `s` might go from bottom to top; `st` might be longitude and latitude; and `str` might be along the axes of the bounding box. |
 | `tangentToEyeMatrix` | `mat3`  | A transformation matrix from the fragment's tangent space to eye coordinates, for normal mapping, bump mapping, etc. |
-| `positionToEyeEC` | `vec3` | A vector from the fragment to the eye in eye coordinates, for reflection, refraction, etc. |
+| `positionToEyeEC` | `vec3` | A vector from the fragment to the eye in eye coordinates, for reflection, refraction, etc. The magnitude is the distance in meters from the fragment to the eye. |
 | `normalEC` | `vec3` | The fragment's normal (normalized) in eye coordinates, for bump mapping, reflection, refraction, etc. |
 | `positionMC` | `vec3` | The fragment's position in model coordinates. |
 
