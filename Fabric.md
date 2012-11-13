@@ -70,6 +70,7 @@ Cesium has several built-in materials.  Two widely used ones are:
 |:-----|:-----------|:------------|
 | `Color` | <img src="materials/Color.png" width="200" height="92" alt="Facet" /> | A single color, including alpha for translucency. |
 | `Image` | <img src="materials/Image.png" width="200" height="92" alt="Facet" /> | An image with or without an alpha channel such as .png or .jpg; a combination of diffuse, `rgb`, and alpha, `a`, components. |
+| `Water` | <img src="materials/Image.png" width="200" height="92" alt="Facet" /> | Animating water with waves and ripples. |
 
 All built-in materials can be created similar to how we used `Color` above.  For example:
 ```javascript
