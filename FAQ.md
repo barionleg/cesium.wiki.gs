@@ -27,9 +27,7 @@
 <a id="generalDifference"></a>
 ### How is Cesium different than a general WebGL or graphics engine? 
 
-<!-- TODO: Mention precision -->
-
-Cesium is tailored for virtual globe and map applications, so it provides a higher level of abstraction than general graphics engines for things like streaming terrain and imagery from map servers, drawing KML, accurately referencing a WGS84 ellipsoid, and camera control.  Usually these features need to be built on top of a general graphics engine.  Cesium also exposes its low-level graphics engine, e.g., WebGL abstractions, a [material system](Fabric), etc., making it quite flexible.
+Cesium is tailored for virtual globe and map applications, so it provides a higher level of abstraction than general graphics engines for things like streaming terrain and imagery from map servers, drawing KML, accurately referencing a WGS84 ellipsoid, camera control, and precision handling for large view distances and large world coordinates.  Usually these features need to be built on top of a general graphics engine.  Cesium also exposes its low-level graphics engine, e.g., WebGL abstractions, a [material system](Fabric), etc., making it quite flexible.
 
 In addition, Cesium is particularly well-suited for visualizing dynamic data on globes and maps, either by using the API directly or generating [CZML](CZML-Guide).
 
