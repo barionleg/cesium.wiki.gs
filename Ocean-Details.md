@@ -4,6 +4,8 @@ Implementation ideas for rendering the ocean.
 * Use specular map so when water is near land,
    * it flows differently
    * it is shallower and therefore animates and renders differently.
+* Use dynamic branch to discard fragments based on distance. No need to perform all the wave sampling when the `fadeFactor` is going cancel out the effect.
+* Utilize the alpha channel in the `baseWaterColor` and `blendColor` to add additional translucency to the water. May be useful to view terrain, models, etc. under the water.
 
 ## Done
 
