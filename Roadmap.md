@@ -9,18 +9,19 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* Website Improvements - [details](Website-Improvement-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * COLLADA models - [details](Models-Details)
+* Ocean improvements - [details](Ocean-Details)
 * Stars
-* CZML External links - [details](External-links)
-* GeoServer CZML writer
+* Mobile improvements - [details](Mobile-Details)
+* Website Improvements - [details](Website-Improvement-Details)
 
 ## To come
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
-* Mobile improvements - [details](Mobile-Details)
+* CZML External links - [details](External-links)
+* GeoServer CZML writer
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * GLSL #include system - [details](GLSL-Details)
@@ -44,7 +45,6 @@ If you are interested in implementing any of these features, start a discussion 
 * Sandcastle improvements - [details](Sandcastle-Details)
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
 * Material system improvements - [details](Material-System-Details)
-* Ocean improvements - [details](Ocean-Details)
 * Precision improvements - remove jittering from objects that still do
 * Compass - know where north is
 * CZML
