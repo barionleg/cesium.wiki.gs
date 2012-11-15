@@ -23,7 +23,7 @@ _Server-side_: convert COLLADA to [WebGLTF](https://github.com/KhronosGroup/coll
 
 _Client-side_: use collada2json's WebGL library to read WebGLTF.
 
-Contribute back to collada2json using our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).  Clone with `git clone --recursive git@github.com:AnalyticalGraphicsInc/collada2json.git`
+Contribute back to collada2json using our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).
 
 There are already converters to convert many different formats to COLLADA.
 
