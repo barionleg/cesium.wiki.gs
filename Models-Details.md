@@ -107,10 +107,6 @@ Will we be able to render models directly from the provider's APIs or do we need
 
 * Models should probably be a CZML extension since if they were core, [WebGL TF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) would require that CZML clients support WebGL, or at least support GLSL for the shaders.
 
-### Cesium TODO
-
-* Move `Images` directory to a sub-directory under `Assets`.
-
 ## Later
 
 * Take a close look at [webgl-loader](http://code.google.com/p/webgl-loader/) for mesh compression.
