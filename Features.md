@@ -39,8 +39,8 @@ Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API. 
 
 ## Apps and Widgets
 
-* [Cesium Viewer](http://cesium.agi.com/CesiumViewer/) app for visualizing CZML files.
-* [Sandbox](http://cesium.agi.com/Sandbox/Examples/Sandbox/) app for live coding.
+* [Cesium Viewer](http://cesium.agi.com/Cesium/Build/Apps/CesiumViewer/) app for visualizing CZML files.
+* [Sandcastle](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html) app for live coding.
 * Timeline widget for scrubbing through time.
 * Cesium and timeline widget for use with Dojo.
 
