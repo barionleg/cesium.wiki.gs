@@ -2,7 +2,6 @@ Ideas for improving the main Cesium website, [cesium.agi.com](http://cesium.agi.
 
 See [discussion](https://groups.google.com/forum/#!topic/cesium-dev/OmnEHXVwU34).
 
-* Fix links in our README.md when new site goes live.
 * Add info on CZML.  Fix links to http://cesium.agi.com/czml.html.
 * Improve lighting in demo; it is _way_ too dark.
 * Auto-run demo when shader compile time is improved.
