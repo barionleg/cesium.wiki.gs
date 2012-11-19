@@ -79,6 +79,8 @@ This terrain provider needs a lot more work to be made applicable to a wider var
 
 ### Hosting our own terrain data
 
+> Work on a terrain server is in progress.  Details can be found here: [https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Terrain-Server](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Cesium-Terrain-Server)
+
 We want Cesium to have great terrain out of the box, and that means we need to host the terrain data ourselves.
 
 Some potential sources of terrain data that we can use to populate our own terrain server:
