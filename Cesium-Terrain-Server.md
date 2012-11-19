@@ -25,7 +25,7 @@ The 8 tiles at the next level are found at these URLs:
 * (0, 0) - (90, 90) - [http://cesium.agi.com/terrain/1/2/1.terrain](http://cesium.agi.com/terrain/1/2/0.terrain)
 * (90, 0) - (180, 90) - [http://cesium.agi.com/terrain/1/3/1.terrain](http://cesium.agi.com/terrain/1/3/0.terrain)
 
-The tiles at the root, like all tiles are 65x65 vertices and overlap their neighbors at their edges.  In other words, the eastern-most column of heights in the western tile is identical to the western-most column of heights in the eastern tile.
+The tiles are 65x65 vertices and overlap their neighbors at their edges.  In other words, at the root, the eastern-most column of heights in the western tile is identical to the western-most column of heights in the eastern tile.
 
 Terrain tiles are served gzipped.  Once extracted, they are 16,901 bytes in size.  The bulk of the file is a simple array of 32-bit, little-endian, floating point heights arranged from north to south and from west to east - the first 4 bytes are the height in the northwest corner, and the next 4 bytes are the height at the location just to the east of there.  The total size of the post data is `65 * 65 * 4 = 16900` bytes.
 
