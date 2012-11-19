@@ -11,7 +11,6 @@ The server currently hosts a mosaic of [GTOPO30](http://eros.usgs.gov/#/Find_Dat
 
 The data are organized into a simple multi-resolution pyramid of heightmaps according to the [Tile Map Service (TMS)](http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification) layout and the global-geodetic profile.  All tiles have the extension `.terrain`.  So, the two root tiles are found at these URLs:
 
-http://cesium.agi.com/terrain/0/0/0.terrain
-
-http://cesium.agi.com/terrain/0/1/0.terrain
+[http://cesium.agi.com/terrain/0/0/0.terrain](http://cesium.agi.com/terrain/0/0/0.terrain)
+[http://cesium.agi.com/terrain/0/1/0.terrain](http://cesium.agi.com/terrain/0/1/0.terrain)
 
