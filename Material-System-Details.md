@@ -38,10 +38,11 @@ Much of this is implemented.  See [[Fabric]].
 
 Details to follow...
 
-* Different lighting models.  Consider Phong, Blinn-Phong, Gaussian, Cook-Torrance, Oren-Nayar, Strauss, Ward, and Ashikhmin-Shirley.  Which are most useful?  Which fit best into our engine?  See
+* Different lighting models.  Consider Phong, Blinn-Phong, Half-Lambert, Gaussian, Cook-Torrance, Oren-Nayar, Strauss, Ward, and Ashikhmin-Shirley.  Which are most useful?  Which fit best into our engine?  See
    * [Learning Modern 3D Graphics Programming](http://www.arcsynthesis.org/gltut/Illumination/Tutorial%2011.html)
    * [Programming Vertex, Geometry, and Pixel Shaders](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf)
    * [Spherical Gaussian approximation for Blinn-Phong, Phong and Fresnel](http://seblagarde.wordpress.com/2012/06/03/spherical-gaussien-approximation-for-blinn-phong-phong-and-fresnel/) - is this useful for mobile?
+   * [Illustrative Rendering in Team Fortress 2]http://www.valvesoftware.com/publications/2007/NPAR07_IllustrativeRenderingInTeamFortress2.pdf)
 * Light types: point, direction, spot.  Area?
 * Multiple lights: turn lights on/off per primitive.  This will replace `affectedByLighting` on [Polygon](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/Polygon.js) and [CentralBody](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/CentralBody.js).
 * Light maps
