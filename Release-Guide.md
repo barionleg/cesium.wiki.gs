@@ -24,6 +24,6 @@ There is no release manager; instead, our community shares the responsibility.  
    * For more information on tagging, see [Git Tagging](http://learn.github.com/p/tagging.html).
 1. Create a zip file of the build `./Tools/apache-ant-1.8.2/bin/ant clean makeZipFile`
 1. Upload the zip to the [downloads page](https://github.com/AnalyticalGraphicsInc/cesium/downloads).
-1. Email the [announcement mailing list](https://groups.google.com/forum/#!forum/cesium-announce) with a link to [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md) and highlights for the release.
+1. Write a [blog](http://cesium.agi.com/blog.html) with a link to [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md), highlights for the release, and choice screenshots.
 
 Also, see our [release discussion](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo) on the mailing list.
