@@ -223,7 +223,7 @@ The `components` property contains sub-properties that define the appearance of 
 | `diffuse` | `'vec3(0.0)'` | The diffuse component of this material.  The diffuse component is a `vec3` defining incoming light that scatters evenly in all directions. |
 | `specular` | `0.0` | The specular component of this material.  The specular component is a float defining the intensity of incoming light reflecting in a single direction. |
 | `shininess` | `1.0` | The sharpness of the specular reflection.  Higher values create a smaller, more focused specular highlight. |
-| `normal` |  | The normal component of this material.  The normal component is a `vec3` defining the surface's normal in tangent coordinates.  It is used for effects such as normal mapping.  The default is the surface's unmodified normal. |
+| `normal` |  | The normal component of this material.  The normal component is a `vec3` defining the surface's normal in eye coordinates.  It is used for effects such as normal mapping.  The default is the surface's unmodified normal. |
 | `emission` | `'vec3(0.0)'` | The emission component of this material.  The emission component is a `vec3` defining light emitted by the material equally in all directions.  The default is `vec3(0.0)`, which emits no light. |
 | `alpha` | `1.0` | The alpha component of this material.  The alpha component is a float defining the opacity of this material.  `0.0` is completely transparent; `1.0` is completely opaque. |
 
