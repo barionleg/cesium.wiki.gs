@@ -32,7 +32,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Improve mobile support - consider [pointer.js](https://github.com/borismus/pointer.js)
 * Support standard web servers: WMTS, WFS, WCS, ...
 * Support for multiple central bodies, i.e., Sun, Moon, etc.
-* Build and test server
+* Build and test server - consider [travis-ci](https://github.com/travis-ci/travis-ci) which integrates with GitHub.
 * Shadows
 * Video on terrain
 * Vectors
