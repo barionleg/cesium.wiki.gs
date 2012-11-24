@@ -31,6 +31,7 @@ Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API. 
 * Layer imagery from multiple sources, including WMS, OpenStreetMap, Bing Maps, ArcGIS MapServer, and standard image files.  Each layer can be alpha blended with the layers below it.
 * Draw vector data from KML (partial support), ESRI Shapefiles, and WebGL Globe JSON.
 * Draw polylines, polygons, polygons with holes, circles, ellipses, extents, billboards, labels, ellipsoids, and sensors.
+* Draw the atmosphere, stars, and water.
 * Batching, culling, and JavaScript and GPU optimizations for performance.
 * Precision handling for large view distances (avoiding [z-fighting](http://www.sjbaker.org/steve/omniv/love_your_z_buffer.html)) and large world coordinates (avoiding [jitter](http://blog.virtualglobebook.com/2010/11/vertex-transform-precision.html), partial support).
 * Individual object picking.
