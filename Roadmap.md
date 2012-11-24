@@ -2,17 +2,18 @@
 
 We're always looking to:
 * Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs
-* Support more content by writing converters from other formats (GML, [GeoJSON](http://www.geojson.org/), [TopoJSON](https://github.com/mbostock/topojson) ...) to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
+* Support more content by writing converters from other formats (GML, [GeoJSON](http://www.geojson.org/), [TopoJSON](https://github.com/mbostock/topojson), [gpx](http://www.topografix.com/gpx.asp) ...) to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
 * Write tutorials and improve reference documentation and examples
 * Improve visual quality and performance - [details](Visual-Quality-and-Performance-Details)
 * Improve platform support by fixing issues on various browsers, devices, or video cards
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* Streaming terrain - [details](Streaming-Terrain-Details)
-* COLLADA models - [details](Models-Details)
 * Ocean improvements - [details](Ocean-Details)
 * Stars
+* Streaming terrain - [details](Streaming-Terrain-Details)
+* COLLADA models - [details](Models-Details)
+* Widget improvements
 * Mobile improvements - [details](Mobile-Details)
 * Website Improvements - [details](Website-Improvement-Details)
 
