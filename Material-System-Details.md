@@ -59,10 +59,6 @@ Details to follow...
 
 ## Phase 5
 
-* Implement the `CentralBody` fragment shader using materials, instead of hard-coding bump, specular, etc.
-
-## Phase 6
-
 * How does this fit with the effects framework for models?  Can they work well together?
 * Do we need the ability to modify and remove material classes (not instances)?
 * Do we need the ability to pull different components from different textures?  For example, for a diffuse map, pull the red and green components from one texture, and the blue from another.
