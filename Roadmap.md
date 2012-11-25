@@ -75,6 +75,10 @@ If you are interested in implementing any of these features, start a discussion 
 * Particle system
 * GML to CZML converter
 
+## Google Code-in
+
+[Program details](http://code.google.com/opensource/gci/2012/index.html)
+
 ## ESA Summer of Code in Space Ideas
 
 [Program details](http://sophia.estec.esa.int/socis2012/).  Most likely due June, 2013.
