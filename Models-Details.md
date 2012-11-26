@@ -44,7 +44,7 @@ Optional for performance (these can also be done client-side):
 * Reorder for the vertex cache (we already have JavaScript [code](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Tipsify.js) to do this client-side).
 * Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.
 * Reduce the size of large textures that are not likely to take up a lot of screen space.
-* Use the [COLLADA Refinery](https://collada.org/mediawiki/index.php/COLLADA_Refinery)?
+* Consider [meshtool](https://github.com/pycollada/meshtool) and the [COLLADA Refinery](https://collada.org/mediawiki/index.php/COLLADA_Refinery)?
 
 The last step in the pipeline is to convert from COLLADA to WebGLTF.
 
