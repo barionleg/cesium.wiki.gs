@@ -20,7 +20,7 @@ We're always looking to:
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
-* CZML External links - [details](External-links)
+* Night lights based on streaming imagery that fade out as we zoom in.* CZML External links - [details](External-links)
 * GeoServer CZML writer
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
@@ -28,7 +28,6 @@ If you are interested in implementing any of these features, start a discussion 
 * Draw more shapes - walls, cylinders, boxes, extruded volumes
 * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Improve 3D/2D/Columbus view transitions
-* Improve mobile support - consider [pointer.js](https://github.com/borismus/pointer.js)
 * Support standard web servers: WMTS, WFS, WCS, ...
 * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Build and test server - consider [travis-ci](https://github.com/travis-ci/travis-ci) which integrates with GitHub.
