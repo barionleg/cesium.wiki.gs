@@ -10,7 +10,6 @@ We're always looking to:
 
 ## In progress
 * Ocean improvements - [details](Ocean-Details)
-* Stars
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * COLLADA models - [details](Models-Details)
 * Widget improvements
@@ -46,6 +45,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Sandcastle improvements - [details](Sandcastle-Details)
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
 * Material system improvements - [details](Material-System-Details)
+* Stars improvements - [details](Stars-Details)
 * Precision improvements - remove jittering from objects that still do
 * Compass - know where north is
 * CZML
