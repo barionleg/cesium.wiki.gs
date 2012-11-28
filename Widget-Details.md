@@ -68,7 +68,7 @@ rolled into `Cesium.js` for everyone to use?  I propose at least two UI elements
 
 * The [Playback widget](Playback-Details) works with the timeline widget, also has no dependency on other libraries, and is also not a typical UI toolkit kind of widget.
 
-It's easy to bundle the the above two with `Cesium.js`, and integrate with UI elements from other
+It's easy to bundle the above two with `Cesium.js`, and integrate with UI elements from other
 toolkits.  But the `CesiumViewerWidget` offers a bit more UI that is harder to classify:
 
 * A full-screen button
