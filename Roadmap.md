@@ -12,7 +12,7 @@ We're always looking to:
 * Ocean improvements - [details](Ocean-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * COLLADA models - [details](Models-Details)
-* Widget improvements
+* Widget improvements - [details](Widget-Details) (see also: [Playback widget](Playback-Details))
 * Mobile improvements - [details](Mobile-Details)
 * Website Improvements - [details](Website-Improvement-Details)
 
