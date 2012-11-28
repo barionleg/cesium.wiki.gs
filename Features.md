@@ -29,7 +29,7 @@ Cesium supports a 3D globe, 2D map, and Columbus view (2.5D) with the same API. 
 
 * Draw dynamic scenes from [CZML](https://github.com/AnalyticalGraphicsInc/cesium/wiki/czml-guide).
 * Layer imagery from multiple sources, including WMS, OpenStreetMap, Bing Maps, ArcGIS MapServer, and standard image files.  Each layer can be alpha blended with the layers below it, and its brightness, contrast, and gamma can be dynamically changed.
-* Draw vector data from KML (partial support), ESRI Shapefiles, and WebGL Globe JSON.
+* Draw vector data from KML ([supported elements](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Kml)), ESRI Shapefiles, and WebGL Globe JSON.
 * Draw polylines, polygons, polygons with holes, circles, ellipses, extents, billboards, labels, ellipsoids, and sensors.
 * Draw the atmosphere, stars, and water.
 * Batching, culling, and JavaScript and GPU optimizations for performance.
