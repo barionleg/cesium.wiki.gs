@@ -84,12 +84,12 @@ Web Map Service (WMS), OpenStreetMap, Bing Maps, Esri ArcGIS MapServer, and stan
 <a id="OGC"></a>
 ### What OGC standards are supported?
 
-Web Map Service (WMS) and a good bit of KML.  We expect WFS later in 2012.  We intend to propose [CZML](CZML-Guide) as a standard to the OGC when it is battle-tested.
+Web Map Service (WMS) and KML ([supported elements](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Kml)).  We expect WFS later in 2012.  We intend to propose [CZML](CZML-Guide) as a standard to the OGC when it is battle-tested.
 
 <a id="vectorFormats"></a>
 ### What vector formats are supported?
 
-CZML, ESRI Shapefiles, WebGL Globe JSON, and a good bit of KML.
+CZML, ESRI Shapefiles, WebGL Globe JSON, and KML ([supported elements](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Kml)).
 
 <a id="architecture"></a>
 ## Architecture
