@@ -4,11 +4,11 @@
 
 As of this writing, the master branch `CesiumViewerWidget` has a toolbar that looks like this:
 
-<p align="center"><img src="screenshots/playback-widget/OldToolbar.png" alt="Old toolbar" /></p>
+<p align="center"><img src="wiki/screenshots/playback-widget/OldToolbar.png" alt="Old toolbar" /></p>
 
 The proposed replacement `Playback` widget pops up looking like this:
 
-<p align="center"><img src="screenshots/playback-widget/Playback1.png" alt="Playback widget" /></p>
+<p align="center"><img src="wiki/screenshots/playback-widget/Playback1.png" alt="Playback widget" /></p>
 
 The bottom-left is "Reset" (same as before).  On the right is faster/slower, same as before.  The large
 middle button acts as a play/pause toggle, or really a pause/un-pause toggle where "un-pause" puts you
@@ -16,13 +16,13 @@ back into whatever mode you might have been in before pause (rewind, realtime, e
 
 The upper-left button is called "Shuttle ring."  Clicking it results in this:
 
-<p align="center"><img src="screenshots/playback-widget/Playback2.png" alt="Shuttle ring" /></p>
+<p align="center"><img src="wiki/screenshots/playback-widget/Playback2.png" alt="Shuttle ring" /></p>
 
 The shuttle ring is may look familiar to folks who have used video editing systems.  It is a ring
 offering a continuous control of forward and backward speeds.  You can slide the "green glow" indicator
 smoothly around its entire edge, like this:
 
-<p align="center"><img src="screenshots/playback-widget/ManyPlayback_1row.png" alt="Various modes" /></p>
+<p align="center"><img src="wiki/screenshots/playback-widget/ManyPlayback_1row.png" alt="Various modes" /></p>
 
 There is also a button tucked under the top-center of the ring, called the realtime button.  It sets the
 time to "now" (from the computer's own clock) and animates along at real time.  Pausing this mode for a
