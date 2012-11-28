@@ -102,4 +102,4 @@ Ideas and feedback on all of the above is welcome on our [mailing list](https://
 
 Read more about the proposed [Playback widget](Playback-Details).
 
-<p align="center"><a href="Playback-Details"><img src="wiki/screenshots/playback-widget/Playback2.png" alt="Shuttle ring" /></a></p>
+<p align="center"><a href="Playback-Details"><img src="screenshots/playback-widget/Playback2.png" alt="Shuttle ring" /></a></p>
