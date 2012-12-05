@@ -3,7 +3,6 @@
 </p>
 
 * [[Features]]
-* [[FAQ]]
 * [[Roadmap]]
 
 ## Get Started
@@ -25,8 +24,7 @@
 * [[Code Review Tips]] - worthwhile code reviews share knowledge and improve code quality.
 * [[Release Guide]] - how we release monthly.
 
-## Logos, Presentations, and Publications
+## Outreach
 
 * [[Cesium Logos]] - for use in Cesium apps and related material.
-* [[Presentations and Publications]] - on Cesium and the underlying technology.
 * [[Shortened URLs]] - make linking to Cesium easier.
