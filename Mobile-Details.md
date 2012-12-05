@@ -23,6 +23,8 @@ Motorola Xoom and other platforms.
    * Dojo drop-downs appear broken, with `Illegal operation on WrappedNative prototype object`.
 * HTC Evo 4G LTE Sprint, Android 4.0.3, tested 04-Nov-2012
    * Firefox Stable & Beta show a black screen, don't count time, nothing appears in tab thumbnail.
+* Nexus 4 and Nexus 7, Android 4.2.1, tested 05-12-2012
+   * Cesium Viewer in `master` runs in Firefox Stable.
 
 ## Future potential platforms
 
