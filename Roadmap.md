@@ -20,7 +20,8 @@ We're always looking to:
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
-* Night lights based on streaming imagery that fade out as we zoom in.* CZML External links - [details](External-links)
+* Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
+* CZML External links - [details](External-links)
 * GeoServer CZML writer
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
