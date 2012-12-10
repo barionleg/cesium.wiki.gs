@@ -49,6 +49,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Stars improvements - [details](Stars-Details)
 * Precision improvements - remove jittering from objects that still do
 * Compass - know where north is
+* Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
 * CZML
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
    * Buffer availability and "buffering" behavior
