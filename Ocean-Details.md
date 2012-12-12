@@ -15,6 +15,7 @@ Implementation ideas for rendering the ocean.
 
 ## Resources
 
+* [Assassin’s Creed III: The tech behind (or beneath) the action](http://www.fxguide.com/featured/assassins-creed-iii-the-tech-behind-or-beneath-the-action/)
 * Must read: [Regarding Water](http://the-witness.net/news/2012/08/regarding-water/)
 * GPU Pro 2, Page 307
 * ShaderX 2, [Page 207](http://tog.acm.org/resources/shaderx/Tips_and_Tricks_with_DirectX_9.pdf)
