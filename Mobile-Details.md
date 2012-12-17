@@ -56,3 +56,16 @@ The primary tool used so far is the Android USB debugging bridge, which displays
 
 Keep an eye on the [JSD2 branch of Firebug](https://github.com/firebug/firebug/commits/jsd2) which
 will enable remote debugging via [Firebug](https://getfirebug.com/).
+
+Remote debugging with Firefox:
+* Install the [Android SDK](http://developer.android.com/sdk/index.html).
+    * If Eclipse is already installed or you do not plan to develop with Eclipse, expand "Use an Existing IDE" and download/install the SDK tools.
+    * Otherwise, download/install the "ADT Bundle", which is bundled with Eclipse and has the plugin configured.
+* In Firefox on the desktop and on the Android device, browse to `about:config` and set the `devtools.debugger.remote-enabled` preference to true. Restart Firefox.
+* Connect the Android device to the desktop.
+* Open a command prompt in the location of the Android SDK Tools and run the command: `adb forward tcp:6000 tcp:6000`.
+* Open the remote debugger on the desktop at `Tools > Web Developer > Remote Debugger`.
+* On the desktop there will be a dialog to enter the hostname and port. Accept the defaults and press OK.
+* On the Android device, you will see a prompt to accept the remote connection.
+
+You may need to repeat the last two steps until a connection is made.
