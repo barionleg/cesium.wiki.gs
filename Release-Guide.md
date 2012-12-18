@@ -9,7 +9,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://analyticalgraphicsinc.github.com/webglreport/).
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) in [Firefox](http://www.mozilla.org/en-US/firefox/new/?from=getfirefox) stable.
-1. Run [SandCastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice and run through each demo to make sure they all work.
+1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice and run through each demo to make sure they all work.
 1. Uninstall [Chrome Frame](https://developers.google.com/chrome/chrome-frame/) if you have it installed.
 1. Using Internet Explorer, navigate to [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) and make sure you are prompted to install Chrome Frame.  There's no need to actually install it.  This step ensures that Cesium fails gracefully on non-WebGL browsers and allows developers to take alternative action.
 1. Make sure the documentation builds without errors: `./Tools/apache-ant-1.8.2/bin/ant clean generateDocumentation`
