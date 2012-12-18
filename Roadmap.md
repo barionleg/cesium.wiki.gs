@@ -14,7 +14,6 @@ We're always looking to:
 * COLLADA models - [details](Models-Details)
 * Widget improvements - [details](Widget-Details) (see also: [Playback widget](Playback-Details))
 * Mobile improvements - [details](Mobile-Details)
-* Website Improvements - [details](Website-Improvement-Details)
 
 ## To come
 
@@ -48,6 +47,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
 * Material system improvements - [details](Material-System-Details)
 * Stars improvements - [details](Stars-Details)
+* Website Improvements - [details](Website-Improvement-Details)
 * Precision improvements - remove jittering from objects that still do
 * Compass - know where north is
 * Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
