@@ -138,16 +138,14 @@ var scene = new Scene(document.getElementById("canvas"));
 A scene can be 3D, 2D, or columbus view.  A scene can morph between these views with one line of code.
 
 Primitives are objects added to the scene that are drawn.  Their implementation uses Renderer to make WebGL calls.  `Scene.render` has three major steps:
-* Animate: An app-specific animation function moves primitives and changes their properties.
+* Initialization: Sets the state of the current frame.
 * Update: Primitives sync their state with Renderer resources such as vertex buffer and textures.
 * Render: Issue draw calls for each primitive.
 
 ```javascript
-scene.setAnimation(function() {
-  scene.setSunPosition(SunPosition.compute().position);
-});
-
 (function tick() {
+  scene.initializeFrame();
+  // Insert app-specific animation code here.
   scene.render();
   requestAnimationFrame(tick);
 }());
@@ -167,13 +165,7 @@ polygon.material = Material.fromID(scene.getContext(), 'Stripe');
 ```
 There are many built-in materials, and new ones can be scripted using [[Fabric]], a JSON schema, and GLSL.
 
-Camera represents the view into the virtual world.  Ultimately, it creates a view matrix that transforms from world to eye coordinates.  Camera can be manipulated directly, but is most often updated automatically via controllers for specific tasks such as handling mouse input for spinning the globe, or smoothly flying to another location.
-```javascript
-scene.getCamera().getControllers().addFlight({
-    destination: ellipsoid.cartographicDegreesToCartesian(new Cesium.Cartographic3(-118.26, 34.19, 100000.0)),
-    duration: 4.0
-});
-```
+Camera represents the view into the virtual world.  Ultimately, it creates a view matrix that transforms from world to eye coordinates.  Camera can be manipulated directly, but is most often updated via the `CameraController` for common tasks. The camera is modified automatically based on mouse or touch input by the scene's `ScreenSpaceCameraController`.
 
 ## Dynamic Scene
 
