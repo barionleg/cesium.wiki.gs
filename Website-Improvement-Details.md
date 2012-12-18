@@ -2,7 +2,6 @@ Ideas for improving the main Cesium website, [cesium.agi.com](http://cesium.agi.
 
 See [discussion](https://groups.google.com/forum/#!topic/cesium-dev/OmnEHXVwU34).
 
-* Issue [#201](https://github.com/AnalyticalGraphicsInc/cesium/issues/201) - add Sandcastle links to the features page.  More generally, how can the website and Sandcastle work well together?
 * Many screenshots need improvements, for example, some images on the [features](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Features) page are too dark.
 * Add info on CZML.  Fix links to http://cesium.agi.com/czml.html.
 * Auto-run demo when shader compile time is improved.
