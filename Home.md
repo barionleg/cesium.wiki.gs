@@ -2,7 +2,6 @@
 <img src="wiki/logos/Cesium_Logo_Color.jpg" width="50%" alt="Cesium" />
 </p>
 
-* [[Features]]
 * [[Roadmap]]
 
 ## Get Started
