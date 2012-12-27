@@ -64,7 +64,7 @@ If you are interested in implementing any of these features, start a discussion 
    * Model support, once Cesium support exists
    * Human readable messages/events raised in CZML
 * Widgets & Apps
-   * OWF widget
+   * [OWF](https://www.owfgoss.org/) widget
    * Embeddable Cesium Viewer
    * Improved TimeLine widget
    * Standard Cesium toolbar
