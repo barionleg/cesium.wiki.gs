@@ -11,6 +11,7 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Authoring CZML (not Cesium specific)
 * Using CZML in Cesium
 * Importing Vector Data
+* Importing Models
 * Widgets
 * Using Cesium with Dojo
 * Using Cesium with jQuery
