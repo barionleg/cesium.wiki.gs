@@ -27,7 +27,7 @@ The 8 tiles at the next level are found at these URLs:
 
 The tiles are 65x65 vertices and overlap their neighbors at their edges.  In other words, at the root, the eastern-most column of heights in the western tile is identical to the western-most column of heights in the eastern tile.
 
-Terrain tiles are served gzipped.  Once extracted, they are at least 8,452 bytes in size.  The bulk of the file is a simple array of 16-bit, little-endian, integer heights arranged from north to south and from west to east - the first 2 bytes are the height in the northwest corner, and the next 2 bytes are the height at the location just to the east of there.  Each height is the number of 1/5 meter units above -1000 meters.  The total size of the post data is `65 * 65 * 2 = 8450` bytes.
+Terrain tiles are served gzipped.  Once extracted, they are at least 8,452 bytes in size.  The first and most important part of the file is a simple array of 16-bit, little-endian, integer heights arranged from north to south and from west to east - the first 2 bytes are the height in the northwest corner, and the next 2 bytes are the height at the location just to the east of there.  Each height is the number of 1/5 meter units above -1000 meters.  The total size of the post data is `65 * 65 * 2 = 8450` bytes.
 
 Following the height data is one additional byte which is a bit mask indicating which child tiles are present.  The bit values are as follows:
 
