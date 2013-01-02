@@ -17,7 +17,7 @@ There is no release manager; instead, our community shares the responsibility.  
 
 ## Packaging for release
 1. Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md) with the date of the release.
-1. Update [build.xml](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/build.xml) with the version being released.
+1. Update [build.xml](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/build.xml) with the version being released, e.g., `<property name="version" value="b7" />`
 1. Create a [tag](http://learn.github.com/p/tagging.html), e.g.,
    * `git tag -a b7 -m 'b7 release'`
    * `git push --tags`
