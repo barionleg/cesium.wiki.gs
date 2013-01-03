@@ -151,6 +151,5 @@ Then, to step into the test, step into `stepIntoThis()`
    * To update [LICENSE.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/LICENSE.md) if third-party libraries were added or removed.
    * Were new public classes, functions, or properties added?
       * Include reference documentation with code examples.  Check out the [best practices](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Documentation-Best-Practices).
-      * Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md).  Also update [Features wiki](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Features) if the change is significant.
-
-* If you have commit access, delete the branch if you are no longer using it.
+      * Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md).
+      * If the change is significant, add a new [Sandcastle](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html) example or extend and existing one.
