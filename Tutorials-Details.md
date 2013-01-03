@@ -1,9 +1,9 @@
 We're planning the following tutorials.  These will initially be [blog posts](http://cesium.agi.com/blog.html), and a page on the [Cesium website](http://cesium.agi.com) will serve as the table of contents.
 
 Beginner Tutorials (in psuedo table-of-contents order, but we can write them in any order)
-* The Simplest Cesium App
-* Imagery Layers
-* Terrain
+* The Simplest Cesium App - @pjcozzi
+* Imagery Layers - @pjcozzi
+* Terrain - @pjcozzi
 * Billboards and Labels
 * Polygons and Polylines
 * Picking
@@ -11,7 +11,7 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Authoring CZML (not Cesium specific)
 * Using CZML in Cesium
 * Importing Vector Data
-* Importing Models
+* Importing Models - @pjcozzi
 * Widgets
 * Using Cesium with Dojo
 * Using Cesium with jQuery
@@ -19,13 +19,13 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Columbus view and 2D
 * Volumes
 * Sensors
-* Materials
+* Materials - @pjcozzi
 * Deployment
 
 Advanced Tutorials
 * Implementing an [ImageryProvider](http://cesium.agi.com/Cesium/Build/Documentation/ImageryProvider.html)
 * Implementing a `TerrainProvider`
-* Writing custom rendering code
+* Writing custom rendering code - @pjcozzi
 
 Other Tutorials
 * Tutorials for building specific example apps
