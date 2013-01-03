@@ -1,12 +1,12 @@
-We release Cesium on the first work day of every month.  Releases are available on the [downloads page](https://github.com/AnalyticalGraphicsInc/cesium/downloads).
+We release Cesium on the first work day of every month.  Releases are available on the [downloads page](http://cesium.agi.com/downloads.html).
 
 There is no release manager; instead, our community shares the responsibility.  Any committer can create the release for a given month, and at any point, they can pass the responsibility to someone else, or someone else can ask for it.  This spreads knowledge, avoids stratification, avoids a single point of failure, and is beautifully unstructured.
 
 ## Release testing
+1. Verify there are no [show stopper](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=show+stopper&page=1&state=open) issues.
+1. Send a courtesy message to the [forum](https://groups.google.com/forum/#!forum/cesium-dev) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
 1. Make sure you have a clean checkout of `master`.
-1. Check for [show stoppers](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=show+stopper&page=1&state=open).
-1. Send out a courtesy email to dev list to let people know you're about to start the release process.
 1. Start the server `./Tools/apache-ant-1.8.2/bin/ant clean build combine runServer`
 1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://analyticalgraphicsinc.github.com/webglreport/).
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
@@ -24,7 +24,8 @@ There is no release manager; instead, our community shares the responsibility.  
    * `git tag -a b7 -m 'b7 release'`
    * `git push --tags`
 1. Create a zip file of the build `./Tools/apache-ant-1.8.2/bin/ant clean makeZipFile`
-1. Upload the zip to the [downloads page](https://github.com/AnalyticalGraphicsInc/cesium/downloads).
+1. Upload the zip to the [website](http://cesium.agi.com/).  See the _Adding a New Cesium Release_ section of the website wiki.
 1. Write a [blog](http://cesium.agi.com/blog.html) with a link to [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md), highlights for the release, and choice screenshots.
+1. Reply to your courtesy message on the [forum](https://groups.google.com/forum/#!forum/cesium-dev) to let everyone know the release is ready.
 
 Also, see our [release discussion](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo) on the forum.
