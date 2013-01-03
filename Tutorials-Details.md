@@ -8,8 +8,8 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Polygons and Polylines
 * Picking
 * Camera
-* Authoring CZML (not Cesium specific)
-* Using CZML in Cesium
+* Authoring CZML (not Cesium specific) - probably several
+* Using CZML in Cesium - probably several
 * Importing Vector Data
 * Importing Models - **@pjcozzi**
 * Widgets
