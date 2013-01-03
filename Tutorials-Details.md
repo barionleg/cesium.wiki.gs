@@ -7,7 +7,7 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Billboards and Labels
 * Polygons and Polylines
 * Picking
-* Camera
+* Camera - **@bagnell**
 * Authoring CZML (not Cesium specific) - probably several
 * Using CZML in Cesium - probably several
 * Importing Vector Data
