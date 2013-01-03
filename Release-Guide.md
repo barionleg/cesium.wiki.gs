@@ -5,6 +5,8 @@ There is no release manager; instead, our community shares the responsibility.  
 ## Release testing
 1. Make sure you are using the latest drivers for your video card.
 1. Make sure you have a clean checkout of `master`.
+1. Check for [show stoppers](https://github.com/AnalyticalGraphicsInc/cesium/issues?state=open).
+1. Send out a courtesy email to dev list to let people know you're about to start the release process.
 1. Start the server `./Tools/apache-ant-1.8.2/bin/ant clean build combine runServer`
 1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://analyticalgraphicsinc.github.com/webglreport/).
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
