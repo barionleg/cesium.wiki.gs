@@ -4,13 +4,13 @@
 
 * [[Roadmap]]
 
-## Guides
+## User Guides
 
 * [[CZML Guide]] - bring content into Cesium without writing code.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
 * [[In-Depth Guides]] - details on major features.
 
-## Contributors
+## Contributor Guides
 
 * [[Contributor's Guide]] - setting up a development environment and contributing code.
 * [[JavaScript Coding Conventions]] - keeps our code consistent.
