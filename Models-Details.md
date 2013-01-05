@@ -96,6 +96,7 @@ Will we be able to render models directly from the provider's APIs or do we need
    * [Bevelity](http://www.bevelity.com/)
 * Check out [Open Asset Import Library](http://assimp.sourceforge.net/) for possible server-side conversions.
 * [JSModeler](https://github.com/kovacsv/JSModeler) is a JavaScript framework to create and visualize 3D models.
+* [COLLADA-CTS](https://github.com/KhronosGroup/COLLADA-CTS)
 
 ## Unorganized Hackathon Notes
 
