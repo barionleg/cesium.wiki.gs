@@ -10,17 +10,18 @@ We're always looking to:
 
 ## In progress
 * Tutorials - [details](Tutorials-Details)
-* Ocean improvements - [details](Ocean-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
+* Ocean improvements - [details](Ocean-Details)
 * COLLADA models - [details](Models-Details)
-* Widget improvements - [details](Widget-Details) (see also: [Playback widget](Playback-Details))
-* Mobile improvements - [details](Mobile-Details)
+* Widget improvements - [details](Widget-Details)
+* Playback widget - [details](Playback-Details)
+* Space features - [details](Space-features)
 
 ## To come
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
-* Space features - [details](Space-features)
+* Mobile improvements - [details](Mobile-Details)
 * Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
 * CZML External links - [details](External-links)
 * GeoServer CZML writer
