@@ -39,12 +39,16 @@ Required:
    * Split meshes to fit in unsigned short indices - This may need to be done in the optimizations instead if we are combining meshes.
    * Generate shaders - Create GLSL shaders for models using the Common Profile (fixed function), which is most models.
 
-Optional for performance (these can also be done client-side):
+Optional for performance (these _could_ also be done client-side):
 * Flatten tree:  if transforms are static, the tree can be flattened and positions adjusted so there are less batch-breaking model transform uniforms set, and, therefore, less draw calls. [#30](https://github.com/KhronosGroup/collada2json/issues/30)
-* Reorder for the vertex cache (we already have JavaScript [code](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Tipsify.js) to do this client-side).
 * Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.
-* Reduce the size of large textures that are not likely to take up a lot of screen space.
-* Combine textures into a texture atlas to help batching.
+* Vertices
+   * Reorder for the vertex cache (we already have JavaScript [code](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Tipsify.js) to do this client-side).
+   * Adjust vertex formats, e.g., `float` to `unsigned byte` for colors.
+* Textures
+   * Reduce the size of large textures that are not likely to take up a lot of screen space.
+   * Combine textures into a texture atlas to help batching.
+   * Compress textures.
 * Consider [meshtool](https://github.com/pycollada/meshtool) and the [COLLADA Refinery](https://collada.org/mediawiki/index.php/COLLADA_Refinery)?
 
 The last step in the pipeline is to convert from COLLADA to WebGLTF.
