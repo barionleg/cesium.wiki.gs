@@ -53,6 +53,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Precision improvements - remove jittering from objects that still do
 * Compass - know where north is
 * Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
+* Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js)
 * CZML
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
    * Buffer availability and "buffering" behavior
