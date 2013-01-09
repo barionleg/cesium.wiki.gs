@@ -28,7 +28,7 @@ If you are interested in implementing any of these features, start a discussion 
 * CZML Path/History visualization - [details](CZML-History-visualization-details)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * GLSL #include system - [details](GLSL-Details)
-* Draw more shapes - walls, cylinders, boxes, extruded volumes
+* Draw more shapes - walls, cylinders, boxes, extruded volumes.  Optimize triangulation (faster, less triangles) for circles and ellipses.
 * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Improve 3D/2D/Columbus view transitions
 * Support standard web servers: WMTS, WFS, WCS, ...
