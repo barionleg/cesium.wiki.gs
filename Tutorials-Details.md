@@ -2,12 +2,12 @@ We're planning the following tutorials.  These will initially be [blog posts](ht
 
 Beginner Tutorials (in psuedo table-of-contents order, but we can write them in any order)
 * The Simplest Cesium App - **@pjcozzi**
-* Imagery Layers - **@pjcozzi**
+* ~~Imagery Layers - **@pjcozzi**~~
 * Terrain - **@pjcozzi**
 * Billboards and Labels
 * Polygons and Polylines
 * Picking
-* Camera - **@bagnell**
+* ~~Camera - **@bagnell**~~
 * Authoring CZML (not Cesium specific) - probably several
 * Using CZML in Cesium - probably several
 * Importing Vector Data
