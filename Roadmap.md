@@ -33,7 +33,6 @@ If you are interested in implementing any of these features, start a discussion 
 * Improve 3D/2D/Columbus view transitions
 * Support standard web servers: WMTS, WFS, WCS, ...
 * Support for multiple central bodies, i.e., Sun, Moon, etc.
-* Test categories, e.g., WebGL.
 * Build and test server - consider [travis-ci](https://github.com/travis-ci/travis-ci) which integrates with GitHub.
 * Shadows
 * Video on terrain
