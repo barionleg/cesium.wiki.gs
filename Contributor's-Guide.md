@@ -1,4 +1,4 @@
-We are a community that encourages contributions.  Join us.  Read about the engine's [architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture); check out our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap); join the [development mailing list](https://groups.google.com/d/forum/cesium-dev); and start hacking.
+We are a community that encourages contributions.  Join us.  Here's how to get started.
 
 ## Getting the Code
 
@@ -32,13 +32,15 @@ Then browse to [http://localhost:8080/](http://localhost:8080/).
 
 Details
 * Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that the [Java](http://www.java.com/en/download/index.jsp) JDK be installed.
-* For a default debug build, run Ant from the root Cesium directory:
+* On 64-bit Ubuntu, run `sudo apt-get install ia32-libs`
+
+For a default debug build, run Ant from the root Cesium directory:
 
 <pre>
 ./Tools/apache-ant-1.8.2/bin/ant
 </pre>
 
-* The following targets can be built:
+The following targets can be built:
    * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running "combine").  This runs automatically when saving files in Eclipse.
    * `combine` - Runs build, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build` folder that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
    * `minify` - Runs combine, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
@@ -49,14 +51,15 @@ Details
    * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
    * `makeZipFile` - Builds a zip file containing all release files.  This includes the Source directory (suitable for use from an AMD-aware application), plus the combined Cesium.js, and the Documentation files.
    * `clean` - Removes all generated build artifacts.
-* For example, to build the release target and then start an HTTP server for testing, run:
+
+For example, to build the release target and then start an HTTP server for testing, run:
 
 <pre>
 ./Tools/apache-ant-1.8.2/bin/ant release
 ./Tools/apache-ant-1.8.2/bin/ant runServer
 </pre>
 
-Want something interesting to code?  See the [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) and start a discussion on the [development mailing list](https://groups.google.com/forum/#!topic/cesium-dev).
+Want something fun to code?  See the [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) and start a discussion on the [forum](https://groups.google.com/forum/#!topic/cesium-dev).
 
 ## Setting up Eclipse
 
@@ -153,3 +156,7 @@ Then, to step into the test, step into `stepIntoThis()`
       * Include reference documentation with code examples.  Check out the [best practices](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Documentation-Best-Practices).
       * Update [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md).
       * If the change is significant, add a new [Sandcastle](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html) example or extend and existing one.
+
+## What Next?
+
+Read about the engine's [architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture); check out our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap); join the [forum](https://groups.google.com/d/forum/cesium-dev); and start hacking.
