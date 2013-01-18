@@ -41,10 +41,10 @@ For a default debug build, run Ant from the root Cesium directory:
 </pre>
 
 The following targets can be built:
-   * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running "combine").  This runs automatically when saving files in Eclipse.
-   * `combine` - Runs build, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build` folder that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
-   * `minify` - Runs combine, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
-   * `buildApps` - Some example applications, such as Cesium Viewer, are [Dojo](http://dojotoolkit.org/) applications.  This build target runs the [Dojo build process](http://dojotoolkit.org/reference-guide/1.7/build/) to produce self-contained, minified, deployable versions of these applications in the `Build` folder.
+   * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
+   * `combine` - Runs `build`, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
+   * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS](https://github.com/mishoo/UglifyJS) for a smaller deployable file.  
+   * `buildApps` - Some example applications, such as Cesium Viewer, are [Dojo](http://dojotoolkit.org/) applications.  This build target runs the [Dojo build process](http://dojotoolkit.org/reference-guide/1.7/build/) to produce self-contained, minified, deployable versions of these applications in the `Build` directory.
    * `generateDocumentation` - Generates HTML documentation in `Build\Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
    * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
    * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
@@ -83,14 +83,14 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 ![The JSHint installation dialog](jshint.png)
 
-* Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
+* _Optional_: Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
 
-![The Eclipse dropins folder](glshaders.png)
+![The Eclipse dropins directory](glshaders.png)
 
 * Run Eclipse. Close the Welcome page.
 
 * Window - Preferences - Team - Git - Configuration
-    * Verify Location in User Settings tab is set to .gitconfig in the default repository folder.
+    * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
     * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
 
 * Window - Show View - Console.
@@ -103,7 +103,7 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Click the "Open Perspective" button in the upper right and select JavaScript.  You can then right-click on the Java perspective and close it.
 
-* Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent folder of project.  Finish.
+* Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent directory of project.  Finish.
 
 * Configure the problems tab.  The Eclipse JavaScript validator has some bugs that report incorrect warnings.  Click the down arrow on the right-hand side of the Problems tab, click Configure Contents.  Uncheck Show all items, Click New, then Rename the new item to Cesium.  Change the Text filter to "doesn't contain" "Type mismatch: ".  OK.
 
@@ -159,4 +159,4 @@ Then, to step into the test, step into `stepIntoThis()`
 
 ## What Next?
 
-Read about the engine's [architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture); check out our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap); join the [forum](https://groups.google.com/d/forum/cesium-dev); and start hacking.
+Read about the Cesium's [architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture); check out the [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap); join the [forum](https://groups.google.com/d/forum/cesium-dev); and start hacking.
