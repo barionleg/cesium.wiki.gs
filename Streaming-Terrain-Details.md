@@ -11,11 +11,12 @@ This is an area that has plenty of opportunities for interested folks to get inv
 Streaming terrain implementation is currently taking place in the [imagery_layers](https://github.com/AnalyticalGraphicsInc/cesium/tree/imagery_layers) branch.  Here's our wildly-incomplete to-do list:
 
 Before merging `imagery_layers` into master:
-* Check the list of requires in our changed files to see if we can eliminate some.
-* Look more closely at the API - what happens when "public" properties are changed after construction?
-* Improve tests and documentation.
-* Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
-* Fix or remove `CompositeTileProvider`.
+* Add a callback or at least some way to learn that level 0 terrain/imagery is done loading.
+* **DONE** Check the list of requires in our changed files to see if we can eliminate some.
+* **DONE** Look more closely at the API - what happens when "public" properties are changed after construction?
+* **DONE** Improve tests and documentation.
+* **DONE** Improve the replacement policy.  Currently it simply keeps the tiles that were used last frame, mostly.
+* **DONE** Fix or remove `CompositeTileProvider`.
 * **DONE** Fix Mercator projection in Columbus View.
 * **DONE** Fix Mercator projection during morphing.
 * **DONE** Switch EllipsoidTerrainProvider to Geographic by default.
