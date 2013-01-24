@@ -38,12 +38,13 @@ Required:
    * Unify indices - In COLLADA, each attribute may be indexed separately.  Unify these so one index refers to all vertex attributes.
    * Split meshes to fit in unsigned short indices - This may need to be done in the optimizations instead if we are combining meshes.
    * Generate shaders - Create GLSL shaders for models using the Common Profile (fixed function), which is most models.
+   * Convert textures - Convert image files to a format supported by the browser, e.g., .tiff to .png.
 
 Optional for performance (these _could_ also be done client-side):
 * Flatten tree:  if transforms are static, the tree can be flattened and positions adjusted so there are less batch-breaking model transform uniforms set, and, therefore, less draw calls. [#30](https://github.com/KhronosGroup/collada2json/issues/30)
 * Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.
 * Vertices
-   * Reorder for the vertex cache (we already have JavaScript [code](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Tipsify.js) to do this client-side).
+   * Reorder for the pre- and post- vertex-shader caches (we already have JavaScript [code](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Tipsify.js) to do this client-side).
    * Adjust vertex formats, e.g., `float` to `unsigned byte` for colors.
 * Textures
    * Reduce the size of large textures that are not likely to take up a lot of screen space.
