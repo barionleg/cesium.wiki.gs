@@ -2,11 +2,18 @@ Design and implementation ideas for models.
 
 ## Features
 
+### General Model Features
+
 * COLLADA features
    * Common Profile - most models today use the common profile AFAIK.  We need to generate shaders based on their materials.
    * GLES2 - Recommended for use with WebGL.  Do any models use it yet?
    * COLLADA FX - for writing shaders for things like metal, foil, etc.
-   * COLLADA Animation - for articulating things like satellite solar panels and aircraft landing gear; rigs for robot arms; rigid body dynamics driving explosions; and skinning deformations.
+   * COLLADA Animation
+      * Programmable control over articulations for animating things like satellite solar panels and aircraft rudder and landing gear; wheels on ground vehicles; communication dishes; rigs for robot arms; rigid body dynamics driving explosions; and skinning deformations.
+      * Time-tagged key-frames for walk cycle, run cycle, ISS robotic arms, bay of shuttle, etc.
+      * Do not need physics now if we have key-frame animation.
+   * Skinning
+   * Is LOD part of the model or part of the REST API requesting it?
 * Work in Columbus view.  The model scale will need to be adjusted - and will be relative to the projection
 * Work in 2D.  Render model to texture from top-down view; lay over top the 2D map as a billboard.  The model will appear lit and changes in orientation, e.g., banked aircraft turns, will be seen.  Awesome.
 * COLLADA to WebGLTF conversion (see below)
@@ -16,6 +23,21 @@ Design and implementation ideas for models.
    * CZML references external models.
    * Time-varying CZML can manipulate model animation (articulations), materiel properties, etc.
    * CZML includes a subset of model JSON, e.g., geometry (or all of it)?
+
+### Cesium-Specific Features
+
+These are engine/app level features.
+
+* Attach points.  _General feature: need access to node's transform (to root) by name.  The transform can change over time due to animation, user interaction, etc._
+   * Attach vapor trails to the back of a launch vehicle.
+   * Attach a sensor to the front of a UAV.
+* Pointing.  _Need Cesium-level semantics for sun, other objects, etc. to control direction and up vectors_.
+   * _General_: Point a quad toward the camera, e.g., foliage, explosion, Rudolph's nose, etc.
+   * Point satellite solar panels to the sun.
+   * Point sensor on aircraft to a ground station.
+
+
+xxxx
 
 ## WebGL Transmission Format
 
@@ -40,7 +62,9 @@ Required:
    * Generate shaders - Create GLSL shaders for models using the Common Profile (fixed function), which is most models.
    * Convert textures - Convert image files to a format supported by the browser, e.g., .tiff to .png.
 
-Optional for performance (these _could_ also be done client-side):
+Optional for performance (some of these _could_ also be done client-side):
+
+* Compression, e.g., [webgl-loader](http://code.google.com/p/webgl-loader/).  Also see [X3D Binary Compression](http://www.web3d.org/wiki/index.php/X3D_Binary_Compression_Capabilities_and_Plans).
 * Flatten tree:  if transforms are static, the tree can be flattened and positions adjusted so there are less batch-breaking model transform uniforms set, and, therefore, less draw calls. [#30](https://github.com/KhronosGroup/collada2json/issues/30)
 * Auto generate discrete geometric LOD using [quadric error metrics](http://mgarland.org/archive/cmu/quadrics/).  Perhaps even stream just the lowest LOD to the client to start.
 * Vertices
@@ -90,8 +114,8 @@ Will we be able to render models directly from the provider's APIs or do we need
 
 ## Tools
 
-* Model editor - load models into a Cesium scene, tweak their animations, etc.
-   * Perhaps part of Sandcastle.
+* Model viewer/editor - load models into a Cesium scene, tweak their materials, animations, etc.
+   * Server with file-watcher that converters saved COLLADA to WebGL TF and uses web sockets to push to viewer.
 * Useful to integrate with existing WebGL modeling tools?  Do any of these have APIs for accessing models?
    * [3DTin](http://www.3dtin.com/)
    * [Bevelity](http://www.bevelity.com/)
@@ -114,10 +138,6 @@ Will we be able to render models directly from the provider's APIs or do we need
 
 * Models should probably be a CZML extension since if they were core, [WebGL TF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) would require that CZML clients support WebGL, or at least support GLSL for the shaders.
 
-## Later
-
-* Take a close look at [webgl-loader](http://code.google.com/p/webgl-loader/) for mesh compression.
-
 ## Resources
 
 Reading
@@ -125,6 +145,7 @@ Reading
 * [COLLADA & WebGL](http://www.slideshare.net/remi_arnaud/collada-webgl) - Skip to Slide 43.
 
 Models
+* [AGI 3D Models](http://www.agi.com/resources/downloads/data/3d-models/)
 * [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
 
 ## Older Research
