@@ -71,7 +71,7 @@ If you are interested in implementing any of these features, start a discussion 
    * [OWF](https://www.owfgoss.org/) widget
    * Embeddable Cesium Viewer
    * Improved TimeLine widget
-   * Standard Cesium toolbar - [details](Toolbar-Details)
+   * Standard Cesium toolbar - [details](Cesium-standard-actions)
    * CZML Table of contents/Document Manager widget
 
 ## Google Summer of Code Ideas
