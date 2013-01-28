@@ -9,7 +9,7 @@ Design and implementation ideas for our screen-space rendering algorithms.
 * Full-screen or custom size.
 * Tweak uniforms, e.g., brightness.
 * Read from color and depth.
-   * Name textures earlier in the pipeline and access them as input by name, e.g., a glow map or velocity buffer.
+   * Name textures earlier in the pipeline and access them as input by name, e.g., a glow map or velocity buffer.  For example, perhaps `cesium://textures/velocity`, `cesium://textures/myLight/depthMap`, `cesium://cubemaps/skybox`, etc.
    * Read different resolutions?
 * Render anywhere in the pipeline, not just at the end.
 * A built-in set of common filters.
