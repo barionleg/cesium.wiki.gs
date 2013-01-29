@@ -1,67 +1,36 @@
 ## Supported mobile platforms
 
-Cesium currently runs on a variety of Android phones and tablets in [Mozilla Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox) and [Google Chrome Beta](https://play.google.com/store/apps/details?id=com.chrome.beta).  In Firefox, WebGL support is enabled out of the box.  In Chrome, it must be explicitly enabled by visiting [chrome://flags](chrome://flags).
+Cesium currently runs on a variety of Android phones and tablets in [Mozilla Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox) and [Google Chrome Beta](https://play.google.com/store/apps/details?id=com.chrome.beta).  In Firefox, WebGL support is enabled out of the box.  In Chrome, it must be explicitly enabled by visiting [chrome://flags](chrome://flags). We hope WebGL will be enabled by default in the future.
 
 ![Enabling WebGL in Chrome Beta](mobile/Chrome-Beta-WebGL.jpg)
 
-As of this writing (October 2012) only two mobile browsers officially support WebGL:
-[Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox) and
-[Opera Mobile](https://play.google.com/store/apps/details?id=com.opera.browser), both
-for Android.  Of those, Cesium is not currently able to run on Opera, so Firefox is
-the only viable choice.  Not all Android hardware is currently able to run Cesium
-on Firefox for Android.
+Cesium runs on Android 4.0+ devices with a variety of GPUs.  Devices on this list are at least able to run Cesium Viewer and rotate and zoom the base globe in at least one of the two browsers mentioned above.  Other features may or may not work correctly.
 
-UPDATE(1) 04-Nov-2012: In early October 2012, testing showed WebGL problems in Firefox Stable
-that didn't exist in Firefox Beta.  By November 2012, Beta had been promoted to Stable,
-correcting this particular type of problem (tested Firefox 16.0.2 for Android).
+* NVIDIA Tegra 3 devices, including the ASUS Transformer Prime TF201 and Google Nexus 7.
+* Qualcomm Adreno 225 devices, including the HTC EVO 4G LTE.
+* Qualcomm Adreno 320 devices, including the Google Nexus 4.
 
-UPDATE(2) 04-Nov-2012: [Issue #309](https://github.com/AnalyticalGraphicsInc/cesium/pull/309)
-corrected a problem with Dojo widget startup order that fixed some serious issues on the
-Motorola Xoom and other platforms.
+Have you tried running Cesium on your mobile device?  Did it work?  Either way, [let us know](https://groups.google.com/d/forum/cesium-dev).
 
-* ASUS Transformer Prime TF201, Android 4.0.3
-   * Needs re-testing (believed fixed per updates above).
-* Motorola Xoom 4G, Android 4.0.4, tested 04-Nov-2012
-   * Firefox Stable & Beta both work with CesiumViewer and the Simple CZML Demo.
-   * Unit tests show some failures, such as `Renderer/BuiltinFunctions has czm_eyeToWindowCoordinates` (Expected { 0 : 0, 1 : 0, 2 : 0, 3 : 0} to equal [255, 255, 255, 255].
-   * Dojo drop-downs appear broken, with `Illegal operation on WrappedNative prototype object`.
-* HTC Evo 4G LTE Sprint, Android 4.0.3, tested 04-Nov-2012
-   * Firefox Stable & Beta show a black screen, don't count time, nothing appears in tab thumbnail.
-* Nexus 4 and Nexus 7, Android 4.2.1, tested 05-Dec-2012
-   * Cesium Viewer in `master` runs in Firefox Stable.
+## WebGL on iOS devices
 
-## Future potential platforms
-
-We are hoping and expecting both Apple and Google to enable WebGL on their mobile browsers
-by default, but there is no known time frame for this.  Apple iOS apparently has hidden
+Apple iOS apparently has hidden
 options to [enable WebGL via undocumented calls](http://atnan.com/blog/2011/11/03/enabling-and-using-webgl-on-ios/)
 to the WebView interface, that has been discovered and published by
 bloggers.  [WebGL Browser](http://benvanik.github.com/WebGLBrowser/) takes
-advantage of this to provide a WebGL implementation.
+advantage of this to provide a WebGL implementation.  We have not tried running Cesium on a device with this hack.
 
-## Supported features
+## Known Problems
 
-* The CesiumViewerWidget supports single-touch-slide globe rotation
-* The TimelineWidget supports single-tap to change time, single-touch-slide to pan (only when zoomed in), and double-touch-slide to zoom.
-
-## Planned features
-
-* CesiumViewerWidget should of course support double-touch-slide to zoom.
-* It's been recommended that TimelineWidget should always set the time with single touches, and pan and zoom only with double touches.  This would make it behave more like the desktop version.  Care must be taken to not mistake the first touch of a double-touch for a time-setting event.
+* Globe imagery looks smeared at medium zoom levels, though it looks correct when zoomed out and when zoomed in.  This is a result of insufficient fragment shader precision on most mobile devices for Cesium's GPU mercator->geographic imagery reprojection.  In the future we will attempt to detect the lack of precision and fall back on a (slower) CPU reprojection.  A good workaround in the meantime is to use only imagery with a geographic (EPSG:4326) projection.
+* On Adreno 225 GPUs (and probably others), billboards and sensors do not render correctly.
 
 ## Debugging tools
 
-The primary tool used so far is the Android USB debugging bridge, which displays Firefox console messages on a PC.  Better tools are available:
+Setting up Google Chrome Beta for remote debugging is easy and the remote debugger is very high quality.  In Google Chrome on your Android device, go to Settings->Developer tools and check "Enable USB Web debugging".  Then, tap "Learn more about using USB Web debugging" for instructions on debugging from your computer.  You'll need the Android SDK and a USB driver for your device installed on your computer.
 
-* [Remote debugging for Firefox](https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/)
-* [Opera Dragonfly](http://www.opera.com/dragonfly/documentation/) can [remotely connect](http://www.opera.com/dragonfly/documentation/remote/) to Opera Mobile.
-* Google Chrome for Android [allows remote debugging](https://developers.google.com/chrome/mobile/docs/debugging)
-* [JS Console](http://jsconsole.com/) allows remote execution of JavaScript in almost any browser.
+Firefox also supports [remote debugging]((https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/):
 
-Keep an eye on the [JSD2 branch of Firebug](https://github.com/firebug/firebug/commits/jsd2) which
-will enable remote debugging via [Firebug](https://getfirebug.com/).
-
-Remote debugging with Firefox:
 * Install the [Android SDK](http://developer.android.com/sdk/index.html).
     * If Eclipse is already installed or you do not plan to develop with Eclipse, expand "Use an Existing IDE" and download/install the SDK tools.
     * Otherwise, download/install the "ADT Bundle", which is bundled with Eclipse and has the plugin configured.
