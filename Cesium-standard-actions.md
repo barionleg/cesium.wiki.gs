@@ -64,6 +64,14 @@ This table describes some of the actions we have in mind; though there are most 
     <td>?</td>
   </tr>
   <tr>
+    <th>Measuring Tool</th>
+    <td>Draws a line measuring and displaying surface distance on the earth.</td>
+    <td>Y</td>
+    <td>Y</td>
+    <td>Y</td>
+    <td>Y</td>
+  </tr>
+  <tr>
     <th>Full screen</th>
     <td>Toggles the supplied HTML element (usually the entire Cesium App) into full screen mode.</td>
     <td>Y</td>
