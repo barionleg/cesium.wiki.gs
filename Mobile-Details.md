@@ -10,6 +10,8 @@ Cesium runs on Android 4.0+ devices with a variety of GPUs.  Devices on this lis
 * Qualcomm Adreno 225 devices, including the HTC EVO 4G LTE.
 * Qualcomm Adreno 320 devices, including the Google Nexus 4.
 
+To learn what GPU your mobile device has, visit [chrome://gpu](chrome://gpu) in Google Chrome or (about:support)(about:support) in Mozilla Firefox.
+
 Have you tried running Cesium on your mobile device?  Did it work?  Either way, [let us know](https://groups.google.com/d/forum/cesium-dev).
 
 ## WebGL on iOS devices
