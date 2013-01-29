@@ -22,6 +22,8 @@ to the WebView interface, that has been discovered and published by
 bloggers.  [WebGL Browser](http://benvanik.github.com/WebGLBrowser/) takes
 advantage of this to provide a WebGL implementation.  We have not tried running Cesium on a device with this hack.
 
+Sadly, the closed nature of iOS prevents third parties like Mozilla from enabling WebGL on iOS as they did on Android.
+
 ## Known Problems
 
 * Globe imagery looks smeared at medium zoom levels, though it looks correct when zoomed out and when zoomed in.  This is a result of insufficient fragment shader precision on most mobile devices for Cesium's GPU mercator->geographic imagery reprojection.  In the future we will attempt to detect the lack of precision and fall back on a (slower) CPU reprojection.  A good workaround in the meantime is to use only imagery with a geographic (EPSG:4326) projection.
