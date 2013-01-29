@@ -22,7 +22,7 @@ to the WebView interface, that has been discovered and published by
 bloggers.  [WebGL Browser](http://benvanik.github.com/WebGLBrowser/) takes
 advantage of this to provide a WebGL implementation.  We have not tried running Cesium on a device with this hack.
 
-Sadly, the closed nature of iOS prevents third parties like Mozilla from enabling WebGL on iOS as they did on Android.
+Sadly, Apple prohibits software developers from implementing their own browser.  Versions of Firefox and Chrome for iOS simply wrap the existing WebView interface and the closed nature of iOS prevents third parties like from enabling WebGL on iOS as they did on Android.
 
 ## Known Problems
 
