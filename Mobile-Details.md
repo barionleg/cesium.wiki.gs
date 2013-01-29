@@ -25,6 +25,7 @@ advantage of this to provide a WebGL implementation.  We have not tried running 
 Sadly, Apple prohibits software developers from implementing their own browser.  Versions of Firefox and Chrome for iOS simply wrap the existing WebView interface and the closed nature of iOS prevents third parties like from enabling WebGL on iOS as they did on Android.
 
 ## Known Problems
+The beta nature of WebGL support on mobile devices means that many issues are the result of driver bugs or browser issues outside of Cesium's control.  Until WebGL support matures, we'll keep track of those issues here.  If an issue is identified to be a genuine Cesium bug, we will write a regular issue for it and fix it accordingly.
 
 * Globe imagery looks smeared at medium zoom levels, though it looks correct when zoomed out and when zoomed in.  This is a result of insufficient fragment shader precision on most mobile devices for Cesium's GPU mercator->geographic imagery reprojection.  In the future we will attempt to detect the lack of precision and fall back on a (slower) CPU reprojection.  A good workaround in the meantime is to use only imagery with a geographic (EPSG:4326) projection.
 * On Adreno 225 GPUs (and probably others), billboards and sensors do not render correctly.
