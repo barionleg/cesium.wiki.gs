@@ -31,7 +31,7 @@ advantage of this to provide a WebGL implementation.  We have not tried running 
 
 Setting up Google Chrome Beta for remote debugging is easy and the remote debugger is very high quality.  In Google Chrome on your Android device, go to Settings->Developer tools and check "Enable USB Web debugging".  Then, tap "Learn more about using USB Web debugging" for instructions on debugging from your computer.  You'll need the Android SDK and a USB driver for your device installed on your computer.
 
-Firefox also supports [remote debugging]((https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/):
+Firefox also supports [remote debugging](https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/):
 
 * Install the [Android SDK](http://developer.android.com/sdk/index.html).
     * If Eclipse is already installed or you do not plan to develop with Eclipse, expand "Use an Existing IDE" and download/install the SDK tools.
