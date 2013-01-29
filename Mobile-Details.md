@@ -1,6 +1,6 @@
 ## Supported mobile platforms
 
-Cesium currently runs on a variety of Android phones and tablets in [Mozilla Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox) and [Google Chrome Beta](https://play.google.com/store/apps/details?id=com.chrome.beta).  In Firefox, WebGL support is enabled out of the box.  In Chrome, it must be explicitly enabled by visiting [chrome://flags](chrome://flags). We hope WebGL will be enabled by default in the future.
+Cesium currently runs on a variety of Android phones and tablets in [Mozilla Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox) and [Google Chrome Beta](https://play.google.com/store/apps/details?id=com.chrome.beta).  In Firefox, WebGL support is enabled out of the box.  In Chrome, it must be explicitly enabled by visiting [chrome://flags](chrome://flags). We hope and expect that WebGL will be enabled by default in the future.
 
 ![Enabling WebGL in Chrome Beta](mobile/Chrome-Beta-WebGL.jpg)
 
