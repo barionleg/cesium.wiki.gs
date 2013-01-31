@@ -6,6 +6,7 @@ Cesium currently runs on a variety of Android phones and tablets in [Mozilla Fir
 
 Cesium runs on Android 4.0+ devices with a variety of GPUs.  Devices on this list are at least able to run Cesium Viewer and rotate and zoom the base globe in at least one of the two browsers mentioned above.  Other features may or may not work correctly.
 
+* NVIDIA Tegra 2 devices, including the Motorola Xoom.
 * NVIDIA Tegra 3 devices, including the ASUS Transformer Prime TF201 and Google Nexus 7.
 * Qualcomm Adreno 225 devices, including the HTC EVO 4G LTE.
 * Qualcomm Adreno 320 devices, including the Google Nexus 4.
