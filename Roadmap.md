@@ -9,13 +9,14 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* Tutorials - [details](Tutorials-Details)
 * Streaming terrain - [details](Streaming-Terrain-Details)
-* Ocean improvements - [details](Ocean-Details)
 * COLLADA models - [details](Models-Details)
 * Widget improvements - [details](Widget-Details)
 * Playback widget - [details](Playback-Details)
 * Space features - [details](Space-features)
+* Tutorials - [details](Tutorials-Details)
+
+Also see the [Cesium in 2013](https://groups.google.com/cesium-dev/roG1XTqbcUk) discussion.
 
 ## To come
 
@@ -56,6 +57,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Run offline
 * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
 * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
+* Ocean improvements - [details](Ocean-Details)
 * CZML
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
    * Buffer availability and "buffering" behavior
