@@ -16,7 +16,7 @@ We're always looking to:
 * Space features - [details](Space-features)
 * Tutorials - [details](Tutorials-Details)
 
-Also see the [Cesium in 2013](https://groups.google.com/cesium-dev/roG1XTqbcUk) discussion.
+Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
 
 ## To come
 
