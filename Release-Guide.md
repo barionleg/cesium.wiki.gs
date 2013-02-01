@@ -24,8 +24,7 @@ There is no release manager; instead, our community shares the responsibility.  
    * `git tag -a b7 -m 'b7 release'`
    * `git push --tags`
 1. Create a zip file of the build `./Tools/apache-ant-1.8.2/bin/ant clean makeZipFile`
-1. Upload the zip to the [website](http://cesium.agi.com/).  See the _Adding a New Cesium Release_ section of the website wiki.
-1. Write a [blog](http://cesium.agi.com/blog.html) with a link to [CHANGES.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CHANGES.md), highlights for the release, and choice screenshots.
+1. Deploy to the [website](http://cesium.agi.com/).  See the _Adding a New Cesium Release_ section of the website wiki.
 1. Reply to your courtesy message on the [forum](https://groups.google.com/forum/#!forum/cesium-dev) to let everyone know the release is ready.
 
 Also, see our [release discussion](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo) on the forum.
