@@ -89,13 +89,15 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Run Eclipse. Close the Welcome page.
 
-* Window - Preferences - Team - Git - Configuration
-    * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
-    * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
-
 * Window - Show View - Console.
 
-* Window - Preferences.  General - Editors - Text Editors.  Check Insert spaces for tabs.  OK.
+* Window - Preferences:
+   * Team - Git - Configuration
+      * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
+      * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
+   * General - Editors - Text Editors.  Check Insert spaces for tabs.  OK.
+   * Web - CSS Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.
+   * Web - HTML Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.
 
 ![Configuring "Insert spaces for tabs"](tabs.png)
 
