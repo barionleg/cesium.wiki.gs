@@ -1,4 +1,4 @@
-* Inertial frame
+* ~~Inertial frame~~
 * Viewing in LLVH
 * Ellipsoid improvements
    * ~~Eliminate jitter - [#392](https://github.com/AnalyticalGraphicsInc/cesium/issues/392)~~
