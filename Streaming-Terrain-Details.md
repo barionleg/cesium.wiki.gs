@@ -34,6 +34,7 @@ Later:
 * Set up a simple terrain server to host the default Cesium terrain.
 * Set up a more sophisticated terrain server with better data, meshes instead of heightmaps, geometric error information, etc.
 * Don't round-trip Mercator imagery to Geographic and back when using a Mercator projection in 2D or Columbus View.
+* Improve occludee point computation.  It currently ignores terrain and uses the Earth's minimum radius as the bounding sphere.  These two wrongs seem to cancel each other out well enough that I've never seen artifacts from it, but the horizon culling is probably not optimal.
 
 ## Data sources
 
