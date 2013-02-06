@@ -402,9 +402,7 @@ _TODO: need simple but inspiring examples of writing custom materials with Fabri
 <a id="FabricSchema"></a>
 ## Fabric Schema
 
-_TODO: link to schema when it's in master._
-
-A [JSON Schema](http://json-schema.org/) for Fabric is in the Cesium repo.  This details all Fabric properties and sub-properties, including `type`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
+A [JSON Schema](http://json-schema.org/) for Fabric [is in the Cesium repo](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Documentation/Schemas/Fabric).  This details all Fabric properties and sub-properties, including `type`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
 
 In addition to more rigorous Fabric documentation, the schema can be used to validate Fabric using a tool like [JSV](https://github.com/garycourt/JSV).
 
