@@ -37,6 +37,7 @@ Later:
 * Improve occludee point computation.  It currently ignores terrain and uses the Earth's minimum radius as the bounding sphere.  These two wrongs seem to cancel each other out well enough that I've never seen artifacts from it, but the horizon culling is probably not optimal.
 * Upsample `TerrainMesh` instead of `TerrainData`?  This could yield better performance, but at a memory cost because the mesh is bigger than the raw data, at least for heightmap terrain.
 * Allow upsampling across more than one level at a time.  This (may?) be necessary to skip levels when refining.
+* Don't compute 2D bounding spheres every frame.
 
 ## Data sources
 
