@@ -9,7 +9,6 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* Streaming terrain - [details](Streaming-Terrain-Details)
 * COLLADA models - [details](Models-Details)
 * Widget improvements - [details](Widget-Details)
 * Playback widget - [details](Playback-Details)
@@ -46,6 +45,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Particle system
 * Volumetric clouds
 * Imagery layers improvements - [details](Imagery-Layers-Details)
+* Streaming terrain - [details](Streaming-Terrain-Details)
 * Sandcastle improvements - [details](Sandcastle-Details)
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
 * Material system improvements - [details](Material-System-Details)
