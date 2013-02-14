@@ -8,7 +8,7 @@ Tips
 
 * Just knowing that our code is going to be reviewed helps improve its quality and our rigor, e.g., we don't skimp on tests and doc.
 * Anyone is encouraged to review anything that interests them.  However, someone familiar with the changed code should ultimately merge the pull request.
-* Some changes can be reviewed by reading the code alone; others require running the code, examples, and tests.
+* Some changes can be reviewed by reading the code alone; others require running the code, examples, and tests.  Don't forget to check for JSHint warnings, either through Eclipse or by running the `jsHint` Ant task.
 * Most pull requests require additional commits, often minor but sometimes major, before being merged.
 * Comments are about code, not the person who wrote the code.  Don't be offended by a reviewer's comments and don't aim to offend when commenting.  We all have the same vision and want the same thing - to be awesome.
 * Be concise.  Make every word tell.  Less reading means more coding.
