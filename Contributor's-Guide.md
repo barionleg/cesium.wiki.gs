@@ -83,6 +83,7 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 ![The JSHint installation dialog](jshint.png)
 
+* _Optional_: Install the [plugin](http://www.winterwell.com/software/markdown-editor.php) for editing markdown.
 * _Optional_: Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
 
 ![The Eclipse dropins directory](glshaders.png)
