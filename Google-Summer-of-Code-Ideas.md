@@ -1,5 +1,7 @@
 # Google Summer of Code 2013 Idea List
 
+Cesium is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.
+
 **Information for Students**
 
 Cesium developers are eager to work with you.  Our code has shipped to [10's of millions of people in the same day](http://cesium.agi.com/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
@@ -10,11 +12,19 @@ If you have questions about your proposal, email the project's mentor or discuss
 
 ### Mobile Performance
 
-TBA.
+[WebGL](http://www.khronos.org/webgl/) support is improving rapidly on Android.  Chrome Beta and Firefox are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
+
+Help us optimize Cesium for these devices.  We will profile to find hot-spots and then tune the GPU code written in GLSL or the CPU code written in JavaScript or both.  We'll consider fundamental architecture changes as needed and will carefully make visual quality vs. speed trade-offs.
+
+Since this is the bleeding edge, we expect to find bugs in the browsers and GPU drivers.  We'll work with browser and GPU vendors to resolve these and make the mobile platform better for everyone.
+
+References
+* [Cesium Mobile Compatibility](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Mobile-Details)
+* [Fast Mobile Shaders](http://aras-p.info/texts/files/FastMobileShaders_siggraph2011.pdf)
 
 **Skills:** WebGL, JavaScript, Android, profiling, low-level optimizations for JavaScript and GLSL, git
 
-**Level:** Intermediate
+**Level:** Advanced
 
 **Mentor:** Kevin?
 
