@@ -9,7 +9,8 @@ We're always looking to:
 * Improve tests and test coverage; however, we don't blindly chase coverage statistics
 
 ## In progress
-* COLLADA models - [details](Models-Details)
+* Google Summer of Code Ideas - [details](Google-Summer-of-Code-Ideas)
+* 3D models - [details](Models-Details)
 * Widget improvements - [details](Widget-Details)
 * Playback widget - [details](Playback-Details)
 * Space features - [details](Space-features)
@@ -76,14 +77,6 @@ If you are interested in implementing any of these features, start a discussion 
    * Improved TimeLine widget
    * Standard Cesium toolbar - [details](Cesium-standard-actions)
    * CZML Table of contents/Document Manager widget
-
-## Google Summer of Code Ideas
-
-[Program details](http://code.google.com/soc/).  Most likely due March, 2013.
-
-* Add CZML rendering to Google Maps and/or other popular web mapping APIs
-* Particle system
-* GML to CZML converter
 
 ## Google Code-in
 
