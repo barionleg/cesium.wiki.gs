@@ -22,7 +22,7 @@ References
 * [Cesium Mobile Compatibility](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Mobile-Details)
 * [Fast Mobile Shaders](http://aras-p.info/texts/files/FastMobileShaders_siggraph2011.pdf)
 
-**Skills:** WebGL, JavaScript, Android, profiling, low-level optimizations for JavaScript and GLSL, git
+**Skills:** WebGL, JavaScript, Android, profiling, optimizing JavaScript and GLSL, git
 
 **Level:** Advanced
 
