@@ -28,8 +28,6 @@ References
 
 **Mentor:** Kevin?
 
-near-to-far
-
 ## Graphics
 
 ### Declutter for Map Labels
