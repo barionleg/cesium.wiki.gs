@@ -8,11 +8,11 @@ Cesium developers are eager to work with you.  Our code has shipped to [10's of 
 
 If you have questions about your proposal, email the project's mentor or discuss it on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  We encourage innovation; we are open to proposals for original projects not listed here.
 
-## Mobile Projects
+## Android Projects
 
-### Mobile Performance
+### Android Performance
 
-[WebGL](http://www.khronos.org/webgl/) support is improving rapidly on Android.  Chrome Beta and Firefox are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
+WebGL support is improving rapidly on Android.  Chrome Beta and Firefox are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
 
 Help us optimize Cesium for these devices.  We will profile to find hot-spots and then tune the GPU code written in GLSL or the CPU code written in JavaScript or both.  We'll consider fundamental architecture changes as needed and will carefully make visual quality vs. speed trade-offs.
 
