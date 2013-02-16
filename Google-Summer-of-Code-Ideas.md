@@ -1,6 +1,6 @@
 # Google Summer of Code 2013 Idea List
 
-Cesium is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.
+Cesium is an open-source JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.
 
 **Information for Students**
 
