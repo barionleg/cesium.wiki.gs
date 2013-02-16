@@ -28,6 +28,8 @@ References
 
 **Mentor:** Kevin?
 
+**Backup Mentor:** Cozzi?
+
 ## Graphics
 
 ### Declutter for Map Labels
@@ -40,6 +42,8 @@ TBA.
 
 **Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
+**Backup Mentor:** TBA
+
 ### Compass Rendering
 
 TBA.
@@ -49,6 +53,8 @@ TBA.
 **Level:** Advanced
 
 **Mentor:** Dan?
+
+**Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
 ## Geospatial Projects
 
@@ -62,6 +68,8 @@ TBA. [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbosto
 
 **Mentor:** Amato?
 
+**Backup Mentor:** TBA
+
 ### Vector Data Visualization with the Web Feature Service
 
 TBA. [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs)
@@ -71,6 +79,8 @@ TBA. [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs)
 **Level:** Intermediate
 
 **Mentor:** Cozzi?
+
+**Backup Mentor:** TBA
 
 ### Vector Data Visualization with the Geography Markup Language
 
@@ -82,6 +92,8 @@ TBA. [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/g
 
 **Mentor:** TBA
 
+**Backup Mentor:** TBA
+
 ### Dynamic Raster Data with the Web Map Tile Service
 
 TBA. [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
@@ -91,6 +103,8 @@ TBA. [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
 **Level:** Intermediate
 
 **Mentor:** TBA
+
+**Backup Mentor:** TBA
 
 ## UI
 
@@ -104,6 +118,8 @@ TBA. #450
 
 **Mentor:** TBA
 
+**Backup Mentor:** TBA
+
 ## Misc
 
 ### Offline Web App Support
@@ -115,3 +131,5 @@ TBA.
 **Level:** Novice
 
 **Mentor:** TBA
+
+**Backup Mentor:** TBA
