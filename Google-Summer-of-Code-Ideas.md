@@ -36,7 +36,7 @@ References
 
 TBA.
 
-**Skills:** JavaScript, NP-hard algorithm design, git
+**Skills:** JavaScript, NP-hard algorithm design, strong math, code and algorithm optimization, git
 
 **Level:** Advanced
 
