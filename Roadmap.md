@@ -59,6 +59,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
 * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
 * Ocean improvements - [details](Ocean-Details)
+* [Lens Flare](http://www.john-chapman.net/content.php?id=18)
 * CZML
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
    * Buffer availability and "buffering" behavior
