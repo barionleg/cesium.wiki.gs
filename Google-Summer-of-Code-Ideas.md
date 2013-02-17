@@ -118,7 +118,7 @@ References
 
 **Backup Mentor:** TBA
 
-### Dynamic Raster Data with Web Map Tile Service
+### Raster Data Visualization with Web Map Tile Service
 
 Cesium draws 3D maps retrieved using many map standards like [Web Map Service (WMS)](http://www.opengeospatial.org/standards/wms) and [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Main_Page).  These standards provide access to high-resolution static map tiles.
 
