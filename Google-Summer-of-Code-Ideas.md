@@ -8,6 +8,8 @@ Cesium developers are eager to work with you.  Our code has shipped to [10's of 
 
 If you have questions about your proposal, email the project's mentor or discuss it on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  We encourage innovation; we are open to proposals for original projects not listed here.
 
+_Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).
+
 ## Android Projects
 
 ### Android Performance
@@ -34,9 +36,17 @@ References
 
 ### Declutter for Map Labels
 
-TBA.
+A classic problem in drawing 2D or 3D maps is the overlap of nearby text labels, resulting in a cluttered display and illegible labels.  We will design and implement an efficient real-time algorithm to declutter map labels, avoiding or minimizing overlap.
 
-**Skills:** JavaScript, NP-hard algorithm design, strong math, code and algorithm optimization, git
+This is an NP-hard problem, and therefore we will solve it heuristically in an attempt to minimize the amount we move each label and maintain temporal aesthetics.  We will also explore creating hierarchies of labels using [k-means](http://home.dei.polimi.it/matteucc/Clustering/tutorial_html/kmeans.html) and/or knowledge of label relationships, e.g., street - city - county - state.
+
+The algorithm needs to be very efficient; it must run in JavaScript and work for 100s of dynamic labels or 1000s of static labels.
+
+References
+* [Temporally Coherent Real-Time Labeling of Dynamic Scenes](http://wwwcg.in.tum.de/research/research/publications/2012/temporally-coherent-real-time-labeling-of-dynamic-scenes.html)
+* [K-Means Clutering](http://home.dei.polimi.it/matteucc/Clustering/tutorial_html/kmeans.html)
+
+**Skills:** JavaScript, algorithm design, strong math, code and algorithm optimization, git
 
 **Level:** Advanced
 
