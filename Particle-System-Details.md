@@ -38,6 +38,10 @@ Abstractions
       * Positions goes below WGS84.  Positions goes outside of bounding volume, etc.
       * _TODO_: Could more general `ParticleManipulator` that can start changing the particle's `alpha` to fade out, etc.
 
+Reading TODO
+* [The Design of an API for Particle Systems](http://www.cs.unc.edu/techreports/00-007.pdf)
+* [Hardware-based Simulation and Collision Detection for Large Particle Systems](http://www.cg.informatik.uni-siegen.de/data/Publications/2004/GH2004.pdf)
+
 Still need to think about:
 * Determine coarse bounding volume so it doesn't need to be updated each frame.
 * Update/collide when culled?
