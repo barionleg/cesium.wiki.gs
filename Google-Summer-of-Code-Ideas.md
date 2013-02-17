@@ -70,23 +70,18 @@ TBA. [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbosto
 
 **Backup Mentor:** TBA
 
-### Vector Data Visualization with the Web Feature Service
+### Vector Data Visualization with Geography Markup Language
 
-TBA. [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs)
+[Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for expressing geographical features, e.g., points, polylines, and polygons, in XML.
 
-**Skills:** JavaScript, REST APIs, git, open standards, geospatial
+We will add support to Cesium to draw and style features from GML.  The GML spec is quite large with many different feature types.  We can limit our scope to the OpenGIS GML Simple Features Profile, which defines a common subset.
 
-**Level:** Intermediate
+This project is a stepping stone to supporting [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs) below.
 
-**Mentor:** Cozzi?
+References
+* [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml)
 
-**Backup Mentor:** TBA
-
-### Vector Data Visualization with the Geography Markup Language
-
-TBA. [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml)
-
-**Skills:** C#, JavaScript, git, open standards, geospatial
+**Skills:** C#, JavaScript, XML, git, open standards, geospatial
 
 **Level:** Intermediate
 
@@ -94,7 +89,26 @@ TBA. [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/g
 
 **Backup Mentor:** TBA
 
-### Dynamic Raster Data with the Web Map Tile Service
+### Vector Data Visualization with Web Feature Service
+
+[Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for requesting geographical features, e.g., points, polylines, and polygons, over the web.
+
+We will add support to Cesium to request geographical features using WFS over HTTP, and draw and style them.  Time permitting, we will also implement client-side creation, deletion, and modification of features and the resulting server updates using WFS-T (Transactional).
+
+This project depends on the [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml) project above since WFS features are returned using GML (based on XML).  GML support can be considered a subset of this project or a separate project.
+
+References
+* [Web Feature Service](http://www.opengeospatial.org/standards/wfs)
+
+**Skills:** JavaScript, web services, XML, git, open standards, geospatial
+
+**Level:** Intermediate
+
+**Mentor:** TBA
+
+**Backup Mentor:** TBA
+
+### Dynamic Raster Data with Web Map Tile Service
 
 TBA. [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
 
@@ -125,6 +139,11 @@ TBA. #450
 ### Offline Web App Support
 
 TBA.
+
+References
+* [HTML5 Features - Offline](http://www.html5rocks.com/en/features/offline)
+* [HTML5 Features - Storage](http://www.html5rocks.com/en/features/storage)
+* [Dive Into HTML5: Let's Take This Offline](http://diveintohtml5.info/offline.html)
 
 **Skills:** JavaScript, HTML5, git
 
