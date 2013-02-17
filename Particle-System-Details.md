@@ -79,3 +79,4 @@ Rendering
 * [Generic Particle System](http://www.terathon.com/wiki/index.php/Generic_Particle_System) in the C4 Engine
 * [sparks.js](https://github.com/zz85/sparks.js)
 * [Creating Particles with Three.js](http://www.aerotwist.com/tutorials/creating-particles-with-three-js/)
+* [Three.js Clouds](http://mrdoob.com/lab/javascript/webgl/clouds/)
