@@ -186,7 +186,11 @@ TODO
 
 * Callback functions as commands?
 * Scissor out pick rectangle
-* Post-processing - color per frame, depth per frustum?
+* [Post-processing](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Screen-Space-Rendering-Details) - color per frame, depth per frustum?
+* Shadows
+   * [Shadows for Real-Time Rendering](http://cis565-fall-2012.github.com/lectures/10-24-Shadows.pptx)
+   * [Soft Shadow Mapping](http://codeflow.org/entries/2013/feb/15/soft-shadow-mapping/)
+
 ## Resources
 
 * [Order your graphics draw calls around!](http://realtimecollisiondetection.net/blog/?p=86/)
