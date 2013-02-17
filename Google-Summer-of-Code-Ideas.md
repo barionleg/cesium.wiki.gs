@@ -84,7 +84,7 @@ TBA. [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbosto
 
 [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for expressing geographical features, e.g., points, polylines, and polygons, in XML.
 
-We will add support to Cesium to draw and style features from GML.  The GML spec is quite large with many different feature types.  We can limit our scope to the OpenGIS GML Simple Features Profile, which defines a common subset.
+In this project, we will add support to Cesium to draw and style features from GML.  The GML spec is quite large with many different feature types.  We can limit our scope to the OpenGIS GML Simple Features Profile, which defines a common subset.
 
 This project is a stepping stone to supporting [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs) below.
 
@@ -103,7 +103,7 @@ References
 
 [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for requesting geographical features, e.g., points, polylines, and polygons, over the web.
 
-We will add support to Cesium to request geographical features using WFS over HTTP, and draw and style them.  Time permitting, we will also implement client-side creation, deletion, and modification of features and the resulting server updates using WFS-T (Transactional).
+In this project, we will add support to Cesium to request geographical features using WFS over HTTP, and draw and style them.  Time permitting, we will also implement client-side creation, deletion, and modification of features and the resulting server updates using WFS-T (Transactional).
 
 This project depends on the [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml) project above since WFS features are returned using GML (based on XML).  GML support can be considered a subset of this project or a separate project.
 
@@ -120,7 +120,15 @@ References
 
 ### Dynamic Raster Data with Web Map Tile Service
 
-TBA. [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
+Cesium draws 3D maps retrieved using many map standards like [Web Map Service (WMS)](http://www.opengeospatial.org/standards/wms) and [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Main_Page).  These standards provide access to high-resolution static map tiles.
+
+In this project, we will add support for [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts), an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard.
+
+TBA. More info and is the scope big enough for this?
+
+References
+* [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
+* [Cesium Imagery Layers Tutorial](http://cesium.agi.com/2013/01/04/Cesium-Imagery-Layers-Tutorial/)
 
 **Skills:** JavaScript, REST APIs, git, open standards, geospatial
 
