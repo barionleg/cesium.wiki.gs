@@ -11,6 +11,11 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
   * This is missing a lot of detail.
   * Of course, we could also lay down z first, but the CPU overhead could be too high.
 * Shade surface with ambient occlusion, either precomputed and stored with terrain data or computed in screen space on the fly.
+* Interesting ways to morph terrain during transitions between 2D, 3D, and Columbus View?
+* Show terrain in 2D by bump mapping.
+* Minimize popping artifacts by morphing between terrain LODs.
+* Do per-pixel imagery LOD selection, blending between adjacent LODs.  This should drastically reduce hard lines between LODs when the imagery provider has a very different appearance at different LODs.
+* Does lazying down Z first improve performance?  Horizon views only?  Is walking the tree in front-to-back order enough?
 
 ## Culling
 
@@ -25,6 +30,11 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 * Avoid duplicate credits/logos when two layers from the same provider are shown, or if two providers have identical credits.
 * Show/hide layers based on viewer height(careful in 2D and Columbus view) or time? This may be done in Dynamic Scene, not Scene, but we need to think about it. More general display conditions could also be useful.
 * Ability to move - and possibility rotate - a texture on the globe so it better lines up with where the user expects it, e.g., with building models. To start, we need to decouple the extent the texture thinks it has with the extent that it is rendered in.
+* Add support for programmatic height queries.
+   * Pick on terrain and get exact position.
+   * Query height at point.  Get back exact height or height according to currently rendered LOD?
+   * Notifications when LOD under a point switches, so the point can be kept on terrain?
+
 
 ## Loading
 
@@ -37,6 +47,11 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 * Add a callback or some other way to learn that level 0 terrain/imagery is done loading.
 * Upsample `TerrainMesh` instead of `TerrainData`? This could yield better performance, but at a memory cost because the mesh is bigger than the raw data, at least for heightmap terrain.
 * Allow upsampling across more than one level at a time. This (may?) be necessary to skip levels when refining.
+* More efficiently encode terrain data for transmission:
+  * Use the Google Body techniques, encoding the mesh as a UTF-8 string: http://code.google.com/p/webgl-loader/wiki/BenCompressionStats
+  * Encode each tile as a delta from its parent:
+    * Parent tile indicates which of its vertices are in which quadrant with index ranges.
+    * Child has new vertices, index list linking parent and child vertices into triangles, and new index ranges describing the division of its vertices among its child quadrants.
 
 ## Data Sources
 
@@ -64,6 +79,7 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 * Show/hide layers based on viewer height(careful in 2D and Columbus view) or time? This may be done in Dynamic Scene, not Scene, but we need to think about it. More general display conditions could also be useful.
 * Blend maps for layers, e.g., specular, dirt, or destruction maps. I don't have any use cases, but these are certainty popular in games; however, the shading for each layer is different, i.e., they are not just diffuse components.
 * Add support for tiled normal maps.
+* Procedural shading by height, slope, etc.
 
 # Resources
 
