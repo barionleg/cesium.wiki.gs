@@ -2,15 +2,18 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 
 # Rendering
 
-* 
+* Use multiple passes to successfully render tiles even if the number of textures exceeds the number of texture units supported by the WebGL stack (minimum: 8). May also need to render in multiple passes if we use too many uniforms.
+  * Use blending in the render state to support layer alpha.
 
 # Culling
 
 * Improve computation of the "occludee point" used for horizon culling. It currently uses a sphere based on the ellipsoid's minimum radius, which is conservative, but using the actual ellipsoid will allow more tiles to be culled.
 
+# Interaction with other primitives
+
 # Loading
 
-# Data Sources
+# Additional Data Sources
 
 * Imagery
   * [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
