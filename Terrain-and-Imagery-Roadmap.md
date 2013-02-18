@@ -55,6 +55,7 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
     * Parent tile indicates which of its vertices are in which quadrant with index ranges.
     * Child has new vertices, index list linking parent and child vertices into triangles, and new index ranges describing the division of its vertices among its child quadrants.
 * When we've exceeded the actual terrain detail available, generate it procedurally using, for example, fractional Brownian motion: http://design.osu.edu/carlson/history/PDFs/p371-fournier.pdf
+* When upsampling terrain by subsetting it, can we avoid copying heights to a separate TypedArray and instead pass a range to the `HeightmapTessellator`?  The Web Worker will copy the whole thing anyway, so this may or may not be worthwhile.
 
 ## Data Sources
 
