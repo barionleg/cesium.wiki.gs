@@ -10,9 +10,9 @@ If you have questions about your proposal, email the project's mentor or discuss
 
 _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).
 
-## Android Projects
+# Android Projects
 
-### Android Performance
+## Android Performance
 
 WebGL support is improving rapidly on Android.  Chrome Beta and Firefox are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
 
@@ -32,9 +32,9 @@ References
 
 **Backup Mentor:** Cozzi?
 
-## Graphics
+# Graphics
 
-### Declutter for Map Labels
+## Declutter for Map Labels
 
 A classic problem in drawing 2D or 3D maps is the overlap of nearby text labels, resulting in a cluttered display and illegible labels.  We will design and implement an efficient real-time algorithm to declutter map labels, avoiding or minimizing overlap.
 
@@ -54,7 +54,7 @@ References
 
 **Backup Mentor:** TBA
 
-### Compass Rendering
+## Compass Rendering
 
 <img src="gsoc/2013/compass.png" />
 
@@ -68,9 +68,9 @@ TBA.
 
 **Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
-## Geospatial Projects
+# Geospatial Projects
 
-### Vector Data Visualization with JSON
+## Vector Data Visualization with JSON
 
 TBA. [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbostock/topojson)
 
@@ -82,7 +82,7 @@ TBA. [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbosto
 
 **Backup Mentor:** TBA
 
-### Vector Data Visualization with Geography Markup Language
+## Vector Data Visualization with Geography Markup Language
 
 [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for expressing geographical features, e.g., points, polylines, and polygons, in XML.
 
@@ -101,7 +101,7 @@ References
 
 **Backup Mentor:** TBA
 
-### Vector Data Visualization with Web Feature Service
+## Vector Data Visualization with Web Feature Service
 
 [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for requesting geographical features, e.g., points, polylines, and polygons, over the web.
 
@@ -120,7 +120,7 @@ References
 
 **Backup Mentor:** TBA
 
-### Raster Data Visualization with Web Map Tile Service
+## Raster Data Visualization with Web Map Tile Service
 
 Cesium draws 3D maps retrieved using many map standards like [Web Map Service (WMS)](http://www.opengeospatial.org/standards/wms) and [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Main_Page).  These standards provide access to high-resolution maps.
 
@@ -140,9 +140,9 @@ References
 
 **Backup Mentor:** TBA
 
-## UI
+# UI
 
-### Navigation Widget
+## Navigation Widget
 
 TBA. #450
 
@@ -154,9 +154,9 @@ TBA. #450
 
 **Backup Mentor:** TBA
 
-## Misc
+# Misc
 
-### Offline Web App Support
+## Offline Web App Support
 
 TBA.
 
