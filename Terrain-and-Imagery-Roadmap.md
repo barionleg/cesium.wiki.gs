@@ -16,6 +16,7 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 * Minimize popping artifacts by morphing between terrain LODs.
 * Do per-pixel imagery LOD selection, blending between adjacent LODs.  This should drastically reduce hard lines between LODs when the imagery provider has a very different appearance at different LODs.
 * Does lazying down Z first improve performance?  Horizon views only?  Is walking the tree in front-to-back order enough?
+* Terrain tile selection in Columbus View does not closely match 3D.  For example, it's hard to get the most detailed version of Mt. Everest in Columbus View.
 
 ## Culling
 
