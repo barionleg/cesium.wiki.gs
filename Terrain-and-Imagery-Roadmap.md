@@ -10,10 +10,13 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 * For better performance, we can minimize the complexity of fragment shading so only the most complex shading is done once. Ignoring alpha, a layer can be seen as a diffuse map (which may need to go through a brightness filter given how dark some tiles are). Instead of doing full lighting and atmosphere when rendering each tile, we can simply render the diffuse component, and then in a final pass, we can perform lighting with specular map, bump map, etc.
   * This is missing a lot of detail.
   * Of course, we could also lay down z first, but the CPU overhead could be too high.
+* Shade surface with ambient occlusion, either precomputed and stored with terrain data or computed in screen space on the fly.
 
 ## Culling
 
-* Improve computation of the "occludee point" used for horizon culling. It currently uses a sphere based on the ellipsoid's minimum radius, which is conservative, but using the actual ellipsoid will allow more tiles to be culled.
+* Improve computation of the "occludee point" used for horizon culling. It currently uses a sphere based on the ellipsoid's minimum radius, which is conservative, but using the actual ellipsoid will allow more tiles to be culled.  Also, it currently ignores terrain. These two wrongs seem to cancel each other out well enough that I've never seen artifacts from it, but the horizon culling is probably not optimal.
+* Frustum cull more accurately than with a tile bounding sphere.  Bounding spheres don't fit tiles very tightly.  Some ideas here: http://outerra.blogspot.com/2012/11/view-frustum-culling-of-sphere-mapped.html
+* Don't compute 2D bounding spheres every frame.
 
 ## Interaction with other parts of Cesium
 
@@ -29,8 +32,11 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 * Consider baking _multiple layers_ into a single texture per geometry tile. The downside to this is that it will be a performance hit when adjusting layer order, alpha, gamma, etc.
 * Handle other projections?  UTM?
 * Many APIs can restrict the zoom level. I assume it's useful - it's certainty trivial to expose in our code - but I'm not sure of the use cases. Performance?
-* Fix blurriness in 2D and Columbus View when using Mercator imagery and a Mercator projection. We'll probably do this by keeping the original Mercator images around for the first couple of levels.
+* Fix blurriness in 2D and Columbus View when using Mercator imagery and a Mercator projection. We'll probably do this by keeping the original Mercator images around for the first couple of levels.  Currently we do a round-trip from Mercator->Geographic->Mercator.
 * If a texture is completely occluded by opaque layers higher in the z-order, it does not need to be rendered. Actually, it doesn't need to be requested from the server. Hmm - could a proxy server do some compositing for us?
+* Add a callback or some other way to learn that level 0 terrain/imagery is done loading.
+* Upsample `TerrainMesh` instead of `TerrainData`? This could yield better performance, but at a memory cost because the mesh is bigger than the raw data, at least for heightmap terrain.
+* Allow upsampling across more than one level at a time. This (may?) be necessary to skip levels when refining.
 
 ## Data Sources
 
@@ -57,7 +63,7 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
   * There can also be a fast path for final adjustment where the processed textures are saved; however, to start adjusting again, we will need the source data.
 * Show/hide layers based on viewer height(careful in 2D and Columbus view) or time? This may be done in Dynamic Scene, not Scene, but we need to think about it. More general display conditions could also be useful.
 * Blend maps for layers, e.g., specular, dirt, or destruction maps. I don't have any use cases, but these are certainty popular in games; however, the shading for each layer is different, i.e., they are not just diffuse components.
-
+* Add support for tiled normal maps.
 
 # Resources
 
@@ -71,3 +77,10 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
    * OpenLayers - [doc](http://docs.openlayers.org/library/layers.html); [reference doc](http://dev.openlayers.org/releases/OpenLayers-2.11/doc/apidocs/files/OpenLayers/Layer-js.html); and lots of [examples](http://openlayers.org/dev/examples/) such as [layer opacity](http://openlayers.org/dev/examples/layer-opacity.html).
    * Leaflet - [doc](http://leaflet.cloudmade.com/reference.html) and [examples](http://leaflet.cloudmade.com/examples.html).
    * ArcGIS - See _Layer_ in the [doc](http://help.arcgis.com/en/webapi/javascript/arcgis/help/jsapi_start.htm) and [samples](http://help.arcgis.com/en/webapi/javascript/arcgis/help/jssamples_start.htm).
+
+## Sources of data
+
+* Terrain
+  * [National Elevation Dataset](http://ned.usgs.gov/) - High quality terrain data for the conterminous United States, Alaska, Hawaii, and territorial islands.  Resolution as high as 3 meters for parts of the U.S.
+  * [ASTER Global Digital Elevation Map](http://asterweb.jpl.nasa.gov/gdem.asp) - 30m resolution data for most of the world.
+  * [Shuttle Radar Topography Mission (SRTM)](http://www2.jpl.nasa.gov/srtm/) - 90m resolution data for most of the world.  There's also a nicely-processed version of available from [CGIAR-CSI](http://srtm.csi.cgiar.org/), but special permission is required to use this processed version commercially.
