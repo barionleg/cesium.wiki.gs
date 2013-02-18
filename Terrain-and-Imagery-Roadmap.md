@@ -1,1 +1,1 @@
-Cesium already has excellent support for streaming terrain and imagery, but there are lots of ways we can improve it.  This page catalogs the many possibilities.
+Cesium already has excellent support for streaming terrain and imagery, but there are lots of ways we can improve it.  This page catalogs the many possibilities.  Have ideas or want to get involved?  Introduce yourself on the [development mailing list](https://groups.google.com/d/forum/cesium-dev).
