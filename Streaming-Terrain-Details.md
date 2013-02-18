@@ -1,4 +1,4 @@
-This page has been replaced by the [Terrain and Imagery Roadmap].
+This page has been replaced by the [[Terrain and Imagery Roadmap]].
 
 When you fire up Cesium for the first time, the first thing you probably notice is the high-resolution imagery data.  As you zoom closer, however, you notice that the Earth is just a smooth spheroid.  Where's the terrain?
 
