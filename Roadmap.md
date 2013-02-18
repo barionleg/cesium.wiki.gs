@@ -14,6 +14,7 @@ We're always looking to:
 * Widget improvements - [details](Widget-Details)
 * Playback widget - [details](Playback-Details)
 * Space features - [details](Space-features)
+* Material system improvements - [details](Material-System-Details)
 * Tutorials - [details](Tutorials-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
@@ -49,7 +50,6 @@ If you are interested in implementing any of these features, start a discussion 
 * Streaming terrain - [details](Streaming-Terrain-Details)
 * Sandcastle improvements - [details](Sandcastle-Details)
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
-* Material system improvements - [details](Material-System-Details)
 * Stars improvements - [details](Stars-Details)
 * Website Improvements - [details](Website-Improvement-Details)
 * Precision improvements - remove jittering from objects that still do
