@@ -54,7 +54,7 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
   * Encode each tile as a delta from its parent:
     * Parent tile indicates which of its vertices are in which quadrant with index ranges.
     * Child has new vertices, index list linking parent and child vertices into triangles, and new index ranges describing the division of its vertices among its child quadrants.
-* When we've exceeded the actual terrain detail available, generate it procedurally using something like http://design.osu.edu/carlson/history/PDFs/p371-fournier.pdf.
+* When we've exceeded the actual terrain detail available, generate it procedurally using, for example, fractional Brownian motion: http://design.osu.edu/carlson/history/PDFs/p371-fournier.pdf
 
 ## Data Sources
 
