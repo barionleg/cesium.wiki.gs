@@ -56,6 +56,8 @@ References
 
 ### Compass Rendering
 
+<img src="gsoc/2013/compass.png" />
+
 TBA.
 
 **Skills:** WebGL, JavaScript, strong math, git
