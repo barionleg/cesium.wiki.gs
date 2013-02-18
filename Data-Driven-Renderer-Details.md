@@ -184,7 +184,7 @@ TODO
 
 ## Later Phases
 
-* Callback functions as commands?
+* Callback functions as commands?  Could be used to call WebGL directly.
 * Scissor out pick rectangle
 * [Post-processing](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Screen-Space-Rendering-Details) - color per frame, depth per frustum?
 * Shadows
