@@ -46,8 +46,7 @@ If you are interested in implementing any of these features, start a discussion 
 * John Madden-style collaboration among multiple clients
 * Particle system - [details](Particle-System-Details)
 * Volumetric clouds
-* Imagery layers improvements - [details](Imagery-Layers-Details)
-* Streaming terrain - [details](Streaming-Terrain-Details)
+* Terrain and imagery improvements - [details](Terrain and Imagery Roadmap)
 * Sandcastle improvements - [details](Sandcastle-Details)
 * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
 * Stars improvements - [details](Stars-Details)
