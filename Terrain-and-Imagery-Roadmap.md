@@ -39,6 +39,7 @@ Cesium already has excellent support for streaming terrain and imagery, but ther
 
 ## Loading
 
+* Support skipping intermediate tiles in the tile pyramid.  For example, if the camera starts zoomed into, we should be able to load the high-res tiles immediately rather than refining down through the tree first and waiting at each level for the previous level to complete.
 * Combine multiple images from the same layer into a single texture at load time.  This should substantially improve performance.
 * Consider baking _multiple layers_ into a single texture per geometry tile. The downside to this is that it will be a performance hit when adjusting layer order, alpha, gamma, etc.
 * Handle other projections?  UTM?
