@@ -1,3 +1,5 @@
+This page has been replaced by the [Terrain and Imagery Roadmap].
+
 When you fire up Cesium for the first time, the first thing you probably notice is the high-resolution imagery data.  As you zoom closer, however, you notice that the Earth is just a smooth spheroid.  Where's the terrain?
 
 High quality terrain visualization dramatically increases the realism of a virtual globe.  For that reason, it is one of our highest priorities to bring high-resolution, streaming, world-wide terrain to Cesium.
