@@ -8,6 +8,7 @@ Cesium runs on Android 4.0+ devices with a variety of GPUs.  Devices on this lis
 
 * NVIDIA Tegra 2 devices, including the Motorola Xoom.
 * NVIDIA Tegra 3 devices, including the ASUS Transformer Prime TF201 and Google Nexus 7.
+* Qualcomm Adreno 205, including the HTC ThunderBolt.
 * Qualcomm Adreno 225 devices, including the HTC One (and variants such as HTC EVO 4G LTE).
 * Qualcomm Adreno 320 devices, including the Google Nexus 4.
 
