@@ -125,10 +125,6 @@ Will we be able to render models directly from the provider's APIs or do we need
 
 ## Unorganized Hackathon Notes
 
-### WebGLTF Ideas
-
-* Pack all indices followed by all vertices (or vice versa) in the same bin?  What is the best practice for creating index and vertex buffers from TF buffers without duplication?
-
 ### Client
 
 * Progressive model loading.  Based on streaming nodes or LODs?
