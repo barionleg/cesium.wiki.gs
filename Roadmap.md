@@ -4,17 +4,15 @@ We're always looking to:
 * Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs
 * Support more content by writing converters from other formats (GML, [GeoJSON](http://www.geojson.org/), [TopoJSON](https://github.com/mbostock/topojson), [gpx](http://www.topografix.com/gpx.asp) ...) to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
 * Write [tutorials](Tutorials-Details) and improve reference documentation and examples
-* Improve visual quality and performance - [details](Visual-Quality-and-Performance-Details)
 * Improve platform support by fixing issues on various browsers, devices, or video cards
-* Improve tests and test coverage; however, we don't blindly chase coverage statistics
+* Improve tests and test coverage
 
 ## In progress
 * Google Summer of Code Ideas - [details](Google-Summer-of-Code-Ideas)
 * 3D models - [details](Models-Details)
 * Widget improvements - [details](Widget-Details)
-* Playback widget - [details](Playback-Details)
 * Space features - [details](Space-features)
-* Material system improvements - [details](Material-System-Details)
+* Materials on polylines - [details](Material-System-Details)
 * Tutorials - [details](Tutorials-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
@@ -23,43 +21,39 @@ Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev
 
 If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
 
-* Mobile improvements - [details](Mobile-Details)
-* Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
-* CZML External links - [details](External-links)
-* GeoServer CZML writer
-* CZML Path/History visualization - [details](CZML-History-visualization-details)
-* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
-* GLSL #include system - [details](GLSL-Details)
-* Draw more shapes - walls, cylinders, boxes, extruded volumes.  Optimize triangulation (faster, less triangles) for circles and ellipses.
-* Batching for polygons and potential other shapes.
-* Military symbol sets such as MS2525 and NTDS.  SVG files?
-* Improve 3D/2D/Columbus view transitions
-* Support standard web servers: WMTS, WFS, WCS, ...
-* Support for multiple central bodies, i.e., Sun, Moon, etc.
-* Build and test server - consider [travis-ci](https://github.com/travis-ci/travis-ci) which integrates with GitHub.
-* Shadows
-* Video on terrain
-* Vectors
-* Render buildings
-* Label declutter
-* Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
-* John Madden-style collaboration among multiple clients
-* Particle system - [details](Particle-System-Details)
-* Volumetric clouds
-* Terrain and imagery improvements - [details](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-* Sandcastle improvements - [details](Sandcastle-Details)
-* Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
-* Stars improvements - [details](Stars-Details)
-* Website Improvements - [details](Website-Improvement-Details)
-* Precision improvements - remove jittering from objects that still do
-* Compass - know where north is
-* Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
-* Run offline
-* Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
-* Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
-* Ocean improvements - [details](Ocean-Details)
-* [Lens Flare](http://www.john-chapman.net/content.php?id=18)
+* General
+   * Mobile improvements - [details](Mobile-Details)
+   * Support standard web servers: WMTS, WFS, WCS, ...
+   * Support for multiple central bodies, i.e., Sun, Moon, etc.
+   * Sandcastle improvements - [details](Sandcastle-Details)
+   * Military symbol sets such as MS2525 and NTDS.  SVG files?
+* Graphics
+   * Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
+   * Improve 3D/2D/Columbus view transitions
+   * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
+   * GLSL #include system - [details](GLSL-Details)
+   * Particle system - [details](Particle-System-Details)
+   * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
+   * Draw more shapes - walls, cylinders, boxes, extruded volumes.  Optimize triangulation (faster, less triangles) for circles and ellipses.
+   * Batching for polygons and potential other shapes.
+   * Vectors
+   * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
+   * John Madden-style collaboration among multiple clients
+   * Terrain and imagery improvements - [details](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
+   * Stars improvements - [details](Stars-Details)
+   * Ocean improvements - [details](Ocean-Details)
+   * Render buildings
+   * Video on terrain
+   * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
+   * Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
+   * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
+   * Volumetric clouds
+   * [Lens Flare](http://www.john-chapman.net/content.php?id=18)
+   * Visual quality and performance ideas - [details](Visual-Quality-and-Performance-Details)
 * CZML
+   * CZML External links - [details](External-links)
+   * GeoServer CZML writer
+   * CZML Path/History visualization - [details](CZML-History-visualization-details)
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
    * Buffer availability and "buffering" behavior
    * Layers
@@ -77,6 +71,9 @@ If you are interested in implementing any of these features, start a discussion 
    * Improved TimeLine widget
    * Standard Cesium toolbar - [details](Cesium-standard-actions)
    * CZML Table of contents/Document Manager widget
+* Infrastructure
+   * Website Improvements - [details](Website-Improvement-Details)
+   * Build and test server - consider [travis-ci](https://github.com/travis-ci/travis-ci) which integrates with GitHub.
 
 ## Google Code-in
 
