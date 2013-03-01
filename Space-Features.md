@@ -1,5 +1,6 @@
 * Polyline - per-vertex color for passes.  Will [materials](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) on polylines work?
 * Viewing in LLVH - [#531](https://github.com/AnalyticalGraphicsInc/cesium/issues/531)
+* Draw plans perpendicular to orbits
 * More precise sun position - [#391](https://github.com/AnalyticalGraphicsInc/cesium/issues/391)
 * Covariance interpolation (in [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer))
 * Stored views per track
