@@ -1,5 +1,8 @@
 We are a community that encourages contributions.  Join us.  Here's how to get started.
 
+* [Getting the Code](#gettingthecode)
+
+<div name="gettingthecode"></div>
 ## Getting the Code
 
 Short version:
