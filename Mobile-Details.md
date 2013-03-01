@@ -1,8 +1,8 @@
 ## Supported mobile platforms
 
-Cesium currently runs on a variety of Android phones and tablets in [Mozilla Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox) and [Google Chrome Beta](https://play.google.com/store/apps/details?id=com.chrome.beta).  In Firefox, WebGL support is enabled out of the box.  In Chrome, it must be explicitly enabled by visiting [chrome://flags](chrome://flags). We hope and expect that WebGL will be enabled by default in the future.
+Cesium currently runs on a variety of Android phones and tablets in [Mozilla Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox) and [Google Chrome](https://play.google.com/store/apps/details?id=com.chrome).  In Firefox, WebGL support is enabled out of the box.  In Chrome, it must be explicitly enabled by visiting [chrome://flags](chrome://flags). We hope and expect that WebGL will be enabled by default in the future.
 
-![Enabling WebGL in Chrome Beta](mobile/Chrome-Beta-WebGL.jpg)
+![Enabling WebGL in Chrome](mobile/Chrome-Beta-WebGL.jpg)
 
 Cesium runs on Android 4.0+ devices with a variety of GPUs.  Devices on this list are at least able to run Cesium Viewer and rotate and zoom the base globe in at least one of the two browsers mentioned above.  Other features may or may not work correctly.
 
@@ -35,7 +35,7 @@ The beta nature of WebGL support on mobile devices means that many issues are th
 
 ## Debugging tools
 
-Setting up Google Chrome Beta for remote debugging is easy and the remote debugger is very high quality.  In Google Chrome on your Android device, go to Settings->Developer tools and check "Enable USB Web debugging".  Then, tap "Learn more about using USB Web debugging" for instructions on debugging from your computer.  You'll need the Android SDK and a USB driver for your device installed on your computer.
+Setting up Google Chrome for remote debugging is easy and the remote debugger is very high quality.  In Google Chrome on your Android device, go to Settings->Developer tools and check "Enable USB Web debugging".  Then, tap "Learn more about using USB Web debugging" for instructions on debugging from your computer.  You'll need the Android SDK and a USB driver for your device installed on your computer.
 
 Firefox also supports [remote debugging](https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/):
 
