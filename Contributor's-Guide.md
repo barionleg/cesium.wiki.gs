@@ -1,8 +1,20 @@
 We are a community that encourages contributions.  Join us.  Here's how to get started.
 
-* [Getting the Code](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide#gettingthecode)
+* [Get Started](#getstarted)
+   * [Get the Code](#getthecode)
+   * [Build the Code](#buildthecode)
+   * [Set up Eclipse](#setupeclipse)
+* [Become an Expert](#becomeanexpert)
+   * [Build Targets](#buildtargets)
+   * [Recommended Eclipse Configuration](#recommendedeclipseconfiguration)
+   * [Development Tips](#developmenttips)
+* [Contribute Code](#contributecode)
+* [Next Steps](#nextsteps)
 
-<div name="gettingthecode"></div>
+<a name="getstarted">
+# Get Started
+
+<a name="gettingthecode">
 ## Getting the Code
 
 Short version:
@@ -23,11 +35,12 @@ Details
       * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
    * Yes
       * Create a local cesium repo, e.g., `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`.
-      * Make non-trivial changes in a branch, e.g., `git checkout -b myfeature`.
+      * Make non-trivial changes in a branch, e.g., `git checkout -b myFeature`.
 
-## Building the Code
+<a name="buildthecode">
+## Build the Code
 
-Short version: from the root Cesium directory, run:
+From the root Cesium directory, run:
 <pre>
 ./Tools/apache-ant-1.8.2/bin/ant combine runServer
 </pre>
@@ -43,28 +56,16 @@ For a default developer build, run Ant from the root Cesium directory:
 ./Tools/apache-ant-1.8.2/bin/ant
 </pre>
 
-The following targets can be built:
-   * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
-   * `combine` - Runs `build`, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
-   * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS2](https://github.com/mishoo/UglifyJS2) for a smaller deployable file.  
-   * `buildApps` - Cesium doesn't require any framework, but some example applications, such as Cesium Viewer, are [Dojo](http://dojotoolkit.org/) applications.  This build target runs the [Dojo build process](http://dojotoolkit.org/reference-guide/1.8/build/) to produce self-contained, minified, deployable versions of these applications in the `Build` directory.
-   * `generateDocumentation` - Generates HTML documentation in `Build/Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
-   * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
-   * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
-   * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.  If you use Eclipse, see below for how to run JSHint automatically as you develop.
-   * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
-   * `makeZipFile` - Builds a zip file containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
-   * `clean` - Removes all generated build artifacts.
-
-For example, to build the release target and then start an HTTP server for testing, run:
+To run the HTTP server for testing, run:
 
 <pre>
-./Tools/apache-ant-1.8.2/bin/ant release runServer
+./Tools/apache-ant-1.8.2/bin/ant runServer
 </pre>
 
-Want something fun to code?  See the [roadmap](Roadmap) and start a discussion on the [forum](https://groups.google.com/forum/#!topic/cesium-dev).
+For all build options, see [Build Targets](#buildtargets) below.
 
-## Setting up Eclipse
+<a name="setupeclipse">
+## Set up Eclipse
 
 Although we encourage contributors to use their IDE of choice, many of us use Eclipse.  Here is how we set it up:
 
@@ -117,7 +118,46 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 ![Creating a new filter](configureContents2.png)
 
+<a name="becomeanexpert">
+# Become an Expert
+
+<a name="buildtargets">
+## Build Targets
+
+The following targets can be built at command line:
+   * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
+   * `combine` - Runs `build`, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
+   * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS2](https://github.com/mishoo/UglifyJS2) for a smaller deployable file.  
+   * `buildApps` - Cesium doesn't require any framework, but some example applications, such as Cesium Viewer, are [Dojo](http://dojotoolkit.org/) applications.  This build target runs the [Dojo build process](http://dojotoolkit.org/reference-guide/1.8/build/) to produce self-contained, minified, deployable versions of these applications in the `Build` directory.
+   * `generateDocumentation` - Generates HTML documentation in `Build/Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
+   * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
+   * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
+   * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.  If you use Eclipse, see below for how to run JSHint automatically as you develop.
+   * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.
+   * `makeZipFile` - Builds a zip file containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
+   * `clean` - Removes all generated build artifacts.
+
+Specify the target(s) at the command line:
+
+<pre>
+./Tools/apache-ant-1.8.2/bin/ant [target-name] [another-target-name] ...
+</pre>
+
+For example, to build the release target and then start an HTTP server for testing, run:
+
+<pre>
+./Tools/apache-ant-1.8.2/bin/ant release runServer
+</pre>
+
+<a name="recommendedeclipseconfiguration">
+## Recommended Eclipse Configuration
+
+TODO
+
+<a name="developmenttips">
 ## Development Tips
+
+### Eclipse
 
 * In Eclipse, use Ctrl-Shift-R to search and open files in the workspace.
 
@@ -125,15 +165,19 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
 
+### Tests
+
 ![](debugJasmine.png)
 
 Then, to step into the test, step into `stepIntoThis()`
 
 ![](stepIntoThis.png)
 
-* Use [www.webglreport.com](http://www.webglreport.com) to see if WebGL is supported, and if so, what is exactly supported.  For more goodness, including the ANGLE revision, browse to chrome://gpu-internals/ in Chrome.
+### Graphics
 
 * Keep your video card drivers up to date.  [NVIDIA](http://www.nvidia.com/Download/index.aspx) | [AMD](http://support.amd.com/us/gpudownload/Pages/index.aspx).
+
+* Use [www.webglreport.com](http://www.webglreport.com) to see if WebGL is supported, and if so, what is exactly supported.  For more goodness, including the ANGLE revision, browse to chrome://gpu-internals/ in Chrome.
 
 * For WebGL debugging such as stepping through draw calls, viewing textures and vertex buffers, etc., use the [WebGL Inspector](http://benvanik.github.com/WebGL-Inspector/).
 
@@ -149,7 +193,8 @@ Then, to step into the test, step into `stepIntoThis()`
 
 * For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.  Create a FPS counter in Cesium with `PerformanceDisplay`
 
-## Contributing Code
+<a name="contributecode">
+# Contribute Code
 
 * Send us a [pull request](http://help.github.com/send-pull-requests/).  We'll promptly [review](Code-Review-Tips) it, provide feedback, and merge it.
 * Before we can merge, we require a [Contributor License Agreement](http://producingoss.com/en/copyright-assignment.html#copyright-assignment-cla) (CLA).  This can be emailed to cla@agi.com, and only needs to be completed once.  The CLA ensures that you retain copyright to your contributions, and that we have the right to use them and incorporate them into Cesium.  There is a CLA for [individuals](http://www.agi.com/licenses/individual-cla-agi-v1.0.txt) and [corporations](http://www.agi.com/licenses/corporate-cla-agi-v1.0.txt).  Please email completed CLAs and related questions to cla@agi.com.
@@ -163,6 +208,7 @@ Then, to step into the test, step into `stepIntoThis()`
       * Update [CHANGES.md](../blob/master/CHANGES.md).
       * If the change is significant, add a new [Sandcastle](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html) example or extend and existing one.
 
-## What Next?
+<a name="nextsteps">
+# Next Steps
 
 Read about the Cesium's [architecture](Architecture); check out the [roadmap](Roadmap); join the [forum](https://groups.google.com/d/forum/cesium-dev); and start hacking.
