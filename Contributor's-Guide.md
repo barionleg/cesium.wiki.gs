@@ -1,4 +1,4 @@
-We are a community that encourages contributions.  Join us.  Here's how to get started.
+We are a community that encourages contributions.  Join us.  Here's how.
 
 * [Get Started](#getstarted)
    * [Get the Code](#getthecode)
@@ -16,7 +16,7 @@ We are a community that encourages contributions.  Join us.  Here's how to get s
 <a name="getstarted">
 # Get Started
 
-<a name="gettingthecode">
+<a name="getthecode">
 ## Get the Code
 
 Short version:
@@ -69,7 +69,7 @@ For all build options, see [Build Targets](#buildtargets) below.
 <a name="setupeclipse">
 ## Set up Eclipse
 
-Although we encourage contributors to use their IDE of choice, many of us use Eclipse.  Here's the minimal setup we use.
+We encourage contributors to use their IDE of choice, but many of us use Eclipse.  Here's how we set it up.
 
 * Install the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
@@ -125,7 +125,7 @@ This section has additional information on our development tools.
 <a name="buildtargets">
 ## Build Targets
 
-The following targets can be built at command line:
+The following targets can be built:
    * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
    * `combine` - Runs `build`, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
    * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS2](https://github.com/mishoo/UglifyJS2) for a smaller deployable file.  
@@ -157,13 +157,11 @@ These steps are optional depending on your preference.
 
 ### Markdown Plugin
 
-If you edit markdown (.md) files with Eclipse, installing the [Markdown plugin](http://www.winterwell.com/software/markdown-editor.php) is useful.
+If you edit markdown files (.md) with Eclipse, installing the [Markdown plugin](http://www.winterwell.com/software/markdown-editor.php) is useful.
 
 ### GLSL Plugin
 
-If you edit WebGL shader (.glsl) files with Eclipse, install GLShaders for GLSL syntax highlighting.
-
-To install, first exit Eclipse.  Then download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
+If you edit WebGL shader files (.glsl) with Eclipse, install GLShaders for GLSL syntax highlighting.  First exit Eclipse, then download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
 
 ![The Eclipse dropins directory](glshaders.png)
 
@@ -174,10 +172,9 @@ Most of us use git from the command-line, but there is also an Eclipse plugin.  
    * Expand *Collaboration*, check *Eclipse EGit*.
    * Next, Next, Accept, Finish, _wait_, Restart.
 
-* Window - Preferences:
-   * Team - Git - Configuration
-      * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
-      * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
+* Window - Preferences: Team - Git - Configuration
+   * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
+   * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
 
 * Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent directory of project.  Finish.
 
@@ -188,13 +185,10 @@ Most of us use git from the command-line, but there is also an Eclipse plugin.  
 
 ![The Open Resource dialog](openresource.png)
 
+<a name="testtips">
+## Test Tips
+
 * To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
-
-<a name="eclipsetips">
-## Eclipse Tips
-
-<a name="graphicstips">
-## Graphics Tips
 
 ![](debugJasmine.png)
 
@@ -205,7 +199,7 @@ Then, to step into the test, step into `stepIntoThis()`
 <a name="graphicstips">
 ## Graphics Tips
 
-* Keep your video card drivers up to date.  [NVIDIA](http://www.nvidia.com/Download/index.aspx) | [AMD](http://support.amd.com/us/gpudownload/Pages/index.aspx).
+* Keep your video card drivers up to date.  [NVIDIA](http://www.nvidia.com/Download/index.aspx) &bull; [AMD](http://support.amd.com/us/gpudownload/Pages/index.aspx).
 
 * Use [www.webglreport.com](http://www.webglreport.com) to see if WebGL is supported, and if so, what is exactly supported.  For more goodness, including the ANGLE revision, browse to chrome://gpu-internals/ in Chrome.
 
