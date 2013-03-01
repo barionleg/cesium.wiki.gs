@@ -1,6 +1,6 @@
 We are a community that encourages contributions.  Join us.  Here's how to get started.
 
-* [Getting the Code](#gettingthecode)
+* [Getting the Code](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide#gettingthecode)
 
 <div name="gettingthecode"></div>
 ## Getting the Code
