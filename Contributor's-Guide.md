@@ -6,8 +6,10 @@ We are a community that encourages contributions.  Join us.  Here's how to get s
    * [Set up Eclipse](#setupeclipse)
 * [Become an Expert](#becomeanexpert)
    * [Build Targets](#buildtargets)
-   * [Recommended Eclipse Configuration](#recommendedeclipseconfiguration)
-   * [Development Tips](#developmenttips)
+   * [Optional Eclipse Configuration](#optionaleclipseconfiguration)
+   * [Eclipse Tips](#eclipsetips)
+   * [Test Tips](#testtips)
+   * [Graphics Tips](#graphicstips)
 * [Contribute Code](#contributecode)
 * [Next Steps](#nextsteps)
 
@@ -15,7 +17,7 @@ We are a community that encourages contributions.  Join us.  Here's how to get s
 # Get Started
 
 <a name="gettingthecode">
-## Getting the Code
+## Get the Code
 
 Short version:
 * No commit access? Fork and clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
@@ -67,7 +69,7 @@ For all build options, see [Build Targets](#buildtargets) below.
 <a name="setupeclipse">
 ## Set up Eclipse
 
-Although we encourage contributors to use their IDE of choice, many of us use Eclipse.  Here is how we set it up:
+Although we encourage contributors to use their IDE of choice, many of us use Eclipse.  Here's the minimal setup we use.
 
 * Install the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
@@ -87,19 +89,11 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 ![The JSHint installation dialog](jshint.png)
 
-* _Optional_: Install the [plugin](http://www.winterwell.com/software/markdown-editor.php) for editing markdown.
-* _Optional_: Install GLShaders for GLSL syntax highlighting:  Exit Eclipse.  Download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
-
-![The Eclipse dropins directory](glshaders.png)
-
 * Run Eclipse. Close the Welcome page.
 
 * Window - Show View - Console.
 
 * Window - Preferences:
-   * Team - Git - Configuration
-      * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
-      * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
    * General - Editors - Text Editors.  Check Insert spaces for tabs.  OK.
    * Web - CSS Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.
    * Web - HTML Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.
@@ -110,13 +104,13 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 * Click the "Open Perspective" button in the upper right and select JavaScript.  You can then right-click on the Java perspective and close it.
 
-* Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent directory of project.  Finish.
-
 * Configure the problems tab.  The Eclipse JavaScript validator has some bugs that report incorrect warnings.  Click the down arrow on the right-hand side of the Problems tab, click Configure Contents.  Uncheck Show all items, Click New, then Rename the new item to Cesium.  Change the Text filter to "doesn't contain" "Type mismatch: ".  OK.
 
 ![Opening the Configure Contents dialog](configureContents.png)
 
 ![Creating a new filter](configureContents2.png)
+
+Also consider the [Optional Eclipse Configuration](#optionaleclipseconfiguration) options below.
 
 <a name="becomeanexpert">
 # Become an Expert
@@ -149,15 +143,39 @@ For example, to build the release target and then start an HTTP server for testi
 ./Tools/apache-ant-1.8.2/bin/ant release runServer
 </pre>
 
-<a name="recommendedeclipseconfiguration">
-## Recommended Eclipse Configuration
+<a name="optionaleclipseconfiguration">
+## Optional Eclipse Configuration
 
-TODO
+These steps are optional depending on your preference.
 
-<a name="developmenttips">
-## Development Tips
+### Markdown Plugin
 
-### Eclipse
+If you edit markdown (.md) files with Eclipse, installing the [Markdown plugin](http://www.winterwell.com/software/markdown-editor.php) is useful.
+
+### GLSL Plugin
+
+If you edit WebGL shader (.glsl) files with Eclipse, install GLShaders for GLSL syntax highlighting.
+
+To install, first exit Eclipse.  Then download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
+
+![The Eclipse dropins directory](glshaders.png)
+
+### Git Plugin
+
+Most of us use git from the command-line, but there is also an Eclipse plugin.  To install it:
+   * Help - Install New Software.  Work with: select *Juno* from the list.  
+   * Expand *Collaboration*, check *Eclipse EGit*.
+   * Next, Next, Accept, Finish, _wait_, Restart.
+
+* Window - Preferences:
+   * Team - Git - Configuration
+      * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
+      * Verify Location in Systems Settings tab is set to {Installed/Git/Location}/etc/gitconfig.
+
+* Right click on Cesium in the Script Explorer.  Team - Share project.  Select Git, Next.  Check Use or create repository in parent directory of project.  Finish.
+
+<a name="eclipsetips">
+## Eclipse Tips
 
 * In Eclipse, use Ctrl-Shift-R to search and open files in the workspace.
 
@@ -165,7 +183,11 @@ TODO
 
 * To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
 
-### Tests
+<a name="eclipsetips">
+## Eclipse Tips
+
+<a name="graphicstips">
+## Graphics Tips
 
 ![](debugJasmine.png)
 
@@ -173,7 +195,8 @@ Then, to step into the test, step into `stepIntoThis()`
 
 ![](stepIntoThis.png)
 
-### Graphics
+<a name="graphicstips">
+## Graphics Tips
 
 * Keep your video card drivers up to date.  [NVIDIA](http://www.nvidia.com/Download/index.aspx) | [AMD](http://support.amd.com/us/gpudownload/Pages/index.aspx).
 
