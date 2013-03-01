@@ -220,14 +220,4 @@ Then, to step into the test, step into `stepIntoThis()`
 <a name="contributecode">
 # Contribute Code
 
-* Send us a [pull request](http://help.github.com/send-pull-requests/).  We'll promptly [review](Code-Review-Tips) it, provide feedback, and merge it.
-* Before we can merge, we require a [Contributor License Agreement](http://producingoss.com/en/copyright-assignment.html#copyright-assignment-cla) (CLA).  This can be emailed to cla@agi.com, and only needs to be completed once.  The CLA ensures that you retain copyright to your contributions, and that we have the right to use them and incorporate them into Cesium.  There is a CLA for [individuals](http://www.agi.com/licenses/individual-cla-agi-v1.0.txt) and [corporations](http://www.agi.com/licenses/corporate-cla-agi-v1.0.txt).  Please email completed CLAs and related questions to cla@agi.com.
-* Please make sure:
-   * Your code follows the [coding conventions](JavaScript-Coding-Conventions).
-   * Your code passes [JSHint](http://www.jshint.com/).  We use the JSHint Eclipse plugin so it runs automatically when we save.  You can also run the `jsHint` Ant task from the command line.
-   * To include tests with excellent code coverage for new features.  We use [Jasmine](http://pivotal.github.com/jasmine/) for writing tests.  Run them by browsing to http://localhost:8080/Specs/SpecRunner.html.  Verify all new and existing tests pass.  For bonus points, test Chrome, Firefox, and other browsers supporting WebGL.
-   * To update [LICENSE.md](../blob/master/LICENSE.md) if third-party libraries were added/updated/removed, including version bumps.  Mention it in [CHANGES.md](../blob/master/CHANGES.md).
-   * Were new public classes, functions, or properties added?
-      * Include reference documentation with code examples.  Check out the [best practices](Documentation-Best-Practices).
-      * Update [CHANGES.md](../blob/master/CHANGES.md).
-      * If the change is significant, add a new [Sandcastle](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html) example or extend and existing one.
+See [CONTRIBUTING.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
