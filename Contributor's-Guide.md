@@ -4,6 +4,7 @@ We are a community that encourages contributions.  Join us.  Here's how to get s
    * [Get the Code](#getthecode)
    * [Build the Code](#buildthecode)
    * [Set up Eclipse](#setupeclipse)
+   * [Next Steps](#nextsteps)
 * [Become an Expert](#becomeanexpert)
    * [Build Targets](#buildtargets)
    * [Optional Eclipse Configuration](#optionaleclipseconfiguration)
@@ -11,7 +12,6 @@ We are a community that encourages contributions.  Join us.  Here's how to get s
    * [Test Tips](#testtips)
    * [Graphics Tips](#graphicstips)
 * [Contribute Code](#contributecode)
-* [Next Steps](#nextsteps)
 
 <a name="getstarted">
 # Get Started
@@ -112,8 +112,15 @@ Although we encourage contributors to use their IDE of choice, many of us use Ec
 
 Also consider the [Optional Eclipse Configuration](#optionaleclipseconfiguration) options below.
 
+<a name="nextsteps">
+## Next Steps
+
+At this point you are ready to contribute.  Continue reading below for more details on the developer setup, or read about Cesium's [architecture](Architecture); check out the [roadmap](Roadmap); join the [forum](https://groups.google.com/d/forum/cesium-dev); and start hacking.
+
 <a name="becomeanexpert">
 # Become an Expert
+
+This section has additional information on our development tools.
 
 <a name="buildtargets">
 ## Build Targets
@@ -230,8 +237,3 @@ Then, to step into the test, step into `stepIntoThis()`
       * Include reference documentation with code examples.  Check out the [best practices](Documentation-Best-Practices).
       * Update [CHANGES.md](../blob/master/CHANGES.md).
       * If the change is significant, add a new [Sandcastle](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html) example or extend and existing one.
-
-<a name="nextsteps">
-# Next Steps
-
-Read about the Cesium's [architecture](Architecture); check out the [roadmap](Roadmap); join the [forum](https://groups.google.com/d/forum/cesium-dev); and start hacking.
