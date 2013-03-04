@@ -115,7 +115,7 @@ Also consider the [Optional Eclipse Configuration](#optionaleclipseconfiguration
 <a name="nextsteps">
 ## Next Steps
 
-At this point you are ready to contribute.  Continue reading below for more details on the developer setup, or read about Cesium's [architecture](Architecture); check out the [roadmap](Roadmap); join the [forum](https://groups.google.com/d/forum/cesium-dev); and start hacking.
+At this point you are ready to contribute.  Continue reading below for more details on the developer setup, or read about Cesium's [architecture](Architecture); check out the [roadmap](Roadmap); join the [forum](http://cesium.agi.com/forum.html); and start hacking.
 
 <a name="becomeanexpert">
 # Become an Expert
