@@ -4,7 +4,7 @@ There is no release manager; instead, our community shares the responsibility.  
 
 ## Release testing
 1. Verify there are no [show stopper](../issues?labels=show+stopper&page=1&state=open) issues.
-1. Send a courtesy message to the [forum](https://groups.google.com/forum/#!forum/cesium-dev) to let people know you're about to start the release process.
+1. Send a courtesy message to the [forum](http://cesium.agi.com/forum.html) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
 1. Make sure you have a clean checkout of `master`.
 1. Start the server `./Tools/apache-ant-1.8.2/bin/ant clean build combine runServer`
@@ -16,7 +16,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Uninstall [Chrome Frame](https://developers.google.com/chrome/chrome-frame/) if you have it installed.
 1. Using Internet Explorer, navigate to [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) and make sure you are prompted to install Chrome Frame.  There's no need to actually install it.  This step ensures that Cesium fails gracefully on non-WebGL browsers and allows developers to take alternative action.
 1. Make sure the documentation builds without errors: `./Tools/apache-ant-1.8.2/bin/ant clean generateDocumentation`
-1. If any of the above steps fail, contact the [forum](https://groups.google.com/forum/?fromgroups#!forum/cesium-dev) to figure out what needs to be fixed before we can release.  Do NOT release until all steps are passing.
+1. If any of the above steps fail, contact the [forum](http://cesium.agi.com/forum.html) to figure out what needs to be fixed before we can release.  Do NOT release until all steps are passing.
 
 ## Packaging for release
 1. Update [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.
@@ -27,6 +27,6 @@ There is no release manager; instead, our community shares the responsibility.  
    * `git tag -a b7 -m 'b7 release'`
    * `git push --tags`
 1. Deploy to the [website](http://cesium.agi.com/).  See the _Adding a New Cesium Release_ section of the website wiki.
-1. Reply to your courtesy message on the [forum](https://groups.google.com/forum/#!forum/cesium-dev) to let everyone know the release is ready.
+1. Reply to your courtesy message on the [forum](http://cesium.agi.com/forum.html) to let everyone know the release is ready.
 
 Also, see our [release discussion](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo) on the forum.
