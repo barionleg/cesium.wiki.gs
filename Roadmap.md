@@ -19,7 +19,7 @@ Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev
 
 ## To come
 
-If you are interested in implementing any of these features, start a discussion on the [mailing list](https://groups.google.com/d/forum/cesium-dev).
+If you are interested in implementing any of these features, start a discussion on the [forum](http://cesium.agi.com/forum.html).
 
 * General
    * Mobile improvements - [details](Mobile-Details)
