@@ -59,9 +59,7 @@ References
 
 ![](gsoc/2013/compass.png)
 
-In this project, we'll add a 3D compass showing where north is as shown in the bottom-right of the above screenshot.  We'll consider the trade-offs between creating the compass as a separate widget with SVG and CSS 3D transforms vs. creating the compass as part of Cesium using WebGL.
-
-The compass is particularly useful for views close to ground so the user understands the orientation of the view.
+In this project, we'll add a 3D compass showing where north is, as shown in the bottom-right of the above screenshot.  We'll consider the trade-offs between creating the compass as a separate widget with SVG and CSS 3D transforms vs. creating the compass as part of Cesium using WebGL.  The compass is particularly useful for views close to ground so the user understands the orientation of the view.
 
 This project requires design and coding skills, and a tad of math that we'll help with.
 
@@ -104,7 +102,7 @@ References
 We use geometric algorithms to compute triangles composing shapes on the globe such as circles, ellipsoids, polygons, etc.  We then use the triangles to draw the shape using WebGL.
 
 In this project, we will add geometric algorithms for new shapes and optimize existing geometric algorithms.  We will:
-   * Add triangulation for walls perpendicular to the globe.  This includes computing positions, averaged normals, and texture coordinates for the triangles.
+   * Add triangulation for walls perpendicular to the globe.  This includes computing positions, averaged normals, and texture coordinates.
    * Optimize polygon ear clipping and improve its robustness at the International Date Line.
    * Optimize triangulation for circles and ellipses.
 
@@ -131,7 +129,11 @@ References
 
 KML is a popular XML-based format for storing vector data, i.e., points, polylines, and polygons.  However, new JSON-based standards are emerging that are better suited to web mapping.
 
-In this project, we will add support for two JSON vector data formats, [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbostock/topojson), to Cesium.  First, we'll load and draw them using the Cesium API.  Then we'll investigating styling.
+In this project, we will add support for two JSON vector data formats, [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbostock/topojson), to Cesium.  First, we'll load and draw them using the Cesium API.  Then we'll investigating styling with colors, patterns, etc.
+
+References
+* [The GeoJSON Format Specification](http://www.geojson.org/geojson-spec.html)
+* [TopoJSON Specification](https://github.com/mbostock/topojson/wiki/Specification)
 
 **Skills:** JavaScript, git, open standards, geospatial
 
