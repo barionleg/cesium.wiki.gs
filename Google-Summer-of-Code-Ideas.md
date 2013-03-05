@@ -22,6 +22,10 @@ Project Ideas
    * [Vector Data Visualization with Geography Markup Language](#gml)
    * [Vector Data Visualization with Web Feature Service](#wfs)
    * [Raster Data Visualization with Web Map Tile Service](#wmts)
+* [UI](#ui)
+   * [Navigation Widget](#navigationwidget)
+* [Misc](#misc)
+   * [Offline Web App Support](#offlinewebappsupport)
 
 <a name="android">
 # Android
@@ -190,7 +194,7 @@ Cesium draws 3D maps retrieved using many map standards like [Web Map Service (W
 
 In this project, we will add support for [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts), an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard.
 
-TBA. More info and is the scope big enough for this?
+_TODO: more details_
 
 References
 * [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
@@ -204,25 +208,44 @@ References
 
 **Backup Mentor:** Kevin?
 
+<a name="ui">
 # UI
 
+<a name="navigationwidget">
 ## Navigation Widget
 
-TBA. #450
+![](gsoc/2013/navigationwidget.png)
+
+Cesium provides default mouse and touch input for the camera, including:
+* Left click and drag - Rotates the camera around the globe in 3D and translates the camera over the map surface in 2D and Columbus view.
+* Right click and drag - Zooms the camera in and out.
+* Middle wheel scrolling - Also zooms the camera in and out.
+* Middle click and drag - Rotates the camera around the point on the surface of the globe.
+
+In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  This project requires an eye for designing UIs.
+
+References
+* [Cesium Camera Tutorial](http://cesium.agi.com/2013/02/13/Cesium-Camera-Tutorial/)
 
 **Skills:** HTML5, CSS3, SVG, JavaScript, UI design, git
 
 **Level:** Intermediate
 
-**Mentor:** TBA
+**Mentor:** Ed?
 
-**Backup Mentor:** TBA
+**Backup Mentor:** Amato?
 
+<a name="misc">
 # Misc
 
+<a name="offlinewebappsupport">
 ## Offline Web App Support
 
-TBA.
+![](gsoc/2013/offline.png)
+
+Cesium provides a relastic virtual globe by streaming high-resolution terrain and imagery on-demand.  However, users without a network connection or an unreliable network connection cannot rely on the connection to servers hosting terrain, imagery, and other data used by Cesium.
+
+In this project, we'll use new HTML5 features to design and implement offline support in Cesium.  That is, we'll let users select and download data for an area of the globe (pending the data provider's terms of use) so that users can use Cesium later without connectivity.
 
 References
 * [HTML5 Features - Offline](http://www.html5rocks.com/en/features/offline)
@@ -233,6 +256,6 @@ References
 
 **Level:** Novice
 
-**Mentor:** TBA
+**Mentor:** Scott?
 
-**Backup Mentor:** TBA
+**Backup Mentor:** Kevin?
