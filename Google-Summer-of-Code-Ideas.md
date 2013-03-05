@@ -17,6 +17,11 @@ Project Ideas
    * [Compass](#compass)
    * [Declutter for Map Labels](#decultterformaplabels)
    * [Geometric Algorithms](#geometricalgorithms)
+* [Geospatial](geospatial)
+   * [Vector Data Visualization with JSON](json)
+   * [Vector Data Visualization with Geography Markup Language](gml)
+   * [Vector Data Visualization with Web Feature Service](wfs)
+   * [Raster Data Visualization with Web Map Tile Service](wmts)
 
 <a name="android">
 # Android
@@ -112,11 +117,17 @@ References
 
 **Backup Mentor:** Cozzi?
 
-# Geospatial Projects
+<a name="geospatial">
+# Geospatial
 
+<a name="json">
 ## Vector Data Visualization with JSON
 
-TBA. [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbostock/topojson)
+![](gsoc/2013/json.png)
+
+KML is a popular XML-based format for storing vector data, i.e., points, polylines, and polygons.  However, new JSON-based standards are emerging that are better suited to web mapping.
+
+In this project, we will add support for two JSON vector data formats, [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbostock/topojson), to Cesium.  First, we'll load and draw them using the Cesium API.  Then we'll investigating styling.
 
 **Skills:** JavaScript, git, open standards, geospatial
 
@@ -124,9 +135,12 @@ TBA. [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbosto
 
 **Mentor:** Amato?
 
-**Backup Mentor:** TBA
+**Backup Mentor:** Ford?
 
+<a name="gml">
 ## Vector Data Visualization with Geography Markup Language
+
+![](gsoc/2013/gml.png)
 
 [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for expressing geographical features, e.g., points, polylines, and polygons, in XML.
 
@@ -145,7 +159,10 @@ References
 
 **Backup Mentor:** TBA
 
+<a name="wfs">
 ## Vector Data Visualization with Web Feature Service
+
+![](gsoc/2013/gml.png)
 
 [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for requesting geographical features, e.g., points, polylines, and polygons, over the web.
 
@@ -164,7 +181,10 @@ References
 
 **Backup Mentor:** TBA
 
+<a name="wmts">
 ## Raster Data Visualization with Web Map Tile Service
+
+![](gsoc/2013/wmts.png)
 
 Cesium draws 3D maps retrieved using many map standards like [Web Map Service (WMS)](http://www.opengeospatial.org/standards/wms) and [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Main_Page).  These standards provide access to high-resolution maps.
 
@@ -180,9 +200,9 @@ References
 
 **Level:** Intermediate
 
-**Mentor:** TBA
+**Mentor:** Fili?
 
-**Backup Mentor:** TBA
+**Backup Mentor:** Kevin?
 
 # UI
 
