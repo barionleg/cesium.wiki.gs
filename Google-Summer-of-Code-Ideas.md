@@ -222,7 +222,7 @@ Cesium provides default mouse and touch input for the camera, including:
 * Middle wheel scrolling - Also zooms the camera in and out.
 * Middle click and drag - Rotates the camera around the point on the surface of the globe.
 
-In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  This project requires an eye for designing UIs.
+In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  This project requires an eye for designing UIs.  More ideas for this project [here](https://github.com/AnalyticalGraphicsInc/cesium/issues/450).
 
 References
 * [Cesium Camera Tutorial](http://cesium.agi.com/2013/02/13/Cesium-Camera-Tutorial/)
