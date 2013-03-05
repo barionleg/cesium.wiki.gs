@@ -13,15 +13,15 @@ _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://git
 Project Ideas
 * [Android](#android)
    * [Android Performance](#androidperformance)
-* [Graphics](graphics)
+* [Graphics](#graphics)
    * [Compass](#compass)
    * [Declutter for Map Labels](#decultterformaplabels)
    * [Geometric Algorithms](#geometricalgorithms)
-* [Geospatial](geospatial)
-   * [Vector Data Visualization with JSON](json)
-   * [Vector Data Visualization with Geography Markup Language](gml)
-   * [Vector Data Visualization with Web Feature Service](wfs)
-   * [Raster Data Visualization with Web Map Tile Service](wmts)
+* [Geospatial](#geospatial)
+   * [Vector Data Visualization with JSON](#json)
+   * [Vector Data Visualization with Geography Markup Language](#gml)
+   * [Vector Data Visualization with Web Feature Service](#wfs)
+   * [Raster Data Visualization with Web Map Tile Service](#wmts)
 
 <a name="android">
 # Android
