@@ -48,7 +48,7 @@ References
 <a name="compass">
 ## Compass
 
-<img src="gsoc/2013/compass.png" />
+![](gsoc/2013/compass.png)
 
 In this project, we'll add a 3D compass showing where north is as shown in the bottom-right of the above screenshot.  We'll consider the trade-offs between creating the compass as a separate widget with SVG and CSS 3D transforms vs. creating the compass as part of Cesium using WebGL.
 
@@ -66,6 +66,8 @@ This project requires design and coding skills, and a tad of math that we'll hel
 
 <a name="decultterformaplabels">
 ## Declutter for Map Labels
+
+![](gsoc/2013/declutter.png)
 
 A classic problem when drawing 2D or 3D maps is the overlap of nearby text labels, resulting in a cluttered display and illegible labels.  We will design and implement an efficient real-time algorithm to declutter map labels, avoiding or minimizing overlap.
 
@@ -87,6 +89,8 @@ References
 
 <a name="geometricalgorithms">
 ## Geometric Algorithms
+
+![](gsoc/2013/geometricalgorithms.png)
 
 We use geometric algorithms to compute triangles composing shapes on the globe such as circles, ellipsoids, polygons, etc.  We then use the triangles to draw the shape using WebGL.
 
