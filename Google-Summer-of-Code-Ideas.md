@@ -10,11 +10,21 @@ If you have questions about your proposal, email the project's mentor or discuss
 
 _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).
 
-# Android Projects
+Project Ideas
+* [Android](#android)
+   * [Android Performance](#androidperformance)
+* [Graphics](graphics)
+   * [Compass](#compass)
+   * [Declutter for Map Labels](#decultterformaplabels)
+   * [Geometric Algorithms](#geometricalgorithms)
 
+<a name="android">
+# Android
+
+<a name="androidperformance">
 ## Android Performance
 
-WebGL support is improving rapidly on Android.  Chrome Beta and Firefox are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
+WebGL support is improving rapidly on Android.  Chrome and Firefox are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
 
 Help us optimize Cesium for these devices.  We will profile to find hot-spots and then tune the GPU code written in GLSL or the CPU code written in JavaScript or both.  We'll consider fundamental architecture changes as needed and will carefully make visual quality vs. speed trade-offs.
 
@@ -32,41 +42,71 @@ References
 
 **Backup Mentor:** Cozzi?
 
+<a name="graphics">
 # Graphics
 
+<a name="compass">
+## Compass
+
+<img src="gsoc/2013/compass.png" />
+
+In this project, we'll add a 3D compass showing where north is as shown in the bottom-right of the above screenshot.  We'll consider the trade-offs between creating the compass as a separate widget with SVG and CSS 3D transforms vs. creating the compass as part of Cesium using WebGL.
+
+The compass is particularly useful for views close to ground so the user understands the orientation of the view.
+
+This project requires design and coding skills, and a tad of math that we'll help with.
+
+**Skills:** JavaScript, CSS, SVG, WebGL, git
+
+**Level:** Intermediate
+
+**Mentor:** Ed?
+
+**Backup Mentor:** Dan?
+
+<a name="decultterformaplabels">
 ## Declutter for Map Labels
 
-A classic problem in drawing 2D or 3D maps is the overlap of nearby text labels, resulting in a cluttered display and illegible labels.  We will design and implement an efficient real-time algorithm to declutter map labels, avoiding or minimizing overlap.
+A classic problem when drawing 2D or 3D maps is the overlap of nearby text labels, resulting in a cluttered display and illegible labels.  We will design and implement an efficient real-time algorithm to declutter map labels, avoiding or minimizing overlap.
 
-This is an NP-hard problem, and therefore we will solve it heuristically in an attempt to minimize the amount we move each label and maintain temporal aesthetics.  We will also explore creating hierarchies of labels using [k-means](http://home.dei.polimi.it/matteucc/Clustering/tutorial_html/kmeans.html) and/or knowledge of label relationships, e.g., street - city - county - state.
+This is an NP-hard problem, and therefore we will solve it heuristically in an attempt to minimize the amount we move each label and maintain temporal aesthetics.  We will also explore creating hierarchies of labels using [k-means](http://home.dei.polimi.it/matteucc/Clustering/tutorial_html/kmeans.html) and/or knowledge of hierarchical label relationships, e.g., street - city - county - state.
 
 The algorithm needs to be very efficient; it must run in JavaScript and work for 100s of dynamic labels or 1000s of static labels.
 
 References
 * [Temporally Coherent Real-Time Labeling of Dynamic Scenes](http://wwwcg.in.tum.de/research/research/publications/2012/temporally-coherent-real-time-labeling-of-dynamic-scenes.html)
-* [K-Means Clutering](http://home.dei.polimi.it/matteucc/Clustering/tutorial_html/kmeans.html)
+* [K-Means Clustering](http://home.dei.polimi.it/matteucc/Clustering/tutorial_html/kmeans.html)
 
-**Skills:** JavaScript, algorithm design, strong math, code and algorithm optimization, git
+**Skills:** Algorithm design, strong math, code and algorithm optimization, JavaScript, git
 
 **Level:** Advanced
 
 **Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
-**Backup Mentor:** TBA
+**Backup Mentor:** Dan?
 
-## Compass Rendering
+<a name="geometricalgorithms">
+## Geometric Algorithms
 
-<img src="gsoc/2013/compass.png" />
+We use geometric algorithms to compute triangles composing shapes on the globe such as circles, ellipsoids, polygons, etc.  We then use the triangles to draw the shape using WebGL.
 
-TBA.
+In this project, we will add geometric algorithms for new shapes and optimize existing geometric algorithms.  We will:
+   * Add triangulation for walls perpendicular to the globe.  This includes computing positions, averaged normals, and texture coordinates for the triangles.
+   * Optimize polygon ear clipping and improve its robustness at the International Date Line.
+   * Optimize triangulation for circles and ellipses.
 
-**Skills:** WebGL, JavaScript, strong math, git
+We'll consider other shapes as time permits.
 
-**Level:** Advanced
+References
+* [Triangulation by Ear Clipping](http://www.geometrictools.com/Documentation/TriangulationByEarClipping.pdf)
+
+**Skills:** Strong geometry and math skills, data structures and algorithms, optimization, JavaScript, git
+
+**Level:** Intermediate
 
 **Mentor:** Dan?
 
-**Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
+**Backup Mentor:** Cozzi?
 
 # Geospatial Projects
 
