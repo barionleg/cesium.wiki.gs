@@ -162,7 +162,7 @@ References
 <a name="wfs">
 ## Vector Data Visualization with Web Feature Service
 
-![](gsoc/2013/gml.png)
+![](gsoc/2013/wfs.png)
 
 [Web Feature Service (WFS)](http://www.opengeospatial.org/standards/wfs) is an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard for requesting geographical features, e.g., points, polylines, and polygons, over the web.
 
