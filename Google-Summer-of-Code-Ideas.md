@@ -114,6 +114,8 @@ We use geometric algorithms to compute triangles composing shapes on the globe s
 
 In this project, we will add geometric algorithms for new shapes and optimize existing geometric algorithms.  We will:
    * Add triangulation for walls perpendicular to the globe.  This includes computing positions, averaged normals, and texture coordinates.
+   * Add triangulation for "ribbon lines" - think the geometry for the track in [Rainbow Road](http://i1.sndcdn.com/artworks-000010122970-0spcry-original.png?daca7bd).
+   * Add triangulation for hexahedrons.
    * Optimize polygon ear clipping and improve its robustness at the International Date Line.
    * Optimize triangulation for circles and ellipses.
 
