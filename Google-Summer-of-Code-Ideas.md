@@ -15,7 +15,13 @@ If you have questions about your proposal, email the project's mentor or discuss
 
 _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).
 
-Project Ideas
+**Technologies and Tools We Use**
+
+(We don't expect you to know all of them).
+
+HTML5, CSS3, JavaScript, WebGL, SVG, Git, Ant, Eclipse, Chrome, Firefox, Android
+
+**Project Ideas**
 * [Android](#android)
    * [Android Performance](#androidperformance)
 * [Graphics](#graphics)
