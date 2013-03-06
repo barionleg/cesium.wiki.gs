@@ -11,7 +11,7 @@
 
 Cesium developers are eager to work with you.  Our code has shipped to [10's of millions of people in the same day](http://cesium.agi.com/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
 
-If you have questions about your proposal, email the project's mentor or discuss it on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  We encourage innovation; we are open to proposals for original projects not listed here.  See our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
+If you have questions about your proposal, email the project's mentor or discuss it on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  We encourage innovation; we are open to proposals for original projects not listed below.  See our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
 
 _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).
 
@@ -30,11 +30,12 @@ HTML5, CSS3, JavaScript, WebGL, SVG, Git, Ant, Eclipse, Chrome, Firefox, Android
    * [Geometric Algorithms](#geometricalgorithms)
 * [Geospatial](#geospatial)
    * [Vector Data Visualization with JSON](#json)
+   * [Raster Data Visualization with Web Map Tile Service](#wmts)
    * [Vector Data Visualization with Geography Markup Language](#gml)
    * [Vector Data Visualization with Web Feature Service](#wfs)
-   * [Raster Data Visualization with Web Map Tile Service](#wmts)
 * [UI](#ui)
    * [Navigation Widget](#navigationwidget)
+   * [Credits Layout](#creditslayout)
 * [Misc](#misc)
    * [Offline Web App Support](#offlinewebappsupport)
 
@@ -44,7 +45,7 @@ HTML5, CSS3, JavaScript, WebGL, SVG, Git, Ant, Eclipse, Chrome, Firefox, Android
 <a name="androidperformance">
 ## Android Performance
 
-WebGL support is improving rapidly on Android.  Chrome and Firefox are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
+WebGL support is improving rapidly on Android.  Chrome, Firefox, and Opera Beta are capable of running Cesium on several phones and tablets.  However, these devices do not have the same CPU and GPU performance as a desktop.  On many devices, Cesium runs well, but that's not enough for us - we want it to scream.
 
 Help us optimize Cesium for these devices.  We will profile to find hot-spots and then tune the GPU code written in GLSL or the CPU code written in JavaScript or both.  We'll consider fundamental architecture changes as needed and will carefully make visual quality vs. speed trade-offs.
 
@@ -70,11 +71,9 @@ References
 
 ![](gsoc/2013/compass.png)
 
-In this project, we'll add a 3D compass showing where north is, as shown in the bottom-right of the above screenshot.  We'll consider the trade-offs between creating the compass as a separate widget with SVG and CSS 3D transforms vs. creating the compass as part of Cesium using WebGL.  The compass is particularly useful for views close to ground so the user understands the orientation of the view.
+In this project, we'll add a 3D compass showing where north is, as shown in the bottom-right of the above screenshot.  We'll consider the trade-offs between creating the compass as a standalone widget with SVG and CSS 3D transforms vs. creating the compass as part of Cesium using WebGL.  The compass is particularly useful for views close to ground because it helps the user understand the orientation of the view.
 
-This project requires design and coding skills, and a tad of math that we'll help with.
-
-**Skills:** JavaScript, CSS, SVG, WebGL, git
+**Skills:** Eye for aesthetic design, JavaScript, CSS, SVG, WebGL, git
 
 **Level:** Intermediate
 
@@ -86,6 +85,7 @@ This project requires design and coding skills, and a tad of math that we'll hel
 ## Declutter for Map Labels
 
 ![](gsoc/2013/declutter.png)
+<br /><small>Image from [Temporally Coherent Real-Time Labeling of Dynamic Scenes](http://wwwcg.in.tum.de/research/research/publications/2012/temporally-coherent-real-time-labeling-of-dynamic-scenes.html)</small>
 
 A classic problem when drawing 2D or 3D maps is the overlap of nearby text labels, resulting in a cluttered display and illegible labels.  We will design and implement an efficient real-time algorithm to declutter map labels, avoiding or minimizing overlap.
 
@@ -117,7 +117,7 @@ In this project, we will add geometric algorithms for new shapes and optimize ex
    * Optimize polygon ear clipping and improve its robustness at the International Date Line.
    * Optimize triangulation for circles and ellipses.
 
-We'll consider other shapes as time permits.
+We'll consider other shapes and level of detail as time permits.
 
 References
 * [Triangulation by Ear Clipping](http://www.geometrictools.com/Documentation/TriangulationByEarClipping.pdf)
@@ -154,6 +154,27 @@ References
 
 **Backup Mentor:** Ford?
 
+<a name="wmts">
+## Raster Data Visualization with Web Map Tile Service
+
+![](gsoc/2013/wmts.png)
+
+Cesium draws 3D maps retrieved using many map standards like [Web Map Service (WMS)](http://www.opengeospatial.org/standards/wms) and [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Main_Page).  These standards provide access to high-resolution maps.
+
+In this project, we will add support for [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts), an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard.  WMTS allows serving static tiles as individual files, and generally performs better than WMS.
+
+References
+* [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
+* [Cesium Imagery Layers Tutorial](http://cesium.agi.com/2013/01/04/Cesium-Imagery-Layers-Tutorial/)
+
+**Skills:** JavaScript, REST APIs, git, open standards, geospatial
+
+**Level:** Intermediate
+
+**Mentor:** Fili?
+
+**Backup Mentor:** Kevin?
+
 <a name="gml">
 ## Vector Data Visualization with Geography Markup Language
 
@@ -168,7 +189,7 @@ This project is a stepping stone to supporting [Web Feature Service (WFS)](http:
 References
 * [Geography Markup Language (GML)](http://www.opengeospatial.org/standards/gml)
 
-**Skills:** C#, JavaScript, XML, git, open standards, geospatial
+**Skills:** JavaScript, XML, git, open standards, geospatial
 
 **Level:** Intermediate
 
@@ -198,29 +219,6 @@ References
 
 **Backup Mentor:** TBA
 
-<a name="wmts">
-## Raster Data Visualization with Web Map Tile Service
-
-![](gsoc/2013/wmts.png)
-
-Cesium draws 3D maps retrieved using many map standards like [Web Map Service (WMS)](http://www.opengeospatial.org/standards/wms) and [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Main_Page).  These standards provide access to high-resolution maps.
-
-In this project, we will add support for [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts), an [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/) standard.
-
-_TODO: more details_
-
-References
-* [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
-* [Cesium Imagery Layers Tutorial](http://cesium.agi.com/2013/01/04/Cesium-Imagery-Layers-Tutorial/)
-
-**Skills:** JavaScript, REST APIs, git, open standards, geospatial
-
-**Level:** Intermediate
-
-**Mentor:** Fili?
-
-**Backup Mentor:** Kevin?
-
 <a name="ui">
 # UI
 
@@ -235,18 +233,35 @@ Cesium provides default mouse and touch input for the camera, including:
 * Middle wheel scrolling - Also zooms the camera in and out.
 * Middle click and drag - Rotates the camera around the point on the surface of the globe.
 
-In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  This project requires an eye for designing UIs.  More ideas for this project [here](https://github.com/AnalyticalGraphicsInc/cesium/issues/450).
+In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  We'll also consider adding an instruction overlays demonstrating mouse and touch controls.  More ideas for this project [here](https://github.com/AnalyticalGraphicsInc/cesium/issues/450).
 
 References
 * [Cesium Camera Tutorial](http://cesium.agi.com/2013/02/13/Cesium-Camera-Tutorial/)
 
-**Skills:** HTML5, CSS3, SVG, JavaScript, UI design, git
+**Skills:** Eye for aesthetic UI design, HTML5, CSS3, SVG, JavaScript, git
 
 **Level:** Intermediate
 
 **Mentor:** Ed?
 
 **Backup Mentor:** Amato?
+
+<a name="creditslayout">
+## Credits Layout
+
+![](gsoc/2013/creditslayout.png)
+
+Cesium draws content (terrain, imagery, models, etc.) from external sources that need to be credited when their content is visible as shown in the screenshot above.  Depending on what content is loaded or visible, the displayed credit (image or text) can vary.
+
+In this project, we'll design an API to mange credits and aesthetically overlay them on the 3D scene.
+
+**Skills:** Eye for aesthetic UI design, JavaScript, git
+
+**Level:** Novice
+
+**Mentor:** Scott?
+
+**Backup Mentor:** Ed?
 
 <a name="misc">
 # Misc
