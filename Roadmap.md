@@ -50,6 +50,7 @@ If you are interested in implementing any of these features, start a discussion 
    * Volumetric clouds
    * [Lens Flare](http://www.john-chapman.net/content.php?id=18)
    * Visual quality and performance ideas - [details](Visual-Quality-and-Performance-Details)
+   * Tree generation - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural trees.
 * CZML
    * CZML External links - [details](External-links)
    * GeoServer CZML writer
