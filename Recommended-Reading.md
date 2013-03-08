@@ -55,6 +55,10 @@ These resources present more details on the above topics or details on more spec
 
 * [Producing Open Source Software](http://producingoss.com/) - influenced the Cesium development culture more so than any other book.  Now a bit dated (pre-GitHub), but a new edition is in the works.
 
+### Writing
+
+* [The Elements of Style](http://www.bartleby.com/141/) - free book online.  The classic book on writing style.  Make every word tell.
+
 ### Culture / Career
 
 These books are great for interns.
