@@ -61,7 +61,7 @@ References
 
 **Mentor:** Kevin?
 
-**Backup Mentor:** Cozzi?
+**Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
 <a name="graphics">
 # Graphics
@@ -130,7 +130,7 @@ References
 
 **Mentor:** Dan?
 
-**Backup Mentor:** Cozzi?
+**Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
 <a name="geospatial">
 # Geospatial
