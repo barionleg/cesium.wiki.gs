@@ -59,7 +59,7 @@ References
 
 **Level:** Advanced
 
-**Mentor:** Kevin?
+**Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kring@agi.com
 
 **Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
@@ -77,7 +77,7 @@ In this project, we'll add a 3D compass showing where north is, as shown in the 
 
 **Level:** Intermediate
 
-**Mentor:** Ed?
+**Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
 
 **Backup Mentor:** Dan?
 
@@ -152,7 +152,7 @@ References
 
 **Level:** Novice
 
-**Mentor:** Amato?
+**Mentor:** [Matt Amato](https://twitter.com/matt_amato) - mamato@agi.com
 
 **Backup Mentor:** Ford?
 
@@ -173,9 +173,9 @@ References
 
 **Level:** Intermediate
 
-**Mentor:** Fili?
+**Mentor:** [Tom Fili](https://github.com/tfili) - tfili@agi.com
 
-**Backup Mentor:** Kevin?
+**Backup Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kring@agi.com
 
 <a name="gml">
 ## Vector Data Visualization with Geography Markup Language
@@ -244,9 +244,9 @@ References
 
 **Level:** Intermediate
 
-**Mentor:** Ed?
+**Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
 
-**Backup Mentor:** Amato?
+**Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - mamato@agi.com
 
 <a name="creditslayout">
 ## Credits Layout
@@ -261,9 +261,9 @@ In this project, we'll design an API to mange credits and aesthetically overlay 
 
 **Level:** Novice
 
-**Mentor:** Scott?
+**Mentor:** [Scott Hunter](https://github.com/shunter) - shunter@agi.com
 
-**Backup Mentor:** Ed?
+**Backup Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
 
 <a name="misc">
 # Misc
@@ -286,6 +286,6 @@ References
 
 **Level:** Novice
 
-**Mentor:** Scott?
+**Mentor:** [Scott Hunter](https://github.com/shunter) - shunter@agi.com
 
-**Backup Mentor:** Kevin?
+**Backup Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kring@agi.com
