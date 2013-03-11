@@ -79,7 +79,7 @@ In this project, we'll add a 3D compass showing where north is, as shown in the 
 
 **Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
 
-**Backup Mentor:** Dan?
+**Backup Mentor:** [Dan Bagnell](https://github.com/bagnell) - dbagnell@agi.com
 
 <a name="decultterformaplabels">
 ## Declutter for Map Labels
@@ -103,7 +103,7 @@ References
 
 **Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
-**Backup Mentor:** Dan?
+**Backup Mentor:** [Dan Bagnell](https://github.com/bagnell) - dbagnell@agi.com
 
 <a name="geometricalgorithms">
 ## Geometric Algorithms
@@ -128,7 +128,7 @@ References
 
 **Level:** Intermediate
 
-**Mentor:** Dan?
+**Mentor:** [Dan Bagnell](https://github.com/bagnell) - dbagnell@agi.com
 
 **Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
