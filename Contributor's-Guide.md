@@ -181,9 +181,11 @@ Most of us use git from the command-line, but there is also an Eclipse plugin.  
 <a name="eclipsetips">
 ## Eclipse Tips
 
-* In Eclipse, use Ctrl-Shift-R to search and open files in the workspace.
+* Use Ctrl-Shift-R to search and open files in the workspace.
 
 ![The Open Resource dialog](openresource.png)
+
+* Use Ctrl-Shift-F to auto format selected code or an entire file.
 
 <a name="testtips">
 ## Test Tips
