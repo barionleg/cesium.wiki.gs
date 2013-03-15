@@ -9,7 +9,7 @@
 
 **Information for Students**
 
-Cesium developers are eager to work with you.  Our code has shipped to [10's of millions of people in the same day](http://cesium.agi.com/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
+Cesium developers are eager to work with you.  Our code has shipped to [10's of millions of people in the same day](http://cesium.agi.com/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  Our developers are experts in their fields; they write books, develop open standards, and present at international conferences.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
 
 If you have questions about your proposal, email the project's mentor or discuss it on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  We encourage innovation; we are open to proposals for original projects not listed below.  See our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
 
@@ -59,7 +59,7 @@ References
 
 **Level:** Advanced
 
-**Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kring@agi.com
+**Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kevin@kotachrome.com
 
 **Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
@@ -175,7 +175,7 @@ References
 
 **Mentor:** [Tom Fili](https://github.com/tfili) - tfili@agi.com
 
-**Backup Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kring@agi.com
+**Backup Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kevin@kotachrome.com
 
 <a name="gml">
 ## Vector Data Visualization with Geography Markup Language
@@ -261,7 +261,7 @@ In this project, we'll design an API to mange credits and aesthetically overlay 
 
 **Level:** Novice
 
-**Mentor:** [Scott Hunter](https://github.com/shunter) - shunter@agi.com
+**Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
 
 **Backup Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
 
@@ -286,6 +286,6 @@ References
 
 **Level:** Novice
 
-**Mentor:** [Scott Hunter](https://github.com/shunter) - shunter@agi.com
+**Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
 
-**Backup Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kring@agi.com
+**Backup Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kevin@kotachrome.com
