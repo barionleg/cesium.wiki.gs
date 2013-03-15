@@ -25,7 +25,6 @@ HTML5, CSS3, JavaScript, WebGL, SVG, Git, Ant, Eclipse, Chrome, Firefox, Android
 * [Android](#android)
    * [Android Performance](#androidperformance)
 * [Graphics](#graphics)
-   * [Compass](#compass)
    * [Declutter for Map Labels](#decultterformaplabels)
    * [Geometric Algorithms](#geometricalgorithms)
 * [Geospatial](#geospatial)
@@ -65,21 +64,6 @@ References
 
 <a name="graphics">
 # Graphics
-
-<a name="compass">
-## Compass
-
-![](gsoc/2013/compass.png)
-
-In this project, we'll add a 3D compass showing where north is, as shown in the bottom-right of the above screenshot.  We'll consider the trade-offs between creating the compass as a standalone widget with SVG and CSS 3D transforms vs. creating the compass as part of Cesium using WebGL.  The compass is particularly useful for views close to ground because it helps the user understand the orientation of the view.
-
-**Skills:** Eye for aesthetic design, JavaScript, CSS, SVG, WebGL, git
-
-**Level:** Intermediate
-
-**Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
-
-**Backup Mentor:** [Dan Bagnell](https://github.com/bagnell) - dbagnell@agi.com
 
 <a name="decultterformaplabels">
 ## Declutter for Map Labels
@@ -236,6 +220,10 @@ Cesium provides default mouse and touch input for the camera, including:
 * Middle click and drag - Rotates the camera around the point on the surface of the globe.
 
 In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  We'll also consider adding an instruction overlays demonstrating mouse and touch controls.  More ideas for this project [here](https://github.com/AnalyticalGraphicsInc/cesium/issues/450).
+
+![](gsoc/2013/nav-concept.png)
+
+The nav widget would likely include some sort of a compass, which might or might not look anything like the above.
 
 References
 * [Cesium Camera Tutorial](http://cesium.agi.com/2013/02/13/Cesium-Camera-Tutorial/)
