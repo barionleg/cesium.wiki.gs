@@ -130,6 +130,7 @@ In this project, we will add support for two JSON vector data formats, [GeoJSON]
 
 References
 * [The GeoJSON Format Specification](http://www.geojson.org/geojson-spec.html)
+* [GeoJSONLint](http://geojsonlint.com/)
 * [TopoJSON Specification](https://github.com/mbostock/topojson/wiki/Specification)
 
 **Skills:** JavaScript, git, open standards, geospatial
