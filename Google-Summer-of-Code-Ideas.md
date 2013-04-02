@@ -79,6 +79,7 @@ The algorithm needs to be very efficient; it must run in JavaScript and work for
 
 References
 * [Temporally Coherent Real-Time Labeling of Dynamic Scenes](http://wwwcg.in.tum.de/research/research/publications/2012/temporally-coherent-real-time-labeling-of-dynamic-scenes.html)
+* [Dynamic Label Placement for Improved Interactive Exploration](http://maverick.inria.fr/Publications/2008/SD08/index.php)
 * [K-Means Clustering](http://home.dei.polimi.it/matteucc/Clustering/tutorial_html/kmeans.html)
 
 **Skills:** Algorithm design, strong math, code and algorithm optimization, JavaScript, git
