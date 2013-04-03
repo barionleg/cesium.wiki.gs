@@ -41,12 +41,6 @@ xxxx
 
 ## WebGL Transmission Format
 
-_Server-side_: convert COLLADA to [WebGLTF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) using [collada2json](https://github.com/KhronosGroup/collada2json).
-
-_Client-side_: use collada2json's WebGL library to read WebGLTF.
-
-Contribute back to collada2json using our [fork](https://github.com/AnalyticalGraphicsInc/collada2json).
-
 There are already converters to convert many different formats to COLLADA.
 
 ## Server-Side Pipeline
@@ -56,8 +50,6 @@ _This pipeline has significant overlap with the collada2json transformations.  W
 Do the least amount of work possible client-side.  The server-side pipeline prepares the model to render:
 
 Required:
-   * Triangulate - Convert polygons (`<polygons>` and `<polylist>`) into triangle lists.  Since this only adds indices, it does not dramatically increase the payload. [#42](https://github.com/KhronosGroup/collada2json/issues/42)
-   * Unify indices - In COLLADA, each attribute may be indexed separately.  Unify these so one index refers to all vertex attributes.
    * Split meshes to fit in unsigned short indices - This may need to be done in the optimizations instead if we are combining meshes.
    * Generate shaders - Create GLSL shaders for models using the Common Profile (fixed function), which is most models.
    * Convert textures - Convert image files to a format supported by the browser, e.g., .tiff to .png.
