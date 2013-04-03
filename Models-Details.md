@@ -80,16 +80,8 @@ The last step in the pipeline is to convert from COLLADA to WebGLTF.
 
 ## Client-Side Optimizations
 
-I believe we can have a very fast implementation; perhaps even faster than many C++ ones.
+Most optimizations are done server-side as part of the content pipeline.  However, a few optimizations can only be done at runtime when rendering:
 
-In addition to the server-side optimization pipeline, on the client we can optimize.
-
-During loading:
-* Interleave vertex attributes for static buffers.
-* If a mesh has the same vertex layout as another mesh, they should be combined into a single vertex buffer, and, possibly even a single draw call if the materials are the same.
-* In addition to sending the lowest LOD, the client can also start rendering the model before the textures are loaded by using a 1x1 white texture in the meantime.
-
-During rendering:
 * Sort by material, perhaps create buckets on model load.
 * Coarse front-to-back sort.
 
@@ -121,7 +113,6 @@ Will we be able to render models directly from the provider's APIs or do we need
 * Useful to integrate with existing WebGL modeling tools?  Do any of these have APIs for accessing models?
    * [3DTin](http://www.3dtin.com/)
    * [Bevelity](http://www.bevelity.com/)
-* Check out [Open Asset Import Library](http://assimp.sourceforge.net/) for possible server-side conversions.
 * [JSModeler](https://github.com/kovacsv/JSModeler) is a JavaScript framework to create and visualize 3D models.
 * [COLLADA-CTS](https://github.com/KhronosGroup/COLLADA-CTS)
 
@@ -129,7 +120,6 @@ Will we be able to render models directly from the provider's APIs or do we need
 
 ### Client
 
-* Progressive model loading.  Based on streaming nodes or LODs?
 * Add support for our material system.
 
 ### Server
