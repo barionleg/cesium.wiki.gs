@@ -143,31 +143,3 @@ Reading
 Models
 * [AGI 3D Models](http://www.agi.com/resources/downloads/data/3d-models/)
 * [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
-
-## Older Research
-
-### COLLADA Support in Other WebGL Projects
-
-#### COLLADA to JSON converters
-
-* CubicVR.js [XML -> BF-JSON](https://github.com/cjcliffe/CubicVR.js/blob/master/source/CubicVR.Utility.js).
-* [scenejs-pycollada](http://scenejs.wikispaces.com/scenejs-pycollada) - A python script to convert from COLLADA to SceneJS.
-   * Example [JSON](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/seymour-plane.js) from the [Seymour Plane Demo](http://scenejs.org/dist/v2.0.0/extr/examples/seymour-plane/index.html).
-   * Features are described in the [README.md](https://github.com/xeolabs/scenejs-pycollada/blob/master/README.markdown).
-* [OpenWebGlobe](https://github.com/OpenWebGlobe/ColladaToJSON) - A python script to convert from COLLADA to OpenWebGlobe's JSON format.  Uses [pycollada](https://github.com/pycollada/pycollada).  MIT license.
-* O3D's [COLLADA to JSON converter](http://code.google.com/p/o3d/wiki/ColladaConverter).  A [blog post](http://o3d.blogspot.com/2009/04/why-json-rulez.html) on their rational - more flexibility.
-
-#### Client-Side COLLADA
-
-Some libraries read COLLADA directly without converting it.
-
-* OVoiD.JS [reads COLLADA](http://www.ovoid.org/js/doc/#composing) client-side include animations and skinning.  It also has a scene JSON format, and client-side exporting to this format, including from COLLADA.
-* Three.js reads COLLADA [client-side](https://github.com/mrdoob/three.js/blob/master/examples/js/loaders/ColladaLoader.js).  Three.js also has a [JSON format](https://github.com/mrdoob/three.js/wiki/JSON-Model-format-3.0), including some Python [exporters](https://github.com/mrdoob/three.js/tree/master/utils/exporters).
-* [Odin](https://github.com/operasoftware/Odin) reads COLLADA client-side or a derived run-time format.
-* SpiderGL - [example](http://spidergl.org/example.php?id=10).
-* C3DL - [doc](http://www.c3dl.org/wp-content/documentation/2.0_user_docs/symbols/c3dl.Collada.html), [tutorial](http://www.c3dl.org/index.php/tutorials/tutorial-4-models/), [code](https://github.com/cathyatseneca/c3dl/tree/master/c3dl/collada).
-* I believe [GLGE](http://statico.github.com/webgl-glge-game-part-1.html) also reads COLLADA client-side.
-
-#### XML to JSON Tools
-
-[JSON.NET](http://james.newtonking.com/projects/json/help/?topic=ConvertingJSONandXML.html), [XSLTJSON](https://github.com/bramstein/xsltjson), [Jettison](http://jettison.codehaus.org/User%27s+Guide) (Java), [BadgerFish-JSON](http://www.sklar.com/badgerfish/).
