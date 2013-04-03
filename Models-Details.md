@@ -109,6 +109,8 @@ We recognize the need to support the widest possible content, therefore, we need
 * [Google 3D Warehouse](http://sketchup.google.com/3dwarehouse/) - lots of models.  Need to look at the [terms of service](http://sketchup.google.com/intl/en/3dwh/preview_tos.html).  Not sure about an API.  It would be cool to have a WebGL browser for this though.
 * [3DVia](http://www.3dvia.com/search/?search[file_types]=1) - Looks good.  Worth a closer look.  Need to look at what is free and what is paid.
 * [TFT Labs' JSON3D Gallery](http://json3d.tftlabs.com/)
+* [AGI 3D Models](http://www.agi.com/resources/downloads/data/3d-models/)
+* [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
 
 Will we be able to render models directly from the provider's APIs or do we need to proxy them for conversion?  If we proxy, do the TOS allow us to cache?
 
@@ -133,13 +135,3 @@ Will we be able to render models directly from the provider's APIs or do we need
 ### Server
 
 * Models should probably be a CZML extension since if they were core, [WebGL TF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) would require that CZML clients support WebGL, or at least support GLSL for the shaders.
-
-## Resources
-
-Reading
-* [WebGLTF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF)
-* [COLLADA & WebGL](http://www.slideshare.net/remi_arnaud/collada-webgl) - Skip to Slide 43.
-
-Models
-* [AGI 3D Models](http://www.agi.com/resources/downloads/data/3d-models/)
-* [COLLADA Test Model Bank](http://www.collada.org/owl/) - models for testing
