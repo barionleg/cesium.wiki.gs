@@ -69,7 +69,6 @@ Details to follow...
 * Existing Materials
    * Add (Texture coordinates) `offset` in addition to the `repeat` uniform.
 * New Materials
-   * Grid, e.g., for ellipsoids.
    * Erosion.  Perhaps screen-space too?
 * JSON schema features.
    * Fold top-level uniforms into lower uniforms, e.g., to implement `Image`.

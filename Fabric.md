@@ -105,6 +105,7 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 | `Asphalt` | <img src="Materials/Asphalt.png" width="200" height="92" /> | Asphalt generated with a combination of simplex and cellular noise. |
 | `Wood` | <img src="Materials/Wood.png" width="200" height="92" /> | Wood generated with simplex noise. |
 | `Grass` | <img src="Materials/Grass.png" width="200" height="92" /> | Grass generated with simplex noise. |
+| `Grid` | <img src="Materials/Grid.png" width="200" height="92" /> | A grid of lines, useful for displaying 3D volumes. |
 | `TieDye` | <img src="Materials/TieDye.png" width="200" height="92" /> | Tie-dye generated with simplex noise. |
 | `Facet` | <img src="Materials/Facet.png" width="200" height="92" /> | Facet generated with cellular noise. |
 | `Blob` | <img src="Materials/Blob.png" width="200" height="92" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
