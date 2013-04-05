@@ -38,6 +38,7 @@ If you are interested in implementing any of these features, start a discussion 
    * Batching for polygons and potential other shapes.
    * Vectors
    * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
+   * Lat/lon grid
    * John Madden-style collaboration among multiple clients
    * Terrain and imagery improvements - [details](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
    * Stars improvements - [details](Stars-Details)
