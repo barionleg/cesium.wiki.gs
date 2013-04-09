@@ -263,7 +263,7 @@ In this project, we'll design an API to mange credits and aesthetically overlay 
 
 ![](gsoc/2013/offline.png)
 
-Cesium provides a relastic virtual globe by streaming high-resolution terrain and imagery on-demand.  However, users without a network connection or an unreliable network connection cannot rely on the connection to servers hosting terrain, imagery, and other data used by Cesium.
+Cesium provides a realistic virtual globe by streaming high-resolution terrain and imagery on-demand.  However, users without a network connection or an unreliable network connection cannot rely on the connection to servers hosting terrain, imagery, and other data used by Cesium.
 
 In this project, we'll use new HTML5 features to design and implement offline support in Cesium.  That is, we'll let users select and download data for an area of the globe (pending the data provider's terms of use) so that users can use Cesium later without connectivity.
 
