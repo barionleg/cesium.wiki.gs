@@ -15,10 +15,6 @@ If you have questions about your proposal, email the project's mentor or discuss
 
 _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).
 
-<p align="center">
-[Main Google Summer of Code Page for Cesium](http://www.google-melange.com/gsoc/org/google/gsoc2013/cesium)
-</p>
-
 **Technologies and Tools We Use**
 
 (We don't expect you to know all of them).
@@ -283,3 +279,8 @@ References
 **Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
 
 **Backup Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin) - kevin@kotachrome.com
+
+<hr />
+<p align="center">
+<a href="http://www.google-melange.com/gsoc/org/google/gsoc2013/cesium" target="_blank">Main Google Summer of Code Page for Cesium</a>
+</p>
