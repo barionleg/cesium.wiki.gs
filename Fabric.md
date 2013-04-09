@@ -17,7 +17,7 @@
 <a id="Introduction"></a>
 ## Introduction
 
-_Fabric_ is a JSON schema for describing _materials_ in Cesium.  Materials represent the appearance of an object such as polygons, ellipsoids, and sensors.
+_Fabric_ is a JSON schema for describing _materials_ in Cesium.  Materials represent the appearance of an object such as polygons, polylines, ellipsoids, and sensors.
 
 Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch or created by combining existing materials in a hierarchy; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
 
@@ -28,7 +28,7 @@ Materials can be as simple as draping an image over an object, or applying a pat
 <img src="materials/WoodCircle.png" width="200" height="92" alt="Wood" />
 <img src="materials/FacetCircle.png" width="200" height="92" alt="Facet" />
 
-Objects that support materials have a `material` property.  Currently, these objects are polygons, ellipsoids, and sensors.  Materials are applied by assigning to the object's `material` property.
+Objects that support materials have a `material` property.  Currently, these objects are polygons, polylines, ellipsoids, and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
 polygon.material = Material.fromType(scene.getContext(), 'Color');
 ```
@@ -410,7 +410,7 @@ In addition to more rigorous Fabric documentation, the schema can be used to val
 <a id="MaterialsintheRenderingPipeline"></a>
 ## Materials in the Rendering Pipeline
 
-Objects like _Polygon_, _Ellipsoid_, _CustomSensorVolume_, etc. integrate with the material system to support materials.  Most users will simply assign to their `material` property and be done.  However, users writing custom rendering code may also want to integrate with materials.  Doing so is straightforward.
+Objects like _Polygon_, _PolylineCollection_, _Ellipsoid_, _CustomSensorVolume_, etc. integrate with the material system to support materials.  Most users will simply assign to their `material` property and be done.  However, users writing custom rendering code may also want to integrate with materials.  Doing so is straightforward.
 
 From the rendering perspective, a material is a GLSL function, `czm_getMaterial`, and uniforms.  The fragment shader needs to construct an `czm_MaterialInput`, call `czm_getMaterial`, and then pass the resulting `czm_material` to the lighting function to compute the fragment's color.
 
