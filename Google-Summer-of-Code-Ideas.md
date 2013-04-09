@@ -234,7 +234,7 @@ References
 
 **Level:** Intermediate
 
-**Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
+**Mentor:** [Ed Mackey](https://twitter.com/emackey) - ed-cesium@snappymaria.com
 
 **Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - mamato@agi.com
 
@@ -253,7 +253,7 @@ In this project, we'll design an API to mange credits and aesthetically overlay 
 
 **Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
 
-**Backup Mentor:** [Ed Mackey](https://twitter.com/emackey) - emackey@agi.com
+**Backup Mentor:** [Ed Mackey](https://twitter.com/emackey) - ed-cesium@snappymaria.com
 
 <a name="misc">
 # Misc
