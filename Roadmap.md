@@ -10,7 +10,6 @@ We're always looking to:
 ## In progress
 * Google Summer of Code Ideas - [details](Google-Summer-of-Code-Ideas)
 * 3D models - [details](Models-Details)
-* Widget improvements - [details](Widget-Details)
 * Space features - [details](Space-features)
 * Materials on polylines - [details](Material-System-Details)
 * Tutorials - [details](Tutorials-Details)
