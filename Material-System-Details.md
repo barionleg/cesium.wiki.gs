@@ -34,7 +34,16 @@ Much of this is implemented.  See [[Fabric]].
    * A diffuse map, diffuse reflective, specular map, and bump map.  A bumpy, diffuse lit and reflective surface with shiny areas.
    * Blend two diffuse maps based on a parameter, e.g., terrain height, or third map.
 
-## Phase 3
+## _Done:_ Phase 3
+
+* _Done:_ Polylines
+   * Polylines currently use very simple shaders, and are rendered in three passes using the stencil buffer to achieve an outline effect (turn ANGLE off; start Chrome with `--use-gl=desktop`).
+   * Replace the three-pass algorithm with a single pass algorithm that, in a fragment shader, uses the distance from the fragment to the line to determine if the fragment is part of the outline.  Read [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
+   * First hard-code the above in the Polyline, then factor it out into a new `PolylineOutlineMaterial`.
+   * Create a `PolylineGlowMaterial` based on [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
+   * Make Polylines work with the rest of the materials as reasonable.  Polylines will need to be able to compute at least 1D texture coordinates.  I could see some potential for 2D and 3D coordinates as well.  All materials will not work with all primitives.  We'll need to document a feature matrix.
+
+## Phase 4
 
 Details to follow...
 
@@ -47,15 +56,6 @@ Details to follow...
 * Multiple lights: turn lights on/off per primitive.  This will replace `affectedByLighting` on [Polygon](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/Polygon.js) and [CentralBody](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/CentralBody.js).
 * Light maps
 * Globe map for stained glass, etc?  See [Deferred Shading in Tabula Rasa](http://http.developer.nvidia.com/GPUGems3/gpugems3_ch19.html).
-
-## Phase 4
-
-* Polylines
-   * Polylines currently use very simple shaders, and are rendered in three passes using the stencil buffer to achieve an outline effect (turn ANGLE off; start Chrome with `--use-gl=desktop`).
-   * Replace the three-pass algorithm with a single pass algorithm that, in a fragment shader, uses the distance from the fragment to the line to determine if the fragment is part of the outline.  Read [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
-   * First hard-code the above in the Polyline, then factor it out into a new `PolylineOutlineMaterial`.
-   * Create a `PolylineGlowMaterial` based on [Tron, Volumetric Lines, and Meshless Tubes](http://prideout.net/blog/?p=61).
-   * Make Polylines work with the rest of the materials as reasonable.  Polylines will need to be able to compute at least 1D texture coordinates.  I could see some potential for 2D and 3D coordinates as well.  All materials will not work with all primitives.  We'll need to document a feature matrix.
 
 ## Phase 5
 
