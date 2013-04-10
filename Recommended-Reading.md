@@ -10,7 +10,7 @@ These resources present topics broadly useful to Cesium development.  We think a
 
 ### WebGL
 
-TBA
+* [Learning WebGL](http://learningwebgl.com/blog/) - Beginner tutorials and news.
 
 ### CSS
 
@@ -41,7 +41,7 @@ These resources present more details on the above topics or details on more spec
 
 ### WebGL
 
-* Although no longer maintained, [Learning WebGL](http://learningwebgl.com/blog/) and [WebGL Camp](http://www.webglcamp.com/wiki/index.php?title=Main_Page) contain much of the work that has been done with WebGL.
+* [WebGL Camp](http://www.webglcamp.com/wiki/index.php?title=Main_Page)
 
 ### CSS
 
