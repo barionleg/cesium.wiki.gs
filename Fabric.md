@@ -3,6 +3,7 @@
 * [**Built-In Materials**](#BuiltInMaterials)
    * [Procedural Textures](#ProceduralTextures)
    * [Base Materials](#BaseMaterials)
+   * [Polyline Materials](#PolylineMaterials)
    * [Misc Materials](#MiscMaterials)
    * [Common Uniforms](#CommonUniforms)
 * [**Creating New Materials**](#CreatingNewMaterials)
