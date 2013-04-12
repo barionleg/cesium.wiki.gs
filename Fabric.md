@@ -127,6 +127,16 @@ Base materials represent fine-grain fundamental material characteristics, such a
 | `Refraction` | <img src="Materials/Refraction.png" width="200" height="92" /> | Cube map refraction for translucent surfaces that refract light, e.g., glass. |
 | `Fresnel` | <img src="Materials/Fresnel.png" width="200" height="92" /> | A view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material refracts light; as the viewer looks more edge on, the material refracts less and reflects more. |
 
+<a id="PolylineMaterials"></a>
+## Polyline Materials
+
+Polyline materials are materials that can only be added to lines.
+
+| Name | Screenshot | Description |
+|:-----|:-----------|:------------|
+| `PolylineArrow` | <img src="materials/PolylineArrow.png" /> | Places an arrow head at the end point of a line. |
+| `PolylineOutline` | <img src="materials/PolylineOutline.png" /> | Line outline. |
+
 <a id="MiscMaterials"></a>
 ### Misc Materials
 
