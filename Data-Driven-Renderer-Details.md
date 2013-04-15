@@ -197,7 +197,6 @@ TODO
 * [Renderstate change costs](http://home.comcast.net/~tom_forsyth/blog.wiki.html#%5B%5BRenderstate%20change%20costs%5D%5D)
 * [nulstein v2 plog - rendering overview](http://software.intel.com/en-us/blogs/2010/11/26/nulstein-v2-plog-rendering-overview/)
 * [Some more frustum culling notes](http://fgiesen.wordpress.com/2010/10/20/some-more-frustum-culling-notes/)
-
 * [Renderer Design](http://diaryofagraphicsprogrammer.blogspot.com/2007/12/renderer-design.html)
 * Designing a Data-Driven Renderer in [GPU Pro 3](http://gpupro3.blogspot.com/)
 * Chapter 6 in [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com/)
