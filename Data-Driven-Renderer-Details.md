@@ -185,7 +185,8 @@ TODO
 ## Later Phases
 
 * Callback functions as commands?  Could be used to call WebGL directly.
-* Scissor out pick rectangle
+* _Done_: Scissor out pick rectangle
+* Automatically disable color buffer writes for early-z and shadow passes.
 * [Post-processing](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Screen-Space-Rendering-Details) - color per frame, depth per frustum?
 * Shadows
    * [Shadows for Real-Time Rendering](http://cis565-fall-2012.github.com/lectures/10-24-Shadows.pptx)
