@@ -1,4 +1,3 @@
-* Polyline - per-vertex color for passes.  Will [materials](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) on polylines work?
 * Viewing in LLVH - [#531](https://github.com/AnalyticalGraphicsInc/cesium/issues/531)
 * Draw plans perpendicular to orbits
 * More precise sun position - [#391](https://github.com/AnalyticalGraphicsInc/cesium/issues/391)
@@ -15,6 +14,7 @@
 ## Done
 
 * ~~Inertial frame~~
+* ~~Polyline - per-vertex color for passes.  Will [materials] (https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) on polylines work?~~
 * ~~Ellipsoid improvements~~
    * ~~Eliminate jitter - [#392](https://github.com/AnalyticalGraphicsInc/cesium/issues/392)~~
    * ~~Zoom inside - [#390](https://github.com/AnalyticalGraphicsInc/cesium/issues/390)~~
