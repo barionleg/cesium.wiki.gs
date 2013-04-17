@@ -11,7 +11,7 @@ We're always looking to:
 * Google Summer of Code Ideas - [details](Google-Summer-of-Code-Ideas)
 * 3D models - [details](Models-Details)
 * Space features - [details](Space-features)
-* Materials on polylines - [details](Material-System-Details)
+* Batching for polygons and potential other shapes.
 * Tutorials - [details](Tutorials-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
@@ -34,7 +34,6 @@ If you are interested in implementing any of these features, start a discussion 
    * Particle system - [details](Particle-System-Details)
    * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
    * Draw more shapes - walls, cylinders, boxes, extruded volumes.  Optimize triangulation (faster, less triangles) for circles and ellipses.
-   * Batching for polygons and potential other shapes.
    * Vectors
    * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
    * Lat/lon grid
