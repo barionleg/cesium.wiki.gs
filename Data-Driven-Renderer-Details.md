@@ -186,6 +186,7 @@ TODO
 
 * Callback functions as commands?  Could be used to call WebGL directly.
 * _Done_: Scissor out pick rectangle
+* Picking optimizations: `color` and `pick` in the same pass.  Preserve pick color buffer between frames for static scenes.
 * Automatically disable color buffer writes for early-z and shadow passes.
 * [Post-processing](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Screen-Space-Rendering-Details) - color per frame, depth per frustum?
 * Shadows
