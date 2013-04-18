@@ -82,5 +82,3 @@ If you are interested in implementing any of these features, start a discussion 
 ## ESA Summer of Code in Space Ideas
 
 [Program details](http://sophia.estec.esa.int/socis2012/).  Most likely due June, 2013.
-
-* TODO
