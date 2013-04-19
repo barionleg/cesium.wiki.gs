@@ -24,7 +24,7 @@ Short version:
 * Commit access? Clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium) and make all changes in a branch.
 
 Details
-* Setup git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
+* Setup Git if it isn't already ([linux](http://help.github.com/linux-set-up-git/) | [mac](http://help.github.com/mac-set-up-git/) | [windows](http://help.github.com/win-set-up-git/)).
    * Check your settings for name and email: `git config --get-regexp user.*`.
    * On Windows, set `git config --global core.autocrlf true` (following the instructions above does this for you).  
    * On Linux/Mac, set `git config --global core.autocrlf input` - see the [GitHub help on this topic](http://help.github.com/line-endings/).
@@ -168,7 +168,7 @@ If you edit WebGL shader files (.glsl) with Eclipse, install GLShaders for GLSL 
 
 ### Git Plugin
 
-Most of us use git from the command-line, but there is also an Eclipse plugin.  To install it:
+Most of us use Git from the command-line, but there is also an Eclipse plugin.  To install it:
    * Help - Install New Software.  Work with: select *Juno* from the list.  
    * Expand *Collaboration*, check *Eclipse EGit*.
    * Next, Next, Accept, Finish, _wait_, Restart.
