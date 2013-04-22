@@ -15,7 +15,11 @@ If you have questions about your proposal, email the project's mentor or discuss
 
 _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).  Make your proposal even stronger by tackling an issue or two, see our [list of issues for beginners](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open).
 
-**Submitting Proposals**
+## Submitting Proposals
+
+<p align="center">
+<a href="http://google-melange.appspot.com/gsoc/org/google/gsoc2013/cesium"><img src="gsoc/2013/banner-gsoc2013.png"></a>
+</p>
 
 Student proposals are submitted through [Cesium's page on the Google Summer of Code website](http://google-melange.appspot.com/gsoc/org/google/gsoc2013/cesium).
 
