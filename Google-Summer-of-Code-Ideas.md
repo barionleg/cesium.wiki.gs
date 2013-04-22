@@ -23,7 +23,7 @@ Proposals are being accepted from April 22, 19:00 UTC through May 3rd 2013, 19:0
 
 **Get your feet wet**
 
-It can be quite helpful to learn about our codebase and try making some simple modifications to it, prior to submitting your proposal.  Check out our issues flagged with [the GSoC label(https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open) to see if there are any that might make a good first bugfix for you.
+It can be quite helpful to learn about our codebase and try making some simple modifications to it, prior to submitting your proposal.  Check out our issues flagged with [the GSoC label](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open) to see if there are any that might make a good first bugfix for you.
 
 All of Cesium's code is covered by a Contributor's License Agreement (CLA), which basically authorizes Cesium developers and users to use the code you're contributing to us.  You'll need to read the instructions for [contributing to Cesium](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md) and email us a signed CLA before we can accept any code changes.
 
