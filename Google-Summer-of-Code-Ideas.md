@@ -15,6 +15,18 @@ If you have questions about your proposal, email the project's mentor or discuss
 
 _Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).  Make your proposal even stronger by tackling an issue or two, see our [list of issues for beginners](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open).
 
+**Submitting Proposals**
+
+Student proposals are submitted through [Cesium's page on the Google Summer of Code website](http://google-melange.appspot.com/gsoc/org/google/gsoc2013/cesium).
+
+Proposals are being accepted from April 22, 19:00 UTC through May 3rd 2013, 19:00 UTC.  (see the [full schedule](http://google-melange.appspot.com/gsoc/events/google/gsoc2013).)
+
+**Get your feet wet**
+
+It can be quite helpful to learn about our codebase and try making some simple modifications to it, prior to submitting your proposal.  Check out our issues flagged with [the GSoC label(https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open) to see if there are any that might make a good first bugfix for you.
+
+All of Cesium's code is covered by a Contributor's License Agreement (CLA), which basically authorizes Cesium developers and users to use the code you're contributing to us.  You'll need to read the instructions for [contributing to Cesium](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md) and email us a signed CLA before we can accept any code changes.
+
 **Technologies and Tools We Use**
 
 (We don't expect you to know all of them).
