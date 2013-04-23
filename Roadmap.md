@@ -12,6 +12,7 @@ We're always looking to:
 * 3D models - [details](Models-Details)
 * Space features - [details](Space-features)
 * Batching for polygons and potential other shapes.
+* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * Tutorials - [details](Tutorials-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
@@ -29,7 +30,6 @@ If you are interested in implementing any of these features, start a discussion 
 * Graphics
    * Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
    * Improve 3D/2D/Columbus view transitions
-   * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
    * GLSL #include system - [details](GLSL-Details)
    * Particle system - [details](Particle-System-Details)
    * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
