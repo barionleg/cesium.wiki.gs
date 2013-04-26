@@ -18,6 +18,7 @@ Starting out, we have the simple, yet complete CZML document show below.  It des
 [
   {
     "id":"Headquarters",
+	"availability":"2012-06-20T16:00:00Z/2012-06-20T16:02:00Z",
     "position":{
       "cartesian":[
         1216469.9357990976,-4736121.71856379,4081386.8856866374
@@ -30,7 +31,7 @@ Starting out, we have the simple, yet complete CZML document show below.  It des
         ]
       },
       "horizontalOrigin":"CENTER",
-      "image":"http://www.someImage.com/someImage.png",
+      "image":"http://cesium.agi.com/images/Cesium_Logo.png",
       "scale":1.0,
       "show":[
         {
@@ -49,18 +50,22 @@ Assuming we wanted to visualize this data in a simple Cesium application, such a
 ```javascript
 //Create a scene
 var scene = new Scene(document.getElementById("canvas"));
-//Download and parse a CZML file
-var czml = JSON.parse(getJson('simpleBillboard.czml'));
-//Create a DynamicObjectCollection for handling the CZML
+//Create a DynamicObjectCollection to contain the objects from CZML
 var dynamicObjectCollection = new DynamicObjectCollection();
 //Create the standard CZML visualizer collection
 var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
-//Process the CZML, which populates the collection with DynamicObjects
-dynamicObjectCollection.processCzml(czml);
-//Figure out the time span of the data
-var availability = dynamicObjectCollection.computeAvailability();
 //Create a Clock object to drive time.
-var clock = new Clock(availability.start, availability.stop);
+var clock = new Clock();
+//Download and parse a CZML file asynchronously
+var czmlUrl = 'http://cesium.agi.com/someFile.czml';
+getJson(czmlUrl).then(function(czml) {
+    //Process the CZML, which populates the collection with DynamicObjects
+    processCzml(czml, dynamicObjectCollection, czmlUrl);
+    //Figure out the time span of the data
+    var availability = dynamicObjectCollection.computeAvailability();
+    clock.startTime = availability.start;
+    clock.stopTime = availability.stop;
+});
 ```
 
 After the initial set-up, we call `update` in our `requestAnimationFrame` callback.
@@ -72,20 +77,23 @@ visualizers.update(currentTime);
 
 Let's break this code up line by line and explain what's going on in each step.
 
-First, we create the scene and parse the CZML document.  For the sake of this example, assume `getJson` synchronously retrieves the desired file from the server.
+First, we create the scene and parse the CZML document.
 
 ```javascript
 var scene = new Scene(document.getElementById("canvas"));
-var czml = JSON.parse(getJson('simpleBillboard.czml'));
+//Download and parse a CZML file asynchronously
+var czmlUrl = 'http://cesium.agi.com/someFile.czml';
+getJson(czmlUrl).then(function(czml) {
+});
 ```
-There's nothing fancy about this code; the end result is that czml is now a JSON object which contains CZML data.
+This code asynchronously requests CZML from the given URL, then calls a function with the parsed JSON once it's been retrieved.
 
 Now that we have our CZML, we need to do something with it.  That's where `DynamicObjectCollection` comes in.
 
 ```javascript
 var dynamicObjectCollection = new DynamicObjectCollection();
 ```
-DynamicObjectCollection takes an optional parameter, `updaterFunctions`, which is an array of functions that perform the actual CZML processing.  Default constructing the object results in it using the standard set of updater functions that handle the full range of the CZML standard.  These default functions are specified in the `CzmlStandard` utility class.  In custom applications, we may only want to support a subset of the specification, or perhaps we'll want to extend the specification with custom properties.  In those cases, we would provide our own updater functions.  For this example, we use the defaults.
+DynamicObjectCollection takes an optional parameter, `updaterFunctions`, which is an array of functions that perform the actual CZML processing.  Default constructing the object results in it using the standard set of updater functions that handle the full range of the CZML standard.  These default functions are specified in the `CzmlDefaults` utility class.  In custom applications, we may only want to support a subset of the specification, or perhaps we'll want to extend the specification with custom properties.  In those cases, we would provide our own updater functions.  For this example, we use the defaults.
 
 ```javascript
 var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
@@ -93,10 +101,10 @@ var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynam
 Next we create our `VisualizerCollection`, which takes the `DynamicObject`s created by CZML, and maintains equivalent graphic primitives for visualization.  Much like `DynamicObjectCollection`, `VisualizerCollection` offloads its processing to individual visualizers which usually only create one type of primitive; for example, there is a `DynamicBillboardVisualizer` which only handles billboards.  While we can construct the `VisualizerCollection` directly, and provide our own set of visualizers, we use the helper function to create the full set that maps to the CZML standard.  Even though we've configured our objects, we haven't actually processed the CZML data yet, which happens on the next line.
 
 ```javascript
-dynamicObjectCollection.processCzml(czml);
+processCzml(czml, dynamicObjectCollection, czmlUrl);
 ```
 
-The `processCzml` call iterates over all of the CZML packets in our JSON object taking the following steps:
+The `processCzml` function iterates over all of the CZML packets in our JSON object taking the following steps:
 
 1. Check the id of the packet.  If the id does not exist, generate a GUID to represent this data point and create a new `DynamicObject` to represent it.  If the id property exists, check its collection to see if an object of the same id exists, if not, it creates a new object with that id.
 
@@ -104,15 +112,16 @@ The `processCzml` call iterates over all of the CZML packets in our JSON object 
 
 When the function returns, `dynamicObjectCollection` includes all of the dynamic objects present in the CZML.  `DynamicObjectCollection` will also fire events for interested parties when new object properties are available - more on that later.
 
-
 ```javascript
+var clock = new Clock();
+
 //Figure out the time span of the data
 var availability = dynamicObjectCollection.computeAvailability();
-//Create a Clock object to drive time.
-var clock = new Clock(availability.start, availability.stop);
+clock.startTime = availability.start;
+clock.stopTime = availability.stop;
 ```
 
-Finally, we create a `Clock` object to manage time.  In order to find out what time span our CZML file coveres, we call `dynamicObjectCollection.computeAvailability` which returns a `TimeInterval` of available data.  `Clock` takes a few other optional parameters, check the reference documentation for details.
+Finally, we create a `Clock` object to manage time.  `Clock` takes a few other optional parameters, check the reference documentation for details.  In order to find out what time span our CZML file covers, we call `dynamicObjectCollection.computeAvailability` which returns a `TimeInterval` of available data, which we then set on the clock.
 
 Now that we have loaded our CZML and configure our Visualizers, it's just a matter of telling the clock to advance and our visualizers to update each frame.
 
@@ -120,7 +129,7 @@ Now that we have loaded our CZML and configure our Visualizers, it's just a matt
 var currentTime = clock.tick();
 visualizers.update(currentTime);
 ```
-`clock.tick` returns the new current time, but `clock.curretTime` will also have the new value.  The `VisualizerCollection` iterates over all of the underlying visualizer instances, and calls update on each one.  Each visualizer is then responsible for updating primitives for each of the dynamic objects in the dynamicObjectCollection.
+`clock.tick` returns the new current time, but `clock.currentTime` will also have the new value.  The `VisualizerCollection` iterates over all of the underlying visualizer instances, and calls update on each one.  Each visualizer is then responsible for updating primitives for each of the dynamic objects in the dynamicObjectCollection.
 
 Thus far, we discussed the basics of loading and visualizing CZML with Cesium.  In the next sections, we'll go further under the hood to discuss exactly what's going as well as explore advanced use cases such as streaming and compositing CZML documents.
 
