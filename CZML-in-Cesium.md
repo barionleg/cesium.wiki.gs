@@ -18,7 +18,7 @@ Starting out, we have the simple, yet complete CZML document show below.  It des
 [
   {
     "id":"Headquarters",
-	"availability":"2012-06-20T16:00:00Z/2012-06-20T16:02:00Z",
+    "availability":"2012-06-20T16:00:00Z/2012-06-20T16:02:00Z",
     "position":{
       "cartesian":[
         1216469.9357990976,-4736121.71856379,4081386.8856866374
