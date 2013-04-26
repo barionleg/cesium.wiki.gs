@@ -209,7 +209,7 @@ While the above example is only nine lines of code ignoring comments, there's ob
 
 ```javascript
 var dynamicObjects = dynamicObjectCollection.getObjects();
-for(var i = 0, len = dynamicObjects.length; i < len; i++) {
+for (var i = 0, len = dynamicObjects.length; i < len; i++) {
     var dynamicBillboard = dynamicObject[i].billboard;
     if (typeof dynamicBillboard !== 'undefined') {
         var scale = dynamicBillboard.scale;
