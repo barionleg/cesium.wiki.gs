@@ -31,13 +31,13 @@ Core is the lowest layer in Cesium, and contains low-level, widely-used function
 
 For example, the following code converts a cartographic point on the WGS84 ellipsoid at (0.0, 0.0), in radians, to Cartesian, that is, it converts from longitude/latitude to xyz:
 ```javascript
-var ellipsoid = Ellipsoid.getWgs84();
-var p = ellipsoid.toCartesian(new Cartographic2(0.0, 0.0));
+var ellipsoid = Ellipsoid.WGS84;
+var p = ellipsoid.cartographicToCartesian(new Cartographic(0.0, 0.0));
 ```
 The example below computes boundary points for an ellipse defined by a center point, two radii, and a bearing angle, on the WGS84 ellipsoid.
 ```javascript
-var ellipsoid = Ellipsoid.getWgs84();
-var center = ellipsoid.toCartesian(new Cartographic2(0.0, 0.0));
+var ellipsoid = Ellipsoid.WGS84;
+var center = ellipsoid.cartographicToCartesian(new Cartographic(0.0, 0.0));
 var bearing = CesiumMath.toRadians(60.0); // Cesium uses radians everywhere.
 var positions = Shapes.computeEllipseBoundary(ellipsoid, center, 500000.0, 300000.0, bearing);
 ```
@@ -68,26 +68,27 @@ var sp = context.getShaderCache().getShaderProgram(vs, fs);
 ```
 Textures and cube maps have abstractions so we never have to worry about binding a texture.  Uniforms are also abstracted; mistakes like calling `getUniformLocation` on uniforms that were optimized out are not possible.
 ```javascript
-this.bumpTexture = context.createTexture2D({ 
-  source      : bumpImage,
-  pixelFormat : PixelFormat.LUMINANCE 
+this.bumpTexture = context.createTexture2D({
+    source      : bumpImage,
+    pixelFormat : PixelFormat.LUMINANCE
 });
 // ...
 var that = this;
 var uniforms = {
-  u_bumpMap :  function() { return  that.bumpTexture; },
-  u_nightIntensity :  function() { return 0.8; }
+    u_bumpMap :  function() { return that.bumpTexture; },
+    u_nightIntensity :  function() { return 0.8; }
 };
 ```
 Vertex arrays simplify organizing vertex attributes.
 ```javascript
-var mesh = BoxTessellator.compute({             // BoxTessellator is in Core
-  dimensions :  new Cartesian3(1.0, 2.0, 3.0)
+// BoxTessellator is in Core
+var mesh = BoxTessellator.compute({
+    dimensions :  new Cartesian3(1.0, 2.0, 3.0)
 }));
 var va = context.createVertexArrayFromMesh({
-  mesh : mesh,
-  bufferUsage : BufferUsage.STATIC_DRAW,
-  vertexLayout : VertexLayout.INTERLEAVED
+    mesh : mesh,
+    bufferUsage : BufferUsage.STATIC_DRAW,
+    vertexLayout : VertexLayout.INTERLEAVED
 });
 ```
 Render states define the fixed-function state of the graphics pipeline for a draw call.  We never worry about global state.
@@ -96,22 +97,22 @@ Render states define the fixed-function state of the graphics pipeline for a dra
 
 ```javascript
 var rs = context.createRenderState({
-  depthTest : {
-    enabled : true
-  },
-  cull : {
-    enabled : true,
-    face    : CullFace.BACK  
-  },
-  blending : BlendingState.ALPHA_BLEND
-}); 
+    depthTest : {
+        enabled : true
+    },
+    cull : {
+        enabled : true,
+        face    : CullFace.BACK
+    },
+    blending : BlendingState.ALPHA_BLEND
+});
 
 context.draw({
-  primitiveType : PrimitiveType.TRIANGLES,
-  shaderProgram : sp,
-  uniformMap : uniforms,
-  vertexArray : va,
-  renderState : rs
+    primitiveType : PrimitiveType.TRIANGLES,
+    shaderProgram : sp,
+    uniformMap : uniforms,
+    vertexArray : va,
+    renderState : rs
 });
 ```
 
@@ -144,24 +145,24 @@ Primitives are objects added to the scene that are drawn.  Their implementation 
 
 ```javascript
 (function tick() {
-  scene.initializeFrame();
-  // Insert app-specific animation code here.
-  scene.render();
-  requestAnimationFrame(tick);
+    scene.initializeFrame();
+    // Insert app-specific animation code here.
+    scene.render();
+    requestAnimationFrame(tick);
 }());
 ```
 The `CentralBody` primitive represents the globe (in a future Cesium version, any central body such as the Moon and Mars will be supported).  High-resolution imagery from various servers is added using tile imagery providers.
 ```javascript
-var layers = cb.getImageryLayers();
-var newLayer = layers.addImageryProvider(new Cesium.OpenStreetMapImageryProvider({
+var layers = centralBody.getImageryLayers();
+var newLayer = layers.addImageryProvider(new OpenStreetMapImageryProvider({
     url : 'http://otile1.mqcdn.com/tiles/1.0.0/osm/',
-    proxy : new Cesium.DefaultProxy('/proxy/')
+    proxy : new DefaultProxy('/proxy/')
 });
 newLayer.alpha = 0.5;
 ```
 Materials represent the appearance of an object.  Currently, they can be applied to polygons and sensors.  Loosely speaking, materials are implemented as a GLSL shader function and a set of uniforms.
 ```javascript
-polygon.material = Material.fromID(scene.getContext(), 'Stripe');
+polygon.material = Material.fromType(scene.getContext(), 'Stripe');
 ```
 There are many built-in materials, and new ones can be scripted using [[Fabric]], a JSON schema, and GLSL.
 
@@ -175,24 +176,27 @@ Dynamic Scene builds on top of the previous three layers to enable data-driven v
 
 Rather than manually update primitives every frame, Dynamic Scene allows us to load or stream our data into a collection of high-level `DynamicObject`s, which are then rendered using Visualizers.  A single update call is all that's required to update the entire scene to a new time.
 
-The code below is all that's needed to load and visualize any non-streaming CZML document into any Cesium based application.  
+The code below is all that's needed to load and visualize any non-streaming CZML document into any Cesium based application.
 
 ```javascript
 //Create a scene
 var scene = new Scene(document.getElementById("canvas"));
-//Download and parse a CZML file
-var czml = JSON.parse(getJson('http://cesium.agi.com/someFile.czml'));
-//Create a DynamicObjectCollection for handling the CZML
+//Create a DynamicObjectCollection to contain the objects from CZML
 var dynamicObjectCollection = new DynamicObjectCollection();
-//Process the CZML, which populates the collection with DynamicObjects
-dynamicObjectCollection.processCzml(czml);
 //Create the standard CZML visualizer collection
 var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
-//Figure out the time span of the data
-var availability = dynamicObjectCollection.computeAvailability();
 //Create a Clock object to drive time.
-var clock = new Clock(availability.start, availability.stop);
-
+var clock = new Clock();
+//Download and parse a CZML file asynchronously
+var czmlUrl = 'http://cesium.agi.com/someFile.czml';
+getJson(czmlUrl).then(function(czml) {
+    //Process the CZML, which populates the collection with DynamicObjects
+    processCzml(czml, dynamicObjectCollection, czmlUrl);
+    //Figure out the time span of the data
+    var availability = dynamicObjectCollection.computeAvailability();
+    clock.startTime = availability.start;
+    clock.stopTime = availability.stop;
+});
 ```
 After the initial set-up, we call `update` in our `requestAnimationFrame` callback.
 
@@ -201,15 +205,15 @@ var currentTime = clock.tick();
 visualizers.update(currentTime);
 ```
 
-While the above example is only nine lines of code ignoring comments, there's obviously a lot of work being done under-the-hood to parse and visualize the data.  There's also plenty of room for extending and customizing behavior for each use case.  The primary concept not seen in the above code is `DynamicObject`, which are created by the call to `processCzml` and populate the `dynamicObjectCollection`.  These object in turn, contain instances of `DynamicProperty`, which map to a CZML standard object and in most cases of a direct analogue to a Cesium primitive, e.g., `Billboard`.  For example, the code below gets all of the objects in the collection, sees if they have a `DynamicBillboard` instance with a `DynamicProperty` indicating scale, and retrieves the scale value for the current time.
+While the above example is only nine lines of code ignoring comments, there's obviously a lot of work being done under-the-hood to parse and visualize the data.  There's also plenty of room for extending and customizing behavior for each use case.  The primary concept not seen in the above code is `DynamicObject`, which are created by the call to `processCzml` and populate the `dynamicObjectCollection`.  These object in turn, contain instances of `DynamicProperty`, which map to a CZML standard object and in most cases have a direct analogue to a Cesium primitive, e.g., `Billboard`.  For example, the code below gets all of the objects in the collection, sees if they have a `DynamicBillboard` instance with a `DynamicProperty` indicating scale, and retrieves the scale value for the current time.
 
 ```javascript
 var dynamicObjects = dynamicObjectCollection.getObjects();
 for(var i = 0, len = dynamicObjects.length; i < len; i++) {
     var dynamicBillboard = dynamicObject[i].billboard;
-    if(typeof dynamicBillboard !== 'undefined') {
+    if (typeof dynamicBillboard !== 'undefined') {
         var scale = dynamicBillboard.scale;
-        if(typeof scale !=== 'undefined') {
+        if (typeof scale !=== 'undefined') {
             var currentScale = scale.getValue(currentTime);
         }
     }
