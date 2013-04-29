@@ -35,7 +35,7 @@ The beta nature of WebGL support on mobile devices means that many issues are th
 
 ## Debugging tools
 
-Setting up Google Chrome for remote debugging is easy and the remote debugger is very high quality.  In Google Chrome on your Android device, go to Settings->Developer tools and check "Enable USB Web debugging".  Then, tap "Learn more about using USB Web debugging" for instructions on debugging from your computer.  You'll need the Android SDK and a USB driver for your device installed on your computer.
+Setting up Google Chrome for remote debugging is easy and the remote debugger is very high quality.  In Google Chrome on your Android device, go to Settings->Developer tools and check "Enable USB Web debugging".  Then, tap ["Learn more about using USB Web debugging"](https://developers.google.com/chrome-developer-tools/docs/remote-debugging) for instructions on debugging from your computer.  You'll need the Android SDK and a USB driver for your device installed on your computer.
 
 Firefox also supports [remote debugging](https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/):
 
