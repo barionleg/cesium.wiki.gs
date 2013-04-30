@@ -136,6 +136,7 @@ Polyline materials are materials that can only be added to lines.
 | Name | Screenshot | Description |
 |:-----|:-----------|:------------|
 | `PolylineArrow` | <img src="materials/PolylineArrow.png" /> | Places an arrow head at the end point of a line. |
+| `PolylineGlow` | <img src="materials/PolylineGlow.png" /> | Makes glowing lines. |
 | `PolylineOutline` | <img src="materials/PolylineOutline.png" /> | Line outline. |
 
 <a id="MiscMaterials"></a>
