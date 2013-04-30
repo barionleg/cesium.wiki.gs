@@ -265,7 +265,6 @@ struct czm_materialInput
   mat3 tangentToEyeMatrix;
   vec3 positionToEyeEC;
   vec3 normalEC;
-  vec3 positionMC;
 };
 
 struct czm_material
@@ -319,7 +318,6 @@ The `materialInput` variable is available in both `source` and `components`.  It
 | `tangentToEyeMatrix` | `mat3`  | A transformation matrix from the fragment's tangent space to eye coordinates, for normal mapping, bump mapping, etc. |
 | `positionToEyeEC` | `vec3` | A vector from the fragment to the eye in eye coordinates, for reflection, refraction, etc. The magnitude is the distance in meters from the fragment to the eye. |
 | `normalEC` | `vec3` | The fragment's normal (normalized) in eye coordinates, for bump mapping, reflection, refraction, etc. |
-| `positionMC` | `vec3` | The fragment's position in model coordinates. |
 
 A simple material that visualizes the `st` texture coordinates is:
 ```javascript
