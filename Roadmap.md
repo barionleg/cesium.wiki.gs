@@ -33,12 +33,11 @@ If you are interested in implementing any of these features, start a discussion 
    * GLSL #include system - [details](GLSL-Details)
    * Particle system - [details](Particle-System-Details)
    * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
-   * Draw more shapes - walls, cylinders, boxes, extruded volumes.  Optimize triangulation (faster, less triangles) for circles and ellipses.
    * Vectors
    * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
    * Lat/lon grid
    * John Madden-style collaboration among multiple clients
-   * Terrain and imagery improvements - [details](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
+   * Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
    * Stars improvements - [details](Stars-Details)
    * Ocean improvements - [details](Ocean-Details)
    * Render buildings
@@ -73,7 +72,7 @@ If you are interested in implementing any of these features, start a discussion 
    * CZML Table of contents/Document Manager widget
 * Infrastructure
    * Website Improvements - [details](Website-Improvement-Details)
-   * Build and test server - consider [travis-ci](https://github.com/travis-ci/travis-ci) which integrates with GitHub.
+   * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
 
 ## Google Code-in
 
