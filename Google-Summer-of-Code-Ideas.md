@@ -5,31 +5,27 @@
 <img src="gsoc/2013/cesium2.png">
 </p>
 
-[Cesium](http://cesium.agi.com/) is an open-source JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.
+[Cesium](http://cesium.agi.com/) is an open-source JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.  Our code has shipped to [10's of millions of people in the same day](http://cesium.agi.com/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  Our developers are experts in their fields; they write books, create open standards, and present at international conferences.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
 
-**Information for Students**
-
-Cesium developers are eager to work with you.  Our code has shipped to [10's of millions of people in the same day](http://cesium.agi.com/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  Our developers are experts in their fields; they write books, create open standards, and present at international conferences.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
-
-If you have questions about your proposal, email the project's mentor or discuss it on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  We encourage innovation; we are open to proposals for original projects not listed below.  See our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
-
-_Tip:_ Strengthen your proposal by reading our [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and showing that you were able to get Cesium running locally on your machine.  It's easy.  If you need help, [just ask](https://groups.google.com/forum/#!forum/cesium-dev).  Make your proposal even stronger by tackling an issue or two, see our [list of issues for beginners](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open).
-
-## Submitting Proposals
+## Student Proposals
 
 <p align="center">
 <a href="http://google-melange.appspot.com/gsoc/org/google/gsoc2013/cesium"><img src="gsoc/2013/banner-gsoc2013.png"></a>
 </p>
 
-Student proposals are submitted through [Cesium's page on the Google Summer of Code website](http://google-melange.appspot.com/gsoc/org/google/gsoc2013/cesium).
+The period for submitting student proposals for 2013 has now closed.  We had a great number of proposals submitted, thanks to everyone who participated!
 
-Proposals are being accepted from April 22, 19:00 UTC through May 3rd 2013, 19:00 UTC.  (see the [full schedule](http://google-melange.appspot.com/gsoc/events/google/gsoc2013).)
+It may take a couple weeks to get back a final yes/no answer to any given proposal.  The timeframe for that is May 24 to 27 according to the [GSoC schedule](http://google-melange.appspot.com/gsoc/events/google/gsoc2013).
 
-**Get your feet wet**
+## Improve your chances
 
-It can be quite helpful to learn about our codebase and try making some simple modifications to it, prior to submitting your proposal.  Check out our issues flagged with [the GSoC label](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open) to see if there are any that might make a good first bugfix for you.
+Even though your proposals are finished, for all those who submitted one there's still time to improve your chances of success!  Take a look at the [list of issues for beginners](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open), or the [complete list of Cesium issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=&page=1&state=open), and see what needs more work.
+
+Learn about our codebase, clone it from GitHub, and try making some simple modifications to it.  See the list of issues and our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
 
 All of Cesium's code is covered by a Contributor's License Agreement (CLA), which basically authorizes Cesium developers and users to use the code you're contributing to us.  You'll need to read the instructions for [contributing to Cesium](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md) and email us a signed CLA before we can accept any code changes.
+
+If you need help, just ask on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  Students who are engaged and submitting pull requests are going to stand out from the pile of proposals on our desks.
 
 **Technologies and Tools We Use**
 
