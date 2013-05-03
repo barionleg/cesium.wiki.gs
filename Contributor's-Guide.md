@@ -26,9 +26,7 @@ Short version:
 Details
 * Setup Git if it isn't already ([linux](https://help.github.com/articles/set-up-git#platform-linux) | [mac](https://help.github.com/articles/set-up-git#platform-mac) | [windows](https://help.github.com/articles/set-up-git#platform-windows)).
    * Check your settings for name and email: `git config --get-regexp user.*`.
-   * On Windows, set `git config --global core.autocrlf true` (following the instructions above does this for you).  
-   * On Linux/Mac, set `git config --global core.autocrlf input` - see the [GitHub help on this topic](http://help.github.com/line-endings/).
-   * Other recommended Git settings:
+   * Recommended Git settings:
       * `git config --global push.default upstream` - when running `git push`, only push the current branch.
       * `git config --global branch.autosetuprebase always` - when pulling remote changes, rebase your local changes on top of the remote changes, to avoid unnecessary merge commits.
 * Have commit access to cesium?
