@@ -8,10 +8,10 @@ We're always looking to:
 * Improve tests and test coverage
 
 ## In progress
+* New geometry types and batching - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
 * Google Summer of Code Ideas - [details](Google-Summer-of-Code-Ideas)
 * 3D models - [details](Models-Details)
 * Space features - [details](Space-features)
-* Batching for polygons and potential other shapes.
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
 * Tutorials - [details](Tutorials-Details)
 
