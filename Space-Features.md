@@ -4,7 +4,6 @@
 * Render moon and other planets
 * Sun centered views (Should ultimately support any CB as the center)
 * Sensor improvements
-   * Eliminate jitter - [#359](https://github.com/AnalyticalGraphicsInc/cesium/issues/359)
    * Narrow six-arc-second field-of-view.  Display condition to draw a polyline?
    * Narrow sensor like a fan
    * Wide sensor with a cap
