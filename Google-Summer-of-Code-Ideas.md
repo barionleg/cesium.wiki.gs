@@ -98,9 +98,9 @@ References
 
 **Level:** Advanced
 
-**Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
+**Mentor:** [Dan Bagnell](https://github.com/bagnell) - dbagnell@agi.com
 
-**Backup Mentor:** [Dan Bagnell](https://github.com/bagnell) - dbagnell@agi.com
+**Backup Mentor:** [Patrick Cozzi](http://www.seas.upenn.edu/~pcozzi/) - pjcozzi@siggraph.org
 
 <a name="geometricalgorithms">
 ## Geometric Algorithms
