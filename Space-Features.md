@@ -1,8 +1,7 @@
 * Viewing in LLVH - [#531](https://github.com/AnalyticalGraphicsInc/cesium/issues/531)
 * Draw plans perpendicular to orbits
-* More precise sun position - [#391](https://github.com/AnalyticalGraphicsInc/cesium/issues/391)
 * Stored views per track
-* Render Sun/Moon/Other planets
+* Render moon and other planets
 * Sun centered views (Should ultimately support any CB as the center)
 * Sensor improvements
    * Eliminate jitter - [#359](https://github.com/AnalyticalGraphicsInc/cesium/issues/359)
@@ -14,6 +13,8 @@
 
 ## Done
 
+* ~~Render sun~~.
+* ~~More precise sun position.~~ [#391](https://github.com/AnalyticalGraphicsInc/cesium/issues/391)
 * ~~Inertial frame~~
 * ~~Polyline - per-vertex color for passes.  Will [materials] (https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) on polylines work?~~
 * ~~Ellipsoid improvements~~
