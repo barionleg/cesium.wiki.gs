@@ -88,8 +88,6 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 
 * Run Eclipse. Close the Welcome page.
 
-* Window - Show View - Console.
-
 * Window - Preferences:
    * General - Editors - Text Editors.  Check Insert spaces for tabs.  OK.
    * Web - CSS Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.
@@ -100,6 +98,8 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 * Import Cesium into your workspace:  File - Import, General - Existing Projects into Workspace, Next.  Fill in the path to the root Cesium directory, Finish.
 
 * Click the "Open Perspective" button in the upper right and select JavaScript.  You can then right-click on the Java perspective and close it.
+
+* Window - Show View - Console.
 
 * Configure the problems tab.  The Eclipse JavaScript validator has some bugs that report incorrect warnings.  Click the down arrow on the right-hand side of the Problems tab, click Configure Contents.  Uncheck Show all items, Click New, then Rename the new item to Cesium.  Change the Text filter to "doesn't contain" "Type mismatch: ".  OK.
 
