@@ -72,9 +72,8 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 * Install the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
 
-* Install additional Eclipse components: JavaScript Development Tools, Eclipse Web Developer Tools, and EGit.
-   * Help - Install New Software.  Work with: select *Juno* from the list.  
-   * Expand *Collaboration*, check *Eclipse EGit*.
+* Install additional Eclipse components: JavaScript Development Tools and Eclipse Web Developer Tools.
+   * Help - Install New Software.  Work with: select *Juno* from the list.
    * Expand *Programming Languages*, check *Eclipse JavaScript Development Tools*.
    * Expand *Web, XML, Java EE and OSGi Enterprise Development*, check *Eclipse Web Developer Tools*.
    * Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
