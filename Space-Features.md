@@ -1,5 +1,5 @@
 * Viewing in LLVH - [#531](https://github.com/AnalyticalGraphicsInc/cesium/issues/531)
-* Draw plans perpendicular to orbits
+* Draw planes perpendicular to orbits
 * Stored views per track
 * Render moon and other planets
 * Sun centered views (Should ultimately support any CB as the center)
