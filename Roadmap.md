@@ -33,6 +33,7 @@ If you are interested in implementing any of these features, start a discussion 
    * GLSL #include system - [details](GLSL-Details)
    * Particle system - [details](Particle-System-Details)
    * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
+   * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
    * Vectors
    * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
    * Lat/lon grid
