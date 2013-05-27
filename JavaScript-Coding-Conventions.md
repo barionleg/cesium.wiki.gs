@@ -79,6 +79,10 @@ var v = bar();     // Returns a Cartesian3
 v = v.normalize(); // Works because it is a Cartesian3, not an object with just x, y, and z properties
 ```
 
+## Variables
+
+* To aid the human reader, append `.0` to whole numbers intended to be floating-point values, e.g., `var f = 1.0;`.
+
 ## Testing
 
 * It is important to have excellent test coverage since JavaScript doesn't have the safety net of a compiler and linker.
@@ -104,6 +108,8 @@ expect(function() {
 Otherwise, an unexpected exception can go unnoticed.
 
 ## Formatting
+
+In general, format new code the same as the existing code.
 
 * Use four (4) spaces for indentation.  Do not use [tab characters](http://www.jwz.org/doc/tabs-vs-spaces.html).
 * Use single quotes, `'`, instead of double quotes, `"`.  `"use strict"` is an exception and should use double quotes.
