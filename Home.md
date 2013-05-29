@@ -6,8 +6,8 @@
 
 ## User Guides
 
-* [[CZML Guide]] - bring content into Cesium without writing code.
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
+* [[CZML Guide]] - bring content into Cesium without writing code.
 * [[In-Depth Guides]] - details on major features.
 
 ## Contributor Guides
@@ -20,7 +20,7 @@
 * [[Release Guide]] - how we release monthly.
 * [[Committer's Guide]] - what to do with commit access to the main repo.
 
-## Outreach
+## Media
 
 * [[Cesium Logos]] - for use in Cesium apps and related material.
 * [[Shortened URLs]] - make linking to Cesium easier.
