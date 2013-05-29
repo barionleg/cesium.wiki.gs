@@ -15,17 +15,19 @@
 
 The period for submitting student proposals for 2013 has now closed.  We had a great number of proposals submitted, thanks to everyone who participated!
 
-It may take a couple weeks to get back a final yes/no answer to any given proposal.  The timeframe for that is May 24 to 27 according to the [GSoC schedule](http://google-melange.appspot.com/gsoc/events/google/gsoc2013).
+Congratulations to [our two GSoC students](http://cesium.agi.com/2013/05/28/Welcome-Google-Summer-of-Code-Students/)!
 
-## Improve your chances
+See this year's [GSoC schedule](http://google-melange.appspot.com/gsoc/events/google/gsoc2013) for a roadmap of GSoC milestones this summer.
 
-Even though your proposals are finished, for all those who submitted one there's still time to improve your chances of success!  Take a look at the [list of issues for beginners](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=GSoC&state=open), or the [complete list of Cesium issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=&page=1&state=open), and see what needs more work.
+## Improve your chances next year
 
-Learn about our codebase, clone it from GitHub, and try making some simple modifications to it.  See the list of issues and our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
+We would have loved to accept everyone who was sending us pull requests, but this is our first year participating in GSoC.  If we are invited back next year, you can start improving your chances now, just by getting involved and learning our codebase.  Clone it from GitHub, and try making some simple modifications to it.  See the list of issues and our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
+
+Take a look at the [list of issues for beginners](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=beginner&state=open), or the [complete list of Cesium issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=&page=1&state=open), and see what needs more work.
 
 All of Cesium's code is covered by a Contributor's License Agreement (CLA), which basically authorizes Cesium developers and users to use the code you're contributing to us.  You'll need to read the instructions for [contributing to Cesium](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md) and email us a signed CLA before we can accept any code changes.
 
-If you need help, just ask on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).  Students who are engaged and submitting pull requests are going to stand out from the pile of proposals on our desks.
+If you need help, just ask on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).
 
 **Technologies and Tools We Use**
 
@@ -246,7 +248,7 @@ References
 
 **Level:** Intermediate
 
-**Mentor:** [Ed Mackey](https://twitter.com/emackey) - ed-cesium@snappymaria.com
+**Mentor:** [Ed Mackey](https://twitter.com/emackey)
 
 **Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - mamato@agi.com
 
@@ -265,7 +267,7 @@ In this project, we'll design an API to mange credits and aesthetically overlay 
 
 **Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
 
-**Backup Mentor:** [Ed Mackey](https://twitter.com/emackey) - ed-cesium@snappymaria.com
+**Backup Mentor:** [Ed Mackey](https://twitter.com/emackey)
 
 <a name="misc">
 # Misc
