@@ -4,7 +4,7 @@
 
 ## Roadmap
 
-* [[Roadmap]] - where we are heading
+* [[Roadmap]] - where we are heading.
 
 ## User Guides
 
