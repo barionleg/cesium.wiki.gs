@@ -1,4 +1,4 @@
-* Ability to show Earth-centered view in ICRF instead of Fixed.
+* Ability to show Earth-centered view in ICRF instead of Fixed. - [#825](https://github.com/AnalyticalGraphicsInc/cesium/issues/825)
 * Draw planes perpendicular to orbits
 * Stored views per track
 * Render moon and other planets
