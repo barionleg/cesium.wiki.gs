@@ -1,4 +1,4 @@
-* Viewing in LLVH - [#531](https://github.com/AnalyticalGraphicsInc/cesium/issues/531)
+* Ability to show Earth-centered view in ICRF instead of Fixed.
 * Draw planes perpendicular to orbits
 * Stored views per track
 * Render moon and other planets
@@ -12,6 +12,7 @@
 
 ## Done
 
+* ~~Viewing in LLVH - [#531](https://github.com/AnalyticalGraphicsInc/cesium/issues/531) [#818](https://github.com/AnalyticalGraphicsInc/cesium/issues/818)~~
 * ~~Render sun~~.
 * ~~More precise sun position.~~ [#391](https://github.com/AnalyticalGraphicsInc/cesium/issues/391)
 * ~~Inertial frame~~
