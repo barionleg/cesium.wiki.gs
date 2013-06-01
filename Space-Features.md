@@ -1,4 +1,3 @@
-* Ability to show Earth-centered view in ICRF instead of Fixed. - [#825](https://github.com/AnalyticalGraphicsInc/cesium/issues/825)
 * Draw planes perpendicular to orbits
 * Stored views per track
 * Render moon and other planets
@@ -11,7 +10,7 @@
    * Draw a cone from the Sun to Earth's silhouette.  Compute custom sensor?
 
 ## Done
-
+* ~~Ability to show Earth-centered view in ICRF instead of Fixed. - [#825](https://github.com/AnalyticalGraphicsInc/cesium/issues/825)~~
 * ~~Viewing in LLVH - [#531](https://github.com/AnalyticalGraphicsInc/cesium/issues/531) [#818](https://github.com/AnalyticalGraphicsInc/cesium/issues/818)~~
 * ~~Render sun~~.
 * ~~More precise sun position.~~ [#391](https://github.com/AnalyticalGraphicsInc/cesium/issues/391)
