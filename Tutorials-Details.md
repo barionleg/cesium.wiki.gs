@@ -32,7 +32,9 @@ Advanced Tutorials
 
 Other Tutorials
 * Tutorials for building specific example apps
-* Using Cesium for specific domains, e.g., handy features for space apps, geospatial apps, etc.
+* Using Cesium for specific domains
+   * Space - viewing in LLVH and ICRF, ...
+   * Geospatial - terrain, imagery, layers, image processing, vector data, ...
 * Performance best practices
 
 TODO: The [Sandcastle examples](http://cesium.agi.com/Cesium/Apps/Sandcastle/), [architecture overview](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) and [reference documentation](http://cesium.agi.com/Cesium/Build/Documentation/) should link to the tutorials.
