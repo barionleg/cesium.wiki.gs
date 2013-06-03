@@ -12,6 +12,7 @@
 * Sun centered views (Should ultimately support any CB as the center)
 * Render moon
 * Ability jump to a particular stored view that might be defined at the start of a track
+* Night lights
 
 *Less Important*
 
