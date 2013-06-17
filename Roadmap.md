@@ -8,8 +8,9 @@ We're always looking to:
 * Improve tests and test coverage
 
 ## In progress
+* Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
+* Navigation Widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA)
 * New geometry types and batching - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
-* Google Summer of Code Ideas - [details](Google-Summer-of-Code-Ideas)
 * 3D models - [details](Models-Details)
 * Space features - [details](Space-features)
 * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
@@ -22,6 +23,7 @@ Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev
 If you are interested in implementing any of these features, start a discussion on the [forum](http://cesium.agi.com/forum.html).
 
 * General
+   * [ESA Summer of Code in Space Ideas](ESA-Summer-of-Code-in-Space-Ideas)
    * Mobile improvements - [details](Mobile-Details)
    * Support standard web servers: WMTS, WFS, WCS, ...
    * Support for multiple central bodies, i.e., Sun, Moon, etc.
@@ -74,6 +76,10 @@ If you are interested in implementing any of these features, start a discussion 
 * Infrastructure
    * Website Improvements - [details](Website-Improvement-Details)
    * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
+
+## Google Summer of Code 2013
+
+* [Google Summer of Code Ideas](Google-Summer-of-Code-Ideas)
 
 ## Google Code-in
 
