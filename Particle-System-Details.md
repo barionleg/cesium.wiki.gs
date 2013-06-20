@@ -74,6 +74,7 @@ Rendering
 * [Building an Advanced Particle System](http://www.gamasutra.com/view/feature/131565/building_an_advanced_particle_.php)
 * [Optimizing the rendering of a particle system](http://realtimecollisiondetection.net/blog/?p=91)
 * Fire in the “Vulcan” Demo in [GPU Gems]( http://http.developer.nvidia.com/GPUGems/gpugems_ch06.html)
+* [OpenGL ES Particle System Tutorial](http://www.raywenderlich.com/37600/opengl-es-particle-system-tutorial-part-1)
 * Humus' Demos
    * [Particle system](http://www.humus.name/index.php?page=3D&ID=13)
    * [Shadowed particles](http://www.humus.name/index.php?page=3D&ID=15)
