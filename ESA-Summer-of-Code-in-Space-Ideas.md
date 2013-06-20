@@ -101,4 +101,4 @@ In this project, we will create a Cesium application that allows users to manipu
 
 **Mentor:** TBD
 
-**Backup Mentor:** TBD
+**Backup Mentor:** Richard Page - rpage@agi.com
