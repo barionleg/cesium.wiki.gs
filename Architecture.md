@@ -16,6 +16,7 @@ Each layer corresponds to one directory in the [source tree](https://github.com/
 
 The following sections provide an overview of each layer.  For details on specific types, see the [reference documentation](http://cesium.agi.com/Documentation/).  For editable example code, see the [Sandbox](http://cesium.agi.com/Sandbox/Examples/Sandbox/).
 
+<div id="core">
 ## Core
 
 <img src="architectureFigures/core.png" width="30%" align="right" />
@@ -117,6 +118,7 @@ context.draw({
 });
 ```
 
+<div id="scene">
 ## Scene
 
 <img src="architectureFigures/scene.png" width="30%" align="right" />
@@ -169,6 +171,7 @@ There are many built-in materials, and new ones can be scripted using [[Fabric]]
 
 Camera represents the view into the virtual world.  Ultimately, it creates a view matrix that transforms from world to eye coordinates.  Camera can be manipulated directly, but is most often updated via the `CameraController` for common tasks. The camera is modified automatically based on mouse or touch input by the scene's `ScreenSpaceCameraController`.
 
+<div id="dynamicscene">
 ## Dynamic Scene
 
 <img src="architectureFigures/dynamicScene.png" width="30%" align="right" />
