@@ -55,9 +55,9 @@ To create the geometry for the extent, i.e., the triangles covering the rectangu
 
 Since we know is on the surface, we use the [EllipsoidSurfaceAppearance](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html), which is able to save memory and support all materials given that the geometry is on the surface - or at a constant height.
 
-## Performance
+## Combing Geometries
 
-We see the performance benefit when we use the same material to draw multiple primitives.  For example, let's draw two primitives.
+We see the performance benefit when we use the same primitive to draw multiple geometries.  For example, let's draw two rectangles.
 ```javascript
 var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
@@ -80,9 +80,9 @@ var extentPrimitive = new Primitive({
 
 scene.getPrimitives().add(extentPrimitive);
 ```
-Here we created another [GeometryInstance](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) with a different extent, and then provided both instances when creating the primitive.
+Here we created another [GeometryInstance](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) with a different extent, and then provided both instances to the primitive.
 
-This, of course, requires that both instances are drawn with the same appearance.  Some appearances allow each instance to provide unique attributes.  In particular, we can use [PerInstanceColorAppearance](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html), to shade each instance with a different solid color.
+This requires that both instances are drawn with the same appearance.  Some appearances allow each instance to provide unique attributes.  In particular we can use [PerInstanceColorAppearance](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html), to shade each instance with a different solid color.
 ```javascript
 var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
@@ -107,11 +107,22 @@ scene.getPrimitives().add(extentPrimitive);
 ```
 Above, each instance has a [Color](http://cesium.agi.com/Cesium/Build/Documentation/Color.html) and the primitive is now constructed with `PerInstanceColorAppearance`, which knows to use the per-instance color for shading, instead of using a material.
 
-TODO: pickData
 TODO: list of geometries and appearances
 TODO: matching geometries and appearances
+TODO: why instances
+TODO: pickData
 TODO: updating per-instance show/color/attribute
 
+## Resources
+
+In the reference documentation, see:
+
+* [All geometries](http://cesium.agi.com/Cesium/Build/Documentation/index.html?filter=Geometry)
+* [All appearances](http://cesium.agi.com/Cesium/Build/Documentation/index.html?filter=Appearance)
+* [Primitive](http://cesium.agi.com/Cesium/Build/Documentation/Primitive.html)
+* [GeometryInstance](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html)
+
+If you have questions, post them to the [forum](http://cesium.agi.com/forum.html).
 
 # Part II: Creating Custom Geometry and Appearances
 
