@@ -16,7 +16,20 @@ scene.getPrimitives().add(extentPrimitive);
 
 **TODO: screenshot**
 
-In this tutorial, we go under the hood of primitives and look at the [Geometry](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and [Appearance](http://cesium.agi.com/Cesium/Build/Documentation/Appearance.html) types that power them.  The benefits of using geometries and appearances directly are:
+In this tutorial, we go under the hood of primitives and look at the [Geometry](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and [Appearance](http://cesium.agi.com/Cesium/Build/Documentation/Appearance.html) types that power them.  Cesium supports the following geometries.
+
+* [PolygonGeometry](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) - A filled polygon on the globe or at a constant height above the globe.  The polygon can have holes and can be extruded to form a volume.
+* [ExtentGeometry](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) - A filled rectangular extent on the globe or at a constant height.  It can be rotated, and extruded to form a volume.
+* [EllipseGeometry](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) - A filled ellipse on the globe or at a constant height.  It can be rotated.
+* [CircleGeometry](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) - A filled circle on the globe or at a constant height.
+* [WallGeometry](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) - A wall perpendicular to the globe.  It can be relative to terrain or a constant height.
+* [SimplePolylineGeometry](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) - An arbitrary polyline.
+* [BoxGeometry](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html) - A box.  Not all sides need to be equal length.
+* [EllipsoidGeometry](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) -  An ellipsoid.
+
+**TODO: screenshots for each**
+
+The benefits of using geometries and appearances directly are:
 * **Performance** - when drawing a large number of static primitives, e.g., polygons for all the zip codes in the United States, using geometries directly allows us to combine them into a single geometry to reduce CPU overhead and better utilize the GPU.  **TODO: performance numbers.**
 * **Flexibility** - Primitives combine geometry, i.e., the triangles, lines, and points composing an object, and appearance, i.e., the GLSL shaders and render state that shade an object.  By decoupling them, we can modify them independently.  We can:
    * Add new geometries that are compatible with many different appearances.
@@ -171,7 +184,7 @@ Using `pickData`, instead of the reference to the instance itself, allows the pr
 
 ## TODO
 
-TODO: list of geometries and appearances
+TODO: list of appearances
 TODO: matching geometries and appearances
 TODO: why instances
 TODO: updating per-instance show/color/attribute
