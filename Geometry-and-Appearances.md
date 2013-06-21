@@ -184,9 +184,10 @@ Using `pickData`, instead of the reference to the instance itself, allows the pr
 
 ## TODO
 
+TODO: why instances
 TODO: list of appearances
 TODO: matching geometries and appearances
-TODO: why instances
+TODO: can heterogeneous combine
 TODO: updating per-instance show/color/attribute
 
 ## Resources
