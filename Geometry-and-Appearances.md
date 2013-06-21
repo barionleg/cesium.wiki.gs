@@ -182,9 +182,41 @@ handler.setInputAction(function (movement) {
 ```
 Using `pickData`, instead of the reference to the instance itself, allows the primitive - and the application - to not keep a reference to the full instance - including its reference to the geometry - in memory after the primitive is constructed.  Since a geometry can contain several big typed arrays, this allows us to save a significant amount of memory.
 
+## Geometry Instances
+
+Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, since multiple instances can reference the same `Geometry` each with a different `modelMatrix`, instances are used to place (and uniquely identify) the same geometry in different parts of the scene.  This allows us to only compute the geometry once, and reuse it many times.
+
+The following example creates one [EllipsoidGeometry](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html), and two instances, each of which references the ellipsoid geometry, but places it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
+
+```javascript
+var geometry = new EllipsoidGeometry({
+  ellipsoid : new Ellipsoid(500000.0, 500000.0, 250000.0)
+});
+
+var instance = new GeometryInstance({
+  geometry : geometry,
+  modelMatrix : Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(
+      ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 250000.0)),
+  color : Color.AQUAMARINE
+});
+
+var anotherInstance = new GeometryInstance({
+  geometry : geometry,
+  modelMatrix : Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(
+    ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 750000.0)),
+  color : Color.BLANCHEDALMOND
+});
+
+scene.getPrimitives().add(new Primitive({
+  geometryInstances : [instance, anotherInstance],
+  appearance : new PerInstanceColorAppearance({
+    translucent : false
+  })
+}));
+```
+
 ## TODO
 
-TODO: why instances
 TODO: list of appearances
 TODO: matching geometries and appearances
 TODO: can heterogeneous combine
