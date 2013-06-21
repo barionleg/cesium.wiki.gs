@@ -42,6 +42,7 @@ var bearing = CesiumMath.toRadians(60.0); // Cesium uses radians everywhere.
 var positions = Shapes.computeEllipseBoundary(ellipsoid, center, 500000.0, 300000.0, bearing);
 ```
 
+<div id="renderer">
 ## Renderer
 
 <img src="architectureFigures/renderer.png" width="30%" align="right" />
