@@ -195,6 +195,8 @@ Using `pickData`, instead of the reference to the instance itself, allows the pr
 
 Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, since multiple instances can reference the same `Geometry` each with a different `modelMatrix`, instances are used to position, scale, and orientate the same geometry in different parts of the scene.  This allows us to only compute the geometry once, and reuse it many times.
 
+<img src="geometryandappearances/geometryinstance.png" /> 
+
 The following example creates one [EllipsoidGeometry](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) and two instances.  Each instance references the ellipsoid geometry, but places it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
 
 ```javascript
