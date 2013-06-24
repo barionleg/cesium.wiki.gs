@@ -343,4 +343,12 @@ If you have questions, post them to the [forum](http://cesium.agi.com/forum.html
 
 # Part II: Creating Custom Geometry and Appearances
 
+Since geometries and appearances are decoupled, we can add new geometries that are compatible for many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
+
+# Geometry
+
+[Geometry](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a simple geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making the simplest possible geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles.
+
 # Part III: Geometry Batching for Vector Data Rendering
+
+**TODO**
