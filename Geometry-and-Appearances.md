@@ -311,10 +311,10 @@ var geometry3 = new ExtentGeometry({
   // ...
 });
 ```
-
+Also, a geometry's `vertexFormat` determines if it can be combined with another geometry.  Two geometries do not have to be the same type; they just need matching vertex formats.
+ 
 ## TODO
 
-TODO: can heterogeneous combine
 TODO: updating per-instance show/color/attribute
 
 ## Resources
