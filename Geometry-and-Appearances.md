@@ -264,11 +264,51 @@ var another  = new PerInstanceColorAppearance({
 ```
 Once an appearance is created, we can't changed its `renderState` property, but we can change its `material`.  Likewise, we can also change a primitive's `appearance` property.
 
-Most appearances also have [flat](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#flat) and [faceForward](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#faceForward) properties.
+Most appearances also have [flat](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#flat) and [faceForward](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#faceForward) properties, which indirectly control the GLSL shaders.
+
+* `flat` - Flat shading.  Do not take lighting into account.
+* `faceForward` - When lighting, flip the normal so it is always facing the viewer.  The avoids black areas on back-faces, e.g., the instead of a box.
+
+**TODO: screenshots of flat and faceForward**
+
+## Geometry and Appearance Compatibility
+
+We've already seen that not all appearances work with all geometries.  For example, `EllipsoidSurfaceAppearance` is not appropriate for `WallGeometry` since the wall is perpendicular to the globe, not parallel.
+
+Beyond semantics like this, for an appearance to be compatible with a geometry, they must have matching vertex formats, which means the geometry must have the data that the appearance expects as input.  A [VertexFormat](http://cesium.agi.com/Cesium/Build/Documentation/VertexFormat.html) can be provided when creating a geometry.
+
+We can keep things simple, but inefficient and wasteful, by requesting a geometry compute all vertices, which will make the geometry compatible with all appearances.
+```javascript
+var geometry = new ExtentGeometry({
+  vertexFormat : VertexFormat.ALL
+  // ...
+});
+```
+
+If we are using `EllipsoidSurfaceAppearance`, for example, we can get away with just requesting positions.
+```javascript
+var geometry = new ExtentGeometry({
+  vertexFormat : VertexFormat.POSITION_ONLY
+  // ...
+});
+```
+
+In general, how do we know what vertex format to use for a given appearance?  Most appearances have a [vertexFormat](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#vertexFormat) property or even a [VERTEX_FORMAT](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html#VERTEX_FORMAT) static constant.
+```javascript
+var geometry = new ExtentGeometry({
+  vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
+  // ...
+});
+
+var anotherGeometry = new ExtentGeometry({
+  vertexFormat : PerInstanceColorAppearance.VERTEX_FORMAT
+  // ...
+});
+```
+
 
 ## TODO
 
-TODO: matching geometries and appearances
 TODO: can heterogeneous combine
 TODO: updating per-instance show/color/attribute
 
