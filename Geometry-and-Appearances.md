@@ -14,7 +14,7 @@ var extentPrimitive = new ExtentPrimitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-**TODO: screenshot**
+<img src="geometryandappearances/extentPrimitive.png" /> 
 
 In this tutorial, we go under the hood of primitives and look at the [Geometry](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and [Appearance](http://cesium.agi.com/Cesium/Build/Documentation/Appearance.html) types that form them.  A geometry defines the primitive's structure, i.e., the triangles, lines, or points composing the primitive.  An appearance defines the primitive's shading, including its full GLSL vertex and fragment shaders, and render state.
 
@@ -55,7 +55,8 @@ Let's rewrite the initial code example using geometries and appearances:
 
 var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0)
+    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
+    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
@@ -73,7 +74,7 @@ Instead of using the explicit [ExtentPrimitive](http://cesium.agi.com/Cesium/Bui
 
 To create the geometry for the extent, i.e., the triangles covering the rectangular region and that fit the curvature of the globe, we create an [ExtentGeometry](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html).
 
-**TODO: wireframe screenshot**
+<img src="geometryandappearances/geometryWireframe.png" /> 
 
 Since we know it is on the surface, we use the [EllipsoidSurfaceAppearance](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html), which is able to save memory and support all materials given that the geometry is on the surface - or at a constant height.
 
@@ -83,13 +84,15 @@ We see a performance benefit when we use the same primitive to draw multiple sta
 ```javascript
 var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0)
+    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
+    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
 var anotherInstance = new GeometryInstance({
   geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 40.0, 10.0, 50.0)
+    extent : Extent.fromDegrees(0.0, 40.0, 10.0, 50.0),
+    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
@@ -103,7 +106,7 @@ var extentPrimitive = new Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-**TODO: screenshot**
+<img src="geometryandappearances/combine.png" /> 
 
 We created another instance with a different extent, and then provided both instances to the primitive.
 
@@ -131,7 +134,7 @@ var extentPrimitive = new Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-**TODO: screenshot**
+<img src="geometryandappearances/combineColor.png" /> 
 
 Above, each instance has a [Color](http://cesium.agi.com/Cesium/Build/Documentation/Color.html), and the primitive is now constructed with `PerInstanceColorAppearance`, which knows to use each instance's color for shading, instead of a material.
 
@@ -158,7 +161,7 @@ var extentPrimitive = new Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-**TODO: screenshot**
+<img src="geometryandappearances/extents.png" /> 
 
 ## Picking
 
@@ -197,7 +200,7 @@ Thus far, we have defined a geometry instance only as a container for a geometry
 
 <img src="geometryandappearances/geometryinstance.png" /> 
 
-The following example creates one [EllipsoidGeometry](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) and two instances.  Each instance references the ellipsoid geometry, but places it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
+The following example creates one [EllipsoidGeometry](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) and two instances.  Each instance references the ellipsoid geometry, but place it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
 
 ```javascript
 var geometry = new EllipsoidGeometry({
@@ -225,6 +228,8 @@ scene.getPrimitives().add(new Primitive({
   })
 }));
 ```
+
+<img src="geometryandappearances/ellipsoidInstances.png" /> 
 
 ## Appearances
 
@@ -273,11 +278,11 @@ Most appearances also have [flat](http://cesium.agi.com/Cesium/Build/Documentati
 
 ## Geometry and Appearance Compatibility
 
-We've already seen that not all appearances work with all geometries.  For example, `EllipsoidSurfaceAppearance` is not appropriate for `WallGeometry` since the wall is perpendicular to the globe, not parallel.
+We've already seen that not all appearances work with all geometries.  For example, `EllipsoidSurfaceAppearance` is not appropriate for `WallGeometry` since a wall is perpendicular to the globe, not parallel.
 
-Beyond semantics like this, for an appearance to be compatible with a geometry, they must have matching vertex formats, which means the geometry must have the data that the appearance expects as input.  A [VertexFormat](http://cesium.agi.com/Cesium/Build/Documentation/VertexFormat.html) can be provided when creating a geometry.
+Beyond semantics like this, for an appearance to be mechanically compatible with a geometry, they must have matching vertex formats, which means the geometry must have the data that the appearance expects as input.  A [VertexFormat](http://cesium.agi.com/Cesium/Build/Documentation/VertexFormat.html) can be provided when creating a geometry.
 
-We can keep things simple, but inefficient and wasteful, by requesting a geometry compute all vertices, which will make the geometry compatible with all appearances.
+We can keep things simple, but inefficient and wasteful, by requesting a geometry compute all vertices, which will make the geometry compatible with all appearances (ignoring per-instance attributes; see below).
 ```javascript
 var geometry = new ExtentGeometry({
   vertexFormat : VertexFormat.ALL
