@@ -226,11 +226,48 @@ scene.getPrimitives().add(new Primitive({
 }));
 ```
 
-## TODO
+## Appearances
+
+Geometry defines structure.  The other key property of a primitive, `appearance`, defines the primitive's shading, that is, how individual pixels are colored.  A primitive can have many geometry instances, but it can only have one appearance.  Depending on the type of appearance, an appearance will have a [material](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) that defines the bulk of the shading.
 
 <img src="geometryandappearances/highleveldesign.png" /> 
 
-TODO: list of appearances
+Cesium has the following appearances.
+
+* [MaterialAppearance](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html) - An appearance that works with all geometry types and supports materials to describe shading.
+* [EllipsoidSurfaceAppearance](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html) - A version of `MaterialAppearance` that assumes geometry is on the surface of the globe, e.g., like a polygon, or at a constant height above it, and uses this assumption to save memory by procedurally computing many vertex attributes.
+* [PerInstanceColorAppearance](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html) - Uses per-instance color to shade each instance a potentially unique color.
+* [DebugAppearance](http://cesium.agi.com/Cesium/Build/Documentation/DebugAppearance.html) - A debugging aid for visualizing geometry vertex attributes.
+
+Appearances define the full GLSL vertex and fragment shaders that execute on the GPU when the primitive is drawn.  We rarely touch these unless we are writing a custom appearance.  Appearances also define the full [render state](http://cesium.agi.com/Cesium/Build/Documentation/RenderState.html), which controls the GPU's state when the primitive is drawn.  We can define the render state directly or use higher-level properties like [closed](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#closed) and [translucent](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#translucent), which the appearance will convert into render state.  For example:
+```javascript
+// Perhaps for an opaque box that the viewer will not enter.
+//  - Backface culled and depth tested.  No blending.
+
+var appearance  = new PerInstanceColorAppearance({
+  translucent : false,
+  closed : true
+});
+
+// This appearance is the same as above
+var another  = new PerInstanceColorAppearance({
+  renderState : {
+    depthTest : {
+      enabled : true
+    },
+    cull : {
+      enabled : true,
+      face : CullFace.BACK
+    }
+  }
+});
+```
+Once an appearance is created, we can't changed its `renderState` property, but we can change its `material`.  Likewise, we can also change a primitive's `appearance` property.
+
+Most appearances also have [flat](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#flat) and [faceForward](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#faceForward) properties.
+
+## TODO
+
 TODO: matching geometries and appearances
 TODO: can heterogeneous combine
 TODO: updating per-instance show/color/attribute
@@ -243,6 +280,8 @@ In the reference documentation, see:
 * [All appearances](http://cesium.agi.com/Cesium/Build/Documentation/index.html?filter=Appearance)
 * [Primitive](http://cesium.agi.com/Cesium/Build/Documentation/Primitive.html)
 * [GeometryInstance](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html)
+
+For more on materials, see [Fabric](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).
 
 For future plans, see the [Geometry and Appearances Roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues/766).
 
