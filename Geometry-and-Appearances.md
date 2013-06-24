@@ -226,7 +226,8 @@ scene.getPrimitives().add(new Primitive({
 
 ## TODO
 
-TODO: diagram of relationships
+<img src="geometryandappearances/highleveldesign.png" /> 
+
 TODO: list of appearances
 TODO: matching geometries and appearances
 TODO: can heterogeneous combine
