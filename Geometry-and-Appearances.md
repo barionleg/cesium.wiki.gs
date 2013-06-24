@@ -290,6 +290,10 @@ var geometry = new ExtentGeometry({
 });
 ```
 
+<img src="geometryandappearances/compatible.png" /> 
+<br />
+<img src="geometryandappearances/notCompatible.png" /> 
+
 If we are using `EllipsoidSurfaceAppearance`, for example, we can get away with just requesting positions.
 ```javascript
 var geometry = new ExtentGeometry({
