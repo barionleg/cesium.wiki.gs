@@ -300,12 +300,17 @@ var geometry = new ExtentGeometry({
   // ...
 });
 
-var anotherGeometry = new ExtentGeometry({
+var geometry2 = new ExtentGeometry({
   vertexFormat : PerInstanceColorAppearance.VERTEX_FORMAT
   // ...
 });
-```
 
+var appearance = new MaterialAppearance(/* ... */);
+var geometry3 = new ExtentGeometry({
+  vertexFormat : appearance.vertexFormat
+  // ...
+});
+```
 
 ## TODO
 
