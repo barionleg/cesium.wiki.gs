@@ -84,7 +84,7 @@ See the existing [mailing list discussion](https://groups.google.com/forum/#!sea
 
 **Level:** Intermediate
 
-**Mentor:** [Matt Amato](https://twitter.com/matt_amato) - mamato@agi.com
+**Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com
 
 **Backup Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
 
