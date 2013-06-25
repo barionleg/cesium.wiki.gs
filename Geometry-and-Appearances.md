@@ -343,11 +343,18 @@ If you have questions, post them to the [forum](http://cesium.agi.com/forum.html
 
 # Part II: Creating Custom Geometry and Appearances
 
-Since geometries and appearances are decoupled, we can add new geometries that are compatible for many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
+Since geometries and appearances are decoupled, we can add new geometries that are compatible with many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
 
 # Geometry
 
-[Geometry](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a simple geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making the simplest possible geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles.
+[Geometry](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making a simple geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles.
+
+**TODO: code**
+**TODO screenshot**
+
+The tetrahedron is made up of four well-known positions, which also happen to lie on the unit sphere.  For precision, these positions are sorted in a `Float64Array`.
+
+A tetrahedron is made of of four triangles, each of which is defined by three indices.  Using indices allows us to reuse vertices - just positions in this case - to save memory.  For our tetrahedron, each vertex is indexed three times since each vertex has three incident triangles.  Indices are stored in a `Uint16Array`, but can also be stored in a `Uint32Array` if more than 64K vertices are used.  Use [IndexDatatype.createTypedArray](http://cesium.agi.com/Cesium/Build/Documentation/IndexDatatype.html#createTypedArray) to allocate the right typed array for indices.
 
 # Part III: Geometry Batching for Vector Data Rendering
 
