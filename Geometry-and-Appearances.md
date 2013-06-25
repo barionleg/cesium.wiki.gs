@@ -444,6 +444,10 @@ this.boundingSphere = BoundingSphere.fromVertices(positions);
 this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 ```
 
+### Visualizing the Tetrahedron with a Primitive
+
+TODO
+
 **TODO: tip for visualizing bounding spheres with command debugging**
 
 # Part III: Geometry Batching for Vector Data Rendering
