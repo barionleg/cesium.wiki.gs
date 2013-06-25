@@ -152,7 +152,7 @@ References
 
 **Level:** Novice
 
-**Mentor:** [Matt Amato](https://twitter.com/matt_amato) - mamato@agi.com
+**Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com
 
 **Backup Mentor:** Ford?
 
@@ -250,7 +250,7 @@ References
 
 **Mentor:** [Ed Mackey](https://twitter.com/emackey)
 
-**Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - mamato@agi.com
+**Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com
 
 <a name="creditslayout">
 ## Credits Layout
