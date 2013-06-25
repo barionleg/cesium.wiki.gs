@@ -133,7 +133,7 @@ References
 
 <a name="geospatial">
 # Geospatial
-
+~~
 <a name="json">
 ## Vector Data Visualization with JSON
 
@@ -155,7 +155,7 @@ References
 **Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com
 
 **Backup Mentor:** Ford?
-
+~~
 <a name="wmts">
 ## Raster Data Visualization with Web Map Tile Service
 
@@ -224,6 +224,7 @@ References
 <a name="ui">
 # UI
 
+~~
 <a name="navigationwidget">
 ## Navigation Widget
 
@@ -251,7 +252,8 @@ References
 **Mentor:** [Ed Mackey](https://twitter.com/emackey)
 
 **Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com
-
+~~
+~~
 <a name="creditslayout">
 ## Credits Layout
 
@@ -268,6 +270,7 @@ In this project, we'll design an API to mange credits and aesthetically overlay 
 **Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
 
 **Backup Mentor:** [Ed Mackey](https://twitter.com/emackey)
+~~
 
 <a name="misc">
 # Misc
