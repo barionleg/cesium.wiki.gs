@@ -42,13 +42,13 @@ HTML5, CSS3, JavaScript, WebGL, SVG, Git, Ant, Eclipse, Chrome, Firefox, Android
    * [Declutter for Map Labels](#decultterformaplabels)
    * [Geometric Algorithms](#geometricalgorithms)
 * [Geospatial](#geospatial)
-   * [Vector Data Visualization with JSON](#json)
+   * ~~[Vector Data Visualization with JSON](#json)~~
    * [Raster Data Visualization with Web Map Tile Service](#wmts)
    * [Vector Data Visualization with Geography Markup Language](#gml)
    * [Vector Data Visualization with Web Feature Service](#wfs)
 * [UI](#ui)
-   * [Navigation Widget](#navigationwidget)
-   * [Credits Layout](#creditslayout)
+   * ~~[Navigation Widget](#navigationwidget)~~
+   * ~~[Credits Layout](#creditslayout)~~
 * [Misc](#misc)
    * [Offline Web App Support](#offlinewebappsupport)
 
@@ -133,29 +133,29 @@ References
 
 <a name="geospatial">
 # Geospatial
-~~
+
 <a name="json">
-## Vector Data Visualization with JSON
+## ~~Vector Data Visualization with JSON~~
 
-![](gsoc/2013/json.png)
+~~![](gsoc/2013/json.png)~~
 
-KML is a popular XML-based format for storing vector data, i.e., points, polylines, and polygons.  However, new JSON-based standards are emerging that are better suited to web mapping.
+~~KML is a popular XML-based format for storing vector data, i.e., points, polylines, and polygons.  However, new JSON-based standards are emerging that are better suited to web mapping.~~
 
-In this project, we will add support for two JSON vector data formats, [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbostock/topojson), to Cesium.  First, we'll load and draw them using the Cesium API.  Then we'll investigating styling with colors, patterns, etc.
+~~In this project, we will add support for two JSON vector data formats, [GeoJSON](http://www.geojson.org/) and [TopoJSON](https://github.com/mbostock/topojson), to Cesium.  First, we'll load and draw them using the Cesium API.  Then we'll investigating styling with colors, patterns, etc.~~
 
-References
-* [The GeoJSON Format Specification](http://www.geojson.org/geojson-spec.html)
-* [GeoJSONLint](http://geojsonlint.com/)
-* [TopoJSON Specification](https://github.com/mbostock/topojson/wiki/Specification)
+~~References~~
+~~* [The GeoJSON Format Specification](http://www.geojson.org/geojson-spec.html)~~
+~~* [GeoJSONLint](http://geojsonlint.com/)~~
+~~* [TopoJSON Specification](https://github.com/mbostock/topojson/wiki/Specification)~~
 
-**Skills:** JavaScript, git, open standards, geospatial
+~~**Skills:** JavaScript, git, open standards, geospatial~~
 
-**Level:** Novice
+~~**Level:** Novice~~
 
-**Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com
+~~**Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com~~
 
-**Backup Mentor:** Ford?
-~~
+~~**Backup Mentor:** Ford?~~
+
 <a name="wmts">
 ## Raster Data Visualization with Web Map Tile Service
 
@@ -224,53 +224,52 @@ References
 <a name="ui">
 # UI
 
-~~
+
 <a name="navigationwidget">
-## Navigation Widget
+## ~~Navigation Widget~~
 
-![](gsoc/2013/navigationwidget.png)
+~~![](gsoc/2013/navigationwidget.png)~~
 
-Cesium provides default mouse and touch input for the camera, including:
-* Left click and drag - Rotates the camera around the globe in 3D and translates the camera over the map surface in 2D and Columbus view.
-* Right click and drag - Zooms the camera in and out.
-* Middle wheel scrolling - Also zooms the camera in and out.
-* Middle click and drag - Rotates the camera around the point on the surface of the globe.
+~~Cesium provides default mouse and touch input for the camera, including:~~
+~~* Left click and drag - Rotates the camera around the globe in 3D and translates the camera over the map surface in 2D and Columbus view.~~
+~~* Right click and drag - Zooms the camera in and out.~~
+~~* Middle wheel scrolling - Also zooms the camera in and out.~~
+~~* Middle click and drag - Rotates the camera around the point on the surface of the globe.~~
 
-In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  We'll also consider adding an instruction overlays demonstrating mouse and touch controls.  More ideas for this project [here](https://github.com/AnalyticalGraphicsInc/cesium/issues/450).
+~~In this project, we'll create a modern widget, potentially using SVG, to allow the user to perform these camera actions with just the left mouse button or single click.  We'll also consider adding an instruction overlays demonstrating mouse and touch controls.  More ideas for this project [here](https://github.com/AnalyticalGraphicsInc/cesium/issues/450).~~
 
-![](gsoc/2013/nav-concept.png)
+~~![](gsoc/2013/nav-concept.png)~~
 
-The nav widget would likely include some sort of a compass, which might or might not look anything like the above.
+~~The nav widget would likely include some sort of a compass, which might or might not look anything like the above.~~
 
-References
-* [Cesium Camera Tutorial](http://cesium.agi.com/2013/02/13/Cesium-Camera-Tutorial/)
+~~References~~
+~~* [Cesium Camera Tutorial](http://cesium.agi.com/2013/02/13/Cesium-Camera-Tutorial/)~~
 
-**Skills:** Eye for aesthetic UI design, HTML5, CSS3, SVG, JavaScript, git
+~~**Skills:** Eye for aesthetic UI design, HTML5, CSS3, SVG, JavaScript, git~~
 
-**Level:** Intermediate
+~~**Level:** Intermediate~~
 
-**Mentor:** [Ed Mackey](https://twitter.com/emackey)
+~~**Mentor:** [Ed Mackey](https://twitter.com/emackey)~~
 
-**Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com
-~~
-~~
+~~**Backup Mentor:** [Matt Amato](https://twitter.com/matt_amato) - matt.amato@gmail.com~~
+
 <a name="creditslayout">
-## Credits Layout
+## ~~Credits Layout~~
 
-![](gsoc/2013/creditslayout.png)
+~~![](gsoc/2013/creditslayout.png)~~
 
-Cesium draws content (terrain, imagery, models, etc.) from external sources that need to be credited when their content is visible as shown in the screenshot above.  Depending on what content is loaded or visible, the displayed credit (image or text) can vary.
+~~Cesium draws content (terrain, imagery, models, etc.) from external sources that need to be credited when their content is visible as shown in the screenshot above.  Depending on what content is loaded or visible, the displayed credit (image or text) can vary.~~
 
-In this project, we'll design an API to mange credits and aesthetically overlay them on the 3D scene.
+~~In this project, we'll design an API to mange credits and aesthetically overlay them on the 3D scene.~~
 
-**Skills:** Eye for aesthetic UI design, JavaScript, git
+~~**Skills:** Eye for aesthetic UI design, JavaScript, git~~
 
-**Level:** Novice
+~~**Level:** Novice~~
 
-**Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com
+~~**Mentor:** [Scott Hunter](https://github.com/shunter) - scott.k.hunter@gmail.com~~
 
-**Backup Mentor:** [Ed Mackey](https://twitter.com/emackey)
-~~
+~~**Backup Mentor:** [Ed Mackey](https://twitter.com/emackey)~~
+
 
 <a name="misc">
 # Misc
