@@ -22,7 +22,8 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Update [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.
 1. Update [build.xml](../blob/master/build.xml) with the version being released, e.g., `<property name="version" value="b7" />`
 1. Commit these changes.
-1. Create a zip file of the build `./Tools/apache-ant-1.8.2/bin/ant clean makeZipFile`
+1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
+1. Create a zip file of the build `./Tools/apache-ant-1.8.2/bin/ant makeZipFile`
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
    * `git tag -a b7 -m 'b7 release'`
    * `git push --tags`
