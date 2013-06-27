@@ -450,6 +450,8 @@ TODO
 
 **TODO: tip for visualizing bounding spheres with command debugging**
 
+**TODO: tip for visualizing vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html)**
+
 # Part III: Geometry Batching for Vector Data Rendering
 
 **TODO**
