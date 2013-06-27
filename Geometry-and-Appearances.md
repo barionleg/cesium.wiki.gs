@@ -56,7 +56,7 @@ Let's rewrite the initial code example using geometries and appearances:
 var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
     extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
-    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
+    vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
@@ -85,14 +85,14 @@ We see a performance benefit when we use the same primitive to draw multiple sta
 var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
     extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
-    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
+    vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
 var anotherInstance = new GeometryInstance({
   geometry : new ExtentGeometry({
     extent : Extent.fromDegrees(0.0, 40.0, 10.0, 50.0),
-    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
+    vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
