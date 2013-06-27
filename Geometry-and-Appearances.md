@@ -448,6 +448,8 @@ this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 
 TODO
 
+**TODO: tip for visualizing wireframe with [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe)**
+
 **TODO: tip for visualizing bounding spheres with command debugging**
 
 **TODO: tip for visualizing vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html)**
