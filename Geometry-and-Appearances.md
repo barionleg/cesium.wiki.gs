@@ -116,14 +116,18 @@ var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
     extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0)
   }),
-  color : new Color(1.0, 0.0, 0.0, 0.5)
+  attributes : {
+    color : new ColorGeometryInstanceAttribute(1.0, 0.0, 0.0, 0.5)
+  }
 });
 
 var anotherInstance = new GeometryInstance({
   geometry : new ExtentGeometry({
     extent : Extent.fromDegrees(0.0, 40.0, 10.0, 50.0)
   }),
-  color : new Color(0.0, 0.0, 1.0, 0.5)
+  attributes : {
+    color : new ColorGeometryInstanceAttribute(0.0, 1.0, 0.0, 0.5)
+  }
 });
 
 var extentPrimitive = new Primitive({
@@ -148,7 +152,9 @@ for (var lon = -180; lon < 180; ++lon) {
       geometry : new ExtentGeometry({
         extent : Extent.fromDegrees(lon, lat, lon + 1, lat + 1)
       }),
-      color : new Color(Math.random(), Math.random(), Math.random(), 0.5)
+      attributes : {
+        color : new ColorGeometryInstanceAttribute(Math.random(), Math.random(), Math.random(), 0.5)
+      }
     }));
   }
 }
@@ -174,8 +180,10 @@ var instance = new GeometryInstance({
   geometry : new ExtentGeometry({
     extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0)
   }),
-  color : new Color(1.0, 0.0, 0.0, 0.5),
-  id : 'an id'
+  id : 'an id',
+  attributes : {
+    color : new ColorGeometryInstanceAttribute(1.0, 0.0, 0.0, 0.5)
+  }
 });
 
 var extentPrimitive = new Primitive({
@@ -211,14 +219,18 @@ var instance = new GeometryInstance({
   geometry : geometry,
   modelMatrix : Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(
       ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 250000.0)),
-  color : Color.AQUAMARINE
+  attributes : {
+    color : ColorGeometryInstanceAttribute.fromColor(Color.AQUAMARINE)
+  }
 });
 
 var anotherInstance = new GeometryInstance({
   geometry : geometry,
   modelMatrix : Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(
     ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 750000.0)),
-  color : Color.BLANCHEDALMOND
+  attributes : {
+    color : ColorGeometryInstanceAttribute.fromColor(Color.BLANCHEDALMOND)
+  }
 });
 
 scene.getPrimitives().add(new Primitive({
@@ -407,8 +419,6 @@ var TetrahedronGeometry = function() {
 };
 ```
 
-**TODO screenshot**
-
 The tetrahedron is made up of four vertices, whose positions lie on the unit sphere.  For precision, we always store positions in a `Float64Array`.
 
 <img src="geometryandappearances/tetrahedron.png" /> 
@@ -446,7 +456,35 @@ this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 
 ### Visualizing the Tetrahedron with a Primitive
 
-TODO
+Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.
+
+```javascript
+var modelMatrix = Matrix4.multiplyByUniformScale(Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 2000000.0)), 500000.0);
+
+var instance = new GeometryInstance({
+  geometry : new TetrahedronGeometry(),
+  modelMatrix : modelMatrix,
+  attributes : {
+    color : ColorGeometryInstanceAttribute.fromColor(Color.WHITE)
+  }
+});
+
+scene.getPrimitives().add(new Primitive({
+  geometryInstances : instance,
+  appearance : new PerInstanceColorAppearance({
+    flat : true,
+    translucent : false
+  })
+}));
+```
+
+Here's our tetrahedron, scaled and positioned, without shading:
+
+<img src="geometryandappearances/firstTetrahedron.png" /> 
+
+Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  Instead, ...
+
+### TODO
 
 **TODO: tip for visualizing wireframe with [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe)**
 
