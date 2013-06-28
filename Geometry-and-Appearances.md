@@ -165,9 +165,9 @@ scene.getPrimitives().add(extentPrimitive);
 
 ## Picking
 
-After instances are combined, they are still independently accessible.  In particular, we can assigned a `pickData` to an instance, and use it to determine if the instance is picked with [`Scene.pick`](http://cesium.agi.com/Cesium/Build/Documentation/Scene.html#pick).  `pickData` can be any JavaScript type: a string, a number, an object with its own properties.
+After instances are combined, they are still independently accessible.  In particular, we can assigned an `id` to an instance, and use it to determine if the instance is picked with [`Scene.pick`](http://cesium.agi.com/Cesium/Build/Documentation/Scene.html#pick).  `id` can be any JavaScript type: a string, a number, an object with its own properties.
 
-The following example creates an instance with a `pickData`, and writes a message to the console when the mouse moves over it.
+The following example creates an instance with a `id`, and writes a message to the console when the mouse moves over it.
 
 ```javascript
 var instance = new GeometryInstance({
@@ -175,7 +175,7 @@ var instance = new GeometryInstance({
     extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0)
   }),
   color : new Color(1.0, 0.0, 0.0, 0.5),
-  pickData : 'an id'
+  id : 'an id'
 });
 
 var extentPrimitive = new Primitive({
@@ -192,7 +192,7 @@ handler.setInputAction(function (movement) {
     }
   }, ScreenSpaceEventType.MOUSE_MOVE);
 ```
-Using `pickData`, instead of the reference to the instance itself, allows the primitive - and the application - to avoid keeping a reference to the full instance - including its reference to the geometry - in memory after the primitive is constructed.  Since a geometry can contain several big typed arrays, this allows us to save a significant amount of memory.
+Using `id`, instead of the reference to the instance itself, allows the primitive - and the application - to avoid keeping a reference to the full instance - including its reference to the geometry - in memory after the primitive is constructed.  Since a geometry can contain several big typed arrays, this allows us to save a significant amount of memory.
 
 ## Geometry Instances
 
