@@ -499,7 +499,9 @@ var instance = new GeometryInstance({
 
 <img src="geometryandappearances/tetrahedronWireframe.png" /> 
 
-**Tip: Use `GeometryPipeline.toWireframe` for debugging to visualize a geometry's primitives.**
+**Tip**: Use `GeometryPipeline.toWireframe` for debugging to visualize a geometry's primitives.
+
+TODO: next add normals
 
 ### TODO
 
