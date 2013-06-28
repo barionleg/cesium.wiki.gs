@@ -459,7 +459,10 @@ this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.
 
 ```javascript
-var modelMatrix = Matrix4.multiplyByUniformScale(Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 2000000.0)), 500000.0);
+var modelMatrix = Matrix4.multiplyByUniformScale(
+  Matrix4.multiplyByTranslation(
+    Transforms.eastNorthUpToFixedFrame(
+      ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 2000000.0)), 500000.0);
 
 var instance = new GeometryInstance({
   geometry : new TetrahedronGeometry(),
@@ -482,11 +485,23 @@ Here's our tetrahedron, scaled and positioned, without shading:
 
 <img src="geometryandappearances/firstTetrahedron.png" /> 
 
-Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  Instead, ...
+Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  It has a function,  [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe), that transforms a geometry to use the `LINES` primitive type.
+
+```javascript
+var instance = new GeometryInstance({
+  geometry : GeometryPipeline.toWireframe(new TetrahedronGeometry()),
+  modelMatrix : modelMatrix,
+  attributes : {
+    color : ColorGeometryInstanceAttribute.fromColor(Color.WHITE)
+  }
+});
+```
+
+<img src="geometryandappearances/tetrahedronWireframe.png" /> 
+
+**Tip: Use `GeometryPipeline.toWireframe` for debugging to visualize a geometry's primitives.**
 
 ### TODO
-
-**TODO: tip for visualizing wireframe with [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe)**
 
 **TODO: tip for visualizing bounding spheres with command debugging**
 
