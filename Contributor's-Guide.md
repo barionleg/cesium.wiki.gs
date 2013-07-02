@@ -73,8 +73,8 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
 
 * Install additional Eclipse components: JavaScript Development Tools and Eclipse Web Developer Tools.
-   * Help - Install New Software.  Work with: select *Juno* from the list.
-   * Expand *Programming Languages*, check *Eclipse JavaScript Development Tools*.
+   * Help - Install New Software.  Work with: select *Kepler* from the list.
+   * Expand *Programming Languages*, check *JavaScript Development Tools*.
    * Expand *Web, XML, Java EE and OSGi Enterprise Development*, check *Eclipse Web Developer Tools*.
    * Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
 
@@ -82,7 +82,7 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 
 * Install the [JSHint](http://www.jshint.com/) plugin: 
    * Help - Install New Software.  Work with: `http://github.eclipsesource.com/jshint-eclipse/updates/`.
-   * Check *JSHint*.  Next, Next, Accept, Finish, _wait_, Restart.
+   * Check *JSHint*.  Next, Next, Accept, Finish, _wait_, OK, _wait_, Restart.
 
 ![The JSHint installation dialog](jshint.png)
 
