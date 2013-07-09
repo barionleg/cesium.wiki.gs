@@ -279,7 +279,7 @@ var another  = new PerInstanceColorAppearance({
   }
 });
 ```
-Once an appearance is created, we can't changed its `renderState` property, but we can change its `material`.  Likewise, we can also change a primitive's `appearance` property.
+Once an appearance is created, we can't change its `renderState` property, but we can change its `material`.  Likewise, we can also change a primitive's `appearance` property.
 
 Most appearances also have [`flat`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#flat) and [`faceForward`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#faceForward) properties, which indirectly control the GLSL shaders.
 
