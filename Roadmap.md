@@ -2,19 +2,16 @@
 
 We're always looking to:
 * Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs
-* Support more content by writing converters from other formats (GML, [GeoJSON](http://www.geojson.org/), [TopoJSON](https://github.com/mbostock/topojson), [gpx](http://www.topografix.com/gpx.asp) ...) to CZML using our [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer) library
-* Write [tutorials](Tutorials-Details) and improve reference documentation and examples
 * Improve platform support by fixing issues on various browsers, devices, or video cards
-* Improve tests and test coverage
+* Write [tutorials](Tutorials-Details) and improve reference documentation and examples
 
 ## In progress
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
 * Navigation Widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA)
 * New geometry types and batching - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
+* Sensors
 * 3D models - [details](Models-Details)
 * Space features - [details](Space-features)
-* Screen Space Rendering - [details](Screen-Space-Rendering-Details)
-* Tutorials - [details](Tutorials-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
 
@@ -24,12 +21,14 @@ If you are interested in implementing any of these features, start a discussion 
 
 * General
    * [ESA Summer of Code in Space Ideas](ESA-Summer-of-Code-in-Space-Ideas)
+   * Tutorials - [details](Tutorials-Details)
    * Mobile improvements - [details](Mobile-Details)
    * Support standard web servers: WMTS, WFS, WCS, ...
    * Support for multiple central bodies, i.e., Sun, Moon, etc.
    * Sandcastle improvements - [details](Sandcastle-Details)
    * Military symbol sets such as MS2525 and NTDS.  SVG files?
 * Graphics
+   * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
    * Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
    * Improve 3D/2D/Columbus view transitions
    * GLSL #include system - [details](GLSL-Details)
