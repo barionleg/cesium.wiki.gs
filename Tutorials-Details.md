@@ -1,9 +1,11 @@
 We're planning the following tutorials.  These will initially be [blog posts](http://cesium.agi.com/blog.html), and a page on the [Cesium website](http://cesium.agi.com) will serve as the table of contents.
 
 Beginner Tutorials (in psuedo table-of-contents order, but we can write them in any order)
-* The Simplest Cesium App - **@pjcozzi**
+* ~~Cesium Up and Running **@mramato**~~
+* A simple representitive Cesium app
 * ~~Imagery Layers - **@pjcozzi**~~
 * ~~Terrain - **@pjcozzi**~~
+* Tiling imagery using free tools (commonly asked on the forum)
 * Billboards and Labels
 * Polygons and Polylines
 * Picking
@@ -28,6 +30,7 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 Advanced Tutorials
 * Implementing an [ImageryProvider](http://cesium.agi.com/Cesium/Build/Documentation/ImageryProvider.html)
 * Implementing a `TerrainProvider`
+* Debugging aids for rendering code - bounding volumes, command selection, and multiple frustums
 * Writing custom rendering code - **@pjcozzi**
 
 Other Tutorials
