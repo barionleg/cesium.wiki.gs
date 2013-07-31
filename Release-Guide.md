@@ -22,7 +22,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
    * `git tag -a b7 -m 'b7 release'`
    * `git push --tags`
-1. Branch the [website](http://cesium.agi.com/) and open a pull request for release with post and release zips.  See the _Adding a New Cesium Release_ section of the website wiki.
+1. Branch the [website](http://cesium.agi.com/) and open a pull request for release with post and release zips.  See the [Adding a New Cesium Release](https://github.com/AnalyticalGraphicsInc/cesium-website/wiki/Adding-a-New-Cesium-Release) section of the website wiki.
 1. Reply to your courtesy message on the [forum](http://cesium.agi.com/forum.html) to let everyone know the release is ready.
 
 Also, see our [release discussion](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo) on the forum.
