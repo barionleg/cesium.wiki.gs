@@ -19,7 +19,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. If any of the above steps fail, contact the [forum](http://cesium.agi.com/forum.html) to figure out what needs to be fixed before we can release.  Do NOT release until all steps are passing.
 
 ## Packaging for release
-1. Update [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.
+1. Update [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.  Also give it a final proof read and tweaking.  Adjust the order of changes so that prominent/popular changes come first.
 1. Update [build.xml](../blob/master/build.xml) with the version being released, e.g., `<property name="version" value="b7" />`
 1. Commit these changes.
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
