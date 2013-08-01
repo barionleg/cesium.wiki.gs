@@ -1,7 +1,5 @@
 This is a draft for a three-part blog series.  The first two are Cesium tutorials.  The last is a general graphics tech article.
 
-_Links to the reference doc don't work yet._
-
 # Part I: Geometry and Appearances
 
 Cesium has a library of primitives, like polygons and ellipsoids, that are the visual building blocks of our scene.  To use them, we create a primitive and give it position data and perhaps a [`material`](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).  For example, the following creates a rectangle on the globe with a dot pattern:
