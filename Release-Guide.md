@@ -13,7 +13,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
 1. Create the release zips and start the server for testing `./Tools/apache-ant-1.8.2/bin/ant makeZipFile runServer`
 1. Verify that the [Documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
-1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://analyticalgraphicsinc.github.com/webglreport/).
+1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://webglreport.com/).
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) in [Firefox](http://www.mozilla.org/en-US/firefox/new/?from=getfirefox) stable.
 1. Make sure [Hello World](http://localhost:8080/Build/HelloWorld.html) loads.
