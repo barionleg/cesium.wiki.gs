@@ -184,6 +184,7 @@ TODO
 
 ## Later Phases
 
+* Add compute pass [[https://github.com/AnalyticalGraphicsInc/cesium/issues/751][#751]].
 * Callback functions as commands?  Could be used to call WebGL directly.
 * _Done_: Scissor out pick rectangle
 * Picking optimizations: `color` and `pick` in the same pass.  Preserve pick color buffer between frames for static scenes.
