@@ -6,6 +6,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Verify there are no [show stopper](../issues?labels=show+stopper&page=1&state=open) issues.
 1. Send a courtesy message to the [forum](http://cesium.agi.com/forum.html) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
+1. Pull down the latest master branch.
 1. Update [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.  Also give it a final proof read and tweaking.  Adjust the order of changes so that prominent/popular changes come first.
 1. Update [build.xml](../blob/master/build.xml) with the version being released, e.g., `<property name="version" value="b7" />`
 1. Commit these changes.
