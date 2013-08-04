@@ -10,7 +10,7 @@
 <a href="http://sophia.estec.esa.int/socis2013/" target="_blank"><img src="socis/SOCIS.jpg"></a>
 </p>
 
-The student application period for SOCIS 2013 is from June 30 - July 15 (11am UTC).
+The student application period for SOCIS 2013 is from June 30 - August 4 (11am UTC).
 
 View the complete [SOCIS program timeline](http://sophia.estec.esa.int/socis2013/?q=timeline) to review all of the program's deadlines.
 
