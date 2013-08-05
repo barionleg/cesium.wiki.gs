@@ -1,25 +1,25 @@
 *Most Important*
 
-* Sensor improvements
+* Sensor improvements.  Test cases:
    * Narrow six-arc-second field-of-view.  Display condition to draw a polyline?
    * Narrow sensor like a fan
    * Wide sensor with a cap
+   * Custom sensors with 100s to a 1,000 points
+* Sun size. [#769](https://github.com/AnalyticalGraphicsInc/cesium/issues/769)
+* Night time.  Overlaps with night lights and atmosphere work
+* Fuzzy ellipsoid lines.  [#899](https://github.com/AnalyticalGraphicsInc/cesium/issues/899)
 
 *Important*
 
-* Sensor improvements
-   * Draw a cone from the Sun to Earth's silhouette.  Compute custom sensor?
-* Sun centered views (Should ultimately support any CB as the center)
-* Render moon
-* Ability jump to a particular stored view that might be defined at the start of a track
-* Night lights
+* Render moon with right size and right lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)
+* Lighting conditions: umbra, penumbra, and umbra cone
+* Mousewheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)
+* CZML support for stored views
+* Draw two vectors with an arc for the angle and an annotation
 
 *Less Important*
 
-* Sensor improvements
-   * Billboard aligned with sensor boresight (use a model?)
-* Render other planets
-* Draw planes perpendicular to orbits
+* Textured plane aligned with sensor boresight (use a model?)
 
 ## Done
 * ~~Ability to show Earth-centered view in ICRF instead of Fixed. - [#825](https://github.com/AnalyticalGraphicsInc/cesium/issues/825)~~
