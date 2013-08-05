@@ -6,14 +6,14 @@
    * Wide sensor with a cap
    * Custom sensors with 100s to a 1,000 points
 * Sun size. [#769](https://github.com/AnalyticalGraphicsInc/cesium/issues/769)
-* Night time.  Overlaps with night lights and atmosphere work
+* Night time.  Overlaps with night lights and atmosphere
 * Fuzzy ellipsoid lines.  [#899](https://github.com/AnalyticalGraphicsInc/cesium/issues/899)
 
 *Important*
 
-* Render moon with right size and right lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)
+* Render moon with right size and lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)
 * Lighting conditions: umbra, penumbra, and umbra cone
-* Mousewheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)
+* Mouse wheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)
 * CZML support for stored views
 * Draw two vectors with an arc for the angle and an annotation
 
