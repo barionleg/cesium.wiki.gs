@@ -8,7 +8,7 @@ Design and implementation ideas for our GLSL shader system.
 * Work well with uber-shaders determined at runtime. Search for `getShaderProgram` in `CentralBody.js`.
 * Work well with our material system, which dynamically creates shaders – think GLSL compile-time polymorphism. Each shader implementations a virtual function so-to-speak, e.g., see `VerticalStripeMaterial` and its shader, `VerticalStripeMaterial.glsl`. Anyone who can use a material calls this "virtual function." For a simple example, search for `getShaderProgram` in `Polygon.js`. A single primitive may have multiple materials for different surfaces (rendered in the same pass), so I rename uniforms like I am an out-of-order processor renaming registers. Search for `combine` in `ComplexConicSensorVolume.js`.
 * Control over precision used in the fragment shader. This is particularly important for mobile performance. See `getShaderPrecisionFormat`.
-* Consider GLSL minification.
+* GLSL optimization and minification like glTF issues [#36](https://github.com/KhronosGroup/glTF/issues/36) and [#34](https://github.com/KhronosGroup/glTF/issues/34).
 * Performance idea:  async shader compile/link.  Let's time `linkProgram` first because I think that is actually synchronous on most drivers.
 
 ## Resources
