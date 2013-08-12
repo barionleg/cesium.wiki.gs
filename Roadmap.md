@@ -7,11 +7,12 @@ We're always looking to:
 
 ## In progress
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
-* Navigation Widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA)
-* New geometry types and batching - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
+* Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA)
+* Geometry and appearances - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
+* Shader system - [details](GLSL-Details)
 * Sensors
-* 3D models - [details](Models-Details)
-* Space features - [details](Space-features)
+* [Space features](Space-features)
+* [3D models](Models-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
 
@@ -31,7 +32,6 @@ If you are interested in implementing any of these features, start a discussion 
    * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
    * Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
    * Improve 3D/2D/Columbus view transitions
-   * GLSL #include system - [details](GLSL-Details)
    * Particle system - [details](Particle-System-Details)
    * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
    * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
