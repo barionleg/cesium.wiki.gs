@@ -511,6 +511,7 @@ var instance = new GeometryInstance({
 **Tip**: Use `GeometryPipeline.toWireframe` for debugging to visualize a geometry's primitives.
 
 TODO: next add normals
+TODO: update tetrahedron example for creation on a web worker.
 
 ### TODO
 
