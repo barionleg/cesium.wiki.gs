@@ -293,7 +293,7 @@ Once an appearance is created, we can't change its `renderState` property, but w
 Most appearances also have [`flat`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#flat) and [`faceForward`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#faceForward) properties, which indirectly control the GLSL shaders.
 
 * `flat` - Flat shading.  Do not take lighting into account.
-* `faceForward` - When lighting, flip the normal so it is always facing the viewer.  The avoids black areas on back-faces, e.g., the instead of a box.
+* `faceForward` - When lighting, flip the normal so it is always facing the viewer.  The avoids black areas on back-faces, e.g., the inside of a box.
 
 **TODO: screenshots of flat and faceForward**
 
