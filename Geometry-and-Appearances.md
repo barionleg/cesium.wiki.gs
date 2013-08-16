@@ -19,13 +19,24 @@ In this tutorial, we go under the hood of primitives and look at the [`Geometry`
 Cesium supports the following geometries.
 
 * [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) - A filled polygon on the globe or at a constant height above the globe.  The polygon can have holes and can be extruded to form a volume.
-* [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) - A filled rectangular extent on the globe or at a constant height.  It can be rotated, and extruded to form a volume.
-* [`EllipseGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) - A filled ellipse on the globe or at a constant height.  It can be rotated.
-* [`CircleGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) - A filled circle on the globe or at a constant height.
-* [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) - A wall perpendicular to the globe.  It can be relative to terrain or a constant height.
+* [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) - An outline of a `PolygonGeometry`.
+* [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) - A filled rectangular extent on the globe or at a constant height.  It can be rotated and extruded to form a volume.
+* [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) - An outline of an `ExtentGeometry`.
+* [`EllipseGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) - A filled ellipse on the globe or at a constant height.  It can be rotated and extruded to form a volume.
+* [`EllipseOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseOutlineGeometry.html) - An outline of an `EllipseGeometry`.
+* [`CircleGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) - A filled circle on the globe or at a constant height. It can be extruded to form a volume.
+* [`CircleOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleOutlineGeometry.html) - An outline of a `CircleGeometry`.
+* [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) - A filled wall perpendicular to the globe.
+* [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) - An outline of a `WallGeometry`.
+* [`BoxGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html) - A filled box.  Not all sides need to be equal length.
+* [`BoxOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxOutlineGeometry.html) - An outline of a `BoxGeometry`.
+* [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) -  A filled ellipsoid.
+* [`EllipsoidOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidOutlineGeometry.html) - An outline of an `EllipsoidGeometry`.
+* [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) - A filled sphere.
+* [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) - An outline of a `SphereGeometry`.
+* [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) - A filled cylinder. The radii can change over the length of the cylinder making cones or truncated cones.
+* [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) - An outline of a `CylinderGeometry`.
 * [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) - An arbitrary polyline.
-* [`BoxGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html) - A box.  Not all sides need to be equal length.
-* [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) -  An ellipsoid.
 
 **TODO: screenshots for each**
 
