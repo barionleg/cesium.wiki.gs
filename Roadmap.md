@@ -9,7 +9,7 @@ We're always looking to:
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
 * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA)
 * Geometry and appearances - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
-* Shader system - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
+* Shader pipeline - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
 * Sensors
 * [Space features](Space-features)
 * [3D models](Models-Details)
