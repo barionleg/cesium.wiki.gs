@@ -128,7 +128,7 @@ Depth Buffer
 Later
 * Motion blur using a velocity buffer (RTR, Page 490.  Programming Vertex Geometry and Pixel Shaders, [Page 410](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf)).
    * [A Reconstruction Filter for Plausible Motion Blur](http://graphics.cs.williams.edu/papers/MotionBlurI3D12/McGuire12Blur.pdf)
-* Glow with a glow buffer (GPU Gems, [Chapter 21](http://http.developer.nvidia.com/GPUGems/gpugems_ch21.html)).
+* Glow with a glow buffer (GPU Gems, [Chapter 21](http://http.developer.nvidia.com/GPUGems/gpugems_ch21.html)).  A [WebGL glow tutorial](http://www.nutty.ca/?page_id=352&link=glow).
 
 Resources
 * [Stylized Rendering in Spore](http://gpupro.blogspot.com/2010/05/stylized-rendering-in-spore.html)
