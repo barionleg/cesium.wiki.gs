@@ -1,9 +1,7 @@
-# Roadmap
-
 We're always looking to:
-* Write demos that showcase Cesium, especially demos that combine Cesium with other web APIs
+* Write [demos](http://cesium.agi.com/demos.html) that showcase Cesium, especially demos that combine Cesium with other web APIs
+* Write [tutorials](Tutorials-Details) and improve [reference documentation](http://cesium.agi.com/refdoc.html) and [examples](http://cesium.agi.com/refdoc.html)
 * Improve platform support by fixing issues on various browsers, devices, or video cards
-* Write [tutorials](Tutorials-Details) and improve reference documentation and examples
 
 ## In progress
 * DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
@@ -23,39 +21,38 @@ If you are interested in implementing any of these features, start a discussion 
 
 * General
    * [ESA Summer of Code in Space Ideas](ESA-Summer-of-Code-in-Space-Ideas)
-   * Tutorials - [details](Tutorials-Details)
-   * Mobile improvements - [details](Mobile-Details)
+   * [Tutorials](Tutorials-Details)
+   * [Mobile improvements](Mobile-Details)
    * Support standard web servers: WMTS, WFS, WCS, ...
-   * Support for multiple central bodies, i.e., Sun, Moon, etc.
-   * Sandcastle improvements - [details](Sandcastle-Details)
+   * [Sandcastle improvements](Sandcastle-Details)
    * Military symbol sets such as MS2525 and NTDS.  SVG files?
+   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
-   * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
-   * Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
+   * [Data-Driven Renderer improvements](Data-Driven-Renderer-Details)
+   * [Screen Space Rendering](Screen-Space-Rendering-Details)
    * Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
-   * Particle system - [details](Particle-System-Details)
-   * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
+   * [Particle system](Particle-System-Details)
    * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
    * Vectors
-   * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
-   * Lat/lon grid
-   * John Madden-style collaboration among multiple clients
    * Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-   * Stars improvements - [details](Stars-Details)
-   * Ocean improvements - [details](Ocean-Details)
+   * [Stars improvements](Stars-Details)
+   * [Ocean improvements](Ocean-Details)
    * Render buildings
    * Video on terrain
-   * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
    * Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
-   * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
    * Volumetric clouds
+   * [Visual quality and performance ideas](Visual-Quality-and-Performance-Details)
+   * John Madden-style collaboration among multiple clients
+   * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
+   * Lat/lon grid
    * [Lens Flare](http://www.john-chapman.net/content.php?id=18)
-   * Visual quality and performance ideas - [details](Visual-Quality-and-Performance-Details)
+   * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
+   * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
    * Tree generation - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural trees.
 * CZML
-   * CZML External links - [details](External-links)
+   * [CZML External links](External-links)
    * GeoServer CZML writer
-   * CZML Path/History visualization - [details](CZML-History-visualization-details)
+   * [CZML Path/History visualization](CZML-History-visualization-details)
    * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
    * Buffer availability and "buffering" behavior
    * Layers
@@ -71,10 +68,10 @@ If you are interested in implementing any of these features, start a discussion 
    * [OWF](https://www.owfgoss.org/) widget
    * Embeddable Cesium Viewer
    * Improved TimeLine widget
-   * Standard Cesium toolbar - [details](Cesium-standard-actions)
+   * [Standard Cesium toolbar](Cesium-standard-actions)
    * CZML Table of contents/Document Manager widget
 * Infrastructure
-   * Website Improvements - [details](Website-Improvement-Details)
+   * [Website Improvements](Website-Improvement-Details)
    * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
 
 ## Google Summer of Code 2013
