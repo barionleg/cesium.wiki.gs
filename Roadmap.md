@@ -6,6 +6,7 @@ We're always looking to:
 * Write [tutorials](Tutorials-Details) and improve reference documentation and examples
 
 ## In progress
+* DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
 * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA)
 * Geometry and appearances - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
@@ -31,7 +32,7 @@ If you are interested in implementing any of these features, start a discussion 
 * Graphics
    * Screen Space Rendering - [details](Screen-Space-Rendering-Details)
    * Night lights based on streaming imagery that fade out as we zoom in - [data from NASA](http://www.nasa.gov/mission_pages/NPP/news/earth-at-night.html).
-   * Improve 3D/2D/Columbus view transitions
+   * Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
    * Particle system - [details](Particle-System-Details)
    * Data-Driven Renderer improvements - [details](Data-Driven-Renderer-Details)
    * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
