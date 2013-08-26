@@ -203,3 +203,4 @@ TODO
 * [Renderer Design](http://diaryofagraphicsprogrammer.blogspot.com/2007/12/renderer-design.html)
 * Designing a Data-Driven Renderer in [GPU Pro 3](http://gpupro3.blogspot.com/)
 * Chapter 6 in [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com/)
+* [Creating Vast Game Worlds - Experiences from Avalanche Studios](http://www.humus.name/index.php?page=Articles)
