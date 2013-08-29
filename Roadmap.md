@@ -5,12 +5,12 @@ We're always looking to:
 
 ## In progress
 * DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
-* Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
-* Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA)
+* Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
+* Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
 * Geometry and appearances - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
 * Shader pipeline - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
-* Sensors
 * [Space features](Space-features)
+* Sensors
 * [3D models](Models-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
@@ -20,7 +20,6 @@ Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev
 If you are interested in implementing any of these features, start a discussion on the [forum](http://cesium.agi.com/forum.html).
 
 * General
-   * [ESA Summer of Code in Space Ideas](ESA-Summer-of-Code-in-Space-Ideas)
    * [Tutorials](Tutorials-Details)
    * [Mobile improvements](Mobile-Details)
    * Support standard web servers: WMTS, WFS, WCS, ...
@@ -74,14 +73,7 @@ If you are interested in implementing any of these features, start a discussion 
    * [Website Improvements](Website-Improvement-Details)
    * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
 
-## Google Summer of Code 2013
+## Student Programs
 
-* [Google Summer of Code Ideas](Google-Summer-of-Code-Ideas)
-
-## Google Code-in
-
-[Program details](http://code.google.com/opensource/gci/2012/index.html)
-
-## ESA Summer of Code in Space Ideas
-
-[Program details](http://sophia.estec.esa.int/socis2012/).  Most likely due June, 2013.
+* [Google Summer of Code 2013 Ideas](Google-Summer-of-Code-Ideas)
+* [ESA Summer of Code in Space 2013 Ideas](ESA-Summer-of-Code-in-Space-Ideas)
