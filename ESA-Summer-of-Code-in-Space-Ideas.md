@@ -28,7 +28,7 @@ HTML5, CSS3, JavaScript, WebGL, SVG, Git, Ant, Eclipse, Chrome, Firefox, Android
 
 
 <a name="decultterformaplabels">
-## Declutter for Map Labels
+## ~~Declutter for Map Labels~~
 
 ![](gsoc/2013/declutter.png)
 <br /><small>Image from [Temporally Coherent Real-Time Labeling of Dynamic Scenes](http://wwwcg.in.tum.de/research/research/publications/2012/temporally-coherent-real-time-labeling-of-dynamic-scenes.html)</small>
