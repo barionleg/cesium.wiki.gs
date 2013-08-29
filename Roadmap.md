@@ -1,8 +1,3 @@
-We're always looking to:
-* Write [demos](http://cesium.agi.com/demos.html) that showcase Cesium, especially demos that combine Cesium with other web APIs
-* Write [tutorials](Tutorials-Details) and improve [reference documentation](http://cesium.agi.com/refdoc.html) and [examples](http://cesium.agi.com/refdoc.html)
-* Improve platform support by fixing issues on various browsers, devices, or video cards
-
 ## In progress
 * DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
@@ -15,12 +10,18 @@ We're always looking to:
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
 
+## Ongoing
+
+We're always looking to:
+* Write [demos](http://cesium.agi.com/demos.html) that showcase Cesium, especially demos that combine Cesium with other web APIs
+* Write [tutorials](Tutorials-Details) and improve [reference documentation](http://cesium.agi.com/refdoc.html)
+* Improve quality by fixing known issues.  If you want to contribute, a good place to start is the [beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=beginner&page=1&sort=updated&state=open)
+
 ## To come
 
 If you are interested in implementing any of these features, start a discussion on the [forum](http://cesium.agi.com/forum.html).
 
 * General
-   * [Tutorials](Tutorials-Details)
    * [Mobile improvements](Mobile-Details)
    * Support standard web servers: WMTS, WFS, WCS, ...
    * [Sandcastle improvements](Sandcastle-Details)
