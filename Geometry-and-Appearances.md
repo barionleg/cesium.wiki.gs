@@ -37,6 +37,8 @@ Cesium supports the following geometries.
 * [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) - A filled cylinder. The radii can change over the length of the cylinder making cones or truncated cones.
 * [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) - An outline of a `CylinderGeometry`.
 * [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) - An arbitrary polyline.
+* [`CorridorGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CorridorGeometry.html) - A polyline with a width and the option to miter, bevel or round the corners.  It can be extruded to form a volume.
+
 
 **TODO: screenshots for each**
 
