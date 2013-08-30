@@ -1,7 +1,7 @@
 ## In progress
-* DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
 * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
+* Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
 * Geometry and appearances - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
 * Shader pipeline - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
 * [Space features](Space-features)
@@ -50,6 +50,7 @@ If you are interested in implementing any of these features, start a discussion 
    * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
    * Tree generation - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural trees.
 * CZML
+   * DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
    * [CZML External links](External-links)
    * GeoServer CZML writer
    * [CZML Path/History visualization](CZML-History-visualization-details)
