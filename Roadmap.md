@@ -1,7 +1,7 @@
 ## In progress
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
 * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
-* Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
+* Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
 * Geometry and appearances - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
 * Shader pipeline - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
 * [Space features](Space-features)
