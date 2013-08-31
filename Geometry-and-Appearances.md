@@ -349,6 +349,10 @@ Also, a geometry's `vertexFormat` determines if it can be combined with another 
 
 TODO: updating per-instance show/color/attribute
 
+## TODO
+
+TODO: two-passes for closed translucent (use faceForward too)
+
 ## Resources
 
 In the reference documentation, see:
