@@ -352,6 +352,7 @@ TODO: updating per-instance show/color/attribute
 ## TODO
 
 TODO: two-passes for closed translucent (use faceForward too)
+TODO: interop between outline geometries and polyline geometry
 
 ## Resources
 
