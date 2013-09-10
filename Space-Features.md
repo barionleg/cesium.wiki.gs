@@ -5,7 +5,6 @@
    * Narrow sensor like a fan
    * Wide sensor with a cap
    * Custom sensors with 100s to a 1,000 points
-* Sun size. [#769](https://github.com/AnalyticalGraphicsInc/cesium/issues/769)
 * Night time.  Overlaps with night lights and atmosphere
 * Fuzzy ellipsoid lines.  [#899](https://github.com/AnalyticalGraphicsInc/cesium/issues/899)
 
@@ -32,3 +31,4 @@
    * ~~Eliminate jitter - [#392](https://github.com/AnalyticalGraphicsInc/cesium/issues/392)~~
    * ~~Zoom inside - [#390](https://github.com/AnalyticalGraphicsInc/cesium/issues/390)~~
    * ~~Covariance interpolation (in [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer))~~
+* ~~Sun size. [#769](https://github.com/AnalyticalGraphicsInc/cesium/issues/769)~~
