@@ -36,6 +36,7 @@ If you are interested in implementing any of these features, start a discussion 
    * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
    * Vectors
    * Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
+   * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
    * [Stars improvements](Stars-Details)
    * [Ocean improvements](Ocean-Details)
    * Render buildings
