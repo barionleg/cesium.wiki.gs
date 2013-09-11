@@ -68,6 +68,7 @@ Details to follow...
 * Render to cube map for reflections and refractions.
 * Existing Materials
    * Add (Texture coordinates) `offset` in addition to the `repeat` uniform.
+   * Ability to mipmap textures.
 * New Materials
    * Erosion.  Perhaps screen-space too?
 * JSON schema features.
