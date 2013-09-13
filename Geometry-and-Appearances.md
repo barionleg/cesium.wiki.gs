@@ -9,7 +9,7 @@ var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
 
 var extentPrimitive = new Cesium.ExtentPrimitive({
-    extent : Cesium.Extent.fromDegrees(-100.0, 20, -90.0, 30.0),
+    extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
     material : Cesium.Material.fromType(scene.getContext(), 'Dot')
 });
 scene.getPrimitives().add(extentPrimitive);
@@ -30,11 +30,9 @@ Cesium supports the following geometries.
 | [[geometryandappearances/ellipsoidGeometry.png]] | [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) | [[geometryandappearances/ellipsoidOutlineGeometry.png]] | [`EllipsoidOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidOutlineGeometry.html) | An ellipsoid. |
 | [[geometryandappearances/extentGeometry.png]] | [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) | [[geometryandappearances/extentOutlineGeometry.png]] | [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) | An extent or extrdued extent based on latitude and longitude lines. |
 | [[geometryandappearances/polygonGeometry.png]] | [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) | [[geometryandappearances/polygonOutlineGeometry.png]] | [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) | A polygon or extruded polygon. |
-| | [`PolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html) | | [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) | An arbitrary line. `PolylineGeometry` also supports widths and materials. |
+| [[geometryandappearances/polylineGeometry.png]] | [`PolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html) | [[geometryandappearances/simplePolylineGeometry.png]] | [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) | An arbitrary line. `PolylineGeometry` also supports widths and materials. |
 | [[geometryandappearances/sphereGeometry.png]] | [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) | [[geometryandappearances/sphereOutlineGeometry.png]] | [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) | A sphere. |
 | [[geometryandappearances/wallGeometry.png]] | [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) | [[geometryandappearances/wallOutlineGeometry.png]] | [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) | A wall perpendicular to the globe. |
-
-**TODO: screenshots for each**
 
 **TODO: screenshot of Sandcastle demo showing all geometries/appearances**
 
@@ -51,24 +49,27 @@ There are also some downsides:
 
 Let's rewrite the initial code example using geometries and appearances:
 ```javascript
-// Original code:
-// var extentPrimitive = new ExtentPrimitive({
-//   extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
-//   material : Material.fromType(scene.getContext(), 'Dot')
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+
+// original extent
+// var extentPrimitive = new Cesium.ExtentPrimitive({
+//     extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
+//     material : Cesium.Material.fromType(scene.getContext(), 'Dot')
 // });
 // scene.getPrimitives().add(extentPrimitive);
 
-var instance = new GeometryInstance({
-  geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
-    vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
+var instance = new Cesium.GeometryInstance({
+  geometry : new Cesium.ExtentGeometry({
+    extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
+    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
-var extentPrimitive = new Primitive({
+var extentPrimitive = new Cesium.Primitive({
   geometryInstances : instance,
-  appearance : new EllipsoidSurfaceAppearance({
-    material : Material.fromType(scene.getContext(), 'Dot')
+  appearance : new Cesium.EllipsoidSurfaceAppearance({
+    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
   })
 });
 
@@ -87,24 +88,27 @@ Since we know it is on the surface, we use the [`EllipsoidSurfaceAppearance`](ht
 
 We see a performance benefit when we use the same primitive to draw multiple static geometries.  For example, let's draw two rectangles.
 ```javascript
-var instance = new GeometryInstance({
-  geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
-    vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+
+var instance = new Cesium.GeometryInstance({
+  geometry : new Cesium.ExtentGeometry({
+    extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
+    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
-var anotherInstance = new GeometryInstance({
-  geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 40.0, 10.0, 50.0),
-    vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
+var anotherInstance = new Cesium.GeometryInstance({
+  geometry : new Cesium.ExtentGeometry({
+    extent : Cesium.Extent.fromDegrees(-85.0, 20.0, -75.0, 30.0),
+    vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
   })
 });
 
-var extentPrimitive = new Primitive({
+var extentPrimitive = new Cesium.Primitive({
   geometryInstances : [instance, anotherInstance],
-  appearance : new EllipsoidSurfaceAppearance({
-    material : Material.fromType(scene.getContext(), 'Dot')
+  appearance : new Cesium.EllipsoidSurfaceAppearance({
+    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
   })
 });
 
@@ -117,27 +121,32 @@ We created another instance with a different extent, and then provided both inst
 
 This requires that both instances are drawn with the same appearance.  However, some appearances allow each instance to provide unique attributes.  In particular we can use [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html), to shade each instance with a different solid color.
 ```javascript
-var instance = new GeometryInstance({
-  geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0)
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+
+var instance = new Cesium.GeometryInstance({
+  geometry : new Cesium.ExtentGeometry({
+    extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
+    vertexFormat : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
   }),
   attributes : {
-    color : new ColorGeometryInstanceAttribute(1.0, 0.0, 0.0, 0.5)
+    color : new Cesium.ColorGeometryInstanceAttribute(0.0, 0.0, 1.0, 0.8)
   }
 });
 
-var anotherInstance = new GeometryInstance({
-  geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 40.0, 10.0, 50.0)
+var anotherInstance = new Cesium.GeometryInstance({
+  geometry : new Cesium.ExtentGeometry({
+    extent : Cesium.Extent.fromDegrees(-85.0, 20.0, -75.0, 30.0),
+    vertexFormat : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
   }),
   attributes : {
-    color : new ColorGeometryInstanceAttribute(0.0, 1.0, 0.0, 0.5)
+    color : new Cesium.ColorGeometryInstanceAttribute(1.0, 0.0, 0.0, 0.8)
   }
 });
 
-var extentPrimitive = new Primitive({
+var extentPrimitive = new Cesium.Primitive({
   geometryInstances : [instance, anotherInstance],
-  appearance : new PerInstanceColorAppearance()
+  appearance : new Cesium.PerInstanceColorAppearance()
 });
 
 scene.getPrimitives().add(extentPrimitive);
@@ -149,24 +158,27 @@ Above, each instance has a [`Color`](http://cesium.agi.com/Cesium/Build/Document
 
 Combining geometries allows Cesium to efficiently draw A LOT of geometries.  The following example draws 64,800 uniquely colored rectangles.  It will take a second or two to optimize the geometry, then drawing is very fast.
 ```javascript
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+
 var instances = [];
 
 for (var lon = -180; lon < 180; ++lon) {
   for (var lat = -90; lat < 90; ++lat) {
-    instances.push(new GeometryInstance({
-      geometry : new ExtentGeometry({
-        extent : Extent.fromDegrees(lon, lat, lon + 1, lat + 1)
+    instances.push(new Cesium.GeometryInstance({
+      geometry : new Cesium.ExtentGeometry({
+        extent : Cesium.Extent.fromDegrees(lon, lat, lon + 1, lat + 1)
       }),
       attributes : {
-        color : new ColorGeometryInstanceAttribute(Math.random(), Math.random(), Math.random(), 0.5)
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom({alpha : 1.0}))
       }
     }));
   }
 }
 
-var extentPrimitive = new Primitive({
+var extentPrimitive = new Cesium.Primitive({
   geometryInstances : instances,
-  appearance : new PerInstanceColorAppearance()
+  appearance : new Cesium.PerInstanceColorAppearance()
 });
 
 scene.getPrimitives().add(extentPrimitive);
