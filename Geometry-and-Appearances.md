@@ -184,7 +184,7 @@ var extentPrimitive = new Cesium.Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-<p align="center"> [[geometryandappearances/extents.png]] </o>
+<p align="center"> [[geometryandappearances/extents.png]] </p>
 
 ## Picking
 
@@ -272,7 +272,7 @@ scene.getPrimitives().add(new Cesium.Primitive({
 }));
 ```
 
-[[geometryandappearances/ellipsoidInstances.png]]
+<p align="center"> [[geometryandappearances/ellipsoidInstances.png]] </p>
 
 ## Appearances
 
