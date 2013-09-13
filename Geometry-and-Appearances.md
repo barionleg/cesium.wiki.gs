@@ -2,45 +2,47 @@ This is a draft for a three-part blog series.  The first two are Cesium tutorial
 
 # Part I: Geometry and Appearances
 
-Cesium has a library of primitives, like polygons and ellipsoids, that are the visual building blocks of our scene.  To use them, we create a primitive and give it position data and perhaps a [`material`](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).  For example, the following creates a rectangle on the globe with a dot pattern:
+Cesium has a library of primitives, like polygons and ellipsoids, that are the visual building blocks of our scene.  To use them, we create a primitive and give it position data and perhaps a [`material`](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).  For example, the following creates an extent on the globe with a dot pattern:
 
 ```javascript
-var extentPrimitive = new ExtentPrimitive({
-  extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0),
-  material : Material.fromType(scene.getContext(), 'Dot')
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+
+var extentPrimitive = new Cesium.ExtentPrimitive({
+    extent : Cesium.Extent.fromDegrees(-100.0, 20, -90.0, 30.0),
+    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
 });
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-<img src="geometryandappearances/extentPrimitive.png" /> 
+[[geometryandappearances/extentPrimitive.png]] 
 
 In this tutorial, we go under the hood of primitives and look at the [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and [`Appearance`](http://cesium.agi.com/Cesium/Build/Documentation/Appearance.html) types that form them.  A geometry defines the primitive's structure, i.e., the triangles, lines, or points composing the primitive.  An appearance defines the primitive's shading, including its full GLSL vertex and fragment shaders, and render state.
 
 Cesium supports the following geometries.
 
-* [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) - A filled polygon on the globe or at a constant height above the globe.  The polygon can have holes and can be extruded to form a volume.
-* [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) - An outline of a `PolygonGeometry`.
-* [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) - A filled rectangular extent on the globe or at a constant height.  It can be rotated and extruded to form a volume.
-* [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) - An outline of an `ExtentGeometry`.
-* [`EllipseGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) - A filled ellipse on the globe or at a constant height.  It can be rotated and extruded to form a volume.
-* [`EllipseOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseOutlineGeometry.html) - An outline of an `EllipseGeometry`.
-* [`CircleGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) - A filled circle on the globe or at a constant height. It can be extruded to form a volume.
-* [`CircleOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleOutlineGeometry.html) - An outline of a `CircleGeometry`.
-* [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) - A filled wall perpendicular to the globe.
-* [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) - An outline of a `WallGeometry`.
 * [`BoxGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html) - A filled box.  Not all sides need to be equal length.
 * [`BoxOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxOutlineGeometry.html) - An outline of a `BoxGeometry`.
-* [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) -  A filled ellipsoid.
-* [`EllipsoidOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidOutlineGeometry.html) - An outline of an `EllipsoidGeometry`.
-* [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) - A filled sphere.
-* [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) - An outline of a `SphereGeometry`.
-* [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) - A filled cylinder. The radii can change over the length of the cylinder making cones or truncated cones.
-* [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) - An outline of a `CylinderGeometry`.
-* [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) - An arbitrary polyline.
+* [`CircleGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) - A filled circle on the globe or at a constant height. It can be extruded to form a volume.
+* [`CircleOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleOutlineGeometry.html) - An outline of a `CircleGeometry`.
 * [`CorridorGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CorridorGeometry.html) - A polyline with a width and the option to miter, bevel or round the corners.  It can be extruded to form a volume.
 * [`CorridorOutlineGeometry`](http://cesium.agi.cp,/Cesium/Build/Documentation/CorridorOutlineGeometry.html) - An outline of a `CorridorGeometry`.
+* [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) - A filled cylinder. The radii can change over the length of the cylinder making cones or truncated cones.
+* [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) - An outline of a `CylinderGeometry`.
+* [`EllipseGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) - A filled ellipse on the globe or at a constant height.  It can be rotated and extruded to form a volume.
+* [`EllipseOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseOutlineGeometry.html) - An outline of an `EllipseGeometry`.
+* [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) -  A filled ellipsoid.
+* [`EllipsoidOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidOutlineGeometry.html) - An outline of an `EllipsoidGeometry`.
+* [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) - A filled rectangular extent on the globe or at a constant height.  It can be rotated and extruded to form a volume.
+* [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) - An outline of an `ExtentGeometry`.
+* [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) - A filled polygon on the globe or at a constant height above the globe.  The polygon can have holes and can be extruded to form a volume.
 * [`PolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html) - Like `SimplePolylineGeometry` with support for widths independent of the line width supported by the hardware and materials.
-
+* [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) - An outline of a `PolygonGeometry`.
+* [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) - An arbitrary polyline.
+* [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) - A filled sphere.
+* [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) - An outline of a `SphereGeometry`.
+* [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) - A filled wall perpendicular to the globe.
+* [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) - An outline of a `WallGeometry`.
 
 **TODO: screenshots for each**
 
@@ -87,7 +89,7 @@ Instead of using the explicit [`ExtentPrimitive`](http://cesium.agi.com/Cesium/B
 
 To create the geometry for the extent, i.e., the triangles covering the rectangular region and that fit the curvature of the globe, we create an [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html).
 
-<img src="geometryandappearances/geometryWireframe.png" /> 
+[[geometryandappearances/geometryWireframe.png]]
 
 Since we know it is on the surface, we use the [`EllipsoidSurfaceAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html), which is able to save memory and support all materials given that the geometry is on the surface - or at a constant height.
 
@@ -119,7 +121,7 @@ var extentPrimitive = new Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-<img src="geometryandappearances/combine.png" /> 
+[[geometryandappearances/combine.png]]
 
 We created another instance with a different extent, and then provided both instances to the primitive.
 
@@ -151,7 +153,7 @@ var extentPrimitive = new Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-<img src="geometryandappearances/combineColor.png" /> 
+[[geometryandappearances/combineColor.png]]
 
 Above, each instance has a [`Color`](http://cesium.agi.com/Cesium/Build/Documentation/Color.html), and the primitive is now constructed with `PerInstanceColorAppearance`, which knows to use each instance's color for shading, instead of a material.
 
@@ -180,7 +182,7 @@ var extentPrimitive = new Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-<img src="geometryandappearances/extents.png" /> 
+[[geometryandappearances/extents.png]]
 
 ## Picking
 
@@ -219,7 +221,7 @@ Using `id`, instead of the reference to the instance itself, allows the primitiv
 
 Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, since multiple instances can reference the same `Geometry` each with a different `modelMatrix`, instances are used to position, scale, and orientate the same geometry in different parts of the scene.  This allows us to only compute the geometry once, and reuse it many times.
 
-<img src="geometryandappearances/geometryinstance.png" /> 
+[[geometryandappearances/geometryinstance.png]]
 
 The following example creates one [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) and two instances.  Each instance references the ellipsoid geometry, but place it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
 
@@ -254,13 +256,13 @@ scene.getPrimitives().add(new Primitive({
 }));
 ```
 
-<img src="geometryandappearances/ellipsoidInstances.png" /> 
+[[geometryandappearances/ellipsoidInstances.png]]
 
 ## Appearances
 
 Geometry defines structure.  The other key property of a primitive, `appearance`, defines the primitive's shading, that is, how individual pixels are colored.  A primitive can have many geometry instances, but it can only have one appearance.  Depending on the type of appearance, an appearance will have a [material](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) that defines the bulk of the shading.
 
-<img src="geometryandappearances/highleveldesign.png" /> 
+[[geometryandappearances/highleveldesign.png]]
 
 Cesium has the following appearances.
 
@@ -315,9 +317,9 @@ var geometry = new ExtentGeometry({
 });
 ```
 
-<img src="geometryandappearances/compatible.png" /> 
+[[geometryandappearances/compatible.png]]
 <br />
-<img src="geometryandappearances/notCompatible.png" /> 
+[[geometryandappearances/notCompatible.png]]
 
 If we are using `EllipsoidSurfaceAppearance`, for example, we can get away with just requesting positions.
 ```javascript
@@ -439,13 +441,13 @@ var TetrahedronGeometry = function() {
 
 The tetrahedron is made up of four vertices, whose positions lie on the unit sphere.  For precision, we always store positions in a `Float64Array`.
 
-<img src="geometryandappearances/tetrahedron.png" /> 
+[[geometryandappearances/tetrahedron.png]]
 
 Each of the tetrahedron's four triangles is defined by three indices.  Using indices - as opposed to defining three vertices per triangle - allows us to reuse vertices to save memory.  For our tetrahedron, each vertex is indexed three times since each vertex has three incident triangles.  Indices are stored in a `Uint16Array`, but can also be stored in a `Uint32Array` if more than 64K vertices are used.
 
 **Tip:** Use [`IndexDatatype.createTypedArray`](http://cesium.agi.com/Cesium/Build/Documentation/IndexDatatype.html#createTypedArray) to allocate the right typed array for indices.
 
-<img src="geometryandappearances/tetrahedronFaces.png" /> 
+[[geometryandappearances/tetrahedronFaces.png]]
 
 As shown with the blue arrow on the back triangle, the outward-facing side of the triangle is defined by ordering indices in counter-clockwise order.  If we wrapped four fingers of our righthand around the back triangle in the orders the indices are defined, `0 - 1 - 2`, our thumb points in the direction that is considered outward facing.  In Cesium, this counter-clockwise winding order is required.
 
@@ -501,7 +503,7 @@ scene.getPrimitives().add(new Primitive({
 
 Here's our tetrahedron, scaled and positioned, without shading:
 
-<img src="geometryandappearances/firstTetrahedron.png" /> 
+[[geometryandappearances/firstTetrahedron.png]]
 
 Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  It has a function,  [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe), that transforms a geometry to use the `LINES` primitive type.
 
@@ -515,7 +517,7 @@ var instance = new GeometryInstance({
 });
 ```
 
-<img src="geometryandappearances/tetrahedronWireframe.png" /> 
+[[geometryandappearances/tetrahedronWireframe.png]]
 
 **Tip**: Use `GeometryPipeline.toWireframe` for debugging to visualize a geometry's primitives.
 
