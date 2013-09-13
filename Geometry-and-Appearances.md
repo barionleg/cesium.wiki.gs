@@ -14,35 +14,25 @@ var extentPrimitive = new Cesium.ExtentPrimitive({
 });
 scene.getPrimitives().add(extentPrimitive);
 ```
-
-[[geometryandappearances/extentPrimitive.png]] 
+<p align="center"> [[geometryandappearances/extentPrimitive.png]] </p>
 
 In this tutorial, we go under the hood of primitives and look at the [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and [`Appearance`](http://cesium.agi.com/Cesium/Build/Documentation/Appearance.html) types that form them.  A geometry defines the primitive's structure, i.e., the triangles, lines, or points composing the primitive.  An appearance defines the primitive's shading, including its full GLSL vertex and fragment shaders, and render state.
 
 Cesium supports the following geometries.
 
-* [`BoxGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html) - A filled box.  Not all sides need to be equal length.
-* [`BoxOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxOutlineGeometry.html) - An outline of a `BoxGeometry`.
-* [`CircleGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) - A filled circle on the globe or at a constant height. It can be extruded to form a volume.
-* [`CircleOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleOutlineGeometry.html) - An outline of a `CircleGeometry`.
-* [`CorridorGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CorridorGeometry.html) - A polyline with a width and the option to miter, bevel or round the corners.  It can be extruded to form a volume.
-* [`CorridorOutlineGeometry`](http://cesium.agi.cp,/Cesium/Build/Documentation/CorridorOutlineGeometry.html) - An outline of a `CorridorGeometry`.
-* [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) - A filled cylinder. The radii can change over the length of the cylinder making cones or truncated cones.
-* [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) - An outline of a `CylinderGeometry`.
-* [`EllipseGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) - A filled ellipse on the globe or at a constant height.  It can be rotated and extruded to form a volume.
-* [`EllipseOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseOutlineGeometry.html) - An outline of an `EllipseGeometry`.
-* [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) -  A filled ellipsoid.
-* [`EllipsoidOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidOutlineGeometry.html) - An outline of an `EllipsoidGeometry`.
-* [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) - A filled rectangular extent on the globe or at a constant height.  It can be rotated and extruded to form a volume.
-* [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) - An outline of an `ExtentGeometry`.
-* [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) - A filled polygon on the globe or at a constant height above the globe.  The polygon can have holes and can be extruded to form a volume.
-* [`PolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html) - Like `SimplePolylineGeometry` with support for widths independent of the line width supported by the hardware and materials.
-* [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) - An outline of a `PolygonGeometry`.
-* [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) - An arbitrary polyline.
-* [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) - A filled sphere.
-* [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) - An outline of a `SphereGeometry`.
-* [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) - A filled wall perpendicular to the globe.
-* [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) - An outline of a `WallGeometry`.
+|  |  |  |  |  |
+| ----------- |:-----------:| :-----------:| :-----------:| :-----------:|
+| [[geometryandappearances/boxGeometry.png]] | [`BoxGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html)| [[geometryandappearances/boxOutlineGeometry.png]] | [`BoxOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxOutlineGeometry.html)| A rectangular prism. |
+| [[geometryandappearances/circleGeometry.png]] | [`CircleGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) | [[geometryandappearances/circleOutlineGeometry.png]] | [`CircleOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleOutlineGeometry.html) | A circle or extruded circle |
+| [[geometryandappearances/corridorGeometry.png]] | [`CorridorGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CorridorGeometry.html) | [[geometryandappearances/corridorOutlineGeometry.png]] | [`CorridorOutlineGeometry`](http://cesium.agi.cp,/Cesium/Build/Documentation/CorridorOutlineGeometry.html) | A polyline with a width and optional extruded height. |
+| [[geometryandappearances/cylinderGeometry.png]] | [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) | [[geometryandappearances/cylinderOutlineGeometry.png]] | [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) | A cylinder, cone or truncated cone. |
+| [[geometryandappearances/ellipseGeometry.png]] | [`EllipseGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) | [[geometryandappearances/ellipseOutlineGeometry.png]] | [`EllipseOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseOutlineGeometry.html) | An ellipse or extruded ellipse. |
+| [[geometryandappearances/ellipsoidGeometry.png]] | [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) | [[geometryandappearances/ellipsoidOutlineGeometry.png]] | [`EllipsoidOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidOutlineGeometry.html) | An ellipsoid. |
+| [[geometryandappearances/extentGeometry.png]] | [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) | [[geometryandappearances/extentOutlineGeometry.png]] | [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) | An extent or extrdued extent based on latitude and longitude lines. |
+| [[geometryandappearances/polygonGeometry.png]] | [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) | [[geometryandappearances/polygonOutlineGeometry.png]] | [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) | A polygon or extruded polygon. |
+| | [`PolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html) | | [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) | An arbitrary line. `PolylineGeometry` also supports widths and materials. |
+| [[geometryandappearances/sphereGeometry.png]] | [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) | [[geometryandappearances/sphereOutlineGeometry.png]] | [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) | A sphere. |
+| [[geometryandappearances/wallGeometry.png]] | [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) | [[geometryandappearances/wallOutlineGeometry.png]] | [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) | A wall perpendicular to the globe. |
 
 **TODO: screenshots for each**
 
