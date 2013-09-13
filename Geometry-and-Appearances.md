@@ -34,7 +34,7 @@ Cesium supports the following geometries.
 | [[geometryandappearances/sphereGeometry.png]] | [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) | [[geometryandappearances/sphereOutlineGeometry.png]] | [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) | A sphere. |
 | [[geometryandappearances/wallGeometry.png]] | [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) | [[geometryandappearances/wallOutlineGeometry.png]] | [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) | A wall perpendicular to the globe. |
 
-**TODO: screenshot of Sandcastle demo showing all geometries/appearances**
+[[geometryandappearance/geometryAndAppearancesDemo.png]]
 
 The benefits of using geometries and appearances directly are:
 * **Performance** - when drawing a large number of static primitives, e.g., polygons for all the zip codes in the United States, using geometries directly allows us to combine them into a single geometry to reduce CPU overhead and better utilize the GPU.  **TODO: performance numbers.**
@@ -80,7 +80,7 @@ Instead of using the explicit [`ExtentPrimitive`](http://cesium.agi.com/Cesium/B
 
 To create the geometry for the extent, i.e., the triangles covering the rectangular region and that fit the curvature of the globe, we create an [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html).
 
-[[geometryandappearances/geometryWireframe.png]]
+<p align="center"> [[geometryandappearances/geometryWireframe.png]] </p>
 
 Since we know it is on the surface, we use the [`EllipsoidSurfaceAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html), which is able to save memory and support all materials given that the geometry is on the surface - or at a constant height.
 
@@ -115,7 +115,7 @@ var extentPrimitive = new Cesium.Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-[[geometryandappearances/combine.png]]
+<p align="center"> [[geometryandappearances/combine.png]] </p>
 
 We created another instance with a different extent, and then provided both instances to the primitive.
 
@@ -152,7 +152,7 @@ var extentPrimitive = new Cesium.Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-[[geometryandappearances/combineColor.png]]
+<p align="center"> [[geometryandappearances/combineColor.png]] </p>
 
 Above, each instance has a [`Color`](http://cesium.agi.com/Cesium/Build/Documentation/Color.html), and the primitive is now constructed with `PerInstanceColorAppearance`, which knows to use each instance's color for shading, instead of a material.
 
@@ -184,7 +184,7 @@ var extentPrimitive = new Cesium.Primitive({
 scene.getPrimitives().add(extentPrimitive);
 ```
 
-[[geometryandappearances/extents.png]]
+<p align="center"> [[geometryandappearances/extents.png]] </o>
 
 ## Picking
 
@@ -223,38 +223,52 @@ Using `id`, instead of the reference to the instance itself, allows the primitiv
 
 Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, since multiple instances can reference the same `Geometry` each with a different `modelMatrix`, instances are used to position, scale, and orientate the same geometry in different parts of the scene.  This allows us to only compute the geometry once, and reuse it many times.
 
-[[geometryandappearances/geometryinstance.png]]
+<p align="center"> [[geometryandappearances/geometryinstance.png]] </p>
 
 The following example creates one [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) and two instances.  Each instance references the ellipsoid geometry, but place it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
 
 ```javascript
-var geometry = new EllipsoidGeometry({
-  ellipsoid : new Ellipsoid(500000.0, 500000.0, 250000.0)
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+var ellipsoid = widget.centralBody.getEllipsoid();
+
+var modelMatrix = Cesium.Matrix4.multiplyByTranslation(
+    Cesium.Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-100.0, 40.0))),
+    new Cesium.Cartesian3(0.0, 0.0, 150000.0)
+);
+
+var ellipsoidGeometry = new Cesium.EllipsoidGeometry({
+    vertexFormat : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT,
+    radii : new Cesium.Cartesian3(300000.0, 200000.0, 150000.0)
 });
 
-var instance = new GeometryInstance({
-  geometry : geometry,
-  modelMatrix : Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(
-      ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 250000.0)),
-  attributes : {
-    color : ColorGeometryInstanceAttribute.fromColor(Color.AQUAMARINE)
-  }
+var cyanEllipsoidInstance = new Cesium.GeometryInstance({
+    geometry : ellipsoidGeometry,
+    modelMatrix : Cesium.Matrix4.multiplyByTranslation(
+        Cesium.Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-100.0, 40.0))),
+        new Cesium.Cartesian3(0.0, 0.0, 150000.0)
+    ),
+    attributes : {
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.CYAN)
+    }
 });
 
-var anotherInstance = new GeometryInstance({
-  geometry : geometry,
-  modelMatrix : Matrix4.multiplyByTranslation(Transforms.eastNorthUpToFixedFrame(
-    ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 750000.0)),
-  attributes : {
-    color : ColorGeometryInstanceAttribute.fromColor(Color.BLANCHEDALMOND)
-  }
+var orangeEllipsoidInstance = new Cesium.GeometryInstance({
+    geometry : ellipsoidGeometry,
+    modelMatrix : Cesium.Matrix4.multiplyByTranslation(
+        Cesium.Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-100.0, 40.0))),
+        new Cesium.Cartesian3(0.0, 0.0, 450000.0)
+    ),
+    attributes : {
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.ORANGE)
+    }
 });
-
-scene.getPrimitives().add(new Primitive({
-  geometryInstances : [instance, anotherInstance],
-  appearance : new PerInstanceColorAppearance({
-    translucent : false
-  })
+scene.getPrimitives().add(new Cesium.Primitive({
+    geometryInstances : [cyanEllipsoidInstance, orangeEllipsoidInstance],
+    appearance : new Cesium.PerInstanceColorAppearance({
+        translucent : false,
+        closed : true
+    })
 }));
 ```
 
