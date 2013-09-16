@@ -189,40 +189,43 @@ scene.getPrimitives().add(extentPrimitive);
 
 ## Picking
 
-After instances are combined, they are still independently accessible.  In particular, we can assigned an `id` to an instance, and use it to determine if the instance is picked with [`Scene.pick`](http://cesium.agi.com/Cesium/Build/Documentation/Scene.html#pick).  `id` can be any JavaScript type: a string, a number, an object with its own properties.
+After instances are combined, they are still independently accessible.  In particular, we can assign an `id` to an instance and use it to determine if the instance is picked with [`Scene.pick`](http://cesium.agi.com/Cesium/Build/Documentation/Scene.html#pick).  `id` can be any JavaScript type: a string, a number, an object with its own properties.
 
-The following example creates an instance with a `id`, and writes a message to the console when the mouse moves over it.
+The following example creates an instance with a `id`, and writes a message to the console when it is clicked.
 
 ```javascript
-var instance = new GeometryInstance({
-  geometry : new ExtentGeometry({
-    extent : Extent.fromDegrees(0.0, 20.0, 10.0, 30.0)
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+
+var instance = new Cesium.GeometryInstance({
+  geometry : new Cesium.ExtentGeometry({
+    extent : Cesium.Extent.fromDegrees(-100.0, 30.0, -90.0, 40.0)
   }),
-  id : 'an id',
+  id : 'my extent',
   attributes : {
-    color : new ColorGeometryInstanceAttribute(1.0, 0.0, 0.0, 0.5)
+    color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.RED)
   }
 });
 
-var extentPrimitive = new Primitive({
+var extentPrimitive = new Cesium.Primitive({
   geometryInstances : instance,
-  appearance : new PerInstanceColorAppearance()
+  appearance : new Cesium.PerInstanceColorAppearance()
 });
 
 scene.getPrimitives().add(extentPrimitive);
 
-var handler = new ScreenSpaceEventHandler(scene.getCanvas());
+var handler = new Cesium.ScreenSpaceEventHandler(scene.getCanvas());
 handler.setInputAction(function (movement) {
-    if (scene.pick(movement.endPosition) === 'an id') {
-      console.log('Mouse is over instance.');
+    if (scene.pick(movement.position) === 'my extent') {
+      console.log('Mouse clicked extent.');
     }
-  }, ScreenSpaceEventType.MOUSE_MOVE);
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 ```
-Using `id`, instead of the reference to the instance itself, allows the primitive - and the application - to avoid keeping a reference to the full instance - including its reference to the geometry - in memory after the primitive is constructed.  Since a geometry can contain several big typed arrays, this allows us to save a significant amount of memory.
+Using `id`, instead of the reference to the instance itself, allows the primitive - and the application - to avoid keeping a reference to the full instance - including its reference to the geometry - in memory after the primitive is constructed.  Since a geometry can contain several large typed arrays, this allows us to save a significant amount of memory.
 
 ## Geometry Instances
 
-Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, since multiple instances can reference the same `Geometry` each with a different `modelMatrix`, instances are used to position, scale, and orientate the same geometry in different parts of the scene.  This allows us to only compute the geometry once, and reuse it many times.
+Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, instances are used to position, scale and orientate the same geometry in different parts of the scene.  This is possible because multiple instances can reference the same `Geometry`, and each instance can have a different `modelMatrix`. This allows us to only compute the geometry once and reuse it many times.
 
 <p align="center"> [[geometryandappearances/geometryinstance.png]] </p>
 
@@ -232,11 +235,6 @@ The following example creates one [`EllipsoidGeometry`](http://cesium.agi.com/Ce
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
 var ellipsoid = widget.centralBody.getEllipsoid();
-
-var modelMatrix = Cesium.Matrix4.multiplyByTranslation(
-    Cesium.Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-100.0, 40.0))),
-    new Cesium.Cartesian3(0.0, 0.0, 150000.0)
-);
 
 var ellipsoidGeometry = new Cesium.EllipsoidGeometry({
     vertexFormat : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT,
@@ -264,6 +262,7 @@ var orangeEllipsoidInstance = new Cesium.GeometryInstance({
         color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.ORANGE)
     }
 });
+
 scene.getPrimitives().add(new Cesium.Primitive({
     geometryInstances : [cyanEllipsoidInstance, orangeEllipsoidInstance],
     appearance : new Cesium.PerInstanceColorAppearance({
@@ -277,15 +276,15 @@ scene.getPrimitives().add(new Cesium.Primitive({
 
 ## Appearances
 
-Geometry defines structure.  The other key property of a primitive, `appearance`, defines the primitive's shading, that is, how individual pixels are colored.  A primitive can have many geometry instances, but it can only have one appearance.  Depending on the type of appearance, an appearance will have a [material](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) that defines the bulk of the shading.
+Geometry defines structure.  The other key property of a primitive, `appearance`, defines the primitive's shading, i.e., how individual pixels are colored.  A primitive can have many geometry instances, but it can only have one appearance.  Depending on the type of appearance, an appearance will have a [material](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) that defines the bulk of the shading.
 
 [[geometryandappearances/highleveldesign.png]]
 
 Cesium has the following appearances.
 
 * [`MaterialAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html) - An appearance that works with all geometry types and supports materials to describe shading.
-* [`EllipsoidSurfaceAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html) - A version of `MaterialAppearance` that assumes geometry is on the surface of the globe, e.g., like a polygon, or at a constant height above it, and uses this assumption to save memory by procedurally computing many vertex attributes.
-* [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html) - Uses per-instance color to shade each instance a potentially unique color.
+* [`EllipsoidSurfaceAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html) - A version of `MaterialAppearance` that assumes geometry is parallel to the surface of the globe, like a polygon, and uses this assumption to save memory by procedurally computing many vertex attributes.
+* [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html) - Uses per-instance color to shade each instance a color.
 * [`DebugAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/DebugAppearance.html) - A debugging aid for visualizing geometry vertex attributes.
 
 Appearances define the full GLSL vertex and fragment shaders that execute on the GPU when the primitive is drawn.  We rarely touch these unless we are writing a custom appearance.  Appearances also define the full [render state](http://cesium.agi.com/Cesium/Build/Documentation/RenderState.html), which controls the GPU's state when the primitive is drawn.  We can define the render state directly or use higher-level properties like [`closed`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#closed) and [`translucent`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#translucent), which the appearance will convert into render state.  For example:
@@ -293,20 +292,20 @@ Appearances define the full GLSL vertex and fragment shaders that execute on the
 // Perhaps for an opaque box that the viewer will not enter.
 //  - Backface culled and depth tested.  No blending.
 
-var appearance  = new PerInstanceColorAppearance({
+var appearance  = new Cesium.PerInstanceColorAppearance({
   translucent : false,
   closed : true
 });
 
 // This appearance is the same as above
-var another  = new PerInstanceColorAppearance({
+var anotherAppearance  = new Cesium.PerInstanceColorAppearance({
   renderState : {
     depthTest : {
       enabled : true
     },
     cull : {
       enabled : true,
-      face : CullFace.BACK
+      face : Cesium.CullFace.BACK
     }
   }
 });
@@ -328,8 +327,8 @@ Beyond semantics like this, for an appearance to be mechanically compatible with
 
 We can keep things simple, but inefficient and wasteful, by requesting a geometry compute all vertices, which will make the geometry compatible with all appearances (ignoring per-instance attributes; see below).
 ```javascript
-var geometry = new ExtentGeometry({
-  vertexFormat : VertexFormat.ALL
+var geometry = new Cesium.ExtentGeometry({
+  vertexFormat : Cesium.VertexFormat.ALL
   // ...
 });
 ```
@@ -340,26 +339,26 @@ var geometry = new ExtentGeometry({
 
 If we are using `EllipsoidSurfaceAppearance`, for example, we can get away with just requesting positions.
 ```javascript
-var geometry = new ExtentGeometry({
-  vertexFormat : VertexFormat.POSITION_ONLY
+var geometry = new Ceisum.ExtentGeometry({
+  vertexFormat : Ceisum.VertexFormat.POSITION_ONLY
   // ...
 });
 ```
 
 In general, how do we know what vertex format to use for a given appearance?  Most appearances have a [`vertexFormat`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#vertexFormat) property or even a [`VERTEX_FORMAT`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html#VERTEX_FORMAT) static constant.
 ```javascript
-var geometry = new ExtentGeometry({
-  vertexFormat : EllipsoidSurfaceAppearance.VERTEX_FORMAT
+var geometry = new Ceisum.ExtentGeometry({
+  vertexFormat : Ceisum.EllipsoidSurfaceAppearance.VERTEX_FORMAT
   // ...
 });
 
-var geometry2 = new ExtentGeometry({
-  vertexFormat : PerInstanceColorAppearance.VERTEX_FORMAT
+var geometry2 = new Ceisum.ExtentGeometry({
+  vertexFormat : Ceisum.PerInstanceColorAppearance.VERTEX_FORMAT
   // ...
 });
 
-var appearance = new MaterialAppearance(/* ... */);
-var geometry3 = new ExtentGeometry({
+var appearance = new Ceisum.MaterialAppearance(/* ... */);
+var geometry3 = new Ceisum.ExtentGeometry({
   vertexFormat : appearance.vertexFormat
   // ...
 });
