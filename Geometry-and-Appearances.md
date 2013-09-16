@@ -398,61 +398,91 @@ Since geometries and appearances are decoupled, we can add new geometries that a
 [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making a simple geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles forming a pyramid.
 
 ```javascript
-var TetrahedronGeometry = function() {
-    var negativeRootTwoOverThree = -Math.sqrt(2.0) / 3.0;
-    var negativeOneThird = -1.0 / 3.0;
-    var rootSixOverThree = Math.sqrt(6.0) / 3.0;
+/*global define*/
+define([
+        './Cartesian3',
+        './ComponentDatatype',
+        './PrimitiveType',
+        './BoundingSphere',
+        './GeometryAttribute',
+        './GeometryAttributes',
+        './VertexFormat',
+        './Geometry'
+    ], function(
+        Cartesian3,
+        ComponentDatatype,
+        PrimitiveType,
+        BoundingSphere,
+        GeometryAttribute,
+        GeometryAttributes,
+        VertexFormat,
+        Geometry) {
+    "use strict";
+    var TetrahedronGeometry = function() {
+        var negativeRootTwoOverThree = -Math.sqrt(2.0) / 3.0;
+        var negativeOneThird = -1.0 / 3.0;
+        var rootSixOverThree = Math.sqrt(6.0) / 3.0;
 
-    var positions = new Float64Array(4 * 3);
+        var positions = new Float64Array(4 * 3);
 
-    positions[0] = 0.0;
-    positions[1] = 0.0;
-    positions[2] = 1.0;
+        // position 0
+        positions[0] = 0.0;
+        positions[1] = 0.0;
+        positions[2] = 1.0;
 
-    positions[3] = 0.0;
-    positions[4] = (2.0 * Math.sqrt(2.0)) / 3.0;
-    positions[5] = negativeOneThird;
+        // position 1
+        positions[3] = 0.0;
+        positions[4] = (2.0 * Math.sqrt(2.0)) / 3.0;
+        positions[5] = negativeOneThird;
 
-    positions[6] = -rootSixOverThree;
-    positions[7] = negativeRootTwoOverThree;
-    positions[8] = negativeOneThird;
+        // position 2
+        positions[6] = -rootSixOverThree;
+        positions[7] = negativeRootTwoOverThree;
+        positions[8] = negativeOneThird;
 
-    positions[9] = rootSixOverThree;
-    positions[10] = negativeRootTwoOverThree;
-    positions[11] = negativeOneThird;
+        // position 3
+        positions[9] = rootSixOverThree;
+        positions[10] = negativeRootTwoOverThree;
+        positions[11] = negativeOneThird;
 
-    var attributes = {
-        position : new GeometryAttribute({
-            componentDatatype : ComponentDatatype.DOUBLE,
-            componentsPerAttribute : 3,
-            values : positions
-        })
+        var attributes = {
+            position : new GeometryAttribute({
+                componentDatatype : ComponentDatatype.DOUBLE,
+                componentsPerAttribute : 3,
+                values : positions
+            })
+        };
+
+        var indices = new Uint16Array(4 * 3);
+
+        // back triangle
+        indices[0] = 0;
+        indices[1] = 1;
+        indices[2] = 2;
+
+        // left triangle
+        indices[3] = 0;
+        indices[4] = 2;
+        indices[5] = 3;
+
+        // right triangle
+        indices[6] = 0;
+        indices[7] = 3;
+        indices[8] = 1;
+
+        // bottom triangle
+        indices[9] = 3;
+        indices[10] = 1;
+        indices[11] = 2;
+
+        this.attributes = attributes;
+        this.indices = indices;
+        this.primitiveType = PrimitiveType.TRIANGLES;
+        this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
     };
 
-    // 4 triangles, each with 3 vertices
-    var indices = new Uint16Array(4 * 3);
-
-    indices[0] = 0;
-    indices[1] = 1;
-    indices[2] = 2;
-
-    indices[3] = 0;
-    indices[4] = 2;
-    indices[5] = 3;
-
-    indices[6] = 0;
-    indices[7] = 3;
-    indices[8] = 1;
-
-    indices[9] = 3;
-    indices[10] = 1;
-    indices[11] = 2;
-
-    this.attributes = attributes;
-    this.indices = indices;
-    this.primitiveType = PrimitiveType.TRIANGLES;
-    this.boundingSphere = undefined;
-};
+    return TetrahedronGeometry;
+});
 ```
 
 The tetrahedron is made up of four vertices, whose positions lie on the unit sphere.  For precision, we always store positions in a `Float64Array`.
@@ -492,28 +522,34 @@ this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 
 ### Visualizing the Tetrahedron with a Primitive
 
-Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.
+Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.  **Build** Cesium, and paste the following code into your **local** version of Sandcastle Hello World:
 
 ```javascript
-var modelMatrix = Matrix4.multiplyByUniformScale(
-  Matrix4.multiplyByTranslation(
-    Transforms.eastNorthUpToFixedFrame(
-      ellipsoid.cartographicToCartesian(Cartographic.fromDegrees(0.0, 0.0))), new Cartesian3(0.0, 0.0, 2000000.0)), 500000.0);
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+var ellipsoid = widget.centralBody.getEllipsoid();
 
-var instance = new GeometryInstance({
-  geometry : new TetrahedronGeometry(),
-  modelMatrix : modelMatrix,
-  attributes : {
-    color : ColorGeometryInstanceAttribute.fromColor(Color.WHITE)
-  }
+var modelMatrix = Cesium.Matrix4.multiplyByUniformScale(
+    Cesium.Matrix4.multiplyByTranslation(
+        Cesium.Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(
+            Cesium.Cartographic.fromDegrees(-100.0, 40.0))),
+        new Cesium.Cartesian3(0.0, 0.0, 200000.0)),
+    500000.0);
+
+var instance = new Cesium.GeometryInstance({
+    geometry : new Cesium.TetrahedronGeometry(),
+    modelMatrix : modelMatrix,
+    attributes : {
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
+    }
 });
 
-scene.getPrimitives().add(new Primitive({
-  geometryInstances : instance,
-  appearance : new PerInstanceColorAppearance({
-    flat : true,
-    translucent : false
-  })
+scene.getPrimitives().add(new Cesium.Primitive({
+    geometryInstances : instance,
+    appearance : new Cesium.PerInstanceColorAppearance({
+        flat : true,
+        translucent : false
+    })
 }));
 ```
 
@@ -524,11 +560,11 @@ Here's our tetrahedron, scaled and positioned, without shading:
 Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  It has a function,  [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe), that transforms a geometry to use the `LINES` primitive type.
 
 ```javascript
-var instance = new GeometryInstance({
-  geometry : GeometryPipeline.toWireframe(new TetrahedronGeometry()),
+var instance = new Cesium.GeometryInstance({
+  geometry : Cesium.GeometryPipeline.toWireframe(new Cesium.TetrahedronGeometry()),
   modelMatrix : modelMatrix,
   attributes : {
-    color : ColorGeometryInstanceAttribute.fromColor(Color.WHITE)
+    color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
   }
 });
 ```
