@@ -1,7 +1,7 @@
 This is a draft for a three-part blog series.  The first two are Cesium tutorials.  The last is a general graphics tech article.
 
 # Part I: Geometry and Appearances
-The code examples below can be executed in the [Hello World Cesium Sandcastle Demo](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Hello%20World.html)
+The code examples below can be executed in the [Hello World Cesium Sandcastle Demo](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Hello%20World.html).
 
 Cesium has a library of primitives, such as polygons and ellipsoids, that are the visual building blocks of our scene.  To use them, we create a primitive with position data and perhaps a [`material`](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).  For example, the following creates an extent on the globe with a dot pattern:
 
@@ -171,7 +171,7 @@ for (var lon = -180; lon < 180; lon += 5) {
         extent : Cesium.Extent.fromDegrees(lon, lat, lon + 5, lat + 5)
       }),
       attributes : {
-        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom({alpha : 1.0}))
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom({alpha : 0.5}))
       }
     }));
   }
