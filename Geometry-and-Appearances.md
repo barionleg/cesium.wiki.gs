@@ -399,7 +399,6 @@ Since geometries and appearances are decoupled, we can add new geometries that a
 [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making a simple geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles forming a pyramid.  The following code defines a tetrahedron:
 
 ```javascript
-/*global define*/
 var TetrahedronGeometry = function() {
     var negativeRootTwoOverThree = -Math.sqrt(2.0) / 3.0;
     var negativeOneThird = -1.0 / 3.0;
@@ -492,11 +491,11 @@ this.boundingSphere = undefined;
 
 We can improve the performance of drawing our tetrahedron by computing the bounding sphere.
 ```javascript
-this.boundingSphere = BoundingSphere.fromVertices(positions);
+this.boundingSphere = Cesium.BoundingSphere.fromVertices(positions);
 ```
 [`BoundingSphere`](http://cesium.agi.com/Cesium/Build/Documentation/BoundingSphere.html) has functions to compute a tight bounding sphere like `fromVertices`, but in many cases we can use our knowledge of the geometry to quickly create a tighter bounding sphere.  Since we know the tetrahedron's vertices lie on the unit sphere, we can just use the unit sphere as the bounding sphere:
 ```javascript
-this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
+this.boundingSphere = new Cesium.BoundingSphere(new Cesium.Cartesian3(0.0, 0.0, 0.0), 1.0);
 ```
 
 ### Visualizing the Tetrahedron with a Primitive
@@ -540,7 +539,7 @@ Without shading, it is hard to see the surfaces.  To view a wireframe, we could 
 
 ```javascript
 var instance = new Cesium.GeometryInstance({
-  geometry : Cesium.GeometryPipeline.toWireframe(new Cesium.TetrahedronGeometry()),
+  geometry : Cesium.GeometryPipeline.toWireframe(new TetrahedronGeometry()),
   modelMatrix : modelMatrix,
   attributes : {
     color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
