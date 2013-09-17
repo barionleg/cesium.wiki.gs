@@ -501,7 +501,7 @@ this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 
 ### Visualizing the Tetrahedron with a Primitive
 
-Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.  **Build** Cesium, and paste the following code into your **local** version of Sandcastle Hello World:
+Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.  Paste the following code after the dectlaration of `TetrahedronGeometry` in the Sandcastle Hello World demo:
 
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
@@ -516,7 +516,7 @@ var modelMatrix = Cesium.Matrix4.multiplyByUniformScale(
     500000.0);
 
 var instance = new Cesium.GeometryInstance({
-    geometry : new Cesium.TetrahedronGeometry(),
+    geometry : new TetrahedronGeometry(),
     modelMatrix : modelMatrix,
     attributes : {
         color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
@@ -536,7 +536,7 @@ Here's our tetrahedron, scaled and positioned, without shading:
 
 [[geometryandappearances/firstTetrahedron.png]]
 
-Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  It has a function,  [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe), that transforms a geometry to use the `LINES` primitive type.
+Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  The function [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe) transforms a geometry to use the `LINES` primitive type.  Replace the instance declaration with this:
 
 ```javascript
 var instance = new Cesium.GeometryInstance({
