@@ -390,77 +390,101 @@ For future plans, see the [Geometry and Appearances Roadmap](https://github.com/
 If you have questions, post them to the [forum](http://cesium.agi.com/forum.html).
 
 # Part II: Creating Custom Geometry and Appearances
-The code examples below can be executed in the [Hello World Cesium Sandcastle Demo](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Hello%20World.html).
+The following tutorial explains how to add new geometry and appearance types to the Cesium codebase.  To follow along, download the latest **full version** of [Cesium](http://cesium.agi.com/downloads.html), or fork the [Cesium repository](https://github.com/AnalyticalGraphicsInc/cesium).
 
 Since geometries and appearances are decoupled, we can add new geometries that are compatible with many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
 
 ## Geometry
 
-[`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making a simple geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles forming a pyramid.  The following code defines a tetrahedron:
+[`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making a simple geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles forming a pyramid.  To begin, create the file `TetrahedronGeometry.js` in the Cesium `Source/Core/` directory and add the following code:
 
 ```javascript
-var TetrahedronGeometry = function() {
-    var negativeRootTwoOverThree = -Math.sqrt(2.0) / 3.0;
-    var negativeOneThird = -1.0 / 3.0;
-    var rootSixOverThree = Math.sqrt(6.0) / 3.0;
+/*global define*/
+define([
+        './Cartesian3',
+        './ComponentDatatype',
+        './PrimitiveType',
+        './BoundingSphere',
+        './GeometryAttribute',
+        './GeometryAttributes',
+        './VertexFormat',
+        './Geometry'
+    ], function(
+        Cartesian3,
+        ComponentDatatype,
+        PrimitiveType,
+        BoundingSphere,
+        GeometryAttribute,
+        GeometryAttributes,
+        VertexFormat,
+        Geometry) {
+    "use strict";
 
-    var positions = new Float64Array(4 * 3);
+    var TetrahedronGeometry = function() {
+        var negativeRootTwoOverThree = -Math.sqrt(2.0) / 3.0;
+        var negativeOneThird = -1.0 / 3.0;
+        var rootSixOverThree = Math.sqrt(6.0) / 3.0;
 
-    // position 0
-    positions[0] = 0.0;
-    positions[1] = 0.0;
-    positions[2] = 1.0;
+        var positions = new Float64Array(4 * 3);
 
-    // position 1
-    positions[3] = 0.0;
-    positions[4] = (2.0 * Math.sqrt(2.0)) / 3.0;
-    positions[5] = negativeOneThird;
+        // position 0
+        positions[0] = 0.0;
+        positions[1] = 0.0;
+        positions[2] = 1.0;
 
-    // position 2
-    positions[6] = -rootSixOverThree;
-    positions[7] = negativeRootTwoOverThree;
-    positions[8] = negativeOneThird;
+        // position 1
+        positions[3] = 0.0;
+        positions[4] = (2.0 * Math.sqrt(2.0)) / 3.0;
+        positions[5] = negativeOneThird;
 
-    // position 3
-    positions[9] = rootSixOverThree;
-    positions[10] = negativeRootTwoOverThree;
-    positions[11] = negativeOneThird;
+        // position 2
+        positions[6] = -rootSixOverThree;
+        positions[7] = negativeRootTwoOverThree;
+        positions[8] = negativeOneThird;
 
-    var attributes = {
-        position : new Cesium.GeometryAttribute({
-            componentDatatype : Cesium.ComponentDatatype.DOUBLE,
-            componentsPerAttribute : 3,
-            values : positions
-        })
+        // position 3
+        positions[9] = rootSixOverThree;
+        positions[10] = negativeRootTwoOverThree;
+        positions[11] = negativeOneThird;
+
+        var attributes = new GeometryAttributes({
+            position : new GeometryAttribute({
+                componentDatatype : ComponentDatatype.DOUBLE,
+                componentsPerAttribute : 3,
+                values : positions
+            })
+        });
+
+        var indices = new Uint16Array(4 * 3);
+
+        // back triangle
+        indices[0] = 0;
+        indices[1] = 1;
+        indices[2] = 2;
+
+        // left triangle
+        indices[3] = 0;
+        indices[4] = 2;
+        indices[5] = 3;
+
+        // right triangle
+        indices[6] = 0;
+        indices[7] = 3;
+        indices[8] = 1;
+
+        // bottom triangle
+        indices[9] = 3;
+        indices[10] = 1;
+        indices[11] = 2;
+
+        this.attributes = attributes;
+        this.indices = indices;
+        this.primitiveType = PrimitiveType.TRIANGLES;
+        this.boundingSphere = undefined;
     };
 
-    var indices = new Uint16Array(4 * 3);
-
-    // back triangle
-    indices[0] = 0;
-    indices[1] = 1;
-    indices[2] = 2;
-
-    // left triangle
-    indices[3] = 0;
-    indices[4] = 2;
-    indices[5] = 3;
-
-    // right triangle
-    indices[6] = 0;
-    indices[7] = 3;
-    indices[8] = 1;
-
-    // bottom triangle
-    indices[9] = 3;
-    indices[10] = 1;
-    indices[11] = 2;
-
-    this.attributes = attributes;
-    this.indices = indices;
-    this.primitiveType = Cesium.PrimitiveType.TRIANGLES;
-    this.boundingSphere = undefined;
-};
+    return TetrahedronGeometry;
+});
 ```
 
 The tetrahedron is made up of four vertices, whose positions lie on the unit sphere.  For precision, we always store positions in a `Float64Array`.
@@ -491,16 +515,16 @@ this.boundingSphere = undefined;
 
 We can improve the performance of drawing our tetrahedron by computing the bounding sphere.
 ```javascript
-this.boundingSphere = Cesium.BoundingSphere.fromVertices(positions);
+this.boundingSphere = BoundingSphere.fromVertices(positions);
 ```
 [`BoundingSphere`](http://cesium.agi.com/Cesium/Build/Documentation/BoundingSphere.html) has functions to compute a tight bounding sphere like `fromVertices`, but in many cases we can use our knowledge of the geometry to quickly create a tighter bounding sphere.  Since we know the tetrahedron's vertices lie on the unit sphere, we can just use the unit sphere as the bounding sphere:
 ```javascript
-this.boundingSphere = new Cesium.BoundingSphere(new Cesium.Cartesian3(0.0, 0.0, 0.0), 1.0);
+this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 ```
 
 ### Visualizing the Tetrahedron with a Primitive
 
-Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.  Paste the following code after the dectlaration of `TetrahedronGeometry` in the Sandcastle Hello World demo:
+Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.  First, build the code and run the HTTP server for testing (.\Tools\apache-ant-1.8.2\bin\ant combine runServer).  Navigate to http://localhost:8080/Apps/Sandcastle/index.html, your local version of Cesium Sandcastle.  Paste the following code in the Sandcastle Hello World demo:
 
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
@@ -515,7 +539,7 @@ var modelMatrix = Cesium.Matrix4.multiplyByUniformScale(
     500000.0);
 
 var instance = new Cesium.GeometryInstance({
-    geometry : new TetrahedronGeometry(),
+    geometry : new Cesium.TetrahedronGeometry(),
     modelMatrix : modelMatrix,
     attributes : {
         color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
@@ -539,7 +563,7 @@ Without shading, it is hard to see the surfaces.  To view a wireframe, we could 
 
 ```javascript
 var instance = new Cesium.GeometryInstance({
-  geometry : Cesium.GeometryPipeline.toWireframe(new TetrahedronGeometry()),
+  geometry : Cesium.GeometryPipeline.toWireframe(new Cesium.TetrahedronGeometry()),
   modelMatrix : modelMatrix,
   attributes : {
     color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
