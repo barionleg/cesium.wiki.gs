@@ -473,9 +473,9 @@ define([
         indices[8] = 1;
 
         // bottom triangle
-        indices[9] = 3;
+        indices[9] = 2;
         indices[10] = 1;
-        indices[11] = 2;
+        indices[11] = 3;
 
         this.attributes = attributes;
         this.indices = indices;
@@ -575,14 +575,99 @@ var instance = new Cesium.GeometryInstance({
 
 **Tip**: Use `GeometryPipeline.toWireframe` for debugging to visualize a geometry's primitives.
 
-TODO: next add normals
+### Adding normals for shading
+
+To use an appearance with shading, the geometry must have a `normal` attribute.  The normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In the Sandcastle example, replace the instance and primitive declarations with the following:
+
+```javascript
+var tetrahedron = Cesium.GeometryPipeline.computeNormal(new Cesium.TetrahedronGeometry());
+var instance = new Cesium.GeometryInstance({
+    geometry : tetrahedron,
+    modelMatrix : modelMatrix,
+    attributes : {
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
+    }
+});
+
+scene.getPrimitives().add(new Cesium.Primitive({
+    geometryInstances : instance,
+    appearance : new Cesium.PerInstanceColorAppearance({
+        translucent : false
+    })
+}));
+```
+
+[[geometryandappearances/singleNormals.png]]
+
+I'm guessing this is not what you'd expect a tetrahedron with shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the sandcastle exampe:
+
+```javascript
+scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
+    geometry: tetrahedron,
+    modelMatrix: modelMatrix,
+    length: 0.2
+}));
+```
+
+[[geometryandappearances/singleNormalsVisualized.png]]
+
+As you can see, the normal vectors aren't very 'normal' to any of the triangles.  In this case, because the vertices are shared by more than one triangle the normal vectors are the average of the normals of each triangle the vertex composes.  To get better shading, we must duplicate each vertex so that the triangles no longer share them.  In `TetrahedronGeometry.js`, replace the positions and indices with the following:
+
+```javascript
+var positions = new Float64Array(4 * 3 * 3);
+// back triangle
+positions[0] = 0.0;
+positions[1] = 0.0;
+positions[2] = 1.0;
+positions[3] = 0.0;
+positions[4] = (2.0 * Math.sqrt(2.0)) / 3.0;
+positions[5] = negativeOneThird;
+positions[6] = -rootSixOverThree;
+positions[7] = negativeRootTwoOverThree;
+positions[8] = negativeOneThird;
+
+// left triangle
+positions[9] = 0.0;
+positions[10] = 0.0;
+positions[11] = 1.0;
+positions[12] = -rootSixOverThree;
+positions[13] = negativeRootTwoOverThree;
+positions[14] = negativeOneThird;
+positions[15] = rootSixOverThree;
+positions[16] = negativeRootTwoOverThree;
+positions[17] = negativeOneThird;
+
+// right triangle
+positions[18] = 0.0;
+positions[19] = 0.0;
+positions[20] = 1.0;
+positions[21] = rootSixOverThree;
+positions[22] = negativeRootTwoOverThree;
+positions[23] = negativeOneThird;
+positions[24] = 0.0;
+positions[25] = (2.0 * Math.sqrt(2.0)) / 3.0;
+positions[26] = negativeOneThird;
+
+// bottom triangle
+positions[27] = -rootSixOverThree;
+positions[28] = negativeRootTwoOverThree;
+positions[29] = negativeOneThird;
+positions[30] = 0.0;
+positions[31] = (2.0 * Math.sqrt(2.0)) / 3.0;
+positions[32] = negativeOneThird;
+positions[33] = rootSixOverThree;
+positions[34] = negativeRootTwoOverThree;
+positions[35] = negativeOneThird;
+```
+
+Now build Cesium, and reload the sandcastle example.
 TODO: update tetrahedron example for creation on a web worker.
 
 ### TODO
 
 **TODO: tip for visualizing bounding spheres with command debugging**
 
-**TODO: tip for visualizing vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html)**
+**TODO: tip for visualizing vectors with **
 
 # Part III: Geometry Batching for Vector Data Rendering
 
