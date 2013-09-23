@@ -15,7 +15,7 @@
    * Better organize [CONTRIBUTING.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md), [CONTRIBUTORS.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTORS.md), and the [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) if possible.
 * Update [CONTRIBUTING.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md) with instructions for submitting an issue.  [Example](https://github.com/mrdoob/three.js/blob/master/CONTRIBUTING.md) from Three.js.  Perhaps request that GitHub use separate files for PRs and issues.
 * Optimize the doc build.
-* Better organize Sandcastle examples, e.g., demos vs. individual examples.
+* Better organize Sandcastle examples, e.g., demos vs. individual examples, like [#1151](https://github.com/AnalyticalGraphicsInc/cesium/pull/1151).
 * The doc-labeled [issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=doc&page=1&sort=updated&state=open).
 
 ## Projects
