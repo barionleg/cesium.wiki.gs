@@ -4,9 +4,7 @@
 * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
 * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
 * Geometry and appearances - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
-* Shader pipeline - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
 * [Space features](Space-features)
-* Sensors
 * [3D models](Models-Details)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
@@ -37,6 +35,7 @@ If you are interested in implementing any of these features, start a discussion 
    * Vectors
    * Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
    * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
+   * Shader pipeline improvements - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
    * [Stars improvements](Stars-Details)
    * [Ocean improvements](Ocean-Details)
    * Render buildings
