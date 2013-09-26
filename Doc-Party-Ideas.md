@@ -17,6 +17,7 @@
 * Optimize the doc build.
 * Better organize Sandcastle examples, e.g., demos vs. individual examples, like [#1151](https://github.com/AnalyticalGraphicsInc/cesium/pull/1151).
 * Sandcastle bucket redesign. [#1083](https://github.com/AnalyticalGraphicsInc/cesium/issues/1083)
+* Cleanup all the different image directories used by the website.
 * The doc-labeled [issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=doc&page=1&sort=updated&state=open).
 
 ## Projects
