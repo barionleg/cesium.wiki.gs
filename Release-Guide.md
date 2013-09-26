@@ -7,12 +7,12 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Send a courtesy message to the [forum](http://cesium.agi.com/forum.html) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
 1. Pull down the latest master branch.
-1. Update [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.  Also give it a final proof read and tweaking.  Adjust the order of changes so that prominent/popular changes come first.
+1. Proofread [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.  Adjust the order of changes so that prominent/popular changes come first.
 1. Update [build.xml](../blob/master/build.xml) with the version being released, e.g., `<property name="version" value="b7" />`
 1. Commit these changes.
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
 1. Create the release zips and start the server for testing `./Tools/apache-ant-1.8.2/bin/ant makeZipFile runServer`
-1. Verify that the [Documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
+1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
 1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://webglreport.com/).
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) with WebGL validation in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) with WebGL validation in [Firefox](http://www.mozilla.org/en-US/firefox/new/?from=getfirefox) stable.
