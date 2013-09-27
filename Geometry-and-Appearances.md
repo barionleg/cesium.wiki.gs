@@ -717,7 +717,6 @@ define([
 
     return createTaskProcessorWorker(createTetrahedronGeometry);
 });
-});
 ```
 
 Now we're going to modify `TetrahedronGeometry.js`.  We don't want the computation of positions and indices to happen until `TetrahedronGeometry.computeGeometry` is called.  Change the current `TetrahedronGeometry` constructor to:
@@ -743,8 +742,6 @@ var TetrahedronGeometry = function() {
 };
 ```
 
-
-TODO: update tetrahedron example for creation on a web worker.
 
 ### TODO
 
