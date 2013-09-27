@@ -611,7 +611,11 @@ scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
 
 [[geometryandappearances/singleNormalsVisualized.png]]
 
-As you can see, the normal vectors aren't very 'normal' to any of the triangles.  In this case, because the vertices are shared by more than one triangle the normal vectors are the average of the normals of each triangle the vertex composes.  To get better shading, we must duplicate each vertex so that the triangles no longer share them.  In `TetrahedronGeometry.js`, replace the positions and indices with the following:
+As you can see, the normal vectors aren't very 'normal' to any of the triangles.  Because the vertices are shared by more than one triangle, the normal vectors are the average of the normal to each triangle the vertex composes.  To get better shading, we must duplicate each vertex so that the triangles no longer share them.  
+
+[[geometryandappearances/tetrahedronSides.png]] [[geometryandappearances/tetrahedronFacesDuplicated.png]]
+
+In `TetrahedronGeometry.js`, replace the positions and indices with the following:
 
 ```javascript
 var positions = new Float64Array(4 * 3 * 3);
@@ -658,9 +662,35 @@ positions[32] = negativeOneThird;
 positions[33] = rootSixOverThree;
 positions[34] = negativeRootTwoOverThree;
 positions[35] = negativeOneThird;
+
+var indices = new Uint16Array(4 * 3);
+
+// back triangle
+indices[0] = 0;
+indices[1] = 1;
+indices[2] = 2;
+
+// left triangle
+indices[3] = 3;
+indices[4] = 4;
+indices[5] = 5;
+
+// right triangle
+indices[6] = 6;
+indices[7] = 7;
+indices[8] = 8;
+
+// bottom triangle
+indices[9] = 9;
+indices[10] = 10;
+indices[11] = 11;
 ```
 
 Now build Cesium, and reload the sandcastle example.
+
+[[geometryandappearances/duplicateNormalsVisualized.png]]
+
+### Using a web worker
 TODO: update tetrahedron example for creation on a web worker.
 
 ### TODO
