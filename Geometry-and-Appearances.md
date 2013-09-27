@@ -691,6 +691,59 @@ Now build Cesium, and reload the sandcastle example.
 [[geometryandappearances/duplicateNormalsVisualized.png]]
 
 ### Using a web worker
+Using a web workers for the geometry types allows the computation to happen asynchronously.  The first step is to add `createTetrahedronGeometry.js` to the `Source/Workers/` directory.  This will contain a function to instruct the web worker what do to when it is triggered.  In this case, we want to create the geometry in the worker.  Copy and paste the following code into the `createTetrahedronGeometry.js` file:
+
+```javascript 
+/*global define*/
+define([
+        '../Core/TetrahedronGeometry',
+        '../Scene/PrimitivePipeline',
+        './createTaskProcessorWorker'
+    ], function(
+        TetrahedronGeometry,
+        PrimitivePipeline,
+        createTaskProcessorWorker) {
+    "use strict";
+
+    function createTetrahedronGeometry(parameters, transferableObjects) {
+        var geometry = TetrahedronGeometry.createGeometry();
+        PrimitivePipeline.transferGeometry(geometry, transferableObjects);
+
+        return {
+            geometry : geometry,
+            index : parameters.index
+        };
+    }
+
+    return createTaskProcessorWorker(createTetrahedronGeometry);
+});
+});
+```
+
+Now we're going to modify `TetrahedronGeometry.js`.  We don't want the computation of positions and indices to happen until `TetrahedronGeometry.computeGeometry` is called.  Change the current `TetrahedronGeometry` constructor to:
+```javascript 
+TetrahedronGeometry.createGeometry = function() {
+...
+};
+```
+This function is going to return a [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html).  Replace the last four lines of the function (`this.attributes = attributes;`....) with
+```javascript 
+return new Geometry({
+    attributes : attributes,
+    indices : indices,
+    primitiveType : PrimitiveType.TRIANGLES,
+    boundingSphere : new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0)
+});
+```
+
+The next step is to introduce a new constructor.  Add the following code:
+```javascript
+var TetrahedronGeometry = function() {
+    this._workerName = 'createTetrahedronGeometry';
+};
+```
+
+
 TODO: update tetrahedron example for creation on a web worker.
 
 ### TODO
