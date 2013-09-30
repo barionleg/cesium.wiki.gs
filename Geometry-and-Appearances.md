@@ -311,7 +311,9 @@ Most appearances also have [`flat`](http://cesium.agi.com/Cesium/Build/Documenta
 * `flat` - Flat shading.  Do not take lighting into account.
 * `faceForward` - When lighting, flip the normal so it is always facing the viewer.  The avoids black areas on back-faces, e.g., the inside of a wall.
 
-**TODO: screenshots of flat and faceForward**
+| flat : true | faceForward : false | faceForward : true |
+|:-----:|:-----:|:-----:|:-----:|
+| [[geometryandappearances/flat.png]] | [[geometryandappearances/notForward.png]]| [[geometryandappearances/faceForward.png]]|
 
 ## Geometry and Appearance Compatibility
 
