@@ -11,7 +11,7 @@
 *Important*
 
 * Render moon with right size and lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)
-* Lighting conditions: umbra, penumbra, and umbra cone
+* Lighting conditions: umbra and penumbra cones
 * Mouse wheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)
 * CZML support for stored views
 * Draw two vectors with an arc for the angle and an annotation
