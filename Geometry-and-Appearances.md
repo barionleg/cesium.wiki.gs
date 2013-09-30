@@ -10,7 +10,7 @@ var scene = widget.scene;
 
 scene.getPrimitives().add(new Cesium.ExtentPrimitive({
     extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
-    material : Cesium.Material.fromType('Dot')
+    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
 }));
 ```
 <p align="center"> [[geometryandappearances/extentPrimitive.png]] </p>
@@ -54,7 +54,7 @@ var scene = widget.scene;
 // original code
 // scene.getPrimitives().add(new Cesium.ExtentPrimitive({
 //     extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
-//     material : Cesium.Material.fromType('Dot')
+//     material : Cesium.Material.fromType(scene.getContext(), 'Dot')
 // }));
 
 var instance = new Cesium.GeometryInstance({
@@ -67,7 +67,7 @@ var instance = new Cesium.GeometryInstance({
 scene.getPrimitives().add(new Cesium.Primitive({
   geometryInstances : instance,
   appearance : new Cesium.EllipsoidSurfaceAppearance({
-    material : Cesium.Material.fromType('Dot')
+    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
   })
 }));
 ```
@@ -104,7 +104,7 @@ var anotherInstance = new Cesium.GeometryInstance({
 scene.getPrimitives().add(new Cesium.Primitive({
   geometryInstances : [instance, anotherInstance],
   appearance : new Cesium.EllipsoidSurfaceAppearance({
-    material : Cesium.Material.fromType('Dot')
+    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
   })
 }));
 ```
