@@ -19,6 +19,7 @@
 *Less Important*
 
 * Textured plane aligned with sensor boresight (use a model?)
+* Draw individual stars from a database.
 
 ## Done
 * ~~Ability to show Earth-centered view in ICRF instead of Fixed. - [#825](https://github.com/AnalyticalGraphicsInc/cesium/issues/825)~~
