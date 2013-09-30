@@ -1,44 +1,42 @@
 This is a draft for a three-part blog series.  The first two are Cesium tutorials.  The last is a general graphics tech article.
 
 # Part I: Geometry and Appearances
-The code examples below can be executed in the [Hello World Cesium Sandcastle Demo](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Hello%20World.html).
 
-Cesium has a library of primitives, such as polygons and ellipsoids, that are the visual building blocks of our scene.  To use them, we create a primitive with position data and perhaps a [`material`](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).  For example, the following creates an extent on the globe with a dot pattern:
+Cesium has a library of primitives, such as polygons and ellipsoids, that are the visual building blocks of our scene.  To use them, we create a primitive with position data and perhaps a [`material`](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).  For example, copy and paste the following into the [Hello World Sandcastle Example](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Hello%20World.html) to create an extent on the globe with a dot pattern:
 
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
 
-var extentPrimitive = new Cesium.ExtentPrimitive({
+scene.getPrimitives().add(new Cesium.ExtentPrimitive({
     extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
-    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
-});
-scene.getPrimitives().add(extentPrimitive);
+    material : Cesium.Material.fromType('Dot')
+}));
 ```
 <p align="center"> [[geometryandappearances/extentPrimitive.png]] </p>
 
-In this tutorial, we go under the hood of primitives and look at the [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and [`Appearance`](http://cesium.agi.com/Cesium/Build/Documentation/Appearance.html) types that form them.  A geometry defines the primitive's structure, i.e., the triangles, lines or points that compose the primitive.  An appearance defines the primitive's shading, including its full GLSL vertex and fragment shaders, and render state.
+In this tutorial, we go under the hood of primitives and look at the [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and [`Appearance`](http://cesium.agi.com/Cesium/Build/Documentation/Appearance.html) types that form them.  A geometry defines the primitive's structure, i.e., the triangles, lines, or points that compose the primitive.  An appearance defines the primitive's shading, including its full GLSL vertex and fragment shaders, and render state.
 
 Cesium supports the following geometries.
 
 |  |  |  |  |  |
 | ----------- |:-----------:| :-----------:| :-----------:| :-----------:|
-| [[geometryandappearances/boxGeometry.png]] | [`BoxGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html)| [[geometryandappearances/boxOutlineGeometry.png]] | [`BoxOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxOutlineGeometry.html)| A rectangular prism. |
+| [[geometryandappearances/boxGeometry.png]] | [`BoxGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxGeometry.html)| [[geometryandappearances/boxOutlineGeometry.png]] | [`BoxOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/BoxOutlineGeometry.html)| A box. |
 | [[geometryandappearances/circleGeometry.png]] | [`CircleGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleGeometry.html) | [[geometryandappearances/circleOutlineGeometry.png]] | [`CircleOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CircleOutlineGeometry.html) | A circle or extruded circle |
-| [[geometryandappearances/corridorGeometry.png]] | [`CorridorGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CorridorGeometry.html) | [[geometryandappearances/corridorOutlineGeometry.png]] | [`CorridorOutlineGeometry`](http://cesium.agi.cp,/Cesium/Build/Documentation/CorridorOutlineGeometry.html) | A polyline with a width and optional extruded height. |
-| [[geometryandappearances/cylinderGeometry.png]] | [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) | [[geometryandappearances/cylinderOutlineGeometry.png]] | [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) | A cylinder, cone or truncated cone. |
+| [[geometryandappearances/corridorGeometry.png]] | [`CorridorGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CorridorGeometry.html) | [[geometryandappearances/corridorOutlineGeometry.png]] | [`CorridorOutlineGeometry`](http://cesium.agi.cp,/Cesium/Build/Documentation/CorridorOutlineGeometry.html) | A polyline normal to the surface with a width in meters and optional extruded height. |
+| [[geometryandappearances/cylinderGeometry.png]] | [`CylinderGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderGeometry.html) | [[geometryandappearances/cylinderOutlineGeometry.png]] | [`CylinderOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/CylinderOutlineGeometry.html) | A cylinder, cone, or truncated cone. |
 | [[geometryandappearances/ellipseGeometry.png]] | [`EllipseGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseGeometry.html) | [[geometryandappearances/ellipseOutlineGeometry.png]] | [`EllipseOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipseOutlineGeometry.html) | An ellipse or extruded ellipse. |
 | [[geometryandappearances/ellipsoidGeometry.png]] | [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) | [[geometryandappearances/ellipsoidOutlineGeometry.png]] | [`EllipsoidOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidOutlineGeometry.html) | An ellipsoid. |
-| [[geometryandappearances/extentGeometry.png]] | [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) | [[geometryandappearances/extentOutlineGeometry.png]] | [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) | An extent or extrdued extent based on latitude and longitude lines. |
-| [[geometryandappearances/polygonGeometry.png]] | [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) | [[geometryandappearances/polygonOutlineGeometry.png]] | [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) | A polygon or extruded polygon. |
-| [[geometryandappearances/polylineGeometry.png]] | [`PolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html) | [[geometryandappearances/simplePolylineGeometry.png]] | [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) | An arbitrary line. `PolylineGeometry` also supports widths and materials. |
+| [[geometryandappearances/extentGeometry.png]] | [`ExtentGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html) | [[geometryandappearances/extentOutlineGeometry.png]] | [`ExtentOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html) | An rectangle or extrdued rectangle. |
+| [[geometryandappearances/polygonGeometry.png]] | [`PolygonGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html) | [[geometryandappearances/polygonOutlineGeometry.png]] | [`PolygonOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html) | A polygon with optional holes or extruded polygon. |
+| [[geometryandappearances/polylineGeometry.png]] | [`PolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html) | [[geometryandappearances/simplePolylineGeometry.png]] | [`SimplePolylineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html) | A collection of line segments with a width in pixels. |
 | [[geometryandappearances/sphereGeometry.png]] | [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) | [[geometryandappearances/sphereOutlineGeometry.png]] | [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) | A sphere. |
 | [[geometryandappearances/wallGeometry.png]] | [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) | [[geometryandappearances/wallOutlineGeometry.png]] | [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) | A wall perpendicular to the globe. |
 
 <p align="center"><a href=http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Geometry%20and%20Appearances.html" target="_blank"> [[geometryandappearances/geometryAndAppearancesDemo.png]] </a></p>
 
-The benefits of using geometries and appearances directly are:
-* **Performance** - When drawing a large number of static primitives (such as polygon for each zip code in the United States), using geometries directly allows us to combine them into a single geometry to reduce CPU overhead and better utilize the GPU.
+The benefits of using geometries and appearances are:
+* **Performance** - When drawing a large number of static primitives (such as polygon for each zip code in the United States), using geometries directly allows us to combine them into a single geometry to reduce CPU overhead and better utilize the GPU.  Combining primitives is done on a web worker to keep the UI responsive.
 * **Flexibility** - Primitives combine geometry and appearance.  By decoupling them, we can modify each independently.  We can add new geometries that are compatible with many different appearances and vice-versa.
 * **Low-level access** - Appearances provide close-to-the-metal access to rendering without having to worry about all the details of using the [`Renderer`](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture#renderer) directly.  Appearances make it easy to:
    * Write full GLSL vertex and fragment shaders.
@@ -53,12 +51,11 @@ Let's rewrite the initial code example using geometries and appearances:
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
 
-// original extent
-// var extentPrimitive = new Cesium.ExtentPrimitive({
+// original code
+// scene.getPrimitives().add(new Cesium.ExtentPrimitive({
 //     extent : Cesium.Extent.fromDegrees(-100.0, 20.0, -90.0, 30.0),
-//     material : Cesium.Material.fromType(scene.getContext(), 'Dot')
-// });
-// scene.getPrimitives().add(extentPrimitive);
+//     material : Cesium.Material.fromType('Dot')
+// }));
 
 var instance = new Cesium.GeometryInstance({
   geometry : new Cesium.ExtentGeometry({
@@ -67,14 +64,12 @@ var instance = new Cesium.GeometryInstance({
   })
 });
 
-var extentPrimitive = new Cesium.Primitive({
+scene.getPrimitives().add(new Cesium.Primitive({
   geometryInstances : instance,
   appearance : new Cesium.EllipsoidSurfaceAppearance({
-    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
+    material : Cesium.Material.fromType('Dot')
   })
-});
-
-scene.getPrimitives().add(extentPrimitive);
+}));
 ```
 
 Instead of using the explicit [`ExtentPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/ExtentPrimitive.html) type, we used the generic [`Primitive`](http://cesium.agi.com/Cesium/Build/Documentation/Primitive.html), which combines the geometry instance and appearance.  For now, we will not differentiate between a [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) and a [`GeometryInstance`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) other than an instance is a container for a geometry.
@@ -87,7 +82,7 @@ Since we know it is on the surface, we can use the [`EllipsoidSurfaceAppearance`
 
 ## Combing Geometries
 
-We see a performance benefit when we use the same primitive to draw multiple static geometries.  For example, let's draw two rectangles.
+We see a performance benefit when we use one primitive to draw multiple static geometries.  For example, let's draw two rectangles.
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
@@ -106,14 +101,12 @@ var anotherInstance = new Cesium.GeometryInstance({
   })
 });
 
-var extentPrimitive = new Cesium.Primitive({
+scene.getPrimitives().add(new Cesium.Primitive({
   geometryInstances : [instance, anotherInstance],
   appearance : new Cesium.EllipsoidSurfaceAppearance({
-    material : Cesium.Material.fromType(scene.getContext(), 'Dot')
+    material : Cesium.Material.fromType('Dot')
   })
-});
-
-scene.getPrimitives().add(extentPrimitive);
+}));
 ```
 
 <p align="center"> [[geometryandappearances/combine.png]] </p>
@@ -145,12 +138,10 @@ var anotherInstance = new Cesium.GeometryInstance({
   }
 });
 
-var extentPrimitive = new Cesium.Primitive({
+scene.getPrimitives().add(new Cesium.Primitive({
   geometryInstances : [instance, anotherInstance],
   appearance : new Cesium.PerInstanceColorAppearance()
-});
-
-scene.getPrimitives().add(extentPrimitive);
+}));
 ```
 
 <p align="center"> [[geometryandappearances/combineColor.png]] </p>
@@ -164,11 +155,11 @@ var scene = widget.scene;
 
 var instances = [];
 
-for (var lon = -180; lon < 180; lon += 5) {
-  for (var lat = -90; lat < 90; lat += 5) {
+for (var lon = -180.0; lon < 180.0; lon += 5.0) {
+  for (var lat = -90.0; lat < 90.0; lat += 5.0) {
     instances.push(new Cesium.GeometryInstance({
       geometry : new Cesium.ExtentGeometry({
-        extent : Cesium.Extent.fromDegrees(lon, lat, lon + 5, lat + 5)
+        extent : Cesium.Extent.fromDegrees(lon, lat, lon + 5.0, lat + 5.0)
       }),
       attributes : {
         color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom({alpha : 0.5}))
@@ -177,19 +168,17 @@ for (var lon = -180; lon < 180; lon += 5) {
   }
 }
 
-var extentPrimitive = new Cesium.Primitive({
+scene.getPrimitives().add(new Cesium.Primitive({
   geometryInstances : instances,
   appearance : new Cesium.PerInstanceColorAppearance()
-});
-
-scene.getPrimitives().add(extentPrimitive);
+}));
 ```
 
 <p align="center"> [[geometryandappearances/extents.png]] </p>
 
 ## Picking
 
-After instances are combined, they are still independently accessible.  In particular, we can assign an `id` to an instance and use it to determine if the instance is picked with [`Scene.pick`](http://cesium.agi.com/Cesium/Build/Documentation/Scene.html#pick).  `id` can be any JavaScript type: a string, a number, an object with its own properties.
+After instances are combined, they are still independently accessible.  In particular, we can assign an `id` to an instance and use it to determine if the instance is picked with [`Scene.pick`](http://cesium.agi.com/Cesium/Build/Documentation/Scene.html#pick).  `id` can be any JavaScript type: a string, a number, an object with its own properties, etc.
 
 The following example creates an instance with a `id`, and writes a message to the console when it is clicked.
 
@@ -207,29 +196,28 @@ var instance = new Cesium.GeometryInstance({
   }
 });
 
-var extentPrimitive = new Cesium.Primitive({
+scene.getPrimitives().add(new Cesium.Primitive({
   geometryInstances : instance,
   appearance : new Cesium.PerInstanceColorAppearance()
-});
-
-scene.getPrimitives().add(extentPrimitive);
+}));
 
 var handler = new Cesium.ScreenSpaceEventHandler(scene.getCanvas());
 handler.setInputAction(function (movement) {
-    if (scene.pick(movement.position) === 'my extent') {
+    var pick = scene.pick(movement.position);
+    if (Cesium.defined(pick) && (pick.id === 'my extent')) {
       console.log('Mouse clicked extent.');
     }
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 ```
-Using `id`, instead of the reference to the instance itself, allows the primitive - and the application - to avoid keeping a reference to the full instance - including its reference to the geometry - in memory after the primitive is constructed.  Since a geometry can contain several large typed arrays, this allows us to save a significant amount of memory.
+Using `id`, instead of the reference to the instance itself, allows the primitive - and the application - to avoid keeping a reference to the full instance, including its reference to the geometry, in memory after the primitive is constructed.  Since a geometry can contain several large typed arrays, this allows us to save a significant amount of memory.
 
 ## Geometry Instances
 
-Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, instances are used to position, scale and orientate the same geometry in different parts of the scene.  This is possible because multiple instances can reference the same `Geometry`, and each instance can have a different `modelMatrix`. This allows us to only compute the geometry once and reuse it many times.
+Thus far, we have defined a geometry instance only as a container for a geometry.  In addition, instances are used to position, scale, and rotate the same geometry in different parts of the scene.  This is possible because multiple instances can reference the same `Geometry`, and each instance can have a different `modelMatrix`. This allows us to only compute the geometry once and reuse it many times.
 
 <p align="center"> [[geometryandappearances/geometryinstance.png]] </p>
 
-The following example creates one [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) and two instances.  Each instance references the ellipsoid geometry, but place it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
+The following example creates one [`EllipsoidGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidGeometry.html) and two instances.  Each instance references the same ellipsoid geometry, but places it using a different `modelMatrix` resulting in one ellipsoid being on top of the other.
 
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
@@ -274,6 +262,10 @@ scene.getPrimitives().add(new Cesium.Primitive({
 
 <p align="center"> [[geometryandappearances/ellipsoidInstances.png]] </p>
 
+## Updating Per-Instance Attributes
+
+TODO: updating per-instance show/color/attribute
+
 ## Appearances
 
 Geometry defines structure.  The other key property of a primitive, `appearance`, defines the primitive's shading, i.e., how individual pixels are colored.  A primitive can have many geometry instances, but it can only have one appearance.  Depending on the type of appearance, an appearance will have a [material](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric) that defines the bulk of the shading.
@@ -284,7 +276,7 @@ Cesium has the following appearances.
 
 * [`MaterialAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html) - An appearance that works with all geometry types and supports materials to describe shading.
 * [`EllipsoidSurfaceAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html) - A version of `MaterialAppearance` that assumes geometry is parallel to the surface of the globe, like a polygon, and uses this assumption to save memory by procedurally computing many vertex attributes.
-* [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html) - Uses per-instance color to shade each instance a color.
+* [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html) - Uses per-instance color to shade each instance.
 * [`DebugAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/DebugAppearance.html) - A debugging aid for visualizing geometry vertex attributes.
 
 Appearances define the full GLSL vertex and fragment shaders that execute on the GPU when the primitive is drawn.  We rarely touch these unless we are writing a custom appearance.  Appearances also define the full [render state](http://cesium.agi.com/Cesium/Build/Documentation/RenderState.html), which controls the GPU's state when the primitive is drawn.  We can define the render state directly or use higher-level properties like [`closed`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#closed) and [`translucent`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#translucent), which the appearance will convert into render state.  For example:
@@ -315,7 +307,7 @@ Once an appearance is created, we can't change its `renderState` property, but w
 Most appearances also have [`flat`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#flat) and [`faceForward`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#faceForward) properties, which indirectly control the GLSL shaders.
 
 * `flat` - Flat shading.  Do not take lighting into account.
-* `faceForward` - When lighting, flip the normal so it is always facing the viewer.  The avoids black areas on back-faces, e.g., the inside of a box.
+* `faceForward` - When lighting, flip the normal so it is always facing the viewer.  The avoids black areas on back-faces, e.g., the inside of a wall.
 
 **TODO: screenshots of flat and faceForward**
 
@@ -323,9 +315,9 @@ Most appearances also have [`flat`](http://cesium.agi.com/Cesium/Build/Documenta
 
 We've already seen that not all appearances work with all geometries.  For example, `EllipsoidSurfaceAppearance` is not appropriate for `WallGeometry` since a wall is perpendicular to the globe, not parallel.
 
-Beyond semantics like this, for an appearance to be mechanically compatible with a geometry, they must have matching vertex formats, which means the geometry must have the data that the appearance expects as input.  A [`VertexFormat`](http://cesium.agi.com/Cesium/Build/Documentation/VertexFormat.html) can be provided when creating a geometry.
+Beyond semantics like this, for an appearance to be compatible with a geometry, they must have matching vertex formats, which means the geometry must have the data that the appearance expects as input.  A [`VertexFormat`](http://cesium.agi.com/Cesium/Build/Documentation/VertexFormat.html) can be provided when creating a geometry.
 
-We can keep things simple, but inefficient and wasteful, by requesting a geometry compute all vertices, which will make the geometry compatible with all appearances (ignoring per-instance attributes; see below).
+We can keep things simple, but inefficient and wasteful, by requesting a geometry compute all vertex attributes, which will make the geometry compatible with all appearances (ignoring per-instance attributes; see below).
 ```javascript
 var geometry = new Cesium.ExtentGeometry({
   vertexFormat : Cesium.VertexFormat.ALL
@@ -365,15 +357,6 @@ var geometry3 = new Ceisum.ExtentGeometry({
 ```
 Also, a geometry's `vertexFormat` determines if it can be combined with another geometry.  Two geometries do not have to be the same type; they just need matching vertex formats.
  
-## TODO
-
-TODO: updating per-instance show/color/attribute
-
-## TODO
-
-TODO: two-passes for closed translucent (use faceForward too)
-TODO: interop between outline geometries and polyline geometry
-
 ## Resources
 
 In the reference documentation, see:
