@@ -33,7 +33,7 @@ Cesium supports the following geometries.
 | [![Sphere](geometryandappearances/sphereGeometry.png)](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Sphere.html) | [`SphereGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html) | [![Sphere Outline](geometryandappearances/sphereOutlineGeometry.png)](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Sphere%20Outline.html) | [`SphereOutlineGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html) | A sphere. |
 | [![Wall](geometryandappearances/wallGeometry.png)](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Wall.html) | [`WallGeometry`](http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html) | [![Wall Outline](geometryandappearances/wallOutlineGeometry.png)](http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Wall%20Outline.html) | [`WallOutlineGeometry`](http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html) | A wall perpendicular to the globe. |
 
-<p align="center"><a href=http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Geometry%20and%20Appearances.html" target="_blank"> [[geometryandappearances/geometryAndAppearancesDemo.png]] </a></p>
+<p align="center"><a href=http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src="Geometry%20and%20Appearances.html" target="_blank"> [[geometryandappearances/geometryAndAppearancesDemo.png]] </a></p>
 
 The benefits of using geometries and appearances are:
 * **Performance** - When drawing a large number of static primitives (such as polygon for each zip code in the United States), using geometries directly allows us to combine them into a single geometry to reduce CPU overhead and better utilize the GPU.  Combining primitives is done on a web worker to keep the UI responsive.
@@ -264,7 +264,68 @@ scene.getPrimitives().add(new Cesium.Primitive({
 
 ## Updating Per-Instance Attributes
 
-TODO: updating per-instance show/color/attribute
+It is also possible to update the per-instance attributes of the geometries after they have been rendered.  This example demonstrates how to use picking to change the color of the geometry instance:
+```javascript
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var scene = widget.scene;
+var ellipsoid = widget.centralBody.getEllipsoid();
+
+var ellipsoidGeometry = new Cesium.EllipsoidGeometry({
+    vertexFormat : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT,
+    radii : new Cesium.Cartesian3(300000.0, 200000.0, 150000.0)
+});
+
+var cyanEllipsoidInstance = new Cesium.GeometryInstance({
+    geometry : ellipsoidGeometry,
+    modelMatrix : Cesium.Matrix4.multiplyByTranslation(
+        Cesium.Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-100.0, 40.0))),
+        new Cesium.Cartesian3(0.0, 0.0, 150000.0)
+    ),
+    id : 'ellipsoid2',
+    attributes : {
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.CYAN)
+    }
+});
+
+var orangeEllipsoidInstance = new Cesium.GeometryInstance({
+    geometry : ellipsoidGeometry,
+    modelMatrix : Cesium.Matrix4.multiplyByTranslation(
+        Cesium.Transforms.eastNorthUpToFixedFrame(ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-100.0, 40.0))),
+        new Cesium.Cartesian3(0.0, 0.0, 450000.0)
+    ),
+    id : 'ellipsoid1',
+    attributes : {
+        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.ORANGE)
+    }
+});
+
+scene.getPrimitives().add(new Cesium.Primitive({
+    geometryInstances : [cyanEllipsoidInstance, orangeEllipsoidInstance],
+    appearance : new Cesium.PerInstanceColorAppearance({
+        translucent : false,
+        closed : true
+    })
+}));
+
+var handler = new Cesium.ScreenSpaceEventHandler(scene.getCanvas());
+handler.setInputAction(function (movement) {
+    var pick = scene.pick(movement.position);
+    if (Cesium.defined(pick)){
+        var attributes;
+        if (pick.id === 'ellipsoid1') {
+            attributes = pick.primitive.getGeometryInstanceAttributes('ellipsoid1');
+            attributes.color = Cesium.ColorGeometryInstanceAttribute.toValue(Cesium.Color.fromRandom({alpha : 1.0}));
+            attributes.show = Cesium.ShowGeometryInstanceAttribute.toValue(true);
+        } else if (pick.id === 'ellipsoid2') {
+            attributes = pick.primitive.getGeometryInstanceAttributes('ellipsoid2');
+            attributes.color = Cesium.ColorGeometryInstanceAttribute.toValue(Cesium.Color.fromRandom({alpha : 1.0}));
+            attributes.show = Cesium.ShowGeometryInstanceAttribute.toValue(true);
+        }
+    }
+}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+```
+
+The attributes of the geometry instance can be retrieved from the primitive using `primitive.getGeometryInstanceAttributes('id of instance');`.  The properties of the `attributes` can be changed directly.  In this case, we are changing `attributes.color` to be equal to a randomly generated color.  The changes to the attribute values won't be seen until the attribute is told to update.  This can be accomplished with `attributes.show = Cesium.ShowGeometryInstanceAttribute.toValue(true);`.
 
 ## Appearances
 
