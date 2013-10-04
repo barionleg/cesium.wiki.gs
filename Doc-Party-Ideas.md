@@ -7,6 +7,7 @@
 * General and tech [blog posts](http://cesium.agi.com/blog.html).
 * [Cesium website](http://cesium.agi.com/index.html) improvements.  Ideas:
    * Better styling for the [Presentations](http://cesium.agi.com/publications.html) and [About](http://cesium.agi.com/contributors.html) pages.
+   * Update Contributors page, e.g., add GSoC and perhaps separate active and less active contributor sections.
 * Make CHANGES.md link to reference doc.  (Write a tool as part of the build or do it by hand?).  [#331](https://github.com/AnalyticalGraphicsInc/cesium/issues/331)
 * Improve the wiki
    * Update the [Architecture Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture).  [#807](https://github.com/AnalyticalGraphicsInc/cesium/issues/807).  See **@pjcozzi** for ideas.
