@@ -739,6 +739,8 @@ Now build Cesium, and reload the sandcastle example.
 
 [[geometryandappearances/duplicateNormalsVisualized.png]]
 
+Now that we've duplicated the positions, the normal vector for each position is perpendicular to the triangle that vertices composes.  This corrects the shading.
+
 ### Using a web worker
 Using a web workers for the geometry types allows the computation to happen asynchronously.  The first step is to add `createTetrahedronGeometry.js` to the `Source/Workers/` directory.  This will contain a function to instruct the web worker what do to when it is triggered.  In this case, we want to create the geometry in the worker.  Copy and paste the following code into the `createTetrahedronGeometry.js` file:
 
@@ -791,12 +793,8 @@ var TetrahedronGeometry = function() {
 };
 ```
 
+With these changes, we can generate the tetrahedron asynchronously using the same syntax we were using before.  We also have the option to generate it synchronously by calling `TetrahedronGeometry.createGeometry` from the code.
 
-### TODO
-
-**TODO: tip for visualizing bounding spheres with command debugging**
-
-**TODO: tip for visualizing vectors with **
 
 # Part III: Geometry Batching for Vector Data Rendering
 
