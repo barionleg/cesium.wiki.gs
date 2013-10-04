@@ -10,7 +10,6 @@
 
 *Important*
 
-* Render moon with right size and lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)
 * Lighting conditions: umbra and penumbra cones
 * Mouse wheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)
 * CZML support for stored views
@@ -33,3 +32,4 @@
    * ~~Zoom inside - [#390](https://github.com/AnalyticalGraphicsInc/cesium/issues/390)~~
    * ~~Covariance interpolation (in [czml-writer](https://github.com/AnalyticalGraphicsInc/czml-writer))~~
 * ~~Sun size. [#769](https://github.com/AnalyticalGraphicsInc/cesium/issues/769)~~
+* ~~Render moon with right size and lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)~~
