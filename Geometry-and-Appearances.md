@@ -439,9 +439,12 @@ For future plans, see the [Geometry and Appearances Roadmap](https://github.com/
 If you have questions, post them to the [forum](http://cesium.agi.com/forum.html).
 
 # Part II: Creating Custom Geometry and Appearances
-The following tutorial explains how to add new geometry and appearance types to the Cesium codebase.  To follow along, download the latest **full version** of [Cesium](http://cesium.agi.com/downloads.html), or fork the [Cesium repository](https://github.com/AnalyticalGraphicsInc/cesium).
 
-Since geometries and appearances are decoupled, we can add new geometries that are compatible with many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
+Cesium supports many common geometries and appearances out of the box.  However, we may need to visualize a new type of geometry or apply custom shading to existing geometries.
+
+Since geometries and appearances are decoupled, we can add new geometries that are compatible with many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.
+
+To follow along, download the latest **full version** of [Cesium](http://cesium.agi.com/downloads.html), or fork the [Cesium repo](https://github.com/AnalyticalGraphicsInc/cesium).  See the [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) for details.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
 
 ## Geometry
 
@@ -573,7 +576,7 @@ this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 
 ### Visualizing the Tetrahedron with a Primitive
 
-Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.  First, build the code and run the HTTP server for testing (.\Tools\apache-ant-1.8.2\bin\ant combine runServer).  Navigate to http://localhost:8080/Apps/Sandcastle/index.html, your local version of Cesium Sandcastle.  Paste the following code in the Sandcastle Hello World demo:
+Our tetrahedron is centered in its local coordinate system and inscribed in the unit sphere.  To visualize it, we need to compute a `modelMatrix` to position and scale it.  In addition, since it only has position attributes, we'll use an appearance with `flat` shading so normals are not required.  First, build the code and run the HTTP server for testing (`.\Tools\apache-ant-1.8.2\bin\ant combine runServer`).  Navigate to `http://localhost:8080/Apps/Sandcastle/index.html`, your local version of Cesium Sandcastle.  Paste the following code in the Sandcastle Hello World demo:
 
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
@@ -608,7 +611,7 @@ Here's our tetrahedron, scaled and positioned, without shading:
 
 [[geometryandappearances/firstTetrahedron.png]]
 
-Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  The function [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe) transforms a geometry to use the `LINES` primitive type.  Replace the instance declaration with this:
+Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  The function [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe) transforms a geometry to use the `LINES` primitive type.  Replace the instance with this:
 
 ```javascript
 var instance = new Cesium.GeometryInstance({
@@ -624,9 +627,9 @@ var instance = new Cesium.GeometryInstance({
 
 **Tip**: Use `GeometryPipeline.toWireframe` for debugging to visualize a geometry's primitives.
 
-### Adding normals for shading
+### Adding Normals for Shading
 
-To use an appearance with shading, the geometry must have a `normal` attribute.  The normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In the Sandcastle example, replace the instance and primitive declarations with the following:
+To use an appearance with shading, the geometry must have a `normal` attribute.  Normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In the Sandcastle example, replace the instance and primitive declarations with the following:
 
 ```javascript
 var tetrahedron = Cesium.GeometryPipeline.computeNormal(new Cesium.TetrahedronGeometry());
@@ -648,7 +651,7 @@ scene.getPrimitives().add(new Cesium.Primitive({
 
 [[geometryandappearances/singleNormals.png]]
 
-I'm guessing this is not what you'd expect a tetrahedron with shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the sandcastle exampe:
+This is not what we expect shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the sandcastle example:
 
 ```javascript
 scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
@@ -660,7 +663,7 @@ scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
 
 [[geometryandappearances/singleNormalsVisualized.png]]
 
-As you can see, the normal vectors aren't very 'normal' to any of the triangles.  Because the vertices are shared by more than one triangle, the normal vectors are the average of the normal to each triangle the vertex composes.  To get better shading, we must duplicate each vertex so that the triangles no longer share them.  
+As you can see, the normal vectors aren't very "normal" to any of the triangles.  Because the vertices are shared by more than one triangle, the normal vectors are the average of the normal to each triangle the vertex composes.  To get better shading, we must duplicate each vertex so that the triangles no longer share them.  
 
 [[geometryandappearances/tetrahedronSides.png]] [[geometryandappearances/tetrahedronFacesDuplicated.png]]
 
@@ -741,8 +744,10 @@ Now build Cesium, and reload the sandcastle example.
 
 Now that we've duplicated the positions, the normal vector for each position is perpendicular to the triangle that vertices composes.  This corrects the shading.
 
-### Using a web worker
-Using a web workers for the geometry types allows the computation to happen asynchronously.  The first step is to add `createTetrahedronGeometry.js` to the `Source/Workers/` directory.  This will contain a function to instruct the web worker what do to when it is triggered.  In this case, we want to create the geometry in the worker.  Copy and paste the following code into the `createTetrahedronGeometry.js` file:
+### Using a Web Worker
+Using a web workers for a geometry allows the computation to happen asynchronously, which keeps the UI responsive.  The computation for our tetrahedron is pretty trivial, but many geometry computations can be complicated so all built-in Cesium geometries use a web worker.
+
+The first step is to add `createTetrahedronGeometry.js` to the `Source/Workers/` directory.  This will contain a function to instruct the web worker what do to when it is triggered.  In this case, we want to create the geometry in the worker.  Copy and paste the following code into the `createTetrahedronGeometry.js` file:
 
 ```javascript 
 /*global define*/
