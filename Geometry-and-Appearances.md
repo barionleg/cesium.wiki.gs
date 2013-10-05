@@ -114,7 +114,7 @@ scene.getPrimitives().add(new Cesium.Primitive({
 
 We created another instance with a different extent, and then provided both instances to the primitive. This draws both both instances with the same appearance.  
 
-Some appearances allow each instance to provide unique attributes.  For example, we can use [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html), to shade each instance with a different color.
+Some appearances allow each instance to provide unique attributes.  For example, we can use [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html) to shade each instance with a different color.
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
@@ -149,7 +149,7 @@ scene.getPrimitives().add(new Cesium.Primitive({
 
 Each instance has a [`Color`](http://cesium.agi.com/Cesium/Build/Documentation/Color.html) attribute.  The primitive is then constructed with a `PerInstanceColorAppearance`, which knows to use each instance's color attribute to determine shading.
 
-Combining geometries allows Cesium to efficiently draw A LOT of geometries.  The following example draws 2,592 uniquely colored rectangles.  It will take a second or two to optimize the geometry, then drawing is very fast.
+Combining geometries allows Cesium to efficiently draw A LOT of geometries.  The following example draws 2,592 uniquely colored rectangles.  It will optimize the geometry, then drawing is very fast.
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
@@ -210,7 +210,7 @@ handler.setInputAction(function (movement) {
     }
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 ```
-Using `id`, instead of the reference to the instance itself, allows the primitive - and the application - to avoid keeping a reference to the full instance, including its reference to the geometry, in memory after the primitive is constructed.  Since a geometry can contain several large typed arrays, this allows us to save a significant amount of memory.
+Using `id`, instead of the reference to the instance itself, allows the primitive - and our application - to avoid keeping a reference to the full instance, including its reference to the geometry, in memory after the primitive is constructed.  Since a geometry can contain several large typed arrays, this allows us to save a significant amount of memory.
 
 ## Geometry Instances
 
@@ -265,7 +265,7 @@ scene.getPrimitives().add(new Cesium.Primitive({
 
 ## Updating Per-Instance Attributes
 
-It is also possible to update the per-instance attributes of the geometries after they have been rendered.  This example demonstrates how to use picking to change the color of the geometry instance:
+It is also possible to update the per-instance attributes of the geometries after they are added to the primitive.  This example demonstrates how to use picking to change the color of the geometry instance:
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
