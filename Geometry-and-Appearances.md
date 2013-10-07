@@ -70,49 +70,49 @@ Cesium supports the following geometries.
 
 <tr>
 <td><img src="geometryandappearances/extentGeometry.png"/></td>
-<td><ul><li><b>EllipsoidGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Extent.html">Code example</a></li></ul></td>
+<td><ul><li><b>ExtentGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/ExtentGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Extent.html">Code example</a></li></ul></td>
 <td><img src="geometryandappearances/extentOutlineGeometry.png"/></td>
-<td><ul><li><b>EllipsoidOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Extent%20Outline.html">Code example</a></li></ul></td>
+<td><ul><li><b>ExtentOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/ExtentOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Extent%20Outline.html">Code example</a></li></ul></td>
 <td width="200">An rectangle or extruded rectangle</td>
 </tr>
 
 <tr>
 <td><img src="geometryandappearances/polygonGeometry.png"/></td>
-<td><ul><li><b>EllipsoidGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polygon.html">Code example</a></li></ul></td>
+<td><ul><li><b>PolygonGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolygonGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polygon.html">Code example</a></li></ul></td>
 <td><img src="geometryandappearances/polygonOutlineGeometry.png"/></td>
-<td><ul><li><b>EllipsoidOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polygon%20Outline.html">Code example</a></li></ul></td>
+<td><ul><li><b>PolygonOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolygonOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polygon%20Outline.html">Code example</a></li></ul></td>
 <td width="200">A polygon with optional holes or extruded polygon</td>
 </tr>
 
 <tr>
 <td><img src="geometryandappearances/polylineGeometry.png"/></td>
-<td><ul><li><b>EllipsoidGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline.html">Code example</a></li></ul></td>
+<td><ul><li><b>PolylineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline.html">Code example</a></li></ul></td>
 <td><img src="geometryandappearances/simplePolylineGeometry.png"/></td>
-<td><ul><li><b>EllipsoidOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Simple%20Polyline.html">Code example</a></li></ul></td>
+<td><ul><li><b>SimplePolylineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/SimplePolylineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Simple%20Polyline.html">Code example</a></li></ul></td>
 <td width="200">A collection of line segments with a width in pixels</td>
 </tr>
 
 <tr>
 <td><img src="geometryandappearances/polylineVolumeGeometry.png"/></td>
-<td><ul><li><b>EllipsoidGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineVolumeGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline%20Volume.html">Code example</a></li></ul></td>
+<td><ul><li><b>PolylineVolumeGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineVolumeGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline%20Volume.html">Code example</a></li></ul></td>
 <td><img src="geometryandappearances/polylineVolumeOutlineGeometry.png"/></td>
-<td><ul><li><b>EllipsoidOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineVolumeOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline%20Volume%20Outline.html">Code example</a></li></ul></td>
+<td><ul><li><code>PolylineVolumeOutlineGeometry</code></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineVolumeOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline%20Volume%20Outline.html">Code example</a></li></ul></td>
 <td width="200">A 2D shape extruded along a polyline</td>
 </tr>
 
 <tr>
 <td><img src="geometryandappearances/sphereGeometry.png"/></td>
-<td><ul><li><b>EllipsoidGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Sphere.html">Code example</a></li></ul></td>
+<td><ul><li><b>SphereGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/SphereGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Sphere.html">Code example</a></li></ul></td>
 <td><img src="geometryandappearances/sphereOutlineGeometry.png"/></td>
-<td><ul><li><b>EllipsoidOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Sphere%20Outline.html">Code example</a></li></ul></td>
+<td><ul><li><b>SphereOutlineGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/SphereOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Sphere%20Outline.html">Code example</a></li></ul></td>
 <td width="200">A sphere</td>
 </tr>
 
 <tr>
 <td><img src="geometryandappearances/wallGeometry.png"/></td>
-<td><ul><li><b>EllipsoidGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Wall.html">Code example</a></li></ul></td>
+<td><ul><li><b>WallGeometry</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/WallGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Wall.html">Code example</a></li></ul></td>
 <td><img src="geometryandappearances/wallOutlineGeometry.png"/></td>
-<td><ul><li><b>EllipsoidOutlineGeometry</b></li><li><a href="http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Wall%20Outline.html">Code example</a></li></ul></td>
+<td><ul><li><b>WallOutlineGeometry</b></li><li><a href="http://ceium.agi.com/Cesium/Build/Documentation/WallOutlineGeometry.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Wall%20Outline.html">Code example</a></li></ul></td>
 <td width="200">A wall perpendicular to the globe</td>
 </tr>
 
