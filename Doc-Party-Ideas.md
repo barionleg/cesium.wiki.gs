@@ -21,8 +21,9 @@
 
 ## Projects
 
+* Update [README.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/README.md) (mostly just screenshots) - **@pjcozzi**
 * Update the Cesium features on the [main web page](http://cesium.agi.com/) - **@pjcozzi**
 * Update the [Features page](http://cesium.agi.com/features.html) - **@pjcozzi**
 * Update the [FAQ](http://cesium.agi.com/FAQ.html) - **@pjcozzi**
-* Update [README.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/README.md) (mostly just screenshots) - **@pjcozzi**
+* Blog post about the doc party. ha - **@pjcozzi**
 * Make CHANGES.md link to reference doc, [#331](https://github.com/AnalyticalGraphicsInc/cesium/issues/331) - **@pjcozzi**
