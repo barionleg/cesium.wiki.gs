@@ -75,7 +75,7 @@ If you are interested in implementing any of these features, start a discussion 
    * [Website Improvements](Website-Improvement-Details)
    * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
 
-## Student Programs (In Progress)
+## Student Programs
 
-* [Google Summer of Code 2013 Ideas](Google-Summer-of-Code-Ideas)
+* [Google Summer of Code 2014](http://googleblog.blogspot.com/2013/10/50-million-lines-of-code-and-counting.html) - [2013 Ideas](Google-Summer-of-Code-Ideas)
 * [ESA Summer of Code in Space 2013 Ideas](ESA-Summer-of-Code-in-Space-Ideas)
