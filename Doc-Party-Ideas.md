@@ -21,6 +21,7 @@
 
 ## Projects
 
+* Geometry Pipeline tech blog post - **@bagnell**
 * Update [README.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/README.md) (mostly just screenshots) - **@pjcozzi**
 * Update the Cesium features on the [main web page](http://cesium.agi.com/) - **@pjcozzi**
 * Update the [Features page](http://cesium.agi.com/features.html) - **@pjcozzi**
