@@ -11,6 +11,7 @@
 *Important*
 
 * Lighting conditions: umbra and penumbra cones
+* Sun and moon labels. [#1218]
 * Mouse wheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)
 * CZML support for stored views
 * Draw two vectors with an arc for the angle and an annotation
