@@ -394,13 +394,37 @@ Geometry defines structure.  The other key property of a primitive, `appearance`
 [[geometryandappearances/highleveldesign.png]]
 
 Cesium has the following appearances.
+<table>
+<tr>
+<td><img src="geometryandappearances/material.png"/></td>
+<td><ul><li><b>MaterialAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Material.html">Code example</a></li></ul></td>
+<td width="400">An appearance that works with all geometry types and supports materials to describe shading</td>
+</tr>
 
-* [`MaterialAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html) - An appearance that works with all geometry types and supports materials to describe shading.
-* [`EllipsoidSurfaceAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html) - A version of `MaterialAppearance` that assumes geometry is parallel to the surface of the globe, like a polygon, and uses this assumption to save memory by procedurally computing many vertex attributes.
-* [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html) - Uses per-instance color to shade each instance.
-* [`DebugAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/DebugAppearance.html) - A debugging aid for visualizing geometry vertex attributes.
-* [`PolylineMaterialAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineMaterialAppearance.html) - Supports materials to shade a [`Polyline`](http://cesium.agi.com/Cesium/Build/Documentation/Polyline.html).
-* [`PolylineColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PolylineColorAppearance.html) - Uses either per-vertex or per-segment coloring to shade a [`Polyline`](http://cesium.agi.com/Cesium/Build/Documentation/Polyline.html).
+<tr>
+<td><img src="geometryandappearances/ellipsoidSurface.png"/></td>
+<td><ul><li><b>EllipsoidSurfaceAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Ellipsoid%20Surface.html">Code example</a></li></ul></td>
+<td width="400">A version of `MaterialAppearance` that assumes geometry is parallel to the surface of the globe, like a polygon, and uses this assumption to save memory by procedurally computing many vertex attributes</td>
+</tr>
+
+<tr>
+<td><img src="geometryandappearances/perinstance.png"/></td>
+<td><ul><li><b>PerInstanceColorAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Per%20Instance%20Color.html">Code example</a></li></ul></td>
+<td width="400">Uses per-instance color to shade each instance</td>
+</tr>
+
+<tr>
+<td><img src="geometryandappearances/polylinematerial.png"/></td>
+<td><ul><li><b>PolylineMaterialAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineMaterialAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline%20Material.html">Code example</a></li></ul></td>
+<td width="400">Supports materials to shade a Polyline.</td>
+</tr>
+
+<tr>
+<td><img src="geometryandappearances/polylinecolor.png"/></td>
+<td><ul><li><b>PolylineColorAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PolylineColorAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Polyline%20Material.html">Code example</a></li></ul></td>
+<td width="400">Uses either per-vertex or per-segment coloring to shade a Polyline.</td>
+</tr>
+</table>
 
 Appearances define the full GLSL vertex and fragment shaders that execute on the GPU when the primitive is drawn.  We rarely touch these unless we are writing a custom appearance.  Appearances also define the full [render state](http://cesium.agi.com/Cesium/Build/Documentation/RenderState.html), which controls the GPU's state when the primitive is drawn.  We can define the render state directly or use higher-level properties like [`closed`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#closed) and [`translucent`](http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html#translucent), which the appearance will convert into render state.  For example:
 ```javascript
