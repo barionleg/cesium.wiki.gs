@@ -350,10 +350,10 @@ scene.getPrimitives().add(new Cesium.Primitive({
 ## Updating Per-Instance Attributes
 
 It is also possible to update the per-instance attributes of the geometries after they are added to the primitive.  Per-instance attributes include:
-* Color : A [`ColorGeometryInstanceAttribute`](http://cesium.agi.com/Cesium/Build/Documentation/ColorGeometryInstanceAttribute.html) determining the color of the instance.  Instance must have a [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html).
-* Show : A `boolean` determining the visibility of the instance.  Available for any instance.
+* Color : A [`ColorGeometryInstanceAttribute`](http://cesium.agi.com/Cesium/Build/Documentation/ColorGeometryInstanceAttribute.html) determining the color of the instance.  The primitive must have a [`PerInstanceColorAppearance`](http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html).
+* Show : A boolean determining the visibility of the instance.  Available for any instance.
 
-This example demonstrates how to change the color of the geometry instance:
+This example shows how to change the color of the geometry instance:
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
@@ -379,13 +379,13 @@ var primitive = new Cesium.Primitive({
 });
 scene.getPrimitives().add(primitive);
 
-setInterval(function(){
+setInterval(function() {
     var attributes = primitive.getGeometryInstanceAttributes('circle');
     attributes.color = Cesium.ColorGeometryInstanceAttribute.toValue(Cesium.Color.fromRandom({alpha : 1.0}));
 },2000);
 ```
 
-The attributes of the geometry instance can be retrieved from the primitive using `primitive.getGeometryInstanceAttributes(instance_id);`.  The properties of the `attributes` can be changed directly.  In this case, we are changing `attributes.color` to be equal to a new randomly generated color every 2000 milliseconds.
+The attributes of the geometry instance can be retrieved from the primitive using `primitive.getGeometryInstanceAttributes`.  The properties of the `attributes` can be changed directly.  In this case, we are changing `attributes.color` to be equal to a new randomly generated color every 2000 milliseconds.
 
 ## Appearances
 
@@ -398,19 +398,19 @@ Cesium has the following appearances.
 <tr>
 <td><img src="geometryandappearances/material.png"/></td>
 <td><ul><li><b>MaterialAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/MaterialAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Material.html">Code example</a></li></ul></td>
-<td width="400">An appearance that works with all geometry types and supports materials to describe shading</td>
+<td width="400">An appearance that works with all geometry types and supports <a href="https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric">materials</a> to describe shading.</td>
 </tr>
 
 <tr>
 <td><img src="geometryandappearances/ellipsoidSurface.png"/></td>
 <td><ul><li><b>EllipsoidSurfaceAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/EllipsoidSurfaceAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Ellipsoid%20Surface.html">Code example</a></li></ul></td>
-<td width="400">A version of `MaterialAppearance` that assumes geometry is parallel to the surface of the globe, like a polygon, and uses this assumption to save memory by procedurally computing many vertex attributes</td>
+<td width="400">A version of `MaterialAppearance` that assumes geometry is parallel to the surface of the globe, like a polygon, and uses this assumption to save memory by procedurally computing many vertex attributes.</td>
 </tr>
 
 <tr>
 <td><img src="geometryandappearances/perinstance.png"/></td>
 <td><ul><li><b>PerInstanceColorAppearance</b></li><li><a href="http://cesium.agi.com/Cesium/Build/Documentation/PerInstanceColorAppearance.html">Reference documentation</a></li><li><a href="http://cesium.agi.com/Cesium/Apps/Sandcastle/index.html?src=Per%20Instance%20Color.html">Code example</a></li></ul></td>
-<td width="400">Uses per-instance color to shade each instance</td>
+<td width="400">Uses per-instance color to shade each instance.</td>
 </tr>
 
 <tr>
