@@ -542,6 +542,7 @@ define([
         './BoundingSphere',
         './GeometryAttribute',
         './GeometryAttributes',
+        './GeometryPipeline',
         './VertexFormat',
         './Geometry'
     ], function(
@@ -551,6 +552,7 @@ define([
         BoundingSphere,
         GeometryAttribute,
         GeometryAttributes,
+        GeometryPipeline,
         VertexFormat,
         Geometry) {
     "use strict";
@@ -720,29 +722,29 @@ In our case, we need to compute the normals for each vertex to determine the sha
 
 [[geometryandappearances/normaltovertex.png]]
 
-Normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In the Sandcastle example, replace the instance and primitive declarations with the following:
+Normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In `TetrahedronGeometry,js`, replace the last few lines of the constructor (after we set the values of the indices) with the following:
 
 ```javascript
-var tetrahedron = Cesium.GeometryPipeline.computeNormal(new Cesium.TetrahedronGeometry());
-var instance = new Cesium.GeometryInstance({
-    geometry : tetrahedron,
-    modelMatrix : modelMatrix,
-    attributes : {
-        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
-    }
-});
+        var boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
+        
+        var geometry = GeometryPipeline.computeNormal(new Geometry({
+            attributes: attributes,
+            indices: indices,
+            primitiveType: PrimitiveType.TRIANGLES,
+            boundingSphere: boundingSphere
+        }));
 
-scene.getPrimitives().add(new Cesium.Primitive({
-    geometryInstances : instance,
-    appearance : new Cesium.PerInstanceColorAppearance({
-        translucent : false
-    })
-}));
+        this.attributes = geometry.attributes;
+        this.indices = geometry.indices;
+        this.primitiveType = geometry.primitiveType;
+        this.boundingSphere = geometry.boundingSphere;
 ```
+
+Build Cesium then reload the sandcastle example to see the results:
 
 [[geometryandappearances/singleNormals.png]]
 
-This is not what we expect shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the sandcastle example:
+This is not what we would expect shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the Sandcastle example:
 
 ```javascript
 scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
@@ -754,7 +756,7 @@ scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
 
 [[geometryandappearances/singleNormalsVisualized.png]]
 
-As you can see, the normal vectors aren't very "normal" to any of the triangles.  Because the vertices are shared by more than one triangle, the normal vectors are the average of the normal to each triangle the vertex composes.  To get better shading, we must duplicate each vertex so that the triangles no longer share them.  
+As you can see, the normal vectors aren't very "normal" to any of the triangles of the tetrahedron.  Using single vertices works best when angle between adjacent triangles is close to 180 degrees (like the triangles in a sphere), and thus the normals for the adjacent triangles are pointing in the same general direction.  To get better shading, we must duplicate each vertex so that adjacent triangles no longer share vertices.  
 
 [[geometryandappearances/tetrahedronSides.png]] [[geometryandappearances/tetrahedronFacesDuplicated.png]]
 
@@ -828,8 +830,8 @@ indices[9] = 9;
 indices[10] = 10;
 indices[11] = 11;
 ```
-
-Now build Cesium, and reload the sandcastle example.
+We can still use `GeometryPipeline.computeNormal` to find the normal vectors.
+To see the results, build Cesium and reload the sandcastle example.
 
 [[geometryandappearances/duplicateNormalsVisualized.png]]
 
