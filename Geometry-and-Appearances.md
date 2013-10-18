@@ -712,7 +712,15 @@ var instance = new Cesium.GeometryInstance({
 
 ### Adding Normals for Shading
 
-To use an appearance with shading, the geometry must have a `normal` attribute.  Normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In the Sandcastle example, replace the instance and primitive declarations with the following:
+To use an appearance with shading, the geometry must have a `normal` attribute.  The normal to a triangle is a unit vector that is perpendicular to the triangle.
+ 
+[[geometryandappearances/normalToPlane.png]]
+
+In our case, we need to compute the normals for each vertex to determine the shading of the geometry.  The normal to a vertex is a vector in the direction of the sum of the normals for each triangle the vertex composes and with a magnitude of 1.  Below shows how we can add the normals of 
+
+[[geometryandappearances/normaltovertex.png]]
+
+Normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In the Sandcastle example, replace the instance and primitive declarations with the following:
 
 ```javascript
 var tetrahedron = Cesium.GeometryPipeline.computeNormal(new Cesium.TetrahedronGeometry());
