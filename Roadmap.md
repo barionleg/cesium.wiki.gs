@@ -1,19 +1,19 @@
 ## In progress
-* DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
+* [3D models](Models-Details)
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
-* Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
+* DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
 * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
 * [Space features](Space-features)
-* [3D models](Models-Details)
+* Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
 
 ## Ongoing
 
 We're always looking to:
-* Write [demos](http://cesium.agi.com/demos.html) that showcase Cesium, especially demos that combine Cesium with interesting datasets or other web APIs
 * Write [tutorials](Tutorials-Details) and improve [reference documentation](http://cesium.agi.com/refdoc.html)
 * Improve quality by fixing known issues.  If you want to contribute, a good place to start is the [beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=beginner&page=1&sort=updated&state=open)
+* Write [demos](http://cesium.agi.com/demos.html) that showcase Cesium, especially demos that combine Cesium with interesting datasets or other web APIs
 
 ## To come
 
