@@ -22,18 +22,6 @@ Design and implementation ideas for models.
    * Time-varying CZML can manipulate model animation (articulations), materiel properties, etc.
    * CZML includes a subset of model JSON, e.g., geometry (or all of it)?
 
-### Cesium-Specific Features
-
-These are engine/app level features.
-
-* Attach points.  _General feature: need access to node's transform (to root) by name.  The transform can change over time due to animation, user interaction, etc._
-   * Attach vapor trails to the back of a launch vehicle.
-   * Attach a sensor to the front of a UAV.
-* Pointing.  _Need Cesium-level semantics for sun, other objects, etc. to control direction and up vectors_.
-   * _General_: Point a quad toward the camera, e.g., foliage, explosion, Rudolph's nose, etc.  Need to animate when camera moves, not just when time changes.
-   * Point satellite solar panels to the sun.
-   * Point sensor on aircraft to a ground station.
-
 ## WebGL Transmission Format
 
 There are already converters to convert many different formats to COLLADA.
