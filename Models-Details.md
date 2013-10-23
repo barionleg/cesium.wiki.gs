@@ -14,8 +14,6 @@ Design and implementation ideas for models.
       * Do not need physics now if we have key-frame animation.
    * Skinning
    * Is LOD part of the model or part of the REST API requesting it?
-* Work in Columbus view.  The model scale will need to be adjusted - and will be relative to the projection
-* Work in 2D.  Render model to texture from top-down view; lay over top the 2D map as a billboard.  The model will appear lit and changes in orientation, e.g., banked aircraft turns, will be seen.  Awesome.
 * COLLADA to WebGLTF conversion (see below)
    * The converter should be a library for developers; a command-line tool for scripting; and a hosted web service for the rest of the world.
    * From the end-user's perspective, conversion to WebGLTF should be transparent, e.g., if they drag and drop a COLLADA model, it is sent to the service, and WebGLTF is sent back.
@@ -32,12 +30,9 @@ These are engine/app level features.
    * Attach vapor trails to the back of a launch vehicle.
    * Attach a sensor to the front of a UAV.
 * Pointing.  _Need Cesium-level semantics for sun, other objects, etc. to control direction and up vectors_.
-   * _General_: Point a quad toward the camera, e.g., foliage, explosion, Rudolph's nose, etc.
+   * _General_: Point a quad toward the camera, e.g., foliage, explosion, Rudolph's nose, etc.  Need to animate when camera moves, not just when time changes.
    * Point satellite solar panels to the sun.
    * Point sensor on aircraft to a ground station.
-
-
-xxxx
 
 ## WebGL Transmission Format
 
