@@ -1,6 +1,7 @@
 *Most Important*
 
 * Narrow six-arc-second field-of-view sensor.  Display condition to draw a polyline?
+* Bent ellipsoids.
 * Fuzzy ellipsoid lines.  [#899](https://github.com/AnalyticalGraphicsInc/cesium/issues/899)
 
 *Important*
