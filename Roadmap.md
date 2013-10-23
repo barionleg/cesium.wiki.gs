@@ -1,5 +1,5 @@
 ## In progress
-* [3D models](Models-Details)
+* 3D Models - [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
 * DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
 * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
