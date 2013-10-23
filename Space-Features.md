@@ -1,10 +1,6 @@
 *Most Important*
 
-* Sensor improvements.  Test cases:
-   * Narrow six-arc-second field-of-view.  Display condition to draw a polyline?
-   * Narrow sensor like a fan
-   * Wide sensor with a cap
-   * Custom sensors with 100s to a 1,000 points
+* Narrow six-arc-second field-of-view sensor.  Display condition to draw a polyline?
 * Fuzzy ellipsoid lines.  [#899](https://github.com/AnalyticalGraphicsInc/cesium/issues/899)
 
 *Important*
