@@ -14,17 +14,6 @@ Design and implementation ideas for models.
       * Do not need physics now if we have key-frame animation.
    * Skinning
    * Is LOD part of the model or part of the REST API requesting it?
-* COLLADA to WebGLTF conversion (see below)
-   * The converter should be a library for developers; a command-line tool for scripting; and a hosted web service for the rest of the world.
-   * From the end-user's perspective, conversion to WebGLTF should be transparent, e.g., if they drag and drop a COLLADA model, it is sent to the service, and WebGLTF is sent back.
-* Interaction with CZML
-   * CZML references external models.
-   * Time-varying CZML can manipulate model animation (articulations), materiel properties, etc.
-   * CZML includes a subset of model JSON, e.g., geometry (or all of it)?
-
-## WebGL Transmission Format
-
-There are already converters to convert many different formats to COLLADA.
 
 ## Server-Side Pipeline
 
@@ -83,8 +72,6 @@ Will we be able to render models directly from the provider's APIs or do we need
 
 ## Tools
 
-* Model viewer/editor - load models into a Cesium scene, tweak their materials, animations, etc.
-   * Server with file-watcher that converters saved COLLADA to WebGL TF and uses web sockets to push to viewer.
 * Useful to integrate with existing WebGL modeling tools?  Do any of these have APIs for accessing models?
    * [3DTin](http://www.3dtin.com/)
    * [Bevelity](http://www.bevelity.com/)
@@ -96,7 +83,3 @@ Will we be able to render models directly from the provider's APIs or do we need
 ### Client
 
 * Add support for our material system.
-
-### Server
-
-* Models should probably be a CZML extension since if they were core, [WebGL TF](https://github.com/KhronosGroup/collada2json/wiki/WebGLTF) would require that CZML clients support WebGL, or at least support GLSL for the shaders.
