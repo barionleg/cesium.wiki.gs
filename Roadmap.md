@@ -20,60 +20,60 @@ We're always looking to:
 If you are interested in implementing any of these features, start a discussion on the [forum](http://cesium.agi.com/forum.html).
 
 * General
-   * [Mobile improvements](Mobile-Details)
-   * Support standard web servers: WMTS, WFS, WCS, ...
-   * [Sandcastle improvements](Sandcastle-Details)
-   * Military symbol sets such as MS2525 and NTDS.  SVG files?
-   * Support for multiple central bodies, i.e., Sun, Moon, etc.
+  * [Mobile improvements](Mobile-Details)
+  * Support standard web servers: WMTS, WFS, WCS, ...
+  * [Sandcastle improvements](Sandcastle-Details)
+  * Military symbol sets such as MS2525 and NTDS.  SVG files?
+  * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
-   * [Data-Driven Renderer improvements](Data-Driven-Renderer-Details)
-   * [Screen Space Rendering](Screen-Space-Rendering-Details)
-   * Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
-   * [Particle system](Particle-System-Details)
-   * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
-   * Vectors
-   * Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-   * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
-   * Shader pipeline improvements - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
-   * Geometry and appearances improvements - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
-   * [Stars improvements](Stars-Details)
-   * [Ocean improvements](Ocean-Details)
-   * Render buildings
-   * Video on terrain
-   * Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
-   * Volumetric clouds
-   * [Visual quality and performance ideas](Visual-Quality-and-Performance-Details)
-   * John Madden-style collaboration among multiple clients
-   * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
-   * Lat/lon grid
-   * [Lens Flare](http://www.john-chapman.net/content.php?id=18)
-   * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
-   * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
-   * Tree generation - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural trees.
+  * [Data-Driven Renderer improvements](Data-Driven-Renderer-Details)
+  * [Screen Space Rendering](Screen-Space-Rendering-Details)
+  * Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
+  * [Particle system](Particle-System-Details)
+  * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
+  * Vectors
+  * Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
+  * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
+  * Shader pipeline improvements - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
+  * Geometry and appearances improvements - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
+  * [Stars improvements](Stars-Details)
+  * [Ocean improvements](Ocean-Details)
+  * Render buildings
+  * Video on terrain
+  * Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
+  * Volumetric clouds
+  * [Visual quality and performance ideas](Visual-Quality-and-Performance-Details)
+  * John Madden-style collaboration among multiple clients
+  * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
+  * Lat/lon grid
+  * [Lens Flare](http://www.john-chapman.net/content.php?id=18)
+  * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
+  * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
+  * Tree generation - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural trees.
 * CZML
-   * [CZML External links](External-links)
-   * GeoServer CZML writer
-   * [CZML Path/History visualization](CZML-History-visualization-details)
-   * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
-   * Buffer availability and "buffering" behavior
-   * Layers
-   * Improved materials support
-   * Custom axes & reference frames
-   * Imagery and terrain sources
-   * Camera/Tours
-   * Arbitrary link support (# and $ in CZML spec)
-   * CZML defined user interfaces, possibly with markdown
-   * Model support, once Cesium support exists
-   * Human readable messages/events raised in CZML
+  * [CZML External links](External-links)
+  * GeoServer CZML writer
+  * [CZML Path/History visualization](CZML-History-visualization-details)
+  * Z-ordering - [czml-writer issue](https://github.com/AnalyticalGraphicsInc/czml-writer/issues/20)
+  * Buffer availability and "buffering" behavior
+  * Layers
+  * Improved materials support
+  * Custom axes & reference frames
+  * Imagery and terrain sources
+  * Camera/Tours
+  * Arbitrary link support (# and $ in CZML spec)
+  * CZML defined user interfaces, possibly with markdown
+  * Model support, once Cesium support exists
+  * Human readable messages/events raised in CZML
 * Widgets & Apps
-   * [OWF](https://www.owfgoss.org/) widget
-   * Embeddable Cesium Viewer
-   * Improved TimeLine widget
-   * [Standard Cesium toolbar](Cesium-standard-actions)
-   * CZML Table of contents/Document Manager widget
+  * [OWF](https://www.owfgoss.org/) widget
+  * Embeddable Cesium Viewer
+  * Improved TimeLine widget
+  * [Standard Cesium toolbar](Cesium-standard-actions)
+  * CZML Table of contents/Document Manager widget
 * Infrastructure
-   * [Website Improvements](Website-Improvement-Details)
-   * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
+  * [Website Improvements](Website-Improvement-Details)
+  * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
 
 ## Student Programs
 
