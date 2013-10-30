@@ -10,6 +10,36 @@ The ID of the object described by this packet.  IDs do not need to be GUIDs, but
 
 **Interpolatable**: no
 
+## Name
+
+The name of the object.  It does not have to be unique and is intended for user consumption.
+
+**Property Name**: `name`
+
+**Interpolatable**: no
+
+## Parent
+
+The ID of the parent object or folder.
+
+**Property Name**: `parent`
+
+**Interpolatable**: no
+
+## Description
+
+An HTML description of the object.
+
+**Property Name**: `description`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `string` | Interval | string | The string value. |
+
 ## Availability
 
 When data for an object is available. If data for an object is known to be available at the current animation time, but the client does not yet have that data (presumably because it will arrive in a later packet), the client will pause with a message like "Buffering..." while it waits to receive the data. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may report availability for all time, but then later the propagator throws an exception and the availability needs to be adjusted. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is available at a time, the client expects the object to have at least one property, and it expects all properties that it needs to be defined at that time. If the object doesn't have any properties, or a needed property is defined but not at the animation time, the client will pause animation and wait for more data.
@@ -169,6 +199,40 @@ The scale of the billboard.  The scale is multiplied with the pixel size of the 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Billboard.Rotation
+
+The rotation of the billboard offset from the alignedAxes.
+
+**Property Name**: `rotation`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### Billboard.AlignedAxis
+
+The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+
+**Property Name**: `alignedAxis`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian` | Interval | array | The axis specified as a unit Cartesian `[X, Y, Z]` in world coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
@@ -1098,6 +1162,23 @@ The color of the intersection of the cone with the Earth.
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
+### Cone.IntersectionWidth
+
+The width of the intersection in pixels.
+
+**Property Name**: `intersectionWidth`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
 ### Cone.CapMaterial
 
 The material to use to cap the cone at its radial limit.
@@ -1869,6 +1950,23 @@ The color of the intersection of the pyramid with the Earth.
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
+### Pyramid.IntersectionWidth
+
+The width of the intersection in pixels.
+
+**Property Name**: `intersectionWidth`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
 ### Pyramid.Material
 
 The material to display on the surface of the pyramid.
@@ -2325,11 +2423,11 @@ The length of the ellipse's semi-minor axis in meters.
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.Bearing
+### Ellipse.Rotation
 
 The angle from north (clockwise) in radians.
 
-**Property Name**: `bearing`
+**Property Name**: `rotation`
 
 **Interpolatable**: yes
 
