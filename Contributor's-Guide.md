@@ -101,12 +101,6 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 
 * Window - Show View - Console.
 
-* Configure the problems tab.  The Eclipse JavaScript validator has some bugs that report incorrect warnings.  Click the down arrow on the right-hand side of the Problems tab, click Configure Contents.  Uncheck Show all items, Click New, then Rename the new item to Cesium.  Change the Text filter to "doesn't contain" "Type mismatch: ".  OK.
-
-![Opening the Configure Contents dialog](configureContents.png)
-
-![Creating a new filter](configureContents2.png)
-
 Also consider the [Optional Eclipse Configuration](#optionaleclipseconfiguration) options below.
 
 <a name="nextsteps">
