@@ -6,6 +6,7 @@
    * Replace `DOC_TBA` with actual doc.  Make sure the API isn't subject to significant change first.
 * General and tech [blog posts](http://cesium.agi.com/blog.html).
 * [Cesium website](http://cesium.agi.com/index.html) improvements.  Ideas:
+   * New CZML for the main demo showing different Cesium features.
    * Better styling for the [Presentations](http://cesium.agi.com/publications.html) and [About](http://cesium.agi.com/contributors.html) pages.
    * Update Contributors page, e.g., add GSoC and perhaps separate active and less active contributor sections.
 * Improve the wiki
@@ -18,6 +19,7 @@
 * Better organize Sandcastle examples, e.g., demos vs. individual examples, like [#1151](https://github.com/AnalyticalGraphicsInc/cesium/pull/1151).
 * Cleanup all the different image directories used by the website.
 * The doc-labeled [issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=doc&page=1&sort=updated&state=open).
+* Update [WebGL Report](http://webglreport.com/) for new WebGL features.
 
 ## Projects
 
@@ -26,5 +28,5 @@
 * Update the Cesium features on the [main web page](http://cesium.agi.com/) - **@pjcozzi**
 * Update the [Features page](http://cesium.agi.com/features.html) - **@pjcozzi**
 * Update the [FAQ](http://cesium.agi.com/FAQ.html) - **@pjcozzi**
-* Blog post about the doc party. ha - **@pjcozzi**
+* Blog post about the doc sprint. ha - **@pjcozzi**
 * Make CHANGES.md link to reference doc, [#331](https://github.com/AnalyticalGraphicsInc/cesium/issues/331) - **@pjcozzi**
