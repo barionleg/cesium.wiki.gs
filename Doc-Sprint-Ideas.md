@@ -2,6 +2,7 @@
 
 * Write new [tutorials](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Tutorials-Details).
    * Using Map Tiler to create map tiles for use with Cesium.
+   * Finish [Part II](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Geometry-and-Appearances) of the geometries tutorial.
 * Improve the [reference doc](http://cesium.agi.com/refdoc.html).
    * Add useful `@example` tags. [#651](https://github.com/AnalyticalGraphicsInc/cesium/issues/651)
    * Replace `DOC_TBA` with actual doc.  Make sure the API isn't subject to significant change first.
