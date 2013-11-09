@@ -2,8 +2,9 @@
 * 3D Models - [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
 * Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
 * DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
+* Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
+* Cesium Inspector - [#1025](https://github.com/AnalyticalGraphicsInc/cesium/issues/1025)
 * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
-* [Space features](Space-features)
 * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
 
 Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
@@ -26,13 +27,13 @@ If you are interested in implementing any of these features, start a discussion 
   * Military symbol sets such as MS2525 and NTDS.  SVG files?
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
+  * [Space features](Space-features)
+  * Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
   * [Data-Driven Renderer improvements](Data-Driven-Renderer-Details)
   * [Screen Space Rendering](Screen-Space-Rendering-Details)
-  * Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
   * [Particle system](Particle-System-Details)
   * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
   * Vectors
-  * Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
   * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
   * Shader pipeline improvements - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
   * Geometry and appearances improvements - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
