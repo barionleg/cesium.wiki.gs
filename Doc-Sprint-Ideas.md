@@ -3,13 +3,13 @@
 * Write new [tutorials](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Tutorials-Details).
    * Using Map Tiler to create map tiles for use with Cesium.
    * Finish [Part II](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Geometry-and-Appearances) of the geometries tutorial.
-* Improve the [reference doc](http://cesium.agi.com/refdoc.html).
+* Improve the [reference doc](http://cesiumjs.org/refdoc.html).
    * Add useful `@example` tags. [#651](https://github.com/AnalyticalGraphicsInc/cesium/issues/651)
    * Replace `DOC_TBA` with actual doc.  Make sure the API isn't subject to significant change first.
-* General and tech [blog posts](http://cesium.agi.com/blog.html).
-* [Cesium website](http://cesium.agi.com/index.html) improvements.  Ideas:
+* General and tech [blog posts](http://cesiumjs.org/blog.html).
+* [Cesium website](http://cesiumjs.org/index.html) improvements.  Ideas:
    * New CZML for the main demo showing different Cesium features.
-   * Better styling for the [Presentations](http://cesium.agi.com/publications.html) and [About](http://cesium.agi.com/contributors.html) pages.
+   * Better styling for the [Presentations](http://cesiumjs.org/publications.html) and [About](http://cesiumjs.org/contributors.html) pages.
    * Update Contributors page, e.g., add GSoC and perhaps separate active and less active contributor sections.
 * Improve the wiki
    * Update the [Architecture Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture).  [#807](https://github.com/AnalyticalGraphicsInc/cesium/issues/807).  See **@pjcozzi** for ideas.
@@ -28,7 +28,7 @@
 
 * Geometry Pipeline tech blog post - **@bagnell**
 * Update [README.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/README.md) (mostly just screenshots) - **@pjcozzi**
-* Update the Cesium features on the [main web page](http://cesium.agi.com/) - **@pjcozzi**
-* Update the [Features page](http://cesium.agi.com/features.html) - **@pjcozzi**
-* Update the [FAQ](http://cesium.agi.com/FAQ.html) - **@pjcozzi**
+* Update the Cesium features on the [main web page](http://cesiumjs.org/) - **@pjcozzi**
+* Update the [Features page](http://cesiumjs.org/features.html) - **@pjcozzi**
+* Update the [FAQ](http://cesiumjs.org/FAQ.html) - **@pjcozzi**
 * Blog post about the doc sprint. ha - **@pjcozzi**

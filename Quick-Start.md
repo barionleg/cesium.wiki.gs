@@ -1,1 +1,1 @@
-This page moved to the main Cesium website: http://cesium.agi.com/quickstart.html
+This page moved to the main Cesium website: http://cesiumjs.org/quickstart.html

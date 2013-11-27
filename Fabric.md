@@ -297,7 +297,7 @@ czm_material czm_getMaterial(czm_materialInput materialInput)
     return m;
 }
 ```
-Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `czm_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `czm_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesium.agi.com/Documentation/?classFilter=czm_).
+Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `czm_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `czm_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesiumjs.org/Documentation/?classFilter=czm_).
 
 <a id="Input"></a>
 ### Input
@@ -323,7 +323,7 @@ A simple material that visualizes the `st` texture coordinates is:
 ```
 Similarly, we can visualize the normal in eye coordinates by setting `diffuse` to `materialInput.normalEC`.
 
-In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesium.agi.com/Documentation/?classFilter=czm_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
+In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesiumjs.org/Documentation/?classFilter=czm_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
 ```javascript
 {
   type : 'OurColor',

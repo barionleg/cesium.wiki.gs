@@ -14,7 +14,7 @@ Each layer corresponds to one directory in the [source tree](https://github.com/
 
 <img src="architectureFigures/invertedPyramid.png" width="50%" />
 
-The following sections provide an overview of each layer.  For details on specific types, see the [reference documentation](http://cesium.agi.com/Documentation/).  For editable example code, see the [Sandbox](http://cesium.agi.com/Sandbox/Examples/Sandbox/).
+The following sections provide an overview of each layer.  For details on specific types, see the [reference documentation](http://cesiumjs.org/Documentation/).  For editable example code, see the [Sandbox](http://cesiumjs.org/Sandbox/Examples/Sandbox/).
 
 <div id="core">
 ## Core
@@ -62,7 +62,7 @@ v_normalEC = czm_normal * normal;
 czm_ray ray = czm_ray(vec3(0.0), normalize(v_positionEC));
 czm_raySegment interval = czm_rayEllipsoidIntersectionInterval(ray, ellipsoid);
 ```
-See the GLSL section in the [reference documentation](http://cesium.agi.com/Documentation/).
+See the GLSL section in the [reference documentation](http://cesiumjs.org/Documentation/).
 
 Given vertex and fragment shader source strings, shader programs can be created in a single line of code:
 ```javascript
@@ -192,7 +192,7 @@ var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynam
 //Create a Clock object to drive time.
 var clock = new Clock();
 //Download and parse a CZML file asynchronously
-var czmlUrl = 'http://cesium.agi.com/someFile.czml';
+var czmlUrl = 'http://cesiumjs.org/someFile.czml';
 getJson(czmlUrl).then(function(czml) {
     //Process the CZML, which populates the collection with DynamicObjects
     processCzml(czml, dynamicObjectCollection, czmlUrl);

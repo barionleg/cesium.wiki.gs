@@ -1,6 +1,6 @@
 Particles systems are used for smoke, fire, explosion, sparks, clouds, dust, snow, rain, flowing water, etc.  Initially, we are are interested in smoke trails.
 
-Initially simulate on the CPU and render with the [BillboardCollection](http://cesium.agi.com/Cesium/Build/Documentation/BillboardCollection.html).
+Initially simulate on the CPU and render with the [BillboardCollection](http://cesiumjs.org/Cesium/Build/Documentation/BillboardCollection.html).
 
 Abstractions
 * `ParticleSystem`

@@ -17,4 +17,4 @@ We define the CZML standard and its reference implementations in four parts:
 * [[CZML in Cesium]] -  the architecture for parsing and visualizing CZML in Cesium.
 * [czml-writer Architecture](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki) - the architecture for the czml-writer project.
 
-Live demos are available on the [Cesium Home page](http://cesium.agi.com/).
+Live demos are available on the [Cesium Home page](http://cesiumjs.org/).

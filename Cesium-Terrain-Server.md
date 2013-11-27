@@ -1,7 +1,7 @@
 # Cesium Terrain Server
 
 This page describes the format and layout of the terrain data hosted at:
-http://cesium.agi.com/smallterrain/
+http://cesiumjs.org/smallterrain/
 
 > Note: the above URL will return "403 - Forbidden" because browsing is not supported.
 
@@ -11,19 +11,19 @@ The server currently hosts a mosaic of [GTOPO30](http://eros.usgs.gov/#/Find_Dat
 
 The data is organized into a simple multi-resolution pyramid of heightmaps according to the [Tile Map Service (TMS)](http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification) layout and the global-geodetic profile.  All tiles have the extension `.terrain`.  So, the two root tiles are found at these URLs:
 
-* (-180, -90) - (0, 90) - [http://cesium.agi.com/smallterrain/0/0/0.terrain](http://cesium.agi.com/smallterrain/0/0/0.terrain)
-* (0, -90) - (180, 90) - [http://cesium.agi.com/smallterrain/0/1/0.terrain](http://cesium.agi.com/smallterrain/0/1/0.terrain)
+* (-180, -90) - (0, 90) - [http://cesiumjs.org/smallterrain/0/0/0.terrain](http://cesiumjs.org/smallterrain/0/0/0.terrain)
+* (0, -90) - (180, 90) - [http://cesiumjs.org/smallterrain/0/1/0.terrain](http://cesiumjs.org/smallterrain/0/1/0.terrain)
 
 The 8 tiles at the next level are found at these URLs:
 
-* (-180, -90) - (-90, 0) - [http://cesium.agi.com/smallterrain/1/0/0.terrain](http://cesium.agi.com/smallterrain/1/0/0.terrain)
-* (-90, -90) - (0, 0) - [http://cesium.agi.com/smallterrain/1/1/0.terrain](http://cesium.agi.com/smallterrain/1/1/0.terrain)
-* (0, -90) - (90, 0) - [http://cesium.agi.com/smallterrain/1/2/0.terrain](http://cesium.agi.com/smallterrain/1/2/0.terrain)
-* (90, -90) - (180, 0) - [http://cesium.agi.com/smallterrain/1/3/0.terrain](http://cesium.agi.com/smallterrain/1/3/0.terrain)
-* (-180, 0) - (-90, 90) - [http://cesium.agi.com/smallterrain/1/0/1.terrain](http://cesium.agi.com/smallterrain/1/0/0.terrain)
-* (-90, 0) - (0, 90) - [http://cesium.agi.com/smallterrain/1/1/1.terrain](http://cesium.agi.com/smallterrain/1/1/0.terrain)
-* (0, 0) - (90, 90) - [http://cesium.agi.com/smallterrain/1/2/1.terrain](http://cesium.agi.com/smallterrain/1/2/0.terrain)
-* (90, 0) - (180, 90) - [http://cesium.agi.com/smallterrain/1/3/1.terrain](http://cesium.agi.com/smallterrain/1/3/0.terrain)
+* (-180, -90) - (-90, 0) - [http://cesiumjs.org/smallterrain/1/0/0.terrain](http://cesiumjs.org/smallterrain/1/0/0.terrain)
+* (-90, -90) - (0, 0) - [http://cesiumjs.org/smallterrain/1/1/0.terrain](http://cesiumjs.org/smallterrain/1/1/0.terrain)
+* (0, -90) - (90, 0) - [http://cesiumjs.org/smallterrain/1/2/0.terrain](http://cesiumjs.org/smallterrain/1/2/0.terrain)
+* (90, -90) - (180, 0) - [http://cesiumjs.org/smallterrain/1/3/0.terrain](http://cesiumjs.org/smallterrain/1/3/0.terrain)
+* (-180, 0) - (-90, 90) - [http://cesiumjs.org/smallterrain/1/0/1.terrain](http://cesiumjs.org/smallterrain/1/0/0.terrain)
+* (-90, 0) - (0, 90) - [http://cesiumjs.org/smallterrain/1/1/1.terrain](http://cesiumjs.org/smallterrain/1/1/0.terrain)
+* (0, 0) - (90, 90) - [http://cesiumjs.org/smallterrain/1/2/1.terrain](http://cesiumjs.org/smallterrain/1/2/0.terrain)
+* (90, 0) - (180, 90) - [http://cesiumjs.org/smallterrain/1/3/1.terrain](http://cesiumjs.org/smallterrain/1/3/0.terrain)
 
 The tiles are 65x65 vertices and overlap their neighbors at their edges.  In other words, at the root, the eastern-most column of heights in the western tile is identical to the western-most column of heights in the eastern tile.
 

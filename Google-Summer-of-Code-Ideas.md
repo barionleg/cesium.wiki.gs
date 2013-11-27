@@ -5,7 +5,7 @@
 <img src="gsoc/2013/cesium2.png">
 </p>
 
-[Cesium](http://cesium.agi.com/) is an open-source JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.  Our code has shipped to [10's of millions of people in the same day](http://cesium.agi.com/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  Our developers are experts in their fields; they write books, create open standards, and present at international conferences.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
+[Cesium](http://cesiumjs.org/) is an open-source JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.  Our code has shipped to [10's of millions of people in the same day](http://cesiumjs.org/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  Our developers are experts in their fields; they write books, create open standards, and present at international conferences.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
 
 ## Student Proposals
 
@@ -15,7 +15,7 @@
 
 The period for submitting student proposals for 2013 has now closed.  We had a great number of proposals submitted, thanks to everyone who participated!
 
-Congratulations to [our two GSoC students](http://cesium.agi.com/2013/05/28/Welcome-Google-Summer-of-Code-Students/)!
+Congratulations to [our two GSoC students](http://cesiumjs.org/2013/05/28/Welcome-Google-Summer-of-Code-Students/)!
 
 See this year's [GSoC schedule](http://google-melange.appspot.com/gsoc/events/google/gsoc2013) for a roadmap of GSoC milestones this summer.
 
@@ -167,7 +167,7 @@ In this project, we will add support for [Web Map Tile Service (WMTS)](http://ww
 
 References
 * [Web Map Tile Service (WMTS)](http://www.opengeospatial.org/standards/wmts)
-* [Cesium Imagery Layers Tutorial](http://cesium.agi.com/2013/01/04/Cesium-Imagery-Layers-Tutorial/)
+* [Cesium Imagery Layers Tutorial](http://cesiumjs.org/2013/01/04/Cesium-Imagery-Layers-Tutorial/)
 
 **Skills:** JavaScript, REST APIs, git, open standards, geospatial
 
@@ -243,7 +243,7 @@ References
 ~~The nav widget would likely include some sort of a compass, which might or might not look anything like the above.~~
 
 ~~References~~
-~~* [Cesium Camera Tutorial](http://cesium.agi.com/2013/02/13/Cesium-Camera-Tutorial/)~~
+~~* [Cesium Camera Tutorial](http://cesiumjs.org/2013/02/13/Cesium-Camera-Tutorial/)~~
 
 ~~**Skills:** Eye for aesthetic UI design, HTML5, CSS3, SVG, JavaScript, git~~
 

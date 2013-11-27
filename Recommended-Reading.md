@@ -24,7 +24,7 @@ These resources present topics broadly useful to Cesium development.  We think a
 
 ### Open Source
 
-* [Cesium Open Source Development Practices](http://cesium.agi.com/2012/11/14/Open-Source-Development-Practices/) - concise introduction to our open-source development style.
+* [Cesium Open Source Development Practices](http://cesiumjs.org/2012/11/14/Open-Source-Development-Practices/) - concise introduction to our open-source development style.
 
 ## Additional Reading
 

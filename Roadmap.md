@@ -12,13 +12,13 @@ Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev
 ## Ongoing
 
 We're always looking to:
-* Write [tutorials](Tutorials-Details) and improve [reference documentation](http://cesium.agi.com/refdoc.html)
+* Write [tutorials](Tutorials-Details) and improve [reference documentation](http://cesiumjs.org/refdoc.html)
 * Improve quality by fixing known issues.  If you want to contribute, a good place to start is the [beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=beginner&page=1&sort=updated&state=open)
-* Write [demos](http://cesium.agi.com/demos.html) that showcase Cesium, especially demos that combine Cesium with interesting datasets or other web APIs
+* Write [demos](http://cesiumjs.org/demos.html) that showcase Cesium, especially demos that combine Cesium with interesting datasets or other web APIs
 
 ## To come
 
-If you are interested in implementing any of these features, start a discussion on the [forum](http://cesium.agi.com/forum.html).
+If you are interested in implementing any of these features, start a discussion on the [forum](http://cesiumjs.org/forum.html).
 
 * General
   * [Mobile improvements](Mobile-Details)

@@ -1,1 +1,1 @@
-Presentations and Publications are located at http://cesium.agi.com/publications.html.
+Presentations and Publications are located at http://cesiumjs.org/publications.html.

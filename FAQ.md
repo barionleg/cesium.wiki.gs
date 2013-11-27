@@ -1,1 +1,1 @@
-The FAQ is now located at http://cesium.agi.com/FAQ.html.
+The FAQ is now located at http://cesiumjs.org/FAQ.html.

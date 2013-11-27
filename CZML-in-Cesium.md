@@ -31,7 +31,7 @@ Starting out, we have the simple, yet complete CZML document show below.  It des
         ]
       },
       "horizontalOrigin":"CENTER",
-      "image":"http://cesium.agi.com/images/Cesium_Logo.png",
+      "image":"http://cesiumjs.org/images/Cesium_Logo.png",
       "scale":1.0,
       "show":[
         {
@@ -57,7 +57,7 @@ var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynam
 //Create a Clock object to drive time.
 var clock = new Clock();
 //Download and parse a CZML file asynchronously
-var czmlUrl = 'http://cesium.agi.com/someFile.czml';
+var czmlUrl = 'http://cesiumjs.org/someFile.czml';
 getJson(czmlUrl).then(function(czml) {
     //Process the CZML, which populates the collection with DynamicObjects
     processCzml(czml, dynamicObjectCollection, czmlUrl);
@@ -82,7 +82,7 @@ First, we create the scene and parse the CZML document.
 ```javascript
 var scene = new Scene(document.getElementById("canvas"));
 //Download and parse a CZML file asynchronously
-var czmlUrl = 'http://cesium.agi.com/someFile.czml';
+var czmlUrl = 'http://cesiumjs.org/someFile.czml';
 getJson(czmlUrl).then(function(czml) {
 });
 ```

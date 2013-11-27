@@ -1,4 +1,4 @@
-Part I is now on the [Cesium website](http://cesium.agi.com/2013/11/04/Geometry-and-Appearances/).  Part II below is still a draft.
+Part I is now on the [Cesium website](http://cesiumjs.org/2013/11/04/Geometry-and-Appearances/).  Part II below is still a draft.
 
 # Part II: Creating Custom Geometry and Appearances
 
@@ -6,11 +6,11 @@ Cesium supports many common geometries and appearances out of the box.  However,
 
 Since geometries and appearances are decoupled, we can add new geometries that are compatible with many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.
 
-To follow along, download the latest **full version** of [Cesium](http://cesium.agi.com/downloads.html), or fork the [Cesium repo](https://github.com/AnalyticalGraphicsInc/cesium).  See the [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) for details.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
+To follow along, download the latest **full version** of [Cesium](http://cesiumjs.org/downloads.html), or fork the [Cesium repo](https://github.com/AnalyticalGraphicsInc/cesium).  See the [Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) for details.  If you develop new geometries or appearances that would be useful to the Cesium community, please consider [contributing them](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
 
 ## Geometry
 
-[`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryInstance.html) is a geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making a simple geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles forming a pyramid.  To begin, create the file `TetrahedronGeometry.js` in the Cesium `Source/Core/` directory and add the following code:
+[`Geometry`](http://cesiumjs.org/Cesium/Build/Documentation/GeometryInstance.html) is a geometry representation that supports indexed or non-indexed triangles, lines, or points.  Let's start by making a simple geometry for a [tetrahedron](https://en.wikipedia.org/wiki/Tetrahedron), which is a solid composed of four equilateral triangles forming a pyramid.  To begin, create the file `TetrahedronGeometry.js` in the Cesium `Source/Core/` directory and add the following code:
 
 ```javascript
 /*global define*/
@@ -109,23 +109,23 @@ The tetrahedron is made up of four vertices, whose positions lie on the unit sph
 
 Each of the tetrahedron's four triangles is defined by three indices.  Using indices - as opposed to defining three vertices per triangle - allows us to reuse vertices to save memory.  For our tetrahedron, each vertex is indexed three times since each vertex has three incident triangles.  Indices are stored in a `Uint16Array`, but can also be stored in a `Uint32Array` if more than 64K vertices are used.
 
-**Tip:** Use [`IndexDatatype.createTypedArray`](http://cesium.agi.com/Cesium/Build/Documentation/IndexDatatype.html#createTypedArray) to allocate the right typed array for indices.
+**Tip:** Use [`IndexDatatype.createTypedArray`](http://cesiumjs.org/Cesium/Build/Documentation/IndexDatatype.html#createTypedArray) to allocate the right typed array for indices.
 
 [[geometryandappearances/tetrahedronFaces.png]]
 
 As shown with the blue arrow on the back triangle, the outward-facing side of the triangle is defined by ordering indices in counter-clockwise order.  If we wrapped four fingers of our righthand around the back triangle in the orders the indices are defined, `0 - 1 - 2`, our thumb points in the direction that is considered outward facing.  In Cesium, this counter-clockwise winding order is required.
 
-Our tetrahedron assigns to four public properties, which are required to meet the [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html) interface.
+Our tetrahedron assigns to four public properties, which are required to meet the [`Geometry`](http://cesiumjs.org/Cesium/Build/Documentation/Geometry.html) interface.
 ```
 this.attributes = attributes;
 this.indices = indices;
 this.primitiveType = Cesium.PrimitiveType.TRIANGLES;
 this.boundingSphere = undefined;
 ```
-* [`attributes`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html#attributes) - A [`GeometryAttributes`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryAttributes.html) object where each property is a [`GeometryAttribute`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryAttribute.html).  Each attribute defines one characteristic of the vertices in the geometry, and data is stored in a typed array.  Examples of attributes include positions, normals, and colors.
-* [`indices`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html#indices) (optional) - Index data that indexes into `attributes`.  Using indices allows us to reuse vertices without duplicating them (and avoiding duplication is virtually always a win). For example, our tetrahedron has 4 vertices and each vertex is part of 3 different triangles.  Using indices allows us to reuse the same vertex for each triangle instead of creating a copy.
-* [`primitiveType`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html#primitiveType) - The primitive that composes the geometry.  Most often this is [`TRIANGLES`](http://cesium.agi.com/Cesium/Build/Documentation/PrimitiveType.html#TRIANGLES) or [`LINES`](http://cesium.agi.com/Cesium/Build/Documentation/PrimitiveType.html#LINES), which provide the most flexibility.  This determines how the indices (or vertices) are interpreted.  For example, when `TRIANGLES` is used, every three vertices is interpreted as a triangle.
-* [`boundingSphere`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html#boundingSphere) (optional) - A sphere that encloses the geometry.  This is used to improve drawing performance via culling.
+* [`attributes`](http://cesiumjs.org/Cesium/Build/Documentation/Geometry.html#attributes) - A [`GeometryAttributes`](http://cesiumjs.org/Cesium/Build/Documentation/GeometryAttributes.html) object where each property is a [`GeometryAttribute`](http://cesiumjs.org/Cesium/Build/Documentation/GeometryAttribute.html).  Each attribute defines one characteristic of the vertices in the geometry, and data is stored in a typed array.  Examples of attributes include positions, normals, and colors.
+* [`indices`](http://cesiumjs.org/Cesium/Build/Documentation/Geometry.html#indices) (optional) - Index data that indexes into `attributes`.  Using indices allows us to reuse vertices without duplicating them (and avoiding duplication is virtually always a win). For example, our tetrahedron has 4 vertices and each vertex is part of 3 different triangles.  Using indices allows us to reuse the same vertex for each triangle instead of creating a copy.
+* [`primitiveType`](http://cesiumjs.org/Cesium/Build/Documentation/Geometry.html#primitiveType) - The primitive that composes the geometry.  Most often this is [`TRIANGLES`](http://cesiumjs.org/Cesium/Build/Documentation/PrimitiveType.html#TRIANGLES) or [`LINES`](http://cesiumjs.org/Cesium/Build/Documentation/PrimitiveType.html#LINES), which provide the most flexibility.  This determines how the indices (or vertices) are interpreted.  For example, when `TRIANGLES` is used, every three vertices is interpreted as a triangle.
+* [`boundingSphere`](http://cesiumjs.org/Cesium/Build/Documentation/Geometry.html#boundingSphere) (optional) - A sphere that encloses the geometry.  This is used to improve drawing performance via culling.
 
 ### Bounding Spheres
 
@@ -133,7 +133,7 @@ We can improve the performance of drawing our tetrahedron by computing the bound
 ```javascript
 this.boundingSphere = BoundingSphere.fromVertices(positions);
 ```
-[`BoundingSphere`](http://cesium.agi.com/Cesium/Build/Documentation/BoundingSphere.html) has functions to compute a tight bounding sphere like `fromVertices`, but in many cases we can use our knowledge of the geometry to quickly create a tighter bounding sphere.  Since we know the tetrahedron's vertices lie on the unit sphere, we can just use the unit sphere as the bounding sphere:
+[`BoundingSphere`](http://cesiumjs.org/Cesium/Build/Documentation/BoundingSphere.html) has functions to compute a tight bounding sphere like `fromVertices`, but in many cases we can use our knowledge of the geometry to quickly create a tighter bounding sphere.  Since we know the tetrahedron's vertices lie on the unit sphere, we can just use the unit sphere as the bounding sphere:
 ```javascript
 this.boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
 ```
@@ -175,7 +175,7 @@ Here's our tetrahedron, scaled and positioned, without shading:
 
 [[geometryandappearances/firstTetrahedron.png]]
 
-Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  The function [GeometryPipeline.toWireframe](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe) transforms a geometry to use the `LINES` primitive type.  Replace the instance with this:
+Without shading, it is hard to see the surfaces.  To view a wireframe, we could change the `primitiveType` to `LINES` and change the indices to represent a line segment per unique triangle edge.  However, [`GeometryPipeline`](http://cesiumjs.org/Cesium/Build/Documentation/GeometryPipeline.html) is a collection of functions that transform geometries.  The function [GeometryPipeline.toWireframe](http://cesiumjs.org/Cesium/Build/Documentation/GeometryPipeline.html#toWireframe) transforms a geometry to use the `LINES` primitive type.  Replace the instance with this:
 
 ```javascript
 var instance = new Cesium.GeometryInstance({
@@ -201,7 +201,7 @@ In our case, we need to compute the normals for each vertex to determine the sha
 
 [[geometryandappearances/normaltovertex.png]]
 
-Normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesium.agi.com/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In `TetrahedronGeometry,js`, replace the last few lines of the constructor (after we set the values of the indices) with the following:
+Normal vectors can be computed after the geometry is created using [GeometryPipeline.computeNormal](http://cesiumjs.org/Cesium/Build/Documentation/GeometryPipeline.html#computeNormal).  Lets take a look at how the generated normals effect shading.  In `TetrahedronGeometry,js`, replace the last few lines of the constructor (after we set the values of the indices) with the following:
 
 ```javascript
         var boundingSphere = new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0);
@@ -223,7 +223,7 @@ Build Cesium then reload the sandcastle example to see the results:
 
 [[geometryandappearances/singleNormals.png]]
 
-This is not what we would expect shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesium.agi.com/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the Sandcastle example:
+This is not what we would expect shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesiumjs.org/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the Sandcastle example:
 
 ```javascript
 scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
@@ -353,7 +353,7 @@ TetrahedronGeometry.createGeometry = function() {
 ...
 };
 ```
-This function is going to return a [`Geometry`](http://cesium.agi.com/Cesium/Build/Documentation/Geometry.html).  Replace the last four lines of the function (`this.attributes = attributes;`....) with
+This function is going to return a [`Geometry`](http://cesiumjs.org/Cesium/Build/Documentation/Geometry.html).  Replace the last four lines of the function (`this.attributes = attributes;`....) with
 ```javascript 
 return new Geometry({
     attributes : attributes,
