@@ -69,6 +69,7 @@ Rendering
 ## Resources
 
 * For fun: perhaps [flocking](http://cis565-fall-2013.github.io/lectures/10-16-Simple-Simulation.pdf) with WebGL 2.0 transform feedback.
+* [Physically Based Modeling: Principles and Practice](http://www.cs.cmu.edu/~baraff/sigcourse/)
 * Procedural Methods chapter in Interactive Computer Graphics
 * [Particle Systems  - A Technique  for Modeling  a  Class of Fuzzy Objects]( http://www.lri.fr/~mbl/ENS/IG2/devoir2/files/docs/fuzzyParticles.pdf)
 * Dynamic Particle Systems (Page 120) in [Programming Vertex, Geometry, and Pixel Shaders](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf)
