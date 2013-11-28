@@ -131,5 +131,6 @@ Later
 * Glow with a glow buffer (GPU Gems, [Chapter 21](http://http.developer.nvidia.com/GPUGems/gpugems_ch21.html)).  A [WebGL glow tutorial](http://www.nutty.ca/?page_id=352&link=glow).
 
 Resources
+* [Diary of a Graphics Programmer](http://diaryofagraphicsprogrammer.blogspot.com/2013/09/call-for-new-post-processing-pipeline.html)
 * [Stylized Rendering in Spore](http://gpupro.blogspot.com/2010/05/stylized-rendering-in-spore.html)
 * [Post Process Framework Sample](http://graphicsrunner.blogspot.com/2008/06/post-process-framework-sample.html)
