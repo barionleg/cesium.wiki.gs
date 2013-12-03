@@ -25,5 +25,6 @@ There is no release manager; instead, our community shares the responsibility.  
    * `git push --tags`
 1. Branch the [website](http://cesiumjs.org/) and open a pull request for release with post and release zips.  See the [Adding a New Cesium Release](https://github.com/AnalyticalGraphicsInc/cesium-website/wiki/Adding-a-New-Cesium-Release) section of the website wiki.
 1. Reply to your courtesy message on the [forum](http://cesiumjs.org/forum.html) to let everyone know the release is ready.
+1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.
 
 Also, see our [release discussion](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo) on the forum.
