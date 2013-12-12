@@ -47,7 +47,7 @@ From the root Cesium directory, run:
 Then browse to [http://localhost:8080/](http://localhost:8080/).
 
 Details
-* Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that the [Java](http://www.java.com/en/download/index.jsp) JDK be installed.
+* Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that [Java](http://www.java.com/en/download/index.jsp) be installed.
 * [NodeJS](http://nodejs.org/) is also used by some targets.  The repository includes binaries, but on 64-bit Linux, you'll either need to have 32-bit libraries installed (in Ubuntu, run `sudo apt-get install ia32-libs`), or you can install NodeJS yourself and use a binary from your PATH by specifying `-DnodePath=node` when running Ant.
 
 For a default developer build, run Ant from the root Cesium directory:
@@ -69,7 +69,7 @@ For all build options, see [Build Targets](#buildtargets) below.
 
 We encourage contributors to use their IDE of choice, but many of us use Eclipse.  Here's how we set it up.
 
-* Install the [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it isn't already.
+* Install [Java](http://www.java.com/en/download/index.jsp) if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
 
 * Install additional Eclipse components: JavaScript Development Tools and Eclipse Web Developer Tools.
