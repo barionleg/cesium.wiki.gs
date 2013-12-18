@@ -120,15 +120,15 @@ The following targets can be built:
    * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
    * `combine` - Runs `build`, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
    * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS2](https://github.com/mishoo/UglifyJS2) for a smaller deployable file.
-   * `combineRelease` - Runs `combine`, plus uses the optimizer to remove code that validates function input and throws exceptions.
-   * `minifyRelease` - Runs `minify`, but uses the code generated from `combineRelease`.
-   * `buildApps` - Builds the example applications to produces self-contained, minified, deployable versions in the `Build` directory.
+   * `combineRelease` - Runs `combine`, plus uses the optimizer to remove debugging code that validates function input and throws DeveloperErrors.
+   * `minifyRelease` - Runs `minify`, and removes debugging code.
+   * `buildApps` - Builds the example applications (such as Cesium Viewer) to produce self-contained, minified, deployable versions in the `Build` directory.
    * `generateDocumentation` - Generates HTML documentation in `Build/Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
    * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
    * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
    * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.  If you use Eclipse, see below for how to run JSHint automatically as you develop.
    * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.  To change the port, pass `-DrunServer.port=X`, where `X` is the desired port.
-   * `runPublicServer` - The same as `runServer` with the `-DrunServer.public=true` argument and allows for external connections.
+   * `runPublicServer` - The same as `runServer` with the `-DrunServer.public=true` argument to allow for external connections.
    * `makeZipFile` - Builds zip files containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
    * `clean` - Removes all generated build artifacts.
    * `cloc` - Runs [CLOC](http://cloc.sourceforge.net/) to count the lines of code on the Source and Specs directories.  This requires [Perl](http://www.perl.org/) to execute.
