@@ -7,7 +7,7 @@
 * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
 * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
 
-Also see the [Cesium in 2013](https://groups.google.com/forum/#!topic/cesium-dev/roG1XTqbcUk) discussion.
+Also see the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) discussion.
 
 ## Ongoing
 
