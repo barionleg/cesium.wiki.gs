@@ -73,6 +73,7 @@ Rendering
 * Procedural Methods chapter in Interactive Computer Graphics
 * [Particle Systems  - A Technique  for Modeling  a  Class of Fuzzy Objects]( http://www.lri.fr/~mbl/ENS/IG2/devoir2/files/docs/fuzzyParticles.pdf)
 * Dynamic Particle Systems (Page 120) in [Programming Vertex, Geometry, and Pixel Shaders](http://prelight.googlecode.com/files/Programming%20Vertex%20Geometry%20and%20Pixel%20Shaders.pdf)
+* [Desirable Elements for a Particle System Interface](http://www.hindawi.com/journals/ijcgt/2014/623809/)
 * [The Ocean Spray in Your Face](http://www.lri.fr/~mbl/ENS/IG2/devoir2/files/docs/particles.pdf)
 * [Building an Advanced Particle System](http://www.gamasutra.com/view/feature/131565/building_an_advanced_particle_.php)
 * [Optimizing the rendering of a particle system](http://realtimecollisiondetection.net/blog/?p=91)
