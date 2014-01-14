@@ -25,9 +25,6 @@ Materials can be as simple as draping an image over an object, or applying a pat
 <img src="materials/CheckerboardCircle.png" width="200" height="92" alt="Checkerboard" />
 <img src="materials/VerticalStripeCircle.png" width="200" height="92" alt="Vertical stripe" />
 <img src="materials/DotCircle.png" width="200" height="92" alt="Dot" /><br />
-<img src="materials/BrickCircle.png" width="200" height="92" alt="Brick" />
-<img src="materials/WoodCircle.png" width="200" height="92" alt="Wood" />
-<img src="materials/FacetCircle.png" width="200" height="92" alt="Facet" />
 
 Objects that support materials have a `material` property.  Currently, these objects are polygons, polylines, ellipsoids, and sensors.  Materials are applied by assigning to the object's `material` property.
 ```javascript
@@ -98,15 +95,7 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 | `Checkerboard` | <img src="Materials/Checkerboard.png" width="200" height="92" /> | Checkerboard with alternating light and dark colors. |
 | `Stripe` | <img src="Materials/Stripe.png" width="200" height="92" /> | Alternating light and dark horizontal or vertical stripes |
 | `Dot` | <img src="Materials/Dot.png" width="200" height="92" /> | A pattern of dots organized by row and column. |
-| `Brick` | <img src="Materials/Brick.png" width="200" height="92" /> | Brick generated with a combination of a simple brick pattern and simplex noise for roughness. |
-| `Cement` | <img src="Materials/Cement.png" width="200" height="92" /> | Cement generated with simplex noise. |
-| `Asphalt` | <img src="Materials/Asphalt.png" width="200" height="92" /> | Asphalt generated with a combination of simplex and cellular noise. |
-| `Wood` | <img src="Materials/Wood.png" width="200" height="92" /> | Wood generated with simplex noise. |
-| `Grass` | <img src="Materials/Grass.png" width="200" height="92" /> | Grass generated with simplex noise. |
 | `Grid` | <img src="Materials/Grid.png" width="200" height="92" /> | A grid of lines, useful for displaying 3D volumes. |
-| `TieDye` | <img src="Materials/TieDye.png" width="200" height="92" /> | Tie-dye generated with simplex noise. |
-| `Facet` | <img src="Materials/Facet.png" width="200" height="92" /> | Facet generated with cellular noise. |
-| `Blob` | <img src="Materials/Blob.png" width="200" height="92" /> | Blob generated with cellular noise.  Resembles water, but clumped in a cell pattern. |
 
 <a id="BaseMaterials"></a>
 ### Base Materials
@@ -145,7 +134,8 @@ There are a few materials that do not fit into any other category.
 |:-----|:-----------|:------------|
 | `Water` | <img src="materials/water.png" width="200" height="92" /> | Animating water with waves and ripples. |
 | `RimLighting` | <img src="materials/rimlighting.png" width="200" height="92" /> | Highlights the rim or silhouette. |
-| `Erosion` | <img src="materials/erosion.png" width="200" height="92" /> | Animated erosion. |
+
+For more materials, see the [Cesium Materials Plugin](https://github.com/AnalyticalGraphicsInc/cesium-materials-pack).
 
 <a id="CommonUniforms"></a>
 ### Common Uniforms
