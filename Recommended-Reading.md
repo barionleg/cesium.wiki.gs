@@ -22,6 +22,7 @@ These resources present topics broadly useful to Cesium development.  We think a
 
 * [Pro Git](http://git-scm.com/book) - free book online.  Ground-up detailed introduction to git.  At least work through Chapters 2 and 3.
 * [GIT cheat sheet](https://github.com/AlexZeitler/gitcheatsheet) - comes in handy if you are new to git.
+* [GitHub Pull Request Workflows](http://cesiumjs.org/2013/10/08/GitHub-Pull-Request-Workflows/) - common workflows we use for Cesium.
 
 ### Open Source
 
