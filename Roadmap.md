@@ -41,7 +41,7 @@ If you are interested in implementing any of these features, start a discussion 
   * [Ocean improvements](Ocean-Details)
   * Render buildings
   * Video on terrain
-  * Point clouds - [example data](http://kos.informatik.uni-osnabrueck.de/3Dscans/)
+  * Point clouds - [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets)
   * Volumetric clouds
   * [Visual quality and performance ideas](Visual-Quality-and-Performance-Details)
   * John Madden-style collaboration among multiple clients
