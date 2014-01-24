@@ -53,6 +53,7 @@ These resources present more details on the above topics or details on more spec
 ### Graphics
 
 * [Interactive 3D Graphics](https://www.udacity.com/course/cs291) - A free online course that is an approachable and pragmatic introduction to computer graphics using WebGL (Three.js).
+* [Introduction to 3D Computer Graphics](https://www.youtube.com/watch?v=Q5T-UmMMsrA) - Video from SIGGRAPH 2013 on graphics theory.
 * [Real-Time Rendering](http://www.realtimerendering.com/) - a broad survey of real-time rendering.  If you own only one graphics book, this should be it.  The authors also maintain a list of practically all [graphics books](http://www.realtimerendering.com/books.html).
 
 ### Open Source
