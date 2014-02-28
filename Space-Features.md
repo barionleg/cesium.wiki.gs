@@ -8,7 +8,6 @@
 
 * Lighting conditions: umbra and penumbra cones
 * Sun and moon labels? [#1218](https://github.com/AnalyticalGraphicsInc/cesium/issues/1218)
-* Mouse wheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)
 * CZML support for stored views
 * Draw two vectors with an arc for the angle and an annotation
 
@@ -31,3 +30,4 @@
 * ~~Sun size. [#769](https://github.com/AnalyticalGraphicsInc/cesium/issues/769)~~
 * ~~Render moon with right size and lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)~~
 * ~~Night time.~~ [#1251](https://github.com/AnalyticalGraphicsInc/cesium/pull/1251)
+* ~~Mouse wheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)~~
