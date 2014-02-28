@@ -2,7 +2,6 @@
 
 * Narrow six-arc-second field-of-view sensor.  Display condition to draw a polyline?
 * Bent ellipsoids.
-* Fuzzy ellipsoid lines.  [#899](https://github.com/AnalyticalGraphicsInc/cesium/issues/899)
 
 *Important*
 
@@ -31,3 +30,4 @@
 * ~~Render moon with right size and lighting.  We already have the moon position, [#677](https://github.com/AnalyticalGraphicsInc/cesium/pull/677)~~
 * ~~Night time.~~ [#1251](https://github.com/AnalyticalGraphicsInc/cesium/pull/1251)
 * ~~Mouse wheel is slow for long view distances. [#1011](https://github.com/AnalyticalGraphicsInc/cesium/issues/1011)~~
+* ~~Fuzzy ellipsoid lines.  [#899](https://github.com/AnalyticalGraphicsInc/cesium/issues/899)~~
