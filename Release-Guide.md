@@ -22,7 +22,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. If any of the above steps fail, contact the [forum](http://cesiumjs.org/forum.html) to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
    * `git tag -a b7 -m 'b7 release'`
-   * `git push b7`
+   * `git push origin b7` (this assumes origin is the primary cesium repository, do not use `git push --tags` as it pushes all tags from all remotes you have on your system.)
 1. Branch the [website](http://cesiumjs.org/) and open a pull request for release with post and release zips.  See the [Adding a New Cesium Release](https://github.com/AnalyticalGraphicsInc/cesium-website/wiki/Adding-a-New-Cesium-Release) section of the website wiki.
 1. Reply to your courtesy message on the [forum](http://cesiumjs.org/forum.html) to let everyone know the release is ready.
 1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.
