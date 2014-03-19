@@ -56,7 +56,7 @@ Details to follow...
 * Multiple lights: turn lights on/off per primitive.  This will replace `affectedByLighting` on [Polygon](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/Polygon.js) and [CentralBody](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/CentralBody.js).
 * Light maps
 * Globe map for stained glass, etc?  See [Deferred Shading in Tabula Rasa](http://http.developer.nvidia.com/GPUGems3/gpugems3_ch19.html).
-
+* [Physically Based Shading in Unity](http://aras-p.info/texts/files/201403-GDC_UnityPhysicallyBasedShading_notes.pdf)
 ## Phase 5
 
 * How does this fit with the effects framework for models?  Can they work well together?
