@@ -1,3 +1,67 @@
+<!--
+TODO: Example appearance.  Copy and paste below into Sandcastle.
+
+
+require(['Cesium'], function(Cesium) {
+    "use strict";
+    
+    var viewer = new Cesium.Viewer('cesiumContainer');
+    var scene = viewer.scene;
+    var ellipsoid = viewer.centralBody.ellipsoid;
+
+    var ExampleAppearance = function() {
+        this.material = undefined;
+
+        this.vertexShaderSource =
+'attribute vec3 position3DHigh;' +
+'attribute vec3 position3DLow;' +
+'attribute vec3 normal;' +
+'varying vec3 v_positionEC;' +
+'varying vec3 v_normalEC;' +
+'void main()' +
+'{' +
+'    vec4 p = czm_computePosition();' +
+'    v_positionEC = (czm_modelViewRelativeToEye * p).xyz;' +
+'    v_normalEC = czm_normal * normal;' +
+'    gl_Position = czm_modelViewProjectionRelativeToEye * p;' +
+'}';
+
+        this.fragmentShaderSource =
+'varying vec3 v_positionEC;' +
+'varying vec3 v_normalEC;' +
+'void main()' +
+'{' +
+'    gl_FragColor = vec4(v_normalEC, 0.5);' +
+'}';
+        this.renderState = Cesium.Appearance.getDefaultRenderState(true, false);
+    };
+
+    ExampleAppearance.prototype.getFragmentShaderSource = Cesium.Appearance.prototype.getFragmentShaderSource;
+    ExampleAppearance.prototype.isTranslucent = Cesium.Appearance.prototype.isTranslucent;
+    ExampleAppearance.prototype.getRenderState = Cesium.Appearance.prototype.getRenderState;
+  
+    // Red extent
+    var extent = Cesium.Extent.fromDegrees(-180.0, -90.0, 180.0, 90.0);
+    var redExtentInstance = new Cesium.GeometryInstance({
+        geometry : new Cesium.ExtentGeometry({
+            extent : extent,
+            vertexFormat : Cesium.VertexFormat.POSITION_AND_NORMAL
+        })
+    });
+
+    // Add extent instances to primitives
+    scene.primitives.add(new Cesium.Primitive({
+        geometryInstances : [redExtentInstance],
+        appearance : new ExampleAppearance()
+    }));
+
+    Sandcastle.finishedLoading();
+});
+
+-->
+
+
+
 Part I is now on the [Cesium website](http://cesiumjs.org/2013/11/04/Geometry-and-Appearances/).  Part II below is still a draft.
 
 # Part II: Creating Custom Geometry and Appearances
