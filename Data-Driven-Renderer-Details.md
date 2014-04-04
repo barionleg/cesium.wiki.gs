@@ -193,6 +193,7 @@ TODO
 * Shadows
    * [Shadows for Real-Time Rendering](http://cis565-fall-2012.github.com/lectures/10-24-Shadows.pptx)
    * [Soft Shadow Mapping](http://codeflow.org/entries/2013/feb/15/soft-shadow-mapping/)
+   * [Translucent Shadows Part I - Starcraft II](http://gsteph.blogspot.com/2014/04/translucent-shadows-part-i-starcraft-ii.html)
 
 ## Resources
 
