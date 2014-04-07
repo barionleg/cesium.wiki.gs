@@ -2,27 +2,26 @@
 
 Planned tutorials:
 
-Beginner Tutorials (in psuedo table-of-contents order, but we can write them in any order)
+Beginner Tutorials
 * ~~Cesium Up and Running **@mramato**~~
 * A simple representitive Cesium app
 * ~~Imagery Layers - **@pjcozzi**~~
 * ~~Terrain - **@pjcozzi**~~
 * Tiling imagery using free tools (commonly asked on the forum)
 * Billboards and Labels
-* Polygons and Polylines
+* Polygons, Polylines, and other specific geometries
 * Picking
 * ~~Camera - **@bagnell**~~
 * Authoring CZML (not Cesium specific) - probably several
 * Using CZML in Cesium - probably several
-* Importing Vector Data
+* KML
+* GeoJSON and TopoJSON
 * ~~Importing Models - **@pjcozzi**~~
-* Widgets
+* Widgets - probably several
 * Using Cesium with Dojo
 * Using Cesium with jQuery
 * Using Cesium with OWF 
-* Columbus view and 2D
-* Sensors
-* Materials - **@pjcozzi**
+* Materials - [Fabric tutorial](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric)
 * Using Cesium with RequireJS
 * Deploying Cesium with IIS
 * Cesium for NASA World Wind Developers
@@ -30,9 +29,10 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Cesium for Google Maps Developers
 
 Advanced Tutorials
-* Implementing an [ImageryProvider](http://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html)
-* Implementing a `TerrainProvider`
-* Implementing `Geometry`/`Appearance` ([draft](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Geometry-and-Appearances))
+* Implementing a `Geometry`/`Appearance` ([draft](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Geometry-and-Appearances))
+* Implementing a [`DataSource`](http://cesiumjs.org/Cesium/Build/Documentation/DataSource.html?classFilter=&show=js)
+* Implementing an [`ImageryProvider`](http://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html)
+* Implementing a [`TerrainProvider`](http://cesiumjs.org/Cesium/Build/Documentation/TerrainProvider.html)
 * Using the [Cesium Inspector](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html?src=Cesium%20Inspector.html&label=Showcases)
 
 Other Tutorials
