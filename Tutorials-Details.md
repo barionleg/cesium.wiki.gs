@@ -32,6 +32,8 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 Advanced Tutorials
 * Implementing an [ImageryProvider](http://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html)
 * Implementing a `TerrainProvider`
+* Implementing `Geometry`/`Appearance` ([draft](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Geometry-and-Appearances))
+* Using the [Cesium Inspector](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html?src=Cesium%20Inspector.html&label=Showcases)
 * Debugging aids for rendering code - bounding volumes, command selection, and multiple frustums
 * Writing custom rendering code - **@pjcozzi**
 
