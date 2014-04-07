@@ -21,10 +21,10 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Using Cesium with jQuery
 * Using Cesium with OWF 
 * Columbus view and 2D
-* Volumes
 * Sensors
 * Materials - **@pjcozzi**
-* Deployment
+* Using Cesium with RequireJS
+* Deploying Cesium with IIS
 * Cesium for NASA World Wind Developers
 * Cesium for Google Earth Developers
 * Cesium for Google Maps Developers
