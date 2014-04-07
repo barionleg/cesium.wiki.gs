@@ -1,4 +1,6 @@
-We're planning the following tutorials.  These will initially be [blog posts](http://cesiumjs.org/blog.html), and a page on the [Cesium website](http://cesiumjs.org) will serve as the table of contents.
+[Published Tutorials](http://cesiumjs.org/tutorials.html)
+
+Planned tutorials:
 
 Beginner Tutorials (in psuedo table-of-contents order, but we can write them in any order)
 * ~~Cesium Up and Running **@mramato**~~
@@ -13,7 +15,7 @@ Beginner Tutorials (in psuedo table-of-contents order, but we can write them in 
 * Authoring CZML (not Cesium specific) - probably several
 * Using CZML in Cesium - probably several
 * Importing Vector Data
-* Importing Models - **@pjcozzi**
+* ~~Importing Models - **@pjcozzi**~~
 * Widgets
 * Using Cesium with Dojo
 * Using Cesium with jQuery
