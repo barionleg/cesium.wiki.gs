@@ -1,13 +1,10 @@
 ## In progress
-* 3D Models - [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
-* Client-side KML - [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873) (Google Summer of Code Project)
-* DynamicScene improvements - [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
-* Terrain and imagery improvements - [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-* Cesium Inspector - [#1025](https://github.com/AnalyticalGraphicsInc/cesium/issues/1025)
-* Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
-* Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
 
-Also see the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) discussion.
+* Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
+* Stabilizing the Cesium API for ease of use, consistency, and an eventual 1.0.  See issues labeled [breaking changes](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=breaking+change&page=1&state=open).
+* 3D model improvements. [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
+
+Also see issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=roadmap&page=1&state=open) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
 
 ## Ongoing
 
@@ -16,27 +13,30 @@ We're always looking to:
 * Improve quality by fixing known issues.  If you want to contribute, a good place to start is the [beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=beginner&page=1&sort=updated&state=open)
 * Write [demos](http://cesiumjs.org/demos.html) that showcase Cesium, especially demos that combine Cesium with interesting datasets or other web APIs
 
-## To come
+## Future Ideas
 
-If you are interested in implementing any of these features, start a discussion on the [forum](http://cesiumjs.org/forum.html).
+If you are interested in implementing any of these, start a discussion on the [forum](http://cesiumjs.org/forum.html).
 
 * General
+  * Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/tree/kml)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
+  * DynamicScene improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
-  * Support standard web servers: WMTS, WFS, WCS, ...
+  * Support more standard web servers: WMTS, WFS, WCS, ...
   * [Sandcastle improvements](Sandcastle-Details)
   * Military symbol sets such as MS2525 and NTDS.  SVG files?
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
+  * Terrain and imagery improvements. [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
+  * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
   * [Space features](Space-features)
-  * Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
   * [Data-Driven Renderer improvements](Data-Driven-Renderer-Details)
   * [Screen Space Rendering](Screen-Space-Rendering-Details)
   * [Particle system](Particle-System-Details)
   * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
   * Vectors
   * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
-  * Shader pipeline improvements - [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
-  * Geometry and appearances improvements - [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
+  * Shader pipeline improvements. [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
+  * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
   * [Stars improvements](Stars-Details)
   * [Ocean improvements](Ocean-Details)
   * Render buildings
@@ -67,14 +67,13 @@ If you are interested in implementing any of these features, start a discussion 
   * Model support, once Cesium support exists
   * Human readable messages/events raised in CZML
 * Widgets & Apps
-  * [OWF](https://www.owfgoss.org/) widget
-  * Embeddable Cesium Viewer
+  * CZML Table of contents/Document Manager widget
+  * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
-  * CZML Table of contents/Document Manager widget
 * Infrastructure
   * [Website Improvements](Website-Improvement-Details)
-  * Travis integration - [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
+  * Travis integration. [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
 
 ## Student Programs
 
