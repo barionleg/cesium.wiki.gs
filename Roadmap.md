@@ -1,7 +1,8 @@
 ## In progress
 
-* Camera improvements. [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
+* Camera improvements ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...camera-master)). [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
 * Stabilizing the Cesium API for ease of use, consistency, and an eventual 1.0.  See issues labeled [breaking changes](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=breaking+change&page=1&state=open).
+* Data Source Browser widget ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...dataSourceBrowser))
 * 3D model improvements. [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
 
 Also see issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=roadmap&page=1&state=open) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
@@ -18,7 +19,7 @@ We're always looking to:
 If you are interested in implementing any of these, start a discussion on the [forum](http://cesiumjs.org/forum.html).
 
 * General
-  * Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/tree/kml)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
+  * Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
   * DynamicScene improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
   * Support more standard web servers: WMTS, WFS, WCS, ...
@@ -67,7 +68,6 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Model support, once Cesium support exists
   * Human readable messages/events raised in CZML
 * Widgets & Apps
-  * CZML Table of contents/Document Manager widget
   * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
