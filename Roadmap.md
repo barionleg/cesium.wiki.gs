@@ -22,8 +22,8 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
   * DynamicScene improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
-  * Support more standard web servers: WMTS, WFS, WCS, ...
   * [Sandcastle improvements](Sandcastle-Details)
+  * More standard web services: WMTS, WFS, WCS, ...
   * Military symbol sets such as MS2525 and NTDS.  SVG files?
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
@@ -32,27 +32,26 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Dynamic buffers. [#932](https://github.com/AnalyticalGraphicsInc/cesium/issues/932)
   * Line styles. [paper](http://jcgt.org/published/0002/02/08/)
   * [Particle system](Particle-System-Details)
-  * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
+  * Label declutter. [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
   * [Space features](Space-features)
+  * Refactor internal Columbus View architecture.
   * [Post-Processing Framework](Screen-Space-Rendering-Details) ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...postprocess-hook))
-  * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
+  * WebGL extensions. [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
   * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
-  * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
-  * Shader pipeline improvements. [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
-  * [Stars improvements](Stars-Details)
+  * Content
+     * Buildings
+     * Point clouds. [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets)
+     * Trees - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural 
+     * Volumetric clouds
+     * [Stars improvements](Stars-Details)
   * [Ocean improvements](Ocean-Details)
-  * Render buildings
   * Video on terrain
-  * Point clouds - [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets)
-  * Volumetric clouds
-  * [Visual quality and performance ideas](Visual-Quality-and-Performance-Details)
   * John Madden-style collaboration among multiple clients
   * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
   * Lat/lon grid
-  * [Lens Flare](http://www.john-chapman.net/content.php?id=18)
+  * Shader pipeline improvements. [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
+  * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
   * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
-  * Do we need built-in video recording?  Consider [ccapture.js](https://github.com/spite/ccapture.js), [sandboxed filesystem](https://gist.github.com/4370822)
-  * Tree generation - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural trees.
 * CZML
   * [CZML External links](External-links)
   * GeoServer CZML writer
@@ -68,13 +67,10 @@ If you are interested in implementing any of these, start a discussion on the [f
   * CZML defined user interfaces, possibly with markdown
   * Model support, once Cesium support exists
   * Human readable messages/events raised in CZML
-* Widgets & Apps
-  * Navigation widget - [discussion](https://groups.google.com/forum/#!topic/cesium-dev/TcSLrG0MAnk) and [more discussion](https://groups.google.com/forum/#!topic/cesium-dev/OdhHnshN9fA) (Google Summer of Code Project)
+* Widgets
+  * Navigation widget. [#450](https://github.com/AnalyticalGraphicsInc/cesium/issues/450)
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
-* Infrastructure
-  * [Website Improvements](Website-Improvement-Details)
-  * Travis integration. [#652](https://github.com/AnalyticalGraphicsInc/cesium/issues/652)
 
 ## Student Programs
 
