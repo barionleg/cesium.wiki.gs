@@ -28,16 +28,17 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
   * Terrain and imagery improvements. [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-  * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097) (ESA Summer of Code in Space Project)
-  * [Space features](Space-features)
-  * [Data-Driven Renderer improvements](Data-Driven-Renderer-Details)
-  * [Screen Space Rendering](Screen-Space-Rendering-Details)
+  * Shadows (part of [Data-Driven Renderer](Data-Driven-Renderer-Details))
+  * Dynamic buffers. [#932](https://github.com/AnalyticalGraphicsInc/cesium/issues/932)
+  * Line styles. [paper](http://jcgt.org/published/0002/02/08/)
   * [Particle system](Particle-System-Details)
+  * Label declutter - [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
+  * [Space features](Space-features)
+  * [Post-Processing Framework](Screen-Space-Rendering-Details) ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...postprocess-hook))
   * WebGL extensions - [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
-  * Vectors
+  * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
   * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
   * Shader pipeline improvements. [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
-  * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
   * [Stars improvements](Stars-Details)
   * [Ocean improvements](Ocean-Details)
   * Render buildings
