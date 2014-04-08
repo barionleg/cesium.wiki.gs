@@ -5,8 +5,6 @@
 * Data Source Browser widget ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...dataSourceBrowser))
 * 3D model improvements. [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
 
-Also see issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=roadmap&page=1&state=open) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
-
 ## Ongoing
 
 We're always looking to:
@@ -76,3 +74,7 @@ If you are interested in implementing any of these, start a discussion on the [f
 
 * [Google Summer of Code 2014](http://googleblog.blogspot.com/2013/10/50-million-lines-of-code-and-counting.html) - [2013 Ideas](Google-Summer-of-Code-Ideas)
 * [ESA Summer of Code in Space 2013 Ideas](ESA-Summer-of-Code-in-Space-Ideas)
+
+## More
+
+Also see issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=roadmap&page=1&state=open) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
