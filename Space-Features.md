@@ -1,6 +1,6 @@
 *Most Important*
 
-* Narrow six-arc-second field-of-view sensor.  Display condition to draw a polyline?
+* Narrow three-arc-second field-of-view sensor.  Display condition to draw a polyline?
 * Bent ellipsoids.
 
 *Important*
