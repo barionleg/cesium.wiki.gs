@@ -209,7 +209,7 @@ Our tetrahedron is centered in its local coordinate system and inscribed in the 
 ```javascript
 var widget = new Cesium.CesiumWidget('cesiumContainer');
 var scene = widget.scene;
-var ellipsoid = widget.centralBody.getEllipsoid();
+var ellipsoid = widget.centralBody.ellipsoid;
 
 var modelMatrix = Cesium.Matrix4.multiplyByUniformScale(
     Cesium.Matrix4.multiplyByTranslation(
@@ -226,7 +226,7 @@ var instance = new Cesium.GeometryInstance({
     }
 });
 
-scene.getPrimitives().add(new Cesium.Primitive({
+scene.primitives.add(new Cesium.Primitive({
     geometryInstances : instance,
     appearance : new Cesium.PerInstanceColorAppearance({
         flat : true,
@@ -290,7 +290,7 @@ Build Cesium then reload the sandcastle example to see the results:
 This is not what we would expect shading to look like.  To better understand what's happening, we can visualize the normal vectors with [`createTangentSpaceDebugPrimitive`](http://cesiumjs.org/Cesium/Build/Documentation/createTangentSpaceDebugPrimitive.html).  Add the following code to the end of the Sandcastle example:
 
 ```javascript
-scene.getPrimitives().add(Cesium.createTangentSpaceDebugPrimitive({
+scene.primitives.add(Cesium.createTangentSpaceDebugPrimitive({
     geometry: tetrahedron,
     modelMatrix: modelMatrix,
     length: 0.2
