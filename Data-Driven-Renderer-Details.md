@@ -197,6 +197,7 @@ TODO
 
 ## Resources
 
+* [How to make a rendering engine](http://c0de517e.blogspot.com/2014/04/how-to-make-rendering-engine.html)
 * [Order your graphics draw calls around!](http://realtimecollisiondetection.net/blog/?p=86/)
 * [Rough Sorting by Depth](http://aras-p.info/blog/2014/01/16/rough-sorting-by-depth/)
 * [Renderstate change costs](http://home.comcast.net/~tom_forsyth/blog.wiki.html#%5B%5BRenderstate%20change%20costs%5D%5D)
