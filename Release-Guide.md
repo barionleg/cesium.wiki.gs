@@ -1,6 +1,6 @@
 We release Cesium on the first work day of every month.  Releases are available on the [downloads page](http://cesiumjs.org/downloads.html).
 
-There is no release manager; instead, our community shares the responsibility.  Any committer can create the release for a given month, and at any point, they can pass the responsibility to someone else, or someone else can ask for it.  This spreads knowledge, avoids stratification, avoids a single point of failure, and is beautifully unstructured.
+There is no release manager; instead, our community shares the responsibility.  Any committer can create the release for a given month, and at any point, they can pass the responsibility to someone else, or someone else can ask for it.  This spreads knowledge, avoids stratification, avoids a single point of failure, and is beautifully unstructured ([more info](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo)).
 
 ## Release testing and packaging
 1. Verify there are no [show stopper](../issues?labels=show+stopper&page=1&state=open) issues.
@@ -26,5 +26,3 @@ There is no release manager; instead, our community shares the responsibility.  
 1. [Add the release to cesiumjs.org](https://github.com/AnalyticalGraphicsInc/cesium-website/wiki/Adding-a-New-Cesium-Release).
 1. Reply to your courtesy message on the [forum](http://cesiumjs.org/forum.html) to let everyone know the release is ready.
 1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.
-
-Also, see our [release discussion](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo) on the forum.
