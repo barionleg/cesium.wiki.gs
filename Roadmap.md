@@ -38,7 +38,7 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
   * Content
      * Buildings
-     * Point clouds. [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets)
+     * Point clouds. [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets), [even more data](https://lta.cr.usgs.gov/LIDAR)
      * Trees - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural 
      * Volumetric clouds
      * [Stars improvements](Stars-Details)
