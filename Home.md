@@ -19,6 +19,7 @@
 * [[JavaScript Coding Conventions]] - keeps our code consistent.
 * [[Documentation Best Practices]] - solid reference documentation lowers the barrier to entry.
 * [[Code Review Tips]] - worthwhile code reviews share knowledge and improve code quality.
+* [[Deprecation Guide]] - how to deprecate and remove APIs over time.
 * [[Release Guide]] - how we release monthly.
 * [[Committer's Guide]] - what to do with commit access to the main repo.
 
