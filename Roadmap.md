@@ -1,9 +1,6 @@
 ## In progress
 
-* Camera improvements ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...camera-master)). [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
-* Stabilizing the Cesium API for ease of use, consistency, and an eventual 1.0.  See issues labeled [breaking changes](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=breaking+change&page=1&state=open).
-* Data Source Browser widget ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...dataSourceBrowser))
-* 3D model improvements. [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
+* Stabilizing the Cesium API and finishing the documentation for Cesium 1.0.  See issues labeled [1.0](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=1.0).
 
 ## Ongoing
 
@@ -12,7 +9,7 @@ We're always looking to:
 * Improve quality by fixing known issues.  If you want to contribute, a good place to start is the [beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=beginner&page=1&sort=updated&state=open)
 * Write [demos](http://cesiumjs.org/demos.html) that showcase Cesium, especially demos that combine Cesium with interesting datasets or other web APIs
 
-## Future Ideas
+## Future Ideas (some have progress already)
 
 If you are interested in implementing any of these, start a discussion on the [forum](http://cesiumjs.org/forum.html).
 
@@ -25,15 +22,16 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Military symbol sets such as MS2525 and NTDS.  SVG files?
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
-  * Terrain and imagery improvements. [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-  * Shadows (part of [Data-Driven Renderer](Data-Driven-Renderer-Details))
+  * 3D model improvements. [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
   * Dynamic buffers. [#932](https://github.com/AnalyticalGraphicsInc/cesium/issues/932)
   * Line styles. [paper](http://jcgt.org/published/0002/02/08/)
+  * Terrain and imagery improvements. [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
+  * Shadows (part of [Data-Driven Renderer](Data-Driven-Renderer-Details))
+  * [Post-Processing Framework](Screen-Space-Rendering-Details) ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...postprocess-hook))
   * [Particle system](Particle-System-Details)
   * Label declutter. [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
   * [Space features](Space-features)
   * Refactor internal Columbus View architecture.
-  * [Post-Processing Framework](Screen-Space-Rendering-Details) ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...postprocess-hook))
   * WebGL extensions. [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
   * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
   * Content
@@ -66,7 +64,7 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Model support, once Cesium support exists
   * Human readable messages/events raised in CZML
 * Widgets
-  * Navigation widget. [#450](https://github.com/AnalyticalGraphicsInc/cesium/issues/450)
+   * Data Source Browser widget ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...dataSourceBrowser))  * Navigation widget. [#450](https://github.com/AnalyticalGraphicsInc/cesium/issues/450)
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
 
