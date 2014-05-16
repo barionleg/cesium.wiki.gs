@@ -132,6 +132,7 @@ The following targets can be built:
    * `makeZipFile` - Builds zip files containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
    * `clean` - Removes all generated build artifacts.
    * `cloc` - Runs [CLOC](http://cloc.sourceforge.net/) to count the lines of code on the Source and Specs directories.  This requires [Perl](http://www.perl.org/) to execute.
+   * `sortRequires` - Alphabetically sorts the list of required-in modules in every `js` files.
 
 Specify the target(s) at the command line:
 
