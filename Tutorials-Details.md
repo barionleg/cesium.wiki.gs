@@ -33,6 +33,7 @@ Advanced Tutorials
 * Implementing a [`DataSource`](http://cesiumjs.org/Cesium/Build/Documentation/DataSource.html?classFilter=&show=js)
 * Implementing an [`ImageryProvider`](http://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html)
 * Implementing a [`TerrainProvider`](http://cesiumjs.org/Cesium/Build/Documentation/TerrainProvider.html)
+* Implementing a widget.
 * Using the [Cesium Inspector](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html?src=Cesium%20Inspector.html&label=Showcases)
 
 Other Tutorials
