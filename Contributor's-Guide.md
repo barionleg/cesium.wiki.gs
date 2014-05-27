@@ -41,15 +41,16 @@ Details
 ## Build the Code
 
 From the root Cesium directory, run:
+
 ```
-npm install
 ./Tools/apache-ant-1.8.2/bin/ant combine runServer
 ```
+
 Then browse to [http://localhost:8080/](http://localhost:8080/).
 
 Details
 * Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that [Java](http://www.java.com/en/download/index.jsp) be installed.
-* [NodeJS](http://nodejs.org/) is also used by some targets.  The repository includes binaries, but on 64-bit Linux, you'll either need to have 32-bit libraries installed (in Ubuntu, run `sudo apt-get install ia32-libs`), or you can install NodeJS yourself and use a binary from your PATH by specifying `-DnodePath=node` when running Ant.
+* [Node.js](http://nodejs.org/) is also used by some targets.  The repository includes binaries, but some build steps require Node to be installed on your system, and `npm install` to be run from the root Cesium directory.
 
 For a default developer build, run Ant from the root Cesium directory:
 
@@ -61,6 +62,13 @@ To run the HTTP server for testing, run:
 
 ```
 ./Tools/apache-ant-1.8.2/bin/ant runServer
+```
+
+To generate HTML documentation, run:
+
+```
+npm install
+./Tools/apache-ant-1.8.2/bin/ant generateDocumentation
 ```
 
 For all build options, see [Build Targets](#buildtargets) below.
@@ -119,12 +127,12 @@ This section has additional information on our development tools.
 
 The following targets can be built:
    * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
-   * `combine` - Runs `build`, plus uses [NodeJS](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
+   * `combine` - Runs `build`, plus uses [Node.js](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
    * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_(programming\)) Cesium.js using [UglifyJS2](https://github.com/mishoo/UglifyJS2) for a smaller deployable file.
    * `combineRelease` - Runs `combine`, plus uses the optimizer to remove debugging code that validates function input and throws DeveloperErrors.
    * `minifyRelease` - Runs `minify`, and removes debugging code.
    * `buildApps` - Builds the example applications (such as Cesium Viewer) to produce self-contained, minified, deployable versions in the `Build` directory.
-   * `generateDocumentation` - Generates HTML documentation in `Build/Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
+   * `generateDocumentation` - Generates HTML documentation in `Build/Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).  This step requires `npm install` to be run first.
    * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
    * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
    * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.  If you use Eclipse, see below for how to run JSHint automatically as you develop.
