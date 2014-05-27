@@ -17,7 +17,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 * Use the `@memberof` tag to document class functions.
 * Constructors defined within an anonymous function that returns a module should have the following structure:
 
-```
+```javascript
 /**
  * ...
  * @constructor
@@ -32,7 +32,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 ## Parameters
 * Use square brackets to indicate an optional parameter.
 
-```
+```javascript
 /**
  * @param {String} [foo] Description of foo.
  */
@@ -40,7 +40,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 
 * Provide default values for parameters within square brackets.
 
-```
+```javascript
 /**
  * @param {String} [foo='bar'] Description of foo.
  */
@@ -48,7 +48,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
   
 * When a function expects a template object literal as an argument, document each expected property individually: 
 
-```
+```javascript
 /**
  * ...
  * @param {Object} options An object containing parameters.
@@ -83,7 +83,7 @@ blank line
 ## Detailed Example
 The following is an example of how to fully document a class, including properties and methods. For the complete code, see [Cartesian2](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Cartesian2.js).
 
-```
+```javascript
 define(function() {
     "use strict";
 
