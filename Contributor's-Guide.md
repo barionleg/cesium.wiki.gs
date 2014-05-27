@@ -41,9 +41,10 @@ Details
 ## Build the Code
 
 From the root Cesium directory, run:
-<pre>
+```
+npm install
 ./Tools/apache-ant-1.8.2/bin/ant combine runServer
-</pre>
+```
 Then browse to [http://localhost:8080/](http://localhost:8080/).
 
 Details
@@ -52,15 +53,15 @@ Details
 
 For a default developer build, run Ant from the root Cesium directory:
 
-<pre>
+```
 ./Tools/apache-ant-1.8.2/bin/ant
-</pre>
+```
 
 To run the HTTP server for testing, run:
 
-<pre>
+```
 ./Tools/apache-ant-1.8.2/bin/ant runServer
-</pre>
+```
 
 For all build options, see [Build Targets](#buildtargets) below.
 
