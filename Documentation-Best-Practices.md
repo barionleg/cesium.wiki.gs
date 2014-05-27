@@ -17,7 +17,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 * Use the `@memberof` tag to document class functions.
 * Constructors defined within an anonymous function that returns a module should have the following structure:
 
-<pre>
+```
 /**
  * ...
  * @constructor
@@ -25,48 +25,48 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
  var foo = function() {
     ...
  };
-</pre>
-
+```
 
 * Use `@exports moduleName` to document modules, including static classes and standalone functions.
 
 ## Parameters
 * Use square brackets to indicate an optional parameter.
 
-<pre>
+```
 /**
  * @param {String} [foo] Description of foo.
  */
-</pre>
+```
 
 * Provide default values for parameters within square brackets.
 
-<pre>
+```
 /**
- * @param {String} [foo="bar"] Description of foo.
+ * @param {String} [foo='bar'] Description of foo.
  */
-</pre>
+```
   
 * When a function expects a template object literal as an argument, document each expected property individually: 
 
-<pre>
+```
 /**
  * ...
- * @param {Number} description.x The tile x coordinate.
- * @param {Number} description.y The tile y coordinate.
- * @param {Number} description.zoom The tile zoom level.
+ * @param {Object} options An object containing parameters.
+ * @param {Number} options.x The tile x coordinate.
+ * @param {Number} options.y The tile y coordinate.
+ * @param {Number} options.zoom The tile zoom level.
  * @param {Tile} description.parent The parent of this tile in a tile tree system.
  * ...
  */
 var Tile = function(description) {
    ...
 };
-</pre>
+```
 
 ## General Layout
 There's a general flow to each documentation block that makes it easy to read. Tags are always in the same order with the same spacing.
 
-<pre>
+```
 Description
 @ memberOf or alias or exports Name
 blank line
@@ -78,12 +78,12 @@ blank line
 @ examples (formatted just like the rest of the code. and useful comments if it's only boilerplate)
 blank line
 @ see
-</pre>
+```
 
 ## Detailed Example
 The following is an example of how to fully document a class, including properties and methods. For the complete code, see [Cartesian2](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Cartesian2.js).
 
-<pre>
+```
 define(function() {
     "use strict";
 
@@ -141,6 +141,4 @@ define(function() {
 
     return Cartesian2;
 });
-
-
-</pre>
+```
