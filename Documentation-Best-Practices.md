@@ -90,9 +90,6 @@ Description.
 The following is an example of how to fully document a class, including properties and methods. For the complete code, see [Cartesian2](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Core/Cartesian2.js).
 
 ```javascript
-define(function() {
-    "use strict";
-
     /**
      * A 2D Cartesian point.
      *
@@ -141,7 +138,4 @@ define(function() {
                 (left.x === right.x) &&
                 (left.y === right.y));
     };
-
-    return Cartesian2;
-});
 ```
