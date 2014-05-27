@@ -5,6 +5,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 * Use `@see` to link to related classes, functions, and online resources.
 * Use `<code> </code>` tags when referring to parameters or other variable names and values within a description.
 * Use `{@link className}` to link to another documented type.  This is not required for `@param` tags when the type is provided.
+* Use `{@link URL|title}` to link to external sites.
 
 ## Examples
 
@@ -55,7 +56,7 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
  * @param {Number} options.x The tile x coordinate.
  * @param {Number} options.y The tile y coordinate.
  * @param {Number} options.zoom The tile zoom level.
- * @param {Tile} description.parent The parent of this tile in a tile tree system.
+ * @param {Tile} options.parent The parent of this tile in a tile tree system.
  * ...
  */
 var Tile = function(description) {
@@ -67,17 +68,22 @@ var Tile = function(description) {
 There's a general flow to each documentation block that makes it easy to read. Tags are always in the same order with the same spacing.
 
 ```
-Description
-@ memberOf or alias or exports Name
-blank line
-@ params
-@ returns
-blank line
-@ exceptions
-blank line
-@ examples (formatted just like the rest of the code. and useful comments if it's only boilerplate)
-blank line
-@ see
+Description.
+
+@memberOf|alias|exports Name
+
+@param {Type} name Description.
+
+@returns {Type} Description.
+
+@exception {Type} Description.
+
+@example 
+(formatted just like the rest of the code. and useful comments if it's only boilerplate)
+
+@see Type
+@see Type#instanceMember
+@see Type.staticMember
 ```
 
 ## Detailed Example
@@ -90,53 +96,50 @@ define(function() {
     /**
      * A 2D Cartesian point.
      *
-     * If either <code>x</code> or <code>y</code> is undefined, then the corresponding
-     * component will be initialized to 0.0.
-     *
      * @alias Cartesian2
      * @constructor
      *
-     * @param {Number} x The x-coordinate for the Cartesian type.
-     * @param {Number} y The y-coordinate for the Cartesian type.
+     * @param {Number} [x=0.0] The X component.
+     * @param {Number} [y=0.0] The Y component.
      *
+     * @see Packable
      * @see Cartesian3
      * @see Cartesian4
      */
     var Cartesian2 = function(x, y) {
+        /**
+         * The Y component.
+         * 
+         * @type {Number}
+         * @default 0.0
+         */
+        this.x = defaultValue(x, 0.0);
 
         /**
-         * The Cartesian's x-coordinate.
-         *
-         * @type Number
-         *
-         * @see Cartesian2.y
+         * The X component.
+         * 
+         * @type {Number}
+         * @default 0.0
          */
-        this.x = (typeof x !== 'undefined') ? x : 0.0;
-
-        /**
-         * The Cartesian's y-coordinate.
-         *
-         * @type Number
-         *
-         * @see Cartesian2.x
-         */
-        this.y = (typeof y !== 'undefined') ? y : 0.0;
+        this.y = defaultValue(y, 0.0);
     };
 
     /**
-     * Returns true if this Cartesian equals <code>other</code> componentwise.
-     *
-     * @memberof Cartesian2
-     * @param {Cartesian2} other The Cartesian to compare for equality.
-     * @return {Boolean} <code>true</code> if the Cartesians are equal componentwise; otherwise, <code>false</code>.
+     * Compares the provided Cartesians componentwise and returns
+     * <code>true</code> if they are equal, <code>false</code> otherwise.
      * 
-     * @example
-     * var v = new Cartesian2(1, 2);
-     * var w = new Cartesian2(1, 2);
-     * var result = v.equals(w);    // true
+     * @memberof Cartesian2
+     *
+     * @param {Cartesian2} [left] The first Cartesian.
+     * @param {Cartesian2} [right] The second Cartesian.
+     * @returns {Boolean} <code>true</code> if left and right are equal, <code>false</code> otherwise.
      */
-    Cartesian2.prototype.equals = function(other) {
-        return (this.x === other.x) && (this.y === other.y);
+    Cartesian2.equals = function(left, right) {
+        return (left === right) ||
+               ((defined(left)) &&
+                (defined(right)) &&
+                (left.x === right.x) &&
+                (left.y === right.y));
     };
 
     return Cartesian2;
