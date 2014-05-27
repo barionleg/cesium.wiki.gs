@@ -136,24 +136,24 @@ The following targets can be built:
    * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
    * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
    * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.  If you use Eclipse, see below for how to run JSHint automatically as you develop.
-   * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on http://localhost:8080 for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.  To change the port, pass `-DrunServer.port=X`, where `X` is the desired port.
+   * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on [http://localhost:8080/](http://localhost:8080/) for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.  To change the port, pass `-DrunServer.port=X`, where `X` is the desired port.
    * `runPublicServer` - The same as `runServer` with the `-DrunServer.public=true` argument to allow for external connections.
    * `makeZipFile` - Builds zip files containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
    * `clean` - Removes all generated build artifacts.
    * `cloc` - Runs [CLOC](http://cloc.sourceforge.net/) to count the lines of code on the Source and Specs directories.  This requires [Perl](http://www.perl.org/) to execute.
-   * `sortRequires` - Alphabetically sorts the list of required-in modules in every `js` files.
+   * `sortRequires` - Alphabetically sorts the list of required modules in every `js` file.
 
 Specify the target(s) at the command line:
 
-<pre>
+```
 ./Tools/apache-ant-1.8.2/bin/ant [target-name] [another-target-name] ...
-</pre>
+```
 
 For example, to build the release target and then start an HTTP server for testing, run:
 
-<pre>
+```
 ./Tools/apache-ant-1.8.2/bin/ant release runServer
-</pre>
+```
 
 <a name="optionaleclipseconfiguration">
 ## Optional Eclipse Configuration
@@ -172,9 +172,9 @@ If you edit WebGL shader files (.glsl) with Eclipse, install GLShaders for GLSL 
 
 ### Git Plugin
 
-Most of us use Git from the command-line, but there is also an Eclipse plugin.  To install it:
-   * Help - Install New Software.  Work with: select *Juno* from the list.  
-   * Expand *Collaboration*, check *Eclipse EGit*.
+Most of us use Git from the command-line, but there is also an Eclipse plugin.  The Eclipse package listed above includes this by default, but to install it in other Eclipse packages:
+   * Help - Install New Software.  Work with: select *Kepler* from the list.  
+   * Expand *Collaboration*, check *Eclipse Git Team Provider*.
    * Next, Next, Accept, Finish, _wait_, Restart.
 
 * Window - Preferences: Team - Git - Configuration
@@ -222,7 +222,7 @@ Then, to step into the test, step into `stepIntoThis()`
    * In the driver, e.g., the NVIDIA Control Panel or the Catalyst Control Center.
    * Also turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
 
-* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.  Create a FPS counter in Cesium with `PerformanceDisplay`
+* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.  Create a FPS counter in Cesium by setting `scene.debugShowFramesPerSecond = true`.
 
 <a name="contributecode">
 # Contribute Code
