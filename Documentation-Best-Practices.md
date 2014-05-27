@@ -90,7 +90,7 @@ define(function() {
     /**
      * A 2D Cartesian point.
      *
-     * If either &lt;code>x&lt;/code> or &lt;code>y&lt;/code> is undefined, then the corresponding
+     * If either <code>x</code> or &lt;code>y&lt;/code> is undefined, then the corresponding
      * component will be initialized to 0.0.
      *
      * @alias Cartesian2
