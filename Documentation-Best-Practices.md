@@ -90,7 +90,7 @@ define(function() {
     /**
      * A 2D Cartesian point.
      *
-     * If either <code>x</code> or &lt;code>y&lt;/code> is undefined, then the corresponding
+     * If either <code>x</code> or <code>y</code> is undefined, then the corresponding
      * component will be initialized to 0.0.
      *
      * @alias Cartesian2
@@ -124,11 +124,11 @@ define(function() {
     };
 
     /**
-     * Returns true if this Cartesian equals &lt;code>other&lt;/code> componentwise.
+     * Returns true if this Cartesian equals <code>other</code> componentwise.
      *
      * @memberof Cartesian2
      * @param {Cartesian2} other The Cartesian to compare for equality.
-     * @return {Boolean} &lt;code>true&lt;/code> if the Cartesians are equal componentwise; otherwise, &lt;code>false&lt;/code>.
+     * @return {Boolean} <code>true</code> if the Cartesians are equal componentwise; otherwise, <code>false</code>.
      * 
      * @example
      * var v = new Cartesian2(1, 2);
