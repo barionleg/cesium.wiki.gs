@@ -76,7 +76,6 @@ Description.
 @param {Type} name Description.
 @param {Type|OtherType} name Description with long
        wrapping lines.
-
 @returns {Type} Description.
 
 @exception {Type} Description.
