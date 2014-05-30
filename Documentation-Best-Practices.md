@@ -14,8 +14,13 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
 
 ## Classes
 
-* Prefer `@alias` over `@name` for documenting classes and modules. `@name` will treat the documentation comment in isolation, ignoring surrounding comments, such as those for public properties. 
-* Use the `@memberof` tag to document class functions.
+* Use `@alias` to document classes. Don't use `@name`, which will treat the documentation comment in isolation, ignoring surrounding comments, such as those for public properties. 
+* `@memberof` is not necessary for code structures like: 
+   * `Class.prototype.func = function() {`
+   * `Class.func = function() {`
+   * (in constructor) `this.prop = 'foo';`
+* Properties defined with `defineProperties`, however, must have `@memberof Class.prototype`.
+* If you copy a function from elsewhere, e.g. `Class.prototype.func = OtherClass.prototype.func`, you must mark it with `@function`.  This applies to any case where you do not use a `function()` expression.
 * Constructors defined within an anonymous function that returns a module should have the following structure:
 
 ```javascript
@@ -47,12 +52,12 @@ Cesium uses [JSDoc3](http://usejsdoc.org/index.html) for reference documentation
  */
 ```
   
-* When a function expects a template object literal as an argument, document each expected property individually: 
+* When a function expects a template object literal as an argument, document the options object itself, and each expected property individually.  If all properties are optional, mark the options object optional, otherwise don't.
 
 ```javascript
 /**
  * ...
- * @param {Object} options An object containing parameters.
+ * @param {Object} options An object containing all options.
  * @param {Number} options.x The tile x coordinate.
  * @param {Number} options.y The tile y coordinate.
  * @param {Number} options.zoom The tile zoom level.
