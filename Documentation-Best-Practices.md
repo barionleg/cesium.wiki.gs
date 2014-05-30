@@ -71,19 +71,22 @@ There's a general flow to each documentation block that makes it easy to read. T
 Description.
 
 @memberOf|alias|exports Name
+@constructor
 
 @param {Type} name Description.
+@param {Type|OtherType} name Description with long
+       wrapping lines.
 
 @returns {Type} Description.
 
 @exception {Type} Description.
 
-@example 
-(formatted just like the rest of the code. and useful comments if it's only boilerplate)
-
 @see Type
 @see Type#instanceMember
 @see Type.staticMember
+
+@example 
+(formatted just like the rest of the code. and useful comments if it's only boilerplate)
 ```
 
 ## Detailed Example
