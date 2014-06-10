@@ -4,6 +4,7 @@ In progress...
 
 * Use meters for distances.
 * Use radians, not degrees, for angles.
+* Use seconds for time deltas.
 
 ## Constructors
 
