@@ -11,6 +11,7 @@
 * [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
 * [[CZML Guide]] - bring content into Cesium without writing code.
 * [[In-Depth Guides]] - details on major features.
+* [[Offline Guide]] - details on how to configure a Cesium app to work without internet access.
 
 ## Contributor Guides
 
