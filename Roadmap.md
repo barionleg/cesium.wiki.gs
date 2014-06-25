@@ -64,7 +64,8 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Model support, once Cesium support exists
   * Human readable messages/events raised in CZML
 * Widgets
-   * Data Source Browser widget ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...dataSourceBrowser))  * Navigation widget. [#450](https://github.com/AnalyticalGraphicsInc/cesium/issues/450)
+   * Data Source Browser widget ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...dataSourceBrowser))
+  * Navigation widget. [#450](https://github.com/AnalyticalGraphicsInc/cesium/issues/450)
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
 
