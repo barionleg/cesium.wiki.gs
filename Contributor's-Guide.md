@@ -78,7 +78,7 @@ For all build options, see [Build Targets](#buildtargets) below.
 
 We encourage contributors to use their IDE of choice, but many of us use Eclipse.  Here's how we set it up.
 
-* Install [Java](http://www.java.com/en/download/index.jsp) if it isn't already.
+* Install [Java](http://www.java.com/en/download/manual.jsp) if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
 
 * Install additional Eclipse components: JavaScript Development Tools and Eclipse Web Developer Tools.
