@@ -90,7 +90,7 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
    * Help - Install New Software.  Work with: select *Luna* from the list.
    * Expand *Programming Languages*, check *JavaScript Development Tools*.
    * Expand *Web, XML, Java EE and OSGi Enterprise Development*, check *Eclipse Web Developer Tools*.
-   * Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
+   * Next, Next, Accept, Finish, _wait_, No (we have more to install).
 
 ![The Java Development Tools installation dialog](indigo.png)
 
@@ -103,9 +103,9 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 * Run Eclipse. Close the Welcome page.
 
 * Window - Preferences:
-   * General - Editors - Text Editors.  Check Insert spaces for tabs.  OK.
-   * Web - CSS Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.
-   * Web - HTML Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.
+   * General - Editors - Text Editors.  Check Insert spaces for tabs.  Apply.
+   * Web - CSS Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.  Apply.
+   * Web - HTML Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.  OK.
 
 ![Configuring "Insert spaces for tabs"](tabs.png)
 
