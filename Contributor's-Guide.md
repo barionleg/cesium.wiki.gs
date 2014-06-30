@@ -82,7 +82,7 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
 
 * Install additional Eclipse components: JavaScript Development Tools and Eclipse Web Developer Tools.
-   * Help - Install New Software.  Work with: select *Kepler* from the list.
+   * Help - Install New Software.  Work with: select *Luna* from the list.
    * Expand *Programming Languages*, check *JavaScript Development Tools*.
    * Expand *Web, XML, Java EE and OSGi Enterprise Development*, check *Eclipse Web Developer Tools*.
    * Next, Next, Accept, Finish, _wait_, Not Now (we have more to install).
