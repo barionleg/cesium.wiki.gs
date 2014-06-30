@@ -20,7 +20,7 @@
 
 _Fabric_ is a JSON schema for describing _materials_ in Cesium.  Materials represent the appearance of an object such as polygons, polylines, ellipsoids, and sensors.
 
-Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  More complex materials include procedural wood and view-dependent reflection and refraction.  Using Fabric and GLSL, new materials can be scripted from scratch or created by combining existing materials in a hierarchy; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
+Materials can be as simple as draping an image over an object, or applying a pattern such as stripes or a checkerboard.  Using Fabric and GLSL, new materials can be scripted from scratch or created by combining existing materials in a hierarchy; for example, wet crumbling bricks can be created with a combination of procedural brick, bump map, and specular map materials.
 
 <img src="materials/CheckerboardCircle.png" width="200" height="92" alt="Checkerboard" />
 <img src="materials/VerticalStripeCircle.png" width="200" height="92" alt="Vertical stripe" />
@@ -110,9 +110,6 @@ Base materials represent fine-grain fundamental material characteristics, such a
 | `NormalMap` | <img src="Materials/NormalMap.png" width="200" height="92" /> | An image with `vec3` components defining the surface's normal in tangent coordinates.  Normal mapping is used to add surface detail without adding geometry. |
 | `BumpMap` | <img src="Materials/BumpMap.png" width="200" height="92" /> | An image with a scalar component defining heights.  Like normal mapping, bump mapping is used to add surface detail without adding geometry by perturbing the normal based on differences in adjacent image pixels. |
 | `EmissionMap` | <img src="Materials/EmissionMap.png" width="200" height="92" /> | An image with `vec3` components defining light emitted by the material equally in all directions, e.g., lights in a long hallway. |
-| `Reflection` | <img src="Materials/Reflection.png" width="200" height="92" /> | Cube map reflection for mirror-like surfaces that reflect light, e.g., paint on a car. |
-| `Refraction` | <img src="Materials/Refraction.png" width="200" height="92" /> | Cube map refraction for translucent surfaces that refract light, e.g., glass. |
-| `Fresnel` | <img src="Materials/Fresnel.png" width="200" height="92" /> | A view-dependent combination of reflection and refraction.  Similar to water, when the viewer is looking straight down, the material refracts light; as the viewer looks more edge on, the material refracts less and reflects more. |
 
 <a id="PolylineMaterials"></a>
 ## Polyline Materials
