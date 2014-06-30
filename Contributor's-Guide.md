@@ -25,7 +25,8 @@ Short version:
 
 Details
 * Setup Git if it isn't already ([linux](https://help.github.com/articles/set-up-git#platform-linux) | [mac](https://help.github.com/articles/set-up-git#platform-mac) | [windows](https://help.github.com/articles/set-up-git#platform-windows)).
-   * Check your settings for name and email: `git config --get-regexp user.*`.
+   * Make sure your SSH keys are configured ([linux](https://help.github.com/articles/generating-ssh-keys#platform-linux) | [mac](https://help.github.com/articles/generating-ssh-keys#platform-mac) | [windows](https://help.github.com/articles/generating-ssh-keys#platform-windows)).
+   * Double-check your settings for name and email: `git config --get-regexp user.*`.
    * Recommended Git settings:
       * `git config --global push.default simple` - when running `git push`, only push the current branch (default in Git 2.0).
       * `git config --global branch.autosetuprebase always` - when pulling remote changes, rebase your local changes on top of the remote changes, to avoid unnecessary merge commits.
@@ -40,6 +41,10 @@ Details
 <a name="buildthecode">
 ## Build the Code
 
+Prerequisites:
+ * Install [Java](http://www.java.com/en/download/index.jsp) on your system.
+ * Install [Node.js](http://nodejs.org/) on your system.
+
 From the root Cesium directory, run:
 
 ```
@@ -50,7 +55,8 @@ Then browse to [http://localhost:8080/](http://localhost:8080/).
 
 Details
 * Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that [Java](http://www.java.com/en/download/index.jsp) be installed.
-* [Node.js](http://nodejs.org/) is also used by some targets.  The repository includes binaries, but some build steps require Node to be installed on your system, and `npm install` to be run from the root Cesium directory.
+* [Node.js](http://nodejs.org/) is also required by the build.  
+* In the future, build functionality will move to Node.js and the need for Java will be removed.
 
 For a default developer build, run Ant from the root Cesium directory:
 
@@ -67,7 +73,6 @@ To run the HTTP server for testing, run:
 To generate HTML documentation, run:
 
 ```
-npm install
 ./Tools/apache-ant-1.8.2/bin/ant generateDocumentation
 ```
 
@@ -136,9 +141,10 @@ The following targets can be built:
    * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
    * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
    * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.  If you use Eclipse, see below for how to run JSHint automatically as you develop.
-   * `runServer` - Launches a [Jetty](http://jetty.codehaus.org/jetty/)-based HTTP server on [http://localhost:8080/](http://localhost:8080/) for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.  To change the port, pass `-DrunServer.port=X`, where `X` is the desired port.
+   * `runServer` - Launches a [Node.js](http://nodejs.org/) HTTP server on [http://localhost:8080/](http://localhost:8080/) for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.  To change the port, pass `-DrunServer.port=X`, where `X` is the desired port.
+     * You can also run the server by running `node server.js`.  Pass `--help` for usage instructions.
    * `runPublicServer` - The same as `runServer` with the `-DrunServer.public=true` argument to allow for external connections.
-   * `makeZipFile` - Builds zip files containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
+   * `makeZipFile` - Builds a zip file containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined and minified Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
    * `clean` - Removes all generated build artifacts.
    * `cloc` - Runs [CLOC](http://cloc.sourceforge.net/) to count the lines of code on the Source and Specs directories.  This requires [Perl](http://www.perl.org/) to execute.
    * `sortRequires` - Alphabetically sorts the list of required modules in every `js` file.
@@ -173,7 +179,7 @@ If you edit WebGL shader files (.glsl) with Eclipse, install GLShaders for GLSL 
 ### Git Plugin
 
 Most of us use Git from the command-line, but there is also an Eclipse plugin.  The Eclipse package listed above includes this by default, but to install it in other Eclipse packages:
-   * Help - Install New Software.  Work with: select *Kepler* from the list.  
+   * Help - Install New Software.  Work with: select *Luna* from the list.  
    * Expand *Collaboration*, check *Eclipse Git Team Provider*.
    * Next, Next, Accept, Finish, _wait_, Restart.
 
@@ -190,7 +196,7 @@ Most of us use Git from the command-line, but there is also an Eclipse plugin.  
 
 ![The Open Resource dialog](openresource.png)
 
-* Use Ctrl-Shift-F to auto format selected code or an entire file.
+* Use Ctrl-Shift-F to auto format selected code.
 
 <a name="testtips">
 ## Test Tips
