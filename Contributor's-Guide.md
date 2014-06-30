@@ -34,8 +34,8 @@ Details
       * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
       * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
    * Yes
-      * Create a local cesium repo, e.g., `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`.
-      * Make non-trivial changes in a branch, e.g., `git checkout -b myFeature`.
+      * Create a local cesium repo, e.g., `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`
+      * Make changes in a branch, e.g., `git checkout -b myFeature`.
 
 <a name="buildthecode">
 ## Build the Code
