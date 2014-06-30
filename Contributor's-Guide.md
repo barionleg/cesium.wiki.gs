@@ -42,7 +42,7 @@ Details
 ## Build the Code
 
 Prerequisites:
- * Install [Java](http://www.java.com/en/download/index.jsp) on your system.
+ * Install [Java](http://www.java.com/en/download/manual.jsp) on your system.
  * Install [Node.js](http://nodejs.org/) on your system.
 
 From the root Cesium directory, run:
