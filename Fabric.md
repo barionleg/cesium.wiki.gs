@@ -44,12 +44,7 @@ polygon.material = new Cesium.Material({
   fabric : {
     type : 'Color',
     uniforms : {
-      color : {
-        red : 1.0,
-        green : 0.0,
-        blue : 0.0,
-        alpha : 0.5
-      }
+      color : new Cesium.Color(1.0, 0.0, 0.0, 0.5)
     }
   }
 });
@@ -315,12 +310,7 @@ In addition to `materialInput`, materials have access to uniforms, both Cesium p
 {
   type : 'OurColor',
   uniforms : {
-    color : {
-      red : 1.0,
-      green : 0.0,
-      blue : 0.0,
-      alpha : 1.0
-    }
+    color : new Color(1.0, 0.0, 0.0, 1.0)
   },
   components : {
     diffuse : 'color.rgb',
@@ -412,8 +402,3 @@ var fsSource =
 
 this._drawUniforms = combine([this._uniforms, this.material._uniforms]);
 ```
-
-<a id="Roadmap"></a>
-## Roadmap
-
-We have even more planned, see the [Roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details).
