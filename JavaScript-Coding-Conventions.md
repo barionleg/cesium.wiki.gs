@@ -1,4 +1,4 @@
-In progress...
+**This is now out-of-date.  There will be a new version as part of [#1683](https://github.com/AnalyticalGraphicsInc/cesium/issues/1683).**
 
 ## Units
 
