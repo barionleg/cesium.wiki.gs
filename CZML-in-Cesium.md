@@ -1,4 +1,4 @@
-**NOTE: This page is still a work in progress**
+**This is now out-of-date.  There will be a new version as part of [#1683](https://github.com/AnalyticalGraphicsInc/cesium/issues/1683).**
 
 _This page describes implementation of the CZML standard in Cesium.  While not strictly required, it may help to check out the [[CZML-Guide]] and [Cesium Architecture](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Architecture) overview before proceeding._
 
