@@ -1,3 +1,5 @@
+**This is now out-of-date.  There will be a new version as part of [](https://github.com/AnalyticalGraphicsInc/cesium/issues/1683).**
+
 <!-- More links to specific parts of the reference documentation and Sandbox -->
 
 Cesium is a client-side virtual globe and map library written in JavaScript using WebGL.  The Cesium stack is coarsely organized and composed of four layers:
