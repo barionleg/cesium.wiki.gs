@@ -66,6 +66,8 @@ Part I is now on the [Cesium website](http://cesiumjs.org/2013/11/04/Geometry-an
 
 # Part II: Creating Custom Geometry and Appearances
 
+**This is now out-of-date.  There will be a new version as part of [#1683](https://github.com/AnalyticalGraphicsInc/cesium/issues/1683).**
+
 Cesium supports many common geometries and appearances out of the box.  However, we may need to visualize a new type of geometry or apply custom shading to existing geometries.
 
 Since geometries and appearances are decoupled, we can add new geometries that are compatible with many appearances and vice-versa.  Doing so requires some knowledge of computer graphics and geometry.  In this tutorial, we create a simple new `Geometry` and `Appearance`.
