@@ -13,9 +13,10 @@ We're always looking to:
 
 If you are interested in implementing any of these, start a discussion on the [forum](http://cesiumjs.org/forum.html).
 
+* See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
 * General
   * Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
-  * DynamicScene improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
+  * DataSource improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
   * [Sandcastle improvements](Sandcastle-Details)
   * More standard web services: WMTS, WFS, WCS, ...
@@ -69,11 +70,7 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
 
-## Student Programs
+## Past Student Programs
 
-* [Google Summer of Code 2014](http://googleblog.blogspot.com/2013/10/50-million-lines-of-code-and-counting.html) - [2013 Ideas](Google-Summer-of-Code-Ideas)
+* [Google Summer of Code 2013](Google-Summer-of-Code-Ideas)
 * [ESA Summer of Code in Space 2013 Ideas](ESA-Summer-of-Code-in-Space-Ideas)
-
-## More
-
-Also see issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=roadmap&page=1&state=open) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
