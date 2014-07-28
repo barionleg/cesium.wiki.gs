@@ -2,9 +2,7 @@
 <img src="wiki/logos/Cesium_Logo_Color.jpg" width="50%" alt="Cesium" />
 </p>
 
-## Roadmap
-
-* [[Roadmap]] - where we are heading.
+[[Roadmap]] - where we are heading.
 
 ## User Guides
 
@@ -27,4 +25,3 @@
 ## Media
 
 * [[Cesium Logos]] - for use in Cesium apps and related material.
-* [[Shortened URLs]] - make linking to Cesium easier.
