@@ -29,7 +29,7 @@ Details
    * Double-check your settings for name and email: `git config --get-regexp user.*`.
    * Recommended Git settings:
       * `git config --global push.default simple` - when running `git push`, only push the current branch (default in Git 2.0).
-      * `git config --global branch.autosetuprebase always` - when pulling remote changes, rebase your local changes on top of the remote changes, to avoid unnecessary merge commits.
+      * `git config --global pull.rebase preserve` - when pulling remote changes, rebase your local changes on top of the remote changes, to avoid unnecessary merge commits.
 * Have commit access to cesium?
    * No
       * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
