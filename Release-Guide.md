@@ -9,8 +9,8 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Make sure you are using the latest drivers for your video card.
 1. Pull down the latest master branch.
 1. Proofread [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.  Adjust the order of changes so that prominent/popular changes come first.
-1. Update [build.xml](../blob/master/build.xml) with the version being released, e.g., `<property name="version" value="b7" />`
-1. Update the version in `package.json` to match, e.g. `0.29.0`.  Eventually this will unify with the `build.xml` version.
+1. Update [build.xml](../blob/master/build.xml) with the version being released, e.g., `<property name="version" value="1.0" />`
+1. Update the version in `package.json` to match, e.g. `1.0.0`.  Eventually this will unify with the `build.xml` version.
 1. Commit these changes.
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
 1. Run `npm install`.
@@ -20,7 +20,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) with WebGL validation in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) with WebGL validation in [Firefox](http://www.mozilla.org/en-US/firefox/new/?from=getfirefox) stable.
 1. [Run unit tests against combined file with debug code removed](http://localhost:8080/Specs/SpecRunner.html?built=true&release=true) in both browsers.
-1. Make sure [Hello World](http://localhost:8080/Build/HelloWorld.html) loads.
+1. Make sure [Hello World](http://localhost:8080/Apps/HelloWorld.html) loads.
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
 1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice (or multiple browsers if you are up for it) and run through each demo to make sure they all work.  Actually play with each of the buttons and sliders on each demo to ensure everything works as expected.
 1. If any of the above steps fail, contact the [forum](http://cesiumjs.org/forum.html) to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
