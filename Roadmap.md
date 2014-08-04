@@ -1,6 +1,7 @@
 ## In progress
 
-* Client-side KML ([branch]
+* CZML improvements.
+* Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
 
 ## Ongoing
 
@@ -15,7 +16,6 @@ If you are interested in implementing any of these, start a discussion on the [f
 
 * See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
 * General
-(https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
   * DataSource improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
   * [Sandcastle improvements](Sandcastle-Details)
@@ -23,6 +23,7 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Military symbol sets such as MS2525 and NTDS.  SVG files?
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
+  * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
   * 3D model improvements. [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
   * Dynamic buffers. [#932](https://github.com/AnalyticalGraphicsInc/cesium/issues/932)
   * Line styles. [paper](http://jcgt.org/published/0002/02/08/)
@@ -34,7 +35,6 @@ If you are interested in implementing any of these, start a discussion on the [f
   * [Space features](Space-features)
   * Refactor internal Columbus View architecture.
   * WebGL extensions. [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
-  * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
   * Content
      * Buildings
      * Point clouds. [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets), [even more data](https://lta.cr.usgs.gov/LIDAR)
