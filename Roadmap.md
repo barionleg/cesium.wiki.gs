@@ -1,6 +1,6 @@
 ## In progress
 
-* Stabilizing the Cesium API and finishing the documentation for Cesium 1.0.  See issues labeled [1.0](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=1.0).
+* Client-side KML ([branch]
 
 ## Ongoing
 
@@ -15,11 +15,11 @@ If you are interested in implementing any of these, start a discussion on the [f
 
 * See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
 * General
-  * Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
+(https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873)
   * DataSource improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
   * [Sandcastle improvements](Sandcastle-Details)
-  * More standard web services: WMTS, WFS, WCS, ...
+  * More standard web services: WFS, WCS, ...
   * Military symbol sets such as MS2525 and NTDS.  SVG files?
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
