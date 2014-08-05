@@ -2,7 +2,7 @@ This page describes the possible content of a CZML document or stream.  Please r
 
 _NOTE: This is a work in progress and reflects our plans NOT our current capabilities._
 
-## Id
+## id
 
 The ID of the object described by this packet.  IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope.  If this property is not specified, the client will automatically generate a unique one.  However, this prevents later packets from referring to this object in order to, for example, add more data to it.
 
@@ -10,7 +10,7 @@ The ID of the object described by this packet.  IDs do not need to be GUIDs, but
 
 **Interpolatable**: no
 
-## Name
+## name
 
 The name of the object.  It does not have to be unique and is intended for user consumption.
 
@@ -18,7 +18,7 @@ The name of the object.  It does not have to be unique and is intended for user 
 
 **Interpolatable**: no
 
-## Parent
+## parent
 
 The ID of the parent object or folder.
 
@@ -26,7 +26,7 @@ The ID of the parent object or folder.
 
 **Interpolatable**: no
 
-## Description
+## description
 
 An HTML description of the object.
 
@@ -39,8 +39,9 @@ An HTML description of the object.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `string` | Interval | string | The string value. |
+| `reference` | Interval | string | A reference property. |
 
-## Availability
+## availability
 
 When data for an object is available. If data for an object is known to be available at the current animation time, but the client does not yet have that data (presumably because it will arrive in a later packet), the client will pause with a message like "Buffering..." while it waits to receive the data. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may report availability for all time, but then later the propagator throws an exception and the availability needs to be adjusted. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is available at a time, the client expects the object to have at least one property, and it expects all properties that it needs to be defined at that time. If the object doesn't have any properties, or a needed property is defined but not at the animation time, the client will pause animation and wait for more data.
 
@@ -48,7 +49,7 @@ When data for an object is available. If data for an object is known to be avail
 
 **Interpolatable**: no
 
-## Position
+## position
 
 The position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
 
@@ -64,6 +65,8 @@ The position of the object in the world. The position has no direct visual repre
 | `cartesian` | Interval | array | The position represented as a Cartesian `[X, Y, Z]` in the meters relative to the `referenceFrame`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
 | `cartographicRadians` | Interval | array | The position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
 | `cartographicDegrees` | Interval | array | The position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
+| `cartesianVelocity` | Interval | array | The position and velocity represented as two Cartesians `[X, Y, Z, vX, vY, vZ]` in the meters relative to the `referenceFrame`. If the array has six elements, the position is constant. If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
@@ -98,7 +101,7 @@ Examples:
 }
 ```
 
-## Billboard
+## billboard
 
 A billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker.
 
@@ -106,7 +109,7 @@ A billboard, or viewport-aligned image. The billboard is positioned in the scene
 
 **Interpolatable**: no
 
-### Billboard.Color
+### billboard.color
 
 The color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
 
@@ -120,11 +123,12 @@ The color of the billboard.  This color value is multiplied with the values of t
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Billboard.EyeOffset
+### billboard.eyeOffset
 
 The eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 
@@ -137,11 +141,12 @@ The eye offset of the billboard, which is the offset in eye coordinates at which
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `cartesian` | Interval | array | The eye offset specified as a Cartesian `[X, Y, Z]` position in eye coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Billboard.HorizontalOrigin
+### billboard.horizontalOrigin
 
 The horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
 
@@ -154,8 +159,9 @@ The horizontal origin of the billboard.  It controls whether the billboard image
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `horizontalOrigin` | Interval | string | The horizontal origin.  Valid values are "LEFT", "CENTER", and "RIGHT". |
+| `reference` | Interval | string | A reference property. |
 
-### Billboard.Image
+### billboard.image
 
 The image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 
@@ -167,9 +173,10 @@ The image displayed on the billboard, expressed as a URL.  For broadest client c
 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
 
-### Billboard.PixelOffset
+### billboard.pixelOffset
 
 The offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
 
@@ -182,11 +189,12 @@ The offset, in viewport pixels, of the billboard origin from the `position`.  A 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `cartesian2` | Interval | array | The pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Billboard.Scale
+### billboard.scale
 
 The scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
 
@@ -199,11 +207,12 @@ The scale of the billboard.  The scale is multiplied with the pixel size of the 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Billboard.Rotation
+### billboard.rotation
 
 The rotation of the billboard offset from the alignedAxes.
 
@@ -216,11 +225,12 @@ The rotation of the billboard offset from the alignedAxes.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Billboard.AlignedAxis
+### billboard.alignedAxis
 
 The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
 
@@ -233,11 +243,12 @@ The aligned axis is the unit vector, in world coordinates, that the billboard up
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `cartesian` | Interval | array | The axis specified as a unit Cartesian `[X, Y, Z]` in world coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Billboard.Show
+### billboard.show
 
 Whether or not the billboard is shown.
 
@@ -251,7 +262,7 @@ Whether or not the billboard is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Billboard.VerticalOrigin
+### billboard.verticalOrigin
 
 The vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 
@@ -264,27 +275,10 @@ The vertical origin of the billboard.  It controls whether the billboard image i
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `verticalOrigin` | Interval | string | The vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP". |
+| `reference` | Interval | string | A reference property. |
 
 
-## VertexPositions
-
-The world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-
-**Property Name**: `vertexPositions`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `referenceFrame` | Interval | string | The reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose "position" and "orientation" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is "FIXED". |
-| `cartesian` | Interval | array | The list of positions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` in the meters relative to the `referenceFrame`. |
-| `cartographicRadians` | Interval | array | The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in radians and height is in meters. |
-| `cartographicDegrees` | Interval | array | The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in degrees and height is in meters. |
-| `references` | Interval | array | The list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time. |
-
-## Orientation
+## orientation
 
 The orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
 
@@ -298,11 +292,12 @@ The orientation of the object in the world.  The orientation has no direct visua
 |:-----|:------|:-----|:------------|
 | `axes` | Interval | string | TODO |
 | `unitQuaternion` | Interval | array | TODO |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-## Point
+## point
 
 A point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
 
@@ -310,7 +305,7 @@ A point, or viewport-aligned circle.  The point is positioned in the scene by th
 
 **Interpolatable**: no
 
-### Point.Color
+### point.color
 
 The color of the point.
 
@@ -324,11 +319,12 @@ The color of the point.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Point.OutlineColor
+### point.outlineColor
 
 The color of the outline of the point.
 
@@ -342,11 +338,12 @@ The color of the outline of the point.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Point.OutlineWidth
+### point.outlineWidth
 
 The width of the outline of the point.
 
@@ -359,11 +356,12 @@ The width of the outline of the point.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Point.PixelSize
+### point.pixelSize
 
 The size of the point, in pixels.
 
@@ -376,11 +374,12 @@ The size of the point, in pixels.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Point.Show
+### point.show
 
 Whether or not the point is shown.
 
@@ -395,7 +394,7 @@ Whether or not the point is shown.
 | `boolean` | Interval | boolean | The boolean value. |
 
 
-## Label
+## label
 
 A string of text.  The label is positioned in the scene by the `position` property.
 
@@ -403,7 +402,7 @@ A string of text.  The label is positioned in the scene by the `position` proper
 
 **Interpolatable**: no
 
-### Label.EyeOffset
+### label.eyeOffset
 
 The eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 
@@ -416,11 +415,12 @@ The eye offset of the label, which is the offset in eye coordinates at which to 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `cartesian` | Interval | array | The eye offset specified as a Cartesian `[X, Y, Z]` position in eye coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Label.FillColor
+### label.fillColor
 
 The fill color of the label.
 
@@ -434,11 +434,12 @@ The fill color of the label.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Label.Font
+### label.font
 
 The font to use for the label.
 
@@ -451,8 +452,9 @@ The font to use for the label.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `font` | Interval | string | The font. |
+| `reference` | Interval | string | A reference property. |
 
-### Label.HorizontalOrigin
+### label.horizontalOrigin
 
 The horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.
 
@@ -465,8 +467,9 @@ The horizontal origin of the label.  It controls whether the label is left-, cen
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `horizontalOrigin` | Interval | string | The horizontal origin.  Valid values are "LEFT", "CENTER", and "RIGHT". |
+| `reference` | Interval | string | A reference property. |
 
-### Label.OutlineColor
+### label.outlineColor
 
 The outline color of the label.
 
@@ -480,11 +483,12 @@ The outline color of the label.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Label.OutlineWidth
+### label.outlineWidth
 
 The outline width of the label.
 
@@ -497,11 +501,12 @@ The outline width of the label.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Label.PixelOffset
+### label.pixelOffset
 
 The offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
 
@@ -514,11 +519,12 @@ The offset, in viewport pixels, of the label origin from the `position`.  A pixe
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `cartesian2` | Interval | array | The pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Label.Scale
+### label.scale
 
 The scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.
 
@@ -531,11 +537,12 @@ The scale of the label.  The scale is multiplied with the pixel size of the labe
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Label.Show
+### label.show
 
 Whether or not the label is shown.
 
@@ -549,7 +556,7 @@ Whether or not the label is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Label.Style
+### label.style
 
 The style of the label.
 
@@ -562,8 +569,9 @@ The style of the label.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `labelStyle` | Interval | string | The label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE". |
+| `reference` | Interval | string | A reference property. |
 
-### Label.Text
+### label.text
 
 The text displayed by the label.
 
@@ -576,8 +584,9 @@ The text displayed by the label.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `string` | Interval | string | The string value. |
+| `reference` | Interval | string | A reference property. |
 
-### Label.VerticalOrigin
+### label.verticalOrigin
 
 The vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.
 
@@ -590,17 +599,36 @@ The vertical origin of the label.  It controls whether the label image is bottom
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `verticalOrigin` | Interval | string | The vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP". |
+| `reference` | Interval | string | A reference property. |
 
 
-## Polyline
+## polyline
 
-A polyline, which is a line in the scene composed of multiple segments.  The vertices of the polyline are specified by the `vertexPositions` property.
+A polyline, which is a line in the scene composed of multiple segments.
 
 **Property Name**: `polyline`
 
 **Interpolatable**: no
 
-### Polyline.Show
+### polyline.positions
+
+The array of positions defining the polyline as a line strip.
+
+**Property Name**: `positions`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `referenceFrame` | Interval | string | The reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose "position" and "orientation" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is "FIXED". |
+| `cartesian` | Interval | array | The list of positions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` in the meters relative to the `referenceFrame`. |
+| `cartographicRadians` | Interval | array | The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in radians and height is in meters. |
+| `cartographicDegrees` | Interval | array | The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in degrees and height is in meters. |
+| `references` | Interval | array | The list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time. |
+
+### polyline.show
 
 Whether or not the polyline is shown.
 
@@ -614,9 +642,25 @@ Whether or not the polyline is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Polyline.Color
+### polyline.material
 
-The color of the polyline.
+The material to use to draw the polyline.
+
+**Property Name**: `material`
+
+**Interpolatable**: no
+
+#### polyline.material.solidColor
+
+Colors the line with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### polyline.material.solidColor.color
+
+The color of the surface.
 
 **Property Name**: `color`
 
@@ -628,11 +672,125 @@ The color of the polyline.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Polyline.Width
+
+#### polyline.material.polylineOutline
+
+Colors the line with a color and outline.
+
+**Property Name**: `polylineOutline`
+
+**Interpolatable**: no
+
+##### polyline.material.polylineOutline.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### polyline.material.polylineOutline.outlineColor
+
+The color of the surface outline.
+
+**Property Name**: `outlineColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### polyline.material.polylineOutline.outlineWidth
+
+The width of the outline.
+
+**Property Name**: `outlineWidth`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### polyline.material.polylineGlow
+
+Colors the line with a glowing color.
+
+**Property Name**: `polylineGlow`
+
+**Interpolatable**: no
+
+##### polyline.material.polylineGlow.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### polyline.material.polylineGlow.glowPower
+
+The strength of the glow.
+
+**Property Name**: `glowPower`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### polyline.width
 
 The width of the polyline.
 
@@ -645,47 +803,27 @@ The width of the polyline.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Polyline.OutlineColor
+### polyline.followSurface
 
-The color of the outline of the polyline.
+Whether or not the positions are connected as great arcs (the default) or as straight lines.
 
-**Property Name**: `outlineColor`
+**Property Name**: `followSurface`
 
-**Interpolatable**: yes
+**Interpolatable**: no
 
 **Sub-properties**:
 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Polyline.OutlineWidth
-
-The width of the outline of the polyline.
-
-**Property Name**: `outlineWidth`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `boolean` | Interval | boolean | The boolean value. |
 
 
-## Path
+## path
 
 A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
 
@@ -693,7 +831,7 @@ A path, which is a polyline defined by the motion of an object over time.  The p
 
 **Interpolatable**: no
 
-### Path.Show
+### path.show
 
 Whether or not the path is shown.
 
@@ -707,9 +845,25 @@ Whether or not the path is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Path.Color
+### path.material
 
-The color of the path line.
+The material to use to draw the path.
+
+**Property Name**: `material`
+
+**Interpolatable**: no
+
+#### path.material.solidColor
+
+Colors the line with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### path.material.solidColor.color
+
+The color of the surface.
 
 **Property Name**: `color`
 
@@ -721,11 +875,125 @@ The color of the path line.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Path.Width
+
+#### path.material.polylineOutline
+
+Colors the line with a color and outline.
+
+**Property Name**: `polylineOutline`
+
+**Interpolatable**: no
+
+##### path.material.polylineOutline.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### path.material.polylineOutline.outlineColor
+
+The color of the surface outline.
+
+**Property Name**: `outlineColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### path.material.polylineOutline.outlineWidth
+
+The width of the outline.
+
+**Property Name**: `outlineWidth`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### path.material.polylineGlow
+
+Colors the line with a glowing color.
+
+**Property Name**: `polylineGlow`
+
+**Interpolatable**: no
+
+##### path.material.polylineGlow.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### path.material.polylineGlow.glowPower
+
+The strength of the glow.
+
+**Property Name**: `glowPower`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### path.width
 
 The width of the path line.
 
@@ -738,11 +1006,12 @@ The width of the path line.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Path.Resolution
+### path.resolution
 
 The maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
 
@@ -755,46 +1024,12 @@ The maximum step-size, in seconds, used to sample the path.  If the `position` p
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Path.OutlineColor
-
-The color of the outline of the path.
-
-**Property Name**: `outlineColor`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Path.OutlineWidth
-
-The width of the outline of the path.
-
-**Property Name**: `outlineWidth`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Path.LeadTime
+### path.leadTime
 
 The time ahead of the animation time, in seconds, to show the path.
 
@@ -807,11 +1042,12 @@ The time ahead of the animation time, in seconds, to show the path.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Path.TrailTime
+### path.trailTime
 
 The time behind the animation time, in seconds, to show the path.
 
@@ -824,20 +1060,39 @@ The time behind the animation time, in seconds, to show the path.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-## Polygon
+## polygon
 
-A polygon, which is a closed figure on the surface of the Earth.  The vertices of the polygon are specified by the `vertexPositions` property.
+A polygon, which is a closed figure on the surface of the Earth.
 
 **Property Name**: `polygon`
 
 **Interpolatable**: no
 
-### Polygon.Show
+### polygon.positions
+
+The array of positions defining a simple polygon.
+
+**Property Name**: `positions`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `referenceFrame` | Interval | string | The reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose "position" and "orientation" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is "FIXED". |
+| `cartesian` | Interval | array | The list of positions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` in the meters relative to the `referenceFrame`. |
+| `cartographicRadians` | Interval | array | The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in radians and height is in meters. |
+| `cartographicDegrees` | Interval | array | The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in degrees and height is in meters. |
+| `references` | Interval | array | The list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time. |
+
+### polygon.show
 
 Whether or not the polygon is shown.
 
@@ -851,7 +1106,7 @@ Whether or not the polygon is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Polygon.Material
+### polygon.material
 
 The material to use to fill the polygon.
 
@@ -859,7 +1114,7 @@ The material to use to fill the polygon.
 
 **Interpolatable**: no
 
-#### Polygon.Material.SolidColor
+#### polygon.material.solidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -867,7 +1122,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Polygon.Material.SolidColor.Color
+##### polygon.material.solidColor.color
 
 The color of the surface.
 
@@ -881,12 +1136,13 @@ The color of the surface.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Polygon.Material.Image
+#### polygon.material.image
 
 Fills the surface with an image.
 
@@ -894,7 +1150,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Polygon.Material.Image.Image
+##### polygon.material.image.image
 
 The image to display on the surface.
 
@@ -906,10 +1162,29 @@ The image to display on the surface.
 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### polygon.material.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Polygon.Material.Grid
+#### polygon.material.grid
 
 Fills the surface with a grid.
 
@@ -917,7 +1192,7 @@ Fills the surface with a grid.
 
 **Interpolatable**: no
 
-##### Polygon.Material.Grid.Color
+##### polygon.material.grid.color
 
 The color of the surface.
 
@@ -931,11 +1206,12 @@ The color of the surface.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Polygon.Material.Grid.CellAlpha
+##### polygon.material.grid.cellAlpha
 
 Alpha value for the space between grid lines.  This will be combined with the color alpha.
 
@@ -948,15 +1224,132 @@ Alpha value for the space between grid lines.  This will be combined with the co
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Polygon.Material.Grid.RowCount
+##### polygon.material.grid.lineCount
 
-The number of horizontal grid lines.
+The number of grid lines along each axis.
 
-**Property Name**: `rowCount`
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### polygon.material.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### polygon.material.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### polygon.material.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### polygon.material.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### polygon.material.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### polygon.material.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### polygon.material.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
 
 **Interpolatable**: yes
 
@@ -965,15 +1358,16 @@ The number of horizontal grid lines.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Polygon.Material.Grid.ColumnCount
+##### polygon.material.stripe.repeat
 
-The number of vertical grid lines.
+The number of time the stripes repeat.
 
-**Property Name**: `columnCount`
+**Property Name**: `repeat`
 
 **Interpolatable**: yes
 
@@ -982,47 +1376,14 @@ The number of vertical grid lines.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Polygon.Material.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Polygon.Material.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
 
-### Polygon.Height
+### polygon.height
 
 The height of the polygon when perPositionHeight is false.
 
@@ -1035,11 +1396,12 @@ The height of the polygon when perPositionHeight is false.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Polygon.ExtrudedHeight
+### polygon.extrudedHeight
 
 The extruded height of the polygon.
 
@@ -1052,11 +1414,12 @@ The extruded height of the polygon.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Polygon.Granularity
+### polygon.granularity
 
 The sampling distance, in radians.
 
@@ -1069,11 +1432,12 @@ The sampling distance, in radians.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Polygon.StRotation
+### polygon.stRotation
 
 The rotation of any applied texture.
 
@@ -1086,11 +1450,12 @@ The rotation of any applied texture.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Polygon.Fill
+### polygon.fill
 
 Whether or not the polygon is filled.
 
@@ -1104,7 +1469,7 @@ Whether or not the polygon is filled.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Polygon.Outline
+### polygon.outline
 
 Whether or not the polygon is outlined.
 
@@ -1118,7 +1483,7 @@ Whether or not the polygon is outlined.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Polygon.OutlineColor
+### polygon.outlineColor
 
 The color of the polygon outline.
 
@@ -1132,11 +1497,12 @@ The color of the polygon outline.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Polygon.PerPositionHeight
+### polygon.perPositionHeight
 
 Whether to use the height of each position to define the polygon or a constant height above the surface.
 
@@ -1151,1146 +1517,7 @@ Whether to use the height of each position to define the polygon or a constant h
 | `boolean` | Interval | boolean | The boolean value. |
 
 
-## Cone
-
-A cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
-
-**Property Name**: `cone`
-
-**Interpolatable**: no
-
-### Cone.Show
-
-Whether or not the cone is shown.
-
-**Property Name**: `show`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `boolean` | Interval | boolean | The boolean value. |
-
-### Cone.InnerHalfAngle
-
-The inner half angle of the cone.
-
-**Property Name**: `innerHalfAngle`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Cone.OuterHalfAngle
-
-The outer half angle of the cone.
-
-**Property Name**: `outerHalfAngle`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Cone.Radius
-
-The radial limit of the cone.
-
-**Property Name**: `radius`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Cone.MinimumClockAngle
-
-The minimum clock angle limit of the cone.
-
-**Property Name**: `minimumClockAngle`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Cone.MaximumClockAngle
-
-The maximum clock angle limit of the cone.
-
-**Property Name**: `maximumClockAngle`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Cone.ShowIntersection
-
-Whether or not the intersection of the cone with the Earth is shown.
-
-**Property Name**: `showIntersection`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `boolean` | Interval | boolean | The boolean value. |
-
-### Cone.IntersectionColor
-
-The color of the intersection of the cone with the Earth.
-
-**Property Name**: `intersectionColor`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Cone.IntersectionWidth
-
-The width of the intersection in pixels.
-
-**Property Name**: `intersectionWidth`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Cone.CapMaterial
-
-The material to use to cap the cone at its radial limit.
-
-**Property Name**: `capMaterial`
-
-**Interpolatable**: no
-
-#### Cone.CapMaterial.SolidColor
-
-Fills the surface with a solid color, which may be translucent.
-
-**Property Name**: `solidColor`
-
-**Interpolatable**: no
-
-##### Cone.CapMaterial.SolidColor.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-#### Cone.CapMaterial.Image
-
-Fills the surface with an image.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-##### Cone.CapMaterial.Image.Image
-
-The image to display on the surface.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
-
-
-#### Cone.CapMaterial.Grid
-
-Fills the surface with a grid.
-
-**Property Name**: `grid`
-
-**Interpolatable**: no
-
-##### Cone.CapMaterial.Grid.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.CapMaterial.Grid.CellAlpha
-
-Alpha value for the space between grid lines.  This will be combined with the color alpha.
-
-**Property Name**: `cellAlpha`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.CapMaterial.Grid.RowCount
-
-The number of horizontal grid lines.
-
-**Property Name**: `rowCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.CapMaterial.Grid.ColumnCount
-
-The number of vertical grid lines.
-
-**Property Name**: `columnCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.CapMaterial.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.CapMaterial.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-
-### Cone.InnerMaterial
-
-The material to use for the inner cone.
-
-**Property Name**: `innerMaterial`
-
-**Interpolatable**: no
-
-#### Cone.InnerMaterial.SolidColor
-
-Fills the surface with a solid color, which may be translucent.
-
-**Property Name**: `solidColor`
-
-**Interpolatable**: no
-
-##### Cone.InnerMaterial.SolidColor.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-#### Cone.InnerMaterial.Image
-
-Fills the surface with an image.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-##### Cone.InnerMaterial.Image.Image
-
-The image to display on the surface.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
-
-
-#### Cone.InnerMaterial.Grid
-
-Fills the surface with a grid.
-
-**Property Name**: `grid`
-
-**Interpolatable**: no
-
-##### Cone.InnerMaterial.Grid.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.InnerMaterial.Grid.CellAlpha
-
-Alpha value for the space between grid lines.  This will be combined with the color alpha.
-
-**Property Name**: `cellAlpha`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.InnerMaterial.Grid.RowCount
-
-The number of horizontal grid lines.
-
-**Property Name**: `rowCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.InnerMaterial.Grid.ColumnCount
-
-The number of vertical grid lines.
-
-**Property Name**: `columnCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.InnerMaterial.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.InnerMaterial.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-
-### Cone.OuterMaterial
-
-The material to use for the outer cone.
-
-**Property Name**: `outerMaterial`
-
-**Interpolatable**: no
-
-#### Cone.OuterMaterial.SolidColor
-
-Fills the surface with a solid color, which may be translucent.
-
-**Property Name**: `solidColor`
-
-**Interpolatable**: no
-
-##### Cone.OuterMaterial.SolidColor.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-#### Cone.OuterMaterial.Image
-
-Fills the surface with an image.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-##### Cone.OuterMaterial.Image.Image
-
-The image to display on the surface.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
-
-
-#### Cone.OuterMaterial.Grid
-
-Fills the surface with a grid.
-
-**Property Name**: `grid`
-
-**Interpolatable**: no
-
-##### Cone.OuterMaterial.Grid.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.OuterMaterial.Grid.CellAlpha
-
-Alpha value for the space between grid lines.  This will be combined with the color alpha.
-
-**Property Name**: `cellAlpha`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.OuterMaterial.Grid.RowCount
-
-The number of horizontal grid lines.
-
-**Property Name**: `rowCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.OuterMaterial.Grid.ColumnCount
-
-The number of vertical grid lines.
-
-**Property Name**: `columnCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.OuterMaterial.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.OuterMaterial.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-
-### Cone.SilhouetteMaterial
-
-The material to use for the cone's silhouette.
-
-**Property Name**: `silhouetteMaterial`
-
-**Interpolatable**: no
-
-#### Cone.SilhouetteMaterial.SolidColor
-
-Fills the surface with a solid color, which may be translucent.
-
-**Property Name**: `solidColor`
-
-**Interpolatable**: no
-
-##### Cone.SilhouetteMaterial.SolidColor.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-#### Cone.SilhouetteMaterial.Image
-
-Fills the surface with an image.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-##### Cone.SilhouetteMaterial.Image.Image
-
-The image to display on the surface.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
-
-
-#### Cone.SilhouetteMaterial.Grid
-
-Fills the surface with a grid.
-
-**Property Name**: `grid`
-
-**Interpolatable**: no
-
-##### Cone.SilhouetteMaterial.Grid.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.SilhouetteMaterial.Grid.CellAlpha
-
-Alpha value for the space between grid lines.  This will be combined with the color alpha.
-
-**Property Name**: `cellAlpha`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.SilhouetteMaterial.Grid.RowCount
-
-The number of horizontal grid lines.
-
-**Property Name**: `rowCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.SilhouetteMaterial.Grid.ColumnCount
-
-The number of vertical grid lines.
-
-**Property Name**: `columnCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.SilhouetteMaterial.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Cone.SilhouetteMaterial.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-
-
-## Pyramid
-
-A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
-
-**Property Name**: `pyramid`
-
-**Interpolatable**: no
-
-### Pyramid.Show
-
-Whether or not the pyramid is shown.
-
-**Property Name**: `show`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `boolean` | Interval | boolean | The boolean value. |
-
-### Pyramid.Directions
-
-The list of directions defining the pyramid.
-
-**Property Name**: `directions`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `unitSpherical` | Interval | array | The list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis. |
-| `unitCartesian` | Interval | array | The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`. |
-
-### Pyramid.Radius
-
-The radial limit of the pyramid.
-
-**Property Name**: `radius`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Pyramid.ShowIntersection
-
-Whether or not the intersection of the pyramid with the Earth is shown.
-
-**Property Name**: `showIntersection`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `boolean` | Interval | boolean | The boolean value. |
-
-### Pyramid.IntersectionColor
-
-The color of the intersection of the pyramid with the Earth.
-
-**Property Name**: `intersectionColor`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Pyramid.IntersectionWidth
-
-The width of the intersection in pixels.
-
-**Property Name**: `intersectionWidth`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Pyramid.Material
-
-The material to display on the surface of the pyramid.
-
-**Property Name**: `material`
-
-**Interpolatable**: no
-
-#### Pyramid.Material.SolidColor
-
-Fills the surface with a solid color, which may be translucent.
-
-**Property Name**: `solidColor`
-
-**Interpolatable**: no
-
-##### Pyramid.Material.SolidColor.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-#### Pyramid.Material.Image
-
-Fills the surface with an image.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-##### Pyramid.Material.Image.Image
-
-The image to display on the surface.
-
-**Property Name**: `image`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
-
-
-#### Pyramid.Material.Grid
-
-Fills the surface with a grid.
-
-**Property Name**: `grid`
-
-**Interpolatable**: no
-
-##### Pyramid.Material.Grid.Color
-
-The color of the surface.
-
-**Property Name**: `color`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Pyramid.Material.Grid.CellAlpha
-
-Alpha value for the space between grid lines.  This will be combined with the color alpha.
-
-**Property Name**: `cellAlpha`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Pyramid.Material.Grid.RowCount
-
-The number of horizontal grid lines.
-
-**Property Name**: `rowCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Pyramid.Material.Grid.ColumnCount
-
-The number of vertical grid lines.
-
-**Property Name**: `columnCount`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Pyramid.Material.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Pyramid.Material.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-
-
-
-## Camera
-
-A camera.
-
-**Property Name**: `camera`
-
-**Interpolatable**: no
-
-### Camera.Enable
-
-Whether or not the camera is enabled.
-
-**Property Name**: `enable`
-
-**Interpolatable**: no
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `boolean` | Interval | boolean | The boolean value. |
-
-
-## Ellipsoid
+## ellipsoid
 
 An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
 
@@ -2298,7 +1525,7 @@ An ellipsoid, which is a closed quadric surface that is a three dimensional anal
 
 **Interpolatable**: no
 
-### Ellipsoid.Show
+### ellipsoid.show
 
 Whether or not the ellipsoid is shown.
 
@@ -2312,7 +1539,7 @@ Whether or not the ellipsoid is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Ellipsoid.Radii
+### ellipsoid.radii
 
 The dimensions of the ellipsoid.
 
@@ -2325,11 +1552,12 @@ The dimensions of the ellipsoid.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `cartesian` | Interval | array | The radii as a Cartesian `[X, Y, Z]` in meters. If the array has three elements, the radii are constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipsoid.Fill
+### ellipsoid.fill
 
 Whether or not the ellipsoid is filled.
 
@@ -2343,7 +1571,7 @@ Whether or not the ellipsoid is filled.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Ellipsoid.Material
+### ellipsoid.material
 
 The material to display on the surface of the ellipsoid.
 
@@ -2351,7 +1579,7 @@ The material to display on the surface of the ellipsoid.
 
 **Interpolatable**: no
 
-#### Ellipsoid.Material.SolidColor
+#### ellipsoid.material.solidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -2359,7 +1587,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Ellipsoid.Material.SolidColor.Color
+##### ellipsoid.material.solidColor.color
 
 The color of the surface.
 
@@ -2373,12 +1601,13 @@ The color of the surface.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Ellipsoid.Material.Image
+#### ellipsoid.material.image
 
 Fills the surface with an image.
 
@@ -2386,7 +1615,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Ellipsoid.Material.Image.Image
+##### ellipsoid.material.image.image
 
 The image to display on the surface.
 
@@ -2398,10 +1627,29 @@ The image to display on the surface.
 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### ellipsoid.material.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Ellipsoid.Material.Grid
+#### ellipsoid.material.grid
 
 Fills the surface with a grid.
 
@@ -2409,7 +1657,7 @@ Fills the surface with a grid.
 
 **Interpolatable**: no
 
-##### Ellipsoid.Material.Grid.Color
+##### ellipsoid.material.grid.color
 
 The color of the surface.
 
@@ -2423,11 +1671,12 @@ The color of the surface.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Ellipsoid.Material.Grid.CellAlpha
+##### ellipsoid.material.grid.cellAlpha
 
 Alpha value for the space between grid lines.  This will be combined with the color alpha.
 
@@ -2440,15 +1689,132 @@ Alpha value for the space between grid lines.  This will be combined with the co
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Ellipsoid.Material.Grid.RowCount
+##### ellipsoid.material.grid.lineCount
 
-The number of horizontal grid lines.
+The number of grid lines along each axis.
 
-**Property Name**: `rowCount`
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipsoid.material.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipsoid.material.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### ellipsoid.material.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### ellipsoid.material.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### ellipsoid.material.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipsoid.material.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipsoid.material.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
 
 **Interpolatable**: yes
 
@@ -2457,15 +1823,16 @@ The number of horizontal grid lines.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Ellipsoid.Material.Grid.ColumnCount
+##### ellipsoid.material.stripe.repeat
 
-The number of vertical grid lines.
+The number of time the stripes repeat.
 
-**Property Name**: `columnCount`
+**Property Name**: `repeat`
 
 **Interpolatable**: yes
 
@@ -2474,47 +1841,14 @@ The number of vertical grid lines.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Ellipsoid.Material.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Ellipsoid.Material.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
 
-### Ellipsoid.Outline
+### ellipsoid.outline
 
 Whether or not the ellipsoid is outlined.
 
@@ -2528,7 +1862,7 @@ Whether or not the ellipsoid is outlined.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Ellipsoid.OutlineColor
+### ellipsoid.outlineColor
 
 The color of the ellipsoid outline.
 
@@ -2542,11 +1876,12 @@ The color of the ellipsoid outline.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipsoid.StackPartitions
+### ellipsoid.stackPartitions
 
 The number of times to partition the ellipsoid into stacks.
 
@@ -2559,11 +1894,12 @@ The number of times to partition the ellipsoid into stacks.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipsoid.SlicePartitions
+### ellipsoid.slicePartitions
 
 The number of times to partition the ellipsoid into radial slices.
 
@@ -2576,11 +1912,12 @@ The number of times to partition the ellipsoid into radial slices.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipsoid.Subdivisions
+### ellipsoid.subdivisions
 
 The number of points per outline line, determining the granularity of the curvature.
 
@@ -2593,12 +1930,13 @@ The number of points per outline line, determining the granularity of the curvat
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-## ViewFrom
+## viewFrom
 
 A suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
 
@@ -2606,7 +1944,81 @@ A suggested camera location when viewing this object.  The property is specified
 
 **Interpolatable**: no
 
-## Ellipse
+## model
+
+A 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+
+**Property Name**: `model`
+
+**Interpolatable**: no
+
+### model.show
+
+Whether or not the model is shown.
+
+**Property Name**: `show`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### model.scale
+
+The scale of the model.
+
+**Property Name**: `scale`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### model.minimumPixelSize
+
+The approximate minimum pixel size of the model regardless of zoom.
+
+**Property Name**: `minimumPixelSize`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### model.gltf
+
+The URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+
+**Property Name**: `gltf`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+
+## ellipse
 
 An ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
 
@@ -2614,7 +2026,7 @@ An ellipse, which is a closed curve on the surface of the Earth.  The ellipse is
 
 **Interpolatable**: no
 
-### Ellipse.Show
+### ellipse.show
 
 Whether or not the ellipse is shown.
 
@@ -2628,7 +2040,7 @@ Whether or not the ellipse is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Ellipse.SemiMajorAxis
+### ellipse.semiMajorAxis
 
 The length of the ellipse's semi-major axis in meters.
 
@@ -2641,11 +2053,12 @@ The length of the ellipse's semi-major axis in meters.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.SemiMinorAxis
+### ellipse.semiMinorAxis
 
 The length of the ellipse's semi-minor axis in meters.
 
@@ -2658,11 +2071,12 @@ The length of the ellipse's semi-minor axis in meters.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.Rotation
+### ellipse.rotation
 
 The angle from north (clockwise) in radians.
 
@@ -2675,11 +2089,12 @@ The angle from north (clockwise) in radians.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.Material
+### ellipse.material
 
 The material to use to fill the ellipse.
 
@@ -2687,7 +2102,7 @@ The material to use to fill the ellipse.
 
 **Interpolatable**: no
 
-#### Ellipse.Material.SolidColor
+#### ellipse.material.solidColor
 
 Fills the surface with a solid color, which may be translucent.
 
@@ -2695,7 +2110,7 @@ Fills the surface with a solid color, which may be translucent.
 
 **Interpolatable**: no
 
-##### Ellipse.Material.SolidColor.Color
+##### ellipse.material.solidColor.color
 
 The color of the surface.
 
@@ -2709,12 +2124,13 @@ The color of the surface.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Ellipse.Material.Image
+#### ellipse.material.image
 
 Fills the surface with an image.
 
@@ -2722,7 +2138,7 @@ Fills the surface with an image.
 
 **Interpolatable**: no
 
-##### Ellipse.Material.Image.Image
+##### ellipse.material.image.image
 
 The image to display on the surface.
 
@@ -2734,10 +2150,29 @@ The image to display on the surface.
 
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
-| `image` | Interval | string | The URL of the image. |
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### ellipse.material.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-#### Ellipse.Material.Grid
+#### ellipse.material.grid
 
 Fills the surface with a grid.
 
@@ -2745,7 +2180,7 @@ Fills the surface with a grid.
 
 **Interpolatable**: no
 
-##### Ellipse.Material.Grid.Color
+##### ellipse.material.grid.color
 
 The color of the surface.
 
@@ -2759,11 +2194,12 @@ The color of the surface.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Ellipse.Material.Grid.CellAlpha
+##### ellipse.material.grid.cellAlpha
 
 Alpha value for the space between grid lines.  This will be combined with the color alpha.
 
@@ -2776,15 +2212,132 @@ Alpha value for the space between grid lines.  This will be combined with the co
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Ellipse.Material.Grid.RowCount
+##### ellipse.material.grid.lineCount
 
-The number of horizontal grid lines.
+The number of grid lines along each axis.
 
-**Property Name**: `rowCount`
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipse.material.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipse.material.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### ellipse.material.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### ellipse.material.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### ellipse.material.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipse.material.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### ellipse.material.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
 
 **Interpolatable**: yes
 
@@ -2793,15 +2346,16 @@ The number of horizontal grid lines.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-##### Ellipse.Material.Grid.ColumnCount
+##### ellipse.material.stripe.repeat
 
-The number of vertical grid lines.
+The number of time the stripes repeat.
 
-**Property Name**: `columnCount`
+**Property Name**: `repeat`
 
 **Interpolatable**: yes
 
@@ -2810,47 +2364,14 @@ The number of vertical grid lines.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Ellipse.Material.Grid.RowThickness
-
-The thickness of horizontal grid lines, in pixels.
-
-**Property Name**: `rowThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-##### Ellipse.Material.Grid.ColumnThickness
-
-The thickness of vertical grid lines, in pixels.
-
-**Property Name**: `columnThickness`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
 
-### Ellipse.Height
+### ellipse.height
 
 The height of the ellipse when perPositionHeight is false.
 
@@ -2863,11 +2384,12 @@ The height of the ellipse when perPositionHeight is false.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.ExtrudedHeight
+### ellipse.extrudedHeight
 
 The extruded height of the ellipse.
 
@@ -2880,11 +2402,12 @@ The extruded height of the ellipse.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.Granularity
+### ellipse.granularity
 
 The sampling distance, in radians.
 
@@ -2897,11 +2420,12 @@ The sampling distance, in radians.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.StRotation
+### ellipse.stRotation
 
 The rotation of any applied texture coordinates.
 
@@ -2914,11 +2438,12 @@ The rotation of any applied texture coordinates.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.Fill
+### ellipse.fill
 
 Whether or not the ellipse is filled.
 
@@ -2932,7 +2457,7 @@ Whether or not the ellipse is filled.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Ellipse.Outline
+### ellipse.outline
 
 Whether or not the ellipse is outlined.
 
@@ -2946,7 +2471,7 @@ Whether or not the ellipse is outlined.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Ellipse.OutlineColor
+### ellipse.outlineColor
 
 The color of the ellipse outline.
 
@@ -2960,11 +2485,12 @@ The color of the ellipse outline.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Ellipse.NumberOfVerticalLines
+### ellipse.numberOfVerticalLines
 
 The number of vertical lines to use when outlining an extruded ellipse.
 
@@ -2977,14 +2503,15 @@ The number of vertical lines to use when outlining an extruded ellipse.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
 
-## Clock
+## clock
 
-A simulated clock.
+The clock settings for the entire data set. Only valid on the document object.
 
 **Property Name**: `clock`
 
@@ -2999,15 +2526,4385 @@ A simulated clock.
 | `range` | Interval | string | The behavior of a clock when its current time reaches its start or end points.  Valid values are 'UNBOUNDED', 'CLAMPED', and 'LOOP_STOP'. |
 | `step` | Interval | string | Defines how a clock steps in time.  Valid values are 'SYSTEM_CLOCK', 'SYSTEM_CLOCK_MULTIPLIER', and 'TICK_DEPENDENT'. |
 
-## Vector
+## version
 
-Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+The CZML version being written. Only valid on the document object.
 
-**Property Name**: `vector`
+**Property Name**: `version`
 
 **Interpolatable**: no
 
-### Vector.Show
+## agi_conicSensor
+
+A conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+
+_Note: This type is an extension and may not be implemented by all CZML clients._
+
+**Property Name**: `agi_conicSensor`
+
+**Interpolatable**: no
+
+### agi_conicSensor.show
+
+Whether or not the cone is shown.
+
+**Property Name**: `show`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_conicSensor.innerHalfAngle
+
+The inner half angle of the cone.
+
+**Property Name**: `innerHalfAngle`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_conicSensor.outerHalfAngle
+
+The outer half angle of the cone.
+
+**Property Name**: `outerHalfAngle`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_conicSensor.minimumClockAngle
+
+The minimum clock angle limit of the cone.
+
+**Property Name**: `minimumClockAngle`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_conicSensor.maximumClockAngle
+
+The maximum clock angle limit of the cone.
+
+**Property Name**: `maximumClockAngle`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_conicSensor.radius
+
+The radial limit of the cone.
+
+**Property Name**: `radius`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_conicSensor.showIntersection
+
+Whether or not the intersection of the cone with the Earth is shown.
+
+**Property Name**: `showIntersection`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_conicSensor.intersectionColor
+
+The color of the intersection of the cone with the Earth.
+
+**Property Name**: `intersectionColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_conicSensor.intersectionWidth
+
+The width of the intersection in pixels.
+
+**Property Name**: `intersectionWidth`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_conicSensor.showLateralSurfaces
+
+Whether or not the intersections of the cone with the earth are shown.
+
+**Property Name**: `showLateralSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_conicSensor.lateralSurfaceMaterial
+
+Whether or not lateral surfaces are shown.
+
+**Property Name**: `lateralSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_conicSensor.lateralSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.lateralSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.lateralSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.lateralSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.lateralSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.lateralSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.lateralSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.lateralSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.lateralSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_conicSensor.showEllipsoidSurfaces
+
+Whether or not ellipsoid surfaces are shown.
+
+**Property Name**: `showEllipsoidSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_conicSensor.ellipsoidSurfaceMaterial
+
+The material to use for the cone's ellipsoid surface.
+
+**Property Name**: `ellipsoidSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_conicSensor.ellipsoidSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.ellipsoidSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.ellipsoidSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.ellipsoidSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_conicSensor.showEllipsoidHorizonSurfaces
+
+Whether or not ellipsoid horizon surfaces are shown.
+
+**Property Name**: `showEllipsoidHorizonSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_conicSensor.ellipsoidHorizonSurfaceMaterial
+
+The material to use for the cone's ellipsoid horizon surface.
+
+**Property Name**: `ellipsoidHorizonSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.ellipsoidHorizonSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_conicSensor.showDomeSurfaces
+
+Whether or not dome surfaces are shown.
+
+**Property Name**: `showDomeSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_conicSensor.domeSurfaceMaterial
+
+The material to use for the cone's dome.
+
+**Property Name**: `domeSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_conicSensor.domeSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.domeSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.domeSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.domeSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.domeSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.domeSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.domeSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.domeSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.domeSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.domeSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.domeSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_conicSensor.domeSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_conicSensor.domeSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_conicSensor.domeSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.domeSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.domeSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_conicSensor.domeSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_conicSensor.portionToDisplay
+
+Indicates what part of a sensor should be displayed.
+
+**Property Name**: `portionToDisplay`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `portionToDisplay` | Interval | string | Indicates what part of a sensor should be displayed.  Valid values are "COMPLETE", "BELOW_ELLIPSOID_HORIZON", "ABOVE_ELLIPSOID_HORIZON". |
+| `reference` | Interval | string | A reference property. |
+
+
+## agi_customPatternSensor
+
+A custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+
+_Note: This type is an extension and may not be implemented by all CZML clients._
+
+**Property Name**: `agi_customPatternSensor`
+
+**Interpolatable**: no
+
+### agi_customPatternSensor.show
+
+Whether or not the pyramid is shown.
+
+**Property Name**: `show`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_customPatternSensor.directions
+
+The list of directions defining the pyramid.
+
+**Property Name**: `directions`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `spherical` | Interval | array | The list of directions represented as a clock angle, a cone angle, both in radians, and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis. |
+| `unitSpherical` | Interval | array | The list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis. |
+| `cartesian` | Interval | array | The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` |
+| `unitCartesian` | Interval | array | The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`. |
+
+### agi_customPatternSensor.radius
+
+The radial limit of the pyramid.
+
+**Property Name**: `radius`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_customPatternSensor.showIntersection
+
+Whether or not the intersection of the pyramid with the Earth is shown.
+
+**Property Name**: `showIntersection`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_customPatternSensor.intersectionColor
+
+The color of the intersection of the pyramid with the Earth.
+
+**Property Name**: `intersectionColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_customPatternSensor.intersectionWidth
+
+The width of the intersection in pixels.
+
+**Property Name**: `intersectionWidth`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_customPatternSensor.showLateralSurfaces
+
+Whether or not the intersections of the pyramid with the earth are shown.
+
+**Property Name**: `showLateralSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_customPatternSensor.lateralSurfaceMaterial
+
+Whether or not lateral surfaces are shown.
+
+**Property Name**: `lateralSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_customPatternSensor.lateralSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.lateralSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.lateralSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.lateralSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.lateralSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_customPatternSensor.showEllipsoidSurfaces
+
+Whether or not ellipsoid surfaces are shown.
+
+**Property Name**: `showEllipsoidSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_customPatternSensor.ellipsoidSurfaceMaterial
+
+The material to use for the pyramid's ellipsoid surface.
+
+**Property Name**: `ellipsoidSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_customPatternSensor.ellipsoidSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.ellipsoidSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.ellipsoidSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.ellipsoidSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_customPatternSensor.showEllipsoidHorizonSurfaces
+
+Whether or not ellipsoid horizon surfaces are shown.
+
+**Property Name**: `showEllipsoidHorizonSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial
+
+The material to use for the pyramid's ellipsoid horizon surface.
+
+**Property Name**: `ellipsoidHorizonSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.ellipsoidHorizonSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_customPatternSensor.showDomeSurfaces
+
+Whether or not dome surfaces are shown.
+
+**Property Name**: `showDomeSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_customPatternSensor.domeSurfaceMaterial
+
+The material to use for the pyramid's dome.
+
+**Property Name**: `domeSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_customPatternSensor.domeSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.domeSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.domeSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.domeSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.domeSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.domeSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_customPatternSensor.domeSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_customPatternSensor.domeSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_customPatternSensor.domeSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_customPatternSensor.portionToDisplay
+
+Indicates what part of a sensor should be displayed.
+
+**Property Name**: `portionToDisplay`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `portionToDisplay` | Interval | string | Indicates what part of a sensor should be displayed.  Valid values are "COMPLETE", "BELOW_ELLIPSOID_HORIZON", "ABOVE_ELLIPSOID_HORIZON". |
+| `reference` | Interval | string | A reference property. |
+
+
+## agi_fan
+
+Defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+
+_Note: This type is an extension and may not be implemented by all CZML clients._
+
+**Property Name**: `agi_fan`
+
+**Interpolatable**: no
+
+### agi_fan.show
+
+Whether or not the fan is shown.
+
+**Property Name**: `show`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_fan.directions
+
+The list of directions defining the fan.
+
+**Property Name**: `directions`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `spherical` | Interval | array | The list of directions represented as a clock angle, a cone angle, both in radians, and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis. |
+| `unitSpherical` | Interval | array | The list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis. |
+| `cartesian` | Interval | array | The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` |
+| `unitCartesian` | Interval | array | The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`. |
+
+### agi_fan.radius
+
+The radial limit of the fan.
+
+**Property Name**: `radius`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_fan.perDirectionRadius
+
+When true, the magnitude of each direction is used instead of a constant radius.
+
+**Property Name**: `perDirectionRadius`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_fan.material
+
+The material to display on the surface of the fan.
+
+**Property Name**: `material`
+
+**Interpolatable**: no
+
+#### agi_fan.material.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_fan.material.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_fan.material.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_fan.material.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_fan.material.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_fan.material.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_fan.material.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_fan.material.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_fan.material.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_fan.material.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_fan.material.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_fan.material.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_fan.material.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_fan.material.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_fan.material.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_fan.material.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_fan.material.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_fan.fill
+
+Whether or not the fan is filled.
+
+**Property Name**: `fill`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_fan.outline
+
+Whether or not the fan is outlined.
+
+**Property Name**: `outline`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_fan.numberOfRings
+
+The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+
+**Property Name**: `numberOfRings`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_fan.outlineColor
+
+The color of the fan outline.
+
+**Property Name**: `outlineColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+## agi_rectangularSensor
+
+A rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+
+_Note: This type is an extension and may not be implemented by all CZML clients._
+
+**Property Name**: `agi_rectangularSensor`
+
+**Interpolatable**: no
+
+### agi_rectangularSensor.show
+
+Whether or not the pyramid is shown.
+
+**Property Name**: `show`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_rectangularSensor.xHalfAngle
+
+The X half angle.
+
+**Property Name**: `xHalfAngle`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_rectangularSensor.yHalfAngle
+
+The Y half angle.
+
+**Property Name**: `yHalfAngle`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_rectangularSensor.radius
+
+The radial limit of the pyramid.
+
+**Property Name**: `radius`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_rectangularSensor.showIntersection
+
+Whether or not the intersection of the pyramid with the Earth is shown.
+
+**Property Name**: `showIntersection`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_rectangularSensor.intersectionColor
+
+The color of the intersection of the pyramid with the Earth.
+
+**Property Name**: `intersectionColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_rectangularSensor.intersectionWidth
+
+The width of the intersection in pixels.
+
+**Property Name**: `intersectionWidth`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_rectangularSensor.showLateralSurfaces
+
+Whether or not the intersections of the pyramid with the earth are shown.
+
+**Property Name**: `showLateralSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_rectangularSensor.lateralSurfaceMaterial
+
+Whether or not lateral surfaces are shown.
+
+**Property Name**: `lateralSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_rectangularSensor.lateralSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.lateralSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.lateralSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.lateralSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.lateralSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_rectangularSensor.showEllipsoidSurfaces
+
+Whether or not ellipsoid surfaces are shown.
+
+**Property Name**: `showEllipsoidSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_rectangularSensor.ellipsoidSurfaceMaterial
+
+The material to use for the pyramid's ellipsoid surface.
+
+**Property Name**: `ellipsoidSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_rectangularSensor.ellipsoidSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.ellipsoidSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.ellipsoidSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.ellipsoidSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_rectangularSensor.showEllipsoidHorizonSurfaces
+
+Whether or not ellipsoid horizon surfaces are shown.
+
+**Property Name**: `showEllipsoidHorizonSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial
+
+The material to use for the pyramid's ellipsoid horizon surface.
+
+**Property Name**: `ellipsoidHorizonSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.ellipsoidHorizonSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_rectangularSensor.showDomeSurfaces
+
+Whether or not dome surfaces are shown.
+
+**Property Name**: `showDomeSurfaces`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `boolean` | Interval | boolean | The boolean value. |
+
+### agi_rectangularSensor.domeSurfaceMaterial
+
+The material to use for the pyramid's dome.
+
+**Property Name**: `domeSurfaceMaterial`
+
+**Interpolatable**: no
+
+#### agi_rectangularSensor.domeSurfaceMaterial.solidColor
+
+Fills the surface with a solid color, which may be translucent.
+
+**Property Name**: `solidColor`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.domeSurfaceMaterial.solidColor.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.domeSurfaceMaterial.image
+
+Fills the surface with an image.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.domeSurfaceMaterial.image.image
+
+The image to display on the surface.
+
+**Property Name**: `image`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `uri` | Interval | string | The URI value. |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.image.repeat
+
+The number of times the image repeats along each axis.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The numger of times the image repeats along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.domeSurfaceMaterial.grid
+
+Fills the surface with a grid.
+
+**Property Name**: `grid`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.domeSurfaceMaterial.grid.color
+
+The color of the surface.
+
+**Property Name**: `color`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.grid.cellAlpha
+
+Alpha value for the space between grid lines.  This will be combined with the color alpha.
+
+**Property Name**: `cellAlpha`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.grid.lineCount
+
+The number of grid lines along each axis.
+
+**Property Name**: `lineCount`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The number of grid lines along each axis. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.grid.lineThickness
+
+The thickness of grid lines along each axis, in pixels.
+
+**Property Name**: `lineThickness`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The thickness of grid lines along each axis, in pixels. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.grid.lineOffset
+
+The offset of grid lines along each axis, as a percentage from 0 to 1.
+
+**Property Name**: `lineOffset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `cartesian2` | Interval | array | The offset of grid lines along each axis, as a percentage from 0 to 1. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+#### agi_rectangularSensor.domeSurfaceMaterial.stripe
+
+Fills the surface with alternating colors.
+
+**Property Name**: `stripe`
+
+**Interpolatable**: no
+
+##### agi_rectangularSensor.domeSurfaceMaterial.stripe.orientation
+
+The value indicating if the stripes are horizontal or vertical.
+
+**Property Name**: `orientation`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `StripeOrientation` | Interval | string | The orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL". |
+| `reference` | Interval | string | A reference property. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.stripe.evenColor
+
+The even color.
+
+**Property Name**: `evenColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.stripe.oddColor
+
+The odd color.
+
+**Property Name**: `oddColor`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.stripe.offset
+
+The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+
+**Property Name**: `offset`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+##### agi_rectangularSensor.domeSurfaceMaterial.stripe.repeat
+
+The number of time the stripes repeat.
+
+**Property Name**: `repeat`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+
+
+### agi_rectangularSensor.portionToDisplay
+
+Indicates what part of a sensor should be displayed.
+
+**Property Name**: `portionToDisplay`
+
+**Interpolatable**: no
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `portionToDisplay` | Interval | string | Indicates what part of a sensor should be displayed.  Valid values are "COMPLETE", "BELOW_ELLIPSOID_HORIZON", "ABOVE_ELLIPSOID_HORIZON". |
+| `reference` | Interval | string | A reference property. |
+
+
+## agi_vector
+
+Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+
+_Note: This type is an extension and may not be implemented by all CZML clients._
+
+**Property Name**: `agi_vector`
+
+**Interpolatable**: no
+
+### agi_vector.show
 
 Whether or not the vector is shown.
 
@@ -3021,7 +6918,7 @@ Whether or not the vector is shown.
 |:-----|:------|:-----|:------------|
 | `boolean` | Interval | boolean | The boolean value. |
 
-### Vector.Color
+### agi_vector.color
 
 The color of the vector.
 
@@ -3035,28 +6932,12 @@ The color of the vector.
 |:-----|:------|:-----|:------------|
 | `rgba` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `rgbaf` | Interval | array | The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Vector.Width
-
-The width of the vector.
-
-**Property Name**: `width`
-
-**Interpolatable**: yes
-
-**Sub-properties**:
-
-| Name | Scope | Type | Description |
-|:-----|:------|:-----|:------------|
-| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
-| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
-| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
-
-### Vector.Direction
+### agi_vector.direction
 
 The direction of the vector.
 
@@ -3069,13 +6950,16 @@ The direction of the vector.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `axes` | Interval | string | TODO |
-| `unitCartesian` | Interval | array | The direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
+| `spherical` | Interval | array | A direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
 | `unitSpherical` | Interval | array | A direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `cartesian` | Interval | array | The direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
+| `unitCartesian` | Interval | array | The direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 
-### Vector.Length
+### agi_vector.length
 
 The graphical length of the vector.
 
@@ -3088,6 +6972,25 @@ The graphical length of the vector.
 | Name | Scope | Type | Description |
 |:-----|:------|:-----|:------------|
 | `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
+| `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
+| `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+| `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
+
+### agi_vector.minimumLengthInPixels
+
+The minimum graphical length of the vector in pixels.
+
+**Property Name**: `minimumLengthInPixels`
+
+**Interpolatable**: yes
+
+**Sub-properties**:
+
+| Name | Scope | Type | Description |
+|:-----|:------|:-----|:------------|
+| `number` | Interval | number or array | The floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch. |
+| `reference` | Interval | string | A reference property. |
 | `epoch` | Packet | string | Specifies the epoch to use for times specifies as seconds since an epoch. |
 | `nextTime` | Packet | string or number | The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
 | `previousTime` | Packet | string or number | The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets. |
