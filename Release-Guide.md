@@ -17,9 +17,9 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Create the release zips and start the server for testing `./Tools/apache-ant-1.8.2/bin/ant makeZipFile runServer`
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
 1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://webglreport.com/).
-1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) with WebGL validation in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
-1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) with WebGL validation in [Firefox](http://www.mozilla.org/en-US/firefox/new/?from=getfirefox) stable.
-1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) with WebGL validation in [IE 11](http://windows.microsoft.com/en-us/internet-explorer/ie-11-worldwide-languages) stable.
+1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
+1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation in [Firefox](http://www.mozilla.org/en-US/firefox/new/?from=getfirefox) stable.
+1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation in [IE 11](http://windows.microsoft.com/en-us/internet-explorer/ie-11-worldwide-languages) stable.
 1. [Run unit tests against combined file with debug code removed](http://localhost:8080/Specs/SpecRunner.html?built=true&release=true) in all browsers.
 1. Make sure [Hello World](http://localhost:8080/Apps/HelloWorld.html) loads.
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
