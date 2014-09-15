@@ -38,7 +38,7 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Content
      * Buildings
      * Point clouds. [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets), [even more data](https://lta.cr.usgs.gov/LIDAR)
-     * Trees - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural 
+     * Trees - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural. [Cambridge data](https://www.cambridgema.gov/theworks/ourservices/urbanforestry/treeinventory.aspx) and [OpenTreeMap](https://www.opentreemap.org/).
      * Volumetric clouds
      * [Stars improvements](Stars-Details)
   * [Ocean improvements](Ocean-Details)
