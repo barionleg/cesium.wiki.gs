@@ -70,6 +70,10 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
 
+## Upcoming Student Programs
+
+* [Google Summer of Code 2015](http://google-opensource.blogspot.com/2014/10/google-summer-of-code-2015-and-google.html)
+
 ## Past Student Programs
 
 * [Google Summer of Code 2013](Google-Summer-of-Code-Ideas)
