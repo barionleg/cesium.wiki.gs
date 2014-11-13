@@ -42,10 +42,6 @@ These resources present more details on the above topics or details on more spec
 * [Why AMD?](http://requirejs.org/docs/whyamd.html) -  motivation and use of Asynchronous Module Definition (AMD). 
 * [Douglas Crockford's Javascript](http://javascript.crockford.com/) - the author of _JavaScript: The Good Parts_ has several JavaScript articles online.
 
-### WebGL
-
-* [WebGL Camp](http://www.webglcamp.com/wiki/index.php?title=Main_Page)
-
 ### CSS
 
 * [Learn CSS Layout](http://learnlayout.com/toc.html) - doing modern layout with CSS.
@@ -53,7 +49,7 @@ These resources present more details on the above topics or details on more spec
 ### Graphics
 
 * [Interactive 3D Graphics](https://www.udacity.com/course/cs291) - A free online course that is an approachable and pragmatic introduction to computer graphics using WebGL (Three.js).
-* [Introduction to 3D Computer Graphics](https://www.youtube.com/watch?v=Q5T-UmMMsrA) - Video from SIGGRAPH 2013 on graphics theory.
+* [Introduction to 3D Computer Graphics](https://www.youtube.com/watch?v=zxQjlIViRBE) - Video from SIGGRAPH 2013 on graphics theory.
 * [Real-Time Rendering](http://www.realtimerendering.com/) - a broad survey of real-time rendering.  If you own only one graphics book, this should be it.  The authors also maintain a list of practically all [graphics books](http://www.realtimerendering.com/books.html).
 
 ### Open Source
