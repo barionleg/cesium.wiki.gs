@@ -214,6 +214,7 @@ Then, to step into the test, step into `stepIntoThis()`
 ## Resources
 
 * [WebGL Profiling Tips](http://cesiumjs.org/2014/12/01/WebGL-Profiling-Tips/)
+* [WebGL Debugging and Profiling Tools](http://www.realtimerendering.com/blog/)
 
 <a name="contributecode">
 # Contribute Code
