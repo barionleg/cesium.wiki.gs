@@ -10,7 +10,7 @@ We are a community that encourages contributions.  Join us.  Here's how.
    * [Optional Eclipse Configuration](#optionaleclipseconfiguration)
    * [Eclipse Tips](#eclipsetips)
    * [Test Tips](#testtips)
-   * [Graphics Tips](#graphicstips)
+   * [Resources](#resources)
 * [Contribute Code](#contributecode)
 
 <a name="getstarted">
@@ -210,26 +210,10 @@ Then, to step into the test, step into `stepIntoThis()`
 
 ![](stepIntoThis.png)
 
-<a name="graphicstips">
-## Graphics Tips
+<a name="resources">
+## Resources
 
-* Keep your video card drivers up to date.  [NVIDIA](http://www.nvidia.com/Download/index.aspx) &bull; [AMD](http://support.amd.com/us/gpudownload/Pages/index.aspx).
-
-* Use [www.webglreport.com](http://www.webglreport.com) to see if WebGL is supported, and if so, what is exactly supported.  For more goodness, including the ANGLE revision, browse to chrome://gpu-internals/ in Chrome.
-
-* For WebGL debugging such as stepping through draw calls, viewing textures and vertex buffers, etc., use the [WebGL Inspector](http://benvanik.github.com/WebGL-Inspector/).
-
-* To run without [ANGLE](http://code.google.com/p/angleproject/) (Windows-only)
-   * Chrome:  Run with the --use-gl=desktop argument.  Make sure you close all Chrome windows before starting.
-   * Firefox:  Browse to about:config and set webgl.prefer-native-gl to true.
-
-* To debug shader problems when running with ANGLE enabled, it's sometimes useful to look at the generated HLSL code.  To do that, run Chrome with the `--enable-privileged-webgl-extensions` command-line option.  Then, obtain the HLSL code by executing: `var hlsl = gl.getExtension("WEBGL_debug_shaders").getTranslatedShaderSource(fragmentShader)`  
-
-* For performance testing, turn off [vsync](http://hardforum.com/showthread.php?t=928593)
-   * In the driver, e.g., the NVIDIA Control Panel or the Catalyst Control Center.
-   * Also turn off VSync in Chrome: browse to chrome://flags/ and check Disable GPU VSync.
-
-* For an FPS counter in Chrome, browse to chrome://flags/ and check FPS counter.  Create a FPS counter in Cesium by setting `scene.debugShowFramesPerSecond = true`.
+* [WebGL Profiling Tips](http://cesiumjs.org/2014/12/01/WebGL-Profiling-Tips/)
 
 <a name="contributecode">
 # Contribute Code
