@@ -15,6 +15,9 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
 1. Run `npm install`.
 1. Create the release zip `./Tools/apache-ant-1.8.2/bin/ant makeZipFile`
+1. Start the server by running `node server.js`.
+1. [Run unit tests against combined file with debug code removed](http://localhost:8080/Specs/SpecRunner.html?built=true&release=true) in all browsers.
+1. Stop the server.
 1. Unpack the release zip to the directory of your choice and start the server by running `node server.js`
 1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work.
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
@@ -22,7 +25,6 @@ There is no release manager; instead, our community shares the responsibility.  
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation in [Chrome](https://www.google.com/intl/en/chrome/browser/) stable.
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation in [Firefox](http://www.mozilla.org/en-US/firefox/new/?from=getfirefox) stable.
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation in [IE 11](http://windows.microsoft.com/en-us/internet-explorer/ie-11-worldwide-languages) stable.
-1. [Run unit tests against combined file with debug code removed](http://localhost:8080/Specs/SpecRunner.html?built=true&release=true) in all browsers.
 1. Make sure [Hello World](http://localhost:8080/Apps/HelloWorld.html) loads.
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
 1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice (or multiple browsers if you are up for it) and run through each demo to make sure they all work.  Actually play with each of the buttons and sliders on each demo to ensure everything works as expected.
