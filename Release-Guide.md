@@ -18,7 +18,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Start the server by running `node server.js`.
 1. [Run unit tests against combined file with debug code removed](http://localhost:8080/Specs/SpecRunner.html?built=true&release=true) in all browsers.
 1. Stop the server.
-1. Unpack the release zip to the directory of your choice and start the server by running `node server.js`
+1. Unpack the release zip to the directory of your choice and start the server by running `npm install` and then `node server.js`
 1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work.
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
 1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://webglreport.com/).
