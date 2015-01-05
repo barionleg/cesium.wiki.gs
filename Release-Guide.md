@@ -4,7 +4,7 @@ There is no release manager; instead, our community shares the responsibility.  
 
 ## Release testing and packaging
 1. Verify there are no [show stopper](../issues?q=is%3Aopen+is%3Aissue+label%3A%22show+stopper%22) issues.
-1. Verify there are no `remove in [this version number]` [issues](https://github.com/AnalyticalGraphicsInc/cesium/issues).  Rename the label to the next highest `remove in [version]` relative to the existing labels.
+1. Verify there are no `remove in [this version number]` [issues](https://github.com/AnalyticalGraphicsInc/cesium/issues).  Delete the label.  Create a new label with the next highest `remove in [version]` relative to the existing labels.
 1. Send a courtesy message to the [forum](http://cesiumjs.org/forum.html) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
 1. Pull down the latest master branch.
