@@ -4,4 +4,5 @@ Idea for upcoming coding events:
 * Performance
 * Infrastructure: build, test, doc tools
 * Tutorials / examples / reference documentation
+* Mashup demos with other front- and back-end APIs
 * Visual quaility
