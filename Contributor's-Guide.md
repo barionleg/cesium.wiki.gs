@@ -49,6 +49,7 @@ Prerequisites:
 From the root Cesium directory, run:
 
 ```
+npm install
 ./Tools/apache-ant-1.8.2/bin/ant combine runServer
 ```
 
