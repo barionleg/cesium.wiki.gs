@@ -1,6 +1,8 @@
 ## In progress
 
-* Client-side KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
+* See the [Cesium in 2015](https://groups.google.com/forum/#!topic/cesium-dev/Z_RE-krc0HY) forum discussion.
+* KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
+* Polygons, polylines, billboards, and labels clamped to terrain. [#2172](https://github.com/AnalyticalGraphicsInc/cesium/issues/2172)
 
 ## Ongoing
 
@@ -13,7 +15,7 @@ We're always looking to:
 
 If you are interested in implementing any of these, start a discussion on the [forum](http://cesiumjs.org/forum.html).
 
-* See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap) and the [Cesium in 2014](https://groups.google.com/forum/#!topic/cesium-dev/cizxRxOEQ8I) forum discussion.
+* See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap)
 * General
   * DataSource improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
