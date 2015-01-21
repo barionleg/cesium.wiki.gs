@@ -3,6 +3,7 @@
 * See the [Cesium in 2015](https://groups.google.com/forum/#!topic/cesium-dev/Z_RE-krc0HY) forum discussion.
 * KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
 * Polygons, polylines, billboards, and labels clamped to terrain. [#2172](https://github.com/AnalyticalGraphicsInc/cesium/issues/2172)
+* [Google Summer of Code 2015](Google-Summer-of-Code-Ideas-2015)
 
 ## Ongoing
 
@@ -70,10 +71,6 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Navigation widget. [#450](https://github.com/AnalyticalGraphicsInc/cesium/issues/450)
   * Improved TimeLine widget
   * [Standard Cesium toolbar](Cesium-standard-actions)
-
-## Upcoming Student Programs
-
-* [Google Summer of Code 2015](http://google-opensource.blogspot.com/2014/10/google-summer-of-code-2015-and-google.html)
 
 ## Past Student Programs
 
