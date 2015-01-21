@@ -1,4 +1,6 @@
-# Google Summer of Code 2015 Idea List
+# Google Summer of Code 2015
+
+_TODO_: new images
 
 <p align="center">
 <img src="gsoc/2013/cesium1.png">
@@ -9,27 +11,15 @@
 
 We have a culture of writing clean, peer-reviewed, tested code.  Our developers are experts in their fields; they write books, create open standards, and present at international conferences.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
 
-## Student Proposals
+## Advice for Student Applications
 
-<p align="center">
-<a href="http://google-melange.appspot.com/gsoc/org/google/gsoc2013/cesium"><img src="gsoc/2013/banner-gsoc2013.png"></a>
-</p>
+When we look at student applications, we look for students who love to dive deep into a problem, research it carefully, experiment with potential solutions, and then code, test, and document the best implementation.  We like to see passionate, craftsmanship, and conscientiousness.
 
-The period for submitting student proposals for 2013 has now closed.  We had a great number of proposals submitted, thanks to everyone who participated!
+To get your GSoC application noticed, take an afternoon or a weekend and write a small demo using Cesium, post it to GitHub, and then include a link in your application.  Get up to speed by reading the Cesium [tutorials](http://cesiumjs.org/tutorials.html), then get inspired by the [code examples](http://cesiumjs.org/Cesium/Apps/Sandcastle/) and [demos](http://cesiumjs.org/demos.html).
 
-Congratulations to [our two GSoC students](http://cesiumjs.org/2013/05/28/Welcome-Google-Summer-of-Code-Students/)!
+If instead of writing a demo, you would rather make a contribution to Cesium itself to help your GSoC application stand out, see the [Cesium Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and [list of beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Abeginner).  Pick something that interests you then send us a pull request when it is ready.  Note that we can't merge a pull request until you submit a signed [Contributor License Agreement](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
 
-See this year's [GSoC schedule](http://google-melange.appspot.com/gsoc/events/google/gsoc2013) for a roadmap of GSoC milestones this summer.
-
-## Improve your chances next year
-
-We would have loved to accept everyone who was sending us pull requests, but this is our first year participating in GSoC.  If we are invited back next year, you can start improving your chances now, just by getting involved and learning our codebase.  Clone it from GitHub, and try making some simple modifications to it.  See the list of issues and our [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap) for ideas.
-
-Take a look at the [list of issues for beginners](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=beginner&state=open), or the [complete list of Cesium issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?labels=&page=1&state=open), and see what needs more work.
-
-All of Cesium's code is covered by a Contributor's License Agreement (CLA), which basically authorizes Cesium developers and users to use the code you're contributing to us.  You'll need to read the instructions for [contributing to Cesium](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md) and email us a signed CLA before we can accept any code changes.
-
-If you need help, just ask on our [mailing list](https://groups.google.com/forum/#!forum/cesium-dev).
+If you need help, post a question to the [Google Summer of Code 2015 thread](https://groups.google.com/forum/#!topic/cesium-dev/QnOxsA0iwa0) on the Cesium forum.  The core developers are active on the forum and will be happy to respond.
 
 **Technologies and Tools We Use**
 
@@ -37,19 +27,29 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 
 (We don't expect you to know all of them).
 
-**Project Ideas**
-* [Android performance](#androidperformance)
+# Project Idea List
+
+_TODO_: Drone tutorials?
+
+* [Cesium demos pack](#demospack)
 * [Suggest your own idea](#suggest)
 
-<a name="androidperformance">
-# Android performance
+<a name="demospack">
+## Cesium demos pack
 
-TODO
+TODO:
+
+Raphael
+AngularJS
+D3
+Turf
+Three.js
+NASA Worldview
 
 References
 * TODO
 
-**Skills:** TODO
+**Skills:** JavaScript, HTML, CSS, UI/UX, git, Node.js, various front-end and back-end libraries
 
 **Level:** Beginner / Intermediate
 
@@ -58,7 +58,7 @@ References
 **Backup Mentor:** TBA
 
 <a name="suggest">
-# Suggest your own idea
+## Suggest your own idea
 
 We're excited to hear your ideas for projects that would benefit the Cesium community.  Perhaps your interested in WebGL and JavaScript optimization, and want to improve the core engine?  Perhaps you are passionate about geospatial data formats and want to write new loaders for Cesium?  Or perhaps you are excited about [WebVR](http://mozvr.com/posts/webvr-lands-in-nightly/) and want to create the ultimate virtual reality app with Cesium?
 
