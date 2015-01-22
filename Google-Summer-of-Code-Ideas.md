@@ -5,6 +5,8 @@
 <img src="gsoc/2013/cesium2.png">
 </p>
 
+_Update: This is from 2013.  Check out [Google Summer of Code 2015](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Google-Summer-of-Code-Ideas-2015)._
+
 [Cesium](http://cesiumjs.org/) is an open-source JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.  Our code has shipped to [10's of millions of people in the same day](http://cesiumjs.org/noradtrackssanta2012.html).  We have a culture of writing clean, peer-reviewed, tested code.  Our developers are experts in their fields; they write books, create open standards, and present at international conferences.  We look forward to helping you grow your skills and ship beautiful code that has wide impact.
 
 ## Student Proposals
