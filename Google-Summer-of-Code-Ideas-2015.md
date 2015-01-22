@@ -37,14 +37,14 @@ _TODO_: Drone tutorials?
 <a name="demospack">
 ## Cesium demos pack
 
-TODO:
+TODO: NASA Worldview
 
-Raphael
-AngularJS
-D3
-Turf
-Three.js
-NASA Worldview
+* Vector graphics - combine [Raphael](http://raphaeljs.com/) and Cesium to demonstrate adding SVG charts and graphs to Cesium.
+* Geospatial analysis - demonstrate Cesium as a visualization platform for geospatial analysis (e.g., point in polygon, Triangulated Irregular Networks, etc.) using [Turf](http://turfjs.org/) either on the client or on the server using Node.js.
+* [Three.js](http://threejs.org/) - demonstrate how Cesium can be combined with the Three.js WebGL library perhaps by syncing camera views between a Cesium and Three.js canvases, overlaying a translucent Three.js canvas over Cesium, or embedding Three.js in Cesium's render loop.
+* [AngularJS](https://angularjs.org/) - show how Cesium can be used with AngularJS.
+* Like toying with hardware?  Perhaps write some JavaScript that runs Node.js on the [Tessel](https://tessel.io/) microcontroller to feed data from some of its add-on [modules](https://tessel.io/modules) (camera, climate, GPS, etc.) to Cesium for visualization.
+* Data visualization - Combine [D3](http://d3js.org/) with Cesium for temporal geospatial data visualization like this [demo](http://cesiumjs.org/demos/d3.html).
 
 References
 * TODO
