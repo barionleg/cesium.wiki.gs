@@ -3,8 +3,7 @@
 _TODO_: new images
 
 <p align="center">
-<img src="gsoc/2013/cesium1.png">
-<img src="gsoc/2013/cesium2.png">
+<img src="gsoc/2015/0.png">
 </p>
 
 [Cesium](http://cesiumjs.org/) is an open-source JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin. It uses HTML5 and [WebGL](http://www.khronos.org/webgl) for hardware-accelerated graphics.  Our code has shipped to [10's of millions of people in the same day](http://cesiumjs.org/demos/noradtrackssanta.html) and is used all around the world in fields as diverse as GIS, aerospace, real estate, sports, and entertainment.
