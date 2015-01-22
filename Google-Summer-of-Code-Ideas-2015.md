@@ -26,8 +26,6 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 
 # Project Idea List
 
-_TODO_: Drone tutorials?
-
 * [Cesium demos pack](#demospack)
 * [Suggest your own idea](#suggest)
 
@@ -38,7 +36,9 @@ _TODO_: Drone tutorials?
 <img src="gsoc/2015/1.png">
 </p>
 
-TODO: NASA Worldview
+Do you like to learn new APIs, write demos, and have your work in the spotlight?  In this project, we will write a series of demos that showcase Cesium with other popular JavaScript libraries.  Each demo will be pretty small, perhaps a few 100 to a 1,000 lines of code, and will serve both as a showcase and a reference implementation for developers to learn.
+
+Potential ideas include:
 
 * Vector graphics - combine [Raphael](http://raphaeljs.com/) and Cesium to demonstrate adding SVG charts and graphs to Cesium.
 * Geospatial analysis - demonstrate Cesium as a visualization platform for geospatial analysis (e.g., point in polygon, Triangulated Irregular Networks, etc.) using [Turf](http://turfjs.org/) either on the client or on the server using Node.js.
@@ -47,9 +47,11 @@ TODO: NASA Worldview
 * Like toying with hardware?  Perhaps write some JavaScript that runs Node.js on the [Tessel](https://tessel.io/) microcontroller to feed data from some of its add-on [modules](https://tessel.io/modules) (camera, climate, GPS, etc.) to Cesium for visualization.
 * Data visualization - Combine [D3](http://d3js.org/) with Cesium for temporal geospatial data visualization like this [demo](http://cesiumjs.org/demos/d3.html).
 
+_Tip_: if you are interested in this project, to best way to have a strong GSoC application is to code a quick demo ([start here](http://cesiumjs.org/2013/04/12/Cesium-up-and-running/)), post it on GitHub, and include a link.
+
 References
 * Cesium [tutorials](http://cesiumjs.org/tutorials.html)
-* TODO: more
+* Also check out the tutorials for the other libraries you plan to use.
 
 **Skills:** JavaScript, HTML, CSS, UI/UX, git, Node.js, various front-end and back-end libraries
 
