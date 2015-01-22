@@ -56,7 +56,7 @@ References
 
 **Mentor:** Patrick Cozzi: [@pjcozzi](https://twitter.com/pjcozzi), pcozzi@agi.com
 
-**Backup Mentor:** Matt Amato [@matt_amato](https://twitter.com/matt_amato), mamato@agi.com
+**Backup Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), mamato@agi.com
 
 <a name="suggest">
 ## Suggest your own idea
