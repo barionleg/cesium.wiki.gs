@@ -34,6 +34,10 @@ _TODO_: Drone tutorials?
 <a name="demospack">
 ## Cesium demos pack
 
+<p align="center">
+<img src="gsoc/2015/1.png">
+</p>
+
 TODO: NASA Worldview
 
 * Vector graphics - combine [Raphael](http://raphaeljs.com/) and Cesium to demonstrate adding SVG charts and graphs to Cesium.
@@ -57,6 +61,10 @@ References
 
 <a name="suggest">
 ## Suggest your own idea
+
+<p align="center">
+<img src="gsoc/2015/2.png">
+</p>
 
 We're excited to hear your ideas for projects that would benefit the Cesium community.  Perhaps your interested in WebGL and JavaScript optimization, and want to improve the core engine?  Perhaps you are passionate about geospatial data formats and want to write new loaders for Cesium?  Or perhaps you are excited about [WebVR](http://mozvr.com/posts/webvr-lands-in-nightly/) and want to create the ultimate virtual reality app with Cesium?
 
