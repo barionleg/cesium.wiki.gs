@@ -17,7 +17,7 @@ When we look at student applications, we look for students who love to dive deep
 
 To get your GSoC application noticed, take an afternoon or a weekend and write a small demo using Cesium, post it to GitHub, and then include a link in your application.  Get up to speed by reading the Cesium [tutorials](http://cesiumjs.org/tutorials.html), then get inspired by the [code examples](http://cesiumjs.org/Cesium/Apps/Sandcastle/) and [demos](http://cesiumjs.org/demos.html).
 
-If instead of writing a demo, you would rather make a contribution to Cesium itself to help your GSoC application stand out, see the [Cesium Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and [list of beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Abeginner).  Pick something that interests you then send us a pull request when it is ready.  Note that we can't merge a pull request until you submit a signed [Contributor License Agreement](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
+If instead of writing a demo, you would rather make a contribution to Cesium itself to help your GSoC application stand out, see the [Cesium Contributor's Guide](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Contributor%27s-Guide) and [list of beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Abeginner).  Pick something that interests you, comment on the issue to get advice, then send us a pull request when it is ready.  Note that we can't merge a pull request until you submit a signed [Contributor License Agreement](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
 
 If you need help, post a question to the [Google Summer of Code 2015 thread](https://groups.google.com/forum/#!topic/cesium-dev/QnOxsA0iwa0) on the Cesium forum.  The core developers are active on the forum and will be happy to respond.
 
@@ -47,15 +47,16 @@ TODO: NASA Worldview
 * Data visualization - Combine [D3](http://d3js.org/) with Cesium for temporal geospatial data visualization like this [demo](http://cesiumjs.org/demos/d3.html).
 
 References
-* TODO
+* Cesium [tutorials](http://cesiumjs.org/tutorials.html)
+* TODO: more
 
 **Skills:** JavaScript, HTML, CSS, UI/UX, git, Node.js, various front-end and back-end libraries
 
 **Level:** Beginner / Intermediate
 
-**Mentor:** Patrick Cozzi: [@pjcozzi](https://twitter.com/pjcozzi), pjcozzi@siggraph.org
+**Mentor:** Patrick Cozzi: [@pjcozzi](https://twitter.com/pjcozzi), pcozzi@agi.com
 
-**Backup Mentor:** TBA
+**Backup Mentor:** Matt Amato [@matt_amato](https://twitter.com/matt_amato), mamato@agi.com
 
 <a name="suggest">
 ## Suggest your own idea
@@ -64,7 +65,7 @@ We're excited to hear your ideas for projects that would benefit the Cesium comm
 
 Whatever it is, we want to hear about it!  Pitch your idea and find a mentor by posting a short description to the [Google Summer of Code 2015 thread](https://groups.google.com/forum/#!topic/cesium-dev/QnOxsA0iwa0) on the Cesium forum.
 
-_Tip_: the best way to get a potential mentors attention is to code a quick prototype ([start here](http://cesiumjs.org/2013/04/12/Cesium-up-and-running/)) and post it on GitHub.
+_Tip_: the best way to get a potential mentor's attention is to code a quick prototype ([start here](http://cesiumjs.org/2013/04/12/Cesium-up-and-running/)), post it on GitHub, and include a link when you post to the [Google Summer of Code 2015 thread](https://groups.google.com/forum/#!topic/cesium-dev/QnOxsA0iwa0).
 
 References
 * To get inspired, check out the Cesium [tutorials](http://cesiumjs.org/tutorials.html), [code examples](http://cesiumjs.org/Cesium/Apps/Sandcastle/), [demos](http://cesiumjs.org/demos.html), [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Roadmap), and [beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/labels/beginner).
