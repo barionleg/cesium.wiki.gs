@@ -45,9 +45,10 @@ Potential ideas include:
 * Physics - Creating some cool effects by combining Cesium with a physics engine like [Oimo.js](https://github.com/lo-th/Oimo.js/), [cannon.js](http://schteppe.github.io/cannon.js/), or [ammo.js](https://github.com/kripken/ammo.js/).
 * HTML5 - HTML5 has lots of interesting APIs that can be combined with Cesium.  What would you do with the video and camera APIs?  On mobile, how would you use the geolocation and accelerometer APIs?
 * [AngularJS](https://angularjs.org/) - show how Cesium can be used with AngularJS.
-* [Three.js](http://threejs.org/) - demonstrate how Cesium can be combined with the Three.js WebGL library perhaps by syncing camera views between Cesium and Three.js canvases, overlaying a translucent Three.js canvas over Cesium, or embedding Three.js in Cesium's render loop.
 * Like toying with hardware?  Why not write some JavaScript that runs Node.js on the [Tessel](https://tessel.io/) microcontroller to feed data from some of its add-on [modules](https://tessel.io/modules) (camera, climate, GPS, etc.) to Cesium for visualization?
 * Data visualization - Combine [D3](http://d3js.org/) with Cesium for temporal geospatial data visualization like this [demo](http://cesiumjs.org/demos/d3.html).
+* [Three.js](http://threejs.org/) - demonstrate how Cesium can be combined with the Three.js WebGL library perhaps by syncing camera views between Cesium and Three.js canvases, overlaying a translucent Three.js canvas over Cesium, or embedding Three.js in Cesium's render loop.
+* [WebCL](https://www.khronos.org/webcl/) - What would you do with hundreds of cores and the ability to launch thousands of threads?  WebCL exposes the GPU - and its massively parallel processors - to JavaScript (browser or with [Node.js](https://www.npmjs.com/package/node-webcl)).  How would combine this with Cesium?  
 
 _Tip_: if you are interested in this project, to best way to have a strong GSoC application is to code a quick demo ([start here](http://cesiumjs.org/2013/04/12/Cesium-up-and-running/)), post it on GitHub, and include a link in your GSoC application.
 
