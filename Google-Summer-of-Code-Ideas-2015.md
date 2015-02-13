@@ -110,6 +110,7 @@ If time allows, we would also like to enhance Sandcastle with some additional fe
 
   * The ability to load external examples, such as GitHub gists, or allow them to persist them via url.
   * The ability to export an example as a standalone application
+  * The ability to persist examples on the server, perhaps anonymously, similar to jsFiddle or glslsandbox.  This would also include an extended gallery mode for browsing and finding demos and examples.
 
 References
 * [Cesium Sandcastle](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html)
@@ -122,7 +123,7 @@ References
 
 **Mentor:** [Matthew Amato](http://twitter.com/matt_amato), matt.amato@gmail.com
 
-**Backup Mentor:** TBD
+**Backup Mentor:** [Ed Macket](http://twitter.com/emackey)
 
 <a name="suggest">
 ## Suggest your own idea
