@@ -51,6 +51,7 @@ Potential ideas include:
 * [Three.js](http://threejs.org/) - demonstrate how Cesium can be combined with the Three.js WebGL library perhaps by syncing camera views between Cesium and Three.js canvases, overlaying a translucent Three.js canvas over Cesium, or embedding Three.js in Cesium's render loop.
 * [WebCL](https://www.khronos.org/webcl/) - What would you do with hundreds of cores and the ability to launch thousands of threads?  WebCL exposes the GPU - and its massively parallel processors - to JavaScript (browser or with [Node.js](https://www.npmjs.com/package/node-webcl)).  How would combine this with Cesium?  
 * Cesium on the server - Test out [node-webgl](https://www.npmjs.com/package/node-webgl).  Is it robust enough to run Cesium on the server?  Can we make it robust enough?  What would we do with it?  Perhaps server-side rendering of massive models or for clients without WebGL?
+* Vector tiles - Use Cesium's [QuadtreePrimitive](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Source/Scene/QuadtreePrimitive.js) to render vector tiles, such as the ones from [MapBox](https://www.mapbox.com/blog/vector-tiles/).  What the are the limitations of 2D vector tiles in a 3D viewer like Cesium?  How could the vector tiling be improved?
 _Tip_: if you are interested in this project, to best way to have a strong GSoC application is to code a quick demo ([start here](http://cesiumjs.org/2013/04/12/Cesium-up-and-running/)), post it on GitHub, and include a link in your GSoC application.
 
 References
