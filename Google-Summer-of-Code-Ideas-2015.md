@@ -123,7 +123,7 @@ References
 
 **Mentor:** [Matthew Amato](http://twitter.com/matt_amato), matt.amato@gmail.com
 
-**Backup Mentor:** [Ed Macket](http://twitter.com/emackey)
+**Backup Mentor:** [Ed Mackey](http://twitter.com/emackey)
 
 <a name="suggest">
 ## Suggest your own idea
