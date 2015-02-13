@@ -95,6 +95,35 @@ References
 
 **Backup Mentor:** Dan Bagnell: dbagnell@agi.com
 
+<a name="sandcastle">
+## Refactor Cesium Sandcastle
+
+Cesium Sandcastle is a great application for learning, demoing, and experimenting with Cesium. However, since it was one of the earliest Cesium applications written, it has a few drawbacks:
+
+  * It lacks responsive design, making it useless on small tablets and mobile.
+  * It looks like a traditional application instead of a modern web-app.
+  * It depends on Dojo (and is the only thing in Cesium that does so).
+
+This project would rewrite Sandcastle to address these issues.  Bootstrap will be used for responsive layout, data-binding should be introduced to the application via Knockout, and (since Bootstrap already depends on it), jQuery can be used sparingly in places where Dojo may have been using some heavy lifting.  The end result is a new Sandcastle which is easier to use, treats mobile as a first-class application, and brings more polish to our demo functionality.
+
+If time allows, we would also like to enhance Sandcastle with some additional features:
+
+  * The ability to load external examples, such as GitHub gists, or allow them to persist them via url.
+  * The ability to export an example as a standalone application
+
+References
+* [Cesium Sandcastle](http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html)
+* [Bootstrap](http://getbootstrap.com/)
+* [Knockout](http://knockoutjs.com/)
+
+**Skills:** JavaScript, HTML, CSS, UI/UX, Bootstrap, Knockout
+
+**Level:** Intermediate
+
+**Mentor:** [Matthew Amato](http://twitter.com/matt_amato), matt.amato@gmail.com
+
+**Backup Mentor:** TBD
+
 <a name="suggest">
 ## Suggest your own idea
 
