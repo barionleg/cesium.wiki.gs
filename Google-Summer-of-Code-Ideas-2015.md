@@ -65,6 +65,29 @@ References
 
 **Backup Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), mamato@agi.com
 
+<a name="navigation">
+## Compass / Navigation Widget
+
+Currently, Cesium allows users to rotate the camera around a point on the ground by middle-click dragging or by holding CTRL while left-click dragging.  It would be extremely helpful to expose this interaction in a more novice-friendly manner - as well as indicate which direction is North - with a navigation widget.
+
+Students may optionally use the [navigation widget](https://github.com/NICTA/nationalmap/blob/master/src/ViewModels/NavigationViewModel.js) in the Cesium-based application [National Map](http://nationalmap.nicta.com.au) as a starting point and modify it to:
+
+* fit nicely within the Cesium architecture
+* work in 2D and Columbus View
+* accommodate any other suggestions or requirements from the Cesium committers and community.
+
+References
+* Camera [tutorial](http://cesiumjs.org/2013/02/13/Cesium-Camera-Tutorial/)
+* Camera [reference documentation](http://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=Camera)
+
+**Skills:** JavaScript, HTML, CSS, UI/UX, git, Knockout, vectors and matrices
+
+**Level:** Intermediate
+
+**Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin), kevin@kotachrome.com
+
+**Backup Mentor:** Dan Bagnell: dbagnell@agi.com
+
 <a name="suggest">
 ## Suggest your own idea
 
