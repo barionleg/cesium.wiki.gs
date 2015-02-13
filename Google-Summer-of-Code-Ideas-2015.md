@@ -74,7 +74,7 @@ Students may optionally use the [navigation widget](https://github.com/NICTA/nat
 
 * fit nicely within the Cesium architecture
 * work in 2D and Columbus View
-* accommodate any other suggestions or requirements from the Cesium committers and community.
+* accommodate any other suggestions or requirements from the Cesium committers and community
 
 References
 * Camera [tutorial](http://cesiumjs.org/2013/02/13/Cesium-Camera-Tutorial/)
