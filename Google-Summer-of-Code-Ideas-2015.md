@@ -70,6 +70,10 @@ References
 
 Currently, Cesium allows users to rotate the camera around a point on the ground by middle-click dragging or by holding CTRL while left-click dragging.  It would be extremely helpful to expose this interaction in a more novice-friendly manner - as well as indicate which direction is North - with a navigation widget.
 
+<p align="center">
+<img src="gsoc/2015/compass.png">
+</p>
+
 Students may optionally use the [navigation widget](https://github.com/NICTA/nationalmap/blob/master/src/ViewModels/NavigationViewModel.js) in the Cesium-based application [National Map](http://nationalmap.nicta.com.au) as a starting point and modify it to:
 
 * fit nicely within the Cesium architecture
