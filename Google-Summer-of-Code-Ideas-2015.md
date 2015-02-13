@@ -27,6 +27,7 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 # Project Idea List
 
 * [Cesium demos pack](#demospack)
+* [Compass / Navigation Widget](#navigation)
 * [Suggest your own idea](#suggest)
 
 <a name="demospack">
