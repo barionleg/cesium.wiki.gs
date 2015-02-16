@@ -28,6 +28,7 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 
 * [Cesium demos pack](#demospack)
 * [Compass / Navigation Widget](#navigation)
+* [Refactor Cesium Sandcastle](#sandcastle)
 * [Suggest your own idea](#suggest)
 
 <a name="demospack">
@@ -66,7 +67,7 @@ References
 
 **Mentor:** Patrick Cozzi: [@pjcozzi](https://twitter.com/pjcozzi), pcozzi@agi.com
 
-**Backup Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), mamato@agi.com
+**Backup Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), matt.amato@gmail.com
 
 <a name="navigation">
 ## Compass / Navigation Widget
@@ -87,11 +88,11 @@ References
 * Camera [tutorial](http://cesiumjs.org/2013/02/13/Cesium-Camera-Tutorial/)
 * Camera [reference documentation](http://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=Camera)
 
-**Skills:** JavaScript, HTML, CSS, UI/UX, git, Knockout, vectors and matrices
+**Skills:** JavaScript, HTML, CSS, UI/UX, git, Knockout, vectors, and matrices
 
 **Level:** Intermediate
 
-**Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin), kevin@kotachrome.com
+**Mentor:** [Kevin Ring](http://www.kotachrome.com/kevin): kevin@kotachrome.com
 
 **Backup Mentor:** Dan Bagnell: dbagnell@agi.com
 
@@ -121,9 +122,9 @@ References
 
 **Level:** Intermediate
 
-**Mentor:** [Matthew Amato](http://twitter.com/matt_amato), matt.amato@gmail.com
+**Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), matt.amato@gmail.com
 
-**Backup Mentor:** [Ed Mackey](http://twitter.com/emackey)
+**Backup Mentor:** Ed Mackey: [@emackey](http://twitter.com/emackey), 
 
 <a name="suggest">
 ## Suggest your own idea
