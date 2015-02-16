@@ -124,7 +124,7 @@ References
 
 **Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), matt.amato@gmail.com
 
-**Backup Mentor:** Ed Mackey: [@emackey](http://twitter.com/emackey), 
+**Backup Mentor:** Ed Mackey: [@emackey](http://twitter.com/emackey)
 
 <a name="suggest">
 ## Suggest your own idea
