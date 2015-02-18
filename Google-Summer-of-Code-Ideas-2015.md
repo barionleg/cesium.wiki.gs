@@ -99,6 +99,10 @@ References
 <a name="sandcastle">
 ## Refactor Cesium Sandcastle
 
+<p align="center">
+<img src="gsoc/2015/sandcastle.png">
+</p>
+
 Cesium Sandcastle is a great application for learning, demoing, and experimenting with Cesium. However, since it was one of the earliest Cesium applications written, it has a few drawbacks:
 
   * It lacks responsive design, making it useless on small tablets and mobile.
