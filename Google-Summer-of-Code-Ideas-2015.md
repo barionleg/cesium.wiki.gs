@@ -29,6 +29,7 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 * [Cesium demos pack](#demospack)
 * [Compass / Navigation Widget](#navigation)
 * [Refactor Cesium Sandcastle](#sandcastle)
+* [Cesium iOS port controls/UI](#ios)
 * [Suggest your own idea](#suggest)
 * [Liquid Galaxy Panoramic Display](#liquid)
 
@@ -130,6 +131,37 @@ References
 **Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), matt.amato@gmail.com
 
 **Backup Mentor:** Ed Mackey: [@emackey](http://twitter.com/emackey)
+
+<a name="ios">
+## Cesium iOS port controls/UI
+
+An iOS port of Cesium has been started, and currently the core geographic/math functions, renderer and textured globe support are working. Full visualisation support including CZML and KML support is planned, however before this happens a robust set of touch-based controls and user interface is required.
+
+### Touch Controls
+
+This could be as simple as translating the existing JavaScript code to Swift on top of and in the style of the existing renderer. However there is an opportunity here to completely reimagine the user experience with a virtual globe and create an impressive and intuitive interface.
+
+### User Interface
+
+The port also needs a robust touch interface for selecting terrain and imagery layers, adjusting rendering parameters and for navigation and search widgets. The best approach for this would be to implement a flexible GL-based UI toolkit in the vein of [Project WindStorm](http://zephyrosanemos.com/#heading1). Text rendering, on-screen keyboard support and dialog boxes would be good as a first step.
+
+### Where To Start
+
+The port uses OpenGL ES 3.0 and Swift 1.2 so some experience in at least one or both of these technologies is preferred, although extensive familiarity is not essential as the existing renderer provides significant abstraction above OpenGL.
+
+A good application for this would include a description of your iOS and programming background. An example port of an existing JavaScript Cesium class to Swift in your application would help it stand out. It is required that you have an Apple iOS developer membership or obtain one if accepted as on-device testing will be essential.
+
+### References
+
+The existing codebase is available at [GitHub](https://github.com/tokyovigilante/CesiumKit/tree/master).
+
+**Skills:** OpenGL ES, iOS development with Swift, UI/UX design
+
+**Level:** Intermediate
+
+**Mentor:** [Ryan Walklin](mailto:ryan@testtoast.com)
+
+**Backup Mentor:** TBA
 
 <a name="suggest">
 ## Suggest your own idea
