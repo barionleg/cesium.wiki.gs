@@ -132,6 +132,28 @@ References
 
 **Backup Mentor:** Ed Mackey: [@emackey](http://twitter.com/emackey)
 
+<a name="czml">
+## Add ability to export CZML from the Entity API
+<p align="center">
+<img src="gsoc/2015/czml.png">
+</p>
+
+CZML is a JSON schema for data-driven visualization that is tied closely to Cesium capabilities.  CZML is to Cesium as KML is to Google Earth.  While Cesium's Entity API makes it easy to programmatically create and drive visualization.  When CZML is loaded, it gets turned into a collection of Entity objects.  This project would do the reverse, given a collection of Entity instances in Cesium, write out the corresponding CZML.  This has a variety of use cases, simple serialization and debugging being the primary once.  Eventually would would allow you to even generate CZML on the fly from JavaScript servers like node.
+
+Since the project is pure JavaScript, students interested in applying should be able to show that they have good knowledge of it through either reference to code they've written or by fixing some beginner issues in Cesium.
+
+References
+* [CZML spec](http://git.io/czml)
+* [Visualizing Spatial Data](http://cesiumjs.org/2015/02/02/Visualizing-Spatial-Data/)
+
+**Skills:** JavaScript
+
+**Level:** Intermediate
+
+**Mentor:** Matt Amato: [@matt_amato](https://twitter.com/matt_amato), matt.amato@gmail.com
+
+**Backup Mentor:** Ed Mackey: [@emackey](http://twitter.com/emackey)
+
 <a name="ios">
 ## Cesium iOS port controls/UI
 
