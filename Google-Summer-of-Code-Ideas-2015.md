@@ -30,6 +30,7 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 * [Compass / Navigation Widget](#navigation)
 * [Refactor Cesium Sandcastle](#sandcastle)
 * [Suggest your own idea](#suggest)
+* [Liquid Galaxy Panoramic Display](#liquid)
 
 <a name="demospack">
 ## Cesium demos pack
@@ -153,3 +154,8 @@ References
 **Mentor:** Find one on the Cesium forum by posting to the [Google Summer of Code 2015 thread](https://groups.google.com/forum/#!topic/cesium-dev/QnOxsA0iwa0)
 
 **Backup Mentor:** See above
+
+<a name="liquid">
+## Liquid Galaxy Panoramic Display
+
+Liquid Galaxy is an awesome panoramic display system.  They are also a mentoring organization in Google Summer of Code, and want to run Cesium on their display.  This will be a compelling high-visibility project.  **If you are interested, please [apply to their organization](https://code.google.com/p/liquid-galaxy/wiki/GSoC2015Ideas)**.
