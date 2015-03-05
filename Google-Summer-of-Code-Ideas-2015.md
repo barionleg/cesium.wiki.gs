@@ -29,6 +29,7 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 * [Cesium demos pack](#demospack)
 * [Compass / Navigation Widget](#navigation)
 * [Refactor Cesium Sandcastle](#sandcastle)
+* [CZML Export](#czml)
 * [Cesium iOS port controls/UI](#ios)
 * [Suggest your own idea](#suggest)
 * [Liquid Galaxy Panoramic Display](#liquid)
