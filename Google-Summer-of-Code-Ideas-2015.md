@@ -136,7 +136,7 @@ References
 ## Cesium iOS port controls/UI
 
 <p align="center">
-<img src="gsoc/2015/ios.jpg">
+<img src="gsoc/2015/iOS.jpg">
 </p>
 
 An iOS port of Cesium has been started, and currently the core geographic/math functions, renderer and textured globe support are working. Full visualisation support including CZML and KML support is planned, however before this happens a robust set of touch-based controls and user interface is required.
