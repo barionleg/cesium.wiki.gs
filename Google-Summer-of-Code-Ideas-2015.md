@@ -28,6 +28,7 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 
 # Project Idea List
 
+* [NASA's Data Curtains from Space](#nasa)
 * [Cesium demos pack](#demospack)
 * [Compass / Navigation Widget](#navigation)
 * [Refactor Cesium Sandcastle](#sandcastle)
@@ -35,6 +36,45 @@ JavaScript, HTML, CSS, WebGL, GitHub, Eclipse, Chrome, Firefox, Android, iOS
 * [Cesium iOS port controls/UI](#ios)
 * [Suggest your own idea](#suggest)
 * [Liquid Galaxy Panoramic Display](#liquid)
+
+<a name="nasa">
+## NASA's Data Curtains from Space
+
+<p align="center">
+<img src="gsoc/2015/nasa.png">
+</p>
+
+While traditional satellite imagery neatly wraps around a globe, NASA's CloudSat and CALIPSO spacecraft take measurements which stand perpendicular to the Earth's surface to form "curtains".  They measure vertical profiles of the atmosphere such as clouds and dust to provide a perspective that "flat maps" simply cannot.
+
+**Data Visualization**
+
+As of now, most scientific visualizations of these profiles draw a line through the overhead view to show an orbit track and then draw the profile data separately.  [See here for an example](http://www-calipso.larc.nasa.gov/products/lidar/browse_images/show_date.php?s=production&v=V3-30&browse_date=2015-02-10).
+
+There is, however, a great potential for combining the insights from both "profile" data and "flat" data into a single interface.   The image above and [this article](http://www.nasa.gov/mission_pages/calipso/mission/5years.html) show how the effects of a wildfire can be visualized by looking at both kinds of data.
+
+While the above example was specially crafted by visualization experts, it would be valuable for any user to be able to instantly visualize these two types of imagery together.  The Cesium platform presents an ideal way to perform this task by being able to visualize both "flat" maps and arbitrary 3-D geometry on demand.
+
+**Data Analysis**
+
+While the first step of this task will be to visualize the profile data alongside traditional data, the next step is to develop tools to measure properties of the profile data such as the height.  [See here for a static example](http://www.nasa.gov/images/content/508982main_diabar-calipso-full.jpg).
+
+**Data Management**
+
+For the purposes of prototyping a solution, imagery of profile data can be loaded into Cesium in whatever manner is most convenient.  However, there needs to be a way for ALL of the profile imagery (i.e., 8+ years' worth) collected by these satellites to be served by NASA and accessed by clients such as Cesium.  While standards exist for serving and accessing flat maps, a new method may need to be devised for profile imagery.
+
+**Where to Start**
+
+Imagery of NASA's "flat maps" is readily served by the [Global Imagery Browse Services (GIBS)](https://wiki.earthdata.nasa.gov/display/GIBS/).  Examples of using GIBS with Cesium are [readily available on GitHub](https://github.com/nasa-gibs/gibs-web-examples).
+
+Quick access to CALIPSO imagery can be downloaded [here](http://www-calipso.larc.nasa.gov/products/lidar/browse_images/show_calendar.php) while more detailed info can be found [here](https://www-calipso.larc.nasa.gov/search/login.php).  
+
+**Skills:** JavaScript, data visualization, data management
+
+**Level:** Intermediate to Advanced
+
+**Mentor:** Mike McGann: mike.mcgann@nasa.gov
+
+**Backup Mentor:** Ryan Boller: ryan.a.boller@nasa.gov
 
 <a name="demospack">
 ## Cesium demos pack
