@@ -1,9 +1,9 @@
 ## In progress
 
 * See the [Cesium in 2015](https://groups.google.com/forum/#!topic/cesium-dev/Z_RE-krc0HY) forum discussion.
-* KML ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
 * Polygons, polylines, billboards, and labels clamped to terrain. [#2172](https://github.com/AnalyticalGraphicsInc/cesium/issues/2172)
 * [Google Summer of Code 2015](Google-Summer-of-Code-Ideas-2015)
+* More KML features ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
 
 ## Ongoing
 
