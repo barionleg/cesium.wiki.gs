@@ -4,10 +4,10 @@ Right click and save an image, or download the <a href="logos/Cesium_Logo_Color.
 <img src="logos/Cesium_Logo_Color.jpg" />
 
 Color with alpha, for light backgrounds:
-<img src="logos/Cesium_Logo_forLightBackground.png" />
+<img src="logos/Cesium_Logo_Color_1.png" />
 
 Color with alpha, for dark backgrounds:
-<img src="logos/Cesium_Logo_forDarkBackground.png" />
+<img src="logos/Cesium_Logo_Color_2.png" />
 
 Black on white:
 <img src="logos/Cesium_Logo_Black.jpg" />
