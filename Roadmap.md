@@ -30,7 +30,7 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Dynamic buffers. [#932](https://github.com/AnalyticalGraphicsInc/cesium/issues/932)
   * Line styles. [paper](http://jcgt.org/published/0002/02/08/)
   * Terrain and imagery improvements. [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-  * Shadows (part of [Data-Driven Renderer](Data-Driven-Renderer-Details))
+  * Shadows, [#2594](https://github.com/AnalyticalGraphicsInc/cesium/issues/2594)
   * [Post-Processing Framework](Screen-Space-Rendering-Details) ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...postprocess-hook))
   * [Particle system](Particle-System-Details)
   * Label declutter. [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
