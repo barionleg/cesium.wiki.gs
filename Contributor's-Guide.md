@@ -105,6 +105,7 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 
 * Window - Preferences:
    * General - Editors - Text Editors.  Check Insert spaces for tabs.  Apply.
+   * JavaScript - Code Style - Formatter - New - _Select a new profile name_ - Indentation - Tab Policy.  Set it to "Spaces only."
    * Web - CSS Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.  Apply.
    * Web - HTML Files - Editor.  Switch the radio button to "Indent using spaces".  Change Indentation size to 4.  OK.
 
