@@ -135,3 +135,4 @@ Resources
 * [Call for a new Post-Processing Pipeline](http://diaryofagraphicsprogrammer.blogspot.com/2013/09/call-for-new-post-processing-pipeline.html)
 * [Stylized Rendering in Spore](http://gpupro.blogspot.com/2010/05/stylized-rendering-in-spore.html)
 * [Post Process Framework Sample](http://graphicsrunner.blogspot.com/2008/06/post-process-framework-sample.html)
+* [The rendering technology of skysaga: infinite isles](https://interplayoflight.wordpress.com/2015/04/08/the-rendering-technology-of-skysaga-infinite-isles/)
