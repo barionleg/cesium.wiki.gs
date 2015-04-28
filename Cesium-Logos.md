@@ -18,7 +18,7 @@ Color with white text on black:
 White on black:
 <img src="logos/Cesium_Logo_White.jpg" /></pre>
 
-Style guide ([pdf](logos/Cesium_Logo_StyleGuide.pdf)):
-<img src="logos/Cesium_Logo_StyleGuide.png" />
+Style guide:
+<img src="logos/Cesium_Logo_StyleGuide.jpg" />
 
 Logo design by Fran Kelly and Jason Martin, [Analytical Graphics, Inc](http://www.agi.com/).
