@@ -1,6 +1,7 @@
 ## In progress
 
 * See the [Cesium in 2015](https://groups.google.com/forum/#!topic/cesium-dev/Z_RE-krc0HY) forum discussion.
+* [3D Buildings](https://groups.google.com/forum/#!topic/cesium-dev/IArj5ju4cI8)
 * Polygons, polylines, billboards, and labels clamped to terrain. [#2172](https://github.com/AnalyticalGraphicsInc/cesium/issues/2172)
 * [Google Summer of Code 2015](Google-Summer-of-Code-Ideas-2015)
 * More KML features ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
@@ -38,7 +39,6 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Refactor internal Columbus View architecture.
   * WebGL extensions. [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
   * Content
-     * Buildings
      * Point clouds. [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets), [even more data](https://lta.cr.usgs.gov/LIDAR)
      * Trees - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural. [Cambridge data](https://www.cambridgema.gov/theworks/ourservices/urbanforestry/treeinventory.aspx) and [OpenTreeMap](https://www.opentreemap.org/).
      * Volumetric clouds
