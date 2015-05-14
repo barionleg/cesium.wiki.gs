@@ -1,3 +1,6 @@
+This is old but historically interesting.  For more recent details, see:
+* [Graphics Tech in Cesium - Rendering a Frame](http://cesiumjs.org/2015/05/14/Graphics-Tech-in-Cesium/)
+
 Currently, the render loop has a classic and simple design: an `update` function on each primitive is called, which creates/modifies vertex buffers, textures, shaders, etc.  Then, each primitive's `render` function is called to issue draw calls.  This is a standard update/render setup, or perhaps animate/update/render since user code probably has an animation step that modifies the primitive's positions, etc. which are then synced with WebGL resources in `update`.
 
 We'd like to add several features without burdening those implementing primitives:
