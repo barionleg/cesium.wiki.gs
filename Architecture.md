@@ -48,78 +48,7 @@ var positions = Shapes.computeEllipseBoundary(ellipsoid, center, 500000.0, 30000
 <div id="renderer">
 ## Renderer
 
-This is old.  See [Graphics Tech in Cesium - Renderer Architecture](http://cesiumjs.org/2015/05/15/Graphics-Tech-in-Cesium-Architecture/).
-~~<img src="architectureFigures/renderer.png" width="30%" align="right" />
-
-Renderer is a thin abstraction over WebGL that provides most of the flexibility of directly using WebGL but requires much less code.  Renderer includes built-in GLSL uniforms and functions, and abstractions for shader programs; textures and cube maps; buffers and vertex arrays; render states; and framebuffers.
-
-Most apps will not use Renderer directly; instead, they will use higher-level constructs in Scene or Dynamic Scene that are closer to their problem domain.  However, Renderer is fully exposed to apps, allowing them to include custom rendering code.
-
-GLSL code has access to a ton of Cesium built-in uniforms and functions, for example:
-```javascript
-gl_Position = czm_modelViewProjection * position;
-v_positionWC = (czm_model * position).xyz;
-v_positionEC = (czm_modelView * position).xyz;
-v_normalEC = czm_normal * normal;
-// ...
-czm_ray ray = czm_ray(vec3(0.0), normalize(v_positionEC));
-czm_raySegment interval = czm_rayEllipsoidIntersectionInterval(ray, ellipsoid);
-```
-See the GLSL section in the [reference documentation](http://cesiumjs.org/Documentation/).
-
-Given vertex and fragment shader source strings, shader programs can be created in a single line of code:
-```javascript
-var sp = context.getShaderCache().getShaderProgram(vs, fs);
-```
-Textures and cube maps have abstractions so we never have to worry about binding a texture.  Uniforms are also abstracted; mistakes like calling `getUniformLocation` on uniforms that were optimized out are not possible.
-```javascript
-this.bumpTexture = context.createTexture2D({
-    source      : bumpImage,
-    pixelFormat : PixelFormat.LUMINANCE
-});
-// ...
-var that = this;
-var uniforms = {
-    u_bumpMap :  function() { return that.bumpTexture; },
-    u_nightIntensity :  function() { return 0.8; }
-};
-```
-Vertex arrays simplify organizing vertex attributes.
-```javascript
-// BoxTessellator is in Core
-var mesh = BoxTessellator.compute({
-    dimensions :  new Cartesian3(1.0, 2.0, 3.0)
-}));
-var va = context.createVertexArrayFromMesh({
-    mesh : mesh,
-    bufferUsage : BufferUsage.STATIC_DRAW,
-    vertexLayout : VertexLayout.INTERLEAVED
-});
-```
-Render states define the fixed-function state of the graphics pipeline for a draw call.  We never worry about global state.
-
-<img src="architectureFigures/drawCall.png" width="50%" align="right" />~~
-
-```javascript
-var rs = context.createRenderState({
-    depthTest : {
-        enabled : true
-    },
-    cull : {
-        enabled : true,
-        face    : CullFace.BACK
-    },
-    blending : BlendingState.ALPHA_BLEND
-});
-
-context.draw({
-    primitiveType : PrimitiveType.TRIANGLES,
-    shaderProgram : sp,
-    uniformMap : uniforms,
-    vertexArray : va,
-    renderState : rs
-});
-```
+See [Graphics Tech in Cesium - Renderer Architecture](http://cesiumjs.org/2015/05/15/Graphics-Tech-in-Cesium-Architecture/).
 
 <div id="scene">
 ## Scene
