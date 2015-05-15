@@ -48,7 +48,8 @@ var positions = Shapes.computeEllipseBoundary(ellipsoid, center, 500000.0, 30000
 <div id="renderer">
 ## Renderer
 
-<img src="architectureFigures/renderer.png" width="30%" align="right" />
+This is old.  See [Graphics Tech in Cesium - Renderer Architecture](http://cesiumjs.org/2015/05/15/Graphics-Tech-in-Cesium-Architecture/).
+~~<img src="architectureFigures/renderer.png" width="30%" align="right" />
 
 Renderer is a thin abstraction over WebGL that provides most of the flexibility of directly using WebGL but requires much less code.  Renderer includes built-in GLSL uniforms and functions, and abstractions for shader programs; textures and cube maps; buffers and vertex arrays; render states; and framebuffers.
 
@@ -97,7 +98,7 @@ var va = context.createVertexArrayFromMesh({
 ```
 Render states define the fixed-function state of the graphics pipeline for a draw call.  We never worry about global state.
 
-<img src="architectureFigures/drawCall.png" width="50%" align="right" />
+<img src="architectureFigures/drawCall.png" width="50%" align="right" />~~
 
 ```javascript
 var rs = context.createRenderState({
