@@ -68,6 +68,7 @@ Rendering
 
 ## Resources
 
+* [Everything about Particle Effects](http://www.2ld.de/gdc2007/)
 * For fun: perhaps [flocking](http://cis565-fall-2013.github.io/lectures/10-16-Simple-Simulation.pdf) with WebGL 2.0 transform feedback.
 * [Physically Based Modeling: Principles and Practice](http://www.cs.cmu.edu/~baraff/sigcourse/)
 * Procedural Methods chapter in Interactive Computer Graphics
