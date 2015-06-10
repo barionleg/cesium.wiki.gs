@@ -49,7 +49,7 @@ Prerequisites:
 From the root Cesium directory, run:
 
 ```
-./Tools/apache-ant-1.8.2/bin/ant combine
+./Tools/apache-ant-1.8.2/bin/ant combine generateDocumentation
 node server.js
 ```
 
@@ -66,6 +66,12 @@ For a default developer build, run Ant from the root Cesium directory:
 ./Tools/apache-ant-1.8.2/bin/ant
 ```
 
+To generate HTML documentation, run:
+
+```
+./Tools/apache-ant-1.8.2/bin/ant generateDocumentation
+```
+
 To run the HTTP server for testing, run:
 
 ```
@@ -76,12 +82,6 @@ To allow other machines to connect to your HTTP server for testing, run:
 
 ```
 node server.js --public
-```
-
-To generate HTML documentation, run:
-
-```
-./Tools/apache-ant-1.8.2/bin/ant generateDocumentation
 ```
 
 For all build options, see [Build Targets](#buildtargets) below.
