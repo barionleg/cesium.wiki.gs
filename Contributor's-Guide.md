@@ -63,7 +63,7 @@ Details
 For a default developer build, run Ant from the root Cesium directory:
 
 ```
-./Tools/apache-ant-1.8.2/bin/ant
+./Tools/apache-ant-1.8.2/bin/ant build
 ```
 
 To generate HTML documentation, run:
