@@ -79,5 +79,6 @@ If you are interested in implementing any of these, start a discussion on the [f
 
 ## Past Student Programs
 
+* [Google Summer of Code 2013](Google-Summer-of-Code-Ideas-2015)
 * [Google Summer of Code 2013](Google-Summer-of-Code-Ideas)
 * [ESA Summer of Code in Space 2013 Ideas](ESA-Summer-of-Code-in-Space-Ideas)
