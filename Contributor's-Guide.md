@@ -24,7 +24,7 @@ Short version:
 * Commit access? Clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium) and make all changes in a branch.
 
 Details
-* Setup Git if it isn't already ([linux](https://help.github.com/articles/set-up-git#platform-linux) | [mac](https://help.github.com/articles/set-up-git#platform-mac) | [windows](https://help.github.com/articles/set-up-git#platform-windows)).
+* Setup Git if it isn't already ([link](https://help.github.com/articles/set-up-git/#platform-all)).
    * Make sure your SSH keys are configured ([linux](https://help.github.com/articles/generating-ssh-keys#platform-linux) | [mac](https://help.github.com/articles/generating-ssh-keys#platform-mac) | [windows](https://help.github.com/articles/generating-ssh-keys#platform-windows)).
    * Double-check your settings for name and email: `git config --get-regexp user.*`.
    * Recommended Git settings:
