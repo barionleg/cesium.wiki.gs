@@ -175,10 +175,6 @@ For example, to run an un-minified build and generate the documentation:
 
 These steps are optional depending on your preference.
 
-### Markdown Plugin
-
-If you edit markdown files (.md) with Eclipse, installing the [Markdown plugin](http://www.winterwell.com/software/markdown-editor.php) is useful.
-
 ### GLSL Plugin
 
 If you edit WebGL shader files (.glsl) with Eclipse, install GLShaders for GLSL syntax highlighting.  First exit Eclipse, then download [GLShaders](http://sourceforge.net/projects/glshaders/) and extract into Eclipse's dropins directory.
