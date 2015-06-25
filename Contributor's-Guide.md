@@ -95,7 +95,7 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
 
 * Install additional Eclipse components: JavaScript Development Tools and Eclipse Web Developer Tools.
-   * Help - Install New Software.  Work with: select *Luna* from the list.
+   * Help - Install New Software.  Work with: select *Mars* from the list.
    * Expand *Programming Languages*, check *JavaScript Development Tools*.
    * Expand *Web, XML, Java EE and OSGi Enterprise Development*, check *Eclipse Web Developer Tools*.
    * Next, Next, Accept, Finish, _wait_, No (we have more to install).
@@ -185,12 +185,9 @@ If you edit WebGL shader files (.glsl) with Eclipse, install GLShaders for GLSL 
 
 ![The Eclipse dropins directory](glshaders.png)
 
-### Git Plugin
+### Git
 
-Most of us use Git from the command-line, but there is also an Eclipse plugin.  The Eclipse package listed above includes this by default, but to install it in other Eclipse packages:
-   * Help - Install New Software.  Work with: select *Luna* from the list.  
-   * Expand *Collaboration*, check *Eclipse Git Team Provider*.
-   * Next, Next, Accept, Finish, _wait_, Restart.
+Most of us use Git from the command-line, but there is also Eclipse integration:
 
 * Window - Preferences: Team - Git - Configuration
    * Verify Location in User Settings tab is set to .gitconfig in the default repository directory.
