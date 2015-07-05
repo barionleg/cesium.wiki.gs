@@ -6,10 +6,9 @@
    * [Shapefile and GPX loaders](http://cesiumjs.org/2015/05/27/GSoC-Developer-Profile-Andre-Nunes/)
    * [GML loader](http://cesiumjs.org/2015/05/30/GSoC-Developer-Profile-Ayush-Khandelwal/)
    * [NASA LIDAR curtains](http://cesiumjs.org/2015/05/28/GSoC-Developer-Profile-Abhishek-Potnis/)
-* Improved camera flights [#1060](https://github.com/AnalyticalGraphicsInc/cesium/issues/1060)
 * Polygons, polylines, billboards, and labels clamped to terrain. [#2172](https://github.com/AnalyticalGraphicsInc/cesium/issues/2172)
 * [3D Buildings](https://groups.google.com/forum/#!topic/cesium-dev/IArj5ju4cI8)
-* More KML features ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/kml...dataSourceBrowser)). [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
+* More KML features. [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
 
 ## Ongoing
 
