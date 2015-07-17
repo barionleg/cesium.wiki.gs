@@ -1,3 +1,5 @@
+Before using the Cesium logo, please read and follow the [Cesium Trademark Terms and Conditions](CesiumTrademark.pdf).
+
 Right click and save an image, or download the <a href="logos/Cesium_Logo_Color.SVG">svg</a> version.
 
 <pre>Color with white background:
