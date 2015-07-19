@@ -8,6 +8,7 @@ These resources present topics broadly useful to Cesium development.  We think a
 
 * [An Introduction to JavaScript for Sophisticated Programmers](http://casual-effects.blogspot.com/2014/01/an-introduction-to-javascript-for.html)
 * [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do) - concise, practical introduction to modern JavaScript for developers familiar with another language.  Also see a related [YouTube video](http://www.youtube.com/watch?v=hQVTIJBZook).
+* [Getting Serious with JavaScript](http://webglinsights.github.io/downloads/WebGL-Insights-Chapter-4.pdf) - how we do large-scale JavaScript development in Cesium, including modularity, performance, and testing.
 
 ### WebGL
 
