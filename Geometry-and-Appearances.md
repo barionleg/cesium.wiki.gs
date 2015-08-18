@@ -62,7 +62,7 @@ require(['Cesium'], function(Cesium) {
 
 
 
-Part I is now on the [Cesium website](http://cesiumjs.org/2013/11/04/Geometry-and-Appearances/).  Part II below is still a draft.
+Part I is now on the [Cesium website](http://cesiumjs.org/2013/11/04/Geometry-and-Appearances/).
 
 # Part II: Creating Custom Geometry and Appearances
 
