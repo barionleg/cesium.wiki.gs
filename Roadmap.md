@@ -1,6 +1,5 @@
 ## In progress
 
-* See the [Cesium in 2015](https://groups.google.com/forum/#!topic/cesium-dev/Z_RE-krc0HY) forum discussion.
 * [3D Tiles](https://groups.google.com/forum/#!topic/cesium-dev/tCCooBxpZFU) - streaming 3D buildings, vector data, point clouds, etc.
 * Polygons, polylines, billboards, and labels clamped to terrain. [#2172](https://github.com/AnalyticalGraphicsInc/cesium/issues/2172)
 * More KML features. [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
@@ -9,6 +8,7 @@
    * [Shapefile and GPX loaders](http://cesiumjs.org/2015/05/27/GSoC-Developer-Profile-Andre-Nunes/)
    * [GML loader](http://cesiumjs.org/2015/05/30/GSoC-Developer-Profile-Ayush-Khandelwal/)
    * [NASA LIDAR curtains](http://cesiumjs.org/2015/05/28/GSoC-Developer-Profile-Abhishek-Potnis/)
+* See the [Cesium in 2015](https://groups.google.com/forum/#!topic/cesium-dev/Z_RE-krc0HY) forum discussion.
 
 ## Ongoing
 
@@ -41,12 +41,9 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Label declutter. [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
   * [Space features](Space-features)
   * Refactor internal Columbus View architecture.
-  * WebGL extensions. [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
-  * Content
-     * Point clouds. [data](http://kos.informatik.uni-osnabrueck.de/3Dscans/), [more data](http://opentopo.sdsc.edu/gridsphere/gridsphere?cid=datasets), [even more data](https://lta.cr.usgs.gov/LIDAR)
-     * Trees - Possibly use [this data](http://glcf.umd.edu/data/) to generate global procedural. [Cambridge data](https://www.cambridgema.gov/theworks/ourservices/urbanforestry/treeinventory.aspx) and [OpenTreeMap](https://www.opentreemap.org/).
-     * Volumetric clouds
-     * [Stars improvements](Stars-Details)
+  * WebGL 2 and WebGL extensions. [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
+  * Volumetric clouds
+  * [Stars improvements](Stars-Details)
   * [Ocean improvements](Ocean-Details)
   * Video on terrain
   * John Madden-style collaboration among multiple clients
@@ -80,4 +77,3 @@ If you are interested in implementing any of these, start a discussion on the [f
 
 * [Google Summer of Code 2015](Google-Summer-of-Code-Ideas-2015)
 * [Google Summer of Code 2013](Google-Summer-of-Code-Ideas)
-* [ESA Summer of Code in Space 2013 Ideas](ESA-Summer-of-Code-in-Space-Ideas)
