@@ -1,4 +1,4 @@
-**This is now out-of-date.  There will be a new version as part of [#1683](https://github.com/AnalyticalGraphicsInc/cesium/issues/1683).**
+**This is now out-of-date.  There will be a new version as part of [#1683](https://github.com/AnalyticalGraphicsInc/cesium/issues/1683).  In the meantime, see [Graphics Tech in Cesium - The Graphics Stack](http://cesiumjs.org/2015/05/26/Graphics-Tech-in-Cesium-Stack/)**
 
 <!-- More links to specific parts of the reference documentation and Sandbox -->
 
