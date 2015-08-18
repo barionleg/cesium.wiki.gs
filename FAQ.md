@@ -1,1 +1,0 @@
-The FAQ is now located at http://cesiumjs.org/FAQ.html.
