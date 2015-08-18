@@ -6,21 +6,20 @@
 
 ## User Guides
 
-* [[Architecture]] - bird's eye, ten minute overview of the Cesium stack.
 * [[CZML Guide]] - bring content into Cesium without writing code.
-* [[In-Depth Guides]] - details on major features.
 * [[Offline Guide]] - details on how to configure a Cesium app to work without internet access.
+* [[In-Depth Guides]] - details on major features.
 
 ## Contributor Guides
 
 * [[Contributor's Guide]] - setting up a development environment and contributing code.
-* [[Recommended Reading]] - Books, tutorials, and other resources for getting up to speed the technologies used to build Cesium.
 * [[JavaScript Coding Conventions]] - keeps our code consistent.
 * [[Documentation Best Practices]] - solid reference documentation lowers the barrier to entry.
 * [[Code Review Tips]] - worthwhile code reviews share knowledge and improve code quality.
 * [[Deprecation Guide]] - how to deprecate and remove APIs over time.
 * [[Release Guide]] - how we release monthly.
 * [[Committer's Guide]] - what to do with commit access to the main repo.
+* [[Recommended Reading]] - Books, tutorials, and other resources for getting up to speed the technologies used to build Cesium.
 
 ## Media
 
