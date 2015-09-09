@@ -30,13 +30,9 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Dynamic buffers. [#932](https://github.com/AnalyticalGraphicsInc/cesium/issues/932)
   * Line styles. [paper](http://jcgt.org/published/0002/02/08/)
   * Terrain and imagery improvements. [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-  * Shadows, [#2594](https://github.com/AnalyticalGraphicsInc/cesium/issues/2594)
-  * [Post-Processing Framework](Screen-Space-Rendering-Details) ([branch](https://github.com/AnalyticalGraphicsInc/cesium/compare/master...postprocess-hook))
-  * [Particle system](Particle-System-Details)
   * Label declutter. [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
   * [Space features](Space-features)
   * Refactor internal Columbus View architecture.
-  * WebGL 2 and WebGL extensions. [#797](https://github.com/AnalyticalGraphicsInc/cesium/issues/797)
   * Volumetric clouds
   * [Stars improvements](Stars-Details)
   * [Ocean improvements](Ocean-Details)
@@ -44,7 +40,6 @@ If you are interested in implementing any of these, start a discussion on the [f
   * John Madden-style collaboration among multiple clients
   * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
   * Lat/lon grid
-  * Shader pipeline improvements. [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031)
   * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
   * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
 * CZML
