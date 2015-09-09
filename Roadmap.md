@@ -18,19 +18,13 @@ If you are interested in implementing any of these, start a discussion on the [f
 
 * See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap)
 * General
-  * DataSource improvements. [#1045](https://github.com/AnalyticalGraphicsInc/cesium/issues/1045)
   * [Mobile improvements](Mobile-Details)
   * [Sandcastle improvements](Sandcastle-Details)
   * More standard web services: WFS, WCS, ...
   * Military symbol sets such as MS2525 and NTDS.  SVG files?
   * Support for multiple central bodies, i.e., Sun, Moon, etc.
 * Graphics
-  * Geometry and appearances improvements. [#766](https://github.com/AnalyticalGraphicsInc/cesium/issues/766)
-  * 3D model improvements. [#927](https://github.com/AnalyticalGraphicsInc/cesium/issues/927)
-  * Dynamic buffers. [#932](https://github.com/AnalyticalGraphicsInc/cesium/issues/932)
   * Line styles. [paper](http://jcgt.org/published/0002/02/08/)
-  * Terrain and imagery improvements. [#526](https://github.com/AnalyticalGraphicsInc/cesium/issues/526)
-  * Label declutter. [#1097](https://github.com/AnalyticalGraphicsInc/cesium/issues/1097)
   * [Space features](Space-features)
   * Refactor internal Columbus View architecture.
   * Volumetric clouds
