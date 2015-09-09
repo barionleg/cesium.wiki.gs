@@ -35,7 +35,6 @@ If you are interested in implementing any of these, start a discussion on the [f
   * Polyline and polygon LOD.  [Douglas-Peucker reduction](http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf)
   * Lat/lon grid
   * [Material improvements](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Material-System-Details)
-  * Investigate [Draft for Candidate OpenGIS® Web 3D Service Interface Standard](portal.opengeospatial.org/files/?artifact_id=36390)
 * CZML
   * [CZML External links](External-links)
   * GeoServer CZML writer
