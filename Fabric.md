@@ -90,7 +90,7 @@ Procedural texture materials procedurally compute patterns on the GPU so they do
 | `Checkerboard` | <img src="materials/Checkerboard.PNG" width="200" height="92" /> | Checkerboard with alternating light and dark colors. |
 | `Stripe` | <img src="materials/Stripe.PNG" width="200" height="92" /> | Alternating light and dark horizontal or vertical stripes |
 | `Dot` | <img src="materials/Dot.PNG" width="200" height="92" /> | A pattern of dots organized by row and column. |
-| `Grid` | <img src="materials/Grid.PNG" width="200" height="92" /> | A grid of lines, useful for displaying 3D volumes. |
+| `Grid` | <img src="materials/Grid.png" width="200" height="92" /> | A grid of lines, useful for displaying 3D volumes. |
 
 <a id="BaseMaterials"></a>
 ### Base Materials
