@@ -1,5 +1,3 @@
-I took a pass on updating the Contributor's Guide to discuss both gulp and WebStorm.  I also have a lot of ideas for further improvements that I'll write up an issue for at some point (such as discussing how to add a test).  Here it is, since you can't do PRs on a wiki.
-
 We are a community that encourages contributions.  Join us.  Here's how.
 
 * [Get Started](#getstarted)
