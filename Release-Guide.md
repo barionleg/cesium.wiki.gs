@@ -9,16 +9,15 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Make sure you are using the latest drivers for your video card.
 1. Pull down the latest master branch.
 1. Proofread [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.  Adjust the order of changes so that prominent/popular changes come first.
-1. Update [build.xml](../blob/master/build.xml) with the version being released, e.g., `<property name="version" value="1.0" />`
-1. Update the version in `package.json` to match, e.g. `1.0.0`.  Eventually this will unify with the `build.xml` version.
+1. Update the version in `package.json` to match, e.g. `1.14.0` -> `1.15.0`.
 1. Commit these changes.
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
 1. Run `npm install`.
-1. Create the release zip `./Tools/apache-ant-1.8.2/bin/ant makeZipFile`
-1. Start the server by running `node server.js`.
+1. Create the release zip `npm run makeZipFile`
+1. Start the server by running `npm start`.
 1. [Run unit tests against combined file with debug code removed](http://localhost:8080/Specs/SpecRunner.html?built=true&release=true) in all browsers.
 1. Stop the server.
-1. Unpack the release zip to the directory of your choice and start the server by running `npm install` and then `node server.js`
+1. Unpack the release zip to the directory of your choice and start the server by running `npm install` and then `npm start`
 1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work.
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
 1. If running on Windows, each browser should be tested with ANGLE enabled.  The state of ANGLE can be verified using [WebGL Report](http://webglreport.com/).
