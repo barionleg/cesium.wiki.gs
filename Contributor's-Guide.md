@@ -1,3 +1,5 @@
+I took a pass on updating the Contributor's Guide to discuss both gulp and WebStorm.  I also have a lot of ideas for further improvements that I'll write up an issue for at some point (such as discussing how to add a test).  Here it is, since you can't do PRs on a wiki.
+
 We are a community that encourages contributions.  Join us.  Here's how.
 
 * [Get Started](#getstarted)
@@ -14,16 +16,11 @@ We are a community that encourages contributions.  Join us.  Here's how.
 * [Contribute Code](#contributecode)
 
 <a name="getstarted">
-# Get Started
+# Get started
 
 <a name="getthecode">
-## Get the Code
+## Get the code
 
-Short version:
-* No commit access? Fork and clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
-* Commit access? Clone [cesium](https://github.com/AnalyticalGraphicsInc/cesium) and make all changes in a branch.
-
-Details
 * Setup Git if it isn't already ([link](https://help.github.com/articles/set-up-git/#platform-all)).
    * Make sure your SSH keys are configured ([linux](https://help.github.com/articles/generating-ssh-keys#platform-linux) | [mac](https://help.github.com/articles/generating-ssh-keys#platform-mac) | [windows](https://help.github.com/articles/generating-ssh-keys#platform-windows)).
    * Double-check your settings for name and email: `git config --get-regexp user.*`.
@@ -35,61 +32,150 @@ Details
    * No
       * Fork [cesium](https://github.com/AnalyticalGraphicsInc/cesium).
       * Create a local repo of your fork, e.g., `git clone git@github.com:yourusername/cesium.git`.
+      * We always recommend making changes in a branch, e.g., `git checkout -b myFeature`.
    * Yes
       * Create a local cesium repo, e.g., `git clone git@github.com:AnalyticalGraphicsInc/cesium.git`
       * Make changes in a branch, e.g., `git checkout -b myFeature`.
 
 <a name="buildthecode">
-## Build the Code
+## Build the code
 
 Prerequisites:
- * Install [Java](http://www.java.com/en/download/manual.jsp) on your system.
  * Install [Node.js](http://nodejs.org/) on your system.
 
-From the root Cesium directory, run:
+Cesium uses npm modules for development, so after syncing, you need to run `npm install` from the Cesium root directory:
 
 ```
-./Tools/apache-ant-1.8.2/bin/ant combine generateDocumentation
-node server.js
+npm install
+```
+
+Once all modules have been installed, run `npm run build` to actually build the code:
+
+```
+npm run build
+```
+
+Cesium ships with a simple HTTP server for testing, run `npm start` after building to use it:
+
+```
+npm start
 ```
 
 Then browse to [http://localhost:8080/](http://localhost:8080/).
 
-Details
-* Cesium uses [Ant](http://ant.apache.org/) for builds.  Ant is included in the Cesium repo, but it requires that [Java](http://www.java.com/en/download/index.jsp) be installed.
-* [Node.js](http://nodejs.org/) is also required by the build.  
-* In the future, build functionality will move to Node.js and the need for Java will be removed.
-
-For a default developer build, run Ant from the root Cesium directory:
+By default, the server only allows connections from your local machine.  Too allow connections from other machines, pass
+the `--public` option to npm. Note the extra `--` is intentional and required by npm.
 
 ```
-./Tools/apache-ant-1.8.2/bin/ant build
+npm start -- --public
 ```
 
-To generate HTML documentation, run:
+The development server has a few other options as well, which you can see by pasing the `--help` parameter:
 
 ```
-./Tools/apache-ant-1.8.2/bin/ant generateDocumentation
+npm start -- --help
 ```
 
-To run the HTTP server for testing, run:
+While you can use the editor of your choice to develop Cesium, certain files, such as `glsl` and new tests, require that
+the `build` task be executed in order for the changes to take affect.  You can use the `build-watch` script to have this
+happen automatically.
+
+<a name="buildtargets">
+## Build scripts
+
+Cesium uses [gulp](http://gulpjs.com/) for build tasks, but they are all abstracted away by [npm run scripts](https://docs.npmjs.com/cli/run-script).
+
+Specify the target(s) at the command line:
 
 ```
-node server.js
+npm run [target-name]
 ```
 
-To allow other machines to connect to your HTTP server for testing, run:
+Here's the full set of scripts and what they do.
+   * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
+   * `build-watch` - A never-ending task that watches your file system for changes to Cesium and runs `build` on the source code as needed. 
+   * `combine` - Runs `build`, plus the [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
+   * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_\(programming\)) Cesium.js using [UglifyJS2](https://github.com/mishoo/UglifyJS2) for a smaller deployable file.
+   * `combineRelease` - Runs `combine`, plus uses the optimizer to remove debugging code that validates function input and throws DeveloperErrors.  The removed sections are marked with `//>>includeStart('debug', pragmas.debug);` blocks in the code.
+   * `minifyRelease` - Runs `minify`, and removes debugging code.
+   * `buildApps` - Builds the example applications (such as Cesium Viewer) to produce self-contained, minified, deployable versions in the `Build` directory.
+   * `generateDocumentation` - Generates HTML documentation in `Build/Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).
+   * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
+   * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
+   * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.
+   * `jsHint-watch` - A never-ending task that watches your file system for changes to Cesium and runs [JSHint](http://www.jshint.com/) on any changed source files.  
+   * `makeZipFile` - Builds a zip file containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined and minified Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
+   * `clean` - Removes all generated build artifacts.
+   * `cloc` - Runs [CLOC](https://github.com/AlDanial/cloc) to count the lines of code on the Source and Specs directories.  This requires [Perl](http://www.perl.org/) to execute.
+   * `sortRequires` - Alphabetically sorts the list of required modules in every `js` file.  It also makes sure that the top of every source file uses the same formatting.
 
-```
-node server.js --public
-```
+<a name="nextsteps">
+## Next Steps
 
-For all build options, see [Build Targets](#buildtargets) below.
+At this point you are ready to contribute.  Continue reading below for more details on the developer setup, or read about Cesium's [architecture](Architecture); check out the [roadmap](Roadmap); join the [forum](http://cesiumjs.org/forum.html); and start hacking.
+
+<a name="becomeanexpert">
+# Become an Expert
+
+This section has additional information on our development tools.
+
+<a name="testtips">
+## Test Tips
+
+* To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
+
+![](debugJasmine.png)
+
+Then, to step into the test, step into `stepIntoThis()`
+
+![](stepIntoThis.png)
+
+<a name="resources">
+## Resources
+
+* [WebGL Profiling Tips](http://cesiumjs.org/2014/12/01/WebGL-Profiling-Tips/)
+* [WebGL Debugging and Profiling Tools](http://www.realtimerendering.com/blog/)
+
+<a name="contributecode">
+# Contribute Code
+
+See [CONTRIBUTING.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
+
+<a name="setupide">
+# Configure an IDE
+
+We encourage contributors to use their IDE of choice, but many of us use WebStorm or Eclipse.  Here's how we set then up.
+
+<a name="setupwebstorm">
+## Set up WebStorm
+
+* Install [WebStorm](https://www.jetbrains.com/webstorm/) if you don't already have it. While it's a commercial IDE,
+it's pretty cheap and there's a 30-day free trial available.
+
+The nice thing about WebStorm is that very little configuration is needed out of the box.  Just browse to and open
+the WebStorm project included with Cesium.  Most things a Web Developer wants are built in, but whenever you open a file
+that has a plugin available, such as `md`, `glsl`, or `.gitignore`, WebStorm will ask if you want to install it.
+Simply say yes and off you go.  While most of us still use `git` on the command-line, WebStorm includes excellent tools
+for merging, diffing, and managing branches as well.
+
+### Gulp Integration
+
+As we mentioned above, all of Cesium's build scripts use gulp.  WebStorm has excellent gulp integration to make running
+tasks from the IDE simple.  Just right-click on `gulpfile.js` in the Project tree and select `Show Gulp Tasks`, now
+you can simply double click on any task to run it.  Even better, perpetual tasks like `build-watch` and `jsHint-watch`
+will get their own output tab that automatically updates.
+
+### WebStorm Shortcuts
+
+* Use Ctrl-Shift-A to search for settings, shortcuts, or anything else you want to do.
+* Use Ctrl-Shift-N to search and open files in the workspace.
+* Use Ctrl-ALT-L to auto-format an entire file or the selected block of code.
+* Use Ctrl-Shift-F to bring up the global find dialog.
 
 <a name="setupeclipse">
 ## Set up Eclipse
 
-We encourage contributors to use their IDE of choice, but many of us use Eclipse.  Here's how we set it up.
+While primarily known as a Java IDE, Eclipse can be configured to work well for web development too.
 
 * Install [Java](http://www.java.com/en/download/manual.jsp) if it isn't already.
 * Download the [Eclipse IDE](http://www.eclipse.org/downloads/) for Java Developers.  Extract to a directory of your choice.  Run it.
@@ -125,50 +211,6 @@ We encourage contributors to use their IDE of choice, but many of us use Eclipse
 
 Also consider the [Optional Eclipse Configuration](#optionaleclipseconfiguration) options below.
 
-<a name="nextsteps">
-## Next Steps
-
-At this point you are ready to contribute.  Continue reading below for more details on the developer setup, or read about Cesium's [architecture](Architecture); check out the [roadmap](Roadmap); join the [forum](http://cesiumjs.org/forum.html); and start hacking.
-
-<a name="becomeanexpert">
-# Become an Expert
-
-This section has additional information on our development tools.
-
-<a name="buildtargets">
-## Build Targets
-
-The following targets can be built:
-   * `build` - A fast, developer-oriented build that prepares the source tree for use as standard [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) modules, suitable for running tests and most examples (some Sandcastle examples require running `combine`).  This runs automatically when saving files in Eclipse.
-   * `combine` - Runs `build`, plus uses [Node.js](http://nodejs.org/) to run [the RequireJS optimizer](http://requirejs.org/docs/optimization.html) to combine Cesium and [the Almond AMD loader](http://requirejs.org/docs/faq-optimization.html#wrap) to produce all-in-one files in the `Build/Cesium` directory that expose the entire Cesium API attached to a single global Cesium object.  This version is useful if you don't want to use the modules directly with a standard AMD loader.
-   * `minify` - Runs `combine`, plus [minifies](http://en.wikipedia.org/wiki/Minification_\(programming\)) Cesium.js using [UglifyJS2](https://github.com/mishoo/UglifyJS2) for a smaller deployable file.
-   * `combineRelease` - Runs `combine`, plus uses the optimizer to remove debugging code that validates function input and throws DeveloperErrors.
-   * `minifyRelease` - Runs `minify`, and removes debugging code.
-   * `buildApps` - Builds the example applications (such as Cesium Viewer) to produce self-contained, minified, deployable versions in the `Build` directory.
-   * `generateDocumentation` - Generates HTML documentation in `Build/Documentation` using [JSDoc 3](https://github.com/jsdoc3/jsdoc).  This step requires `npm install` to be run first.
-   * `release` - A full release build that creates a shippable product, including building apps and generating documentation.
-   * `instrumentForCoverage` - Runs [JSCoverage](http://siliconforks.com/jscoverage/) on the source tree to allow running tests with coverage information.  Use the link in index.html.  Currently Windows only.
-   * `jsHint` - Runs [JSHint](http://www.jshint.com/) on the entire source tree.  If you use Eclipse, see below for how to run JSHint automatically as you develop.
-   * `runServer` - Launches a [Node.js](http://nodejs.org/) HTTP server on [http://localhost:8080/](http://localhost:8080/) for easy access to the tests, examples, and documentation.  This also provides proxying for tile server providers that don't yet support [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for retrieving tiles, which is required for use as textures.  To change the port, pass `-DrunServer.port=X`, where `X` is the desired port.
-     * You can also run the server by running `node server.js`.  Pass `--help` for usage instructions.
-   * `runPublicServer` - The same as `runServer` with the `-DrunServer.public=true` argument to allow for external connections.
-   * `makeZipFile` - Builds a zip file containing all release files.  This includes the source tree (suitable for use from an AMD-aware application), plus the combined and minified Cesium.js files, the generated documentation, the test suite, and the example applications (in both built and source form).
-   * `clean` - Removes all generated build artifacts.
-   * `cloc` - Runs [CLOC](http://cloc.sourceforge.net/) to count the lines of code on the Source and Specs directories.  This requires [Perl](http://www.perl.org/) to execute.
-   * `sortRequires` - Alphabetically sorts the list of required modules in every `js` file.
-
-Specify the target(s) at the command line:
-
-```
-./Tools/apache-ant-1.8.2/bin/ant [target-name] [another-target-name] ...
-```
-
-For example, to run an un-minified build and generate the documentation:
-
-```
-./Tools/apache-ant-1.8.2/bin/ant combine generateDocumentation
-```
-
 <a name="optionaleclipseconfiguration">
 ## Optional Eclipse Configuration
 
@@ -198,25 +240,3 @@ Most of us use Git from the command-line, but there is also Eclipse integration:
 ![The Open Resource dialog](openresource.png)
 
 * Use Ctrl-Shift-F to auto format selected code.
-
-<a name="testtips">
-## Test Tips
-
-* To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
-
-![](debugJasmine.png)
-
-Then, to step into the test, step into `stepIntoThis()`
-
-![](stepIntoThis.png)
-
-<a name="resources">
-## Resources
-
-* [WebGL Profiling Tips](http://cesiumjs.org/2014/12/01/WebGL-Profiling-Tips/)
-* [WebGL Debugging and Profiling Tools](http://www.realtimerendering.com/blog/)
-
-<a name="contributecode">
-# Contribute Code
-
-See [CONTRIBUTING.md](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md).
