@@ -2078,7 +2078,7 @@ The length of the ellipse's semi-minor axis in meters.
 
 ### ellipse.rotation
 
-The angle from north (clockwise) in radians.
+The angle from north (counter-clockwise) in radians.
 
 **Property Name**: `rotation`
 
