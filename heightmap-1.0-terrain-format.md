@@ -5,7 +5,7 @@ This file exists for historical reasons.  This format is deprecated and should n
 A terrain tileset in `heightmap-1.0` format is simple multi-resolution quadtree pyramid of heightmaps according to the [Tile Map Service (TMS)](http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification) layout and global-geodetic profile. All tiles have the extension .terrain. So, if the Tiles URL for a tileset is:
 
 ```
-//cesiumjs.org/terrain
+http://cesiumjs.org/terrain
 ```
 
 Then the two root files of the pyramid are found at these URLs:
@@ -15,14 +15,14 @@ Then the two root files of the pyramid are found at these URLs:
 
 The eight tiles at the next level are found at these URLs:
 
-* (-180 deg, -90 deg) - (-90 deg, 0 deg) - //cesiumjs.org/terrain/1/0/0.terrain
-* (-90 deg, -90 deg) - (0 deg, 0 deg) - //cesiumjs.org/terrain/1/1/0.terrain
-* (0 deg, -90 deg) - (90 deg, 0 deg) - //cesiumjs.org/terrain/1/2/0.terrain
-* (90 deg, -90 deg) - (180 deg, 0 deg) - //cesiumjs.org/terrain/1/3/0.terrain
-* (-180 deg, 0 deg) - (-90 deg, 90 deg) - //cesiumjs.org/terrain/1/0/1.terrain
-* (-90 deg, 0 deg) - (0 deg, 90 deg) - //cesiumjs.org/terrain/1/1/1.terrain
-* (0 deg, 0 deg) - (90 deg, 90 deg) - //cesiumjs.org/terrain/1/2/1.terrain
-* (90 deg, 0 deg) - (180 deg, 90 deg) - //cesiumjs.org/terrain/1/3/1.terrain
+* (-180 deg, -90 deg) - (-90 deg, 0 deg) - http://cesiumjs.org/terrain/1/0/0.terrain
+* (-90 deg, -90 deg) - (0 deg, 0 deg) - http://cesiumjs.org/terrain/1/1/0.terrain
+* (0 deg, -90 deg) - (90 deg, 0 deg) - http://cesiumjs.org/terrain/1/2/0.terrain
+* (90 deg, -90 deg) - (180 deg, 0 deg) - http://cesiumjs.org/terrain/1/3/0.terrain
+* (-180 deg, 0 deg) - (-90 deg, 90 deg) - http://cesiumjs.org/terrain/1/0/1.terrain
+* (-90 deg, 0 deg) - (0 deg, 90 deg) - http://cesiumjs.org/terrain/1/1/1.terrain
+* (0 deg, 0 deg) - (90 deg, 90 deg) - http://cesiumjs.org/terrain/1/2/1.terrain
+* (90 deg, 0 deg) - (180 deg, 90 deg) - http://cesiumjs.org/terrain/1/3/1.terrain
 
 The tiles are 65x65 vertices and overlap their neighbors at their edges. In other words, at the root, the eastern-most column of heights in the western tile is identical to the western-most column of heights in the eastern tile.
 
