@@ -9,7 +9,6 @@ We are a community that encourages contributions.  Join us.  Here's how.
    * [Build Targets](#buildtargets)
    * [Optional Eclipse Configuration](#optionaleclipseconfiguration)
    * [Eclipse Tips](#eclipsetips)
-   * [Test Tips](#testtips)
    * [Resources](#resources)
 * [Contribute Code](#contributecode)
 
@@ -116,17 +115,6 @@ At this point you are ready to contribute.  Continue reading below for more deta
 # Become an Expert
 
 This section has additional information on our development tools.
-
-<a name="testtips">
-## Test Tips
-
-* To debug an individual test (spec), open the browser's debugger, e.g., Ctrl-Shift-I in Chrome, and click debug to the far right of the test.
-
-![](debugJasmine.png)
-
-Then, to step into the test, step into `stepIntoThis()`
-
-![](stepIntoThis.png)
 
 <a name="resources">
 ## Resources
