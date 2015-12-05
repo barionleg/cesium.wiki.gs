@@ -5,13 +5,6 @@
 * More KML features. [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
 * See the [Cesium in 2015](https://groups.google.com/forum/#!topic/cesium-dev/Z_RE-krc0HY) forum discussion.
 
-## Ongoing
-
-We're always looking to:
-* Write [tutorials](Tutorials-Details) and improve [reference documentation](http://cesiumjs.org/refdoc.html)
-* Improve quality by fixing known issues.  If you want to contribute, a good place to start is the [beginner issues](https://github.com/AnalyticalGraphicsInc/cesium/issues?direction=desc&labels=beginner&page=1&sort=updated&state=open)
-* Write [demos](http://cesiumjs.org/demos.html) that showcase Cesium, especially demos that combine Cesium with interesting datasets or other web APIs
-
 ## Future Ideas (some have progress already)
 
 If you are interested in implementing any of these, start a discussion on the [forum](http://cesiumjs.org/forum.html).
