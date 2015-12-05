@@ -84,30 +84,6 @@ v = v.normalize(); // Works because it is a Cartesian3, not an object with just 
 
 * To aid the human reader, append `.0` to whole numbers intended to be floating-point values, e.g., `var f = 1.0;`.
 
-## Testing
-
-* It is important to have excellent test coverage since JavaScript doesn't have the safety net of a compiler and linker.
-* Prefer fine-grained tests over coarse-grained tests because they are easier to debug. In particular, only have one `expect().toThrow()` per spec.
-* When testing for exceptions, only wrap the function call that will throw the exception. For example, prefer:
-
-```javascript
-var va = Context.createVertexArray();
-va.destroy();
-expect(function() { 
-    va.destroy(); 
-}).toThrow();
-```
-over:
-
-```javascript
-expect(function() { 
-    var va = Context.createVertexArray(); 
-    va.destroy(); 
-    va.destroy(); 
-}).toThrow();
-```
-Otherwise, an unexpected exception can go unnoticed.
-
 ## Formatting
 
 In general, format new code the same as the existing code.
@@ -115,7 +91,3 @@ In general, format new code the same as the existing code.
 * Use four (4) spaces for indentation.  Do not use [tab characters](http://www.jwz.org/doc/tabs-vs-spaces.html).
 * Use single quotes, `'`, instead of double quotes, `"`.  `"use strict"` is an exception and should use double quotes.
 * Where possible, eliminate all `jsHint` warnings.  The [[Contributor's Guide]] explains how to set up Eclipse to display these warnings.
-
-## Documentation
-
-* See [Documentation-Best-Practices](Documentation Best Practices)
