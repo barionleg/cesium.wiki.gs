@@ -13,7 +13,6 @@
 ## Contributor Guides
 
 * [[Contributor's Guide]] - setting up a development environment and contributing code.
-* [[JavaScript Coding Conventions]] - keeps our code consistent.
 * [[Documentation Best Practices]] - solid reference documentation lowers the barrier to entry.
 * [[Code Review Tips]] - worthwhile code reviews share knowledge and improve code quality.
 * [[Deprecation Guide]] - how to deprecate and remove APIs over time.
