@@ -12,7 +12,6 @@
 
 ## Contributor Guides
 
-* [[Contributor's Guide]] - setting up a development environment and contributing code.
 * [[Documentation Best Practices]] - solid reference documentation lowers the barrier to entry.
 * [[Release Guide]] - how we release monthly.
 
