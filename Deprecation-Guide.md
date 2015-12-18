@@ -1,1 +1,1 @@
-This is now the [Deprecation and Breaking Changes](https://github.com/AnalyticalGraphicsInc/cesium/blob/deprecation/Documentation/Contributors/CodingGuide/README.md#deprecation-and-breaking-changes) section of the Coding Guide.
+This is now the [Deprecation and Breaking Changes](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Documentation/Contributors/CodingGuide/README.md#deprecation-and-breaking-changes) section of the Coding Guide.
