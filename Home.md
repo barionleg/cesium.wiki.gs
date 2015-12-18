@@ -18,7 +18,6 @@
 * [[Deprecation Guide]] - how to deprecate and remove APIs over time.
 * [[Release Guide]] - how we release monthly.
 * [[Committer's Guide]] - what to do with commit access to the main repo.
-* [[Recommended Reading]] - Books, tutorials, and other resources for getting up to speed the technologies used to build Cesium.
 
 ## Media
 
