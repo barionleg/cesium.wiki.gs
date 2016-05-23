@@ -1,5 +1,7 @@
 Design and implementation ideas for our screen-space rendering algorithms.
 
+TODO: Silhouette Effect like in [Deus Ex: Human Revolution - Graphics Study](http://www.adriancourreges.com/blog/2015/03/10/deus-ex-human-revolution-graphics-study/).
+
 ## Overview
 
 * Scriptable like [Fabric](https://github.com/AnalyticalGraphicsInc/cesium/wiki/Fabric).
