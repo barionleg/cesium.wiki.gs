@@ -6,7 +6,7 @@
 
 ## User Guides
 
-* [[CZML Guide]] - bring content into Cesium without writing code.
+* [[https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/CZML-Guide]] - bring content into Cesium without writing code.
 * [[Offline Guide]] - details on how to configure a Cesium app to work without internet access.
 * [[In-Depth Guides]] - details on major features.
 
