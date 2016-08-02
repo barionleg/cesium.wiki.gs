@@ -15,7 +15,7 @@ Black on white:
 <img src="logos/Cesium_Logo_Black.jpg" />
 
 Color with white text on black: 
-<img src="logos/Cesium_Logo_Color_onBlack.jpg" />
+<img src="logos/Cesium_Logo_Color_onBlack.png" />
 
 White on black:
 <img src="logos/Cesium_Logo_White.jpg" /></pre>
