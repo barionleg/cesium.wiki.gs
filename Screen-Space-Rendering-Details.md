@@ -140,3 +140,4 @@ Resources
 * [Post Process Framework Sample](http://graphicsrunner.blogspot.com/2008/06/post-process-framework-sample.html)
 * [The rendering technology of skysaga: infinite isles](https://interplayoflight.wordpress.com/2015/04/08/the-rendering-technology-of-skysaga-infinite-isles/)
 * [Deus Ex: Human Revolution - Graphics Study](http://www.adriancourreges.com/blog/2015/03/10/deus-ex-human-revolution-graphics-study/)
+* [adventures in postprocessing with unity](https://interplayoflight.wordpress.com/2015/07/03/adventures-in-postprocessing-with-unity/)
