@@ -1,8 +1,7 @@
 ## In progress
 
 * [3D Tiles](https://groups.google.com/forum/#!topic/cesium-dev/tCCooBxpZFU) - streaming 3D buildings, vector data, point clouds, etc.
-* Polygons, polylines, billboards, and labels clamped to terrain. [#2172](https://github.com/AnalyticalGraphicsInc/cesium/issues/2172)
-* More KML features. [#873](https://github.com/AnalyticalGraphicsInc/cesium/issues/873), [#2179](https://github.com/AnalyticalGraphicsInc/cesium/issues/2179)
+* Label declutter
 * See the [Cesium in 2016](https://groups.google.com/forum/#!topic/cesium-dev/jGgNInY2Fqo) forum discussion.
 
 ## Future Ideas (some have progress already)
