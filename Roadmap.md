@@ -1,7 +1,6 @@
 ## In progress
 
 * [3D Tiles](https://groups.google.com/forum/#!topic/cesium-dev/tCCooBxpZFU) - streaming 3D buildings, vector data, point clouds, etc.
-* Label declutter
 * See the [Cesium in 2016](https://groups.google.com/forum/#!topic/cesium-dev/jGgNInY2Fqo) forum discussion.
 
 ## Future Ideas (some have progress already)
