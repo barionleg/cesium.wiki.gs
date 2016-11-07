@@ -3,26 +3,24 @@ Before using the Cesium logo, please read and follow the [Cesium Trademark Terms
 Right click and save an image, or download the <a href="logos/Cesium_Logo_Color.SVG">svg</a> version.
 
 <pre>
-<img src="logos/Cesium_Logo_Color.jpg">
-</pre>
-
 Color with white background:
-[[logos/Cesium_Logo_Color.jpg]]
+<img src="logos/Cesium_Logo_Color.jpg">
 
 Color with alpha, for light backgrounds:
-[[logos/Cesium_Logo_Color_1.png]]
+<img src="logos/Cesium_Logo_Color_1.png">
 
 Color with alpha, for dark backgrounds:
-[[logos/Cesium_Logo_Color_2.png]]
+<img src="logos/Cesium_Logo_Color_2.png">
 
 Black on white:
-[[logos/Cesium_Logo_Black.jpg]]
+<img src="logos/Cesium_Logo_Black.jpg">
 
 Color with white text on black: 
-[[logos/Cesium_Logo_Color_onBlack.png]]
+<img src="logos/Cesium_Logo_Color_onBlack.png">
 
 White on black:
-[[logos/Cesium_Logo_White.jpg]]
+<img src="logos/Cesium_Logo_White.jpg">
+</pre>
 
 Style guide:
 [[logos/Cesium_Logo_StyleGuide.jpg]]
