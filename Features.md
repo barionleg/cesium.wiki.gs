@@ -1,1 +1,0 @@
-This page moved to the main Cesium website: http://cesiumjs.org/features.html
