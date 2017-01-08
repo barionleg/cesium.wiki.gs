@@ -1,1 +1,0 @@
-Presentations and Publications are located at http://cesiumjs.org/publications.html.
