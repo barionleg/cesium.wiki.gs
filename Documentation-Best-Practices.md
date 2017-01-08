@@ -1,1 +1,0 @@
-The new Documentation Guide is [here](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Documentation/Contributors/DocumentationGuide/README.md).
