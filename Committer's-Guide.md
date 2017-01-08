@@ -1,1 +1,0 @@
-The Committer's Guide moved [here](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Documentation/Contributors/CommittersGuide/README.md).
