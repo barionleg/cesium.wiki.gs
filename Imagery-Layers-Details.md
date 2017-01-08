@@ -1,1 +1,0 @@
-This page has been replaced by the [Terrain and Imagery Roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues/526).
