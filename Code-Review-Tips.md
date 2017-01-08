@@ -1,1 +1,0 @@
-The Code Review Guide moved [here](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Documentation/Contributors/CodeReviewGuide/README.md).
