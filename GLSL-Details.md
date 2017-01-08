@@ -1,1 +1,0 @@
-See [#1031](https://github.com/AnalyticalGraphicsInc/cesium/issues/1031).
