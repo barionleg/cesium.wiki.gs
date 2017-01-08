@@ -1,7 +1,8 @@
 ## In progress
 
 * [3D Tiles](https://groups.google.com/forum/#!topic/cesium-dev/tCCooBxpZFU) - streaming 3D buildings, vector data, point clouds, etc.
-* See the [Cesium in 2016](https://groups.google.com/forum/#!topic/cesium-dev/jGgNInY2Fqo) forum discussion.
+* [BIM roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues/4678)
+* See the [Cesium in 2017](https://groups.google.com/forum/#!topic/cesium-dev/D1gv_IEDDGY) forum discussion.
 
 ## Future Ideas (some have progress already)
 
