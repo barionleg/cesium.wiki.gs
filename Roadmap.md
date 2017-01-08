@@ -1,5 +1,5 @@
 * [3D Tiles](https://groups.google.com/forum/#!topic/cesium-dev/tCCooBxpZFU) - streaming 3D buildings, vector data, point clouds, etc.
-* [BIM roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues/4678)
+* [BIM roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues/4678).
 * See the [Cesium in 2017](https://groups.google.com/forum/#!topic/cesium-dev/D1gv_IEDDGY) forum discussion.
 
 ## Future
@@ -8,7 +8,7 @@ See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/iss
 
 If you would like to support Cesium, consider:
 * [Contributing](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md#getting-started-contributing) new features, bug fixes, doc, and forum participation.
-* Sharing the cost of development by funding AGI, the company who started Cesium, to prioritize items important to your project.  Contact the Cesium Product Manager, [Todd Smith](http://cesiumjs.org/team/ToddSmith/), at todd@agi.com.
+* Sharing the cost of development by funding AGI, the company who started Cesium, to prioritize items important to your project.  Contact the Cesium Product Manager, [Todd Smith](http://cesiumjs.org/team/ToddSmith/), at todd@agi.com for an informal conversation.
 
 ## Past Student Programs
 
