@@ -14,10 +14,6 @@
 
 * [[Release Guide]] - how we release monthly.
 
-## Media
-
-* [[Cesium Logos]] - for use in Cesium apps and related material.
-
 ## Cesium Website
 
 * [showcase-template.zip](https://github.com/AnalyticalGraphicsInc/cesium/wiki/showcase-template/showcase-template.zip) - template for showcases on the [demos page](http://cesiumjs.org/demos.html).
