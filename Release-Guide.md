@@ -3,7 +3,7 @@ We release Cesium on the first work day of every month.  Releases are available 
 There is no release manager; instead, our community shares the responsibility.  Any committer can create the release for a given month, and at any point, they can pass the responsibility to someone else, or someone else can ask for it.  This spreads knowledge, avoids stratification, avoids a single point of failure, and is beautifully unstructured ([more info](https://groups.google.com/forum/#!topic/cesium-dev/ArfdodoROTo)).
 
 ## Release testing and packaging
-1. Verify there are no [next release](../issues?q=is%3Aopen+is%3Aissue+label%3A%22next+release%22) issues or [next release](https://github.com/AnalyticalGraphicsInc/cesium/pulls?q=is%3Apr+is%3Aopen+label%3A%22next+release%22) pull requests.
+1. Verify there are no [priority - next release](../issues?q=is%3Aopen+is%3Aissue+label%3A"priority+-+next+release") issues or [priority - next release](https://github.com/AnalyticalGraphicsInc/cesium/pulls?q=is%3Apr+is%3Aopen+label%3A"priority+-+next+release") pull requests.
 1. Verify there are no `remove in [this version number]` [issues](https://github.com/AnalyticalGraphicsInc/cesium/labels).  Delete the label.  Create a new label with the next highest `remove in [version]` relative to the existing labels.
 1. Send a courtesy message to the [forum](http://cesiumjs.org/forum.html) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
