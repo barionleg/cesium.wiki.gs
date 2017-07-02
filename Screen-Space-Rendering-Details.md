@@ -134,6 +134,7 @@ Later
 * Glow with a glow buffer (GPU Gems, [Chapter 21](http://http.developer.nvidia.com/GPUGems/gpugems_ch21.html)).  A [WebGL glow tutorial](http://www.nutty.ca/?page_id=352&link=glow).
 
 Resources
+* [Open Source Unity Post-Processing Effects](https://bitbucket.org/Unity-Technologies/cinematic-image-effects)
 * [An investigation of fast real-time GPU-based image blur algorithms](https://software.intel.com/en-us/blogs/2014/07/15/an-investigation-of-fast-real-time-gpu-based-image-blur-algorithms)
 * [Call for a new Post-Processing Pipeline](http://diaryofagraphicsprogrammer.blogspot.com/2013/09/call-for-new-post-processing-pipeline.html)
 * [Stylized Rendering in Spore](http://gpupro.blogspot.com/2010/05/stylized-rendering-in-spore.html)
