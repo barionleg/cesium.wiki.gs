@@ -29,7 +29,7 @@ There is no release manager; instead, our community shares the responsibility.  
    * https://github.com/AnalyticalGraphicsInc/cesium/releases/new
    * Select the tag you use pushed
    * Enter 'Cesium 1.xx' for the title
-   * Include date, list of highlights and link to CHANGES.md as the description
+   * Include date, list of highlights and link to CHANGES.md (https://github.com/AnalyticalGraphicsInc/cesium/blob/1.xx/CHANGES.md) as the description
    * Attach the `Cesium-1.xx` release zip file
    * Publish the release
 1. Publish to npm by running `npm publish` (the first time you do this, you will need to authorize the machine using `npm adduser`)
