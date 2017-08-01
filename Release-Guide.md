@@ -25,6 +25,13 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
    * `git tag -a 1.1 -m '1.1 release'`
    * `git push origin 1.1` (this assumes origin is the primary cesium repository, do not use `git push --tags` as it pushes all tags from all remotes you have on your system.)
+1. Publish the release zip file to GitHub
+   * https://github.com/AnalyticalGraphicsInc/cesium/releases/new
+   * Select the tag you use pushed
+   * Enter 'Cesium 1.xx' for the title
+   * Include date, list of highlights and link to CHANGES.md as the description
+   * Attach the `Cesium-1.xx` release zip file
+   * Publish the release
 1. Publish to npm by running `npm publish` (the first time you do this, you will need to authorize the machine using `npm adduser`)
 1. [Add the release to cesiumjs.org](https://github.com/AnalyticalGraphicsInc/cesium-website/wiki/Adding-a-New-Cesium-Release).
 1. Reply to your courtesy message on the [forum](http://cesiumjs.org/forum.html) to let everyone know the release is ready.
