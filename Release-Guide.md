@@ -32,7 +32,7 @@ There is no release manager; instead, our community shares the responsibility.  
    * Include date, list of highlights and link to CHANGES.md (https://github.com/AnalyticalGraphicsInc/cesium/blob/1.xx/CHANGES.md) as the description
    * Attach the `Cesium-1.xx` release zip file
    * Publish the release
-1. Publish to npm by running `npm publish` (the first time you do this, you will need to authorize the machine using `npm adduser`)
+1. Publish to npm by running `npm publish` in the repository root (not the unzipped file directory) (the first time you do this, you will need to authorize the machine using `npm adduser`)
 1. [Add the release to cesiumjs.org](https://github.com/AnalyticalGraphicsInc/cesiumjs.org/tree/master/Documentation/ManagingHostedCesium).
 1. Reply to your courtesy message on the [forum](http://cesiumjs.org/forum.html) to let everyone know the release is ready.
 1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.
