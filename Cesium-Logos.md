@@ -1,1 +1,1 @@
-The logos moved [here](http://cesiumjs.org/logos.html).
+The logos moved [here](https://cesium.com/logos/).
