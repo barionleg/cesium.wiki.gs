@@ -17,9 +17,9 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Unpack the release zip to the directory of your choice and start the server by running `npm install` and then `npm start`
 1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work.
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
-1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation **in all browsers**.
 1. Make sure [Hello World](http://localhost:8080/Apps/HelloWorld.html) loads.
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
+1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation **in all browsers**.
 1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice (or multiple browsers if you are up for it).  Switch to the `All` tab and run through every demo to make sure they all work. Actually play with each of the buttons and sliders on each demo to ensure everything works as expected.
 1. If any of the above steps fail, contact the [forum](http://cesiumjs.org/forum.html) to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
