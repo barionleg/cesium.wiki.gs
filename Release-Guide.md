@@ -35,4 +35,5 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Publish to npm by running `npm publish` in the repository root (not the unzipped file directory) (the first time you do this, you will need to authorize the machine using `npm adduser`)
 1. [Add the release to cesiumjs.org](https://github.com/AnalyticalGraphicsInc/cesiumjs.org/tree/master/Documentation/ManagingHostedCesium).
 1. Reply to your courtesy message on the [forum](http://cesiumjs.org/forum.html) to let everyone know the release is ready.
-1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.
+1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.+
+1. Continue to the [Cesium ion SDK release](https://github.com/AnalyticalGraphicsInc/agi-cesium/wiki/Release-Guide)
