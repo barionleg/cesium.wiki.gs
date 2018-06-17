@@ -7,7 +7,7 @@
 
 ## Future
 
-See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap)
+See issues labeled [roadmap](https://github.com/AnalyticalGraphicsInc/cesium/labels/type%20-%20roadmap)
 
 If you would like to support Cesium, consider:
 * [Contributing](https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTING.md#getting-started-contributing) new features, bug fixes, doc, and forum participation.
