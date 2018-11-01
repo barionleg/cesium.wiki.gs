@@ -7,6 +7,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Verify there are no `remove in [this version number]` [issues](https://github.com/AnalyticalGraphicsInc/cesium/labels).  Delete the label.  Create a new label with the next highest `remove in [version]` relative to the existing labels.
 1. Send a courtesy message to the [forum](http://cesiumjs.org/forum.html) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
+1. Update the Cesium ion demo token in Ion.js with a new token from the CesiumJS ion account. Revoke the token from 2 releases ago.
 1. Pull down the latest master branch.
 1. Proofread [CHANGES.md](../blob/master/CHANGES.md) with the date of the release.  Adjust the order of changes so that prominent/popular changes come first.
 1. Update the version in `package.json` to match, e.g. `1.14.0` -> `1.15.0`.
@@ -19,7 +20,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
 1. Make sure [Hello World](http://localhost:8080/Apps/HelloWorld.html) loads.
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
-1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) with WebGL validation **in all browsers**.
+1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) **in all browsers**.
 1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice (or multiple browsers if you are up for it).  Switch to the `All` tab and run through every demo to make sure they all work. Actually play with each of the buttons and sliders on each demo to ensure everything works as expected.
 1. If any of the above steps fail, contact the [forum](http://cesiumjs.org/forum.html) to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
