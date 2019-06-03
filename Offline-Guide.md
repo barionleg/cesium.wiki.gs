@@ -4,7 +4,7 @@ By default, Cesium uses several external data sources which require internet acc
 
 The default imagery provider in Cesium is Bing Maps.  This provider loads data from `dev.virtualearth.net` as well as several other tile servers that are subdomains of `virtualearth.net`.  To use another provider, pass it into the constructor for the `Viewer` widget.  
 
-If you have an imagery server on your local network (e.g. WMS, ArcGIS, Google Earth Enterprise), you can configure Cesium to use that.  Otherwise, Cesium ships with a low-resolution set of images from Natural Earth II in `Assets/Textures/NaturalEarthII`, or you can download a higher-resolution tileset from the [cesium-assets](https://github.com/AnalyticalGraphicsInc/cesium-assets) repository.
+If you have an imagery server on your local network (e.g. WMS, ArcGIS, Google Earth Enterprise), you can configure Cesium to use that.  Otherwise, Cesium ships with a low-resolution set of images from Natural Earth II in `Assets/Textures/NaturalEarthII`.
 
 By default, the `BaseLayerPicker` includes options for several sample online imagery and terrain sources.  In an offline application, you should either disable that widget completely, by passing `baseLayerPicker : false` to the `Viewer` widget, or use the `imageryProviderViewModels` and `terrainProviderViewModels` options to configure the sources that will be available in your offline application.
 
