@@ -1,5 +1,3 @@
-# CesiumJS Features Checklist
-
 CesiumJS is built with care; code is publicly peer-reviewed, is unit tested with over 90% code coverage, and is statically analyzed, documented, and developed by an experienced team.
 
 ## Dynamic Geospatial Visualization
