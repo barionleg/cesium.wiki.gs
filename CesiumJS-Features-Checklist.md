@@ -29,7 +29,7 @@ CesiumJS is built with care; code is publicly peer-reviewed, is unit tested with
   - [Post-processing effects](https://sandcastle.cesium.com/index.html/?src=Ambient%20Occlusion.html&amp;label=Post%20Processing) including Ambient Occlusion, Bloom, Depth of Field, Silhouettes, and Lens Flare.  [Selectively apply](https://sandcastle.cesium.com/index.html/?src=Per-Feature%20Post%20Processing.html&amp;label=Post%20Processing) post-processing effects to individual primitives.  Create [custom post-processing effects](https://sandcastle.cesium.com/index.html/?src=Custom%20Post%20Process.html&amp;label=Post%20Processing) and pipelines of stages.
   - Fast Approximate Anti-aliasing (FXAA)
   - Efficient translucent primitives using [Order Independent Transparency](https://cesium.com/blog/2014/03/14/weighted-blended-order-independent-transparency/) (OIT).
-- Apply clipping planes to [3D tilesets](https://sandcastle.cesium.com/index.html/?src=3D%20Tiles%20Clipping%20Planes.html), [terrain](https://sandcastle.cesium.com/index.html/?src=Terrain%20Clipping%20Planes.html, and 3D models.
+- Apply clipping planes to [3D tilesets](https://sandcastle.cesium.com/index.html/?src=3D%20Tiles%20Clipping%20Planes.html), [terrain](https://sandcastle.cesium.com/index.html/?src=Terrain%20Clipping%20Planes.html), and 3D models.
 - Individual object [picking](https://sandcastle.cesium.com/index.html/?src=Picking.html) and terrain picking.
 - [Camera](https://sandcastle.cesium.com/index.html/?src=Camera.html) navigation with mouse and touch handlers for rotate, zoom, pan with inertia, flights, free look, and terrain collision detection.
 - Batching, culling, and JavaScript and GPU optimizations for performance. Optimized to reduce CPU and power usage when not animating.
