@@ -16,7 +16,7 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Run `npm install`.
 1. Create the release zip `npm run makeZipFile`
 1. Unpack the release zip to the directory of your choice and start the server by running `npm install` and then `npm start`
-1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work.
+1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work. Note that Sandcastle and "Run Tests" will not work in Edge (pre-Chromium version) or Internet Explorer 11.
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
 1. Make sure [Hello World](http://localhost:8080/Apps/HelloWorld.html) loads.
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
