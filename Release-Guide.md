@@ -38,4 +38,4 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/AnalyticalGraphicsInc/cesium-workshop/blob/master/index.html#L13-L14
 1. Reply to your courtesy message on the [forum](http://cesiumjs.org/forum.html) to let everyone know the release is ready.
 1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.+
-1. Continue to the [Cesium ion SDK release](https://github.com/AnalyticalGraphicsInc/agi-cesium/wiki/Release-Guide)
+1. Continue to the [Cesium Analytics SDK release](https://github.com/AnalyticalGraphicsInc/agi-cesium/wiki/Release-Guide)
