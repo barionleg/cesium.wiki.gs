@@ -278,7 +278,7 @@ czm_material czm_getMaterial(czm_materialInput materialInput)
     return m;
 }
 ```
-Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `czm_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `czm_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](http://cesiumjs.org/Documentation/?classFilter=czm_).
+Using `source` instead of `components` is more verbose, but provides more flexibility, including the ability to share common computations for different components and to make utility functions.  A rule of thumb is to use the `components` property unless the flexibility of explicitly implementing `czm_getMaterial` is needed.  Under the hood, the `components` sub-properties are used to implement `czm_getMaterial`.  In both cases, we have access to GLSL built-in functions and Cesium provided built-in GLSL [functions, uniforms, and constants](https://github.com/CesiumGS/cesium/blob/master/Source/Renderer/AutomaticUniforms.js).
 
 <a id="Input"></a>
 ### Input
@@ -304,7 +304,7 @@ A simple material that visualizes the `st` texture coordinates is:
 ```
 Similarly, we can visualize the normal in eye coordinates by setting `diffuse` to `materialInput.normalEC`.
 
-In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](http://cesiumjs.org/Documentation/?classFilter=czm_) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
+In addition to `materialInput`, materials have access to uniforms, both Cesium provided built-in [uniforms](https://github.com/CesiumGS/cesium/blob/master/Source/Renderer/AutomaticUniforms.js) and uniforms specific to the material.  For example, we can implement our own `Color` material by setting the `diffuse` and `alpha` components based on a color uniform.
 ```javascript
 {
   type : 'OurColor',
@@ -382,7 +382,7 @@ _TODO: need simple but inspiring examples of writing custom materials with Fabri
 <a id="FabricSchema"></a>
 ## Fabric Schema
 
-A [JSON Schema](https://json-schema.org/) for Fabric [is in the Cesium repo](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Documentation/Schemas/Fabric).  This details all Fabric properties and sub-properties, including `type`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
+A [JSON Schema](https://json-schema.org/) for Fabric [is in the Cesium repo](https://github.com/CesiumGS/cesium/tree/master/Documentation/Schemas/Fabric).  This details all Fabric properties and sub-properties, including `type`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
 
 In addition to more rigorous Fabric documentation, the schema can be used to validate Fabric using a tool like [JSV](https://github.com/garycourt/JSV).
 
