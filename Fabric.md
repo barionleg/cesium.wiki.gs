@@ -126,7 +126,7 @@ There are a few materials that do not fit into any other category.
 | `Water` | <img src="materials/water.png" width="200" height="92" /> | Animating water with waves and ripples. |
 | `RimLighting` | <img src="materials/rimlighting.png" width="200" height="92" /> | Highlights the rim or silhouette. |
 
-For more materials, see the [Cesium Materials Plugin](https://github.com/AnalyticalGraphicsInc/cesium-materials-pack).
+For more materials, see the [Cesium Materials Plugin](https://github.com/CesiumGS/cesium-materials-pack).
 
 <a id="CommonUniforms"></a>
 ### Common Uniforms
@@ -382,7 +382,7 @@ _TODO: need simple but inspiring examples of writing custom materials with Fabri
 <a id="FabricSchema"></a>
 ## Fabric Schema
 
-A [JSON Schema](http://json-schema.org/) for Fabric [is in the Cesium repo](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Documentation/Schemas/Fabric).  This details all Fabric properties and sub-properties, including `type`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
+A [JSON Schema](https://json-schema.org/) for Fabric [is in the Cesium repo](https://github.com/AnalyticalGraphicsInc/cesium/tree/master/Documentation/Schemas/Fabric).  This details all Fabric properties and sub-properties, including `type`, `materials`, `uniforms`, `components`, and `source`.  There are several JSON examples showing the schema, but not necessarily interesting visuals.
 
 In addition to more rigorous Fabric documentation, the schema can be used to validate Fabric using a tool like [JSV](https://github.com/garycourt/JSV).
 
