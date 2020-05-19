@@ -272,7 +272,7 @@ Our example material above that sets `diffuse` and `specular` components can be 
 ```glsl
 czm_material czm_getMaterial(czm_materialInput materialInput)
 {
-    czm_materialInput m = czm_getDefaultMaterial(materialInput);
+    czm_material m = czm_getDefaultMaterial(materialInput);
     m.diffuse = vec3(0.5);
     m.specular = 0.5;
     return m;
