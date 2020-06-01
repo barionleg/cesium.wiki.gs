@@ -23,6 +23,8 @@ There is no release manager; instead, our community shares the responsibility.  
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) **in all browsers**.
 1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice (or multiple browsers if you are up for it).  Switch to the `All` tab and run through every demo to make sure they all work. Actually play with each of the buttons and sliders on each demo to ensure everything works as expected.
 1. If any of the above steps fail, contact the [forum](http://cesiumjs.org/forum.html) to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
+1. Push your commits to master
+   * `git push`
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
    * `git tag -a 1.1 -m '1.1 release'`
    * `git push origin 1.1` (this assumes origin is the primary cesium repository, do not use `git push --tags` as it pushes all tags from all remotes you have on your system.)
