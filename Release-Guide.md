@@ -5,7 +5,6 @@ There is no release manager; instead, our community shares the responsibility.  
 ## Release testing and packaging
 1. Verify there are no [priority - next release](../issues?q=is%3Aopen+is%3Aissue+label%3A"priority+-+next+release") issues or [priority - next release](https://github.com/CesiumGS/cesium/pulls?q=is%3Apr+is%3Aopen+label%3A"priority+-+next+release") pull requests.
 1. Verify there are no `remove in [this version number]` [issues](https://github.com/CesiumGS/cesium/labels).  Delete the label.  Create a new label with the next highest `remove in [version]` relative to the existing labels.
-1. Send a courtesy message to the [forum](http://cesiumjs.org/forum.html) to let people know you're about to start the release process.
 1. Make sure you are using the latest drivers for your video card.
 1. Pull down the latest master branch.
 1. Update the Cesium ion demo token in Ion.js with a new token from the CesiumJS ion account. Revoke the token from 2 releases ago.
@@ -38,6 +37,6 @@ There is no release manager; instead, our community shares the responsibility.  
 1. Publish to npm by running `npm publish` in the repository root (not the unzipped file directory) (the first time you do this, you will need to authorize the machine using `npm adduser`)
 1. [Add the release to cesium.com](https://github.com/CesiumGS/cesium.com/blob/master/Documentation/Posting/README.md#adding-a-new-cesiumjs-release).
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/CesiumGS/cesium-workshop/blob/master/index.html#L13-L14
-1. Reply to your courtesy message on the [forum](https://community.cesium.com/) to let everyone know the release is ready.
-1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.+
+1. Announce the release on the [forum](https://community.cesium.com/c/announcements/6) with a link to the blog post.
+1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.
 1. Continue to the [Cesium Analytics release](https://github.com/CesiumGS/cesium-analytics/wiki/Release-Guide)
