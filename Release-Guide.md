@@ -34,10 +34,15 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
    * Select the tag you use pushed
    * Enter 'CesiumJS 1.xx' for the title
    * Include date, list of highlights and link to CHANGES.md (https://github.com/CesiumGS/cesium/blob/1.xx/CHANGES.md) as the description
+      * Look at a [previous release](https://github.com/CesiumGS/cesium/releases/tag/1.79) for an example.  Don't use emoji, headings, or other formatting
    * Attach the `Cesium-1.xx` release zip file
    * Publish the release
 1. Publish to npm by running `npm publish` in the repository root (not the unzipped file directory) (the first time you do this, you will need to authorize the machine using `npm adduser`)
-1. [Add the release to cesium.com](https://github.com/CesiumGS/cesium.com/blob/master/Documentation/Posting/README.md#adding-a-new-cesiumjs-release).
+1. Check out the `cesium.com` branch
+   * Merge the new release tag into the `cesium.com` branch
+   * Set the `cesiumWebsiteToken` variable in `Ion.js` in the `cesium.com` branch of CesiumJS with a token from the CesiumJS ion account called something like `cesium.com April - Delete May 1`
+   * Commit and push those changes to the `cesium.com` branch.  This deploys the hosted release, Sandcastle, and the updated doc.
+1. [Update cesium.com](https://github.com/CesiumGS/cesium.com/blob/master/Documentation/Posting/README.md#adding-a-new-cesiumjs-release).
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/CesiumGS/cesium-workshop/blob/master/index.html#L13-L14
 1. Announce the release on the [forum](https://community.cesium.com/t/new-cesiumjs-release/11110) with a link to the blog post.
 1. Announce the release on twitter using [@CesiumJS](https://twitter.com/CesiumJS) with a link to the blog post.
