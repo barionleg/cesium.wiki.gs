@@ -44,5 +44,4 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
    * Commit and push those changes to the `cesium.com` branch.  This deploys the hosted release, Sandcastle, and the updated doc.
 1. [Update cesium.com](https://github.com/CesiumGS/cesium.com/blob/master/Documentation/Posting/README.md#adding-a-new-cesiumjs-release).
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/CesiumGS/cesium-workshop/blob/master/index.html#L13-L14
-1. Announce the release on the [forum](https://community.cesium.com/t/new-cesiumjs-release/11110) with a link to the blog post.
 1. Continue to the [Cesium Analytics release](https://github.com/CesiumGS/cesium-analytics/wiki/Release-Guide)
