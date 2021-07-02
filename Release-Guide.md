@@ -42,6 +42,5 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
    * Merge the new release tag into the `cesium.com` branch
    * Set the `cesiumWebsiteToken` variable in `Ion.js` in the `cesium.com` branch of CesiumJS with a token from the CesiumJS ion account called something like `cesium.com April - Delete May 1`
    * Commit and push those changes to the `cesium.com` branch.  This deploys the hosted release, Sandcastle, and the updated doc.
-1. [Update cesium.com](https://github.com/CesiumGS/cesium.com/blob/master/Documentation/Posting/README.md#adding-a-new-cesiumjs-release).
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/CesiumGS/cesium-workshop/blob/master/index.html#L13-L14
 1. Continue to the [Cesium Analytics release](https://github.com/CesiumGS/cesium-analytics/wiki/Release-Guide)
