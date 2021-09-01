@@ -23,7 +23,7 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
 1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html?webglValidation) **in all browsers**.
 1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice (or multiple browsers if you are up for it).  Switch to the `All` tab and run through every demo to make sure they all work. Actually play with each of the buttons and sliders on each demo to ensure everything works as expected.
-1. If any of the above steps fail, post a message to the `#engineering` channel in slack to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
+1. If any of the above steps fail, post a message to the `#cesiumjs` channel in slack to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
 1. Push your commits to main
    * `git push`
 1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
