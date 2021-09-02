@@ -40,8 +40,9 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
 1. Publish to npm by running `npm publish` in the repository root (not the unzipped file directory) (the first time you do this, you will need to authorize the machine using `npm adduser`)
 1. Check out the `cesium.com` branch
    * Merge the new release tag into the `cesium.com` branch
-   * Set the `cesiumWebsiteToken` variable in `Ion.js` in the `cesium.com` branch of CesiumJS with a token from the CesiumJS ion account called something like `cesium.com April - Delete May 1`
+   * Set the `cesiumWebsiteToken` variable in `Ion.js` in the `cesium.com` branch of CesiumJS with a token from the CesiumJS ion account, including the date to delete the token (1 month). For example `cesium.com April - Delete May 1st`. Note that this token only lasts 1 month, not 2 like the release token that was made in an earlier step.
    * Commit and push those changes to the `cesium.com` branch.  This deploys the hosted release, Sandcastle, and the updated doc.
 1. After the `cesium.com` branch builds, comment in the `#comms-chat` slack channel to notify comms that the release is done so they can add these highlights and publish the monthly blog post
+1. In the CesiumJS ion account again, delete the `cesium.com` ion token from the previous month.
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/CesiumGS/cesium-workshop/blob/main/index.html#L13-L14
 1. Continue to the [Cesium Analytics release](https://github.com/CesiumGS/cesium-analytics/wiki/Release-Guide)
