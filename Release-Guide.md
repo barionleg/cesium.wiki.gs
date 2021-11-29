@@ -38,11 +38,8 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
    * Attach the `Cesium-1.xx` release zip file
    * Publish the release
 1. Publish to npm by running `npm publish` in the repository root (not the unzipped file directory) (the first time you do this, you will need to authorize the machine using `npm adduser`)
-1. Check out the `cesium.com` branch
-   * Merge the new release tag into the `cesium.com` branch
-   * Set the `cesiumWebsiteToken` variable in `Ion.js` in the `cesium.com` branch of CesiumJS with a token from the CesiumJS ion account, including the date to delete the token (1 month). For example `cesium.com April - Delete May 1st`. Note that this token only lasts 1 month, not 2 like the release token that was made in an earlier step.
-   * Commit and push those changes to the `cesium.com` branch.  This deploys the hosted release, Sandcastle, and the updated doc.
-1. After the `cesium.com` branch builds, comment in the `#comms-chat` slack channel to notify comms that the release is done so they can add these highlights and publish the monthly blog post
-1. Once the new version of Sandcastle is [live at sandcastle.cesium.com](https://sandcastle.cesium.com) (which may take a while after the branch builds), return to the CesiumJS ion account again and delete the `cesium.com` ion token from the previous month. This step is done after the deployment to ensure the hosted version of Sandcastle always has a valid token.
+1. Check out the `cesium.com` branch.  Merge the new release tag into the `cesium.com` branch.  CI will deploy the hosted release, Sandcastle, and the updated doc when you push the branch up.
+1. After the `cesium.com` branch is live on cesium.com, comment in the `#comms-chat` slack channel to notify comms that the release is done so they can add these highlights and publish the monthly blog post
+   * Note, it may take a little while for the new version of CesiumJS to be live on cesium.com (~30 minutes after the branch builds).  You can check the version of Cesium in [sandcastle](https://sandcastle.cesium.com/) by looking at the tab above the cesium pane.
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/CesiumGS/cesium-workshop/blob/main/index.html#L13-L14
 1. Continue to the [Cesium Analytics release](https://github.com/CesiumGS/cesium-analytics/wiki/Release-Guide)
