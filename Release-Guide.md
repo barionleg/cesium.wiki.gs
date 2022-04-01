@@ -15,13 +15,14 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
 1. Commit these changes.
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
 1. Run `npm install`.
-1. Create the release zip `npm run makeZipFile`
+1. Create the release zip `npm run makeZipFile`.
+1. Build specs `npm run build-specs`.
+1. Run tests against the release `npm run test -- --failTaskOnError --release`. Test **in all browsers** with the `--browsers` flag (i.e. `--browsers Firefox`).
 1. Unpack the release zip to the directory of your choice and start the server by running `npm install` and then `npm start`
-1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work. Note that Sandcastle and "Run Tests" will not work in Edge (pre-Chromium version) or Internet Explorer 11.
+1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work. Note that Sandcastle will not work in Edge (pre-Chromium version) or Internet Explorer 11.
 1. Verify that the [documentation](http://localhost:8080/Build/Documentation/index.html) built correctly
 1. Make sure [Hello World](http://localhost:8080/Apps/HelloWorld.html) loads.
 1. Make sure [Cesium Viewer](http://localhost:8080/Apps/CesiumViewer/index.html) loads.
-1. [Run unit tests](http://localhost:8080/Specs/SpecRunner.html) **in all browsers**.
 1. Run [Sandcastle](http://localhost:8080/Apps/Sandcastle/index.html) on the browser of your choice (or multiple browsers if you are up for it).  Switch to the `All` tab and run through every demo to make sure they all work. Actually play with each of the buttons and sliders on each demo to ensure everything works as expected.
 1. If any of the above steps fail, post a message to the `#cesiumjs` channel in slack to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
 1. Push your commits to main
