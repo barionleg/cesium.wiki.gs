@@ -27,7 +27,7 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
 1. If any of the above steps fail, post a message to the `#cesiumjs` channel in slack to figure out what needs to be fixed before we can release.  Do NOT proceed to the next step until issues are resolved.
 1. Push your commits to main
    * `git push`
-1. Create and push a [tag](http://learn.github.com/p/tagging.html), e.g.,
+1. Create and push a [tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging), e.g.,
    * `git tag -a 1.1 -m "1.1 release"`
    * `git push origin 1.1` (this assumes origin is the primary cesium repository, do not use `git push --tags` as it pushes all tags from all remotes you have on your system.)
 1. Publish the release zip file to GitHub
