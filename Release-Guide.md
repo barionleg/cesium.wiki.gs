@@ -39,7 +39,7 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
    * Attach the `Cesium-1.xx` release zip file
    * Publish the release
 1. Publish to npm by running `npm publish` in the repository root (not the unzipped file directory) (the first time you do this, you will need to authorize the machine using `npm adduser`)
-1. Check out the `cesium.com` branch.  Merge the new release tag into the `cesium.com` branch.  CI will deploy the hosted release, Sandcastle, and the updated doc when you push the branch up.
+1. Check out the `cesium.com` branch.  Merge the new release tag into the `cesium.com` branch `git merge origin <tag-name>`.  CI will deploy the hosted release, Sandcastle, and the updated doc when you push the branch up.
 1. After the `cesium.com` branch is live on cesium.com, comment in the `#comms-chat` slack channel to notify comms that the release is done so they can add these highlights and publish the monthly blog post
    * Note, it may take a little while for the new version of CesiumJS to be live on cesium.com (~30 minutes after the branch builds).  You can check the version of Cesium in [sandcastle](https://sandcastle.cesium.com/) by looking at the tab above the cesium pane.
 1. Update the version of CesiumJS used in the Cesium Workshop: https://github.com/CesiumGS/cesium-workshop/blob/main/index.html#L13-L14
