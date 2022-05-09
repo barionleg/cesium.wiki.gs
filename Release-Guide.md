@@ -15,6 +15,7 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
 1. Commit these changes.
 1. Make sure the repository is clean `git clean -d -x -f`. __This will delete all files not already in the repository.__
 1. Run `npm install`.
+1. Make sure `ThirdParty.json` is up to date by running `npm run build-third-party`. If there are any changes, verify and commit them.
 1. Create the release zip `npm run makeZipFile`.
 1. Build specs `npm run build-specs`.
 1. Run tests against the release `npm run test -- --failTaskOnError --release`. Test **in all browsers** with the `--browsers` flag (i.e. `--browsers Firefox`). Alternatively, test with the browser Spec Runner by starting a local server (`npm start`) and browsing to http://localhost:8080/Specs/SpecRunner.html?built=true&release=true.
