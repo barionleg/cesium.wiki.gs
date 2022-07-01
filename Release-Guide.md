@@ -9,7 +9,7 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
 1. Verify there are no `remove in [this version number]` [issues](https://github.com/CesiumGS/cesium/labels).  Delete the label.  Create a new label with the next highest `remove in [version]` relative to the existing labels.
 1. Make sure you are using the latest drivers for your video card.
 1. Pull down the latest main branch.
-1. Update the Cesium ion demo token in `Ion.js` with a new token from the CesiumJS ion account with read and geocode permissions. These tokens are named like this: `1.85 Release - Delete on November 1st, 2021`. Delete the token from 2 releases ago.
+1. Update the Cesium ion demo token in `Ion.js` with a new token from the CesiumJS ion team account with read and geocode permissions. These tokens are named like this: `1.85 Release - Delete on November 1st, 2021`. Delete the token from 2 releases ago.
 1. Proofread [CHANGES.md](../blob/main/CHANGES.md) with the date of the release.  Adjust the order of changes so that prominent/popular changes come first.
 1. Update the version in `package.json` to match, e.g. `1.14.0` -> `1.15.0`.
 1. Commit these changes.
