@@ -17,7 +17,6 @@ __Follow these instructions exactly. Do not switch branches or otherwise manipul
 1. Run `npm install`.
 1. Make sure `ThirdParty.json` is up to date by running `npm run build-third-party`. If there are any changes, verify and commit them.
 1. Create the release zip `npm run makeZipFile`.
-1. Build specs `npm run build-specs`.
 1. Run tests against the release `npm run test -- --failTaskOnError --release`. Test **in all browsers** with the `--browsers` flag (i.e. `--browsers Firefox`). Alternatively, test with the browser Spec Runner by starting a local server (`npm start`) and browsing to http://localhost:8080/Specs/SpecRunner.html?built=true&release=true.
 1. Unpack the release zip to the directory of your choice and start the server by running `npm install` and then `npm start`
 1. Browse to http://localhost:8080 and confirm that the home page loads as expected and all links work. Note that Sandcastle will not work in Edge (pre-Chromium version) or Internet Explorer 11.
