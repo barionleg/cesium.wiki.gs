@@ -1,0 +1,1 @@
+Content has been migrated to [`Documentation/Contributors/ReleaseGuide`](https://github.com/CesiumGS/cesium/tree/main/Documentation/Contributors/ReleaseGuide).
